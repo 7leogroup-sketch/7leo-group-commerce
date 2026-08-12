@@ -1,73 +1,190 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meri Pehli Website</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        body {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: white;
-        }
-
-        .card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            padding: 40px;
-            border-radius: 20px;
-            text-align: center;
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-            border: 1px solid rgba(255, 255, 255, 0.18);
-            max-width: 400px;
-            margin: 20px;
-        }
-
-        h1 {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-        }
-
-        p {
-            font-size: 1.1rem;
-            line-height: 1.6;
-            opacity: 0.9;
-            margin-bottom: 25px;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 12px 30px;
-            background: #fff;
-            color: #764ba2;
-            text-decoration: none;
-            border-radius: 25px;
-            font-weight: bold;
-            transition: transform 0.3s ease;
-        }
-
-        .btn:hover {
-            transform: scale(1.05);
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>7Leo Ecosystem | Vision · Power · Legacy</title>
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="logo.png">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <style>
+    /* Tattoo Background Overlay */
+    .tattoo-bg {
+      background-image: url('tattoo-bg.png');
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: contain;
+    }
+    
+    /* Smooth Transitions */
+    .fade-out {
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.8s ease-out;
+    }
+  </style>
 </head>
-<body>
+<body class="bg-black text-white font-sans selection:bg-amber-500 selection:text-black min-h-screen relative overflow-x-hidden">
 
-    <div class="card">
-        <h1>Hello World! 👋</h1>
-        <p>Arey waah! Meri pehli website GitHub par live hone ke liye ready hai!</p>
-        <a href="#" class="btn">Explore More</a>
+  <!-- 1. SPLASH SCREEN (5-SECOND INTRO) -->
+  <div id="splash-screen" class="fixed inset-0 z-50 bg-black flex flex-col items-center justify-center p-4 transition-all duration-700">
+    <div class="relative max-w-lg w-full text-center">
+      <img src="flag.png" alt="7Leo Flag" class="w-full h-auto rounded-xl shadow-[0_0_50px_rgba(234,179,8,0.3)] animate-pulse">
+      <div class="mt-6 flex items-center justify-center space-x-4">
+        <span class="text-amber-400 font-semibold tracking-widest text-sm uppercase">Loading Ecosystem...</span>
+        <button onclick="closeSplash()" class="px-4 py-1.5 bg-amber-500/20 hover:bg-amber-500 text-amber-300 hover:text-black border border-amber-500/50 rounded-full text-xs font-bold transition">
+          SKIP INTRO <i class="fa-solid fa-arrow-right ml-1"></i>
+        </button>
+      </div>
     </div>
+  </div>
+
+  <!-- FIXED TATTOO BACKGROUND WATERMARK -->
+  <div class="fixed inset-0 tattoo-bg opacity-10 pointer-events-none z-0"></div>
+
+  <!-- MAIN CONTAINER -->
+  <div class="relative z-10 flex flex-col min-h-screen">
+
+    <!-- 2. NAVBAR / HEADER -->
+    <header class="border-b border-amber-500/20 bg-black/80 backdrop-blur-md sticky top-0 z-40">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+        <a href="#" class="flex items-center space-x-3">
+          <img src="logo.png" alt="7Leo Logo" class="h-12 w-auto object-contain">
+        </a>
+        
+        <nav class="hidden md:flex items-center space-x-8 text-sm font-medium tracking-wide">
+          <a href="#about" class="hover:text-amber-400 transition">Group Vision</a>
+          <a href="#store" class="hover:text-amber-400 transition">7Leo Store</a>
+          <a href="#bgm" class="hover:text-amber-400 transition">7Leo BGM</a>
+          <a href="#founder" class="hover:text-amber-400 transition">Founder & CEO</a>
+        </nav>
+
+        <a href="#store" class="px-5 py-2.5 bg-gradient-to-r from-amber-500 to-yellow-600 text-black font-bold rounded-lg shadow-lg hover:brightness-110 transition text-sm">
+          Explore Store
+        </a>
+      </div>
+    </header>
+
+    <!-- 3. HERO SECTION -->
+    <section id="about" class="py-20 px-4 text-center max-w-4xl mx-auto flex-grow flex flex-col justify-center">
+      <div class="inline-block mx-auto mb-4 px-4 py-1 bg-amber-500/10 border border-amber-500/30 rounded-full text-amber-400 text-xs font-bold tracking-widest uppercase">
+        Vision · Power · Legacy
+      </div>
+      <h1 class="text-4xl sm:text-6xl font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-amber-400 to-yellow-600 mb-6">
+        WELCOME TO 7LEO ECOSYSTEM
+      </h1>
+      <p class="text-gray-400 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
+        Empowering creative innovation, high-octane music composition, and next-generation lifestyle commerce under one unified brand legacy.
+      </p>
+    </section>
+
+    <!-- 4. ECOSYSTEM SECTIONS (STORE & BGM) -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 grid grid-cols-1 lg:grid-cols-2 gap-8">
+      
+      <!-- 7LEO STORE CARD -->
+      <div id="store" class="bg-zinc-950 border border-amber-500/20 rounded-3xl p-8 hover:border-amber-500/50 transition shadow-xl relative overflow-hidden group">
+        <div class="flex items-center space-x-4 mb-6">
+          <img src="store-logo.png" alt="7Leo Store" class="w-16 h-16 rounded-full object-cover border-2 border-amber-500/40">
+          <div>
+            <h2 class="text-2xl font-bold text-amber-400">7Leo Store</h2>
+            <p class="text-xs text-gray-400">Official E-Commerce Hub</p>
+          </div>
+        </div>
+        <p class="text-gray-300 text-sm mb-6 leading-relaxed">
+          Premium merchandise, luxury lifestyle products, and exclusive 7Leo apparel designed for those who command respect and authority.
+        </p>
+        <button class="w-full py-3 bg-amber-500/10 border border-amber-500/40 hover:bg-amber-500 hover:text-black text-amber-400 font-bold rounded-xl transition flex items-center justify-center space-x-2">
+          <span>Visit Storefront</span>
+          <i class="fa-solid fa-cart-shopping"></i>
+        </button>
+      </div>
+
+      <!-- 7LEO BGM CARD -->
+      <div id="bgm" class="bg-zinc-950 border border-purple-500/20 rounded-3xl p-8 hover:border-purple-500/50 transition shadow-xl relative overflow-hidden group">
+        <div class="flex items-center space-x-4 mb-6">
+          <img src="bgm-logo.png" alt="7Leo BGM" class="w-16 h-16 rounded-full object-cover border-2 border-purple-500/40">
+          <div>
+            <h2 class="text-2xl font-bold text-purple-400">7Leo BGM</h2>
+            <p class="text-xs text-gray-400">Groovepad Music Compositions</p>
+          </div>
+        </div>
+        
+        <!-- BGM Banner Display -->
+        <div class="mb-6 rounded-xl overflow-hidden border border-purple-500/30">
+          <img src="bgm-banner.png" alt="7Leo BGM Banner" class="w-full h-auto object-cover">
+        </div>
+
+        <p class="text-gray-300 text-sm mb-6 leading-relaxed">
+          Mobile composed high-energy background music, cinematic scores, and bass-boosted tracks engineered for creator content.
+        </p>
+        <button class="w-full py-3 bg-purple-500/10 border border-purple-500/40 hover:bg-purple-500 hover:text-white text-purple-300 font-bold rounded-xl transition flex items-center justify-center space-x-2">
+          <span>Listen on YouTube</span>
+          <i class="fa-brands fa-youtube"></i>
+        </button>
+      </div>
+
+    </section>
+
+    <!-- 5. FOUNDER & CEO SECTION -->
+    <section id="founder" class="py-16 bg-zinc-950/80 border-t border-amber-500/20">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row items-center gap-10">
+          
+          <!-- Founder Image -->
+          <div class="w-48 h-64 sm:w-60 sm:h-80 flex-shrink-0 rounded-2xl overflow-hidden border-2 border-amber-500/40 shadow-[0_0_30px_rgba(234,179,8,0.2)]">
+            <img src="founder.jpg" alt="Abubakker Bellary" class="w-full h-full object-cover">
+          </div>
+
+          <!-- Founder Info -->
+          <div class="text-center md:text-left space-y-4">
+            <div class="inline-block px-3 py-1 bg-amber-500/10 border border-amber-500/30 rounded-md text-amber-400 text-xs font-semibold tracking-wider">
+              LEADERSHIP
+            </div>
+            <h2 class="text-3xl sm:text-4xl font-bold text-white">Abubakker Bellary</h2>
+            <p class="text-amber-400 font-medium text-sm">Founder & CEO, 7Leo Group</p>
+            <blockquote class="text-gray-300 italic border-l-2 border-amber-500 pl-4 py-1 text-sm sm:text-base">
+              "Building an empire isn't just about growth—it's about leaving a legacy that inspires strength, creativity, and unbroken vision."
+            </blockquote>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. FOOTER -->
+    <footer class="border-t border-zinc-900 bg-black py-8 text-center text-xs text-gray-500">
+      <p>© 2026 7Leo Group. All Rights Reserved.</p>
+      <p class="mt-2 text-amber-500/60 font-mono">VISION · POWER · LEGACY</p>
+    </footer>
+
+  </div>
+
+  <!-- JAVASCRIPT FOR SPLASH SCREEN LOGIC -->
+  <script>
+    function closeSplash() {
+      const splash = document.getElementById('splash-screen');
+      if (splash) {
+        splash.classList.add('fade-out');
+        setTimeout(() => {
+          splash.style.display = 'none';
+        }, 800);
+      }
+    }
+
+    // Auto-close Splash Screen after 5 Seconds (5000ms)
+    window.addEventListener('DOMContentLoaded', () => {
+      setTimeout(() => {
+        closeSplash();
+      }, 5000);
+    });
+  </script>
 
 </body>
 </html>
