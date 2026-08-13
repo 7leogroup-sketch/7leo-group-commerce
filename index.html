@@ -87,12 +87,6 @@
     }
 
     /* Gradient Text Effects */
-    .gradient-text-amber {
-      background: linear-gradient(135deg, #ffffff 30%, #ff8c00 70%, #ff4500 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
     .gradient-orange-highlight {
       background: linear-gradient(90deg, #ff8c00, #ff4500);
       -webkit-background-clip: text;
@@ -122,16 +116,20 @@
   <!-- BACKGROUND RADIAL HORIZON GLOW -->
   <div class="fixed top-0 left-0 right-0 h-[650px] horizon-glow pointer-events-none z-0"></div>
 
-  <!-- SPLASH SCREEN -->
+  <!-- TASK 2: SPLASH SCREEN WITH 7LEO FLAG -->
   <div id="splash-screen" class="fixed inset-0 z-50 bg-[#060608]/95 backdrop-blur-2xl flex flex-col items-center justify-center p-6 transition-all duration-700">
     <div class="max-w-md w-full text-center space-y-6 relative z-10 glass-card p-8 rounded-3xl border border-amber-500/30">
       <div class="flex items-center justify-between text-xs font-display text-amber-500 border-b border-white/10 pb-3">
         <span class="flex items-center"><i class="fa-solid fa-shield-halved animate-pulse mr-2 text-amber-500"></i>SECURE GATEWAY</span>
         <span>NODE: 7LEO-GLOBAL-01</span>
       </div>
-      <div class="relative inline-block my-2">
-        <img src="flag.png" alt="7Leo Official Flag" class="w-full max-w-[260px] mx-auto rounded-2xl border border-amber-500/40 shadow-[0_0_40px_rgba(255,106,0,0.3)] object-cover">
+      
+      <!-- Flag Upload Container -->
+      <div class="relative inline-block my-2 group">
+        <div class="absolute -inset-1 bg-gradient-to-r from-amber-500 to-orange-600 rounded-2xl blur opacity-30 group-hover:opacity-75 transition duration-500"></div>
+        <img src="flag.png" onError="this.onerror=null;this.src='https://via.placeholder.com/300x180/0d0e12/ff6a00?text=7Leo+Official+Flag';" alt="7Leo Official Flag" class="relative w-full max-w-[280px] mx-auto rounded-2xl border border-amber-500/40 shadow-[0_0_40px_rgba(255,106,0,0.3)] object-cover">
       </div>
+
       <div>
         <h2 class="text-2xl font-heading font-extrabold text-white tracking-tight uppercase">7LEO GROUP COMMERCE</h2>
         <p class="text-xs text-amber-400 font-display tracking-widest mt-1 uppercase">Vision · Power · Legacy</p>
@@ -151,7 +149,7 @@
         
         <!-- Brand Logo -->
         <a href="#" class="flex items-center space-x-3 group">
-          <img src="logo.png" alt="7Leo Group" class="h-8 w-auto object-contain group-hover:scale-105 transition">
+          <img src="logo.png" onError="this.onerror=null;this.src='star-logo.png';" alt="7Leo Group" class="h-8 w-auto object-contain group-hover:scale-105 transition">
           <img src="star-logo.png" alt="7Leo Star" class="h-6 w-auto object-contain drop-shadow-[0_0_10px_rgba(255,106,0,0.8)]">
           <div class="hidden lg:flex flex-col text-[10px] font-display text-gray-400 border-l border-white/10 pl-3">
             <span class="flex items-center text-amber-400 font-semibold"><span class="w-2 h-2 bg-amber-500 rounded-full animate-ping mr-1.5"></span>SYS ONLINE 99.9%</span>
@@ -162,11 +160,10 @@
         <!-- Navigation Links -->
         <nav class="hidden md:flex items-center space-x-8 text-xs font-display font-medium tracking-wide text-gray-300">
           <a href="#about" class="hover:text-amber-400 transition">WHO WE ARE</a>
-          <a href="#impact" class="hover:text-amber-400 transition">WHY IT MATTERS</a>
-          <a href="#methodology" class="hover:text-amber-400 transition">METHODOLOGY</a>
           <a href="#store" class="hover:text-amber-400 transition">STORE</a>
+          <a href="#tattoo" class="hover:text-amber-400 transition">TATTOO ART</a>
           <a href="#bgm" class="hover:text-amber-400 transition">BGM SOUNDS</a>
-          <a href="#founder" class="hover:text-amber-400 transition">FOUNDER Core</a>
+          <a href="#founder" class="hover:text-amber-400 transition">FOUNDER</a>
         </nav>
 
         <!-- Navbar Header Actions -->
@@ -200,7 +197,7 @@
       </h1>
 
       <p class="text-gray-400 text-sm sm:text-base max-w-2xl mx-auto mt-6 leading-relaxed font-normal">
-        We put you at the center & transform challenges into global opportunities across Dropshipping E-Commerce, Soundtrack Licensing, and Digital Innovation.
+        We put you at the center & transform challenges into global opportunities across Dropshipping E-Commerce, Custom Tattoo Artistry, Soundtrack Licensing, and Digital AI Innovation.
       </p>
 
       <div class="mt-8 flex flex-wrap justify-center gap-4 font-display text-xs">
@@ -208,11 +205,11 @@
           Explore Ecosystem <i class="fa-solid fa-arrow-right ml-2"></i>
         </a>
         <button onclick="openAIAgent()" class="px-8 py-4 bg-white/5 hover:bg-white/10 border border-white/15 text-white font-bold rounded-2xl tracking-wide uppercase transition cursor-pointer">
-          Launch AI Command
+          Launch 7Leo AI Agent
         </button>
       </div>
 
-      <!-- Glowing Horizon Ring Arc Visual (Matching Screenshots) -->
+      <!-- Glowing Horizon Ring Arc Visual -->
       <div class="relative w-full max-w-4xl mx-auto mt-16 pt-8">
         <div class="absolute inset-0 flex items-center justify-center -z-10">
           <div class="w-[300px] sm:w-[600px] h-[150px] sm:h-[300px] bg-gradient-to-t from-amber-500/40 via-orange-600/20 to-transparent rounded-full blur-3xl"></div>
@@ -221,7 +218,7 @@
       </div>
     </section>
 
-    <!-- SECTION 1: WHO WE ARE & MISSION (GLASS DUAL CARDS) -->
+    <!-- SECTION 1: WHO WE ARE (ECOSYSTEM OVERVIEW) -->
     <section id="about" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 w-full">
       <div class="text-center max-w-3xl mx-auto mb-12">
         <p class="text-xs font-display text-amber-500 uppercase tracking-widest mb-2">WHO WE ARE</p>
@@ -229,19 +226,22 @@
           Turning Challenges into Digital Success
         </h2>
         <p class="text-gray-400 text-xs sm:text-sm mt-3 leading-relaxed">
-          We're an expert ecosystem implementing innovative solutions across cross-border dropshipping and acoustic instrumental composition.
+          We implement innovative solutions across cross-border dropshipping, creative ink artistry, and acoustic instrumental composition.
         </p>
       </div>
 
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
         
-        <!-- CARD 1: 7LEO STORE -->
+        <!-- CARD 1: TASK 1 - 7LEO STORE WITH STORE LOGO -->
         <div class="glass-card glass-card-amber rounded-3xl p-8 flex flex-col justify-between relative overflow-hidden">
           <div class="absolute -right-10 -top-10 w-40 h-40 bg-amber-500/10 rounded-full blur-2xl pointer-events-none"></div>
           <div>
             <div class="flex items-center justify-between border-b border-white/10 pb-5 mb-6">
               <div class="flex items-center space-x-4">
-                <img src="store-logo.png" alt="7Leo Store" class="w-14 h-14 rounded-2xl border border-amber-500/30 p-1 bg-black/60 object-contain">
+                <!-- Store Logo -->
+                <div class="relative group">
+                  <img src="store-logo.png" onError="this.onerror=null;this.src='https://via.placeholder.com/100/000000/ff6a00?text=STORE';" alt="7Leo Store Logo" class="w-14 h-14 rounded-2xl border border-amber-500/40 p-1 bg-black/80 object-contain shadow-[0_0_20px_rgba(255,106,0,0.3)]">
+                </div>
                 <div>
                   <h3 class="text-2xl font-heading font-bold text-white">7Leo Store</h3>
                   <p class="text-xs font-display text-amber-400">Global Supply Terminal</p>
@@ -252,7 +252,7 @@
 
             <div class="space-y-4 text-gray-300 text-sm leading-relaxed mb-6">
               <p>
-                <strong>7Leo Store</strong> operates as a streamlined global dropshipping supply chain engine — delivering curated merchandise directly to global customers with smart automated pricing and zero inventory overhead.
+                <strong>7Leo Store</strong> operates as a global dropshipping supply chain engine — delivering curated merchandise directly to international customers with zero inventory overhead.
               </p>
               <div class="bg-black/40 border border-white/10 p-4 rounded-2xl text-xs font-display text-gray-300">
                 ⚡ <strong>Zero Warehouses. Pure Logistics Automation.</strong>
@@ -262,9 +262,9 @@
 
           <div class="pt-4 border-t border-white/10 flex items-center justify-between">
             <span class="text-xs font-display text-gray-400">Shop Smart. Live Better.</span>
-            <button onclick="triggerOrder('General Store Inquiry')" class="px-5 py-2 bg-amber-500/20 hover:bg-amber-500/30 border border-amber-500/40 text-amber-300 font-display font-semibold rounded-xl text-xs transition cursor-pointer">
+            <a href="#store" class="px-5 py-2 bg-amber-500/20 hover:bg-amber-500/30 border border-amber-500/40 text-amber-300 font-display font-semibold rounded-xl text-xs transition">
               Access Store
-            </button>
+            </a>
           </div>
         </div>
 
@@ -274,7 +274,7 @@
           <div>
             <div class="flex items-center justify-between border-b border-white/10 pb-5 mb-6">
               <div class="flex items-center space-x-4">
-                <img src="bgm-logo.png" alt="7Leo BGM" class="w-14 h-14 rounded-2xl border border-white/20 p-1 bg-black/60 object-contain">
+                <img src="bgm-logo.png" onError="this.onerror=null;this.src='star-logo.png';" alt="7Leo BGM" class="w-14 h-14 rounded-2xl border border-white/20 p-1 bg-black/80 object-contain">
                 <div>
                   <h3 class="text-2xl font-heading font-bold text-white">7Leo BGM</h3>
                   <p class="text-xs font-display text-amber-400">Instrumental Soundscapes</p>
@@ -285,10 +285,10 @@
 
             <div class="space-y-4 text-gray-300 text-sm leading-relaxed mb-6">
               <p>
-                <strong>7Leo BGM</strong> produces original background music tracks, cinematic scores, and instrumental licensing for global creators, video directors, and commercial campaigns.
+                <strong>7Leo BGM</strong> produces original background music tracks, cinematic scores, and instrumental licensing for global creators and commercial campaigns.
               </p>
               <div class="bg-black/40 border border-white/10 p-4 rounded-2xl text-xs font-display text-gray-300">
-                🎵 <strong>Mobile Creation. High Octane Beats. Icon Energy.</strong>
+                🎵 <strong>High Octane Beats. Icon Energy.</strong>
               </div>
             </div>
           </div>
@@ -304,156 +304,13 @@
       </div>
     </section>
 
-    <!-- SECTION 2: WHY IT MATTERS / THE REAL IMPACT (METRICS GRID) -->
-    <section id="impact" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 w-full">
-      <div class="text-center max-w-3xl mx-auto mb-12">
-        <p class="text-xs font-display text-amber-500 uppercase tracking-widest mb-2">WHY IT MATTERS?</p>
-        <h2 class="text-3xl sm:text-4xl font-heading font-bold text-white">The Real Impact</h2>
-        <p class="text-gray-400 text-xs sm:text-sm mt-2">Transforming Operations from Reactive to Predictive with Autonomous Workflows.</p>
-      </div>
-
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        
-        <div class="glass-card rounded-2xl p-6 text-center space-y-3">
-          <div class="w-12 h-12 bg-amber-500/10 border border-amber-500/30 rounded-2xl flex items-center justify-center mx-auto text-amber-400 text-xl">
-            <i class="fa-solid fa-bolt"></i>
-          </div>
-          <h3 class="text-2xl font-heading font-bold text-white">70% Faster</h3>
-          <p class="text-xs font-display text-amber-400 uppercase">Workflows</p>
-          <p class="text-xs text-gray-400 leading-relaxed">Automated supply node syncing across international dropship clients.</p>
-        </div>
-
-        <div class="glass-card rounded-2xl p-6 text-center space-y-3">
-          <div class="w-12 h-12 bg-amber-500/10 border border-amber-500/30 rounded-2xl flex items-center justify-center mx-auto text-amber-400 text-xl">
-            <i class="fa-solid fa-arrows-rotate"></i>
-          </div>
-          <h3 class="text-2xl font-heading font-bold text-white">Zero</h3>
-          <p class="text-xs font-display text-amber-400 uppercase">Repetition</p>
-          <p class="text-xs text-gray-400 leading-relaxed">System tasks like ordering, tracking updates happen completely hands-free.</p>
-        </div>
-
-        <div class="glass-card rounded-2xl p-6 text-center space-y-3">
-          <div class="w-12 h-12 bg-amber-500/10 border border-amber-500/30 rounded-2xl flex items-center justify-center mx-auto text-amber-400 text-xl">
-            <i class="fa-solid fa-chart-line"></i>
-          </div>
-          <h3 class="text-2xl font-heading font-bold text-white">3x Accurate</h3>
-          <p class="text-xs font-display text-amber-400 uppercase">Decision</p>
-          <p class="text-xs text-gray-400 leading-relaxed">Real-time metrics help eliminate errors and operational overhead.</p>
-        </div>
-
-        <div class="glass-card rounded-2xl p-6 text-center space-y-3">
-          <div class="w-12 h-12 bg-amber-500/10 border border-amber-500/30 rounded-2xl flex items-center justify-center mx-auto text-amber-400 text-xl">
-            <i class="fa-solid fa-coins"></i>
-          </div>
-          <h3 class="text-2xl font-heading font-bold text-white">Low Cost</h3>
-          <p class="text-xs font-display text-amber-400 uppercase">Operational Overhead</p>
-          <p class="text-xs text-gray-400 leading-relaxed">Minimal manual overhead, maximum focus on high-impact strategic expansion.</p>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- SECTION 3: METHODOLOGY & RADAR CHART (MATCHING SCREENSHOT 3) -->
-    <section id="methodology" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 w-full">
-      <div class="text-center max-w-3xl mx-auto mb-12">
-        <p class="text-xs font-display text-amber-500 uppercase tracking-widest mb-2">OUR METHODOLOGY</p>
-        <h2 class="text-3xl sm:text-4xl font-heading font-bold text-white">Control, Agility & Results</h2>
-        <p class="text-gray-400 text-xs sm:text-sm mt-2">We balance rigorous operational control with agile execution.</p>
-      </div>
-
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-        
-        <!-- Interactive SVG Pentagon Radar Chart -->
-        <div class="lg:col-span-7 glass-card rounded-3xl p-8 relative overflow-hidden flex flex-col items-center justify-center">
-          <span class="text-xs font-display text-amber-400 uppercase mb-4 tracking-widest">System Performance Radar</span>
-          
-          <svg class="w-full max-w-md h-72" viewBox="0 0 300 300">
-            <!-- Background Web Rings -->
-            <polygon points="150,20 270,105 225,245 75,245 30,105" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1" />
-            <polygon points="150,55 234,114 202,211 98,211 66,114" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1" />
-            <polygon points="150,90 198,123 179,178 121,178 102,123" fill="none" stroke="rgba(255,106,0,0.2)" stroke-width="1" />
-            
-            <!-- Axis Lines -->
-            <line x1="150" y1="150" x2="150" y2="20" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
-            <line x1="150" y1="150" x2="270" y2="105" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
-            <line x1="150" y1="150" x2="225" y2="245" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
-            <line x1="150" y1="150" x2="75" y2="245" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
-            <line x1="150" y1="150" x2="30" y2="105" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
-
-            <!-- Active Data Polygon Area -->
-            <polygon points="150,35 250,110 210,230 90,230 45,110" fill="rgba(255, 106, 0, 0.25)" stroke="#ff6a00" stroke-width="2.5" />
-            
-            <!-- Nodes -->
-            <circle cx="150" cy="35" r="4" fill="#ff6a00"/>
-            <circle cx="250" cy="110" r="4" fill="#ff6a00"/>
-            <circle cx="210" cy="230" r="4" fill="#ff6a00"/>
-            <circle cx="90" cy="230" r="4" fill="#ff6a00"/>
-            <circle cx="45" cy="110" r="4" fill="#ff6a00"/>
-
-            <!-- Labels -->
-            <text x="150" y="12" fill="#ff8c00" font-size="10" font-family="Space Grotesk" text-anchor="middle">Range Control</text>
-            <text x="275" y="105" fill="#f3f4f6" font-size="9" font-family="Space Grotesk">Budget Mgmt</text>
-            <text x="230" y="260" fill="#f3f4f6" font-size="9" font-family="Space Grotesk">Risk Control</text>
-            <text x="70" y="260" fill="#f3f4f6" font-size="9" font-family="Space Grotesk">Agility</text>
-            <text x="5" y="105" fill="#f3f4f6" font-size="9" font-family="Space Grotesk">Cost Control</text>
-          </svg>
-        </div>
-
-        <!-- 5-Phase Methodology Timeline -->
-        <div class="lg:col-span-5 space-y-4">
-          <h3 class="text-xl font-heading font-bold text-white mb-4">Our 5-Phase Execution</h3>
-          
-          <div class="glass-card p-4 rounded-2xl flex items-center space-x-4 border-l-4 border-l-amber-500">
-            <span class="text-amber-500 font-display font-bold text-sm">01</span>
-            <div>
-              <h4 class="text-white font-bold text-sm">Diagnosis</h4>
-              <p class="text-xs text-gray-400">Assess challenges and define strategic roadmaps.</p>
-            </div>
-          </div>
-
-          <div class="glass-card p-4 rounded-2xl flex items-center space-x-4">
-            <span class="text-amber-500 font-display font-bold text-sm">02</span>
-            <div>
-              <h4 class="text-white font-bold text-sm">Design</h4>
-              <p class="text-xs text-gray-400">Set clear objectives, processes, and KPI metrics.</p>
-            </div>
-          </div>
-
-          <div class="glass-card p-4 rounded-2xl flex items-center space-x-4">
-            <span class="text-amber-500 font-display font-bold text-sm">03</span>
-            <div>
-              <h4 class="text-white font-bold text-sm">Implementation</h4>
-              <p class="text-xs text-gray-400">Execute e-commerce logistics & audio production.</p>
-            </div>
-          </div>
-
-          <div class="glass-card p-4 rounded-2xl flex items-center space-x-4">
-            <span class="text-amber-500 font-display font-bold text-sm">04</span>
-            <div>
-              <h4 class="text-white font-bold text-sm">Optimization</h4>
-              <p class="text-xs text-gray-400">Prioritize automation, speed, and scale.</p>
-            </div>
-          </div>
-
-          <div class="glass-card p-4 rounded-2xl flex items-center space-x-4">
-            <span class="text-amber-500 font-display font-bold text-sm">05</span>
-            <div>
-              <h4 class="text-white font-bold text-sm">Scaling & Training</h4>
-              <p class="text-xs text-gray-400">Empower systems with continuous growth.</p>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-    </section>
-
-    <!-- SECTION 4: STORE CATALOG TERMINAL -->
+    <!-- SECTION 2: TASK 1 - STORE CATALOG TERMINAL WITH STORE LOGO -->
     <section id="store" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 w-full">
       <div class="glass-card glass-card-amber rounded-3xl p-8 sm:p-10">
         <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 mb-8 border-b border-white/10 pb-6">
           <div class="flex items-center space-x-4">
-            <img src="store-logo.png" alt="Store Logo" class="w-12 h-12 rounded-2xl border border-amber-500 p-1 bg-black object-contain">
+            <!-- Store Logo Upload Display -->
+            <img src="store-logo.png" onError="this.onerror=null;this.src='https://via.placeholder.com/100/000000/ff6a00?text=STORE';" alt="Store Logo" class="w-14 h-14 rounded-2xl border-2 border-amber-500 p-1 bg-black object-contain shadow-[0_0_20px_rgba(255,106,0,0.4)]">
             <div>
               <h2 class="text-2xl sm:text-3xl font-heading font-bold text-white">Store Catalog Terminal</h2>
               <p class="text-xs text-amber-400 font-display">Global Merchandise & Cyber Gear</p>
@@ -524,15 +381,84 @@
       </div>
     </section>
 
-    <!-- SECTION 5: BGM SOUNDSCAPE STUDIO -->
+    <!-- SECTION 3: TASK 3 - 7LEO TATTOO & CUSTOM ART SHOWCASE -->
+    <section id="tattoo" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 w-full">
+      <div class="glass-card rounded-3xl p-8 sm:p-10 relative overflow-hidden border border-amber-500/30">
+        
+        <div class="text-center max-w-3xl mx-auto mb-10">
+          <div class="inline-flex items-center space-x-2 px-3 py-1 bg-amber-500/10 border border-amber-500/30 rounded-full text-amber-400 text-xs font-display mb-3">
+            <i class="fa-solid fa-pen-nib"></i>
+            <span>7LEO BRAND IDENTITY & INK</span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-heading font-bold text-white">7Leo Tattoo & Custom Body Art</h2>
+          <p class="text-gray-400 text-xs sm:text-sm mt-2">
+            Signature brand tattoos, cyber-realism iconography, and bespoke artwork representing strength, sovereignty, and vision.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          
+          <!-- Tattoo Upload Display Frame -->
+          <div class="lg:col-span-6 flex justify-center">
+            <div class="relative w-full max-w-md rounded-3xl overflow-hidden glass-card p-3 border border-amber-500/40 group shadow-[0_0_40px_rgba(255,106,0,0.25)]">
+              <div class="relative overflow-hidden rounded-2xl h-80 sm:h-96">
+                <img src="tattoo.png" onError="this.onerror=null;this.src='tattoo.jpg';" alt="7Leo Tattoo Showcase" class="w-full h-full object-cover rounded-2xl group-hover:scale-105 transition duration-500">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent flex flex-col justify-end p-6">
+                  <span class="text-amber-400 text-xs font-display uppercase tracking-widest">7LEO SIGNATURE INK</span>
+                  <h3 class="text-xl font-heading font-bold text-white">Executive Crown & Lion Motif</h3>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tattoo Details & Booking Options -->
+          <div class="lg:col-span-6 space-y-6 font-body">
+            
+            <div class="glass-card p-6 rounded-2xl">
+              <div class="flex items-center space-x-3 mb-2">
+                <i class="fa-solid fa-wand-magic-sparkles text-amber-400 text-lg"></i>
+                <h4 class="font-heading font-bold text-white text-base">Custom Cyber-Realism Designs</h4>
+              </div>
+              <p class="text-xs text-gray-300 leading-relaxed">
+                Precision-engineered vector stencils inspired by geometry, strength, and executive command. Engineered for high-detail tattooing.
+              </p>
+            </div>
+
+            <div class="glass-card p-6 rounded-2xl">
+              <div class="flex items-center space-x-3 mb-2">
+                <i class="fa-solid fa-certificate text-amber-400 text-lg"></i>
+                <h4 class="font-heading font-bold text-white text-base">Official Stencil Digital Licensing</h4>
+              </div>
+              <p class="text-xs text-gray-300 leading-relaxed">
+                Download original high-resolution stencil vector files to bring directly to your chosen tattoo artist anywhere worldwide.
+              </p>
+            </div>
+
+            <div class="flex flex-wrap gap-4 pt-2">
+              <button onclick="triggerOrder('7Leo Custom Tattoo Stencil Licensing')" class="px-6 py-3.5 btn-gradient text-white font-display font-bold rounded-2xl text-xs uppercase tracking-wider cursor-pointer">
+                Request Tattoo Stencil <i class="fa-solid fa-pen-nib ml-2"></i>
+              </button>
+              <a href="mailto:7leogroup@gmail.com?subject=Tattoo%20Design%20Inquiry" class="px-6 py-3.5 bg-white/5 hover:bg-white/10 border border-white/15 text-white font-display font-semibold rounded-2xl text-xs flex items-center">
+                <i class="fa-solid fa-envelope mr-2 text-amber-500"></i> Ink Commission
+              </a>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 4: BGM SOUNDSCAPE STUDIO -->
     <section id="bgm" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 w-full">
       <div class="glass-card rounded-3xl p-8 sm:p-10 relative overflow-hidden">
         
         <div class="w-full h-56 sm:h-72 rounded-2xl overflow-hidden mb-8 border border-white/10 relative group">
-          <img src="bgm-banner.png" alt="7Leo BGM Studio Banner" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+          <img src="bgm-banner.png" onError="this.onerror=null;this.src='star-logo.png';" alt="7Leo BGM Studio Banner" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
           <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent flex items-end p-6">
             <div class="flex items-center space-x-4">
-              <img src="bgm-logo.png" alt="7Leo BGM Logo" class="w-16 h-16 rounded-2xl border-2 border-amber-500 object-cover bg-black shadow-xl">
+              <img src="bgm-logo.png" onError="this.onerror=null;this.src='star-logo.png';" alt="7Leo BGM Logo" class="w-16 h-16 rounded-2xl border-2 border-amber-500 object-cover bg-black shadow-xl">
               <div>
                 <h2 class="text-2xl sm:text-3xl font-heading font-bold text-white">7Leo BGM Studio</h2>
                 <p class="text-xs text-amber-400 font-display">Original Soundscapes & Soundtrack Licensing</p>
@@ -568,7 +494,7 @@
       </div>
     </section>
 
-    <!-- SECTION 6: FOUNDER COMMAND CORE (ABUBAKKER BELLARY) -->
+    <!-- SECTION 5: FOUNDER COMMAND CORE (ABUBAKKER BELLARY) -->
     <section id="founder" class="py-16 border-t border-white/10 bg-black/60 relative">
       <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         
@@ -593,7 +519,7 @@
           <!-- Profile Picture Card -->
           <div class="lg:col-span-4 flex flex-col items-center">
             <div class="w-full max-w-sm h-96 rounded-3xl overflow-hidden glass-card glass-card-amber relative group p-2">
-              <img src="founder.jpg" alt="Abubakker Bellary" class="w-full h-full object-cover rounded-2xl group-hover:scale-105 transition duration-500">
+              <img src="founder.jpg" onError="this.onerror=null;this.src='https://via.placeholder.com/350x450/000000/ff6a00?text=FOUNDER';" alt="Abubakker Bellary" class="w-full h-full object-cover rounded-2xl group-hover:scale-105 transition duration-500">
               <div class="absolute bottom-4 left-4 right-4 p-4 bg-black/80 border border-white/10 rounded-2xl backdrop-blur-md">
                 <p class="text-white font-heading font-bold text-sm">Abubakker Bellary</p>
                 <p class="text-xs text-amber-400 font-display">Hospet, Karnataka · India</p>
@@ -609,7 +535,7 @@
               <h4 class="font-heading font-bold text-white text-base mt-1">Middle-Class Vision</h4>
               <p class="text-xs text-gray-400 mt-1 mb-2">Hospet, Karnataka · India</p>
               <p class="text-xs text-gray-300 leading-relaxed">
-                Started from Hospet, Karnataka with zero corporate backers—fueled solely by ambition to build an enterprise that blends operational logistics with creative sound design.
+                Started from Hospet, Karnataka with zero corporate backers—fueled solely by ambition to build an enterprise that blends operational logistics with creative ink and sound design.
               </p>
             </div>
 
@@ -618,7 +544,7 @@
               <h4 class="font-heading font-bold text-white text-base mt-1">Single Mobile Hardware</h4>
               <p class="text-xs text-gray-400 mt-1 mb-2">Self-Taught Digital Engineer</p>
               <p class="text-xs text-gray-300 leading-relaxed">
-                Transformed a single mobile smartphone and Wi-Fi connection into a complete operational command center—mastering modern web code, automated store pipelines, and audio production.
+                Transformed a single mobile smartphone and Wi-Fi connection into a complete operational command center—mastering modern web code, automated store pipelines, and AI agent integration.
               </p>
             </div>
 
@@ -638,7 +564,7 @@
       </div>
     </section>
 
-    <!-- SECTION 7: LET'S COLLABORATE / BOTTOM HORIZON BANNER (MATCHING SCREENSHOT 5) -->
+    <!-- BOTTOM HORIZON BANNER -->
     <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 w-full text-center relative overflow-hidden">
       <div class="glass-card glass-card-amber rounded-3xl p-10 sm:p-16 relative overflow-hidden">
         <div class="absolute inset-0 bottom-horizon-glow pointer-events-none"></div>
@@ -646,7 +572,7 @@
           <p class="text-xs font-display text-amber-400 uppercase tracking-widest">WANT TO JOIN OUR GLOBAL NETWORK?</p>
           <h2 class="text-3xl sm:text-5xl font-heading font-extrabold text-white">Let's Collaborate</h2>
           <p class="text-gray-400 text-xs sm:text-sm max-w-xl mx-auto">
-            Become part of a collaborative ecosystem driving innovation in automated e-commerce and creative soundtracks.
+            Become part of a collaborative ecosystem driving innovation in automated e-commerce, custom tattoo licensing, and sound design.
           </p>
           <div class="pt-4">
             <button onclick="openAuthModal()" class="px-8 py-4 btn-gradient text-white font-display font-bold rounded-2xl text-xs uppercase tracking-wider cursor-pointer">
@@ -733,19 +659,19 @@
       </div>
 
       <h3 class="text-lg font-heading font-bold text-white">Super Admin Restricted</h3>
-      <p class="text-xs text-gray-400 mt-1 mb-4 font-display">AI Agent terminal restricted to Super Admin level.</p>
+      <p class="text-xs text-gray-400 mt-1 mb-4 font-display">7Leo AI Agent terminal restricted to Super Admin level.</p>
 
       <div class="space-y-3">
         <input type="password" id="admin-pin-input" placeholder="Enter Security PIN..." class="w-full bg-black/80 border border-white/20 rounded-xl px-4 py-3 text-xs text-white text-center font-display tracking-widest focus:outline-none focus:border-amber-500">
         <button onclick="verifySuperAdminPass()" class="w-full py-3 btn-gradient text-white font-display font-bold rounded-xl text-xs uppercase tracking-wider cursor-pointer">
-          Unlock AI Agent
+          Unlock 7Leo AI Agent
         </button>
       </div>
       <p class="text-[10px] text-gray-500 font-display mt-3">(Default Passcode: 7777)</p>
     </div>
   </div>
 
-  <!-- AI AGENT CHATBOX WIDGET -->
+  <!-- TASK 4: 7LEO AI AGENT CHATBOT WIDGET -->
   <div class="fixed bottom-6 right-6 z-40">
     <button onclick="openAIAgent()" class="w-14 h-14 btn-gradient rounded-full flex items-center justify-center text-white text-2xl shadow-2xl hover:scale-110 transition duration-300 cursor-pointer relative">
       <i class="fa-solid fa-robot"></i>
@@ -753,18 +679,31 @@
     </button>
 
     <!-- CHAT BOX WIDGET -->
-    <div id="ai-chat-box" class="hidden absolute bottom-20 right-0 w-80 sm:w-96 glass-card rounded-3xl p-4 shadow-2xl border border-amber-500/30">
+    <div id="ai-chat-box" class="hidden absolute bottom-20 right-0 w-80 sm:w-96 glass-card rounded-3xl p-4 shadow-2xl border border-amber-500/40">
       <div class="flex items-center justify-between border-b border-white/10 pb-3 mb-3">
         <div class="flex items-center space-x-2">
           <span class="w-2.5 h-2.5 bg-amber-400 rounded-full animate-ping"></span>
-          <span class="font-heading font-bold text-amber-400 text-xs uppercase">7Leo AI Terminal</span>
+          <span class="font-heading font-bold text-amber-400 text-xs uppercase">7Leo AI Agent Terminal</span>
         </div>
         <button onclick="closeAIChat()" class="text-gray-400 hover:text-white cursor-pointer"><i class="fa-solid fa-xmark"></i></button>
       </div>
 
+      <!-- Quick Action Commands -->
+      <div class="flex items-center space-x-2 overflow-x-auto pb-2 mb-2 no-scrollbar text-[10px] font-display">
+        <button onclick="selectPresetQuery('Check Store Orders')" class="px-2.5 py-1 bg-white/5 hover:bg-amber-500/20 border border-white/10 text-amber-300 rounded-lg whitespace-nowrap transition">
+          🛒 Store Status
+        </button>
+        <button onclick="selectPresetQuery('Check Tattoo Designs')" class="px-2.5 py-1 bg-white/5 hover:bg-amber-500/20 border border-white/10 text-amber-300 rounded-lg whitespace-nowrap transition">
+          ✒️ Tattoo Inquiries
+        </button>
+        <button onclick="selectPresetQuery('Stream BGM Track')" class="px-2.5 py-1 bg-white/5 hover:bg-amber-500/20 border border-white/10 text-amber-300 rounded-lg whitespace-nowrap transition">
+          🎵 BGM Tracks
+        </button>
+      </div>
+
       <div id="chat-messages" class="h-60 overflow-y-auto text-xs space-y-3 mb-3 pr-1 text-gray-300 font-display">
         <div class="bg-black/60 border border-white/10 rounded-xl p-3">
-          🤖 <strong>AI Agent:</strong> Welcome Back, Founder Abubakker Bellary! Executive Portal active.
+          🤖 <strong>7Leo AI Agent:</strong> Welcome Back, Founder Abubakker Bellary! How can I assist you with Store Logistics, Tattoo Artwork, or BGM Licensing today?
         </div>
       </div>
 
@@ -784,7 +723,7 @@
           <i class="fa-solid fa-microphone text-sm"></i>
         </button>
 
-        <input type="text" id="chat-input" placeholder="Admin Command..." onkeydown="if(event.key === 'Enter') sendAIMessage()" class="flex-grow bg-transparent text-xs text-white focus:outline-none px-1 font-display">
+        <input type="text" id="chat-input" placeholder="Command AI Agent..." onkeydown="if(event.key === 'Enter') sendAIMessage()" class="flex-grow bg-transparent text-xs text-white focus:outline-none px-1 font-display">
 
         <button onclick="sendAIMessage()" class="p-2.5 btn-gradient text-white rounded-xl text-xs transition cursor-pointer">
           <i class="fa-solid fa-paper-plane"></i>
@@ -881,7 +820,7 @@
     }
 
     function triggerOrder(item) {
-      alert(`[7Leo Store] Order initiated for item: ${item}. Logged in command queue.`);
+      alert(`[7Leo Group] Request initiated for: ${item}. Logged in command queue.`);
     }
 
     let isPlaying = false;
@@ -939,6 +878,11 @@
       document.getElementById('attachment-preview').classList.add('hidden');
     }
 
+    function selectPresetQuery(queryText) {
+      document.getElementById('chat-input').value = queryText;
+      sendAIMessage();
+    }
+
     // VOICE SPEECH MIC
     let recognition = null;
     if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
@@ -992,20 +936,22 @@
       messages.scrollTop = messages.scrollHeight;
 
       setTimeout(() => {
-        let taskResponse = "Command processed successfully. Analytics synchronized.";
+        let taskResponse = "Command processed successfully. Strategic analytics synchronized.";
         const lower = userQuery.toLowerCase();
 
-        if (lower.includes('store') || lower.includes('dropshipping')) {
-          taskResponse = "⚡ <strong>[Store Logistics]</strong> Dropshipping Nodes synchronized.";
-        } else if (lower.includes('bgm') || lower.includes('music')) {
-          taskResponse = "🎵 <strong>[BGM Frequency]</strong> Soundtrack streaming channels optimal.";
+        if (lower.includes('store') || lower.includes('dropshipping') || lower.includes('orders')) {
+          taskResponse = "⚡ <strong>[7Leo Store Logistics]</strong> All dropshipping nodes active. Automation speed optimal.";
+        } else if (lower.includes('tattoo') || lower.includes('ink') || lower.includes('design')) {
+          taskResponse = "✒️ <strong>[7Leo Tattoo Studio]</strong> Stencil licensing vectors online. Studio requests monitored.";
+        } else if (lower.includes('bgm') || lower.includes('music') || lower.includes('track')) {
+          taskResponse = "🎵 <strong>[7Leo BGM Studio]</strong> High octane soundscapes ready for licensing.";
         } else if (lower.includes('status') || lower.includes('server')) {
-          taskResponse = "🛡️ <strong>[System Status]</strong> 7Leo Enterprise portal fully operational.";
+          taskResponse = "🛡️ <strong>[System Status]</strong> 7Leo Group Enterprise portal fully operational (99.9% Uptime).";
         }
 
         messages.innerHTML += `
           <div class="bg-black/80 border border-amber-500/40 rounded-xl p-3">
-            🤖 <strong>AI Terminal Response:</strong><br>${taskResponse}
+            🤖 <strong>7Leo AI Agent:</strong><br>${taskResponse}
           </div>
         `;
         messages.scrollTop = messages.scrollHeight;
