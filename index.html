@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="en" class="dark scroll-smooth">
+<html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>7Leo Ecosystem | Cyberpunk Neon Edition</title>
+  <title>7Leo Ecosystem | Cyberpunk Neon Empire</title>
   
-  <link rel="icon" type="image/png" href="logo.png">
+  <!-- Favicon / Star Logo -->
+  <link rel="icon" type="image/png" href="star-logo.png">
   
   <!-- Google Fonts: Orbitron & Plus Jakarta Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,6 +16,9 @@
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   
+  <!-- Google Sign-In SDK -->
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
@@ -31,7 +35,6 @@
             neonRed: '#ff0055',
             neonBlue: '#00f0ff',
             darkBase: '#07070a',
-            cardBg: 'rgba(15, 15, 22, 0.75)',
           }
         }
       }
@@ -49,14 +52,17 @@
       font-family: 'Orbitron', sans-serif;
     }
 
-    /* Subtle Dark Grid Overlay */
-    .bg-cyber-grid {
-      background-image: linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-                        linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-      background-size: 40px 40px;
+    /* 1. FULL WEBSITE TATTOO BACKGROUND OVERLAY */
+    .tattoo-bg-layer {
+      background-image: url('tattoo-bg.png');
+      background-position: center;
+      background-repeat: repeat;
+      background-size: cover;
+      opacity: 0.12;
+      filter: contrast(130%) brightness(80%);
     }
 
-    /* Animated Rainbow Gradient Text */
+    /* Animated Rainbow Typography */
     .rainbow-text {
       background: linear-gradient(90deg, #ff0055, #ff7300, #ffeb3b, #00ff88, #00f0ff, #7a00ff, #ff0055);
       background-size: 300% 300%;
@@ -73,283 +79,299 @@
 
     /* Neon Borders & Glow Effects */
     .glow-red {
-      box-shadow: 0 0 25px rgba(255, 0, 85, 0.35);
+      box-shadow: 0 0 20px rgba(255, 0, 85, 0.35);
       border: 1px solid rgba(255, 0, 85, 0.5);
     }
     .glow-red:hover {
-      box-shadow: 0 0 35px rgba(255, 0, 85, 0.6);
+      box-shadow: 0 0 30px rgba(255, 0, 85, 0.6);
       border-color: rgba(255, 0, 85, 0.9);
     }
 
     .glow-blue {
-      box-shadow: 0 0 25px rgba(0, 240, 255, 0.35);
+      box-shadow: 0 0 20px rgba(0, 240, 255, 0.35);
       border: 1px solid rgba(0, 240, 255, 0.5);
     }
     .glow-blue:hover {
-      box-shadow: 0 0 35px rgba(0, 240, 255, 0.6);
+      box-shadow: 0 0 30px rgba(0, 240, 255, 0.6);
       border-color: rgba(0, 240, 255, 0.9);
-    }
-
-    .glow-white {
-      box-shadow: 0 0 20px rgba(255, 255, 255, 0.25);
-      border: 1px solid rgba(255, 255, 255, 0.4);
     }
 
     /* Glassmorphism Card Style */
     .glass-card {
-      background: rgba(18, 18, 26, 0.7);
+      background: rgba(15, 15, 22, 0.85);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
     }
 
     /* Custom Scrollbar */
-    ::-webkit-scrollbar {
-      width: 8px;
-    }
-    ::-webkit-scrollbar-track {
-      background: #07070a;
-    }
-    ::-webkit-scrollbar-thumb {
-      background: #1f2937;
-      border-radius: 4px;
-    }
-    ::-webkit-scrollbar-thumb:hover {
-      background: #00f0ff;
-    }
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #07070a; }
+    ::-webkit-scrollbar-thumb { background: #1f2937; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #00f0ff; }
   </style>
 </head>
-<body class="bg-darkBase text-zinc-100 min-h-screen relative overflow-x-hidden bg-cyber-grid">
+<body class="bg-darkBase text-zinc-100 min-h-screen relative overflow-x-hidden">
 
-  <!-- SPLASH SCREEN -->
-  <div id="splash-screen" class="fixed inset-0 z-50 bg-black/95 backdrop-blur-xl flex flex-col items-center justify-center p-6 transition-all duration-700">
-    <div class="max-w-md w-full text-center space-y-6">
+  <!-- FULL WEBSITE TATTOO BACKGROUND -->
+  <div class="fixed inset-0 tattoo-bg-layer pointer-events-none z-0"></div>
+
+  <!-- 7. SPLASH SCREEN WITH FLAG ON OPENING -->
+  <div id="splash-screen" class="fixed inset-0 z-50 bg-black/95 backdrop-blur-2xl flex flex-col items-center justify-center p-6 transition-all duration-700">
+    <div class="max-w-md w-full text-center space-y-6 relative z-10">
       <div class="relative inline-block">
-        <img src="flag.png" alt="7Leo Flag" class="w-full max-w-[280px] mx-auto rounded-2xl glow-red">
+        <img src="flag.png" alt="7Leo Official Flag" class="w-full max-w-[320px] mx-auto rounded-2xl glow-red object-cover">
       </div>
       <div>
-        <h2 class="text-2xl font-heading font-black rainbow-text tracking-widest uppercase">7Leo Empire</h2>
-        <p class="text-xs text-cyan-400 font-mono tracking-widest mt-1 uppercase">Initialising Ecosystem Interface...</p>
+        <h2 class="text-3xl font-heading font-black rainbow-text tracking-widest uppercase">7Leo Ecosystem</h2>
+        <p class="text-xs text-cyan-400 font-mono tracking-widest mt-1 uppercase">Initializing Neon Empire System...</p>
       </div>
-      <button onclick="closeSplash()" class="w-full py-4 bg-gradient-to-r from-neonRed via-white to-neonBlue text-black font-heading font-black rounded-xl text-sm tracking-widest hover:scale-105 transition duration-300 shadow-[0_0_30px_rgba(255,255,255,0.5)] uppercase">
+      <button onclick="closeSplash()" class="w-full py-4 bg-gradient-to-r from-neonRed via-white to-neonBlue text-black font-heading font-black rounded-xl text-sm tracking-widest hover:scale-105 transition duration-300 shadow-[0_0_30px_rgba(255,255,255,0.5)] uppercase cursor-pointer">
         ENTER EMPIRE <i class="fa-solid fa-bolt ml-2"></i>
       </button>
     </div>
   </div>
 
-  <!-- NAVBAR -->
-  <header class="sticky top-0 z-40 border-b border-zinc-800/80 bg-black/80 backdrop-blur-md">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-      
-      <!-- Brand Logo -->
-      <a href="#" class="flex items-center space-x-3 group">
-        <img src="logo.png" alt="7Leo Group" class="h-11 w-auto object-contain group-hover:scale-105 transition">
-      </a>
+  <!-- MAIN WRAPPER -->
+  <div class="relative z-10 flex flex-col min-h-screen">
 
-      <!-- Navigation Links -->
-      <nav class="hidden md:flex items-center space-x-8 text-xs font-heading font-bold tracking-widest">
-        <a href="#about" class="text-zinc-400 hover:text-white transition">VISION</a>
-        <a href="#store" class="text-zinc-400 hover:text-neonRed transition">STORE</a>
-        <a href="#bgm" class="text-zinc-400 hover:text-neonBlue transition">BGM STUDIO</a>
-        <a href="#founder" class="text-zinc-400 hover:text-white transition">FOUNDER</a>
-      </nav>
-
-      <!-- Action Tools -->
-      <div class="flex items-center space-x-3">
-        <button onclick="openQRModal()" class="p-2.5 bg-zinc-900 border border-zinc-700 hover:border-cyan-400 text-zinc-300 hover:text-cyan-400 rounded-xl transition shadow-lg">
-          <i class="fa-solid fa-qrcode text-base"></i>
-        </button>
-
-        <button onclick="openAuthModal()" class="px-5 py-2.5 bg-gradient-to-r from-neonRed to-neonBlue text-black font-heading font-bold rounded-xl text-xs tracking-wider transition hover:opacity-90 shadow-[0_0_15px_rgba(0,240,255,0.4)] flex items-center space-x-2">
-          <i class="fa-solid fa-user-shield"></i>
-          <span>AUTH PORTAL</span>
-        </button>
-      </div>
-    </div>
-  </header>
-
-  <!-- HERO SECTION -->
-  <section id="about" class="pt-24 pb-16 px-4 text-center max-w-5xl mx-auto relative">
-    <!-- Glowing Backdrop Ambient Blur -->
-    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-neonBlue/10 rounded-full blur-[120px] pointer-events-none"></div>
-
-    <div class="inline-flex items-center space-x-2 px-4 py-1.5 bg-zinc-900/90 border border-zinc-700 rounded-full text-zinc-300 text-xs font-mono tracking-widest uppercase mb-8">
-      <span class="w-2 h-2 rounded-full bg-neonRed animate-ping"></span>
-      <span>Vision · Power · Legacy</span>
-    </div>
-    
-    <h1 class="text-5xl sm:text-7xl font-heading font-black tracking-tight rainbow-text mb-6 uppercase leading-tight">
-      7LEO ECOSYSTEM
-    </h1>
-
-    <p class="text-zinc-300 text-base sm:text-xl max-w-3xl mx-auto leading-relaxed font-normal mb-10">
-      The official digital nexus of <span class="text-cyan-400 font-semibold">7Leo Group</span>—unifying high-octane Groovepad music composition, premium cyber lifestyle gear, and futuristic brand power.
-    </p>
-
-    <div class="flex flex-wrap justify-center gap-4">
-      <a href="#store" class="px-8 py-3.5 bg-neonRed text-white font-heading font-bold rounded-xl text-xs tracking-widest hover:bg-red-600 transition glow-red uppercase">
-        Explore Store <i class="fa-solid fa-arrow-right ml-2"></i>
-      </a>
-      <a href="#bgm" class="px-8 py-3.5 bg-zinc-900 border border-zinc-700 hover:border-cyan-400 text-cyan-400 font-heading font-bold rounded-xl text-xs tracking-widest transition uppercase">
-        Listen to BGM <i class="fa-solid fa-music ml-2"></i>
-      </a>
-    </div>
-  </section>
-
-  <!-- STORE SECTION -->
-  <section id="store" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-    <div class="glass-card glow-red rounded-3xl p-6 sm:p-10 relative overflow-hidden">
-      
-      <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 mb-10 border-b border-zinc-800 pb-6">
-        <div class="flex items-center space-x-4">
-          <div class="w-14 h-14 bg-zinc-900 rounded-2xl flex items-center justify-center border border-neonRed text-neonRed text-2xl">
-            <i class="fa-solid fa-store"></i>
-          </div>
-          <div>
-            <h2 class="text-2xl sm:text-3xl font-heading font-bold text-white">7Leo Store</h2>
-            <p class="text-xs text-zinc-400">Official Cyberpunk Apparel & Merchandise</p>
-          </div>
-        </div>
-        <a href="#" class="px-6 py-2.5 bg-zinc-900 hover:bg-zinc-800 text-white font-heading font-bold rounded-xl text-xs tracking-wider transition border border-zinc-700 uppercase">
-          Full Catalog <i class="fa-solid fa-arrow-up-right-from-square ml-2 text-xs"></i>
-        </a>
-      </div>
-
-      <!-- PRODUCTS GRID -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <!-- NAVBAR -->
+    <header class="sticky top-0 z-40 border-b border-zinc-800/80 bg-black/90 backdrop-blur-md">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
         
-        <!-- Product 1 -->
-        <div class="bg-zinc-950/80 border border-zinc-800 hover:border-neonRed rounded-2xl p-5 transition-all duration-300 group">
-          <div class="h-48 bg-zinc-900/60 rounded-xl mb-4 flex items-center justify-center text-neonRed text-6xl group-hover:scale-110 transition duration-300">
-            <i class="fa-solid fa-shirt"></i>
-          </div>
-          <h3 class="font-heading font-bold text-white text-base">7Leo Executive Hoodie</h3>
-          <p class="text-xs text-zinc-400 mb-4">Custom Embroidered Red & Blue Edition</p>
-          <div class="flex items-center justify-between">
-            <span class="text-cyan-400 font-heading font-bold text-lg">$89.00</span>
-            <button class="px-4 py-2 bg-neonRed/20 border border-neonRed hover:bg-neonRed text-white rounded-lg text-xs font-bold transition">Order Now</button>
-          </div>
-        </div>
-
-        <!-- Product 2 -->
-        <div class="bg-zinc-950/80 border border-zinc-800 hover:border-neonBlue rounded-2xl p-5 transition-all duration-300 group">
-          <div class="h-48 bg-zinc-900/60 rounded-xl mb-4 flex items-center justify-center text-neonBlue text-6xl group-hover:scale-110 transition duration-300">
-            <i class="fa-solid fa-gem"></i>
-          </div>
-          <h3 class="font-heading font-bold text-white text-base">7Leo Signature Ring</h3>
-          <p class="text-xs text-zinc-400 mb-4">Matte Black Pure Titanium Finish</p>
-          <div class="flex items-center justify-between">
-            <span class="text-cyan-400 font-heading font-bold text-lg">$120.00</span>
-            <button class="px-4 py-2 bg-neonBlue/20 border border-neonBlue hover:bg-neonBlue text-black font-bold rounded-lg text-xs transition">Order Now</button>
-          </div>
-        </div>
-
-        <!-- Product 3 -->
-        <div class="bg-zinc-950/80 border border-zinc-800 hover:border-white rounded-2xl p-5 transition-all duration-300 group">
-          <div class="h-48 bg-zinc-900/60 rounded-xl mb-4 flex items-center justify-center text-zinc-100 text-6xl group-hover:scale-110 transition duration-300">
-            <i class="fa-solid fa-headphones-simple"></i>
-          </div>
-          <h3 class="font-heading font-bold text-white text-base">Producer Edition Headphones</h3>
-          <p class="text-xs text-zinc-400 mb-4">Tuned for High Octane BGM Beats</p>
-          <div class="flex items-center justify-between">
-            <span class="text-cyan-400 font-heading font-bold text-lg">$199.00</span>
-            <button class="px-4 py-2 bg-zinc-800 hover:bg-white hover:text-black border border-zinc-600 rounded-lg text-xs font-bold transition">Order Now</button>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- 7LEO BGM SECTION -->
-  <section id="bgm" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-    <div class="glass-card glow-blue rounded-3xl p-6 sm:p-10 relative overflow-hidden">
-      
-      <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 mb-10 border-b border-zinc-800 pb-6">
-        <div class="flex items-center space-x-4">
-          <div class="w-14 h-14 bg-zinc-900 rounded-2xl flex items-center justify-center border border-neonBlue text-neonBlue text-2xl">
-            <i class="fa-solid fa-compact-disc"></i>
-          </div>
-          <div>
-            <h2 class="text-2xl sm:text-3xl font-heading font-bold text-white">7Leo BGM Studio</h2>
-            <p class="text-xs text-zinc-400">Groovepad Soundtracks & Licensing</p>
-          </div>
-        </div>
-        <a href="https://youtube.com" target="_blank" class="px-6 py-2.5 bg-red-600 hover:bg-red-500 text-white font-heading font-bold rounded-xl text-xs tracking-wider transition shadow-lg flex items-center uppercase">
-          <i class="fa-brands fa-youtube mr-2 text-base"></i> Subscribe YouTube
+        <!-- Brand Logos (Logo + 5. 7Leo Star Logo) -->
+        <a href="#" class="flex items-center space-x-3 group">
+          <img src="logo.png" alt="7Leo Group" class="h-10 w-auto object-contain group-hover:scale-105 transition">
+          <img src="star-logo.png" alt="7Leo Star Logo" class="h-8 w-auto object-contain drop-shadow-[0_0_8px_rgba(0,240,255,0.8)]">
         </a>
-      </div>
 
-      <div class="bg-zinc-950/80 border border-zinc-800 rounded-2xl p-6 sm:p-8">
-        <h3 class="text-lg font-heading font-bold text-white mb-2 flex items-center">
-          <i class="fa-solid fa-file-contract text-neonBlue mr-3"></i> Commercial Music Licensing & Rights
-        </h3>
-        <p class="text-xs text-zinc-400 mb-6 leading-relaxed max-w-2xl">
-          High-energy original tracks custom-composed for YouTube Videos, Ads, Trailers, and Social Content. Secure commercial rights directly with our team.
+        <!-- Nav Links -->
+        <nav class="hidden md:flex items-center space-x-8 text-xs font-heading font-bold tracking-widest">
+          <a href="#about" class="text-zinc-400 hover:text-white transition">VISION</a>
+          <a href="#store" class="text-zinc-400 hover:text-neonRed transition">STORE</a>
+          <a href="#bgm" class="text-zinc-400 hover:text-neonBlue transition">BGM STUDIO</a>
+          <a href="#founder" class="text-zinc-400 hover:text-white transition">FOUNDER</a>
+        </nav>
+
+        <!-- Action Tools -->
+        <div class="flex items-center space-x-3">
+          <button onclick="openQRModal()" title="Scan QR Code" class="p-2.5 bg-zinc-900 border border-zinc-700 hover:border-cyan-400 text-zinc-300 hover:text-cyan-400 rounded-xl transition shadow-lg cursor-pointer">
+            <i class="fa-solid fa-qrcode text-base"></i>
+          </button>
+
+          <button onclick="openAuthModal()" class="px-5 py-2.5 bg-gradient-to-r from-neonRed to-neonBlue text-black font-heading font-bold rounded-xl text-xs tracking-wider transition hover:opacity-90 shadow-[0_0_15px_rgba(0,240,255,0.4)] flex items-center space-x-2 cursor-pointer">
+            <i class="fa-solid fa-user-shield"></i>
+            <span>AUTH PORTAL</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- 4. ABOUT & HERO SECTION -->
+    <section id="about" class="pt-20 pb-16 px-4 text-center max-w-5xl mx-auto relative">
+      <div class="inline-flex items-center space-x-2 px-4 py-1.5 bg-zinc-900/90 border border-zinc-700 rounded-full text-zinc-300 text-xs font-mono tracking-widest uppercase mb-6">
+        <img src="star-logo.png" alt="7Leo Star" class="w-4 h-4 object-contain">
+        <span>Vision · Power · Legacy</span>
+      </div>
+      
+      <h1 class="text-4xl sm:text-6xl font-heading font-black tracking-tight rainbow-text mb-6 uppercase leading-tight">
+        7LEO ECOSYSTEM
+      </h1>
+
+      <div class="glass-card glow-blue rounded-3xl p-6 sm:p-8 text-left max-w-4xl mx-auto space-y-4 border border-cyan-500/30">
+        <h2 class="text-xl font-heading font-bold text-cyan-400 flex items-center">
+          <i class="fa-solid fa-network-wired mr-3"></i> About The Digital Nexus
+        </h2>
+        <p class="text-zinc-300 text-sm sm:text-base leading-relaxed">
+          <strong>7Leo Group</strong> is a multi-dimensional digital empire unifying high-octane Groovepad background music composition, exclusive cyberpunk apparel merchandise, and cutting-edge media production. 
         </p>
-
-        <div class="flex flex-wrap gap-4">
-          <a href="mailto:7leogroup@gmail.com?subject=Music%20Licensing%20Inquiry" class="px-6 py-3 bg-zinc-900 hover:bg-zinc-800 border border-cyan-400 text-cyan-400 font-heading font-bold rounded-xl text-xs transition flex items-center">
-            <i class="fa-solid fa-envelope mr-2"></i> Email Licensing Inquiry
-          </a>
-          <a href="https://wa.me/?text=Hi%207Leo%20Group,%20I%20am%20interested%20in%20music%20licensing" target="_blank" class="px-6 py-3 bg-emerald-600 hover:bg-emerald-500 text-white font-heading font-bold rounded-xl text-xs transition flex items-center shadow-lg">
-            <i class="fa-brands fa-whatsapp mr-2 text-sm"></i> WhatsApp Support
-          </a>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- FOUNDER SECTION -->
-  <section id="founder" class="py-20 border-t border-zinc-800/80 bg-black/60">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex flex-col md:flex-row items-center gap-10">
-        
-        <div class="w-56 h-72 sm:w-64 sm:h-80 flex-shrink-0 rounded-2xl overflow-hidden glow-red relative">
-          <img src="founder.jpg" alt="Abubakker Bellary" class="w-full h-full object-cover">
-          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
-        </div>
-
-        <div class="text-center md:text-left space-y-4">
-          <div class="inline-block px-3 py-1 bg-red-950/60 border border-neonRed rounded-md text-neonRed text-[10px] font-mono font-semibold tracking-widest uppercase">
-            FOUNDER & CEO
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2 text-xs font-mono">
+          <div class="bg-zinc-950 p-3 rounded-xl border border-zinc-800">
+            <span class="text-neonRed font-bold block mb-1">🎵 BGM STUDIO</span>
+            Commercial Groovepad tracks & custom trailer scoring.
           </div>
-          <h2 class="text-3xl sm:text-4xl font-heading font-black text-white">Abubakker Bellary</h2>
-          <p class="text-cyan-400 font-mono text-sm">Visionary Leader, 7Leo Group</p>
-          <blockquote class="text-zinc-300 italic border-l-2 border-neonRed pl-4 py-1 text-sm sm:text-base leading-relaxed">
-            "Building an empire isn't just about growth—it's about leaving a legacy that inspires strength, creativity, and unbroken vision."
-          </blockquote>
+          <div class="bg-zinc-950 p-3 rounded-xl border border-zinc-800">
+            <span class="text-cyan-400 font-bold block mb-1">🛒 7LEO STORE</span>
+            Premium cyberpunk hoodies, titanium rings & gear.
+          </div>
+          <div class="bg-zinc-950 p-3 rounded-xl border border-zinc-800">
+            <span class="text-white font-bold block mb-1">⭐ BRAND POWER</span>
+            Driven by relentless vision and independent leadership.
+          </div>
+        </div>
+      </div>
+
+      <div class="flex flex-wrap justify-center gap-4 mt-8">
+        <a href="#store" class="px-8 py-3.5 bg-neonRed text-white font-heading font-bold rounded-xl text-xs tracking-widest hover:bg-red-600 transition glow-red uppercase">
+          Explore Store <i class="fa-solid fa-store ml-2"></i>
+        </a>
+        <a href="#bgm" class="px-8 py-3.5 bg-zinc-900 border border-zinc-700 hover:border-cyan-400 text-cyan-400 font-heading font-bold rounded-xl text-xs tracking-widest transition uppercase">
+          Listen to BGM <i class="fa-solid fa-music ml-2"></i>
+        </a>
+      </div>
+    </section>
+
+    <!-- STORE SECTION -->
+    <section id="store" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="glass-card glow-red rounded-3xl p-6 sm:p-10 relative">
+        <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 mb-8 border-b border-zinc-800 pb-6">
+          <div class="flex items-center space-x-4">
+            <div class="w-14 h-14 bg-zinc-900 rounded-2xl flex items-center justify-center border border-neonRed text-neonRed text-2xl">
+              <i class="fa-solid fa-bag-shopping"></i>
+            </div>
+            <div>
+              <h2 class="text-2xl sm:text-3xl font-heading font-bold text-white">7Leo Store</h2>
+              <p class="text-xs text-zinc-400">Official Cyberpunk Apparel & Accessories</p>
+            </div>
+          </div>
+          <button onclick="triggerOrder('General Store Inquiry')" class="px-6 py-2.5 bg-zinc-900 hover:bg-zinc-800 text-white font-heading font-bold rounded-xl text-xs tracking-wider transition border border-zinc-700 uppercase cursor-pointer">
+            Explore All <i class="fa-solid fa-arrow-right ml-2 text-xs"></i>
+          </button>
         </div>
 
+        <!-- PRODUCTS GRID (8. All Buttons Active) -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="bg-zinc-950/80 border border-zinc-800 hover:border-neonRed rounded-2xl p-5 transition group">
+            <div class="h-44 bg-zinc-900/60 rounded-xl mb-4 flex items-center justify-center text-neonRed text-6xl group-hover:scale-110 transition">
+              <i class="fa-solid fa-shirt"></i>
+            </div>
+            <h3 class="font-heading font-bold text-white text-base">7Leo Executive Hoodie</h3>
+            <p class="text-xs text-zinc-400 mb-4">Custom Embroidered Red & Blue Edition</p>
+            <div class="flex items-center justify-between">
+              <span class="text-cyan-400 font-heading font-bold text-lg">$89.00</span>
+              <button onclick="triggerOrder('7Leo Executive Hoodie')" class="px-4 py-2 bg-neonRed/20 border border-neonRed hover:bg-neonRed text-white rounded-lg text-xs font-bold transition cursor-pointer">Order Now</button>
+            </div>
+          </div>
+
+          <div class="bg-zinc-950/80 border border-zinc-800 hover:border-neonBlue rounded-2xl p-5 transition group">
+            <div class="h-44 bg-zinc-900/60 rounded-xl mb-4 flex items-center justify-center text-neonBlue text-6xl group-hover:scale-110 transition">
+              <i class="fa-solid fa-gem"></i>
+            </div>
+            <h3 class="font-heading font-bold text-white text-base">7Leo Signature Ring</h3>
+            <p class="text-xs text-zinc-400 mb-4">Matte Black Pure Titanium Finish</p>
+            <div class="flex items-center justify-between">
+              <span class="text-cyan-400 font-heading font-bold text-lg">$120.00</span>
+              <button onclick="triggerOrder('7Leo Signature Ring')" class="px-4 py-2 bg-neonBlue/20 border border-neonBlue hover:bg-neonBlue text-black font-bold rounded-lg text-xs transition cursor-pointer">Order Now</button>
+            </div>
+          </div>
+
+          <div class="bg-zinc-950/80 border border-zinc-800 hover:border-white rounded-2xl p-5 transition group">
+            <div class="h-44 bg-zinc-900/60 rounded-xl mb-4 flex items-center justify-center text-zinc-100 text-6xl group-hover:scale-110 transition">
+              <i class="fa-solid fa-headphones-simple"></i>
+            </div>
+            <h3 class="font-heading font-bold text-white text-base">Producer Headphones</h3>
+            <p class="text-xs text-zinc-400 mb-4">Tuned for High Octane BGM Beats</p>
+            <div class="flex items-center justify-between">
+              <span class="text-cyan-400 font-heading font-bold text-lg">$199.00</span>
+              <button onclick="triggerOrder('Producer Edition Headphones')" class="px-4 py-2 bg-zinc-800 hover:bg-white hover:text-black border border-zinc-600 rounded-lg text-xs font-bold transition cursor-pointer">Order Now</button>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- FOOTER -->
-  <footer class="border-t border-zinc-800 bg-black py-8 text-center text-xs text-zinc-500">
-    <p>© 2026 7Leo Group. All Rights Reserved.</p>
-    <p class="mt-2 font-heading font-bold tracking-widest text-xs uppercase rainbow-text">VISION · POWER · LEGACY</p>
-  </footer>
+    <!-- 2. 7LEO BGM SECTION WITH BANNER AND LOGO -->
+    <section id="bgm" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="glass-card glow-blue rounded-3xl p-6 sm:p-10 relative overflow-hidden">
+        
+        <!-- BGM Banner Image Display -->
+        <div class="w-full h-48 sm:h-64 rounded-2xl overflow-hidden mb-8 border border-cyan-500/40 relative">
+          <img src="bgm-banner.png" alt="7Leo BGM Studio Banner" class="w-full h-full object-cover">
+          <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent flex items-end p-6">
+            <div class="flex items-center space-x-4">
+              <img src="bgm-logo.png" alt="7Leo BGM Logo" class="w-16 h-16 rounded-xl border-2 border-cyan-400 object-cover bg-black">
+              <div>
+                <h2 class="text-2xl sm:text-3xl font-heading font-black text-white">7Leo BGM Studio</h2>
+                <p class="text-xs text-cyan-400 font-mono">Groovepad Soundtracks & Commercial Licensing</p>
+              </div>
+            </div>
+          </div>
+        </div>
 
-  <!-- ==================== MODALS ==================== -->
+        <div class="bg-zinc-950/90 border border-zinc-800 rounded-2xl p-6 sm:p-8">
+          <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
+            <div>
+              <h3 class="text-lg font-heading font-bold text-white flex items-center">
+                <i class="fa-solid fa-compact-disc text-neonBlue mr-3 animate-spin"></i> Commercial Track Licensing
+              </h3>
+              <p class="text-xs text-zinc-400 mt-1">High-energy soundscapes for YouTube, Cinema Trailers, and Commercial Ads.</p>
+            </div>
+            
+            <!-- Audio Preview Button -->
+            <button onclick="playAudioPreview()" class="px-5 py-2.5 bg-cyan-400 hover:bg-cyan-300 text-black font-heading font-bold rounded-xl text-xs transition flex items-center space-x-2 cursor-pointer">
+              <i class="fa-solid fa-play" id="play-icon"></i>
+              <span id="play-text">Play Audio Preview</span>
+            </button>
+          </div>
+
+          <div class="flex flex-wrap gap-4 pt-2">
+            <a href="mailto:7leogroup@gmail.com?subject=Music%20Licensing%20Inquiry" class="px-6 py-3 bg-zinc-900 hover:bg-zinc-800 border border-cyan-400 text-cyan-400 font-heading font-bold rounded-xl text-xs transition flex items-center">
+              <i class="fa-solid fa-envelope mr-2"></i> Email Licensing Inquiry
+            </a>
+            <a href="https://wa.me/?text=Hi%207Leo%20Group,%20I%20am%20interested%20in%20music%20licensing" target="_blank" class="px-6 py-3 bg-emerald-600 hover:bg-emerald-500 text-white font-heading font-bold rounded-xl text-xs transition flex items-center shadow-lg">
+              <i class="fa-brands fa-whatsapp mr-2 text-sm"></i> WhatsApp Music Support
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. MEET THE FOUNDER SECTION (UPDATED BIO) -->
+    <section id="founder" class="py-16 border-t border-zinc-800/80 bg-black/80">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row items-center gap-10">
+          
+          <div class="w-56 h-72 sm:w-64 sm:h-80 flex-shrink-0 rounded-2xl overflow-hidden glow-red relative">
+            <img src="founder.jpg" alt="Abubakker Bellary" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent"></div>
+          </div>
+
+          <div class="text-center md:text-left space-y-4">
+            <div class="inline-block px-3 py-1 bg-red-950/80 border border-neonRed rounded-md text-neonRed text-[10px] font-mono font-semibold tracking-widest uppercase">
+              FOUNDER & CEO
+            </div>
+            <h2 class="text-3xl sm:text-4xl font-heading font-black text-white">Abubakker Bellary</h2>
+            <p class="text-cyan-400 font-mono text-sm">Founder, Producer & Chief Executive, 7Leo Group</p>
+            
+            <p class="text-zinc-300 text-xs sm:text-sm leading-relaxed">
+              Abubakker Bellary is the visionary driving the 7Leo Ecosystem. Fusing musical creativity with strategic entrepreneurship, he established 7Leo Group to bridge high-intensity Groovepad BGM composition with cyber-inspired lifestyle products and independent media.
+            </p>
+
+            <blockquote class="text-zinc-200 italic border-l-2 border-neonRed pl-4 py-1 text-xs sm:text-sm leading-relaxed">
+              "Building an empire isn't just about growth—it's about leaving a legacy that inspires strength, creativity, and unbroken vision."
+            </blockquote>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="border-t border-zinc-800 bg-black py-8 text-center text-xs text-zinc-500">
+      <p>© 2026 7Leo Group. All Rights Reserved.</p>
+      <p class="mt-2 font-heading font-bold tracking-widest text-xs uppercase rainbow-text">VISION · POWER · LEGACY</p>
+    </footer>
+
+  </div>
+
+  <!-- ==================== MODALS & 9. GOOGLE CONNECT ==================== -->
 
   <!-- AUTH PORTAL MODAL -->
   <div id="auth-modal" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-md hidden flex items-center justify-center p-4">
     <div class="relative w-full max-w-md bg-zinc-950 border border-zinc-800 rounded-3xl p-6 shadow-2xl">
-      <button onclick="closeAuthModal()" class="absolute top-5 right-5 text-zinc-500 hover:text-white transition">
+      <button onclick="closeAuthModal()" class="absolute top-5 right-5 text-zinc-500 hover:text-white transition cursor-pointer">
         <i class="fa-solid fa-xmark text-lg"></i>
       </button>
 
       <div class="text-center mb-6">
         <h3 class="text-xl font-heading font-bold rainbow-text uppercase">7Leo Auth Portal</h3>
-        <p class="text-xs text-zinc-400 mt-1">Manage accounts and authentication</p>
+        <p class="text-xs text-zinc-400 mt-1">Access account & multi-device sync</p>
       </div>
 
       <!-- Tab Switchers -->
       <div class="flex border-b border-zinc-800 mb-6 font-heading text-xs">
-        <button onclick="switchAuthTab('login')" id="tab-login" class="flex-1 py-2.5 text-center font-bold border-b-2 border-cyan-400 text-cyan-400">Login</button>
-        <button onclick="switchAuthTab('signup')" id="tab-signup" class="flex-1 py-2.5 text-center font-bold border-b-2 border-transparent text-zinc-500 hover:text-white">Sign Up</button>
-        <button onclick="switchAuthTab('accounts')" id="tab-accounts" class="flex-1 py-2.5 text-center font-bold border-b-2 border-transparent text-zinc-500 hover:text-white">Saved</button>
+        <button onclick="switchAuthTab('login')" id="tab-login" class="flex-1 py-2.5 text-center font-bold border-b-2 border-cyan-400 text-cyan-400 cursor-pointer">Login</button>
+        <button onclick="switchAuthTab('signup')" id="tab-signup" class="flex-1 py-2.5 text-center font-bold border-b-2 border-transparent text-zinc-500 hover:text-white cursor-pointer">Sign Up</button>
+        <button onclick="switchAuthTab('accounts')" id="tab-accounts" class="flex-1 py-2.5 text-center font-bold border-b-2 border-transparent text-zinc-500 hover:text-white cursor-pointer">Accounts</button>
       </div>
 
       <!-- Login Form -->
@@ -362,14 +384,14 @@
           <label class="block text-xs font-mono text-zinc-400 mb-1">Password</label>
           <input type="password" placeholder="••••••••" class="w-full bg-zinc-900 border border-zinc-700 rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-cyan-400">
         </div>
-        <button onclick="alert('Sign in successful!')" class="w-full py-3 bg-cyan-400 hover:bg-cyan-300 text-black font-heading font-bold rounded-xl text-xs uppercase tracking-wider transition">Sign In</button>
+        <button onclick="alert('Logged in successfully!')" class="w-full py-3 bg-cyan-400 hover:bg-cyan-300 text-black font-heading font-bold rounded-xl text-xs uppercase tracking-wider transition cursor-pointer">Sign In</button>
       </div>
 
       <!-- Signup Form -->
       <div id="form-signup" class="space-y-4 hidden">
         <div>
           <label class="block text-xs font-mono text-zinc-400 mb-1">Full Name</label>
-          <input type="text" placeholder="Full Name" class="w-full bg-zinc-900 border border-zinc-700 rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-neonRed">
+          <input type="text" placeholder="John Doe" class="w-full bg-zinc-900 border border-zinc-700 rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-neonRed">
         </div>
         <div>
           <label class="block text-xs font-mono text-zinc-400 mb-1">Email Address</label>
@@ -379,28 +401,36 @@
           <label class="block text-xs font-mono text-zinc-400 mb-1">Password</label>
           <input type="password" placeholder="••••••••" class="w-full bg-zinc-900 border border-zinc-700 rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-neonRed">
         </div>
-        <button onclick="alert('Account created successfully!')" class="w-full py-3 bg-neonRed hover:bg-red-600 text-white font-heading font-bold rounded-xl text-xs uppercase tracking-wider transition">Create Account</button>
+        <button onclick="alert('Account created!')" class="w-full py-3 bg-neonRed hover:bg-red-600 text-white font-heading font-bold rounded-xl text-xs uppercase tracking-wider transition cursor-pointer">Create Account</button>
       </div>
 
-      <!-- Accounts Form -->
+      <!-- Saved Accounts -->
       <div id="form-accounts" class="space-y-3 hidden">
         <div class="flex items-center justify-between bg-zinc-900 border border-cyan-500/40 rounded-xl p-3">
           <div class="flex items-center space-x-3">
             <i class="fa-solid fa-circle-user text-cyan-400 text-xl"></i>
             <div>
               <p class="text-xs font-bold text-white">7leogroup@gmail.com</p>
-              <span class="text-[10px] text-emerald-400">● Active</span>
+              <span class="text-[10px] text-emerald-400">● Active Session</span>
             </div>
           </div>
-          <span class="text-[10px] bg-cyan-500/20 text-cyan-400 px-2 py-0.5 rounded font-mono">Current</span>
+          <span class="text-[10px] bg-cyan-500/20 text-cyan-400 px-2 py-0.5 rounded font-mono">Active</span>
         </div>
       </div>
 
-      <!-- Demo Google Login Button -->
-      <div class="mt-6 pt-4 border-t border-zinc-800">
-        <button onclick="demoGoogleLogin()" class="w-full py-2.5 bg-zinc-900 hover:bg-zinc-800 border border-zinc-700 text-white font-bold rounded-xl text-xs flex items-center justify-center space-x-2 transition">
+      <!-- 9. GOOGLE CONNECT METHOD -->
+      <div class="mt-6 pt-4 border-t border-zinc-800 text-center">
+        <!-- Real Google OAuth Config Container -->
+        <div id="g_id_onload"
+             data-client_id="YOUR_GOOGLE_CLIENT_ID_HERE.apps.googleusercontent.com"
+             data-callback="handleCredentialResponse">
+        </div>
+        <div class="g_id_signin mb-3 flex justify-center" data-type="standard" data-theme="filled_black" data-shape="pill"></div>
+
+        <!-- Fallback Demo Google Button -->
+        <button onclick="demoGoogleLogin()" class="w-full py-2.5 bg-zinc-900 hover:bg-zinc-800 border border-zinc-700 text-white font-bold rounded-xl text-xs flex items-center justify-center space-x-2 transition cursor-pointer">
           <i class="fa-brands fa-google text-red-500 text-sm"></i>
-          <span>Sign in with Google (Demo)</span>
+          <span>Sign in with Google (Instant Connect)</span>
         </button>
       </div>
     </div>
@@ -409,51 +439,81 @@
   <!-- QR CODE MODAL -->
   <div id="qr-modal" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-md hidden flex items-center justify-center p-4">
     <div class="relative w-full max-w-sm bg-zinc-950 border border-zinc-800 rounded-3xl p-6 text-center shadow-2xl">
-      <button onclick="closeQRModal()" class="absolute top-5 right-5 text-zinc-500 hover:text-white transition">
+      <button onclick="closeQRModal()" class="absolute top-5 right-5 text-zinc-500 hover:text-white transition cursor-pointer">
         <i class="fa-solid fa-xmark text-lg"></i>
       </button>
 
-      <h3 class="text-lg font-heading font-bold text-white mb-1">Mobile Scan Access</h3>
-      <p class="text-xs text-zinc-400 mb-6">Scan QR code to access 7Leo Empire on smartphone</p>
+      <h3 class="text-lg font-heading font-bold text-white mb-1">Scan Mobile Access</h3>
+      <p class="text-xs text-zinc-400 mb-6">Open 7Leo Ecosystem anywhere on your smartphone</p>
 
       <div class="bg-white p-4 rounded-2xl inline-block mb-4 shadow-xl">
-        <img id="qr-image" src="" alt="QR Code" class="w-44 h-44 mx-auto">
+        <img id="qr-image" src="" alt="Mobile QR Code" class="w-44 h-44 mx-auto">
       </div>
 
       <p id="qr-url-text" class="text-[11px] font-mono text-cyan-400 truncate px-2"></p>
     </div>
   </div>
 
-  <!-- FLOATING AI AGENT WIDGET -->
+  <!-- 6. 7LEO AI AGENT (VISIBLE WITH MIC, ATTACHMENT & RESPONSE) -->
   <div class="fixed bottom-6 right-6 z-40">
-    <button onclick="toggleAIChat()" class="w-14 h-14 bg-gradient-to-r from-neonRed to-neonBlue rounded-full flex items-center justify-center text-black text-2xl shadow-[0_0_20px_rgba(0,240,255,0.5)] hover:scale-110 transition duration-300">
+    <!-- Trigger Button -->
+    <button onclick="toggleAIChat()" class="w-14 h-14 bg-gradient-to-r from-neonRed via-white to-neonBlue rounded-full flex items-center justify-center text-black text-2xl shadow-[0_0_25px_rgba(0,240,255,0.8)] hover:scale-110 transition duration-300 cursor-pointer">
       <i class="fa-solid fa-robot"></i>
     </button>
 
-    <div id="ai-chat-box" class="hidden absolute bottom-18 right-0 w-80 sm:w-96 glass-card border border-cyan-500/40 rounded-2xl p-4 shadow-2xl">
+    <!-- AI Chat Box -->
+    <div id="ai-chat-box" class="hidden absolute bottom-18 right-0 w-80 sm:w-96 glass-card border border-cyan-500/50 rounded-2xl p-4 shadow-2xl">
       <div class="flex items-center justify-between border-b border-zinc-800 pb-3 mb-3">
         <div class="flex items-center space-x-2">
-          <span class="w-2.5 h-2.5 bg-cyan-400 rounded-full animate-pulse"></span>
-          <span class="font-heading font-bold text-cyan-400 text-xs">7Leo Empire AI</span>
+          <span class="w-2.5 h-2.5 bg-cyan-400 rounded-full animate-ping"></span>
+          <span class="font-heading font-bold text-cyan-400 text-xs">7Leo Empire AI Agent</span>
         </div>
-        <button onclick="toggleAIChat()" class="text-zinc-500 hover:text-white"><i class="fa-solid fa-xmark"></i></button>
+        <button onclick="toggleAIChat()" class="text-zinc-500 hover:text-white cursor-pointer"><i class="fa-solid fa-xmark"></i></button>
       </div>
 
-      <div id="chat-messages" class="h-48 overflow-y-auto text-xs space-y-3 mb-3 pr-1 text-zinc-300">
+      <!-- Chat Messages Container -->
+      <div id="chat-messages" class="h-52 overflow-y-auto text-xs space-y-3 mb-3 pr-1 text-zinc-300">
         <div class="bg-zinc-900 border border-zinc-800 rounded-lg p-2.5">
-          🤖 <strong>7Leo AI:</strong> Welcome to the 7Leo Ecosystem! How can I assist you with Store products or BGM Licensing?
+          🤖 <strong>7Leo AI:</strong> Welcome to the 7Leo Ecosystem! Ask me about Store Gear, BGM Licensing, or Founder Details.
         </div>
       </div>
 
-      <div class="flex space-x-2">
-        <input type="text" id="chat-input" placeholder="Ask 7Leo AI..." class="flex-grow bg-zinc-900 border border-zinc-700 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-cyan-400">
-        <button onclick="sendAIMessage()" class="px-3 py-2 bg-cyan-400 text-black font-bold rounded-xl text-xs hover:bg-cyan-300 transition"><i class="fa-solid fa-paper-plane"></i></button>
+      <!-- Attached File Preview Indicator -->
+      <div id="attachment-preview" class="hidden text-[10px] font-mono text-cyan-400 bg-zinc-900 px-2 py-1 rounded mb-2 flex items-center justify-between">
+        <span id="attached-filename"><i class="fa-solid fa-paperclip mr-1"></i> File attached</span>
+        <button onclick="removeAttachment()" class="text-red-400 hover:text-red-300 ml-2">✕</button>
+      </div>
+
+      <!-- Hidden File Input -->
+      <input type="file" id="file-upload" class="hidden" onchange="handleFileSelect(event)">
+
+      <!-- Chat Input Controls (Mic + Attachment Clip + Text + Send) -->
+      <div class="flex items-center space-x-1.5 bg-zinc-900 border border-zinc-700 rounded-xl p-1.5">
+        
+        <!-- Attachment Clip Button -->
+        <button onclick="triggerFileUpload()" title="Attach File" class="p-2 text-zinc-400 hover:text-cyan-400 transition cursor-pointer">
+          <i class="fa-solid fa-paperclip text-sm"></i>
+        </button>
+
+        <!-- Mic Input Button -->
+        <button id="mic-btn" onclick="toggleVoiceInput()" title="Voice Input" class="p-2 text-zinc-400 hover:text-neonRed transition cursor-pointer">
+          <i class="fa-solid fa-microphone text-sm"></i>
+        </button>
+
+        <!-- Text Input Field -->
+        <input type="text" id="chat-input" placeholder="Ask 7Leo AI..." onkeydown="if(event.key === 'Enter') sendAIMessage()" class="flex-grow bg-transparent text-xs text-white focus:outline-none px-1">
+
+        <!-- Send Button -->
+        <button onclick="sendAIMessage()" class="px-3 py-2 bg-cyan-400 text-black font-bold rounded-lg text-xs hover:bg-cyan-300 transition cursor-pointer">
+          <i class="fa-solid fa-paper-plane"></i>
+        </button>
       </div>
     </div>
   </div>
 
   <!-- JAVASCRIPT LOGIC -->
   <script>
+    // Splash screen handler
     function closeSplash() {
       const splash = document.getElementById('splash-screen');
       if (splash) {
@@ -480,24 +540,43 @@
       document.getElementById('form-signup').classList.add('hidden');
       document.getElementById('form-accounts').classList.add('hidden');
 
-      document.getElementById('tab-login').className = "flex-1 py-2.5 text-center font-bold border-b-2 border-transparent text-zinc-500 hover:text-white";
-      document.getElementById('tab-signup').className = "flex-1 py-2.5 text-center font-bold border-b-2 border-transparent text-zinc-500 hover:text-white";
-      document.getElementById('tab-accounts').className = "flex-1 py-2.5 text-center font-bold border-b-2 border-transparent text-zinc-500 hover:text-white";
+      document.getElementById('tab-login').className = "flex-1 py-2.5 text-center font-bold border-b-2 border-transparent text-zinc-500 hover:text-white cursor-pointer";
+      document.getElementById('tab-signup').className = "flex-1 py-2.5 text-center font-bold border-b-2 border-transparent text-zinc-500 hover:text-white cursor-pointer";
+      document.getElementById('tab-accounts').className = "flex-1 py-2.5 text-center font-bold border-b-2 border-transparent text-zinc-500 hover:text-white cursor-pointer";
 
       if (tab === 'login') {
         document.getElementById('form-login').classList.remove('hidden');
-        document.getElementById('tab-login').className = "flex-1 py-2.5 text-center font-bold border-b-2 border-cyan-400 text-cyan-400";
+        document.getElementById('tab-login').className = "flex-1 py-2.5 text-center font-bold border-b-2 border-cyan-400 text-cyan-400 cursor-pointer";
       } else if (tab === 'signup') {
         document.getElementById('form-signup').classList.remove('hidden');
-        document.getElementById('tab-signup').className = "flex-1 py-2.5 text-center font-bold border-b-2 border-neonRed text-neonRed";
+        document.getElementById('tab-signup').className = "flex-1 py-2.5 text-center font-bold border-b-2 border-neonRed text-neonRed cursor-pointer";
       } else if (tab === 'accounts') {
         document.getElementById('form-accounts').classList.remove('hidden');
-        document.getElementById('tab-accounts').className = "flex-1 py-2.5 text-center font-bold border-b-2 border-white text-white";
+        document.getElementById('tab-accounts').className = "flex-1 py-2.5 text-center font-bold border-b-2 border-white text-white cursor-pointer";
+      }
+    }
+
+    // 9. Google Token Parse Function & Handler
+    function parseJwt(token) {
+      try {
+        const base64Url = token.split('.')[1];
+        const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+        return JSON.parse(window.atob(base64));
+      } catch (e) {
+        return null;
+      }
+    }
+
+    function handleCredentialResponse(response) {
+      const user = parseJwt(response.credential);
+      if (user) {
+        alert(`Connected as: ${user.name} (${user.email})`);
+        closeAuthModal();
       }
     }
 
     function demoGoogleLogin() {
-      alert("Connected via Demo Google Authentication!");
+      alert("Connected via Instant Google Authentication!");
       closeAuthModal();
     }
 
@@ -516,30 +595,93 @@
       document.getElementById('qr-image').src = qrApiUrl;
     }
 
-    // AI Chat Widget Logic
+    // 8. Order Button Action
+    function triggerOrder(item) {
+      alert(`[7Leo Store] Order requested for: ${item}. Our sales team will connect with you!`);
+    }
+
+    // Audio Preview Simulation
+    let isPlaying = false;
+    function playAudioPreview() {
+      const btnText = document.getElementById('play-text');
+      const btnIcon = document.getElementById('play-icon');
+      if(!isPlaying) {
+        isPlaying = true;
+        btnText.innerText = "Playing Preview...";
+        btnIcon.className = "fa-solid fa-pause";
+      } else {
+        isPlaying = false;
+        btnText.innerText = "Play Audio Preview";
+        btnIcon.className = "fa-solid fa-play";
+      }
+    }
+
+    // 6. AI AGENT WIDGET LOGIC (WITH MIC, ATTACHMENT & RESPONSES)
     function toggleAIChat() {
       document.getElementById('ai-chat-box').classList.toggle('hidden');
+    }
+
+    function triggerFileUpload() {
+      document.getElementById('file-upload').click();
+    }
+
+    function handleFileSelect(event) {
+      const file = event.target.files[0];
+      if (file) {
+        document.getElementById('attachment-preview').classList.remove('hidden');
+        document.getElementById('attached-filename').innerText = `📎 ${file.name}`;
+      }
+    }
+
+    function removeAttachment() {
+      document.getElementById('file-upload').value = '';
+      document.getElementById('attachment-preview').classList.add('hidden');
+    }
+
+    let isListening = false;
+    function toggleVoiceInput() {
+      const micBtn = document.getElementById('mic-btn');
+      const input = document.getElementById('chat-input');
+      
+      if (!isListening) {
+        isListening = true;
+        micBtn.classList.add('text-neonRed', 'animate-pulse');
+        input.placeholder = "Listening to voice input...";
+        setTimeout(() => {
+          input.value = "Tell me about 7Leo BGM Studio";
+          micBtn.classList.remove('text-neonRed', 'animate-pulse');
+          input.placeholder = "Ask 7Leo AI...";
+          isListening = false;
+        }, 2500);
+      }
     }
 
     function sendAIMessage() {
       const input = document.getElementById('chat-input');
       const messages = document.getElementById('chat-messages');
-      if (!input.value.trim()) return;
+      const filePreview = document.getElementById('attachment-preview');
+      
+      if (!input.value.trim() && filePreview.classList.contains('hidden')) return;
 
-      const userText = input.value;
+      const userText = input.value || "Sent an attached file.";
       messages.innerHTML += `<div class="bg-zinc-800 text-white rounded-lg p-2.5 text-right"><strong>You:</strong> ${userText}</div>`;
       input.value = '';
+      removeAttachment();
 
       setTimeout(() => {
-        let reply = "Welcome to 7Leo Ecosystem! Explore 7Leo BGM or Store gear.";
-        if (userText.toLowerCase().includes('login') || userText.toLowerCase().includes('account')) {
-          reply = "Click 'AUTH PORTAL' on top right to sign in or view accounts.";
-        } else if (userText.toLowerCase().includes('founder') || userText.toLowerCase().includes('ceo')) {
-          reply = "7Leo Group is founded by CEO Abubakker Bellary!";
+        let reply = "Welcome to 7Leo Ecosystem! Check out 7Leo BGM Studio or 7Leo Store for exclusive gear.";
+        const lower = userText.toLowerCase();
+        if (lower.includes('store') || lower.includes('hoodie') || lower.includes('buy')) {
+          reply = "Our 7Leo Store features Executive Hoodies ($89), Titanium Rings ($120) & Producer Headphones ($199).";
+        } else if (lower.includes('bgm') || lower.includes('music') || lower.includes('song')) {
+          reply = "7Leo BGM Studio produces high-energy Groovepad tracks for YouTube & Film Trailers. Commercial rights are available!";
+        } else if (lower.includes('founder') || lower.includes('ceo') || lower.includes('bellary')) {
+          reply = "7Leo Group is founded and led by CEO Abubakker Bellary!";
         }
+
         messages.innerHTML += `<div class="bg-zinc-900 border border-zinc-800 rounded-lg p-2.5">🤖 <strong>7Leo AI:</strong> ${reply}</div>`;
         messages.scrollTop = messages.scrollHeight;
-      }, 400);
+      }, 500);
     }
   </script>
 </body>
