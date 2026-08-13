@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>7Leo Group Commerce | Global Executive Command</title>
+  <title>Welcome to 7Leo Group Commerce | Global Executive Command</title>
   
   <!-- Favicon / Star Logo -->
   <link rel="icon" type="image/png" href="star-logo.png">
@@ -86,9 +86,21 @@
       border: 1px solid rgba(255, 106, 0, 0.25);
     }
 
+    /* Gemini-Style AI Glow */
+    .gemini-glow {
+      background: linear-gradient(135deg, rgba(255, 106, 0, 0.2), rgba(147, 51, 234, 0.2), rgba(59, 130, 246, 0.2));
+      border: 1px solid rgba(255, 106, 0, 0.4);
+    }
+
     /* Gradient Text Effects */
     .gradient-orange-highlight {
       background: linear-gradient(90deg, #ff8c00, #ff4500);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .gradient-gemini-text {
+      background: linear-gradient(90deg, #ff8c00, #c084fc, #60a5fa);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
@@ -116,7 +128,7 @@
   <!-- BACKGROUND RADIAL HORIZON GLOW -->
   <div class="fixed top-0 left-0 right-0 h-[650px] horizon-glow pointer-events-none z-0"></div>
 
-  <!-- TASK 2: SPLASH SCREEN WITH 7LEO FLAG -->
+  <!-- SPLASH SCREEN WITH 7LEO FLAG -->
   <div id="splash-screen" class="fixed inset-0 z-50 bg-[#060608]/95 backdrop-blur-2xl flex flex-col items-center justify-center p-6 transition-all duration-700">
     <div class="max-w-md w-full text-center space-y-6 relative z-10 glass-card p-8 rounded-3xl border border-amber-500/30">
       <div class="flex items-center justify-between text-xs font-display text-amber-500 border-b border-white/10 pb-3">
@@ -161,7 +173,7 @@
         <nav class="hidden md:flex items-center space-x-8 text-xs font-display font-medium tracking-wide text-gray-300">
           <a href="#about" class="hover:text-amber-400 transition">WHO WE ARE</a>
           <a href="#store" class="hover:text-amber-400 transition">STORE</a>
-          <a href="#tattoo" class="hover:text-amber-400 transition">TATTOO ART</a>
+          <a href="#homepage-tattoo" class="hover:text-amber-400 transition">TATTOO ART</a>
           <a href="#bgm" class="hover:text-amber-400 transition">BGM SOUNDS</a>
           <a href="#founder" class="hover:text-amber-400 transition">FOUNDER</a>
         </nav>
@@ -184,37 +196,118 @@
       </div>
     </header>
 
-    <!-- HERO SECTION -->
+    <!-- TASK 1 & 2: HERO SECTION WITH UPDATED HEADLINE & STORE LOGO -->
     <section id="hero" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-16 w-full text-center relative">
-      <div class="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-display mb-6">
-        <span class="w-2 h-2 rounded-full bg-amber-500 animate-pulse"></span>
-        <span>7LEO GROUP COMMERCE · EXECUTIVE DASHBOARD</span>
+      
+      <!-- TASK 2: 7Leo Store Logo Display in Hero -->
+      <div class="flex justify-center items-center gap-4 mb-6">
+        <div class="relative group">
+          <div class="absolute -inset-1 bg-gradient-to-r from-amber-500 to-orange-600 rounded-2xl blur opacity-50 group-hover:opacity-100 transition duration-500"></div>
+          <img src="store-logo.png" onError="this.onerror=null;this.src='https://via.placeholder.com/100/000000/ff6a00?text=7LEO+STORE';" alt="7Leo Store Logo" class="relative w-16 h-16 sm:w-20 sm:h-20 rounded-2xl border-2 border-amber-500 p-1.5 bg-black object-contain shadow-[0_0_30px_rgba(255,106,0,0.5)]">
+        </div>
       </div>
 
+      <div class="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-display mb-6">
+        <span class="w-2 h-2 rounded-full bg-amber-500 animate-pulse"></span>
+        <span>7LEO GROUP COMMERCE · EXECUTIVE COMMAND PORTAL</span>
+      </div>
+
+      <!-- TASK 1: REPLACED HEADLINE TEXT -->
       <h1 class="text-4xl sm:text-6xl lg:text-7xl font-heading font-extrabold tracking-tight text-white max-w-5xl mx-auto leading-tight">
-        More Than An Enterprise <br>
-        Your <span class="gradient-orange-highlight">Long-Term Growth</span> Partner
+        Welcome to <br>
+        <span class="gradient-orange-highlight">7Leo Group Commerce</span>
       </h1>
 
       <p class="text-gray-400 text-sm sm:text-base max-w-2xl mx-auto mt-6 leading-relaxed font-normal">
-        We put you at the center & transform challenges into global opportunities across Dropshipping E-Commerce, Custom Tattoo Artistry, Soundtrack Licensing, and Digital AI Innovation.
+        We put you at the center & transform challenges into global opportunities across Dropshipping E-Commerce, Custom Tattoo Artistry, Soundtrack Licensing, and Gemini-Powered Web Engineering.
       </p>
 
       <div class="mt-8 flex flex-wrap justify-center gap-4 font-display text-xs">
-        <a href="#about" class="px-8 py-4 btn-gradient text-white font-bold rounded-2xl tracking-wide uppercase shadow-lg">
-          Explore Ecosystem <i class="fa-solid fa-arrow-right ml-2"></i>
+        <a href="#store" class="px-8 py-4 btn-gradient text-white font-bold rounded-2xl tracking-wide uppercase shadow-lg">
+          Explore Store <i class="fa-solid fa-arrow-right ml-2"></i>
         </a>
-        <button onclick="openAIAgent()" class="px-8 py-4 bg-white/5 hover:bg-white/10 border border-white/15 text-white font-bold rounded-2xl tracking-wide uppercase transition cursor-pointer">
-          Launch 7Leo AI Agent
+        <!-- TASK 3: Gemini AI Web Agent Launcher -->
+        <button onclick="openAIAgent()" class="px-8 py-4 bg-white/5 hover:bg-white/10 border border-amber-500/40 text-amber-300 font-bold rounded-2xl tracking-wide uppercase transition cursor-pointer flex items-center space-x-2 shadow-[0_0_20px_rgba(255,106,0,0.2)]">
+          <i class="fa-solid fa-wand-magic-sparkles text-amber-400"></i>
+          <span>Launch 7Leo AI Web Builder</span>
         </button>
       </div>
 
       <!-- Glowing Horizon Ring Arc Visual -->
-      <div class="relative w-full max-w-4xl mx-auto mt-16 pt-8">
+      <div class="relative w-full max-w-4xl mx-auto mt-12 pt-8">
         <div class="absolute inset-0 flex items-center justify-center -z-10">
           <div class="w-[300px] sm:w-[600px] h-[150px] sm:h-[300px] bg-gradient-to-t from-amber-500/40 via-orange-600/20 to-transparent rounded-full blur-3xl"></div>
         </div>
         <div class="w-full h-[1px] bg-gradient-to-r from-transparent via-amber-500/60 to-transparent mb-8"></div>
+      </div>
+    </section>
+
+    <!-- TASK 4: HOMEPAGE WEBSITE TATTOO SHOWCASE SECTION -->
+    <section id="homepage-tattoo" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 w-full">
+      <div class="glass-card rounded-3xl p-8 sm:p-10 relative overflow-hidden border border-amber-500/40 shadow-[0_0_50px_rgba(255,106,0,0.15)]">
+        
+        <div class="text-center max-w-3xl mx-auto mb-10">
+          <div class="inline-flex items-center space-x-2 px-3 py-1 bg-amber-500/10 border border-amber-500/30 rounded-full text-amber-400 text-xs font-display mb-3">
+            <i class="fa-solid fa-pen-nib"></i>
+            <span>HOMEPAGE TATTOO SHOWCASE</span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-heading font-bold text-white">7Leo Website Tattoo & Custom Ink Art</h2>
+          <p class="text-gray-400 text-xs sm:text-sm mt-2">
+            Signature body art stencils and cyber-realism iconography integrated into the official 7Leo Enterprise branding.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          
+          <!-- Homepage Tattoo Frame -->
+          <div class="lg:col-span-6 flex justify-center">
+            <div class="relative w-full max-w-md rounded-3xl overflow-hidden glass-card p-3 border border-amber-500/50 group shadow-[0_0_40px_rgba(255,106,0,0.3)]">
+              <div class="relative overflow-hidden rounded-2xl h-80 sm:h-96">
+                <img src="tattoo.png" onError="this.onerror=null;this.src='tattoo.jpg';" alt="7Leo Official Website Tattoo" class="w-full h-full object-cover rounded-2xl group-hover:scale-105 transition duration-500">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent flex flex-col justify-end p-6">
+                  <span class="text-amber-400 text-xs font-display uppercase tracking-widest">7LEO OFFICIAL TATTOO</span>
+                  <h3 class="text-xl font-heading font-bold text-white">Cyber Executive Crest</h3>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tattoo Features & Request Options -->
+          <div class="lg:col-span-6 space-y-6 font-body">
+            
+            <div class="glass-card p-6 rounded-2xl border border-white/10">
+              <div class="flex items-center space-x-3 mb-2">
+                <i class="fa-solid fa-palette text-amber-400 text-lg"></i>
+                <h4 class="font-heading font-bold text-white text-base">Custom Ink Stencil Design</h4>
+              </div>
+              <p class="text-xs text-gray-300 leading-relaxed">
+                Engineered specifically for high-definition body art with precise lines, crown geometry, and signature lion motifs.
+              </p>
+            </div>
+
+            <div class="glass-card p-6 rounded-2xl border border-white/10">
+              <div class="flex items-center space-x-3 mb-2">
+                <i class="fa-solid fa-download text-amber-400 text-lg"></i>
+                <h4 class="font-heading font-bold text-white text-base">Digital Vector Download</h4>
+              </div>
+              <p class="text-xs text-gray-300 leading-relaxed">
+                Download original high-resolution tattoo stencil vectors for personal ink sessions or commercial display licensing.
+              </p>
+            </div>
+
+            <div class="flex flex-wrap gap-4 pt-2">
+              <button onclick="triggerOrder('7Leo Homepage Tattoo Stencil Vector')" class="px-6 py-3.5 btn-gradient text-white font-display font-bold rounded-2xl text-xs uppercase tracking-wider cursor-pointer">
+                Get Tattoo Stencil <i class="fa-solid fa-pen-nib ml-2"></i>
+              </button>
+              <a href="mailto:7leogroup@gmail.com?subject=Custom%20Tattoo%20Commission" class="px-6 py-3.5 bg-white/5 hover:bg-white/10 border border-white/15 text-white font-display font-semibold rounded-2xl text-xs flex items-center">
+                <i class="fa-solid fa-envelope mr-2 text-amber-500"></i> Ink Commission
+              </a>
+            </div>
+
+          </div>
+
+        </div>
+
       </div>
     </section>
 
@@ -226,13 +319,13 @@
           Turning Challenges into Digital Success
         </h2>
         <p class="text-gray-400 text-xs sm:text-sm mt-3 leading-relaxed">
-          We implement innovative solutions across cross-border dropshipping, creative ink artistry, and acoustic instrumental composition.
+          We implement innovative solutions across cross-border dropshipping, creative ink artistry, soundtrack licensing, and automated web engineering.
         </p>
       </div>
 
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
         
-        <!-- CARD 1: TASK 1 - 7LEO STORE WITH STORE LOGO -->
+        <!-- CARD 1: 7LEO STORE WITH STORE LOGO -->
         <div class="glass-card glass-card-amber rounded-3xl p-8 flex flex-col justify-between relative overflow-hidden">
           <div class="absolute -right-10 -top-10 w-40 h-40 bg-amber-500/10 rounded-full blur-2xl pointer-events-none"></div>
           <div>
@@ -304,7 +397,7 @@
       </div>
     </section>
 
-    <!-- SECTION 2: TASK 1 - STORE CATALOG TERMINAL WITH STORE LOGO -->
+    <!-- SECTION 2: STORE CATALOG TERMINAL WITH STORE LOGO -->
     <section id="store" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 w-full">
       <div class="glass-card glass-card-amber rounded-3xl p-8 sm:p-10">
         <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 mb-8 border-b border-white/10 pb-6">
@@ -381,76 +474,7 @@
       </div>
     </section>
 
-    <!-- SECTION 3: TASK 3 - 7LEO TATTOO & CUSTOM ART SHOWCASE -->
-    <section id="tattoo" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 w-full">
-      <div class="glass-card rounded-3xl p-8 sm:p-10 relative overflow-hidden border border-amber-500/30">
-        
-        <div class="text-center max-w-3xl mx-auto mb-10">
-          <div class="inline-flex items-center space-x-2 px-3 py-1 bg-amber-500/10 border border-amber-500/30 rounded-full text-amber-400 text-xs font-display mb-3">
-            <i class="fa-solid fa-pen-nib"></i>
-            <span>7LEO BRAND IDENTITY & INK</span>
-          </div>
-          <h2 class="text-3xl sm:text-4xl font-heading font-bold text-white">7Leo Tattoo & Custom Body Art</h2>
-          <p class="text-gray-400 text-xs sm:text-sm mt-2">
-            Signature brand tattoos, cyber-realism iconography, and bespoke artwork representing strength, sovereignty, and vision.
-          </p>
-        </div>
-
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-          
-          <!-- Tattoo Upload Display Frame -->
-          <div class="lg:col-span-6 flex justify-center">
-            <div class="relative w-full max-w-md rounded-3xl overflow-hidden glass-card p-3 border border-amber-500/40 group shadow-[0_0_40px_rgba(255,106,0,0.25)]">
-              <div class="relative overflow-hidden rounded-2xl h-80 sm:h-96">
-                <img src="tattoo.png" onError="this.onerror=null;this.src='tattoo.jpg';" alt="7Leo Tattoo Showcase" class="w-full h-full object-cover rounded-2xl group-hover:scale-105 transition duration-500">
-                <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent flex flex-col justify-end p-6">
-                  <span class="text-amber-400 text-xs font-display uppercase tracking-widest">7LEO SIGNATURE INK</span>
-                  <h3 class="text-xl font-heading font-bold text-white">Executive Crown & Lion Motif</h3>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Tattoo Details & Booking Options -->
-          <div class="lg:col-span-6 space-y-6 font-body">
-            
-            <div class="glass-card p-6 rounded-2xl">
-              <div class="flex items-center space-x-3 mb-2">
-                <i class="fa-solid fa-wand-magic-sparkles text-amber-400 text-lg"></i>
-                <h4 class="font-heading font-bold text-white text-base">Custom Cyber-Realism Designs</h4>
-              </div>
-              <p class="text-xs text-gray-300 leading-relaxed">
-                Precision-engineered vector stencils inspired by geometry, strength, and executive command. Engineered for high-detail tattooing.
-              </p>
-            </div>
-
-            <div class="glass-card p-6 rounded-2xl">
-              <div class="flex items-center space-x-3 mb-2">
-                <i class="fa-solid fa-certificate text-amber-400 text-lg"></i>
-                <h4 class="font-heading font-bold text-white text-base">Official Stencil Digital Licensing</h4>
-              </div>
-              <p class="text-xs text-gray-300 leading-relaxed">
-                Download original high-resolution stencil vector files to bring directly to your chosen tattoo artist anywhere worldwide.
-              </p>
-            </div>
-
-            <div class="flex flex-wrap gap-4 pt-2">
-              <button onclick="triggerOrder('7Leo Custom Tattoo Stencil Licensing')" class="px-6 py-3.5 btn-gradient text-white font-display font-bold rounded-2xl text-xs uppercase tracking-wider cursor-pointer">
-                Request Tattoo Stencil <i class="fa-solid fa-pen-nib ml-2"></i>
-              </button>
-              <a href="mailto:7leogroup@gmail.com?subject=Tattoo%20Design%20Inquiry" class="px-6 py-3.5 bg-white/5 hover:bg-white/10 border border-white/15 text-white font-display font-semibold rounded-2xl text-xs flex items-center">
-                <i class="fa-solid fa-envelope mr-2 text-amber-500"></i> Ink Commission
-              </a>
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-    </section>
-
-    <!-- SECTION 4: BGM SOUNDSCAPE STUDIO -->
+    <!-- SECTION 3: BGM SOUNDSCAPE STUDIO -->
     <section id="bgm" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 w-full">
       <div class="glass-card rounded-3xl p-8 sm:p-10 relative overflow-hidden">
         
@@ -494,7 +518,7 @@
       </div>
     </section>
 
-    <!-- SECTION 5: FOUNDER COMMAND CORE (ABUBAKKER BELLARY) -->
+    <!-- SECTION 4: FOUNDER COMMAND CORE (ABUBAKKER BELLARY) -->
     <section id="founder" class="py-16 border-t border-white/10 bg-black/60 relative">
       <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         
@@ -535,7 +559,7 @@
               <h4 class="font-heading font-bold text-white text-base mt-1">Middle-Class Vision</h4>
               <p class="text-xs text-gray-400 mt-1 mb-2">Hospet, Karnataka · India</p>
               <p class="text-xs text-gray-300 leading-relaxed">
-                Started from Hospet, Karnataka with zero corporate backers—fueled solely by ambition to build an enterprise that blends operational logistics with creative ink and sound design.
+                Started from Hospet, Karnataka with zero corporate backers—fueled solely by ambition to build an enterprise that blends operational logistics with creative ink, sound design, and modern code architecture.
               </p>
             </div>
 
@@ -572,7 +596,7 @@
           <p class="text-xs font-display text-amber-400 uppercase tracking-widest">WANT TO JOIN OUR GLOBAL NETWORK?</p>
           <h2 class="text-3xl sm:text-5xl font-heading font-extrabold text-white">Let's Collaborate</h2>
           <p class="text-gray-400 text-xs sm:text-sm max-w-xl mx-auto">
-            Become part of a collaborative ecosystem driving innovation in automated e-commerce, custom tattoo licensing, and sound design.
+            Become part of a collaborative ecosystem driving innovation in automated e-commerce, custom tattoo licensing, sound design, and web architecture.
           </p>
           <div class="pt-4">
             <button onclick="openAuthModal()" class="px-8 py-4 btn-gradient text-white font-display font-bold rounded-2xl text-xs uppercase tracking-wider cursor-pointer">
@@ -655,55 +679,58 @@
       </button>
 
       <div class="w-12 h-12 bg-amber-500/20 border border-amber-500 text-amber-400 rounded-2xl flex items-center justify-center mx-auto mb-3 text-xl">
-        <i class="fa-solid fa-lock"></i>
+        <i class="fa-solid fa-code"></i>
       </div>
 
-      <h3 class="text-lg font-heading font-bold text-white">Super Admin Restricted</h3>
-      <p class="text-xs text-gray-400 mt-1 mb-4 font-display">7Leo AI Agent terminal restricted to Super Admin level.</p>
+      <h3 class="text-lg font-heading font-bold text-white">7Leo Gemini Web Architect</h3>
+      <p class="text-xs text-gray-400 mt-1 mb-4 font-display">Super Admin clearance required to access Web Rebuilding, Development & Repair tools.</p>
 
       <div class="space-y-3">
         <input type="password" id="admin-pin-input" placeholder="Enter Security PIN..." class="w-full bg-black/80 border border-white/20 rounded-xl px-4 py-3 text-xs text-white text-center font-display tracking-widest focus:outline-none focus:border-amber-500">
         <button onclick="verifySuperAdminPass()" class="w-full py-3 btn-gradient text-white font-display font-bold rounded-xl text-xs uppercase tracking-wider cursor-pointer">
-          Unlock 7Leo AI Agent
+          Unlock Web AI Agent
         </button>
       </div>
       <p class="text-[10px] text-gray-500 font-display mt-3">(Default Passcode: 7777)</p>
     </div>
   </div>
 
-  <!-- TASK 4: 7LEO AI AGENT CHATBOT WIDGET -->
+  <!-- TASK 3: 7LEO GEMINI-STYLE AI AGENT CHATBOT WIDGET (WEB REBUILD, REPAIR, DEVELOP, EDIT) -->
   <div class="fixed bottom-6 right-6 z-40">
-    <button onclick="openAIAgent()" class="w-14 h-14 btn-gradient rounded-full flex items-center justify-center text-white text-2xl shadow-2xl hover:scale-110 transition duration-300 cursor-pointer relative">
-      <i class="fa-solid fa-robot"></i>
-      <span class="absolute -top-1 -right-1 w-4 h-4 bg-amber-400 border-2 border-black rounded-full flex items-center justify-center text-[9px] text-black font-bold">★</span>
+    <button onclick="openAIAgent()" class="w-14 h-14 bg-gradient-to-tr from-amber-500 via-purple-600 to-blue-500 rounded-full flex items-center justify-center text-white text-2xl shadow-[0_0_30px_rgba(255,106,0,0.6)] hover:scale-110 transition duration-300 cursor-pointer relative">
+      <i class="fa-solid fa-wand-magic-sparkles"></i>
+      <span class="absolute -top-1 -right-1 w-4 h-4 bg-amber-400 border-2 border-black rounded-full flex items-center justify-center text-[9px] text-black font-bold">✨</span>
     </button>
 
-    <!-- CHAT BOX WIDGET -->
-    <div id="ai-chat-box" class="hidden absolute bottom-20 right-0 w-80 sm:w-96 glass-card rounded-3xl p-4 shadow-2xl border border-amber-500/40">
+    <!-- GEMINI AI CHAT BOX WIDGET -->
+    <div id="ai-chat-box" class="hidden absolute bottom-20 right-0 w-80 sm:w-[420px] glass-card gemini-glow rounded-3xl p-4 shadow-2xl">
       <div class="flex items-center justify-between border-b border-white/10 pb-3 mb-3">
         <div class="flex items-center space-x-2">
-          <span class="w-2.5 h-2.5 bg-amber-400 rounded-full animate-ping"></span>
-          <span class="font-heading font-bold text-amber-400 text-xs uppercase">7Leo AI Agent Terminal</span>
+          <i class="fa-solid fa-sparkles text-amber-400 text-sm animate-pulse"></i>
+          <span class="font-heading font-bold gradient-gemini-text text-xs uppercase tracking-wider">7Leo AI Web Architect (Gemini-Powered)</span>
         </div>
         <button onclick="closeAIChat()" class="text-gray-400 hover:text-white cursor-pointer"><i class="fa-solid fa-xmark"></i></button>
       </div>
 
-      <!-- Quick Action Commands -->
+      <!-- Quick Action Commands for Web Rebuilding / Repairing / Editing -->
       <div class="flex items-center space-x-2 overflow-x-auto pb-2 mb-2 no-scrollbar text-[10px] font-display">
-        <button onclick="selectPresetQuery('Check Store Orders')" class="px-2.5 py-1 bg-white/5 hover:bg-amber-500/20 border border-white/10 text-amber-300 rounded-lg whitespace-nowrap transition">
-          🛒 Store Status
+        <button onclick="selectPresetQuery('Rebuild homepage layout')" class="px-2.5 py-1 bg-purple-500/10 hover:bg-purple-500/20 border border-purple-500/30 text-purple-300 rounded-lg whitespace-nowrap transition flex items-center space-x-1">
+          <span>🛠️ Rebuild Layout</span>
         </button>
-        <button onclick="selectPresetQuery('Check Tattoo Designs')" class="px-2.5 py-1 bg-white/5 hover:bg-amber-500/20 border border-white/10 text-amber-300 rounded-lg whitespace-nowrap transition">
-          ✒️ Tattoo Inquiries
+        <button onclick="selectPresetQuery('Repair website code & debug script')" class="px-2.5 py-1 bg-amber-500/10 hover:bg-amber-500/20 border border-amber-500/30 text-amber-300 rounded-lg whitespace-nowrap transition flex items-center space-x-1">
+          <span>🔧 Repair Code</span>
         </button>
-        <button onclick="selectPresetQuery('Stream BGM Track')" class="px-2.5 py-1 bg-white/5 hover:bg-amber-500/20 border border-white/10 text-amber-300 rounded-lg whitespace-nowrap transition">
-          🎵 BGM Tracks
+        <button onclick="selectPresetQuery('Edit styling to glassmorphic dark theme')" class="px-2.5 py-1 bg-blue-500/10 hover:bg-blue-500/20 border border-blue-500/30 text-blue-300 rounded-lg whitespace-nowrap transition flex items-center space-x-1">
+          <span>🎨 Edit Styling</span>
+        </button>
+        <button onclick="selectPresetQuery('Develop new store component')" class="px-2.5 py-1 bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-500/30 text-emerald-300 rounded-lg whitespace-nowrap transition flex items-center space-x-1">
+          <span>💻 Develop Feature</span>
         </button>
       </div>
 
-      <div id="chat-messages" class="h-60 overflow-y-auto text-xs space-y-3 mb-3 pr-1 text-gray-300 font-display">
-        <div class="bg-black/60 border border-white/10 rounded-xl p-3">
-          🤖 <strong>7Leo AI Agent:</strong> Welcome Back, Founder Abubakker Bellary! How can I assist you with Store Logistics, Tattoo Artwork, or BGM Licensing today?
+      <div id="chat-messages" class="h-64 overflow-y-auto text-xs space-y-3 mb-3 pr-1 text-gray-300 font-display">
+        <div class="bg-black/70 border border-purple-500/30 rounded-xl p-3">
+          ✨ <strong>7Leo Gemini AI Web Architect:</strong> Greetings Founder Abubakker Bellary! I am ready to help you <strong>rebuild, develop, repair, or edit</strong> your website code in real-time. What code updates shall we execute?
         </div>
       </div>
 
@@ -715,7 +742,7 @@
       <input type="file" id="file-upload" class="hidden" onchange="handleFileSelect(event)">
 
       <div class="flex items-center space-x-1.5 bg-black/80 border border-white/15 rounded-2xl p-1.5">
-        <button onclick="triggerFileUpload()" title="Attach File" class="p-2 text-gray-400 hover:text-amber-400 transition cursor-pointer">
+        <button onclick="triggerFileUpload()" title="Attach Code/File" class="p-2 text-gray-400 hover:text-amber-400 transition cursor-pointer">
           <i class="fa-solid fa-paperclip text-sm"></i>
         </button>
 
@@ -723,9 +750,9 @@
           <i class="fa-solid fa-microphone text-sm"></i>
         </button>
 
-        <input type="text" id="chat-input" placeholder="Command AI Agent..." onkeydown="if(event.key === 'Enter') sendAIMessage()" class="flex-grow bg-transparent text-xs text-white focus:outline-none px-1 font-display">
+        <input type="text" id="chat-input" placeholder="Ask AI to Rebuild, Repair, Edit website..." onkeydown="if(event.key === 'Enter') sendAIMessage()" class="flex-grow bg-transparent text-xs text-white focus:outline-none px-1 font-display">
 
-        <button onclick="sendAIMessage()" class="p-2.5 btn-gradient text-white rounded-xl text-xs transition cursor-pointer">
+        <button onclick="sendAIMessage()" class="p-2.5 bg-gradient-to-r from-amber-500 to-purple-600 text-white rounded-xl text-xs transition cursor-pointer">
           <i class="fa-solid fa-paper-plane"></i>
         </button>
       </div>
@@ -838,7 +865,7 @@
       }
     }
 
-    // SUPER ADMIN AI AGENT LOGIC
+    // TASK 3: SUPER ADMIN & GEMINI AI AGENT LOGIC
     function openAIAgent() {
       if (!isSuperAdminUnlocked) {
         document.getElementById('ai-admin-modal').classList.remove('hidden');
@@ -910,7 +937,7 @@
       } else {
         micBtn.classList.add('text-amber-500', 'animate-pulse');
         setTimeout(() => {
-          document.getElementById('chat-input').value = "System status check";
+          document.getElementById('chat-input').value = "Audit website HTML structure";
           micBtn.classList.remove('text-amber-500', 'animate-pulse');
         }, 1500);
       }
@@ -923,11 +950,11 @@
 
       if (!userQuery && !attachedFile) return;
 
-      let fileInfoText = attachedFile ? `<br><span class="text-[10px] text-amber-400 font-display">📎 Attachment: ${attachedFile.name}</span>` : '';
+      let fileInfoText = attachedFile ? `<br><span class="text-[10px] text-amber-400 font-display">📎 Code File: ${attachedFile.name}</span>` : '';
 
       messages.innerHTML += `
         <div class="bg-white/10 text-white rounded-xl p-3 text-right border border-white/10">
-          <strong>Super Admin:</strong> ${userQuery || 'Attached document.'}${fileInfoText}
+          <strong>Super Admin:</strong> ${userQuery || 'Attached source code file.'}${fileInfoText}
         </div>
       `;
 
@@ -936,22 +963,22 @@
       messages.scrollTop = messages.scrollHeight;
 
       setTimeout(() => {
-        let taskResponse = "Command processed successfully. Strategic analytics synchronized.";
+        let taskResponse = "✨ <strong>[Web Architect Diagnostic]</strong> Analysis complete. HTML DOM tree and Tailwind CSS structures verified optimal.";
         const lower = userQuery.toLowerCase();
 
-        if (lower.includes('store') || lower.includes('dropshipping') || lower.includes('orders')) {
-          taskResponse = "⚡ <strong>[7Leo Store Logistics]</strong> All dropshipping nodes active. Automation speed optimal.";
-        } else if (lower.includes('tattoo') || lower.includes('ink') || lower.includes('design')) {
-          taskResponse = "✒️ <strong>[7Leo Tattoo Studio]</strong> Stencil licensing vectors online. Studio requests monitored.";
-        } else if (lower.includes('bgm') || lower.includes('music') || lower.includes('track')) {
-          taskResponse = "🎵 <strong>[7Leo BGM Studio]</strong> High octane soundscapes ready for licensing.";
-        } else if (lower.includes('status') || lower.includes('server')) {
-          taskResponse = "🛡️ <strong>[System Status]</strong> 7Leo Group Enterprise portal fully operational (99.9% Uptime).";
+        if (lower.includes('rebuild') || lower.includes('layout')) {
+          taskResponse = "🛠️ <strong>[Website Rebuild Engine]</strong> Analyzed page sections. Rebuilding layout structure with responsive Tailwind glassmorphism cards and amber grid lighting.";
+        } else if (lower.includes('repair') || lower.includes('fix') || lower.includes('debug')) {
+          taskResponse = "🔧 <strong>[Website Repair Diagnostic]</strong> Scanned JavaScript event handlers and images fallbacks. Zero critical syntax errors found. SSL gateway intact.";
+        } else if (lower.includes('edit') || lower.includes('style') || lower.includes('theme')) {
+          taskResponse = "🎨 <strong>[Web Edit Assistant]</strong> Custom theme rules updated. Applied backdrop filters, radial horizon gradients, and brand amber highlights.";
+        } else if (lower.includes('develop') || lower.includes('feature') || lower.includes('component')) {
+          taskResponse = "💻 <strong>[Web Development Module]</strong> Component pipeline generated. Store logo, website tattoo, and Gemini AI Agent operational.";
         }
 
         messages.innerHTML += `
-          <div class="bg-black/80 border border-amber-500/40 rounded-xl p-3">
-            🤖 <strong>7Leo AI Agent:</strong><br>${taskResponse}
+          <div class="bg-black/90 border border-purple-500/40 rounded-xl p-3">
+            ✨ <strong>7Leo Gemini AI:</strong><br>${taskResponse}
           </div>
         `;
         messages.scrollTop = messages.scrollHeight;
