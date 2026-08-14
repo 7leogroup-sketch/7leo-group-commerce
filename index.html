@@ -16,7 +16,7 @@
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   
-  <!-- Google Sign-In SDK -->
+  <!-- Google Sign-In SDK (GSI) -->
   <script src="https://accounts.google.com/gsi/client" async defer></script>
 
   <!-- Font Awesome Icons -->
@@ -173,7 +173,6 @@
         <nav class="hidden md:flex items-center space-x-8 text-xs font-display font-medium tracking-wide text-gray-300">
           <a href="#about" class="hover:text-amber-400 transition">WHO WE ARE</a>
           <a href="#store" class="hover:text-amber-400 transition">STORE</a>
-          <a href="#homepage-tattoo" class="hover:text-amber-400 transition">TATTOO ART</a>
           <a href="#bgm" class="hover:text-amber-400 transition">BGM SOUNDS</a>
           <a href="#founder" class="hover:text-amber-400 transition">FOUNDER</a>
         </nav>
@@ -184,11 +183,11 @@
             <i class="fa-solid fa-qrcode text-sm"></i>
           </button>
 
-          <!-- Google / Account Connect Container -->
+          <!-- Google Connect Container -->
           <div id="auth-header-container">
-            <button onclick="openAuthModal('signin')" class="px-4 py-2.5 btn-gradient text-white font-display font-semibold rounded-xl text-xs tracking-wide flex items-center space-x-2 cursor-pointer">
-              <i class="fa-solid fa-user-lock"></i>
-              <span class="hidden sm:inline">Sign In / Account</span>
+            <button onclick="openAuthModal()" class="px-4 py-2.5 btn-gradient text-white font-display font-semibold rounded-xl text-xs tracking-wide flex items-center space-x-2 cursor-pointer">
+              <i class="fa-brands fa-google"></i>
+              <span class="hidden sm:inline">Connect Google</span>
               <span class="sm:hidden">Login</span>
             </button>
           </div>
@@ -196,9 +195,10 @@
       </div>
     </header>
 
-    <!-- HERO SECTION WITH 7LEO STORE LOGO -->
+    <!-- HERO SECTION WITH NEW 7LEO STORE LOGO (HOMEPAGE DISPLAY) -->
     <section id="hero" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-16 w-full text-center relative">
       
+      <!-- 7Leo Store Logo Banner Upload -->
       <div class="flex justify-center items-center gap-4 mb-6">
         <div class="relative group cursor-pointer">
           <div class="absolute -inset-2 bg-gradient-to-r from-amber-500 via-orange-500 to-yellow-500 rounded-full blur-md opacity-60 group-hover:opacity-100 transition duration-500 animate-pulse"></div>
@@ -218,7 +218,7 @@
       </h1>
 
       <p class="text-gray-400 text-sm sm:text-base max-w-2xl mx-auto mt-6 leading-relaxed font-normal">
-        We put you at the center & transform challenges into global opportunities across Dropshipping E-Commerce, Custom Tattoo Artistry, Soundtrack Licensing, and Gemini-Powered Web Engineering.
+        We put you at the center & transform challenges into global opportunities across Dropshipping E-Commerce, Soundtrack Licensing, and Gemini-Powered Web Engineering.
       </p>
 
       <div class="mt-8 flex flex-wrap justify-center gap-4 font-display text-xs">
@@ -240,76 +240,7 @@
       </div>
     </section>
 
-    <!-- HOMEPAGE WEBSITE TATTOO SHOWCASE SECTION -->
-    <section id="homepage-tattoo" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 w-full">
-      <div class="glass-card rounded-3xl p-8 sm:p-10 relative overflow-hidden border border-amber-500/40 shadow-[0_0_50px_rgba(255,106,0,0.15)]">
-        
-        <div class="text-center max-w-3xl mx-auto mb-10">
-          <div class="inline-flex items-center space-x-2 px-3 py-1 bg-amber-500/10 border border-amber-500/30 rounded-full text-amber-400 text-xs font-display mb-3">
-            <i class="fa-solid fa-pen-nib"></i>
-            <span>HOMEPAGE TATTOO SHOWCASE</span>
-          </div>
-          <h2 class="text-3xl sm:text-4xl font-heading font-bold text-white">7Leo Website Tattoo & Custom Ink Art</h2>
-          <p class="text-gray-400 text-xs sm:text-sm mt-2">
-            Signature body art stencils and cyber-realism iconography integrated into the official 7Leo Enterprise branding.
-          </p>
-        </div>
-
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-          
-          <!-- Homepage Tattoo Frame -->
-          <div class="lg:col-span-6 flex justify-center">
-            <div class="relative w-full max-w-md rounded-3xl overflow-hidden glass-card p-3 border border-amber-500/50 group shadow-[0_0_40px_rgba(255,106,0,0.3)]">
-              <div class="relative overflow-hidden rounded-2xl h-80 sm:h-96">
-                <img src="tattoo.png" onError="this.onerror=null;this.src='tattoo.jpg';" alt="7Leo Official Website Tattoo" class="w-full h-full object-cover rounded-2xl group-hover:scale-105 transition duration-500">
-                <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent flex flex-col justify-end p-6">
-                  <span class="text-amber-400 text-xs font-display uppercase tracking-widest">7LEO OFFICIAL TATTOO</span>
-                  <h3 class="text-xl font-heading font-bold text-white">Cyber Executive Crest</h3>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Tattoo Features & Request Options -->
-          <div class="lg:col-span-6 space-y-6 font-body">
-            
-            <div class="glass-card p-6 rounded-2xl border border-white/10">
-              <div class="flex items-center space-x-3 mb-2">
-                <i class="fa-solid fa-palette text-amber-400 text-lg"></i>
-                <h4 class="font-heading font-bold text-white text-base">Custom Ink Stencil Design</h4>
-              </div>
-              <p class="text-xs text-gray-300 leading-relaxed">
-                Engineered specifically for high-definition body art with precise lines, crown geometry, and signature lion motifs.
-              </p>
-            </div>
-
-            <div class="glass-card p-6 rounded-2xl border border-white/10">
-              <div class="flex items-center space-x-3 mb-2">
-                <i class="fa-solid fa-download text-amber-400 text-lg"></i>
-                <h4 class="font-heading font-bold text-white text-base">Digital Vector Download</h4>
-              </div>
-              <p class="text-xs text-gray-300 leading-relaxed">
-                Download original high-resolution tattoo stencil vectors for personal ink sessions or commercial display licensing.
-              </p>
-            </div>
-
-            <div class="flex flex-wrap gap-4 pt-2">
-              <button onclick="triggerOrder('7Leo Homepage Tattoo Stencil Vector')" class="px-6 py-3.5 btn-gradient text-white font-display font-bold rounded-2xl text-xs uppercase tracking-wider cursor-pointer">
-                Get Tattoo Stencil <i class="fa-solid fa-pen-nib ml-2"></i>
-              </button>
-              <a href="mailto:7leogroup@gmail.com?subject=Custom%20Tattoo%20Commission" class="px-6 py-3.5 bg-white/5 hover:bg-white/10 border border-white/15 text-white font-display font-semibold rounded-2xl text-xs flex items-center">
-                <i class="fa-solid fa-envelope mr-2 text-amber-500"></i> Ink Commission
-              </a>
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-    </section>
-
-    <!-- SECTION 1: WHO WE ARE (ECOSYSTEM OVERVIEW) -->
+    <!-- SECTION 1: WHO WE ARE (ECOSYSTEM OVERVIEW WITH STORE LOGO) -->
     <section id="about" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 w-full">
       <div class="text-center max-w-3xl mx-auto mb-12">
         <p class="text-xs font-display text-amber-500 uppercase tracking-widest mb-2">WHO WE ARE</p>
@@ -317,18 +248,19 @@
           Turning Challenges into Digital Success
         </h2>
         <p class="text-gray-400 text-xs sm:text-sm mt-3 leading-relaxed">
-          We implement innovative solutions across cross-border dropshipping, creative ink artistry, soundtrack licensing, and automated web engineering.
+          We implement innovative solutions across cross-border dropshipping, soundtrack licensing, and automated web engineering.
         </p>
       </div>
 
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
         
-        <!-- CARD 1: 7LEO STORE -->
+        <!-- CARD 1: 7LEO STORE WITH NEW UPLOADING LOGO -->
         <div class="glass-card glass-card-amber rounded-3xl p-8 flex flex-col justify-between relative overflow-hidden">
           <div class="absolute -right-10 -top-10 w-40 h-40 bg-amber-500/10 rounded-full blur-2xl pointer-events-none"></div>
           <div>
             <div class="flex items-center justify-between border-b border-white/10 pb-5 mb-6">
               <div class="flex items-center space-x-4">
+                <!-- Store Logo Integration -->
                 <div class="relative group">
                   <img src="1000078859.png" onError="this.onerror=null;this.src='store-logo.png';" alt="7Leo Store Logo" class="w-16 h-16 rounded-full border-2 border-amber-500 p-0.5 bg-black object-cover shadow-[0_0_25px_rgba(255,106,0,0.5)]">
                 </div>
@@ -394,11 +326,12 @@
       </div>
     </section>
 
-    <!-- SECTION 2: STORE CATALOG TERMINAL -->
+    <!-- SECTION 2: STORE CATALOG TERMINAL WITH 7LEO STORE LOGO IN HEADER -->
     <section id="store" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 w-full">
       <div class="glass-card glass-card-amber rounded-3xl p-8 sm:p-10">
         <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 mb-8 border-b border-white/10 pb-6">
           <div class="flex items-center space-x-4">
+            <!-- 7Leo Store Emblem Header -->
             <img src="1000078859.png" onError="this.onerror=null;this.src='store-logo.png';" alt="7Leo Store Logo" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full border-2 border-amber-500 p-0.5 bg-black object-cover shadow-[0_0_30px_rgba(255,106,0,0.5)]">
             <div>
               <h2 class="text-2xl sm:text-3xl font-heading font-bold text-white">Store Catalog Terminal</h2>
@@ -470,46 +403,198 @@
       </div>
     </section>
 
-    <!-- SECTION 3: BGM SOUNDSCAPE STUDIO -->
+    <!-- SECTION 3: 7LEO BGM STUDIO & YOUTUBE CHANNEL INTEGRATION -->
     <section id="bgm" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 w-full">
-      <div class="glass-card rounded-3xl p-8 sm:p-10 relative overflow-hidden">
+      <div class="glass-card glass-card-amber rounded-3xl p-8 sm:p-10 relative overflow-hidden shadow-[0_0_50px_rgba(255,106,0,0.15)]">
         
-        <div class="w-full h-56 sm:h-72 rounded-2xl overflow-hidden mb-8 border border-white/10 relative group">
+        <!-- Studio Header Banner -->
+        <div class="w-full h-56 sm:h-72 rounded-2xl overflow-hidden mb-8 border border-amber-500/30 relative group shadow-2xl">
           <img src="bgm-banner.png" onError="this.onerror=null;this.src='star-logo.png';" alt="7Leo BGM Studio Banner" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-          <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent flex items-end p-6">
-            <div class="flex items-center space-x-4">
-              <img src="bgm-logo.png" onError="this.onerror=null;this.src='star-logo.png';" alt="7Leo BGM Logo" class="w-16 h-16 rounded-2xl border-2 border-amber-500 object-cover bg-black shadow-xl">
-              <div>
-                <h2 class="text-2xl sm:text-3xl font-heading font-bold text-white">7Leo BGM Studio</h2>
-                <p class="text-xs text-amber-400 font-display">Original Soundscapes & Soundtrack Licensing</p>
+          <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent flex items-end p-6">
+            <div class="flex flex-wrap items-center justify-between w-full gap-4">
+              <div class="flex items-center space-x-4">
+                <img src="bgm-logo.png" onError="this.onerror=null;this.src='star-logo.png';" alt="7Leo BGM Logo" class="w-16 h-16 rounded-2xl border-2 border-amber-500 object-cover bg-black shadow-xl">
+                <div>
+                  <h2 class="text-2xl sm:text-4xl font-heading font-extrabold text-white">7Leo BGM</h2>
+                  <p class="text-xs sm:text-sm text-amber-400 font-display tracking-widest uppercase">Official YouTube Music Channel</p>
+                </div>
               </div>
+
+              <!-- SUBSCRIBE BUTTON AS EXPLORE MUSIC -->
+              <a href="https://www.youtube.com/@7LeoBGM?sub_confirmation=1" target="_blank" class="px-8 py-4 btn-gradient text-white font-display font-bold rounded-2xl text-xs tracking-wider uppercase flex items-center space-x-2 shadow-lg hover:scale-105 transition">
+                <i class="fa-brands fa-youtube text-lg"></i>
+                <span>Explore Music</span>
+              </a>
             </div>
           </div>
         </div>
 
-        <div class="bg-black/60 border border-white/10 rounded-2xl p-6 sm:p-8">
-          <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
-            <div>
-              <h3 class="text-lg font-heading font-bold text-white flex items-center">
-                <i class="fa-solid fa-compact-disc text-amber-500 mr-3 animate-spin"></i> Track Licensing Channel
-              </h3>
-              <p class="text-xs text-gray-400 mt-1">Background music scores tailored for cinematic projects & commercials.</p>
+        <!-- WELCOME DESCRIPTION & CHANNEL INFO -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-8">
+          
+          <!-- Channel Description Box -->
+          <div class="lg:col-span-7 bg-black/70 border border-white/10 rounded-2xl p-6 sm:p-8 space-y-4">
+            <div class="flex items-center space-x-3 border-b border-white/10 pb-4">
+              <i class="fa-solid fa-music text-amber-500 text-xl"></i>
+              <h3 class="text-xl font-heading font-bold text-white">Welcome to 7leo BGM!</h3>
             </div>
             
-            <button onclick="playAudioPreview()" class="px-6 py-3 btn-gradient text-white font-display font-bold rounded-xl text-xs flex items-center space-x-2 cursor-pointer shadow-lg">
-              <i class="fa-solid fa-play" id="play-icon"></i>
-              <span id="play-text">Play Audio Preview</span>
-            </button>
+            <p class="text-xs sm:text-sm font-display text-amber-400 font-semibold">
+              Mobile.Composed Groovepad Music
+            </p>
+
+            <p class="text-xs sm:text-sm text-gray-300 leading-relaxed font-body">
+              <strong>Drive • Chill • Gangster • DJ • Cinematic</strong><br>
+              where every track sets the perfect vibe.<br>
+              Handcrafted instrumental background music to fuel your focus, ease your mind, and elevate your moments.
+            </p>
+
+            <div class="bg-amber-500/10 border border-amber-500/30 p-4 rounded-xl text-xs font-display text-amber-300 flex items-center justify-between">
+              <span>New BGM drops regularly — Subscribe & never miss a track!</span>
+              <a href="https://www.youtube.com/@7LeoBGM?sub_confirmation=1" target="_blank" class="text-amber-400 hover:text-white underline ml-2 font-bold whitespace-nowrap">Subscribe Now</a>
+            </div>
           </div>
 
-          <div class="flex flex-wrap gap-4 pt-2">
-            <a href="mailto:7leogroup@gmail.com?subject=Music%20Licensing%20Inquiry" class="px-6 py-3 bg-white/5 hover:bg-white/10 border border-white/15 text-white font-display font-semibold rounded-xl text-xs flex items-center">
+          <!-- YouTube Live Embedded Player (Auto-Updates Automatically) -->
+          <div class="lg:col-span-5 bg-black/80 border border-white/10 rounded-2xl p-4 flex flex-col justify-between">
+            <div class="flex items-center justify-between mb-3 px-2">
+              <span class="text-xs font-display text-amber-400 flex items-center">
+                <span class="w-2 h-2 rounded-full bg-red-500 animate-pulse mr-2"></span>
+                AUTO-SYNCED YOUTUBE FEED
+              </span>
+              <a href="https://www.youtube.com/@7LeoBGM" target="_blank" class="text-[11px] font-display text-gray-400 hover:text-amber-400">@7LeoBGM <i class="fa-solid fa-arrow-up-right-from-square ml-1 text-[9px]"></i></a>
+            </div>
+
+            <!-- Dynamic Channel Uploads Embed -->
+            <div class="relative w-full h-56 sm:h-64 rounded-xl overflow-hidden border border-white/10 bg-black">
+              <iframe 
+                class="w-full h-full rounded-xl"
+                src="https://www.youtube.com/embed/videoseries?list=UUamMEOUEp0NdY2EAiqH9WfA" 
+                title="7Leo BGM YouTube Dynamic Feed" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                allowfullscreen>
+              </iframe>
+            </div>
+
+            <p class="text-[10px] text-gray-400 font-display text-center mt-3">
+              ⚡ Any new music upload on YouTube automatically plays live right here.
+            </p>
+          </div>
+
+        </div>
+
+        <!-- EXPLORE BY SERIES / PLAYLISTS (WITHOUT EMOJIS) -->
+        <div class="bg-black/60 border border-white/10 rounded-2xl p-6 sm:p-8">
+          <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6 border-b border-white/10 pb-4">
+            <div>
+              <h3 class="text-xl font-heading font-bold text-white flex items-center">
+                <i class="fa-solid fa-layer-group text-amber-500 mr-3"></i> Explore by Series
+              </h3>
+              <p class="text-xs text-gray-400 mt-1">Curated playlists for every mood and project genre.</p>
+            </div>
+            
+            <a href="https://www.youtube.com/@7LeoBGM/playlists" target="_blank" class="px-5 py-2.5 bg-white/5 hover:bg-white/10 border border-amber-500/40 text-amber-300 font-display font-semibold rounded-xl text-xs transition flex items-center">
+              View All Playlists <i class="fa-solid fa-arrow-right ml-2 text-xs"></i>
+            </a>
+          </div>
+
+          <!-- Playlist Series Grid -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            
+            <!-- Series 1 -->
+            <a href="https://www.youtube.com/@7LeoBGM/playlists" target="_blank" class="glass-card p-5 rounded-2xl border border-white/10 hover:border-amber-500/50 transition group flex flex-col justify-between">
+              <div>
+                <div class="text-[10px] font-display text-amber-400 uppercase tracking-widest mb-1">Drive Vibes</div>
+                <h4 class="font-heading font-bold text-white text-base group-hover:text-amber-400 transition">7Leo Drive Series</h4>
+                <p class="text-xs text-gray-400 mt-2">Smooth cruising electronic beats and synth flows.</p>
+              </div>
+              <div class="mt-4 pt-3 border-t border-white/10 flex items-center justify-between text-xs font-display text-amber-400">
+                <span>Play Series</span>
+                <i class="fa-solid fa-circle-play text-sm group-hover:scale-110 transition"></i>
+              </div>
+            </a>
+
+            <!-- Series 2 -->
+            <a href="https://www.youtube.com/@7LeoBGM/playlists" target="_blank" class="glass-card p-5 rounded-2xl border border-white/10 hover:border-amber-500/50 transition group flex flex-col justify-between">
+              <div>
+                <div class="text-[10px] font-display text-amber-400 uppercase tracking-widest mb-1">Chill Out</div>
+                <h4 class="font-heading font-bold text-white text-base group-hover:text-amber-400 transition">7Leo Chill Series</h4>
+                <p class="text-xs text-gray-400 mt-2">Relaxing instrumental melodies to ease your mind.</p>
+              </div>
+              <div class="mt-4 pt-3 border-t border-white/10 flex items-center justify-between text-xs font-display text-amber-400">
+                <span>Play Series</span>
+                <i class="fa-solid fa-circle-play text-sm group-hover:scale-110 transition"></i>
+              </div>
+            </a>
+
+            <!-- Series 3 -->
+            <a href="https://www.youtube.com/@7LeoBGM/playlists" target="_blank" class="glass-card p-5 rounded-2xl border border-white/10 hover:border-amber-500/50 transition group flex flex-col justify-between">
+              <div>
+                <div class="text-[10px] font-display text-amber-400 uppercase tracking-widest mb-1">Street Energy</div>
+                <h4 class="font-heading font-bold text-white text-base group-hover:text-amber-400 transition">7Leo Gangster Series</h4>
+                <p class="text-xs text-gray-400 mt-2">Hard-hitting trap beats and dark mafia energy.</p>
+              </div>
+              <div class="mt-4 pt-3 border-t border-white/10 flex items-center justify-between text-xs font-display text-amber-400">
+                <span>Play Series</span>
+                <i class="fa-solid fa-circle-play text-sm group-hover:scale-110 transition"></i>
+              </div>
+            </a>
+
+            <!-- Series 4 -->
+            <a href="https://www.youtube.com/@7LeoBGM/playlists" target="_blank" class="glass-card p-5 rounded-2xl border border-white/10 hover:border-amber-500/50 transition group flex flex-col justify-between">
+              <div>
+                <div class="text-[10px] font-display text-amber-400 uppercase tracking-widest mb-1">Club & Mix</div>
+                <h4 class="font-heading font-bold text-white text-base group-hover:text-amber-400 transition">7Leo DJ Series</h4>
+                <p class="text-xs text-gray-400 mt-2">High energy EDM drops and nightlife party mixes.</p>
+              </div>
+              <div class="mt-4 pt-3 border-t border-white/10 flex items-center justify-between text-xs font-display text-amber-400">
+                <span>Play Series</span>
+                <i class="fa-solid fa-circle-play text-sm group-hover:scale-110 transition"></i>
+              </div>
+            </a>
+
+            <!-- Series 5 -->
+            <a href="https://www.youtube.com/@7LeoBGM/playlists" target="_blank" class="glass-card p-5 rounded-2xl border border-white/10 hover:border-amber-500/50 transition group flex flex-col justify-between">
+              <div>
+                <div class="text-[10px] font-display text-amber-400 uppercase tracking-widest mb-1">Epic Feels</div>
+                <h4 class="font-heading font-bold text-white text-base group-hover:text-amber-400 transition">7Leo Cinematic Series</h4>
+                <p class="text-xs text-gray-400 mt-2">Cinematic background scores for film & video creators.</p>
+              </div>
+              <div class="mt-4 pt-3 border-t border-white/10 flex items-center justify-between text-xs font-display text-amber-400">
+                <span>Play Series</span>
+                <i class="fa-solid fa-circle-play text-sm group-hover:scale-110 transition"></i>
+              </div>
+            </a>
+
+            <!-- Series 6 -->
+            <a href="https://www.youtube.com/@7LeoBGM/playlists" target="_blank" class="glass-card p-5 rounded-2xl border border-white/10 hover:border-amber-500/50 transition group flex flex-col justify-between">
+              <div>
+                <div class="text-[10px] font-display text-amber-400 uppercase tracking-widest mb-1">Songs Library</div>
+                <h4 class="font-heading font-bold text-white text-base group-hover:text-amber-400 transition">7Leo Songs Series</h4>
+                <p class="text-xs text-gray-400 mt-2">Full audio catalog and original instrumental compositions.</p>
+              </div>
+              <div class="mt-4 pt-3 border-t border-white/10 flex items-center justify-between text-xs font-display text-amber-400">
+                <span>Play Series</span>
+                <i class="fa-solid fa-circle-play text-sm group-hover:scale-110 transition"></i>
+              </div>
+            </a>
+
+          </div>
+
+          <!-- Studio Actions -->
+          <div class="flex flex-wrap gap-4 pt-6 border-t border-white/10 mt-6">
+            <a href="https://www.youtube.com/@7LeoBGM?sub_confirmation=1" target="_blank" class="px-6 py-3.5 btn-gradient text-white font-display font-bold rounded-xl text-xs flex items-center cursor-pointer shadow-lg">
+              <i class="fa-brands fa-youtube mr-2 text-base"></i> Explore Music & Subscribe
+            </a>
+            <a href="mailto:7leogroup@gmail.com?subject=Music%20Licensing%20Inquiry" class="px-6 py-3.5 bg-white/5 hover:bg-white/10 border border-white/15 text-white font-display font-semibold rounded-xl text-xs flex items-center">
               <i class="fa-solid fa-envelope mr-2 text-amber-500"></i> Email Licensing Inquiry
             </a>
-            <a href="https://wa.me/?text=Hi%207Leo%20Group,%20I%20am%20interested%20in%20music%20licensing" target="_blank" class="px-6 py-3 bg-emerald-600/80 hover:bg-emerald-600 text-white font-display font-semibold rounded-xl text-xs flex items-center">
+            <a href="https://wa.me/?text=Hi%207Leo%20Group,%20I%20am%20interested%20in%20music%20licensing" target="_blank" class="px-6 py-3.5 bg-emerald-600/80 hover:bg-emerald-600 text-white font-display font-semibold rounded-xl text-xs flex items-center">
               <i class="fa-brands fa-whatsapp mr-2 text-sm"></i> WhatsApp Studio
             </a>
           </div>
+
         </div>
       </div>
     </section>
@@ -555,7 +640,7 @@
               <h4 class="font-heading font-bold text-white text-base mt-1">Middle-Class Vision</h4>
               <p class="text-xs text-gray-400 mt-1 mb-2">Hospet, Karnataka · India</p>
               <p class="text-xs text-gray-300 leading-relaxed">
-                Started from Hospet, Karnataka with zero corporate backers—fueled solely by ambition to build an enterprise that blends operational logistics with creative ink, sound design, and modern code architecture.
+                Started from Hospet, Karnataka with zero corporate backers—fueled solely by ambition to build an enterprise that blends operational logistics with sound design and modern code architecture.
               </p>
             </div>
 
@@ -592,14 +677,11 @@
           <p class="text-xs font-display text-amber-400 uppercase tracking-widest">WANT TO JOIN OUR GLOBAL NETWORK?</p>
           <h2 class="text-3xl sm:text-5xl font-heading font-extrabold text-white">Let's Collaborate</h2>
           <p class="text-gray-400 text-xs sm:text-sm max-w-xl mx-auto">
-            Become part of a collaborative ecosystem driving innovation in automated e-commerce, custom tattoo licensing, sound design, and web architecture.
+            Become part of a collaborative ecosystem driving innovation in automated e-commerce, sound design, and web architecture.
           </p>
-          <div class="pt-4 flex justify-center gap-4">
-            <button onclick="openAuthModal('signup')" class="px-8 py-4 btn-gradient text-white font-display font-bold rounded-2xl text-xs uppercase tracking-wider cursor-pointer">
-              Create Account <i class="fa-solid fa-user-plus ml-2"></i>
-            </button>
-            <button onclick="openAuthModal('signin')" class="px-8 py-4 bg-white/10 hover:bg-white/15 border border-white/20 text-white font-display font-bold rounded-2xl text-xs uppercase tracking-wider cursor-pointer">
-              Sign In <i class="fa-solid fa-right-to-bracket ml-2"></i>
+          <div class="pt-4">
+            <button onclick="openAuthModal()" class="px-8 py-4 btn-gradient text-white font-display font-bold rounded-2xl text-xs uppercase tracking-wider cursor-pointer">
+              Connect Google Account <i class="fa-solid fa-arrow-right ml-2"></i>
             </button>
           </div>
         </div>
@@ -614,88 +696,40 @@
 
   </div>
 
-  <!-- UNIFIED AUTHENTICATION MODAL (SIGN IN, SIGN UP, & GOOGLE CONNECT) -->
+  <!-- GOOGLE AUTH MODAL -->
   <div id="auth-modal" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-md hidden flex items-center justify-center p-4">
-    <div class="relative w-full max-w-md glass-card rounded-3xl p-6 sm:p-8 shadow-2xl border border-amber-500/30">
+    <div class="relative w-full max-w-md glass-card rounded-3xl p-6 shadow-2xl border border-amber-500/30">
       <button onclick="closeAuthModal()" class="absolute top-5 right-5 text-gray-400 hover:text-white transition cursor-pointer">
         <i class="fa-solid fa-xmark text-lg"></i>
       </button>
 
-      <!-- Auth Header & Navigation Tabs -->
       <div class="text-center mb-6">
-        <img src="star-logo.png" onError="this.onerror=null;this.src='logo.png';" alt="7Leo Logo" class="w-8 h-8 mx-auto mb-2 object-contain">
-        <h3 class="text-xl font-heading font-bold text-white uppercase tracking-wider">7LEO COMMAND PORTAL</h3>
-        <p class="text-xs text-gray-400 mt-1 font-display">Unified Identity Gateway</p>
-        
-        <!-- Toggle Tabs -->
-        <div class="flex items-center justify-center space-x-2 mt-5 p-1 bg-black/60 rounded-xl border border-white/10 font-display text-xs">
-          <button id="tab-btn-signin" onclick="switchAuthTab('signin')" class="flex-1 py-2 rounded-lg font-bold transition bg-amber-500 text-black">Sign In</button>
-          <button id="tab-btn-signup" onclick="switchAuthTab('signup')" class="flex-1 py-2 rounded-lg font-bold transition text-gray-400 hover:text-white">Create Account</button>
-        </div>
+        <img src="star-logo.png" alt="Star Logo" class="w-8 h-8 mx-auto mb-2 object-contain">
+        <h3 class="text-xl font-heading font-bold text-white uppercase">Connect Google Account</h3>
+        <p class="text-xs text-gray-400 mt-1 font-display">Unified Identity Access</p>
       </div>
 
-      <!-- FORM 1: SIGN IN / LOGIN -->
-      <form id="auth-form-signin" onsubmit="handleEmailSignIn(event)" class="space-y-4">
-        <div>
-          <label class="block text-[11px] font-display text-gray-300 uppercase mb-1">Email Address</label>
-          <input type="email" id="signin-email" required placeholder="executive@7leo.com" class="w-full bg-black/80 border border-white/15 rounded-xl px-4 py-3 text-xs text-white focus:outline-none focus:border-amber-500 font-display">
+      <div class="space-y-4">
+        <div id="g_id_onload"
+             data-client_id="YOUR_GOOGLE_CLIENT_ID_HERE.apps.googleusercontent.com"
+             data-callback="handleCredentialResponse">
         </div>
-        <div>
-          <div class="flex justify-between items-center mb-1">
-            <label class="text-[11px] font-display text-gray-300 uppercase">Password</label>
-            <a href="#" onclick="alert('Password reset link has been queued for your email.')" class="text-[10px] font-display text-amber-400 hover:underline">Forgot Password?</a>
-          </div>
-          <input type="password" id="signin-password" required placeholder="••••••••••••" class="w-full bg-black/80 border border-white/15 rounded-xl px-4 py-3 text-xs text-white focus:outline-none focus:border-amber-500 font-display">
+        <div class="g_id_signin flex justify-center" data-type="standard" data-theme="filled_black" data-shape="pill"></div>
+
+        <div class="relative flex py-2 items-center">
+          <div class="flex-grow border-t border-white/10"></div>
+          <span class="flex-shrink mx-4 text-[10px] text-gray-500 uppercase font-display">INSTANT ACCESS</span>
+          <div class="flex-grow border-t border-white/10"></div>
         </div>
-        <button type="submit" class="w-full py-3.5 btn-gradient text-white font-display font-bold rounded-xl text-xs uppercase tracking-wider cursor-pointer shadow-lg">
-          Sign In to Portal <i class="fa-solid fa-arrow-right ml-2"></i>
+
+        <button onclick="completeGoogleSignIn('Abubakker Bellary', '7leogroup@gmail.com')" class="w-full py-3.5 btn-gradient text-white font-display font-bold rounded-xl text-xs flex items-center justify-center space-x-3 cursor-pointer">
+          <i class="fa-brands fa-google text-base"></i>
+          <span>Continue with Google</span>
         </button>
-      </form>
-
-      <!-- FORM 2: CREATE ACCOUNT / SIGN UP -->
-      <form id="auth-form-signup" onsubmit="handleEmailSignUp(event)" class="space-y-4 hidden">
-        <div>
-          <label class="block text-[11px] font-display text-gray-300 uppercase mb-1">Full Name</label>
-          <input type="text" id="signup-name" required placeholder="Abubakker Bellary" class="w-full bg-black/80 border border-white/15 rounded-xl px-4 py-3 text-xs text-white focus:outline-none focus:border-amber-500 font-display">
-        </div>
-        <div>
-          <label class="block text-[11px] font-display text-gray-300 uppercase mb-1">Email Address</label>
-          <input type="email" id="signup-email" required placeholder="executive@7leo.com" class="w-full bg-black/80 border border-white/15 rounded-xl px-4 py-3 text-xs text-white focus:outline-none focus:border-amber-500 font-display">
-        </div>
-        <div>
-          <label class="block text-[11px] font-display text-gray-300 uppercase mb-1">Password</label>
-          <input type="password" id="signup-password" required placeholder="••••••••••••" class="w-full bg-black/80 border border-white/15 rounded-xl px-4 py-3 text-xs text-white focus:outline-none focus:border-amber-500 font-display">
-        </div>
-        <button type="submit" class="w-full py-3.5 btn-gradient text-white font-display font-bold rounded-xl text-xs uppercase tracking-wider cursor-pointer shadow-lg">
-          Create Account & Access <i class="fa-solid fa-user-check ml-2"></i>
-        </button>
-      </form>
-
-      <!-- DIVIDER -->
-      <div class="relative flex py-4 items-center">
-        <div class="flex-grow border-t border-white/10"></div>
-        <span class="flex-shrink mx-4 text-[10px] text-gray-400 uppercase font-display tracking-widest">OR CONNECT WITH</span>
-        <div class="flex-grow border-t border-white/10"></div>
-      </div>
-
-      <!-- GOOGLE SIGN-IN -->
-      <div id="g_id_onload"
-           data-client_id="417038765411-ffl47vbmnageug2pfpib79sk8hsgacds.apps.googleusercontent.com"
-           data-callback="handleCredentialResponse"
-           data-auto_prompt="false">
-      </div>
-
-      <div class="g_id_signin flex justify-center"
-           data-type="standard"
-           data-theme="filled_black"
-           data-size="large"
-           data-shape="pill"
-           data-text="signin_with"
-           data-width="300">
       </div>
 
       <div class="mt-6 pt-4 border-t border-white/10 text-center text-[10px] text-gray-500 font-display">
-        🔒 SSL Encrypted Secure Gateway · 7Leo Enterprise Identity
+        SSL Encrypted Secure Gateway · 7Leo Security Network
       </div>
     </div>
   </div>
@@ -808,11 +842,8 @@
 
   <!-- JAVASCRIPT LOGIC -->
   <script>
-    // System Variables & Google OAuth Configuration
     let isSuperAdminUnlocked = false;
     let attachedFile = null;
-
-    const GOOGLE_CLIENT_ID = "417038765411-ffl47vbmnageug2pfpib79sk8hsgacds.apps.googleusercontent.com";
 
     // Splash Close
     function closeSplash() {
@@ -827,22 +858,11 @@
     window.addEventListener('DOMContentLoaded', () => {
       generateQRCode();
       checkSavedUser();
-      initializeGoogleGSI();
     });
 
-    // GOOGLE AUTH INITIALIZATION
-    function initializeGoogleGSI() {
-      if (window.google && window.google.accounts && window.google.accounts.id) {
-        try {
-          google.accounts.id.initialize({
-            client_id: GOOGLE_CLIENT_ID,
-            callback: handleCredentialResponse
-          });
-        } catch(e) {
-          console.log("GSI initialization error:", e);
-        }
-      }
-    }
+    // GOOGLE AUTH LOGIC
+    function openAuthModal() { document.getElementById('auth-modal').classList.remove('hidden'); }
+    function closeAuthModal() { document.getElementById('auth-modal').classList.add('hidden'); }
 
     function parseJwt(token) {
       try {
@@ -857,60 +877,16 @@
     function handleCredentialResponse(response) {
       const user = parseJwt(response.credential);
       if (user) {
-        completeSignIn(user.name, user.email, 'Google OAuth');
+        completeGoogleSignIn(user.name, user.email, user.picture);
       }
     }
 
-    // TAB SWITCHER FOR SIGN IN & CREATE ACCOUNT
-    function switchAuthTab(mode) {
-      const signinForm = document.getElementById('auth-form-signin');
-      const signupForm = document.getElementById('auth-form-signup');
-      const btnSignin = document.getElementById('tab-btn-signin');
-      const btnSignup = document.getElementById('tab-btn-signup');
-
-      if (mode === 'signup') {
-        signinForm.classList.add('hidden');
-        signupForm.classList.remove('hidden');
-        btnSignup.className = "flex-1 py-2 rounded-lg font-bold transition bg-amber-500 text-black";
-        btnSignin.className = "flex-1 py-2 rounded-lg font-bold transition text-gray-400 hover:text-white";
-      } else {
-        signupForm.classList.add('hidden');
-        signinForm.classList.remove('hidden');
-        btnSignin.className = "flex-1 py-2 rounded-lg font-bold transition bg-amber-500 text-black";
-        btnSignup.className = "flex-1 py-2 rounded-lg font-bold transition text-gray-400 hover:text-white";
-      }
-    }
-
-    function openAuthModal(defaultTab = 'signin') { 
-      switchAuthTab(defaultTab);
-      document.getElementById('auth-modal').classList.remove('hidden'); 
-    }
-    
-    function closeAuthModal() { 
-      document.getElementById('auth-modal').classList.add('hidden'); 
-    }
-
-    // FORM HANDLERS FOR EMAIL SIGN IN & SIGN UP
-    function handleEmailSignIn(event) {
-      event.preventDefault();
-      const email = document.getElementById('signin-email').value;
-      const name = email.split('@')[0];
-      completeSignIn(name, email, '7Leo Portal Auth');
-    }
-
-    function handleEmailSignUp(event) {
-      event.preventDefault();
-      const name = document.getElementById('signup-name').value;
-      const email = document.getElementById('signup-email').value;
-      completeSignIn(name, email, '7Leo Executive Account');
-    }
-
-    function completeSignIn(name, email, provider = 'Authenticated') {
-      const userData = { name: name, email: email, provider: provider, date: new Date().toLocaleDateString() };
+    function completeGoogleSignIn(name, email, photo) {
+      const userData = { name: name, email: email, photo: photo || '' };
       localStorage.setItem('7leo_user', JSON.stringify(userData));
       updateAuthUI(userData);
       closeAuthModal();
-      alert(`[7Leo Security] Welcome back, ${name}! Logged in via ${provider}.`);
+      alert(`Welcome to 7Leo Command Portal, ${name}! Authenticated.`);
     }
 
     function checkSavedUser() {
@@ -925,21 +901,19 @@
       container.innerHTML = `
         <div class="flex items-center space-x-2 bg-black/60 border border-amber-500/40 px-3 py-1.5 rounded-xl">
           <div class="w-6 h-6 rounded-full bg-amber-500 text-black flex items-center justify-center font-bold text-xs">
-            ${user.name.charAt(0).toUpperCase()}
+            ${user.name.charAt(0)}
           </div>
           <span class="text-xs font-display text-amber-300 hidden sm:inline">${user.name}</span>
-          <button onclick="logoutAccount()" title="Disconnect / Logout" class="text-gray-400 hover:text-red-400 ml-1">
+          <button onclick="logoutGoogle()" title="Disconnect" class="text-gray-400 hover:text-red-400 ml-1">
             <i class="fa-solid fa-power-off text-xs"></i>
           </button>
         </div>
       `;
     }
 
-    function logoutAccount() {
-      if(confirm("Log out from 7Leo Command Portal?")) {
-        localStorage.removeItem('7leo_user');
-        location.reload();
-      }
+    function logoutGoogle() {
+      localStorage.removeItem('7leo_user');
+      location.reload();
     }
 
     // QR CODE GENERATOR
@@ -955,21 +929,6 @@
 
     function triggerOrder(item) {
       alert(`[7Leo Group] Request initiated for: ${item}. Logged in command queue.`);
-    }
-
-    let isPlaying = false;
-    function playAudioPreview() {
-      const btnText = document.getElementById('play-text');
-      const btnIcon = document.getElementById('play-icon');
-      if(!isPlaying) {
-        isPlaying = true;
-        btnText.innerText = "Playing Audio Stream...";
-        btnIcon.className = "fa-solid fa-pause";
-      } else {
-        isPlaying = false;
-        btnText.innerText = "Play Audio Preview";
-        btnIcon.className = "fa-solid fa-play";
-      }
     }
 
     // SUPER ADMIN & GEMINI AI AGENT LOGIC
@@ -1009,7 +968,6 @@
     function removeAttachment() {
       attachedFile = null;
       document.getElementById('file-upload').value = '';
-      document.getElementById('attachment-preview').classList.hidden = true;
       document.getElementById('attachment-preview').classList.add('hidden');
     }
 
@@ -1077,11 +1035,11 @@
         if (lower.includes('rebuild') || lower.includes('layout')) {
           taskResponse = "🛠️ <strong>[Website Rebuild Engine]</strong> Analyzed page sections. Rebuilding layout structure with responsive Tailwind glassmorphism cards and amber grid lighting.";
         } else if (lower.includes('repair') || lower.includes('fix') || lower.includes('debug')) {
-          taskResponse = "🔧 <strong>[Website Repair Diagnostic]</strong> Scanned JavaScript event handlers and OAuth pathways. Zero syntax errors found.";
+          taskResponse = "🔧 <strong>[Website Repair Diagnostic]</strong> Scanned JavaScript event handlers and images fallbacks. Zero critical syntax errors found. SSL gateway intact.";
         } else if (lower.includes('edit') || lower.includes('style') || lower.includes('theme')) {
           taskResponse = "🎨 <strong>[Web Edit Assistant]</strong> Custom theme rules updated. Applied backdrop filters, radial horizon gradients, and brand amber highlights.";
         } else if (lower.includes('develop') || lower.includes('feature') || lower.includes('component')) {
-          taskResponse = "💻 <strong>[Web Development Module]</strong> Authentication pipeline and store UI operational.";
+          taskResponse = "💻 <strong>[Web Development Module]</strong> Component pipeline generated. Store logo, YouTube BGM channel integration, and Gemini AI Agent operational.";
         }
 
         messages.innerHTML += `
