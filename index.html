@@ -16,7 +16,7 @@
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   
-  <!-- Google Sign-In SDK (GSI) -->
+  <!-- Google Sign-In SDK -->
   <script src="https://accounts.google.com/gsi/client" async defer></script>
 
   <!-- Font Awesome Icons -->
@@ -678,20 +678,20 @@
         <div class="flex-grow border-t border-white/10"></div>
       </div>
 
-      <!-- GOOGLE OAUTH INTEGRATION WITH REAL CLIENT ID -->
-      <div class="space-y-3">
-        <div id="g_id_onload"
-             data-client_id="417038765411-ffl47vbmnageug2pfpib79sk8hsgaods.apps.googleusercontent.com"
-             data-callback="handleCredentialResponse"
-             data-auto_prompt="false">
-        </div>
+      <!-- GOOGLE SIGN-IN -->
+      <div id="g_id_onload"
+           data-client_id="417038765411-ffl47vbmnageug2pfpib79sk8hsgacds.apps.googleusercontent.com"
+           data-callback="handleCredentialResponse"
+           data-auto_prompt="false">
+      </div>
 
-        <div class="g_id_signin flex justify-center"
-             data-type="standard"
-             data-theme="filled_black"
-             data-shape="pill"
-             data-size="large">
-        </div>
+      <div class="g_id_signin flex justify-center"
+           data-type="standard"
+           data-theme="filled_black"
+           data-size="large"
+           data-shape="pill"
+           data-text="signin_with"
+           data-width="300">
       </div>
 
       <div class="mt-6 pt-4 border-t border-white/10 text-center text-[10px] text-gray-500 font-display">
@@ -812,7 +812,7 @@
     let isSuperAdminUnlocked = false;
     let attachedFile = null;
 
-    const GOOGLE_CLIENT_ID = "417038765411-ffl47vbmnageug2pfpib79sk8hsgaods.apps.googleusercontent.com";
+    const GOOGLE_CLIENT_ID = "417038765411-ffl47vbmnageug2pfpib79sk8hsgacds.apps.googleusercontent.com";
 
     // Splash Close
     function closeSplash() {
@@ -1009,6 +1009,7 @@
     function removeAttachment() {
       attachedFile = null;
       document.getElementById('file-upload').value = '';
+      document.getElementById('attachment-preview').classList.hidden = true;
       document.getElementById('attachment-preview').classList.add('hidden');
     }
 
