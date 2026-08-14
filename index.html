@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Welcome to 7Leo Group Commerce | Global Executive Command</title>
+  <title>7Leo Group Commerce | Global Executive Command</title>
   
   <!-- Favicon / Star Logo -->
   <link rel="icon" type="image/png" href="star-logo.png">
@@ -11,7 +11,7 @@
   <!-- Google Fonts: Syne, Plus Jakarta Sans, Space Grotesk, Orbitron -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
   
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -34,13 +34,25 @@
             cyber: ['Orbitron', 'sans-serif'],
           },
           colors: {
-            brandDark: '#070709',
-            brandCard: 'rgba(15, 15, 20, 0.75)',
+            brandDark: '#050508',
+            brandCard: 'rgba(12, 13, 18, 0.75)',
             brandAmber: '#ff6a00',
-            brandOrange: '#ff4500',
-            brandBorder: 'rgba(255, 106, 0, 0.2)',
+            brandOrange: '#ff3c00',
+            brandGold: '#ffb700',
+            brandBorder: 'rgba(255, 106, 0, 0.25)',
             studioNeon: '#00f3ff',
             studioPurple: '#9d00ff',
+          },
+          animation: {
+            'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            'glow-spin': 'spin 12s linear infinite',
+            'float': 'float 6s ease-in-out infinite',
+          },
+          keyframes: {
+            float: {
+              '0%, 100%': { transform: 'translateY(0px)' },
+              '50%': { transform: 'translateY(-10px)' },
+            }
           }
         }
       }
@@ -50,95 +62,97 @@
   <style>
     body {
       font-family: 'Plus Jakarta Sans', sans-serif;
-      background-color: #060608;
+      background-color: #040406;
       color: #f3f4f6;
       overflow-x: hidden;
     }
 
-    /* Ambient Background Glow Effects */
+    /* Ambient Background Pattern & Lighting */
     .bg-grid-pattern {
-      background-image: radial-gradient(rgba(255, 106, 0, 0.08) 1px, transparent 1px);
-      background-size: 32px 32px;
+      background-image: 
+        radial-gradient(rgba(255, 106, 0, 0.12) 1px, transparent 1px),
+        radial-gradient(rgba(0, 243, 255, 0.05) 1px, transparent 1px);
+      background-size: 40px 40px, 80px 80px;
+      background-position: 0 0, 20px 20px;
     }
 
     .horizon-glow {
-      background: radial-gradient(ellipse 80% 50% at 50% -20%, rgba(255, 90, 0, 0.35), rgba(255, 60, 0, 0.08) 50%, transparent 80%);
+      background: radial-gradient(ellipse 90% 60% at 50% -20%, rgba(255, 106, 0, 0.35), rgba(255, 60, 0, 0.1) 50%, transparent 80%);
     }
 
     .bottom-horizon-glow {
-      background: radial-gradient(ellipse 100% 60% at 50% 120%, rgba(255, 80, 0, 0.35), rgba(255, 40, 0, 0.05) 60%, transparent 90%);
+      background: radial-gradient(ellipse 100% 70% at 50% 120%, rgba(255, 106, 0, 0.35), rgba(157, 0, 255, 0.12) 60%, transparent 90%);
     }
 
-    /* Modern Glassmorphism Cards */
+    /* Glassmorphism Cards */
     .glass-card {
-      background: rgba(13, 14, 18, 0.75);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border: 1px solid rgba(255, 255, 255, 0.07);
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      background: rgba(10, 11, 16, 0.75);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.7);
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .glass-card:hover {
-      border-color: rgba(255, 106, 0, 0.4);
-      box-shadow: 0 20px 50px rgba(255, 85, 0, 0.12);
+      border-color: rgba(255, 106, 0, 0.45);
+      box-shadow: 0 20px 50px rgba(255, 106, 0, 0.15);
+      transform: translateY(-2px);
     }
 
     .glass-card-amber {
-      background: linear-gradient(180deg, rgba(22, 16, 15, 0.8) 0%, rgba(12, 13, 16, 0.9) 100%);
-      border: 1px solid rgba(255, 106, 0, 0.25);
+      background: linear-gradient(180deg, rgba(26, 18, 15, 0.85) 0%, rgba(10, 11, 16, 0.95) 100%);
+      border: 1px solid rgba(255, 106, 0, 0.3);
     }
 
-    /* WORLD CLASS STUDIO SPECIFIC STYLES (DIFFERENT WORLD EFFECT) */
+    /* Studio Cyber Styling */
     .studio-world-container {
-      background: linear-gradient(180deg, #020208 0%, #080312 50%, #030814 100%);
-      border: 1px solid rgba(0, 243, 255, 0.25);
-      box-shadow: 0 0 80px rgba(0, 243, 255, 0.15), inset 0 0 50px rgba(157, 0, 255, 0.1);
+      background: linear-gradient(180deg, #020206 0%, #080314 50%, #030816 100%);
+      border: 1px solid rgba(0, 243, 255, 0.3);
+      box-shadow: 0 0 90px rgba(0, 243, 255, 0.18), inset 0 0 60px rgba(157, 0, 255, 0.12);
       position: relative;
     }
 
     .studio-neon-border {
       border: 1px solid rgba(0, 243, 255, 0.4);
-      box-shadow: 0 0 25px rgba(0, 243, 255, 0.25);
+      box-shadow: 0 0 30px rgba(0, 243, 255, 0.2);
     }
 
     .studio-neon-border:hover {
       border-color: #00f3ff;
-      box-shadow: 0 0 40px rgba(0, 243, 255, 0.5);
+      box-shadow: 0 0 50px rgba(0, 243, 255, 0.5);
     }
 
     /* Equalizer Bar Animation */
     .eq-bar {
-      width: 6px;
+      width: 5px;
       background: linear-gradient(to top, #00f3ff, #9d00ff, #ff0055);
       border-radius: 4px;
       animation: bounceEQ 1.2s ease-in-out infinite alternate;
     }
 
     .eq-bar:nth-child(1) { height: 40%; animation-delay: 0.1s; }
-    .eq-bar:nth-child(2) { height: 75%; animation-delay: 0.3s; }
-    .eq-bar:nth-child(3) { height: 25%; animation-delay: 0.5s; }
-    .eq-bar:nth-child(4) { height: 90%; animation-delay: 0.2s; }
-    .eq-bar:nth-child(5) { height: 60%; animation-delay: 0.4s; }
+    .eq-bar:nth-child(2) { height: 80%; animation-delay: 0.3s; }
+    .eq-bar:nth-child(3) { height: 30%; animation-delay: 0.5s; }
+    .eq-bar:nth-child(4) { height: 95%; animation-delay: 0.2s; }
+    .eq-bar:nth-child(5) { height: 65%; animation-delay: 0.4s; }
     .eq-bar:nth-child(6) { height: 100%; animation-delay: 0.6s; }
-    .eq-bar:nth-child(7) { height: 35%; animation-delay: 0.15s; }
-    .eq-bar:nth-child(8) { height: 80%; animation-delay: 0.45s; }
-    .eq-bar:nth-child(9) { height: 50%; animation-delay: 0.25s; }
-    .eq-bar:nth-child(10) { height: 95%; animation-delay: 0.35s; }
+    .eq-bar:nth-child(7) { height: 45%; animation-delay: 0.15s; }
+    .eq-bar:nth-child(8) { height: 85%; animation-delay: 0.45s; }
 
     @keyframes bounceEQ {
-      0% { transform: scaleY(0.3); }
-      100% { transform: scaleY(1.1); }
+      0% { transform: scaleY(0.25); }
+      100% { transform: scaleY(1.15); }
     }
 
-    /* Gemini AI & Text Glows */
+    /* AI Glows & Text Highlights */
     .gemini-glow {
-      background: linear-gradient(135deg, rgba(255, 106, 0, 0.2), rgba(147, 51, 234, 0.2), rgba(59, 130, 246, 0.2));
+      background: linear-gradient(135deg, rgba(255, 106, 0, 0.2), rgba(157, 0, 255, 0.2), rgba(0, 243, 255, 0.2));
       border: 1px solid rgba(255, 106, 0, 0.4);
     }
 
     .gradient-orange-highlight {
-      background: linear-gradient(90deg, #ff8c00, #ff4500);
+      background: linear-gradient(90deg, #ffaa00 0%, #ff5500 50%, #ff2a00 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
@@ -156,55 +170,57 @@
     }
 
     .btn-gradient {
-      background: linear-gradient(135deg, #ff6a00 0%, #ee3800 100%);
-      box-shadow: 0 4px 25px rgba(255, 85, 0, 0.4);
+      background: linear-gradient(135deg, #ff6a00 0%, #e63000 100%);
+      box-shadow: 0 6px 30px rgba(255, 90, 0, 0.45);
       transition: all 0.3s ease;
     }
     .btn-gradient:hover {
-      box-shadow: 0 6px 35px rgba(255, 85, 0, 0.65);
-      transform: translateY(-1.5px);
+      box-shadow: 0 8px 40px rgba(255, 90, 0, 0.7);
+      transform: translateY(-2px);
     }
 
     .btn-studio-neon {
       background: linear-gradient(135deg, #00f3ff 0%, #7928ca 100%);
-      box-shadow: 0 4px 25px rgba(0, 243, 255, 0.4);
+      box-shadow: 0 6px 30px rgba(0, 243, 255, 0.4);
       transition: all 0.3s ease;
     }
     .btn-studio-neon:hover {
-      box-shadow: 0 6px 35px rgba(0, 243, 255, 0.7);
-      transform: translateY(-1.5px);
+      box-shadow: 0 8px 40px rgba(0, 243, 255, 0.75);
+      transform: translateY(-2px);
     }
 
     /* Custom Scrollbar */
     ::-webkit-scrollbar { width: 6px; }
-    ::-webkit-scrollbar-track { background: #060608; }
-    ::-webkit-scrollbar-thumb { background: rgba(255, 106, 0, 0.3); border-radius: 4px; }
+    ::-webkit-scrollbar-track { background: #040406; }
+    ::-webkit-scrollbar-thumb { background: rgba(255, 106, 0, 0.35); border-radius: 4px; }
     ::-webkit-scrollbar-thumb:hover { background: #ff6a00; }
   </style>
 </head>
-<body class="bg-[#060608] text-gray-200 min-h-screen relative overflow-x-hidden font-body bg-grid-pattern">
+<body class="bg-[#040406] text-gray-200 min-h-screen relative overflow-x-hidden font-body bg-grid-pattern">
 
   <!-- BACKGROUND RADIAL HORIZON GLOW -->
-  <div class="fixed top-0 left-0 right-0 h-[650px] horizon-glow pointer-events-none z-0"></div>
+  <div class="fixed top-0 left-0 right-0 h-[700px] horizon-glow pointer-events-none z-0"></div>
 
   <!-- SPLASH SCREEN WITH 7LEO FLAG -->
-  <div id="splash-screen" class="fixed inset-0 z-50 bg-[#060608]/95 backdrop-blur-2xl flex flex-col items-center justify-center p-6 transition-all duration-700">
-    <div class="max-w-md w-full text-center space-y-6 relative z-10 glass-card p-8 rounded-3xl border border-amber-500/30">
-      <div class="flex items-center justify-between text-xs font-display text-amber-500 border-b border-white/10 pb-3">
+  <div id="splash-screen" class="fixed inset-0 z-50 bg-[#040406]/95 backdrop-blur-3xl flex flex-col items-center justify-center p-6 transition-all duration-700">
+    <div class="max-w-md w-full text-center space-y-6 relative z-10 glass-card p-8 rounded-3xl border border-amber-500/40 shadow-[0_0_80px_rgba(255,106,0,0.25)]">
+      
+      <div class="flex items-center justify-between text-xs font-display text-amber-400 border-b border-white/10 pb-3">
         <span class="flex items-center"><i class="fa-solid fa-shield-halved animate-pulse mr-2 text-amber-500"></i>SECURE GATEWAY</span>
         <span>NODE: 7LEO-GLOBAL-01</span>
       </div>
       
       <!-- Flag Upload Container -->
       <div class="relative inline-block my-2 group">
-        <div class="absolute -inset-1 bg-gradient-to-r from-amber-500 to-orange-600 rounded-2xl blur opacity-30 group-hover:opacity-75 transition duration-500"></div>
-        <img src="flag.png" onError="this.onerror=null;this.src='https://via.placeholder.com/300x180/0d0e12/ff6a00?text=7Leo+Official+Flag';" alt="7Leo Official Flag" class="relative w-full max-w-[280px] mx-auto rounded-2xl border border-amber-500/40 shadow-[0_0_40px_rgba(255,106,0,0.3)] object-cover">
+        <div class="absolute -inset-1 bg-gradient-to-r from-amber-500 to-orange-600 rounded-2xl blur-md opacity-40 group-hover:opacity-100 transition duration-500"></div>
+        <img src="flag.png" onError="this.onerror=null;this.src='https://via.placeholder.com/300x180/0d0e12/ff6a00?text=7Leo+Official+Flag';" alt="7Leo Official Flag" class="relative w-full max-w-[280px] mx-auto rounded-2xl border border-amber-500/50 shadow-[0_0_50px_rgba(255,106,0,0.35)] object-cover">
       </div>
 
       <div>
         <h2 class="text-2xl font-heading font-extrabold text-white tracking-tight uppercase">7LEO GROUP COMMERCE</h2>
         <p class="text-xs text-amber-400 font-display tracking-widest mt-1 uppercase">Vision · Power · Legacy</p>
       </div>
+      
       <button onclick="closeSplash()" class="w-full py-4 btn-gradient text-white font-display font-bold rounded-2xl text-xs tracking-wider uppercase cursor-pointer">
         INITIALIZE PORTAL ACCESS <i class="fa-solid fa-arrow-right ml-2"></i>
       </button>
@@ -218,7 +234,7 @@
     <header class="fixed top-4 left-1/2 -translate-x-1/2 w-[95%] max-w-7xl z-40 glass-card rounded-2xl px-5 py-3 border border-white/10 transition-all">
       <div class="flex items-center justify-between">
         
-        <!-- Brand Logo (Website Logo Task 3) -->
+        <!-- Brand Logo -->
         <a href="#" class="flex items-center space-x-3 group">
           <img src="logo.png" onError="this.onerror=null;this.src='star-logo.png';" alt="7Leo Website Logo" class="h-10 w-auto object-contain transition group-hover:scale-105">
           <img src="1000078859.png" onError="this.onerror=null;this.src='store-logo.png';" alt="7Leo Store Emblem" class="h-8 w-8 rounded-full border border-amber-500/80 object-cover shadow-[0_0_15px_rgba(255,106,0,0.5)]">
@@ -254,18 +270,18 @@
       </div>
     </header>
 
-    <!-- HERO SECTION WITH WEBSITE LOGO (TASK 3 COMPLETED) -->
-    <section id="hero" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-16 w-full text-center relative">
+    <!-- HERO SECTION WITH REDESIGNED EXECUTIVE AESTHETIC -->
+    <section id="hero" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-20 w-full text-center relative">
       
       <!-- Website Logo Uploaded on Homepage -->
       <div class="flex flex-col justify-center items-center gap-4 mb-6">
-        <div class="relative group cursor-pointer">
-          <div class="absolute -inset-3 bg-gradient-to-r from-amber-500 via-orange-500 to-yellow-500 rounded-3xl blur-xl opacity-60 group-hover:opacity-100 transition duration-500"></div>
-          <img src="logo.png" onError="this.onerror=null;this.src='star-logo.png';" alt="7Leo Official Website Logo" class="relative max-h-24 sm:max-h-32 w-auto object-contain p-2 drop-shadow-[0_0_35px_rgba(255,106,0,0.8)] group-hover:scale-105 transition duration-300">
+        <div class="relative group cursor-pointer animate-float">
+          <div class="absolute -inset-4 bg-gradient-to-r from-amber-500 via-orange-500 to-yellow-500 rounded-3xl blur-2xl opacity-50 group-hover:opacity-90 transition duration-500"></div>
+          <img src="logo.png" onError="this.onerror=null;this.src='star-logo.png';" alt="7Leo Official Website Logo" class="relative max-h-28 sm:max-h-36 w-auto object-contain p-2 drop-shadow-[0_0_40px_rgba(255,106,0,0.85)] group-hover:scale-105 transition duration-300">
         </div>
       </div>
 
-      <div class="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-display mb-6">
+      <div class="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-display mb-6 shadow-[0_0_20px_rgba(255,106,0,0.2)]">
         <span class="w-2 h-2 rounded-full bg-amber-500 animate-pulse"></span>
         <span>7LEO GROUP COMMERCE · OFFICIAL HOMEPAGE PORTAL</span>
       </div>
@@ -280,8 +296,9 @@
         We put you at the center & transform challenges into global opportunities across Dropshipping E-Commerce, Soundtrack Licensing, and Gemini-Powered Web Engineering.
       </p>
 
+      <!-- HERO ACTION BUTTONS -->
       <div class="mt-8 flex flex-wrap justify-center gap-4 font-display text-xs">
-        <a href="#store" class="px-8 py-4 btn-gradient text-white font-bold rounded-2xl tracking-wide uppercase shadow-lg">
+        <a href="#store" class="px-8 py-4 btn-gradient text-white font-bold rounded-2xl tracking-wide uppercase shadow-lg flex items-center">
           Explore Store <i class="fa-solid fa-arrow-right ml-2"></i>
         </a>
         <a href="#bgm" class="px-8 py-4 btn-studio-neon text-white font-bold rounded-2xl tracking-wide uppercase shadow-lg flex items-center space-x-2">
@@ -290,17 +307,37 @@
         </a>
       </div>
 
+      <!-- KEY METRIC HIGHLIGHTS STRIP -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto mt-12 pt-8 border-t border-white/10 font-display">
+        <div class="bg-black/40 border border-white/10 rounded-2xl p-4 text-center">
+          <div class="text-xs text-amber-400 uppercase">E-Commerce</div>
+          <div class="text-lg font-bold text-white mt-0.5">Global Supply</div>
+        </div>
+        <div class="bg-black/40 border border-white/10 rounded-2xl p-4 text-center">
+          <div class="text-xs text-cyan-400 uppercase">Studio Sound</div>
+          <div class="text-lg font-bold text-white mt-0.5">24-Bit / 96kHz</div>
+        </div>
+        <div class="bg-black/40 border border-white/10 rounded-2xl p-4 text-center">
+          <div class="text-xs text-purple-400 uppercase">AI Architect</div>
+          <div class="text-lg font-bold text-white mt-0.5">Gemini Powered</div>
+        </div>
+        <div class="bg-black/40 border border-white/10 rounded-2xl p-4 text-center">
+          <div class="text-xs text-emerald-400 uppercase">System Status</div>
+          <div class="text-lg font-bold text-white mt-0.5">99.9% Uptime</div>
+        </div>
+      </div>
+
       <!-- Glowing Horizon Ring Arc Visual -->
-      <div class="relative w-full max-w-4xl mx-auto mt-12 pt-8">
+      <div class="relative w-full max-w-4xl mx-auto mt-10">
         <div class="absolute inset-0 flex items-center justify-center -z-10">
           <div class="w-[300px] sm:w-[600px] h-[150px] sm:h-[300px] bg-gradient-to-t from-amber-500/40 via-orange-600/20 to-transparent rounded-full blur-3xl"></div>
         </div>
-        <div class="w-full h-[1px] bg-gradient-to-r from-transparent via-amber-500/60 to-transparent mb-8"></div>
+        <div class="w-full h-[1px] bg-gradient-to-r from-transparent via-amber-500/60 to-transparent"></div>
       </div>
     </section>
 
     <!-- SECTION 1: WHO WE ARE (ECOSYSTEM OVERVIEW) -->
-    <section id="about" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 w-full">
+    <section id="about" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 w-full">
       <div class="text-center max-w-3xl mx-auto mb-12">
         <p class="text-xs font-display text-amber-500 uppercase tracking-widest mb-2">WHO WE ARE</p>
         <h2 class="text-3xl sm:text-4xl font-heading font-bold text-white">
@@ -422,7 +459,7 @@
             <p class="text-xs text-gray-400 mb-4">Embroidered Cyber Edition</p>
             <div class="flex items-center justify-between pt-2 border-t border-white/10 font-display">
               <span class="text-amber-400 font-bold text-lg">$89.00</span>
-              <span class="text-[10px] text-emerald-400 uppercase">IN STOCK</span>
+              <span class="text-[10px] text-emerald-400 uppercase font-semibold">IN STOCK</span>
             </div>
           </div>
 
@@ -440,7 +477,7 @@
             <p class="text-xs text-gray-400 mb-4">Matte Black Titanium Finish</p>
             <div class="flex items-center justify-between pt-2 border-t border-white/10 font-display">
               <span class="text-amber-400 font-bold text-lg">$120.00</span>
-              <span class="text-[10px] text-amber-400 uppercase">LIMITED EDITION</span>
+              <span class="text-[10px] text-amber-400 uppercase font-semibold">LIMITED EDITION</span>
             </div>
           </div>
 
@@ -458,7 +495,7 @@
             <p class="text-xs text-gray-400 mb-4">Tuned for High Octane BGM Beats</p>
             <div class="flex items-center justify-between pt-2 border-t border-white/10 font-display">
               <span class="text-amber-400 font-bold text-lg">$199.00</span>
-              <span class="text-[10px] text-gray-400 uppercase">STUDIO GEAR</span>
+              <span class="text-[10px] text-cyan-400 uppercase font-semibold">STUDIO GEAR</span>
             </div>
           </div>
 
@@ -466,7 +503,7 @@
       </div>
     </section>
 
-    <!-- SECTION 3: WORLD-CLASS 7LEO BGM CYBER-STUDIO PAGE (TASK 1: BGM BANNER UPDATED HERE ONLY) -->
+    <!-- SECTION 3: WORLD-CLASS 7LEO BGM CYBER-STUDIO PAGE -->
     <section id="bgm" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 w-full">
       <div class="studio-world-container rounded-3xl p-6 sm:p-12 relative overflow-hidden">
         
@@ -474,7 +511,7 @@
         <div class="absolute -top-32 -left-32 w-96 h-96 bg-cyan-500/20 rounded-full blur-3xl pointer-events-none"></div>
         <div class="absolute -bottom-32 -right-32 w-96 h-96 bg-purple-600/20 rounded-full blur-3xl pointer-events-none"></div>
 
-        <!-- TASK 1: 7LEO BGM EXCLUSIVE STUDIO BANNER -->
+        <!-- 7LEO BGM EXCLUSIVE STUDIO BANNER -->
         <div class="relative w-full h-48 sm:h-64 rounded-2xl overflow-hidden mb-8 border border-cyan-500/40 shadow-[0_0_35px_rgba(0,243,255,0.3)] group">
           <img src="bgm-banner.png" onError="this.onerror=null;this.src='https://via.placeholder.com/1200x400/030814/00f3ff?text=7LEO+BGM+WORLD+CLASS+RECORDING+STUDIO';" alt="7Leo BGM Studio Official Banner" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
           <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent flex items-end p-6">
@@ -513,8 +550,6 @@
             
             <!-- Live Bouncing EQ Animation -->
             <div class="flex items-end space-x-1.5 h-10 px-2">
-              <div class="eq-bar"></div>
-              <div class="eq-bar"></div>
               <div class="eq-bar"></div>
               <div class="eq-bar"></div>
               <div class="eq-bar"></div>
@@ -737,7 +772,7 @@
 
           </div>
 
-          <!-- Studio Licensing Actions (TASK 2 COMPLETED: WHATSAPP REMOVED) -->
+          <!-- Studio Licensing Actions -->
           <div class="flex flex-wrap gap-4 pt-6 border-t border-white/10 mt-6">
             <a href="https://www.youtube.com/@7LeoBGM?sub_confirmation=1" target="_blank" class="px-6 py-3.5 btn-studio-neon text-white font-cyber font-bold rounded-xl text-xs flex items-center cursor-pointer shadow-lg">
               <i class="fa-brands fa-youtube mr-2 text-base"></i> Explore Music & Subscribe
@@ -1120,6 +1155,7 @@
     function removeAttachment() {
       attachedFile = null;
       document.getElementById('file-upload').value = '';
+      document.getElementById('attachment-preview').classList.hidden = true;
       document.getElementById('attachment-preview').classList.add('hidden');
     }
 
