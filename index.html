@@ -1,425 +1,1123 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>7Leo Group Commerce | Vision . Power . Legacy</title>
+    <title>7Leo Store — Discover • Shop • Experience</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="manifest" href="manifest.json">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        deepblack: '#0a0a0a',
+                        carddark: '#141414',
+                        borderdark: '#262626',
+                        electriccyan: '#00f0ff',
+                        controlledred: '#ff3333',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        .neon-glow {
-            box-shadow: 0 0 20px rgba(0, 149, 255, 0.4);
+        body {
+            background-color: #0a0a0a;
+            color: #ffffff;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
         }
-        .neon-border {
-            border: 1px solid rgba(0, 149, 255, 0.5);
+        .glass-header {
+            background: rgba(10, 10, 10, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
         }
-        .neon-text {
-            text-shadow: 0 0 10px rgba(0, 149, 255, 0.7);
-        }
-        .rainbow-gradient {
-            background: linear-gradient(90deg, #ff0055, #ff9900, #00d2ff, #9d00ff, #ff0055);
-            background-size: 400% 400%;
-            animation: gradientBG 10s ease infinite;
-        }
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-        .glass-panel {
-            background: rgba(15, 15, 20, 0.85);
+        .glass-card {
+            background: rgba(20, 20, 20, 0.7);
             backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .glow-cyan {
+            box-shadow: 0 0 25px rgba(0, 240, 255, 0.15);
+        }
+        .glow-cyan-hover:hover {
+            box-shadow: 0 0 30px rgba(0, 240, 255, 0.3);
+        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0a0a0a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #262626;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #00f0ff;
         }
     </style>
 </head>
-<body class="bg-black text-white font-sans antialiased selection:bg-blue-600 selection:text-white">
+<body class="min-h-screen flex flex-col selection:bg-electriccyan selection:text-deepblack">
 
-    <!-- 1. SPLASH SCREEN -->
-    <div id="splash-screen" class="fixed inset-0 z-50 flex flex-col items-center justify-center bg-black transition-opacity duration-1000">
-        <img src="assets/file_0000000028fc81f8b878489375475bad.png" alt="7Leo Splash" class="w-72 md:w-96 object-contain animate-pulse mb-6">
-        <p class="text-xs tracking-widest text-blue-400 uppercase font-semibold">Vision . Power . Legacy</p>
+    <!-- Toast Notification Container -->
+    <div id="toast-container" class="fixed bottom-5 right-5 z-50 flex flex-col gap-3 pointer-events-none"></div>
+
+    <!-- GLOBAL HEADER -->
+    <header class="sticky top-0 z-40 glass-header transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Mobile Menu Toggle & Logo -->
+            <div class="flex items-center gap-4">
+                <button onclick="toggleMobileMenu()" class="md:hidden text-white hover:text-electriccyan transition-colors text-xl">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+                <a href="#" onclick="navigateTo('home')" class="flex items-center gap-2 group">
+                    <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-electriccyan to-blue-600 flex items-center justify-center text-deepblack font-black text-xl glow-cyan">7L</div>
+                    <div>
+                        <span class="font-extrabold text-lg tracking-wider text-white group-hover:text-electriccyan transition-colors">7LEO STORE</span>
+                        <span class="block text-[9px] tracking-widest text-zinc-400 font-medium">VISION • POWER • LEGACY</span>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Desktop Navigation -->
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-zinc-300">
+                <a href="#" onclick="navigateTo('home')" class="hover:text-electriccyan transition-colors">Home</a>
+                <a href="#" onclick="navigateTo('shop')" class="hover:text-electriccyan transition-colors">Shop</a>
+                <a href="#" onclick="navigateTo('shop')" onclick="filterCategory('All')" class="hover:text-electriccyan transition-colors">Categories</a>
+                <a href="#" onclick="navigateTo('track')" class="hover:text-electriccyan transition-colors">Track Order</a>
+                <a href="#" onclick="navigateTo('about')" class="hover:text-electriccyan transition-colors">About</a>
+                <a href="#" onclick="navigateTo('admin')" class="text-electriccyan hover:underline flex items-center gap-1.5"><i class="fa-solid fa-shield-halved"></i> Admin</a>
+            </nav>
+
+            <!-- Right Icons (Search, Wishlist, Cart, Account) -->
+            <div class="flex items-center gap-5 text-zinc-300">
+                <button onclick="toggleSearchModal()" class="hover:text-electriccyan transition-colors text-lg" title="Search">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+                <button onclick="navigateTo('wishlist')" class="relative hover:text-electriccyan transition-colors text-lg" title="Wishlist">
+                    <i class="fa-regular fa-heart"></i>
+                    <span id="wishlist-badge" class="absolute -top-2 -right-2 bg-controlledred text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center hidden">0</span>
+                </button>
+                <button onclick="navigateTo('cart')" class="relative hover:text-electriccyan transition-colors text-lg" title="Cart">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    <span id="cart-badge" class="absolute -top-2 -right-2 bg-electriccyan text-deepblack text-[10px] font-extrabold w-4 h-4 rounded-full flex items-center justify-center hidden">0</span>
+                </button>
+                <button onclick="navigateTo('account')" class="hover:text-electriccyan transition-colors text-lg hidden sm:block" title="Account">
+                    <i class="fa-regular fa-user"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Drawer -->
+        <div id="mobile-menu" class="hidden md:hidden glass-card border-t border-borderdark px-6 py-6 space-y-4 animate-fadeIn">
+            <a href="#" onclick="navigateTo('home'); toggleMobileMenu();" class="block text-zinc-200 hover:text-electriccyan font-medium">Home</a>
+            <a href="#" onclick="navigateTo('shop'); toggleMobileMenu();" class="block text-zinc-200 hover:text-electriccyan font-medium">Shop All</a>
+            <a href="#" onclick="navigateTo('track'); toggleMobileMenu();" class="block text-zinc-200 hover:text-electriccyan font-medium">Track Order</a>
+            <a href="#" onclick="navigateTo('about'); toggleMobileMenu();" class="block text-zinc-200 hover:text-electriccyan font-medium">About 7Leo</a>
+            <a href="#" onclick="navigateTo('account'); toggleMobileMenu();" class="block text-zinc-200 hover:text-electriccyan font-medium">My Account</a>
+            <a href="#" onclick="navigateTo('admin'); toggleMobileMenu();" class="block text-electriccyan font-semibold flex items-center gap-2"><i class="fa-solid fa-shield-halved"></i> Admin Dashboard</a>
+        </div>
+    </header>
+
+    <!-- SEARCH MODAL OVERLAY -->
+    <div id="search-modal" class="fixed inset-0 z-50 bg-deepblack/90 backdrop-blur-md hidden flex items-start justify-center pt-20 px-4">
+        <div class="w-full max-w-2xl glass-card rounded-2xl p-6 border border-borderdark relative shadow-2xl">
+            <div class="flex items-center justify-between mb-4">
+                <h3 class="text-lg font-bold text-white flex items-center gap-2"><i class="fa-solid fa-magnifying-glass text-electriccyan"></i> Search 7Leo Store</h3>
+                <button onclick="toggleSearchModal()" class="text-zinc-400 hover:text-white text-lg"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="relative">
+                <input type="text" id="search-input" oninput="handleSearchInput(this.value)" placeholder="Search products by name, category, or keyword (e.g., Cyber Watch, Quantum)..." class="w-full bg-carddark border border-borderdark rounded-xl px-4 py-3.5 pl-12 text-white placeholder-zinc-500 focus:outline-none focus:border-electriccyan transition-colors">
+                <i class="fa-solid fa-magnifying-glass absolute left-4 top-4 text-zinc-500"></i>
+            </div>
+            <div id="search-results-container" class="mt-4 max-h-96 overflow-y-auto space-y-2">
+                <!-- Dynamic Search Results -->
+            </div>
+        </div>
     </div>
 
-    <!-- 2. NAVIGATION BAR -->
-    <nav class="fixed top-0 left-0 w-full z-40 glass-panel border-b border-blue-500/20 px-6 py-4">
-        <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <div class="flex items-center space-x-3 cursor-pointer" onclick="switchView('home')">
-                <img src="assets/logo.png" alt="7Leo Logo" class="h-10 w-auto">
-                <span class="font-extrabold tracking-wider text-lg hidden sm:inline bg-clip-text text-transparent rainbow-gradient">7LEO GROUP</span>
-            </div>
-            
-            <!-- Desktop Menu -->
-            <div class="hidden lg:flex items-center space-x-6 text-sm font-medium uppercase tracking-wider">
-                <button onclick="switchView('home')" class="hover:text-blue-400 transition">Home</button>
-                <button onclick="switchView('store')" class="hover:text-blue-400 transition">7Leo Store</button>
-                <button onclick="switchView('bgm')" class="hover:text-blue-400 transition">7Leo BGM</button>
-                <button onclick="switchView('founder')" class="hover:text-blue-400 transition">Founder</button>
-                <button onclick="switchView('about')" class="hover:text-blue-400 transition">About</button>
-                <button onclick="switchView('qr')" class="hover:text-blue-400 transition">QR & App</button>
-                <button onclick="switchView('account')" class="text-blue-400 hover:text-blue-300 transition">Account</button>
-                <div id="admin-nav-item" class="hidden">
-                    <button onclick="switchView('admin')" class="bg-red-600 text-white px-3 py-1 rounded text-xs font-bold hover:bg-red-700 transition">Super Admin</button>
-                </div>
-            </div>
-
-            <!-- Mobile Hamburger Toggle -->
-            <button onclick="toggleMobileMenu()" class="lg:hidden text-white focus:outline-none">
-                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
-            </button>
-        </div>
-
-        <!-- Mobile Menu Dropdown -->
-        <div id="mobile-menu" class="hidden lg:hidden mt-4 pb-4 space-y-3 border-t border-gray-800 pt-4 flex flex-col text-sm uppercase tracking-wider">
-            <button onclick="switchView('home'); toggleMobileMenu()" class="text-left py-1 hover:text-blue-400">Home</button>
-            <button onclick="switchView('store'); toggleMobileMenu()" class="text-left py-1 hover:text-blue-400">7Leo Store</button>
-            <button onclick="switchView('bgm'); toggleMobileMenu()" class="text-left py-1 hover:text-blue-400">7Leo BGM</button>
-            <button onclick="switchView('founder'); toggleMobileMenu()" class="text-left py-1 hover:text-blue-400">Founder</button>
-            <button onclick="switchView('about'); toggleMobileMenu()" class="text-left py-1 hover:text-blue-400">About</button>
-            <button onclick="switchView('qr'); toggleMobileMenu()" class="text-left py-1 hover:text-blue-400">QR & App</button>
-            <button onclick="switchView('account'); toggleMobileMenu()" class="text-left py-1 text-blue-400">Account</button>
-            <div id="admin-nav-mobile" class="hidden">
-                <button onclick="switchView('admin'); toggleMobileMenu()" class="w-full text-left py-1 text-red-500 font-bold">Super Admin</button>
-            </div>
-        </div>
-    </nav>
-
-    <!-- MAIN VIEWS CONTAINER -->
-    <main class="pt-24 min-h-screen pb-16">
-
-        <!-- 1. HOME VIEW -->
-        <section id="view-home" class="view-section relative min-h-[85vh] flex items-center justify-center bg-cover bg-center px-4" style="background-image: url('assets/file_00000000776081fa8dbc514074356775.png');">
-            <div class="absolute inset-0 bg-black/60 backdrop-blur-[2px]"></div>
-            <div class="relative z-10 max-w-4xl mx-auto text-center p-8 glass-panel rounded-2xl neon-border">
-                <img src="assets/logo.png" alt="Logo" class="h-20 mx-auto mb-6">
-                <h1 class="text-3xl md:text-5xl font-extrabold tracking-wider mb-4 neon-text">WELCOME TO 7LEO GROUP COMMERCE</h1>
-                <p class="text-xl md:text-2xl text-blue-400 font-semibold tracking-widest mb-6">VISION * POWER * LEGACY</p>
-                <p class="text-gray-300 text-sm md:text-base max-w-2xl mx-auto mb-8">Shop. Create. Explore. A modern digital ecosystem connecting commerce, fashion, music, creativity, and technology.</p>
-                <div class="flex flex-wrap justify-center gap-4">
-                    <button onclick="switchView('store')" class="bg-blue-600 hover:bg-blue-700 text-white font-bold px-8 py-3 rounded-full transition neon-glow">Explore Store</button>
-                    <button onclick="switchView('bgm')" class="border border-blue-500 hover:bg-blue-500/20 text-white font-bold px-8 py-3 rounded-full transition">Explore Music</button>
-                </div>
-            </div>
-        </section>
-
-        <!-- 2. 7LEO STORE VIEW -->
-        <section id="view-store" class="view-section hidden max-w-7xl mx-auto px-4 py-8">
-            <div class="text-center mb-10">
-                <img src="assets/file_00000000f2948207a9d90f38705cd83d.png" alt="Store Logo" class="h-16 mx-auto mb-4 object-contain">
-                <h2 class="text-3xl font-extrabold tracking-wider neon-text">7LEO STORE</h2>
-                <p class="text-gray-400 text-sm mt-1">Premium modern e-commerce platform</p>
-            </div>
-            
-            <!-- Store Controls -->
-            <div class="flex flex-col md:flex-row justify-between items-center gap-4 mb-8">
-                <input type="text" id="store-search" placeholder="Search products..." class="w-full md:w-1/3 bg-gray-900 border border-gray-700 rounded-lg px-4 py-2 text-sm focus:outline-none focus:border-blue-500">
-                <div class="flex gap-4 w-full md:w-auto">
-                    <select id="category-filter" class="bg-gray-900 border border-gray-700 rounded-lg px-4 py-2 text-sm text-gray-300 focus:outline-none focus:border-blue-500">
-                        <option value="all">All Categories</option>
-                        <option value="fashion">Fashion & Apparel</option>
-                        <option value="tech">Technology</option>
-                        <option value="creativity">Creativity Tools</option>
-                    </select>
-                    <button onclick="openCart()" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-bold transition flex items-center gap-2">Cart (<span id="cart-count">0</span>)</button>
-                </div>
-            </div>
-
-            <!-- Product Grid -->
-            <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Sample Product Card 1 -->
-                <div class="glass-panel rounded-xl overflow-hidden neon-border p-4 flex flex-col justify-between">
-                    <div>
-                        <div class="h-48 bg-gray-800 rounded-lg mb-4 flex items-center justify-center text-gray-500">Product Image</div>
-                        <span class="text-xs text-blue-400 uppercase tracking-widest">Fashion</span>
-                        <h3 class="font-bold text-lg mt-1">7Leo Signature Hoodie</h3>
-                        <p class="text-gray-400 text-sm mt-2">$89.00</p>
-                    </div>
-                    <button onclick="addToCart('7Leo Signature Hoodie', 89.00)" class="mt-6 w-full bg-blue-600 hover:bg-blue-700 text-white text-sm font-bold py-2 rounded transition">Add to Cart</button>
-                </div>
-                <!-- Sample Product Card 2 -->
-                <div class="glass-panel rounded-xl overflow-hidden neon-border p-4 flex flex-col justify-between">
-                    <div>
-                        <div class="h-48 bg-gray-800 rounded-lg mb-4 flex items-center justify-center text-gray-500">Product Image</div>
-                        <span class="text-xs text-blue-400 uppercase tracking-widest">Technology</span>
-                        <h3 class="font-bold text-lg mt-1">Vision Gear Wireless Earbuds</h3>
-                        <p class="text-gray-400 text-sm mt-2">$149.00</p>
-                    </div>
-                    <button onclick="addToCart('Vision Gear Wireless Earbuds', 149.00)" class="mt-6 w-full bg-blue-600 hover:bg-blue-700 text-white text-sm font-bold py-2 rounded transition">Add to Cart</button>
-                </div>
-                <!-- Sample Product Card 3 -->
-                <div class="glass-panel rounded-xl overflow-hidden neon-border p-4 flex flex-col justify-between">
-                    <div>
-                        <div class="h-48 bg-gray-800 rounded-lg mb-4 flex items-center justify-center text-gray-500">Product Image</div>
-                        <span class="text-xs text-blue-400 uppercase tracking-widest">Creativity</span>
-                        <h3 class="font-bold text-lg mt-1">Legacy GroovePad Controller</h3>
-                        <p class="text-gray-400 text-sm mt-2">$299.00</p>
-                    </div>
-                    <button onclick="addToCart('Legacy GroovePad Controller', 299.00)" class="mt-6 w-full bg-blue-600 hover:bg-blue-700 text-white text-sm font-bold py-2 rounded transition">Add to Cart</button>
-                </div>
-            </div>
-        </section>
-
-        <!-- 3. 7LEO BGM VIEW -->
-        <section id="view-bgm" class="view-section hidden max-w-7xl mx-auto px-4 py-8">
-            <div class="text-center mb-10">
-                <img src="assets/bgm-logo.png" alt="BGM Logo" class="h-20 mx-auto mb-4 object-contain">
-                <h2 class="text-3xl font-extrabold tracking-wider neon-text">7LEO BGM UNIVERSE</h2>
-                <p class="text-gray-400 text-sm mt-1">Mobile. Composed. GroovePad Music.</p>
-            </div>
-
-            <!-- BGM Banner -->
-            <div class="relative rounded-2xl overflow-hidden mb-10 h-64 md:h-80 neon-border">
-                <img src="assets/bgm-banmer.png" alt="BGM Banner" class="w-full h-full object-cover">
-                <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent flex flex-col justify-end p-6 md:p-10">
-                    <h3 class="text-2xl md:text-4xl font-bold">Drive . Chill . Gangster . DJ . Cinematic</h3>
-                    <p class="text-gray-300 text-sm mt-2 max-w-xl">Handcrafted instrumental background music to fuel your focus, ease your mind, and elevate your moments.</p>
-                    <div class="mt-4 flex gap-4">
-                        <a href="https://www.youtube.com/@7LeoBGM" target="_blank" class="bg-red-600 hover:bg-red-700 text-white px-6 py-2 rounded font-bold text-sm transition">Visit YouTube</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Playlists Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-                <div class="glass-panel p-6 rounded-xl neon-border">
-                    <h4 class="font-bold text-lg text-blue-400 mb-2">7Leo Drive Series</h4>
-                    <p class="text-xs text-gray-400 mb-4">High-energy driving instrumentals</p>
-                    <button onclick="playTrack('7Leo Drive Series')" class="w-full bg-blue-600/20 hover:bg-blue-600 text-blue-400 hover:text-white border border-blue-500 py-2 rounded text-sm transition font-semibold">Play Playlist</button>
-                </div>
-                <div class="glass-panel p-6 rounded-xl neon-border">
-                    <h4 class="font-bold text-lg text-blue-400 mb-2">7Leo Chill Series</h4>
-                    <p class="text-xs text-gray-400 mb-4">Relaxing ambient background vibes</p>
-                    <button onclick="playTrack('7Leo Chill Series')" class="w-full bg-blue-600/20 hover:bg-blue-600 text-blue-400 hover:text-white border border-blue-500 py-2 rounded text-sm transition font-semibold">Play Playlist</button>
-                </div>
-                <div class="glass-panel p-6 rounded-xl neon-border">
-                    <h4 class="font-bold text-lg text-blue-400 mb-2">7Leo Gangster Series</h4>
-                    <p class="text-xs text-gray-400 mb-4">Street energy street-beat compositions</p>
-                    <button onclick="playTrack('7Leo Gangster Series')" class="w-full bg-blue-600/20 hover:bg-blue-600 text-blue-400 hover:text-white border border-blue-500 py-2 rounded text-sm transition font-semibold">Play Playlist</button>
-                </div>
-                <div class="glass-panel p-6 rounded-xl neon-border">
-                    <h4 class="font-bold text-lg text-blue-400 mb-2">7Leo DJ Series</h4>
-                    <p class="text-xs text-gray-400 mb-4">Club and dynamic mix instrumentals</p>
-                    <button onclick="playTrack('7Leo DJ Series')" class="w-full bg-blue-600/20 hover:bg-blue-600 text-blue-400 hover:text-white border border-blue-500 py-2 rounded text-sm transition font-semibold">Play Playlist</button>
-                </div>
-                <div class="glass-panel p-6 rounded-xl neon-border">
-                    <h4 class="font-bold text-lg text-blue-400 mb-2">7Leo Cinematic Series</h4>
-                    <p class="text-xs text-gray-400 mb-4">Epic feels for trailers & films</p>
-                    <button onclick="playTrack('7Leo Cinematic Series')" class="w-full bg-blue-600/20 hover:bg-blue-600 text-blue-400 hover:text-white border border-blue-500 py-2 rounded text-sm transition font-semibold">Play Playlist</button>
-                </div>
-                <div class="glass-panel p-6 rounded-xl neon-border">
-                    <h4 class="font-bold text-lg text-blue-400 mb-2">7Leo Songs Series</h4>
-                    <p class="text-xs text-gray-400 mb-4">Original musical tracks library</p>
-                    <button onclick="playTrack('7Leo Songs Series')" class="w-full bg-blue-600/20 hover:bg-blue-600 text-blue-400 hover:text-white border border-blue-500 py-2 rounded text-sm transition font-semibold">Play Playlist</button>
-                </div>
-            </div>
-
-            <!-- Licensing Section -->
-            <div class="glass-panel p-8 rounded-2xl neon-border max-w-3xl mx-auto">
-                <h3 class="text-2xl font-bold mb-4">Music Licensing & Purchase</h3>
-                <p class="text-gray-300 text-sm mb-6">Need music for your project? 7Leo BGM music can be considered for promotional videos, advertisements, trailers, short films, social media, and brand campaigns.</p>
-                <form onsubmit="submitMusicRequest(event)" class="space-y-4">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <input type="text" placeholder="Your Name" required class="bg-gray-900 border border-gray-700 rounded p-3 text-sm focus:outline-none focus:border-blue-500">
-                        <input type="email" placeholder="Your Email" required class="bg-gray-900 border border-gray-700 rounded p-3 text-sm focus:outline-none focus:border-blue-500">
-                    </div>
-                    <select class="w-full bg-gray-900 border border-gray-700 rounded p-3 text-sm text-gray-300 focus:outline-none focus:border-blue-500">
-                        <option>Commercial Licensing</option>
-                        <option>Advertisement / Promotional Video</option>
-                        <option>Trailer / Short Film Project</option>
-                        <option>Custom Music Requirement</option>
-                    </select>
-                    <textarea placeholder="Project Details & Intended Use" rows="4" class="w-full bg-gray-900 border border-gray-700 rounded p-3 text-sm focus:outline-none focus:border-blue-500"></textarea>
-                    <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded transition">Send Music Request</button>
-                </form>
-            </div>
-        </section>
-
-        <!-- 4. FOUNDER VIEW -->
-        <section id="view-founder" class="view-section hidden max-w-4xl mx-auto px-4 py-8">
-            <div class="glass-panel p-8 md:p-12 rounded-2xl neon-border flex flex-col md:flex-row items-center gap-8">
-                <img src="assets/founder.jpg" alt="Founder" class="w-48 h-48 md:w-64 md:h-64 object-cover rounded-xl neon-border shadow-2xl">
-                <div>
-                    <span class="text-xs text-blue-400 uppercase tracking-widest font-semibold">Visionary Leadership</span>
-                    <h2 class="text-3xl font-extrabold mt-1 mb-2">ABUBAKKER BELLARY</h2>
-                    <p class="text-gray-400 text-sm mb-4">Karnataka State | Hospet – 583201 | Vijayanagara Zilla</p>
-                    <p class="text-gray-300 text-sm leading-relaxed mb-6">This website was built entirely on a mobile phone — with no friends, no team support, and no investors. Just a solo founder with a vision, dedication, and the determination to build something meaningful from the ground up.</p>
-                    <div class="bg-blue-950/40 border border-blue-500/30 p-4 rounded-lg">
-                        <p class="text-blue-300 font-semibold text-sm italic">"Built solo. Dreamed big."</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 5. ABOUT VIEW -->
-        <section id="view-about" class="view-section hidden max-w-3xl mx-auto px-4 py-8">
-            <div class="glass-panel p-8 rounded-2xl neon-border text-center">
-                <img src="assets/logo.png" alt="Logo" class="h-16 mx-auto mb-6">
-                <h2 class="text-3xl font-extrabold mb-4">About 7Leo Group Commerce</h2>
-                <p class="text-gray-300 text-base leading-relaxed mb-6">7Leo Group Commerce is a modern digital commerce platform focused on bringing shopping, fashion, creativity, and digital services together in one place. Our goal is to build a simple, innovative, and user-friendly experience for everyone.</p>
-                <div class="border-t border-gray-800 pt-6">
-                    <p class="text-blue-400 font-bold uppercase tracking-wider text-sm">7Leo Group Commerce — Shop. Create. Explore.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- 6. QR & PAA VIEW -->
-        <section id="view-qr" class="view-section hidden max-w-2xl mx-auto px-4 py-8 text-center">
-            <div class="glass-panel p-8 rounded-2xl neon-border">
-                <h2 class="text-2xl font-bold mb-2">Scan & Enter 7Leo Digital World</h2>
-                <p class="text-gray-400 text-sm mb-6">Take 7Leo Group Commerce with you everywhere.</p>
-                <div class="bg-white p-4 w-48 h-48 mx-auto rounded-xl mb-6 flex items-center justify-center">
-                    <!-- Simulated Dynamic QR using window.location.origin -->
-                    <div id="qr-code-placeholder" class="text-black font-bold text-xs break-all"></div>
-                </div>
-                <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <button onclick="copyWebsiteLink()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold px-6 py-2 rounded text-sm transition">Copy Website Link</button>
-                    <button onclick="installAppPrompt()" class="border border-blue-500 hover:bg-blue-500/20 text-white font-bold px-6 py-2 rounded text-sm transition">Install PWA App</button>
-                </div>
-            </div>
-        </section>
-
-        <!-- 7. ACCOUNT VIEW -->
-        <section id="view-account" class="view-section hidden max-w-md mx-auto px-4 py-8">
-            <div class="glass-panel p-8 rounded-2xl neon-border">
-                <h2 class="text-2xl font-bold mb-6 text-center">Sign In to 7Leo</h2>
-                <form onsubmit="handleSignIn(event)" class="space-y-4">
-                    <div>
-                        <label class="block text-xs uppercase tracking-wider text-gray-400 mb-1">Email Address</label>
-                        <input type="email" id="signin-email" required placeholder="7leogroup@gmail.com" class="w-full bg-gray-900 border border-gray-700 rounded p-3 text-sm focus:outline-none focus:border-blue-500">
-                    </div>
-                    <div>
-                        <label class="block text-xs uppercase tracking-wider text-gray-400 mb-1">Password</label>
-                        <input type="password" required placeholder="••••••••" class="w-full bg-gray-900 border border-gray-700 rounded p-3 text-sm focus:outline-none focus:border-blue-500">
-                    </div>
-                    <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded text-sm transition">SIGN IN</button>
-                </form>
-                <p class="text-xs text-center text-gray-500 mt-4">Hint: Log in with <strong>7leogroup@gmail.com</strong> to unlock Super Admin privileges.</p>
-            </div>
-        </section>
-
-        <!-- 8. ADMIN VIEW -->
-        <section id="view-admin" class="view-section hidden max-w-6xl mx-auto px-4 py-8">
-            <div class="glass-panel p-8 rounded-2xl neon-border mb-6 flex justify-between items-center">
-                <div>
-                    <h2 class="text-2xl font-bold text-red-500">SUPER ADMIN DASHBOARD</h2>
-                    <p class="text-xs text-gray-400">Authenticated as: <span id="admin-email-display" class="text-blue-400">7leogroup@gmail.com</span></p>
-                </div>
-                <button onclick="switchView('home')" class="border border-gray-700 hover:bg-gray-800 px-4 py-2 rounded text-xs">Exit Admin</button>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="glass-panel p-6 rounded-xl neon-border">
-                    <h3 class="font-bold text-lg mb-2">Store Management</h3>
-                    <p class="text-xs text-gray-400 mb-4">Add, edit, or remove products and update inventory categories.</p>
-                    <button onclick="alert('Product management interface ready.')" class="bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold px-4 py-2 rounded">Manage Products</button>
-                </div>
-                <div class="glass-panel p-6 rounded-xl neon-border">
-                    <h3 class="font-bold text-lg mb-2">BGM Music Control</h3>
-                    <p class="text-xs text-gray-400 mb-4">Upload tracks, configure playlist series, and update YouTube links.</p>
-                    <button onclick="alert('BGM control interface ready.')" class="bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold px-4 py-2 rounded">Manage Tracks</button>
-                </div>
-                <div class="glass-panel p-6 rounded-xl neon-border">
-                    <h3 class="font-bold text-lg mb-2">Security & Audit Log</h3>
-                    <p class="text-xs text-gray-400 mb-4">Review system activity logs and protected asset safety status.</p>
-                    <button onclick="alert('Audit logs secure.')" class="bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold px-4 py-2 rounded">View Audit Logs</button>
-                </div>
-            </div>
-        </section>
-
+    <!-- MAIN VIEW CONTAINER -->
+    <main id="app-view" class="flex-grow">
+        <!-- Rendered Dynamically via JS -->
     </main>
 
-    <!-- FOOTER -->
-    <footer class="glass-panel border-t border-blue-500/20 py-8 px-6 text-center text-xs text-gray-400">
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
-            <div>
-                <p class="font-bold text-white text-sm">7Leo Group Commerce</p>
-                <p class="text-blue-400 mt-1">VISION * POWER * LEGACY | Shop. Create. Explore.</p>
+    <!-- GLOBAL FOOTER -->
+    <footer class="bg-carddark border-t border-borderdark pt-16 pb-12 mt-20 text-zinc-400 text-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-5 gap-10">
+            <div class="md:col-span-2 space-y-4">
+                <div class="flex items-center gap-2">
+                    <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-electriccyan to-blue-600 flex items-center justify-center text-deepblack font-black">7L</div>
+                    <span class="font-bold text-lg text-white tracking-wider">7LEO STORE</span>
+                </div>
+                <p class="text-zinc-400 text-xs leading-relaxed max-w-sm">
+                    A modern commerce destination from 7Leo Group Commerce. Powered by state-of-the-art global fulfillment partners, delivering premium quality worldwide.
+                </p>
+                <div class="text-[11px] font-semibold tracking-widest text-electriccyan">VISION • POWER • LEGACY</div>
             </div>
             <div>
-                <a href="https://www.youtube.com/@7LeoBGM" target="_blank" class="text-red-500 hover:underline">Official YouTube Channel</a>
+                <h4 class="text-white font-semibold text-xs tracking-wider uppercase mb-4">Shop</h4>
+                <ul class="space-y-2.5 text-xs">
+                    <li><a href="#" onclick="navigateTo('shop')" class="hover:text-electriccyan transition-colors">All Products</a></li>
+                    <li><a href="#" onclick="navigateTo('shop')" class="hover:text-electriccyan transition-colors">New Arrivals</a></li>
+                    <li><a href="#" onclick="navigateTo('shop')" class="hover:text-electriccyan transition-colors">Best Sellers</a></li>
+                    <li><a href="#" onclick="navigateTo('shop')" class="hover:text-electriccyan transition-colors">Categories</a></li>
+                </ul>
             </div>
             <div>
-                <p>&copy; 2026 7Leo Group Commerce. All rights reserved.</p>
+                <h4 class="text-white font-semibold text-xs tracking-wider uppercase mb-4">Customer Care</h4>
+                <ul class="space-y-2.5 text-xs">
+                    <li><a href="#" onclick="navigateTo('account')" class="hover:text-electriccyan transition-colors">My Account</a></li>
+                    <li><a href="#" onclick="navigateTo('account')" class="hover:text-electriccyan transition-colors">My Orders</a></li>
+                    <li><a href="#" onclick="navigateTo('wishlist')" class="hover:text-electriccyan transition-colors">Wishlist</a></li>
+                    <li><a href="#" onclick="navigateTo('track')" class="hover:text-electriccyan transition-colors">Track Order</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-semibold text-xs tracking-wider uppercase mb-4">7Leo Group</h4>
+                <ul class="space-y-2.5 text-xs">
+                    <li><span class="text-white font-medium">7Leo Store</span> (Active)</li>
+                    <li><span class="text-zinc-500">7Leo BGM</span> (Coming Soon)</li>
+                    <li><span class="text-zinc-500">7Leo Fashion</span> (Coming Soon)</li>
+                    <li><a href="#" onclick="navigateTo('about')" class="hover:text-electriccyan transition-colors mt-2 block">About Group</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-borderdark mt-12 pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-zinc-500">
+            <p>&copy; 2026 7Leo Group Commerce. All rights reserved.</p>
+            <div class="flex gap-6 mt-4 sm:mt-0">
+                <a href="#" onclick="navigateTo('about')" class="hover:text-white transition-colors">Privacy Policy</a>
+                <a href="#" onclick="navigateTo('about')" class="hover:text-white transition-colors">Terms & Conditions</a>
+                <a href="#" onclick="navigateTo('about')" class="hover:text-white transition-colors">Shipping & Returns</a>
             </div>
         </div>
     </footer>
 
-    <!-- JAVASCRIPT LOGIC -->
+    <!-- JAVASCRIPT APPLICATION CORE -->
     <script>
-        // Splash screen fadeout timer (5 seconds)
-        window.addEventListener('load', () => {
-            setTimeout(() => {
-                const splash = document.getElementById('splash-screen');
-                splash.style.opacity = '0';
-                setTimeout(() => splash.style.display = 'none', 1000);
-            }, 5000);
-
-            // Populate dynamic QR placeholder with current origin
-            document.getElementById('qr-code-placeholder').innerText = window.location.origin;
-        });
-
-        // View Routing System
-        function switchView(viewId) {
-            document.querySelectorAll('.view-section').forEach(section => {
-                section.classList.add('hidden');
-            });
-            document.getElementById('view-' + viewId).classList.remove('hidden');
-            window.scrollTo(0, 0);
+        // --- CENTRAL CURRENCY FORMATTER ---
+        function formatINR(amount) {
+            return '₹' + Number(amount).toLocaleString('en-IN');
         }
 
-        // Mobile Menu Toggle
+        // --- TOAST NOTIFICATION SYSTEM ---
+        function showToast(message, type = 'success') {
+            const container = document.getElementById('toast-container');
+            const toast = document.createElement('div');
+            const borderColor = type === 'success' ? 'border-electriccyan' : 'border-controlledred';
+            const icon = type === 'success' ? '<i class="fa-solid fa-circle-check text-electriccyan"></i>' : '<i class="fa-solid fa-circle-exclamation text-controlledred"></i>';
+            
+            toast.className = `glass-card px-4 py-3 rounded-xl border ${borderColor} text-white text-sm flex items-center gap-3 shadow-xl pointer-events-auto transform translate-y-4 opacity-0 transition-all duration-300`;
+            toast.innerHTML = `${icon}<span>${message}</span>`;
+            
+            container.appendChild(toast);
+            setTimeout(() => {
+                toast.classList.remove('translate-y-4', 'opacity-0');
+            }, 10);
+
+            setTimeout(() => {
+                toast.classList.add('translate-y-4', 'opacity-0');
+                setTimeout(() => toast.remove(), 300);
+            }, 3000);
+        }
+
+        // --- APPLICATION STATE & DATABASE ---
+        let state = {
+            currentView: 'home',
+            currentParam: null,
+            cart: JSON.parse(localStorage.getItem('7leo_cart')) || [],
+            wishlist: JSON.parse(localStorage.getItem('7leo_wishlist')) || [],
+            orders: JSON.parse(localStorage.getItem('7leo_orders')) || [
+                { id: '7L-2026-000001', date: '2026-03-30', total: 2498, status: 'In Transit', tracking: 'TRK98324729IN', items: [{ name: 'Quantum Cyber Watch', qty: 1, price: 2498 }] }
+            ],
+            user: { name: 'Alex Johnson', email: 'alex@7leogroup.com', phone: '+91 98765 43210' },
+            suppliers: [
+                { id: 'SUP-01', name: 'Apex Global Logistics & Fulfillment', status: 'Connected (API)', method: 'Automated API' },
+                { id: 'SUP-02', name: 'Nexus Prime Hardware Partner', status: 'Pending Config', method: 'Manual Export' }
+            ],
+            products: [
+                {
+                    id: 1,
+                    name: 'Quantum Cyber Watch X',
+                    slug: 'quantum-cyber-watch-x',
+                    category: 'Gadgets',
+                    price: 2498,
+                    originalPrice: 4998,
+                    discount: 50,
+                    image: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=800&q=80',
+                    description: 'Futuristic smartwatch featuring holographic interface simulation, aerospace-grade titanium chassis, health biometrics, and 7-day battery life.',
+                    supplierCost: 1100,
+                    stock: 45,
+                    supplier: 'Apex Global Logistics & Fulfillment',
+                    badge: 'Best Seller'
+                },
+                {
+                    id: 2,
+                    name: 'AeroGlide Wireless Earbuds',
+                    slug: 'aeroglide-wireless-earbuds',
+                    category: 'Electronics',
+                    price: 1499,
+                    originalPrice: 2999,
+                    discount: 50,
+                    image: 'https://images.unsplash.com/photo-1572569511254-d8f925fe2cbb?auto=format&fit=crop&w=800&q=80',
+                    description: 'Immersive spatial audio with active noise cancellation and crystal-clear microphone arrays designed for peak performance.',
+                    supplierCost: 650,
+                    stock: 80,
+                    supplier: 'Apex Global Logistics & Fulfillment',
+                    badge: 'Trending'
+                },
+                {
+                    id: 3,
+                    name: 'Nova Minimalist Backpack',
+                    slug: 'nova-minimalist-backpack',
+                    category: 'Fashion',
+                    price: 1999,
+                    originalPrice: 3499,
+                    discount: 43,
+                    image: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=800&q=80',
+                    description: 'Weatherproof urban tactical backpack with dedicated padded laptop compartment and USB fast-charge pass-through.',
+                    supplierCost: 850,
+                    stock: 30,
+                    supplier: 'Nexus Prime Hardware Partner',
+                    badge: 'New Arrival'
+                },
+                {
+                    id: 4,
+                    name: 'Pulse LED Desk Matrix',
+                    slug: 'pulse-led-desk-matrix',
+                    category: 'Home & Lifestyle',
+                    price: 2999,
+                    originalPrice: 4500,
+                    discount: 33,
+                    image: 'https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=800&q=80',
+                    description: 'Customizable ambient lighting panel with music reactivity and smart app integration for high-productivity workspaces.',
+                    supplierCost: 1400,
+                    stock: 20,
+                    supplier: 'Apex Global Logistics & Fulfillment',
+                    badge: 'Special Offer'
+                },
+                {
+                    id: 5,
+                    name: 'Titanium Stealth Sunglasses',
+                    slug: 'titanium-stealth-sunglasses',
+                    category: 'Accessories',
+                    price: 999,
+                    originalPrice: 1999,
+                    discount: 50,
+                    image: 'https://images.unsplash.com/photo-1572635196237-14b3f281503f?auto=format&fit=crop&w=800&q=80',
+                    description: 'Polarized UV400 lenses housed in an ultralight matte black titanium frame for uncompromising style and durability.',
+                    supplierCost: 400,
+                    stock: 60,
+                    supplier: 'Nexus Prime Hardware Partner',
+                    badge: 'Trending'
+                },
+                {
+                    id: 6,
+                    name: 'Nexus Sonic Facial Cleanser',
+                    slug: 'nexus-sonic-facial-cleanser',
+                    category: 'Beauty & Personal Care',
+                    price: 799,
+                    originalPrice: 1599,
+                    discount: 50,
+                    image: 'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=800&q=80',
+                    description: 'Advanced ultrasonic silicone skincare brush with adjustable vibrational frequencies for deep pore cleansing.',
+                    supplierCost: 320,
+                    stock: 50,
+                    supplier: 'Apex Global Logistics & Fulfillment',
+                    badge: 'New Arrival'
+                }
+            ]
+        };
+
+        function saveLocalStorage() {
+            localStorage.setItem('7leo_cart', JSON.stringify(state.cart));
+            localStorage.setItem('7leo_wishlist', JSON.stringify(state.wishlist));
+            localStorage.setItem('7leo_orders', JSON.stringify(state.orders));
+            updateBadges();
+        }
+
+        function updateBadges() {
+            const cartBadge = document.getElementById('cart-badge');
+            const wishlistBadge = document.getElementById('wishlist-badge');
+            
+            const totalCartItems = state.cart.reduce((sum, item) => sum + item.qty, 0);
+            if (totalCartItems > 0) {
+                cartBadge.textContent = totalCartItems;
+                cartBadge.classList.remove('hidden');
+            } else {
+                cartBadge.classList.add('hidden');
+            }
+
+            if (state.wishlist.length > 0) {
+                wishlistBadge.textContent = state.wishlist.length;
+                wishlistBadge.classList.remove('hidden');
+            } else {
+                wishlistBadge.classList.add('hidden');
+            }
+        }
+
+        // --- ROUTING & VIEW CONTROLLER ---
+        function navigateTo(view, param = null) {
+            state.currentView = view;
+            state.currentParam = param;
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            renderApp();
+        }
+
+        function renderApp() {
+            const container = document.getElementById('app-view');
+            container.innerHTML = '';
+
+            switch (state.currentView) {
+                case 'home':
+                    container.innerHTML = renderHomeView();
+                    break;
+                case 'shop':
+                    container.innerHTML = renderShopView();
+                    break;
+                case 'product':
+                    container.innerHTML = renderProductDetailView(state.currentParam);
+                    break;
+                case 'cart':
+                    container.innerHTML = renderCartView();
+                    break;
+                case 'checkout':
+                    container.innerHTML = renderCheckoutView();
+                    break;
+                case 'confirmation':
+                    container.innerHTML = renderConfirmationView(state.currentParam);
+                    break;
+                case 'track':
+                    container.innerHTML = renderTrackView();
+                    break;
+                case 'account':
+                    container.innerHTML = renderAccountView();
+                    break;
+                case 'wishlist':
+                    container.innerHTML = renderWishlistView();
+                    break;
+                case 'about':
+                    container.innerHTML = renderAboutView();
+                    break;
+                case 'admin':
+                    container.innerHTML = renderAdminView();
+                    break;
+                default:
+                    container.innerHTML = renderHomeView();
+            }
+            updateBadges();
+        }
+
+        // --- VIEW 1: HOME ---
+        function renderHomeView() {
+            return `
+                <!-- Hero Section -->
+                <section class="relative min-h-[85vh] flex items-center justify-center px-4 overflow-hidden">
+                    <div class="absolute inset-0 z-0 opacity-40 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-blue-900/40 via-deepblack to-deepblack"></div>
+                    <div class="relative z-10 max-w-4xl mx-auto text-center space-y-6">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full glass-card border border-electriccyan/30 text-electriccyan text-xs font-semibold tracking-widest uppercase mb-2">
+                            <i class="fa-solid fa-bolt"></i> 7Leo Group Commerce Initiative
+                        </div>
+                        <h1 class="text-4xl sm:text-6xl md:text-7xl font-black tracking-tight text-white">
+                            DISCOVER <span class="text-transparent bg-clip-text bg-gradient-to-r from-electriccyan to-blue-500">• SHOP •</span> EXPERIENCE
+                        </h1>
+                        <p class="text-lg sm:text-xl text-zinc-400 max-w-2xl mx-auto font-light">
+                            A modern shopping destination curated with precision. Premium lifestyle gear, advanced gadgets, and futuristic essentials delivered effortlessly.
+                        </p>
+                        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+                            <button onclick="navigateTo('shop')" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-electriccyan text-deepblack font-bold text-sm tracking-wide glow-cyan glow-cyan-hover transition-all">
+                                SHOP NOW
+                            </button>
+                            <button onclick="navigateTo('about')" class="w-full sm:w-auto px-8 py-4 rounded-xl glass-card text-white hover:border-electriccyan transition-all font-semibold text-sm">
+                                EXPLORE 7LEO GROUP
+                            </button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Featured Categories -->
+                <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+                    <div class="flex justify-between items-end mb-10">
+                        <div>
+                            <span class="text-electriccyan text-xs font-bold tracking-widest uppercase">Curated Collections</span>
+                            <h2 class="text-2xl sm:text-3xl font-extrabold text-white mt-1">Featured Categories</h2>
+                        </div>
+                        <button onclick="navigateTo('shop')" class="text-xs font-semibold text-zinc-400 hover:text-electriccyan transition-colors">View All →</button>
+                    </div>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        ${['Gadgets', 'Electronics', 'Fashion', 'Accessories'].map(cat => `
+                            <div onclick="navigateTo('shop')" class="glass-card p-6 rounded-2xl group cursor-pointer hover:border-electriccyan transition-all duration-300 relative overflow-hidden">
+                                <div class="absolute inset-0 bg-gradient-to-t from-deepblack via-transparent to-transparent opacity-80"></div>
+                                <div class="relative z-10 space-y-2">
+                                    <div class="w-10 h-10 rounded-xl bg-zinc-900 flex items-center justify-center text-electriccyan group-hover:scale-110 transition-transform">
+                                        <i class="fa-solid fa-layer-group"></i>
+                                    </div>
+                                    <h3 class="font-bold text-white text-base">${cat}</h3>
+                                    <p class="text-xs text-zinc-400">Explore items →</p>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </section>
+
+                <!-- Trending Products -->
+                <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 border-t border-borderdark">
+                    <div class="flex justify-between items-end mb-10">
+                        <div>
+                            <span class="text-electriccyan text-xs font-bold tracking-widest uppercase">Popular Now</span>
+                            <h2 class="text-2xl sm:text-3xl font-extrabold text-white mt-1">Trending Products</h2>
+                        </div>
+                        <button onclick="navigateTo('shop')" class="text-xs font-semibold text-zinc-400 hover:text-electriccyan transition-colors">Browse Catalog →</button>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                        ${state.products.slice(0, 3).map(product => renderProductCard(product)).join('')}
+                    </div>
+                </section>
+
+                <!-- Why 7Leo Store -->
+                <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 border-t border-borderdark">
+                    <div class="text-center max-w-2xl mx-auto mb-16">
+                        <span class="text-electriccyan text-xs font-bold tracking-widest uppercase">The 7Leo Advantage</span>
+                        <h2 class="text-3xl font-extrabold text-white mt-2">Why Choose 7Leo Store</h2>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <div class="glass-card p-8 rounded-2xl space-y-4">
+                            <div class="w-12 h-12 rounded-xl bg-electriccyan/10 text-electriccyan flex items-center justify-center text-xl font-bold"><i class="fa-solid fa-truck-fast"></i></div>
+                            <h3 class="text-lg font-bold text-white">Reliable Fulfillment</h3>
+                            <p class="text-sm text-zinc-400">Partnered with elite global logistics networks to ensure seamless packing, transit, and door-to-door delivery.</p>
+                        </div>
+                        <div class="glass-card p-8 rounded-2xl space-y-4">
+                            <div class="w-12 h-12 rounded-xl bg-electriccyan/10 text-electriccyan flex items-center justify-center text-xl font-bold"><i class="fa-solid fa-shield-halved"></i></div>
+                            <h3 class="text-lg font-bold text-white">Secure Payments</h3>
+                            <p class="text-sm text-zinc-400">Robust payment architecture supporting UPI, Credit/Debit cards, Net Banking, and secure encryption standards.</p>
+                        </div>
+                        <div class="glass-card p-8 rounded-2xl space-y-4">
+                            <div class="w-12 h-12 rounded-xl bg-electriccyan/10 text-electriccyan flex items-center justify-center text-xl font-bold"><i class="fa-solid fa-box-open"></i></div>
+                            <h3 class="text-lg font-bold text-white">Easy Order Tracking</h3>
+                            <p class="text-sm text-zinc-400">Real-time tracking system to monitor your package from fulfillment request right up to final delivery.</p>
+                        </div>
+                    </div>
+                </section>
+            `;
+        }
+
+        // --- PRODUCT CARD HELPER ---
+        function renderProductCard(product) {
+            const isWishlisted = state.wishlist.some(item => item.id === product.id);
+            return `
+                <div class="glass-card rounded-2xl overflow-hidden group hover:border-electriccyan/50 transition-all duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="relative aspect-square overflow-hidden bg-zinc-900 cursor-pointer" onclick="navigateTo('product', ${product.id})">
+                            <img src="${product.image}" alt="${product.name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            ${product.badge ? `<span class="absolute top-3 left-3 bg-electriccyan text-deepblack text-[10px] font-extrabold px-2.5 py-1 rounded-full uppercase tracking-wider">${product.badge}</span>` : ''}
+                            <button onclick="event.stopPropagation(); toggleWishlist(${product.id})" class="absolute top-3 right-3 w-9 h-9 rounded-full glass-card flex items-center justify-center text-white hover:text-electriccyan transition-colors">
+                                <i class="${isWishlisted ? 'fa-solid text-controlledred' : 'fa-regular'} fa-heart"></i>
+                            </button>
+                        </div>
+                        <div class="p-5 space-y-2">
+                            <span class="text-xs text-zinc-500 uppercase tracking-widest">${product.category}</span>
+                            <h3 onclick="navigateTo('product', ${product.id})" class="font-bold text-white text-base cursor-pointer hover:text-electriccyan transition-colors line-clamp-1">${product.name}</h3>
+                            <div class="flex items-center gap-3">
+                                <span class="text-lg font-extrabold text-white">${formatINR(product.price)}</span>
+                                ${product.originalPrice ? `<span class="text-sm text-zinc-500 line-through">${formatINR(product.originalPrice)}</span>` : ''}
+                                ${product.discount ? `<span class="text-xs text-electriccyan font-semibold">(${product.discount}% OFF)</span>` : ''}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-5 pt-0 grid grid-cols-2 gap-2">
+                        <button onclick="addToCart(${product.id})" class="w-full py-2.5 rounded-xl bg-carddark border border-borderdark text-white font-semibold text-xs hover:border-electriccyan hover:text-electriccyan transition-all">
+                            Add to Cart
+                        </button>
+                        <button onclick="buyNow(${product.id})" class="w-full py-2.5 rounded-xl bg-electriccyan text-deepblack font-extrabold text-xs hover:opacity-90 transition-opacity">
+                            Buy Now
+                        </button>
+                    </div>
+                </div>
+            `;
+        }
+
+        // --- VIEW 2: SHOP CATALOG ---
+        function renderShopView() {
+            return `
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-borderdark pb-6">
+                        <div>
+                            <span class="text-electriccyan text-xs font-bold tracking-widest uppercase">Catalog</span>
+                            <h1 class="text-3xl font-extrabold text-white mt-1">All Products</h1>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <select id="sort-select" onchange="sortProducts(this.value)" class="bg-carddark border border-borderdark rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-electriccyan">
+                                <option value="relevance">Sort by: Relevance</option>
+                                <option value="low-high">Price: Low to High</option>
+                                <option value="high-low">Price: High to Low</option>
+                                <option value="newest">Newest Arrivals</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                        <div class="glass-card p-6 rounded-2xl space-y-6 h-fit">
+                            <h3 class="font-bold text-white text-sm uppercase tracking-wider">Categories</h3>
+                            <div class="space-y-2 text-sm text-zinc-400">
+                                <button onclick="filterCategory('All')" class="block w-full text-left hover:text-electriccyan transition-colors py-1">All Categories</button>
+                                ${['Gadgets', 'Electronics', 'Fashion', 'Accessories', 'Home & Lifestyle', 'Beauty & Personal Care'].map(c => `
+                                    <button onclick="filterCategory('${c}')" class="block w-full text-left hover:text-electriccyan transition-colors py-1">${c}</button>
+                                `).join('')}
+                            </div>
+                        </div>
+                        <div class="md:col-span-3 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6" id="shop-product-grid">
+                            ${state.products.map(p => renderProductCard(p)).join('')}
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function filterCategory(category) {
+            const grid = document.getElementById('shop-product-grid');
+            if (!grid) return;
+            const filtered = category === 'All' ? state.products : state.products.filter(p => p.category === category);
+            grid.innerHTML = filtered.length > 0 ? filtered.map(p => renderProductCard(p)).join('') : `<p class="text-zinc-500 col-span-3 text-center py-10">No products found in this category.</p>`;
+        }
+
+        function sortProducts(criteria) {
+            let sorted = [...state.products];
+            if (criteria === 'low-high') sorted.sort((a,b) => a.price - b.price);
+            if (criteria === 'high-low') sorted.sort((a,b) => b.price - a.price);
+            if (criteria === 'newest') sorted.sort((a,b) => b.id - a.id);
+            state.products = sorted;
+            renderApp();
+        }
+
+        // --- VIEW 3: PRODUCT DETAILS ---
+        function renderProductDetailView(id) {
+            const product = state.products.find(p => p.id === Number(id)) || state.products[0];
+            const isWishlisted = state.wishlist.some(item => item.id === product.id);
+
+            return `
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                        <div class="space-y-4">
+                            <div class="aspect-square rounded-2xl overflow-hidden glass-card border border-borderdark">
+                                <img src="${product.image}" alt="${product.name}" class="w-full h-full object-cover">
+                            </div>
+                        </div>
+                        <div class="space-y-6">
+                            <div>
+                                <span class="text-xs text-electriccyan font-bold tracking-widest uppercase">${product.category}</span>
+                                <h1 class="text-3xl sm:text-4xl font-black text-white mt-1">${product.name}</h1>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <span class="text-2xl font-extrabold text-white">${formatINR(product.price)}</span>
+                                ${product.originalPrice ? `<span class="text-lg text-zinc-500 line-through">${formatINR(product.originalPrice)}</span>` : ''}
+                                ${product.discount ? `<span class="text-xs bg-electriccyan/10 text-electriccyan px-2.5 py-1 rounded-full font-bold">Save ${product.discount}%</span>` : ''}
+                            </div>
+                            <p class="text-zinc-400 text-sm leading-relaxed">${product.description}</p>
+                            
+                            <div class="glass-card p-4 rounded-xl space-y-2 text-xs text-zinc-400">
+                                <div class="flex items-center gap-2"><i class="fa-solid fa-truck-fast text-electriccyan"></i> <span>Estimated delivery: 3-5 business days via fulfillment partner</span></div>
+                                <div class="flex items-center gap-2"><i class="fa-solid fa-rotate-left text-electriccyan"></i> <span>Eligible for return & refund within 7 days of delivery</span></div>
+                            </div>
+
+                            <div class="flex items-center gap-4 pt-4">
+                                <button onclick="addToCart(${product.id})" class="flex-grow py-4 rounded-xl bg-carddark border border-borderdark text-white font-bold text-sm hover:border-electriccyan hover:text-electriccyan transition-all">
+                                    Add to Cart
+                                </button>
+                                <button onclick="buyNow(${product.id})" class="flex-grow py-4 rounded-xl bg-electriccyan text-deepblack font-extrabold text-sm hover:opacity-90 transition-opacity">
+                                    Buy Now
+                                </button>
+                                <button onclick="toggleWishlist(${product.id})" class="p-4 rounded-xl glass-card text-white hover:text-electriccyan transition-colors">
+                                    <i class="${isWishlisted ? 'fa-solid text-controlledred' : 'fa-regular'} fa-heart text-lg"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // --- CART & CHECKOUT MANAGEMENT ---
+        function addToCart(productId) {
+            const product = state.products.find(p => p.id === productId);
+            const existing = state.cart.find(item => item.id === productId);
+            if (existing) {
+                existing.qty += 1;
+            } else {
+                state.cart.push({ ...product, qty: 1 });
+            }
+            saveLocalStorage();
+            showToast(`Added ${product.name} to cart!`);
+        }
+
+        function buyNow(productId) {
+            addToCart(productId);
+            navigateTo('cart');
+        }
+
+        function toggleWishlist(productId) {
+            const product = state.products.find(p => p.id === productId);
+            const index = state.wishlist.findIndex(item => item.id === productId);
+            if (index > -1) {
+                state.wishlist.splice(index, 1);
+                showToast(`Removed ${product.name} from wishlist.`, 'error');
+            } else {
+                state.wishlist.push(product);
+                showToast(`Added ${product.name} to wishlist!`);
+            }
+            saveLocalStorage();
+            renderApp();
+        }
+
+        function renderCartView() {
+            if (state.cart.length === 0) {
+                return `
+                    <div class="max-w-7xl mx-auto px-4 py-24 text-center space-y-6">
+                        <div class="w-20 h-20 rounded-full bg-carddark flex items-center justify-center text-zinc-600 text-3xl mx-auto"><i class="fa-solid fa-bag-shopping"></i></div>
+                        <h2 class="text-2xl font-bold text-white">YOUR CART IS EMPTY</h2>
+                        <p class="text-zinc-400 text-sm max-w-sm mx-auto">Discover our premium range of products and add items to your cart.</p>
+                        <button onclick="navigateTo('shop')" class="px-8 py-3.5 rounded-xl bg-electriccyan text-deepblack font-bold text-xs">CONTINUE SHOPPING</button>
+                    </div>
+                `;
+            }
+
+            const subtotal = state.cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+            const shipping = subtotal > 1500 ? 0 : 99;
+            const total = subtotal + shipping;
+
+            return `
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-8">
+                    <h1 class="text-3xl font-extrabold text-white">Shopping Cart</h1>
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                        <div class="lg:col-span-2 space-y-4">
+                            ${state.cart.map(item => `
+                                <div class="glass-card p-4 sm:p-6 rounded-2xl flex items-center justify-between gap-4">
+                                    <div class="flex items-center gap-4">
+                                        <img src="${item.image}" alt="${item.name}" class="w-16 h-16 sm:w-20 sm:h-20 object-cover rounded-xl bg-zinc-900">
+                                        <div>
+                                            <h3 class="font-bold text-white text-sm sm:text-base">${item.name}</h3>
+                                            <span class="text-xs text-zinc-500">${formatINR(item.price)} each</span>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center gap-4">
+                                        <div class="flex items-center glass-card rounded-lg overflow-hidden">
+                                            <button onclick="updateCartQty(${item.id}, ${item.qty - 1})" class="px-3 py-1.5 text-zinc-400 hover:text-white">-</button>
+                                            <span class="px-3 text-sm font-semibold text-white">${item.qty}</span>
+                                            <button onclick="updateCartQty(${item.id}, ${item.qty + 1})" class="px-3 py-1.5 text-zinc-400 hover:text-white">+</button>
+                                        </div>
+                                        <button onclick="removeFromCart(${item.id})" class="text-zinc-500 hover:text-controlledred transition-colors text-lg"><i class="fa-solid fa-trash"></i></button>
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+                        <div class="glass-card p-6 rounded-2xl space-y-6 h-fit">
+                            <h3 class="font-bold text-white text-base">Order Summary</h3>
+                            <div class="space-y-3 text-sm text-zinc-400 border-b border-borderdark pb-4">
+                                <div class="flex justify-between"><span>Subtotal</span><span class="text-white font-medium">${formatINR(subtotal)}</span></div>
+                                <div class="flex justify-between"><span>Shipping</span><span class="text-white font-medium">${shipping === 0 ? 'FREE' : formatINR(shipping)}</span></div>
+                            </div>
+                            <div class="flex justify-between text-base font-bold text-white"><span>Total (INR)</span><span class="text-electriccyan">${formatINR(total)}</span></div>
+                            <button onclick="navigateTo('checkout')" class="w-full py-4 rounded-xl bg-electriccyan text-deepblack font-extrabold text-sm glow-cyan hover:opacity-90 transition-opacity">
+                                PROCEED TO CHECKOUT
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function updateCartQty(productId, newQty) {
+            if (newQty <= 0) {
+                removeFromCart(productId);
+                return;
+            }
+            const item = state.cart.find(i => i.id === productId);
+            if (item) item.qty = newQty;
+            saveLocalStorage();
+            renderApp();
+        }
+
+        function removeFromCart(productId) {
+            state.cart = state.cart.filter(i => i.id !== productId);
+            saveLocalStorage();
+            renderApp();
+            showToast('Item removed from cart.', 'error');
+        }
+
+        // --- CHECKOUT VIEW ---
+        function renderCheckoutView() {
+            const subtotal = state.cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+            const shipping = subtotal > 1500 ? 0 : 99;
+            const total = subtotal + shipping;
+
+            return `
+                <div class="max-w-4xl mx-auto px-4 py-12 space-y-8">
+                    <h1 class="text-3xl font-extrabold text-white">Secure Checkout</h1>
+                    <form onsubmit="handleCheckoutSubmit(event)" class="space-y-8">
+                        <div class="glass-card p-6 rounded-2xl space-y-4">
+                            <h3 class="text-base font-bold text-white flex items-center gap-2"><i class="fa-solid fa-user text-electriccyan"></i> 1. Customer Information</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <input type="text" required placeholder="Full Name" value="${state.user.name}" class="bg-carddark border border-borderdark rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-electriccyan">
+                                <input type="email" required placeholder="Email Address" value="${state.user.email}" class="bg-carddark border border-borderdark rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-electriccyan">
+                                <input type="tel" required placeholder="Mobile Number (+91)" value="${state.user.phone}" class="bg-carddark border border-borderdark rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-electriccyan md:col-span-2">
+                            </div>
+                        </div>
+
+                        <div class="glass-card p-6 rounded-2xl space-y-4">
+                            <h3 class="text-base font-bold text-white flex items-center gap-2"><i class="fa-solid fa-location-dot text-electriccyan"></i> 2. Shipping Address</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <input type="text" required placeholder="House / Flat / Building" class="bg-carddark border border-borderdark rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-electriccyan md:col-span-2">
+                                <input type="text" required placeholder="Street Address / Area" class="bg-carddark border border-borderdark rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-electriccyan md:col-span-2">
+                                <input type="text" required placeholder="City" class="bg-carddark border border-borderdark rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-electriccyan">
+                                <input type="text" required placeholder="State" class="bg-carddark border border-borderdark rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-electriccyan">
+                                <input type="text" required placeholder="PIN Code (6 digits)" class="bg-carddark border border-borderdark rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-electriccyan">
+                                <input type="text" required value="India" readonly class="bg-carddark/50 border border-borderdark rounded-xl px-4 py-3 text-zinc-400 text-sm">
+                            </div>
+                        </div>
+
+                        <div class="glass-card p-6 rounded-2xl space-y-4">
+                            <h3 class="text-base font-bold text-white flex items-center gap-2"><i class="fa-solid fa-credit-card text-electriccyan"></i> 3. Secure Payment Gateway (INR)</h3>
+                            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                                <label class="glass-card p-4 rounded-xl border border-electriccyan flex flex-col items-center justify-center gap-2 cursor-pointer text-center">
+                                    <input type="radio" name="payment" checked class="accent-electriccyan">
+                                    <span class="text-xs font-bold text-white mt-1">UPI / QR</span>
+                                </label>
+                                <label class="glass-card p-4 rounded-xl border border-borderdark flex flex-col items-center justify-center gap-2 cursor-pointer text-center">
+                                    <input type="radio" name="payment" class="accent-electriccyan">
+                                    <span class="text-xs font-bold text-white mt-1">Credit Card</span>
+                                </label>
+                                <label class="glass-card p-4 rounded-xl border border-borderdark flex flex-col items-center justify-center gap-2 cursor-pointer text-center">
+                                    <input type="radio" name="payment" class="accent-electriccyan">
+                                    <span class="text-xs font-bold text-white mt-1">Net Banking</span>
+                                </label>
+                                <label class="glass-card p-4 rounded-xl border border-borderdark flex flex-col items-center justify-center gap-2 cursor-pointer text-center">
+                                    <input type="radio" name="payment" class="accent-electriccyan">
+                                    <span class="text-xs font-bold text-white mt-1">Wallets</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="glass-card p-6 rounded-2xl flex items-center justify-between">
+                            <div>
+                                <span class="text-xs text-zinc-400">Total Payable Amount</span>
+                                <div class="text-2xl font-black text-electriccyan">${formatINR(total)}</div>
+                            </div>
+                            <button type="submit" class="px-8 py-4 rounded-xl bg-electriccyan text-deepblack font-extrabold text-sm glow-cyan hover:opacity-90 transition-opacity">
+                                PLACE ORDER SECURELY
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            `;
+        }
+
+        function handleCheckoutSubmit(e) {
+            e.preventDefault();
+            const orderId = '7L-2026-' + Math.floor(100000 + Math.random() * 900000);
+            const subtotal = state.cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+            const shipping = subtotal > 1500 ? 0 : 99;
+            const total = subtotal + shipping;
+
+            const newOrder = {
+                id: orderId,
+                date: new Date().toISOString().split('T')[0],
+                total: total,
+                status: 'Payment Confirmed',
+                tracking: 'PENDING-TRK',
+                items: [...state.cart]
+            };
+
+            state.orders.unshift(newOrder);
+            state.cart = [];
+            saveLocalStorage();
+            navigateTo('confirmation', orderId);
+            showToast('Order placed successfully!');
+        }
+
+        function renderConfirmationView(orderId) {
+            return `
+                <div class="max-w-xl mx-auto px-4 py-20 text-center space-y-6">
+                    <div class="w-20 h-20 rounded-full bg-electriccyan/10 text-electriccyan flex items-center justify-center text-3xl mx-auto glow-cyan"><i class="fa-solid fa-check"></i></div>
+                    <h1 class="text-3xl font-black text-white">ORDER PLACED SUCCESSFULLY</h1>
+                    <p class="text-zinc-400 text-sm">Thank you for shopping with 7Leo Store. Your order has been securely processed and sent to our fulfillment partner.</p>
+                    <div class="glass-card p-6 rounded-2xl text-left space-y-3">
+                        <div class="flex justify-between text-sm"><span class="text-zinc-400">Order ID</span><span class="text-electriccyan font-bold">${orderId}</span></div>
+                        <div class="flex justify-between text-sm"><span class="text-zinc-400">Status</span><span class="text-white font-medium">Payment Confirmed → Fulfillment Requested</span></div>
+                    </div>
+                    <div class="flex gap-4">
+                        <button onclick="navigateTo('track')" class="flex-grow py-3.5 rounded-xl bg-carddark border border-borderdark text-white font-bold text-xs hover:border-electriccyan">TRACK ORDER</button>
+                        <button onclick="navigateTo('home')" class="flex-grow py-3.5 rounded-xl bg-electriccyan text-deepblack font-extrabold text-xs">RETURN HOME</button>
+                    </div>
+                </div>
+            `;
+        }
+
+        // --- TRACK ORDER VIEW ---
+        function renderTrackView() {
+            return `
+                <div class="max-w-2xl mx-auto px-4 py-16 space-y-8">
+                    <div class="text-center space-y-2">
+                        <span class="text-electriccyan text-xs font-bold tracking-widest uppercase">Real-Time Logistics</span>
+                        <h1 class="text-3xl font-extrabold text-white">Track Your Order</h1>
+                        <p class="text-zinc-400 text-sm">Enter your 7Leo Order ID to view current fulfillment status.</p>
+                    </div>
+                    <div class="glass-card p-6 rounded-2xl space-y-4">
+                        <div class="flex gap-2">
+                            <input type="text" id="track-id-input" placeholder="e.g. 7L-2026-000001" class="flex-grow bg-carddark border border-borderdark rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-electriccyan">
+                            <button onclick="handleTrackSearch()" class="px-6 py-3 rounded-xl bg-electriccyan text-deepblack font-bold text-xs">TRACK</button>
+                        </div>
+                    </div>
+                    <div id="track-result-container"></div>
+                </div>
+            `;
+        }
+
+        function handleTrackSearch() {
+            const query = document.getElementById('track-id-input').value.trim();
+            const container = document.getElementById('track-result-container');
+            const order = state.orders.find(o => o.id === query);
+
+            if (!order) {
+                container.innerHTML = `<div class="glass-card p-6 rounded-2xl text-center text-zinc-500 text-sm">Order not found. Please check your Order ID.</div>`;
+                return;
+            }
+
+            container.innerHTML = `
+                <div class="glass-card p-6 rounded-2xl space-y-6">
+                    <div class="flex justify-between items-center border-b border-borderdark pb-4">
+                        <div><span class="text-xs text-zinc-400">Order ID</span><h3 class="font-bold text-white text-base">${order.id}</h3></div>
+                        <div><span class="text-xs text-zinc-400">Total</span><h3 class="font-bold text-electriccyan text-base">${formatINR(order.total)}</h3></div>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-4">
+                            <div class="w-8 h-8 rounded-full bg-electriccyan text-deepblack flex items-center justify-center font-bold text-xs"><i class="fa-solid fa-check"></i></div>
+                            <div><h4 class="font-bold text-white text-sm">Order Confirmed</h4><p class="text-xs text-zinc-400">${order.date}</p></div>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div class="w-8 h-8 rounded-full bg-electriccyan text-deepblack flex items-center justify-center font-bold text-xs"><i class="fa-solid fa-box"></i></div>
+                            <div><h4 class="font-bold text-white text-sm">Fulfillment Partner Assigned</h4><p class="text-xs text-zinc-400">Sent to Apex Global Logistics</p></div>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div class="w-8 h-8 rounded-full bg-carddark border border-electriccyan text-electriccyan flex items-center justify-center font-bold text-xs">3</div>
+                            <div><h4 class="font-bold text-white text-sm">Shipping & In Transit</h4><p class="text-xs text-zinc-400">Tracking Number: ${order.tracking}</p></div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // --- ACCOUNT VIEW ---
+        function renderAccountView() {
+            return `
+                <div class="max-w-4xl mx-auto px-4 py-12 space-y-8">
+                    <div class="flex justify-between items-center border-b border-borderdark pb-6">
+                        <div>
+                            <span class="text-electriccyan text-xs font-bold tracking-widest uppercase">Customer Dashboard</span>
+                            <h1 class="text-3xl font-extrabold text-white mt-1">My Account</h1>
+                        </div>
+                        <button onclick="showToast('Logged out successfully', 'error'); navigateTo('home')" class="px-4 py-2 rounded-xl glass-card text-controlledred font-semibold text-xs border border-controlledred/30">Logout</button>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div class="glass-card p-6 rounded-2xl space-y-3">
+                            <h3 class="font-bold text-white text-sm">Profile Details</h3>
+                            <p class="text-xs text-zinc-400">${state.user.name}</p>
+                            <p class="text-xs text-zinc-400">${state.user.email}</p>
+                            <p class="text-xs text-zinc-400">${state.user.phone}</p>
+                        </div>
+                        <div class="md:col-span-2 glass-card p-6 rounded-2xl space-y-4">
+                            <h3 class="font-bold text-white text-sm">Recent Orders (${state.orders.length})</h3>
+                            <div class="space-y-3">
+                                ${state.orders.map(o => `
+                                    <div class="glass-card p-4 rounded-xl flex justify-between items-center text-xs">
+                                        <div><span class="font-bold text-white">${o.id}</span><p class="text-zinc-500">${o.date}</p></div>
+                                        <div class="text-right"><span class="text-electriccyan font-bold">${formatINR(o.total)}</span><p class="text-zinc-400">${o.status}</p></div>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // --- WISHLIST VIEW ---
+        function renderWishlistView() {
+            if (state.wishlist.length === 0) {
+                return `
+                    <div class="max-w-7xl mx-auto px-4 py-24 text-center space-y-6">
+                        <div class="w-20 h-20 rounded-full bg-carddark flex items-center justify-center text-zinc-600 text-3xl mx-auto"><i class="fa-regular fa-heart"></i></div>
+                        <h2 class="text-2xl font-bold text-white">YOUR WISHLIST IS EMPTY</h2>
+                        <p class="text-zinc-400 text-sm max-w-sm mx-auto">Save items you love to your wishlist for quick access later.</p>
+                        <button onclick="navigateTo('shop')" class="px-8 py-3.5 rounded-xl bg-electriccyan text-deepblack font-bold text-xs">DISCOVER PRODUCTS</button>
+                    </div>
+                `;
+            }
+            return `
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-8">
+                    <h1 class="text-3xl font-extrabold text-white">My Wishlist</h1>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                        ${state.wishlist.map(p => renderProductCard(p)).join('')}
+                    </div>
+                </div>
+            `;
+        }
+
+        // --- ABOUT VIEW ---
+        function renderAboutView() {
+            return `
+                <div class="max-w-4xl mx-auto px-4 py-16 space-y-12">
+                    <div class="text-center space-y-4">
+                        <span class="text-electriccyan text-xs font-bold tracking-widest uppercase">About 7Leo Store</span>
+                        <h1 class="text-4xl font-black text-white">VISION • POWER • LEGACY</h1>
+                        <p class="text-zinc-400 text-sm max-w-2xl mx-auto leading-relaxed">
+                            7Leo Store is a modern commerce initiative from 7Leo Group Commerce, created to deliver a simple, innovative, and powerful digital shopping experience.
+                        </p>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="glass-card p-8 rounded-2xl space-y-3">
+                            <h3 class="text-lg font-bold text-white">Independent Entrepreneurship</h3>
+                            <p class="text-sm text-zinc-400">Operated by a solo founder focused entirely on premium branding, product discovery, and flawless customer experience through automated fulfillment partner models.</p>
+                        </div>
+                        <div class="glass-card p-8 rounded-2xl space-y-3">
+                            <h3 class="text-lg font-bold text-white">7Leo Group Ecosystem</h3>
+                            <p class="text-sm text-zinc-400">Connected to upcoming specialized ecosystem projects like 7Leo BGM and 7Leo Fashion, establishing an international brand standard.</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // --- ADMIN DASHBOARD VIEW ---
+        function renderAdminView() {
+            const totalRevenue = state.orders.reduce((sum, o) => sum + o.total, 0);
+            const totalSupplierCost = state.products.reduce((sum, p) => sum + p.supplierCost, 0);
+            const estimatedProfit = totalRevenue - totalSupplierCost;
+
+            return `
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-8">
+                    <div class="flex justify-between items-center border-b border-borderdark pb-6">
+                        <div>
+                            <span class="text-electriccyan text-xs font-bold tracking-widest uppercase"><i class="fa-solid fa-shield-halved"></i> Solo Founder Admin Suite</span>
+                            <h1 class="text-3xl font-extrabold text-white mt-1">Admin Dashboard</h1>
+                        </div>
+                        <button onclick="showToast('New product modal triggered')" class="px-4 py-2.5 rounded-xl bg-electriccyan text-deepblack font-extrabold text-xs">
+                            + Add New Product
+                        </button>
+                    </div>
+
+                    <!-- Profit & Revenue Overview Cards -->
+                    <div class="grid grid-cols-1 sm:grid-cols-4 gap-6">
+                        <div class="glass-card p-6 rounded-2xl space-y-2">
+                            <span class="text-xs text-zinc-400">Total Revenue</span>
+                            <div class="text-2xl font-black text-white">${formatINR(totalRevenue)}</div>
+                        </div>
+                        <div class="glass-card p-6 rounded-2xl space-y-2">
+                            <span class="text-xs text-zinc-400">Estimated Supplier Cost</span>
+                            <div class="text-2xl font-black text-zinc-400">${formatINR(totalSupplierCost)}</div>
+                        </div>
+                        <div class="glass-card p-6 rounded-2xl space-y-2">
+                            <span class="text-xs text-zinc-400">Estimated Profit (Private)</span>
+                            <div class="text-2xl font-black text-electriccyan">${formatINR(estimatedProfit)}</div>
+                        </div>
+                        <div class="glass-card p-6 rounded-2xl space-y-2">
+                            <span class="text-xs text-zinc-400">Total Orders</span>
+                            <div class="text-2xl font-black text-white">${state.orders.length}</div>
+                        </div>
+                    </div>
+
+                    <!-- Fulfillment Partners Section -->
+                    <div class="glass-card p-6 rounded-2xl space-y-4">
+                        <h3 class="font-bold text-white text-base">Connected Fulfillment Partners</h3>
+                        <div class="space-y-3">
+                            ${state.suppliers.map(s => `
+                                <div class="glass-card p-4 rounded-xl flex justify-between items-center text-xs">
+                                    <div><span class="font-bold text-white">${s.name}</span><p class="text-zinc-500">ID: ${s.id}</p></div>
+                                    <div><span class="px-2.5 py-1 rounded-full bg-electriccyan/10 text-electriccyan font-bold">${s.status}</span></div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+
+                    <!-- Product Inventory & Profit Management -->
+                    <div class="glass-card p-6 rounded-2xl space-y-4">
+                        <h3 class="font-bold text-white text-base">Product Inventory & Private Profit Matrix</h3>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-left text-xs text-zinc-400">
+                                <thead class="border-b border-borderdark text-white uppercase">
+                                    <tr>
+                                        <th class="pb-3">Product</th>
+                                        <th class="pb-3">Selling Price</th>
+                                        <th class="pb-3">Supplier Cost</th>
+                                        <th class="pb-3 text-electriccyan">Est. Profit</th>
+                                        <th class="pb-3">Stock</th>
+                                        <th class="pb-3">Supplier</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-borderdark">
+                                    ${state.products.map(p => `
+                                        <tr>
+                                            <td class="py-4 font-bold text-white">${p.name}</td>
+                                            <td class="py-4">${formatINR(p.price)}</td>
+                                            <td class="py-4">${formatINR(p.supplierCost)}</td>
+                                            <td class="py-4 text-electriccyan font-bold">${formatINR(p.price - p.supplierCost)}</td>
+                                            <td class="py-4">${p.stock} units</td>
+                                            <td class="py-4 text-zinc-500">${p.supplier}</td>
+                                        </tr>
+                                    `).join('')}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // --- SEARCH MODAL TOGGLE & HANDLER ---
+        function toggleSearchModal() {
+            const modal = document.getElementById('search-modal');
+            modal.classList.toggle('hidden');
+            if (!modal.classList.contains('hidden')) {
+                document.getElementById('search-input').focus();
+            }
+        }
+
+        function handleSearchInput(query) {
+            const container = document.getElementById('search-results-container');
+            if (!query.trim()) {
+                container.innerHTML = '';
+                return;
+            }
+            const results = state.products.filter(p => p.name.toLowerCase().includes(query.toLowerCase()) || p.category.toLowerCase().includes(query.toLowerCase()));
+            container.innerHTML = results.length > 0 ? results.map(p => `
+                <div onclick="toggleSearchModal(); navigateTo('product', ${p.id})" class="glass-card p-3 rounded-xl flex items-center gap-4 cursor-pointer hover:border-electriccyan transition-colors">
+                    <img src="${p.image}" class="w-12 h-12 object-cover rounded-lg">
+                    <div>
+                        <h4 class="font-bold text-white text-sm">${p.name}</h4>
+                        <span class="text-xs text-electriccyan font-bold">${formatINR(p.price)}</span>
+                    </div>
+                </div>
+            `).join('') : `<p class="text-zinc-500 text-center py-4 text-xs">No matching products found.</p>`;
+        }
+
         function toggleMobileMenu() {
             const menu = document.getElementById('mobile-menu');
             menu.classList.toggle('hidden');
         }
 
-        // Cart State
-        let cartCount = 0;
-        function addToCart(productName, price) {
-            cartCount++;
-            document.getElementById('cart-count').innerText = cartCount;
-            alert(productName + ' added to cart successfully!');
-        }
-
-        function openCart() {
-            alert('Your Cart has ' + cartCount + ' item(s). Proceeding to secure checkout simulation.');
-        }
-
-        // Music player simulation
-        function playTrack(seriesName) {
-            alert('Loading stream for: ' + seriesName + '. Enjoy the 7Leo BGM experience.');
-        }
-
-        // Music Request Form Handler
-        function submitMusicRequest(event) {
-            event.preventDefault();
-            alert('Music licensing request submitted successfully. Our team will review your inquiry.');
-            event.target.reset();
-        }
-
-        // Sign In simulation & Super Admin check
-        function handleSignIn(event) {
-            event.preventDefault();
-            const email = document.getElementById('signin-email').value.trim();
-            if (email === '7leogroup@gmail.com') {
-                alert('Welcome Super Admin!');
-                document.getElementById('admin-nav-item').classList.remove('hidden');
-                document.getElementById('admin-nav-mobile').classList.remove('hidden');
-                switchView('admin');
-            } else {
-                alert('Signed in successfully as Visitor (' + email + ').');
-                switchView('home');
-            }
-        }
-
-        // QR Utilities
-        function copyWebsiteLink() {
-            navigator.clipboard.writeText(window.location.origin);
-            alert('Website link copied to clipboard: ' + window.location.origin);
-        }
-
-        function installAppPrompt() {
-            alert('PWA installation triggered. Follow browser prompts to install 7Leo Group Commerce on your device.');
-        }
+        // Initial Render
+        window.addEventListener('DOMContentLoaded', () => {
+            renderApp();
+        });
     </script>
 </body>
 </html>
