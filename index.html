@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>7Leo Group Commerce | Vision, Power, Legacy</title>
     
-    <!-- PWA Manifest via Data URI (No separate manifest.json needed) -->
+    <!-- PWA Manifest via Data URI -->
     <link rel="manifest" href='data:application/manifest+json;charset=utf-8,{"name":"7Leo Group Commerce","short_name":"7Leo","start_url":"/","display":"standalone","background_color":"#0a0a0a","theme_color":"#00f2ff","icons":[{"src":"logo.png","sizes":"512x512","type":"image/png"}]}'>
     <meta name="theme-color" content="#00f2ff">
     
@@ -106,7 +106,7 @@
 </head>
 <body>
 
-    <!-- 1. SPLASH SCREEN (Exact official asset) -->
+    <!-- 1. SPLASH SCREEN -->
     <div id="splash-screen">
         <img src="file_0000000028fc81f8b878489375475bad.png" alt="7Leo Splash">
     </div>
@@ -162,20 +162,9 @@
             licensingRequests: JSON.parse(localStorage.getItem('7leo_requests')) || []
         };
 
-        // Mobile Menu Toggle Helper
-        window.toggleMobileMenu = () => {
-            document.getElementById('nav-links-menu').classList.toggle('active');
-        };
-        window.closeMenu = () => {
-            document.getElementById('nav-links-menu').classList.remove('active');
-        };
-
-        // Router System
-        window.router = (path) => {
-            state.route = path;
-            render();
-            window.scrollTo(0, 0);
-        };
+        window.toggleMobileMenu = () => { document.getElementById('nav-links-menu').classList.toggle('active'); };
+        window.closeMenu = () => { document.getElementById('nav-links-menu').classList.remove('active'); };
+        window.router = (path) => { state.route = path; render(); window.scrollTo(0, 0); };
 
         const render = () => {
             const app = document.getElementById('app');
@@ -228,7 +217,7 @@
                             <div class="bgm-hero">
                                 <img src="bgm-logo.png" style="width:130px; height:130px; object-fit:contain;" alt="BGM Logo">
                                 <div>
-                                    <img src="bgm-banmer.png" style="max-width:100%; height:auto; margin-bottom:15px; border-radius:8px;" alt="BGM Banner">
+                                    <img src="bgm-banner.png" style="max-width:100%; height:auto; margin-bottom:15px; border-radius:8px;" alt="BGM Banner">
                                     <h2>7LEO BGM</h2>
                                     <p style="color:var(--grey)">Mobile. Composed. GroovePad Music.</p>
                                     <p style="margin: 10px 0; font-size: 0.95rem; line-height: 1.5; color: #ccc;">Drive • Chill • Gangster • DJ • Cinematic. Handcrafted instrumental background music to fuel your focus.</p>
@@ -251,7 +240,6 @@
                                 `).join('')}
                             </ul>
 
-                            <!-- Music Licensing Section -->
                             <div style="margin-top:50px; background:rgba(255,255,255,0.02); border:1px solid var(--orange); padding:30px; border-radius:10px;">
                                 <h3>Music Licensing & Purchase</h3>
                                 <p style="margin:15px 0; color:var(--grey); line-height:1.6;">Need music for your project? 7Leo BGM music can be considered for selected creative projects such as promotional videos, ads, trailers, short films, and brand campaigns.</p>
@@ -402,7 +390,6 @@
             }
         };
 
-        // Actions & Event Handlers
         window.handleLogin = (e) => {
             e.preventDefault();
             const email = document.getElementById('login-email').value;
@@ -489,7 +476,6 @@
             }
         };
 
-        // Initialization & 5-Second Splash Handler
         window.onload = () => {
             setTimeout(() => {
                 const splash = document.getElementById('splash-screen');
@@ -501,7 +487,6 @@
             render();
         };
 
-        // Service Worker registration for PWA readiness
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
                 navigator.serviceWorker.register('data:text/javascript;base64,' + btoa(`
