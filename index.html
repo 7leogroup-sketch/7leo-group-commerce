@@ -275,12 +275,12 @@
             <i class="fa-solid fa-user-gear text-sm"></i>
           </button>
 
-          <!-- Google Connect Container -->
+          <!-- Authentication Container -->
           <div id="auth-header-container">
-            <button onclick="openAuthModal()" class="px-4 py-2.5 btn-gradient text-white font-display font-semibold rounded-xl text-xs tracking-wide flex items-center space-x-2 cursor-pointer">
-              <i class="fa-brands fa-google"></i>
-              <span class="hidden sm:inline">Connect Google</span>
-              <span class="sm:hidden">Login</span>
+            <button onclick="openAuthModal('signin')" class="px-4 py-2.5 btn-gradient text-white font-display font-semibold rounded-xl text-xs tracking-wide flex items-center space-x-2 cursor-pointer">
+              <i class="fa-solid fa-user-lock"></i>
+              <span class="hidden sm:inline">Sign In / Sign Up</span>
+              <span class="sm:hidden">Account</span>
             </button>
           </div>
         </div>
@@ -723,25 +723,102 @@
 
   </div>
 
-  <!-- GOOGLE AUTH MODAL -->
+  <!-- AUTHENTICATION MODAL (SIGN IN / SIGN UP / CREATE ACCOUNT / GOOGLE / APPLE) -->
   <div id="auth-modal" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-md hidden flex items-center justify-center p-4">
-    <div class="relative w-full max-w-md glass-card rounded-3xl p-6 shadow-2xl border border-amber-500/30">
+    <div class="relative w-full max-w-md glass-card glass-card-amber rounded-3xl p-6 sm:p-8 shadow-2xl border border-amber-500/30">
       <button onclick="closeAuthModal()" class="absolute top-5 right-5 text-gray-400 hover:text-white transition cursor-pointer">
         <i class="fa-solid fa-xmark text-lg"></i>
       </button>
 
+      <!-- Logo & Header -->
       <div class="text-center mb-6">
         <img src="logo.png" onError="this.onerror=null;this.src='star-logo.png';" alt="7Leo Logo" class="w-12 h-auto mx-auto mb-2 object-contain">
-        <h3 class="text-xl font-heading font-bold text-white uppercase">Connect Google Account</h3>
-        <p class="text-xs text-gray-400 mt-1 font-display">Unified Identity Access</p>
+        <h3 id="auth-modal-title" class="text-xl font-heading font-bold text-white uppercase">Secure Sign In</h3>
+        <p id="auth-modal-subtitle" class="text-xs text-gray-400 mt-1 font-display">7Leo Global Unified Access Terminal</p>
       </div>
 
-      <div class="space-y-4">
-        <button onclick="completeGoogleSignIn('Abubakker Bellary', '7leogroup@gmail.com')" class="w-full py-3.5 btn-gradient text-white font-display font-bold rounded-xl text-xs flex items-center justify-center space-x-3 cursor-pointer">
-          <i class="fa-brands fa-google text-base"></i>
-          <span>Continue with Google</span>
+      <!-- Tab Selectors (Sign In vs Create Account / Sign Up) -->
+      <div class="grid grid-cols-2 gap-2 bg-black/60 p-1.5 rounded-2xl mb-6 border border-white/10 font-display text-xs">
+        <button id="tab-signin-btn" onclick="switchAuthTab('signin')" class="py-2.5 rounded-xl font-bold transition text-center text-amber-400 bg-amber-500/20 border border-amber-500/40">
+          Sign In
+        </button>
+        <button id="tab-signup-btn" onclick="switchAuthTab('signup')" class="py-2.5 rounded-xl font-medium transition text-center text-gray-400 hover:text-white">
+          Create Account
         </button>
       </div>
+
+      <!-- SIGN IN FORM -->
+      <form id="form-signin" onsubmit="handleSignInSubmit(event)" class="space-y-4 font-display">
+        <div>
+          <label class="block text-[11px] text-gray-400 mb-1.5 uppercase tracking-wider">Email Address</label>
+          <div class="relative">
+            <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center text-gray-500"><i class="fa-solid fa-envelope text-xs"></i></span>
+            <input type="email" id="signin-email" required placeholder="name@7leogroup.com" class="w-full bg-black/80 border border-white/20 rounded-xl pl-10 pr-4 py-3 text-xs text-white focus:outline-none focus:border-amber-500">
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-[11px] text-gray-400 mb-1.5 uppercase tracking-wider">Password</label>
+          <div class="relative">
+            <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center text-gray-500"><i class="fa-solid fa-lock text-xs"></i></span>
+            <input type="password" id="signin-password" required placeholder="••••••••" class="w-full bg-black/80 border border-white/20 rounded-xl pl-10 pr-4 py-3 text-xs text-white focus:outline-none focus:border-amber-500">
+          </div>
+        </div>
+
+        <button type="submit" class="w-full py-3.5 btn-gradient text-white font-display font-bold rounded-xl text-xs uppercase tracking-wider cursor-pointer">
+          Sign In to Portal <i class="fa-solid fa-arrow-right ml-1"></i>
+        </button>
+      </form>
+
+      <!-- CREATE ACCOUNT / SIGN UP FORM -->
+      <form id="form-signup" onsubmit="handleSignUpSubmit(event)" class="space-y-4 font-display hidden">
+        <div>
+          <label class="block text-[11px] text-gray-400 mb-1.5 uppercase tracking-wider">Full Name</label>
+          <div class="relative">
+            <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center text-gray-500"><i class="fa-solid fa-user text-xs"></i></span>
+            <input type="text" id="signup-name" required placeholder="Abubakker Bellary" class="w-full bg-black/80 border border-white/20 rounded-xl pl-10 pr-4 py-3 text-xs text-white focus:outline-none focus:border-amber-500">
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-[11px] text-gray-400 mb-1.5 uppercase tracking-wider">Email Address</label>
+          <div class="relative">
+            <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center text-gray-500"><i class="fa-solid fa-envelope text-xs"></i></span>
+            <input type="email" id="signup-email" required placeholder="name@7leogroup.com" class="w-full bg-black/80 border border-white/20 rounded-xl pl-10 pr-4 py-3 text-xs text-white focus:outline-none focus:border-amber-500">
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-[11px] text-gray-400 mb-1.5 uppercase tracking-wider">Create Password</label>
+          <div class="relative">
+            <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center text-gray-500"><i class="fa-solid fa-lock text-xs"></i></span>
+            <input type="password" id="signup-password" required placeholder="••••••••" class="w-full bg-black/80 border border-white/20 rounded-xl pl-10 pr-4 py-3 text-xs text-white focus:outline-none focus:border-amber-500">
+          </div>
+        </div>
+
+        <button type="submit" class="w-full py-3.5 btn-gradient text-white font-display font-bold rounded-xl text-xs uppercase tracking-wider cursor-pointer">
+          Create Account <i class="fa-solid fa-user-plus ml-1"></i>
+        </button>
+      </form>
+
+      <!-- SOCIAL SIGN ON DIVIDER -->
+      <div class="relative my-6">
+        <div class="absolute inset-0 flex items-center"><div class="w-full border-t border-white/10"></div></div>
+        <div class="relative flex justify-center text-[10px] uppercase"><span class="bg-[#121316] px-3 text-gray-500 font-display">Or continue with</span></div>
+      </div>
+
+      <!-- GOOGLE & APPLE SIGN IN/UP BUTTONS -->
+      <div class="grid grid-cols-2 gap-3 font-display">
+        <button onclick="simulateGoogleAuth()" class="py-3 px-4 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-amber-500/40 rounded-xl text-xs text-white font-semibold flex items-center justify-center space-x-2 transition cursor-pointer">
+          <i class="fa-brands fa-google text-amber-400 text-sm"></i>
+          <span>Google</span>
+        </button>
+        <button onclick="simulateAppleAuth()" class="py-3 px-4 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-amber-500/40 rounded-xl text-xs text-white font-semibold flex items-center justify-center space-x-2 transition cursor-pointer">
+          <i class="fa-brands fa-apple text-white text-sm"></i>
+          <span>Apple ID</span>
+        </button>
+      </div>
+
     </div>
   </div>
 
@@ -916,16 +993,80 @@
       checkSavedUser();
     });
 
-    // GOOGLE AUTH LOGIC
-    function openAuthModal() { document.getElementById('auth-modal').classList.remove('hidden'); }
-    function closeAuthModal() { document.getElementById('auth-modal').classList.add('hidden'); }
+    // AUTHENTICATION MODAL & TABS LOGIC
+    function openAuthModal(tab = 'signin') {
+      document.getElementById('auth-modal').classList.remove('hidden');
+      switchAuthTab(tab);
+    }
 
-    function completeGoogleSignIn(name, email) {
+    function closeAuthModal() {
+      document.getElementById('auth-modal').classList.add('hidden');
+    }
+
+    function switchAuthTab(tab) {
+      const signinBtn = document.getElementById('tab-signin-btn');
+      const signupBtn = document.getElementById('tab-signup-btn');
+      const signinForm = document.getElementById('form-signin');
+      const signupForm = document.getElementById('form-signup');
+      const modalTitle = document.getElementById('auth-modal-title');
+      const modalSubtitle = document.getElementById('auth-modal-subtitle');
+
+      if (tab === 'signin') {
+        signinBtn.className = "py-2.5 rounded-xl font-bold transition text-center text-amber-400 bg-amber-500/20 border border-amber-500/40";
+        signupBtn.className = "py-2.5 rounded-xl font-medium transition text-center text-gray-400 hover:text-white";
+        signinForm.classList.remove('hidden');
+        signupForm.classList.add('hidden');
+        modalTitle.innerText = "Secure Sign In";
+        modalSubtitle.innerText = "Access your 7Leo Command Portal";
+      } else {
+        signupBtn.className = "py-2.5 rounded-xl font-bold transition text-center text-amber-400 bg-amber-500/20 border border-amber-500/40";
+        signinBtn.className = "py-2.5 rounded-xl font-medium transition text-center text-gray-400 hover:text-white";
+        signupForm.classList.remove('hidden');
+        signinForm.classList.add('hidden');
+        modalTitle.innerText = "Create Account";
+        modalSubtitle.innerText = "Join 7Leo Group Commerce Ecosystem";
+      }
+    }
+
+    function handleSignInSubmit(event) {
+      event.preventDefault();
+      const email = document.getElementById('signin-email').value;
+      const name = email.split('@')[0];
+      const formattedName = name.charAt(0).toUpperCase() + name.slice(1);
+      
+      const userData = { name: formattedName, email: email };
+      localStorage.setItem('7leo_user', JSON.stringify(userData));
+      updateAuthUI(userData);
+      closeAuthModal();
+      alert(`Welcome back, ${formattedName}! Signed in successfully.`);
+    }
+
+    function handleSignUpSubmit(event) {
+      event.preventDefault();
+      const name = document.getElementById('signup-name').value;
+      const email = document.getElementById('signup-email').value;
+      
       const userData = { name: name, email: email };
       localStorage.setItem('7leo_user', JSON.stringify(userData));
       updateAuthUI(userData);
       closeAuthModal();
-      alert(`Welcome back to 7Leo Command Portal, ${name}!`);
+      alert(`Account successfully created! Welcome to 7Leo Group, ${name}.`);
+    }
+
+    function simulateGoogleAuth() {
+      const userData = { name: 'Google User', email: 'user@gmail.com' };
+      localStorage.setItem('7leo_user', JSON.stringify(userData));
+      updateAuthUI(userData);
+      closeAuthModal();
+      alert("Successfully authenticated with Google!");
+    }
+
+    function simulateAppleAuth() {
+      const userData = { name: 'Apple ID User', email: 'user@privaterelay.appleid.com' };
+      localStorage.setItem('7leo_user', JSON.stringify(userData));
+      updateAuthUI(userData);
+      closeAuthModal();
+      alert("Successfully authenticated with Apple ID!");
     }
 
     function checkSavedUser() {
@@ -943,14 +1084,14 @@
             ${user.name.charAt(0)}
           </div>
           <span class="text-xs font-display text-amber-300 hidden sm:inline">${user.name}</span>
-          <button onclick="logoutGoogle()" title="Disconnect" class="text-gray-400 hover:text-red-400 ml-1">
+          <button onclick="logoutUser()" title="Sign Out" class="text-gray-400 hover:text-red-400 ml-1 cursor-pointer">
             <i class="fa-solid fa-power-off text-xs"></i>
           </button>
         </div>
       `;
     }
 
-    function logoutGoogle() {
+    function logoutUser() {
       localStorage.removeItem('7leo_user');
       location.reload();
     }
