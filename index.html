@@ -487,12 +487,20 @@
             render();
         };
 
+        // Service Worker registration with cache-busting version v2 to clear stale browser caches
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
                 navigator.serviceWorker.register('data:text/javascript;base64,' + btoa(`
+                    const CACHE_NAME = '7leo-commerce-v2';
                     self.addEventListener('install', e => e.waitUntil(self.skipWaiting()));
-                    self.addEventListener('activate', e => e.waitUntil(self.clients.claim()));
-                    self.addEventListener('fetch', e => e.respondWith(fetch(e.request).catch(() => caches.match(e.request))));
+                    self.addEventListener('activate', e => e.waitUntil(
+                        caches.keys().then(keys => Promise.all(
+                            keys.map(key => { if (key !== CACHE_NAME) return caches.delete(key); })
+                        )).then(() => self.clients.claim())
+                    ));
+                    self.addEventListener('fetch', e => e.respondWith(
+                        fetch(e.request).catch(() => caches.match(e.request))
+                    ));
                 `)).catch(() => {});
             });
         }
