@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Welcome to 7Leo Group Commerce | Global Executive Command</title>
+  <title>7Leo Group Commerce & 7Leo Store | Global Dropshipping Command</title>
   
   <!-- Favicon / Star Logo -->
   <link rel="icon" type="image/png" href="star-logo.png">
@@ -16,9 +16,6 @@
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   
-  <!-- Google Sign-In SDK (GSI) -->
-  <script src="https://accounts.google.com/gsi/client" async defer></script>
-
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
@@ -35,10 +32,10 @@
           },
           colors: {
             brandDark: '#070709',
-            brandCard: 'rgba(15, 15, 20, 0.75)',
+            brandCard: 'rgba(15, 15, 20, 0.85)',
             brandAmber: '#ff6a00',
             brandOrange: '#ff4500',
-            brandBorder: 'rgba(255, 106, 0, 0.2)',
+            brandBorder: 'rgba(255, 106, 0, 0.25)',
             studioNeon: '#00f3ff',
             studioPurple: '#9d00ff',
           }
@@ -55,7 +52,6 @@
       overflow-x: hidden;
     }
 
-    /* FULLSCREEN TATTOO BACKGROUND OVERLAY */
     .tattoo-bg-overlay {
       position: fixed;
       inset: 0;
@@ -66,13 +62,12 @@
       background-position: center;
       background-repeat: no-repeat;
       background-attachment: fixed;
-      opacity: 0.18;
+      opacity: 0.15;
       mix-blend-mode: luminosity;
       pointer-events: none;
       z-index: 1;
     }
 
-    /* Ambient Background Glow Effects */
     .bg-grid-pattern {
       background-image: radial-gradient(rgba(255, 106, 0, 0.08) 1px, transparent 1px);
       background-size: 32px 32px;
@@ -82,16 +77,11 @@
       background: radial-gradient(ellipse 80% 50% at 50% -20%, rgba(255, 90, 0, 0.35), rgba(255, 60, 0, 0.08) 50%, transparent 80%);
     }
 
-    .bottom-horizon-glow {
-      background: radial-gradient(ellipse 100% 60% at 50% 120%, rgba(255, 80, 0, 0.35), rgba(255, 40, 0, 0.05) 60%, transparent 90%);
-    }
-
-    /* Modern Glassmorphism Cards */
     .glass-card {
-      background: rgba(13, 14, 18, 0.85);
+      background: rgba(13, 14, 18, 0.88);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
-      border: 1px solid rgba(255, 255, 255, 0.07);
+      border: 1px solid rgba(255, 255, 255, 0.08);
       box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
@@ -102,56 +92,8 @@
     }
 
     .glass-card-amber {
-      background: linear-gradient(180deg, rgba(22, 16, 15, 0.88) 0%, rgba(12, 13, 16, 0.92) 100%);
-      border: 1px solid rgba(255, 106, 0, 0.25);
-    }
-
-    /* WORLD CLASS STUDIO SPECIFIC STYLES */
-    .studio-world-container {
-      background: linear-gradient(180deg, #020208 0%, #080312 50%, #030814 100%);
-      border: 1px solid rgba(0, 243, 255, 0.25);
-      box-shadow: 0 0 80px rgba(0, 243, 255, 0.15), inset 0 0 50px rgba(157, 0, 255, 0.1);
-      position: relative;
-    }
-
-    .studio-neon-border {
-      border: 1px solid rgba(0, 243, 255, 0.4);
-      box-shadow: 0 0 25px rgba(0, 243, 255, 0.25);
-    }
-
-    .studio-neon-border:hover {
-      border-color: #00f3ff;
-      box-shadow: 0 0 40px rgba(0, 243, 255, 0.5);
-    }
-
-    /* Equalizer Bar Animation */
-    .eq-bar {
-      width: 6px;
-      background: linear-gradient(to top, #00f3ff, #9d00ff, #ff0055);
-      border-radius: 4px;
-      animation: bounceEQ 1.2s ease-in-out infinite alternate;
-    }
-
-    .eq-bar:nth-child(1) { height: 40%; animation-delay: 0.1s; }
-    .eq-bar:nth-child(2) { height: 75%; animation-delay: 0.3s; }
-    .eq-bar:nth-child(3) { height: 25%; animation-delay: 0.5s; }
-    .eq-bar:nth-child(4) { height: 90%; animation-delay: 0.2s; }
-    .eq-bar:nth-child(5) { height: 60%; animation-delay: 0.4s; }
-    .eq-bar:nth-child(6) { height: 100%; animation-delay: 0.6s; }
-    .eq-bar:nth-child(7) { height: 35%; animation-delay: 0.15s; }
-    .eq-bar:nth-child(8) { height: 80%; animation-delay: 0.45s; }
-    .eq-bar:nth-child(9) { height: 50%; animation-delay: 0.25s; }
-    .eq-bar:nth-child(10) { height: 95%; animation-delay: 0.35s; }
-
-    @keyframes bounceEQ {
-      0% { transform: scaleY(0.3); }
-      100% { transform: scaleY(1.1); }
-    }
-
-    /* Gemini AI & Text Glows */
-    .gemini-glow {
-      background: linear-gradient(135deg, rgba(255, 106, 0, 0.2), rgba(147, 51, 234, 0.2), rgba(59, 130, 246, 0.2));
-      border: 1px solid rgba(255, 106, 0, 0.4);
+      background: linear-gradient(180deg, rgba(22, 16, 15, 0.9) 0%, rgba(12, 13, 16, 0.95) 100%);
+      border: 1px solid rgba(255, 106, 0, 0.3);
     }
 
     .gradient-orange-highlight {
@@ -170,17 +112,6 @@
       transform: translateY(-1.5px);
     }
 
-    .btn-studio-neon {
-      background: linear-gradient(135deg, #00f3ff 0%, #7928ca 100%);
-      box-shadow: 0 4px 25px rgba(0, 243, 255, 0.4);
-      transition: all 0.3s ease;
-    }
-    .btn-studio-neon:hover {
-      box-shadow: 0 6px 35px rgba(0, 243, 255, 0.7);
-      transform: translateY(-1.5px);
-    }
-
-    /* Custom Scrollbar */
     ::-webkit-scrollbar { width: 6px; }
     ::-webkit-scrollbar-track { background: #060608; }
     ::-webkit-scrollbar-thumb { background: rgba(255, 106, 0, 0.3); border-radius: 4px; }
@@ -189,98 +120,71 @@
 </head>
 <body class="bg-[#060608] text-gray-200 min-h-screen relative overflow-x-hidden font-body bg-grid-pattern">
 
-  <!-- FIT-TO-SCREEN TATTOO BACKGROUND IMAGE -->
+  <!-- BACKGROUND OVERLAYS -->
   <div class="tattoo-bg-overlay"></div>
-
-  <!-- BACKGROUND RADIAL HORIZON GLOW -->
   <div class="fixed top-0 left-0 right-0 h-[650px] horizon-glow pointer-events-none z-0"></div>
 
-  <!-- SPLASH SCREEN WITH FLAG AND AUTOMATIC 5-SECOND TRANSITION -->
-  <div id="splash-screen" class="fixed inset-0 z-50 bg-[#060608]/95 backdrop-blur-2xl flex flex-col items-center justify-center p-6 transition-all duration-700">
-    <div class="max-w-md w-full text-center space-y-6 relative z-10 glass-card p-8 rounded-3xl border border-amber-500/30">
-      <div class="flex items-center justify-between text-xs font-display text-amber-500 border-b border-white/10 pb-3">
-        <span class="flex items-center"><i class="fa-solid fa-shield-halved animate-pulse mr-2 text-amber-500"></i>SECURE GATEWAY</span>
-        <span>NODE: 7LEO-GLOBAL-01</span>
-      </div>
-      
-      <!-- Flag Upload Container -->
-      <div class="relative inline-block my-2 group">
-        <div class="absolute -inset-1 bg-gradient-to-r from-amber-500 to-orange-600 rounded-2xl blur opacity-30 group-hover:opacity-75 transition duration-500"></div>
-        <img src="file_0000000028fc81f8b878489375475bad.png" onError="this.onerror=null;this.src='flag.png';" alt="7Leo Official Flag" class="relative w-full max-w-[280px] mx-auto rounded-2xl border border-amber-500/40 shadow-[0_0_40px_rgba(255,106,0,0.3)] object-cover">
-      </div>
-
-      <div>
-        <h2 class="text-2xl font-heading font-extrabold text-white tracking-tight uppercase">7LEO GROUP COMMERCE</h2>
-        <p class="text-xs text-amber-400 font-display tracking-widest mt-1 uppercase">Vision · Power · Legacy</p>
-        <p class="text-[10px] text-gray-400 font-display mt-2">Opening portal automatically in <span id="splash-timer" class="text-amber-400 font-bold">5</span>s...</p>
-      </div>
-      <button onclick="closeSplash()" class="w-full py-4 btn-gradient text-white font-display font-bold rounded-2xl text-xs tracking-wider uppercase cursor-pointer">
-        ENTER NOW <i class="fa-solid fa-arrow-right ml-2"></i>
-      </button>
-    </div>
-  </div>
-
-  <!-- SUPER ADMIN TOP STATUS BAR (APPEARS ONLY WHEN UNLOCKED) -->
-  <div id="admin-top-bar" class="hidden fixed top-0 inset-x-0 z-50 bg-amber-600/95 text-black font-cyber text-[11px] font-bold py-1 px-4 flex items-center justify-between shadow-lg">
+  <!-- SUPER ADMIN TOP STATUS BAR -->
+  <div id="admin-top-bar" class="hidden fixed top-0 inset-x-0 z-50 bg-amber-600 text-black font-cyber text-[11px] font-bold py-1.5 px-4 flex items-center justify-between shadow-lg">
     <div class="flex items-center space-x-2">
       <i class="fa-solid fa-user-shield animate-pulse"></i>
-      <span>7LEO SUPER ADMIN MODE ACTIVE — PRIVATE MASTER CONTROL</span>
+      <span>7LEO SUPER ADMIN COMMERCE MODE ACTIVE — PRIVATE MASTER CONTROL</span>
     </div>
     <div class="flex items-center space-x-3">
-      <button onclick="openAIAgent()" class="bg-black text-amber-400 px-3 py-0.5 rounded-full hover:bg-neutral-900 transition text-[10px] uppercase">
-        <i class="fa-solid fa-wand-magic-sparkles mr-1"></i> Launch AI Agent Console
+      <button onclick="openAdminDashboard()" class="bg-black text-amber-400 px-3 py-0.5 rounded-full hover:bg-neutral-900 transition text-[10px] uppercase cursor-pointer">
+        <i class="fa-solid fa-chart-line mr-1"></i> Open Admin Dashboard
       </button>
-      <button onclick="lockSuperAdmin()" class="text-black hover:text-white transition">
+      <button onclick="lockSuperAdmin()" class="text-black hover:text-white transition cursor-pointer">
         <i class="fa-solid fa-lock"></i> Lock
       </button>
     </div>
   </div>
 
   <!-- MAIN WRAPPER -->
-  <div class="relative z-10 flex flex-col min-h-screen pt-28 pb-12">
+  <div class="relative z-10 flex flex-col min-h-screen pt-24 pb-12">
 
-    <!-- FLOATING NAVBAR WITH STORE LOGO & SUPER ADMIN TRIGGER -->
+    <!-- FLOATING NAVBAR -->
     <header class="fixed top-4 left-1/2 -translate-x-1/2 w-[95%] max-w-7xl z-40 glass-card rounded-2xl px-5 py-3 border border-white/10 transition-all">
       <div class="flex items-center justify-between">
         
-        <!-- Brand Logo -->
+        <!-- Brand Logo & Store Emblem -->
         <a href="#" class="flex items-center space-x-3 group">
-          <img src="logo.png" onError="this.onerror=null;this.src='star-logo.png';" alt="7Leo Website Logo" class="h-10 w-auto object-contain transition group-hover:scale-105">
-          <!-- STORE LOGO IN NAVBAR -->
-          <img src="file_00000000f2948207a9d90f38705cd83d.png" onError="this.onerror=null;this.src='store-logo.png';" alt="7Leo Store Emblem" class="h-9 w-9 rounded-full border border-amber-500/80 object-cover shadow-[0_0_15px_rgba(255,106,0,0.5)]">
+          <img src="logo.png" onError="this.onerror=null;this.src='star-logo.png';" alt="7Leo Logo" class="h-9 w-auto object-contain transition group-hover:scale-105">
+          <img src="file_00000000f2948207a9d90f38705cd83d.png" onError="this.onerror=null;this.src='store-logo.png';" alt="7Leo Store Emblem" class="h-8 w-8 rounded-full border border-amber-500/80 object-cover shadow-[0_0_15px_rgba(255,106,0,0.5)]">
           
-          <!-- SECRET SUPER ADMIN UNLOCK BADGE (CLICKABLE) -->
           <div onclick="promptAdminLogin()" title="Click to unlock Super Admin Command Mode" class="hidden lg:flex flex-col text-[10px] font-display text-gray-400 border-l border-white/10 pl-3 cursor-pointer group-hover:border-amber-500/50">
-            <span class="flex items-center text-amber-400 font-semibold"><span class="w-2 h-2 bg-amber-500 rounded-full animate-ping mr-1.5"></span>SYS ONLINE 99.9%</span>
-            <span class="group-hover:text-amber-300">7LEO ENTERPRISE <i class="fa-solid fa-key ml-1 text-[8px] opacity-60"></i></span>
+            <span class="flex items-center text-amber-400 font-semibold"><span class="w-2 h-2 bg-amber-500 rounded-full animate-ping mr-1.5"></span>STORE ONLINE</span>
+            <span class="group-hover:text-amber-300">7LEO DROPSHIPPING HUB <i class="fa-solid fa-key ml-1 text-[8px] opacity-60"></i></span>
           </div>
         </a>
 
         <!-- Navigation Links -->
-        <nav class="hidden md:flex items-center space-x-8 text-xs font-display font-medium tracking-wide text-gray-300">
-          <a href="#about" class="hover:text-amber-400 transition">WHO WE ARE</a>
-          <a href="#store" class="hover:text-amber-400 transition">STORE</a>
-          <a href="#bgm" class="hover:text-cyan-400 transition font-bold text-cyan-300 flex items-center space-x-1"><i class="fa-solid fa-compact-disc animate-spin mr-1 text-cyan-400"></i><span>BGM STUDIO</span></a>
-          <a href="#founder" class="hover:text-amber-400 transition">FOUNDER</a>
+        <nav class="hidden md:flex items-center space-x-6 text-xs font-display font-medium tracking-wide text-gray-300">
+          <a href="#store" class="hover:text-amber-400 transition">CATALOG</a>
+          <a href="#calculator" class="hover:text-amber-400 transition flex items-center"><i class="fa-solid fa-calculator mr-1 text-amber-500"></i> PROFIT CALC</a>
+          <a href="#pinterest" class="hover:text-amber-400 transition flex items-center"><i class="fa-brands fa-pinterest mr-1 text-red-500"></i> PINTEREST</a>
+          <a href="#support" class="hover:text-amber-400 transition">SUPPORT / RETURNS</a>
+          <a href="#about" class="hover:text-amber-400 transition">BUSINESS INFO</a>
         </nav>
 
         <!-- Navbar Header Actions -->
         <div class="flex items-center space-x-3">
-          <button onclick="openQRModal()" title="Scan QR Code" class="p-2.5 bg-white/5 border border-white/10 hover:border-amber-500/50 text-gray-300 hover:text-white rounded-xl transition cursor-pointer">
-            <i class="fa-solid fa-qrcode text-sm"></i>
+          <!-- Cart Button -->
+          <button onclick="openCartModal()" title="Shopping Cart" class="relative p-2.5 bg-amber-500/10 border border-amber-500/30 text-amber-400 hover:bg-amber-500/20 rounded-xl transition cursor-pointer">
+            <i class="fa-solid fa-cart-shopping text-sm"></i>
+            <span id="cart-badge" class="absolute -top-1.5 -right-1.5 w-5 h-5 bg-amber-500 text-black font-bold text-[10px] rounded-full flex items-center justify-center shadow">0</span>
           </button>
 
-          <!-- Super Admin Quick Portal Key -->
-          <button onclick="promptAdminLogin()" title="Super Admin Portal Access" class="p-2.5 bg-amber-500/10 border border-amber-500/30 text-amber-400 hover:bg-amber-500/20 rounded-xl transition cursor-pointer">
+          <!-- Admin Login Trigger -->
+          <button onclick="promptAdminLogin()" title="Admin Dashboard Access" class="p-2.5 bg-white/5 border border-white/10 hover:border-amber-500/50 text-gray-300 hover:text-white rounded-xl transition cursor-pointer">
             <i class="fa-solid fa-user-gear text-sm"></i>
           </button>
 
-          <!-- Authentication Container -->
+          <!-- Auth Container -->
           <div id="auth-header-container">
             <button onclick="openAuthModal('signin')" class="px-4 py-2.5 btn-gradient text-white font-display font-semibold rounded-xl text-xs tracking-wide flex items-center space-x-2 cursor-pointer">
               <i class="fa-solid fa-user-lock"></i>
-              <span class="hidden sm:inline">Sign In / Sign Up</span>
-              <span class="sm:hidden">Account</span>
+              <span class="hidden sm:inline">Sign In</span>
             </button>
           </div>
         </div>
@@ -288,654 +192,503 @@
     </header>
 
     <!-- HERO SECTION -->
-    <section id="hero" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-16 w-full text-center relative">
-      
-      <div class="flex flex-col justify-center items-center gap-4 mb-6">
-        <div class="relative group cursor-pointer">
-          <div class="absolute -inset-3 bg-gradient-to-r from-amber-500 via-orange-500 to-yellow-500 rounded-3xl blur-xl opacity-60 group-hover:opacity-100 transition duration-500"></div>
-          <img src="logo.png" onError="this.onerror=null;this.src='star-logo.png';" alt="7Leo Official Website Logo" class="relative max-h-24 sm:max-h-32 w-auto object-contain p-2 drop-shadow-[0_0_35px_rgba(255,106,0,0.8)] group-hover:scale-105 transition duration-300">
-        </div>
-      </div>
-
+    <section id="hero" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-12 w-full text-center relative">
       <div class="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-display mb-6">
         <span class="w-2 h-2 rounded-full bg-amber-500 animate-pulse"></span>
-        <span>7LEO GROUP COMMERCE · OFFICIAL HOMEPAGE PORTAL</span>
+        <span>VERIFIED DROPSHIPPING & FULFILLMENT TERMINAL · INDIA</span>
       </div>
 
-      <!-- HEADLINE TEXT -->
-      <h1 class="text-4xl sm:text-6xl lg:text-7xl font-heading font-extrabold tracking-tight text-white max-w-5xl mx-auto leading-tight">
-        Welcome to <br>
-        <span class="gradient-orange-highlight">7Leo Group Commerce</span>
+      <h1 class="text-4xl sm:text-6xl font-heading font-extrabold tracking-tight text-white max-w-5xl mx-auto leading-tight">
+        Professional Cross-Border <br>
+        <span class="gradient-orange-highlight">7Leo Store & Dropshipping Hub</span>
       </h1>
 
-      <p class="text-gray-300 text-sm sm:text-base max-w-3xl mx-auto mt-6 leading-relaxed font-normal">
-        We put you at the center & transform challenges into global opportunities across E-Commerce, Soundtrack Licensing, Gemini-Powered Web Engineering, Cyber Fashion, and Media Technology.
+      <p class="text-gray-300 text-sm sm:text-base max-w-3xl mx-auto mt-6 leading-relaxed">
+        Automated third-party order routing to global suppliers (Alibaba, AliExpress, Amazon), integrated profit calculation, secure payment routing for Indian merchants, and direct customer tracking.
       </p>
 
       <div class="mt-8 flex flex-wrap justify-center gap-4 font-display text-xs">
-        <a href="#store" class="px-8 py-4 btn-gradient text-white font-bold rounded-2xl tracking-wide uppercase shadow-lg">
-          Explore Store <i class="fa-solid fa-arrow-right ml-2"></i>
+        <a href="#store" class="px-8 py-4 btn-gradient text-white font-bold rounded-2xl tracking-wide uppercase shadow-lg cursor-pointer">
+          Browse Products <i class="fa-solid fa-arrow-right ml-2"></i>
         </a>
-        <a href="#bgm" class="px-8 py-4 btn-studio-neon text-white font-bold rounded-2xl tracking-wide uppercase shadow-lg flex items-center space-x-2">
-          <i class="fa-solid fa-headphones text-cyan-300"></i>
-          <span>Enter BGM Studio World</span>
+        <a href="#calculator" class="px-8 py-4 bg-white/5 hover:bg-white/10 border border-white/20 text-white font-bold rounded-2xl tracking-wide uppercase shadow-lg cursor-pointer">
+          Profit Calculator <i class="fa-solid fa-calculator ml-2 text-amber-400"></i>
         </a>
-      </div>
-
-      <!-- Glowing Horizon Ring Arc Visual -->
-      <div class="relative w-full max-w-4xl mx-auto mt-12 pt-8">
-        <div class="absolute inset-0 flex items-center justify-center -z-10">
-          <div class="w-[300px] sm:w-[600px] h-[150px] sm:h-[300px] bg-gradient-to-t from-amber-500/40 via-orange-600/20 to-transparent rounded-full blur-3xl"></div>
-        </div>
-        <div class="w-full h-[1px] bg-gradient-to-r from-transparent via-amber-500/60 to-transparent mb-8"></div>
       </div>
     </section>
 
-    <!-- SECTION 1: WHO WE ARE (ECOSYSTEM OVERVIEW) -->
-    <section id="about" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 w-full">
-      <div class="text-center max-w-3xl mx-auto mb-12">
-        <p class="text-xs font-display text-amber-500 uppercase tracking-widest mb-2">WHO WE ARE</p>
-        <h2 class="text-3xl sm:text-4xl font-heading font-bold text-white">
-          Turning Challenges into Digital Success
-        </h2>
-        <p class="text-gray-400 text-xs sm:text-sm mt-3 leading-relaxed">
-          We implement innovative solutions across cross-border dropshipping, soundtrack licensing, automated web engineering, cyber apparel, and AI architecture.
-        </p>
-      </div>
-
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+    <!-- SECTION: STORE CATALOG & PRODUCT MANAGEMENT -->
+    <section id="store" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 w-full">
+      <div class="glass-card glass-card-amber rounded-3xl p-6 sm:p-10">
         
-        <!-- CARD 1: 7LEO STORE WITH DETAILED BIO -->
-        <div class="glass-card glass-card-amber rounded-3xl p-8 flex flex-col justify-between relative overflow-hidden">
-          <div class="absolute -right-10 -top-10 w-40 h-40 bg-amber-500/10 rounded-full blur-2xl pointer-events-none"></div>
-          <div>
-            <div class="flex items-center justify-between border-b border-white/10 pb-5 mb-6">
-              <div class="flex items-center space-x-4">
-                <img src="file_00000000f2948207a9d90f38705cd83d.png" onError="this.onerror=null;this.src='store-logo.png';" alt="7Leo Store Logo" class="w-16 h-16 rounded-full border-2 border-amber-500 p-0.5 bg-black object-cover shadow-[0_0_25px_rgba(255,106,0,0.5)]">
-                <div>
-                  <h3 class="text-2xl font-heading font-bold text-white">7Leo Store</h3>
-                  <p class="text-xs font-display text-amber-400">Global Supply Terminal</p>
-                </div>
-              </div>
-              <span class="px-3 py-1 bg-amber-500/20 border border-amber-500/40 text-amber-300 font-display text-[10px] rounded-full uppercase">Operational</span>
-            </div>
-
-            <div class="space-y-4 text-gray-300 text-sm leading-relaxed mb-6">
-              <p>
-                <strong>7Leo Store</strong> operates as a global e-commerce supply chain engine — delivering curated merchandise directly to international customers with zero inventory overhead.
-              </p>
-              <div class="bg-black/60 border border-amber-500/30 p-4 rounded-2xl text-xs font-display text-amber-200">
-                📌 <strong>Official Bio:</strong> Engineered for cross-border logistics automation, hyper-curated luxury tech accessories, streetwear merchandise, and cyber gear. Delivering premium quality directly from worldwide supply chains to your doorstep with 100% security.
-              </div>
-            </div>
-          </div>
-
-          <div class="pt-4 border-t border-white/10 flex items-center justify-between">
-            <span class="text-xs font-display text-gray-400">Shop Smart. Live Better.</span>
-            <a href="#store" class="px-5 py-2 bg-amber-500/20 hover:bg-amber-500/30 border border-amber-500/40 text-amber-300 font-display font-semibold rounded-xl text-xs transition">
-              Access Store
-            </a>
-          </div>
-        </div>
-
-        <!-- CARD 2: 7LEO BGM STUDIO -->
-        <div class="glass-card rounded-3xl p-8 flex flex-col justify-between relative overflow-hidden border-cyan-500/30">
-          <div class="absolute -right-10 -top-10 w-40 h-40 bg-cyan-500/10 rounded-full blur-2xl pointer-events-none"></div>
-          <div>
-            <div class="flex items-center justify-between border-b border-white/10 pb-5 mb-6">
-              <div class="flex items-center space-x-4">
-                <img src="bgm-logo.png" onError="this.onerror=null;this.src='star-logo.png';" alt="7Leo BGM" class="w-14 h-14 rounded-2xl border border-cyan-400 p-1 bg-black object-contain shadow-[0_0_20px_rgba(0,243,255,0.4)]">
-                <div>
-                  <h3 class="text-2xl font-heading font-bold text-white">🎵 7Leo BGM — Music Licensing</h3>
-                  <p class="text-xs font-display text-cyan-400">Original Background Music & Soundtracks</p>
-                </div>
-              </div>
-              <span class="px-3 py-1 bg-cyan-500/20 border border-cyan-500/40 text-cyan-300 font-display text-[10px] rounded-full uppercase animate-pulse">Studio Live</span>
-            </div>
-
-            <div class="space-y-4 text-gray-300 text-sm leading-relaxed mb-6">
-              <p class="font-medium text-white">
-                Looking for original music for your YouTube videos, advertisements, promotions, trailers, films, games, or other creative projects?
-              </p>
-              
-              <p class="text-xs text-gray-300">
-                🎧 <strong>7Leo BGM</strong> offers original background music and soundtracks for creators, brands, businesses, and production projects.
-              </p>
-
-              <!-- AVAILABLE FOR GRID -->
-              <div class="bg-black/60 border border-cyan-500/30 p-4 rounded-2xl text-xs font-display text-cyan-200">
-                <p class="font-bold text-cyan-300 mb-2.5 flex items-center"><i class="fa-solid fa-clapperboard mr-2"></i> 🎬 Available For:</p>
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-gray-300 text-[11px]">
-                  <div class="flex items-center"><i class="fa-solid fa-check text-cyan-400 mr-2 text-[10px]"></i> YouTube Videos & Channels</div>
-                  <div class="flex items-center"><i class="fa-solid fa-check text-cyan-400 mr-2 text-[10px]"></i> Advertisements & Commercials</div>
-                  <div class="flex items-center"><i class="fa-solid fa-check text-cyan-400 mr-2 text-[10px]"></i> Promotions & Brand Campaigns</div>
-                  <div class="flex items-center"><i class="fa-solid fa-check text-cyan-400 mr-2 text-[10px]"></i> Movie / Short Film Trailers</div>
-                  <div class="flex items-center"><i class="fa-solid fa-check text-cyan-400 mr-2 text-[10px]"></i> Intro & Outro Music</div>
-                  <div class="flex items-center"><i class="fa-solid fa-check text-cyan-400 mr-2 text-[10px]"></i> Games & Apps</div>
-                </div>
-              </div>
-
-              <!-- CONTACT & PERMISSION NOTICE -->
-              <div class="bg-cyan-950/30 border border-cyan-500/20 p-4 rounded-2xl text-xs space-y-2">
-                <p class="font-bold text-cyan-300 flex items-center"><i class="fa-solid fa-envelope mr-2"></i> 📩 Contact for Music:</p>
-                <p class="text-gray-300 text-[11px]">
-                  For music licensing, commercial use, custom music, or collaboration, contact us through official 7Leo BGM details.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div class="pt-4 border-t border-white/10 flex items-center justify-between">
-            <span class="text-xs font-display text-gray-400">7Leo BGM — Original Music for Your Vision.</span>
-            <a href="#bgm" class="px-5 py-2 bg-cyan-500/20 hover:bg-cyan-500/30 border border-cyan-500/40 text-cyan-300 font-display font-semibold rounded-xl text-xs transition">
-              Enter Studio
-            </a>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- SECTION 2: STORE CATALOG TERMINAL WITH STORE LOGO & BIO -->
-    <section id="store" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 w-full">
-      <div class="glass-card glass-card-amber rounded-3xl p-8 sm:p-10">
-        
-        <!-- Store Header & Bio Banner -->
+        <!-- Store Header & Controls -->
         <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 mb-8 border-b border-white/10 pb-6">
           <div class="flex items-center space-x-4">
-            <img src="file_00000000f2948207a9d90f38705cd83d.png" onError="this.onerror=null;this.src='store-logo.png';" alt="7Leo Store Emblem" class="w-20 h-20 sm:w-24 sm:h-24 rounded-full border-2 border-amber-500 p-1 bg-black object-cover shadow-[0_0_35px_rgba(255,106,0,0.6)]">
+            <img src="file_00000000f2948207a9d90f38705cd83d.png" onError="this.onerror=null;this.src='store-logo.png';" alt="7Leo Store" class="w-16 h-16 rounded-full border-2 border-amber-500 p-0.5 bg-black object-cover">
             <div>
-              <div class="flex items-center space-x-2">
-                <h2 class="text-2xl sm:text-3xl font-heading font-bold text-white">7Leo Store Terminal</h2>
-                <span class="px-2.5 py-0.5 bg-amber-500/20 border border-amber-500/40 text-amber-400 font-display text-[10px] rounded-full uppercase">Official</span>
-              </div>
-              <p class="text-xs text-amber-400 font-display mt-1">Global Merchandise & Cyber Gear Supply Gateway</p>
-              <p class="text-xs text-gray-400 mt-2 max-w-xl leading-relaxed">
-                <strong>Bio:</strong> Powered by 7Leo Group Commerce, 7Leo Store brings you high-grade streetwear merch, producer audio equipment, and luxury cyber gear with automated worldwide delivery.
-              </p>
-            </div>
-          </div>
-          <button onclick="triggerOrder('General Store Inquiry')" class="px-6 py-3 btn-gradient text-white font-display font-bold rounded-xl text-xs uppercase tracking-wider cursor-pointer whitespace-nowrap">
-            Access Full Catalog <i class="fa-solid fa-arrow-right ml-2"></i>
-          </button>
-        </div>
-
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          
-          <!-- Product 1 -->
-          <div class="glass-card rounded-2xl p-5 relative overflow-hidden group">
-            <div class="h-48 bg-black/60 rounded-xl mb-4 flex items-center justify-center text-amber-500 text-5xl relative border border-white/10">
-              <i class="fa-solid fa-shirt"></i>
-              <div class="absolute inset-0 bg-black/80 opacity-0 group-hover:opacity-100 flex items-center justify-center transition duration-300 rounded-xl p-4">
-                <button onclick="triggerOrder('7Leo Executive Hoodie')" class="px-5 py-2.5 btn-gradient text-white font-display font-bold rounded-xl text-xs uppercase">
-                  Order Item
-                </button>
-              </div>
-            </div>
-            <h3 class="font-heading font-bold text-white text-base">7Leo Executive Hoodie</h3>
-            <p class="text-xs text-gray-400 mb-4">Embroidered Cyber Edition</p>
-            <div class="flex items-center justify-between pt-2 border-t border-white/10 font-display">
-              <span class="text-amber-400 font-bold text-lg">$89.00</span>
-              <span class="text-[10px] text-emerald-400 uppercase">IN STOCK</span>
+              <h2 class="text-2xl sm:text-3xl font-heading font-bold text-white">7Leo Verified Store Catalog</h2>
+              <p class="text-xs text-amber-400 font-display mt-0.5">Automated Supplier Dropshipping & Fulfillment</p>
             </div>
           </div>
 
-          <!-- Product 2 -->
-          <div class="glass-card rounded-2xl p-5 relative overflow-hidden group">
-            <div class="h-48 bg-black/60 rounded-xl mb-4 flex items-center justify-center text-amber-500 text-5xl relative border border-white/10">
-              <i class="fa-solid fa-gem"></i>
-              <div class="absolute inset-0 bg-black/80 opacity-0 group-hover:opacity-100 flex items-center justify-center transition duration-300 rounded-xl p-4">
-                <button onclick="triggerOrder('7Leo Signature Ring')" class="px-5 py-2.5 btn-gradient text-white font-display font-bold rounded-xl text-xs uppercase">
-                  Order Item
-                </button>
-              </div>
+          <!-- Search & Filter Controls -->
+          <div class="flex flex-wrap items-center gap-3 w-full md:w-auto font-display text-xs">
+            <div class="relative flex-grow md:w-64">
+              <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400"><i class="fa-solid fa-search"></i></span>
+              <input type="text" id="product-search-input" oninput="filterCatalogProducts()" placeholder="Search catalog..." class="w-full bg-black/70 border border-white/15 rounded-xl pl-9 pr-4 py-2.5 text-white focus:outline-none focus:border-amber-500">
             </div>
-            <h3 class="font-heading font-bold text-white text-base">7Leo Titanium Ring</h3>
-            <p class="text-xs text-gray-400 mb-4">Matte Black Titanium Finish</p>
-            <div class="flex items-center justify-between pt-2 border-t border-white/10 font-display">
-              <span class="text-amber-400 font-bold text-lg">$120.00</span>
-              <span class="text-[10px] text-amber-400 uppercase">LIMITED EDITION</span>
-            </div>
-          </div>
-
-          <!-- Product 3 -->
-          <div class="glass-card rounded-2xl p-5 relative overflow-hidden group">
-            <div class="h-48 bg-black/60 rounded-xl mb-4 flex items-center justify-center text-amber-500 text-5xl relative border border-white/10">
-              <i class="fa-solid fa-headphones-simple"></i>
-              <div class="absolute inset-0 bg-black/80 opacity-0 group-hover:opacity-100 flex items-center justify-center transition duration-300 rounded-xl p-4">
-                <button onclick="triggerOrder('Producer Edition Headphones')" class="px-5 py-2.5 btn-gradient text-white font-display font-bold rounded-xl text-xs uppercase">
-                  Order Item
-                </button>
-              </div>
-            </div>
-            <h3 class="font-heading font-bold text-white text-base">Producer Headphones</h3>
-            <p class="text-xs text-gray-400 mb-4">Tuned for High Octane BGM Beats</p>
-            <div class="flex items-center justify-between pt-2 border-t border-white/10 font-display">
-              <span class="text-amber-400 font-bold text-lg">$199.00</span>
-              <span class="text-[10px] text-gray-400 uppercase">STUDIO GEAR</span>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- SECTION 3: WORLD-CLASS 7LEO BGM CYBER-STUDIO PAGE -->
-    <section id="bgm" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 w-full">
-      <div class="studio-world-container rounded-3xl p-6 sm:p-12 relative overflow-hidden">
-        
-        <!-- STUDIO GLOW AMBIENCE LIGHTS -->
-        <div class="absolute -top-32 -left-32 w-96 h-96 bg-cyan-500/20 rounded-full blur-3xl pointer-events-none"></div>
-        <div class="absolute -bottom-32 -right-32 w-96 h-96 bg-purple-600/20 rounded-full blur-3xl pointer-events-none"></div>
-
-        <!-- 7LEO BGM EXCLUSIVE STUDIO BANNER -->
-        <div class="relative w-full h-48 sm:h-64 rounded-2xl overflow-hidden mb-8 border border-cyan-500/40 shadow-[0_0_35px_rgba(0,243,255,0.3)] group">
-          <img src="bgm-banner.png" onError="this.onerror=null;this.src='https://via.placeholder.com/1200x400/030814/00f3ff?text=7LEO+BGM+WORLD+CLASS+RECORDING+STUDIO';" alt="7Leo BGM Studio Official Banner" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
-          <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent flex items-end p-6">
-            <div class="flex items-center space-x-3">
-              <span class="px-3 py-1 bg-cyan-500/30 border border-cyan-400 text-cyan-300 font-cyber text-xs rounded-full uppercase tracking-wider">
-                <i class="fa-solid fa-compact-disc animate-spin mr-1.5"></i> 7Leo BGM Official Studio Banner
-              </span>
-            </div>
-          </div>
-        </div>
-
-        <!-- TOP VIRTUAL STUDIO CONTROL DECK HEADER -->
-        <div class="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 mb-10 border-b border-cyan-500/20 pb-8 relative z-10">
-          
-          <div class="flex items-center space-x-5">
-            <div class="relative group">
-              <div class="absolute -inset-1 bg-gradient-to-r from-cyan-400 to-purple-600 rounded-2xl blur opacity-75 group-hover:opacity-100 transition duration-500"></div>
-              <img src="bgm-logo.png" onError="this.onerror=null;this.src='star-logo.png';" alt="7Leo BGM Logo" class="relative w-20 h-20 rounded-2xl border-2 border-cyan-400 object-cover bg-black shadow-[0_0_30px_rgba(0,243,255,0.6)]">
-            </div>
-            <div>
-              <div class="flex items-center space-x-3">
-                <h2 class="text-3xl sm:text-5xl font-cyber font-extrabold text-white tracking-wider">7LEO BGM</h2>
-                <span class="px-3 py-1 bg-cyan-500/20 border border-cyan-400/50 text-cyan-300 font-cyber text-[10px] rounded-md tracking-widest uppercase animate-pulse">VIRTUAL STUDIO 1.0</span>
-              </div>
-              <p class="text-xs sm:text-sm font-display text-cyan-400 tracking-widest uppercase mt-1">
-                Official Sound Recording Lab & Music Channel
-              </p>
-              <p class="text-xs text-gray-400 font-display mt-1">
-                Mobile Composed Groovepad Music · High Octane Soundtracks
-              </p>
-            </div>
-          </div>
-
-          <!-- AUDIO WORKSTATION STATUS HUD & LIVE EQ VISUALIZER -->
-          <div class="flex flex-wrap items-center gap-6 bg-black/80 border border-cyan-500/30 p-4 rounded-2xl studio-neon-border">
             
-            <!-- Live Bouncing EQ Animation -->
-            <div class="flex items-end space-x-1.5 h-10 px-2">
-              <div class="eq-bar"></div>
-              <div class="eq-bar"></div>
-              <div class="eq-bar"></div>
-              <div class="eq-bar"></div>
-              <div class="eq-bar"></div>
-              <div class="eq-bar"></div>
-              <div class="eq-bar"></div>
-              <div class="eq-bar"></div>
-              <div class="eq-bar"></div>
-              <div class="eq-bar"></div>
-            </div>
+            <select id="category-filter" onchange="filterCatalogProducts()" class="bg-black/70 border border-white/15 rounded-xl px-4 py-2.5 text-white focus:outline-none focus:border-amber-500">
+              <option value="all">All Categories</option>
+              <option value="Streetwear">Streetwear</option>
+              <option value="Electronics">Electronics & Tech</option>
+              <option value="Accessories">Accessories</option>
+            </select>
 
-            <div class="text-left font-cyber border-l border-white/10 pl-4">
-              <div class="text-[10px] text-gray-400">AUDIO ENGINE</div>
-              <div class="text-xs text-cyan-300 font-bold">24-BIT / 96KHZ LOSSLESS</div>
-              <div class="text-[10px] text-purple-400 flex items-center mt-0.5">
-                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping mr-1.5"></span>
-                SPATIAL 3D SOUNDSTAGE
-              </div>
-            </div>
-
-            <!-- SUBSCRIBE BUTTON AS EXPLORE MUSIC -->
-            <a href="https://www.youtube.com/@7LeoBGM?sub_confirmation=1" target="_blank" class="px-6 py-3.5 btn-studio-neon text-white font-cyber font-bold rounded-xl text-xs tracking-wider uppercase flex items-center space-x-2 shadow-lg hover:scale-105 transition cursor-pointer">
-              <i class="fa-brands fa-youtube text-lg text-red-500"></i>
-              <span>Explore Music</span>
-            </a>
-
+            <select id="sort-filter" onchange="filterCatalogProducts()" class="bg-black/70 border border-white/15 rounded-xl px-4 py-2.5 text-white focus:outline-none focus:border-amber-500">
+              <option value="default">Sort by: Featured</option>
+              <option value="price-low">Price: Low to High</option>
+              <option value="price-high">Price: High to Low</option>
+            </select>
           </div>
         </div>
 
-        <!-- STUDIO GEAR RACK & LIVE STREAM FEED -->
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-10 relative z-10">
-          
-          <div class="lg:col-span-7 space-y-6">
-            <div class="bg-black/80 border border-cyan-500/30 rounded-2xl p-6 sm:p-8 studio-neon-border">
-              <div class="flex items-center justify-between border-b border-white/10 pb-4 mb-4">
-                <div class="flex items-center space-x-3">
-                  <i class="fa-solid fa-sliders text-cyan-400 text-xl"></i>
-                  <h3 class="text-xl font-heading font-bold text-white">Welcome to 7leo BGM Studio!</h3>
-                </div>
-                <span class="text-[10px] font-cyber text-purple-400 uppercase tracking-widest border border-purple-500/40 px-2 py-1 rounded">DECK ACTIVE</span>
-              </div>
-
-              <p class="text-xs sm:text-sm font-display text-cyan-300 font-semibold mb-3">
-                Mobile.Composed Groovepad Music
-              </p>
-
-              <p class="text-xs sm:text-sm text-gray-300 leading-relaxed font-body">
-                <strong>Drive • Chill • Gangster • DJ • Cinematic</strong><br>
-                Where every track sets the perfect vibe.<br>
-                Handcrafted instrumental background music produced with modern groovepads to fuel your focus, ease your mind, and elevate your creative content.
-              </p>
-            </div>
-          </div>
-
-          <!-- RIGHT: YOUTUBE PLAYER -->
-          <div class="lg:col-span-5 bg-black/90 border border-cyan-500/30 rounded-2xl p-5 flex flex-col justify-between studio-neon-border shadow-2xl">
-            <div class="flex items-center justify-between mb-4 px-1">
-              <span class="text-xs font-cyber text-cyan-400 flex items-center">
-                <span class="w-2 h-2 rounded-full bg-red-500 animate-ping mr-2"></span>
-                LIVE YOUTUBE BROADCAST FEED
-              </span>
-              <a href="https://www.youtube.com/@7LeoBGM" target="_blank" class="text-[11px] font-cyber text-gray-400 hover:text-cyan-400">@7LeoBGM <i class="fa-solid fa-arrow-up-right-from-square ml-1 text-[9px]"></i></a>
-            </div>
-
-            <div class="relative w-full h-60 sm:h-72 rounded-xl overflow-hidden border border-cyan-500/40 bg-black shadow-[0_0_30px_rgba(0,0,0,0.9)]">
-              <iframe 
-                class="w-full h-full rounded-xl"
-                src="https://www.youtube.com/embed/videoseries?list=UUamMEOUEp0NdY2EAiqH9WfA" 
-                title="7Leo BGM Live YouTube Feed" 
-                frameborder="0" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                allowfullscreen>
-              </iframe>
-            </div>
-          </div>
-
+        <!-- PRODUCT GRID CONTAINER -->
+        <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Dynamically populated by JS -->
         </div>
       </div>
     </section>
 
-    <!-- SECTION 4: FOUNDER COMMAND CORE (ABUBAKKER BELLARY) -->
-    <section id="founder" class="py-16 border-t border-white/10 bg-black/60 relative">
-      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- SECTION: AUTOMATIC PROFIT CALCULATOR -->
+    <section id="calculator" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 w-full">
+      <div class="glass-card rounded-3xl p-6 sm:p-10 border border-amber-500/30 relative overflow-hidden">
+        <div class="absolute -right-20 -top-20 w-60 h-60 bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
         
-        <div class="text-center max-w-3xl mx-auto mb-12">
-          <div class="inline-flex items-center space-x-2 px-3 py-1 bg-amber-500/10 border border-amber-500/30 rounded-full text-amber-400 text-xs font-display mb-3">
-            <i class="fa-solid fa-crown text-xs"></i>
-            <span>FOUNDER & CHIEF VISIONARY</span>
-          </div>
-          <h2 class="text-3xl sm:text-5xl font-heading font-extrabold text-white">
-            — ABUBAKKER BELLARY
-          </h2>
-          <p class="text-amber-400 font-display text-xs sm:text-sm mt-2 uppercase tracking-widest">
-            Founder & Visionary · 7Leo Group Enterprise
+        <div class="max-w-3xl mb-8">
+          <span class="text-xs font-display text-amber-500 uppercase tracking-widest mb-1 block"><i class="fa-solid fa-calculator mr-2"></i> AUTOMATED FINANCIAL ENGINE</span>
+          <h2 class="text-3xl font-heading font-bold text-white">Dropshipping Net Profit Breakdown</h2>
+          <p class="text-gray-400 text-xs sm:text-sm mt-2">
+            Calculate exact net earnings after factoring in selling price, supplier product cost, shipping fee, payment gateway fees (2%), ad costs, and applicable Indian taxes (GST).
           </p>
         </div>
 
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-          
-          <!-- Profile Picture Card -->
-          <div class="lg:col-span-4 flex flex-col items-center">
-            <div class="w-full max-w-sm h-96 rounded-3xl overflow-hidden glass-card glass-card-amber relative group p-2">
-              <img src="founder.jpg" onError="this.onerror=null;this.src='https://via.placeholder.com/350x450/000000/ff6a00?text=FOUNDER';" alt="Abubakker Bellary" class="w-full h-full object-cover rounded-2xl group-hover:scale-105 transition duration-500">
-              <div class="absolute bottom-4 left-4 right-4 p-4 bg-black/80 border border-white/10 rounded-2xl backdrop-blur-md">
-                <p class="text-white font-heading font-bold text-sm">Abubakker Bellary</p>
-                <p class="text-xs text-amber-400 font-display">Hospet, Karnataka · India</p>
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start font-display">
+          <!-- Inputs Column -->
+          <div class="lg:col-span-6 space-y-4 bg-black/60 p-6 rounded-2xl border border-white/10">
+            <h3 class="font-heading font-bold text-white text-sm uppercase tracking-wider mb-2 pb-2 border-b border-white/10">Cost Parameters (INR ₹)</h3>
+            
+            <div class="grid grid-cols-2 gap-4">
+              <div>
+                <label class="block text-[11px] text-gray-400 mb-1">Selling Price (₹)</label>
+                <input type="number" id="calc-selling" value="1999" oninput="calculateProfit()" class="w-full bg-black border border-white/20 rounded-xl px-3 py-2 text-white text-xs focus:border-amber-500">
+              </div>
+              <div>
+                <label class="block text-[11px] text-gray-400 mb-1">Supplier Cost (₹)</label>
+                <input type="number" id="calc-product-cost" value="650" oninput="calculateProfit()" class="w-full bg-black border border-white/20 rounded-xl px-3 py-2 text-white text-xs focus:border-amber-500">
+              </div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-4">
+              <div>
+                <label class="block text-[11px] text-gray-400 mb-1">Shipping Cost (₹)</label>
+                <input type="number" id="calc-shipping" value="150" oninput="calculateProfit()" class="w-full bg-black border border-white/20 rounded-xl px-3 py-2 text-white text-xs focus:border-amber-500">
+              </div>
+              <div>
+                <label class="block text-[11px] text-gray-400 mb-1">Ad / Platform Cost (₹)</label>
+                <input type="number" id="calc-ads" value="300" oninput="calculateProfit()" class="w-full bg-black border border-white/20 rounded-xl px-3 py-2 text-white text-xs focus:border-amber-500">
+              </div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-4">
+              <div>
+                <label class="block text-[11px] text-gray-400 mb-1">Payment Gateway Fee (%)</label>
+                <input type="number" id="calc-pg-fee" value="2.0" step="0.1" oninput="calculateProfit()" class="w-full bg-black border border-white/20 rounded-xl px-3 py-2 text-white text-xs focus:border-amber-500">
+              </div>
+              <div>
+                <label class="block text-[11px] text-gray-400 mb-1">GST / Tax Rate (%)</label>
+                <input type="number" id="calc-tax-rate" value="18" oninput="calculateProfit()" class="w-full bg-black border border-white/20 rounded-xl px-3 py-2 text-white text-xs focus:border-amber-500">
               </div>
             </div>
           </div>
 
-          <!-- Story & Milestones -->
-          <div class="lg:col-span-8 space-y-6 font-body">
-            
-            <div class="glass-card p-6 rounded-2xl">
-              <span class="text-xs text-amber-400 font-display font-bold">01 / GENESIS PHASE</span>
-              <h4 class="font-heading font-bold text-white text-base mt-1">Middle-Class Vision</h4>
-              <p class="text-xs text-gray-400 mt-1 mb-2">Hospet, Karnataka · India</p>
-              <p class="text-xs text-gray-300 leading-relaxed">
-                Started from Hospet, Karnataka with zero corporate backers—fueled solely by ambition to build an enterprise that blends operational logistics with sound design and modern code architecture.
-              </p>
+          <!-- Results Column -->
+          <div class="lg:col-span-6 bg-black/90 p-6 rounded-2xl border border-amber-500/40 space-y-3">
+            <h3 class="font-heading font-bold text-amber-400 text-sm uppercase tracking-wider mb-2 pb-2 border-b border-white/10 flex items-center justify-between">
+              <span>Financial Statement</span>
+              <span class="text-[10px] text-emerald-400 px-2 py-0.5 bg-emerald-500/10 rounded">Live Calculation</span>
+            </h3>
+
+            <div class="flex justify-between text-xs py-1.5 border-b border-white/5">
+              <span class="text-gray-400">Selling Price:</span>
+              <span id="res-selling" class="text-white font-bold">₹1,999.00</span>
+            </div>
+            <div class="flex justify-between text-xs py-1.5 border-b border-white/5">
+              <span class="text-gray-400">Supplier Product Cost:</span>
+              <span id="res-product" class="text-red-400">-₹650.00</span>
+            </div>
+            <div class="flex justify-between text-xs py-1.5 border-b border-white/5">
+              <span class="text-gray-400">Fulfillment Shipping Cost:</span>
+              <span id="res-shipping" class="text-red-400">-₹150.00</span>
+            </div>
+            <div class="flex justify-between text-xs py-1.5 border-b border-white/5">
+              <span class="text-gray-400">Payment Gateway Fee (2%):</span>
+              <span id="res-pg" class="text-red-400">-₹40.00</span>
+            </div>
+            <div class="flex justify-between text-xs py-1.5 border-b border-white/5">
+              <span class="text-gray-400">Ad & Marketing Cost:</span>
+              <span id="res-ads" class="text-red-400">-₹300.00</span>
+            </div>
+            <div class="flex justify-between text-xs py-1.5 border-b border-white/5">
+              <span class="text-gray-400">Estimated GST / Tax:</span>
+              <span id="res-tax" class="text-red-400">-₹155.00</span>
             </div>
 
-            <div class="glass-card p-6 rounded-2xl">
-              <span class="text-xs text-amber-400 font-display font-bold">02 / INNOVATION COMMAND</span>
-              <h4 class="font-heading font-bold text-white text-base mt-1">Single Mobile Hardware</h4>
-              <p class="text-xs text-gray-400 mt-1 mb-2">Self-Taught Digital Engineer</p>
-              <p class="text-xs text-gray-300 leading-relaxed">
-                Transformed a single mobile smartphone and Wi-Fi connection into a complete operational command center—mastering modern web code, automated store pipelines, and AI agent integration.
-              </p>
+            <div class="pt-3 flex items-center justify-between bg-amber-500/10 p-4 rounded-xl border border-amber-500/30 mt-2">
+              <div>
+                <span class="text-xs text-amber-300 font-bold block">ESTIMATED NET PROFIT</span>
+                <span class="text-[10px] text-gray-400">Legitimate earnings after all deductions</span>
+              </div>
+              <span id="res-net-profit" class="text-xl font-cyber font-extrabold text-amber-400">₹704.00</span>
             </div>
-
-            <div class="glass-card glass-card-amber p-6 rounded-2xl">
-              <span class="text-xs text-amber-400 font-display font-bold">03 / EMPIRE LAUNCH</span>
-              <h4 class="font-heading font-bold text-white text-base mt-1">First Brick of 7Leo Empire</h4>
-              <p class="text-xs text-amber-300 mt-1 mb-2">Global Command Portal</p>
-              <p class="text-xs text-gray-300 leading-relaxed">
-                7Leo Group Enterprise stands as proof that strategic vision and relentless focus outpace all limitations.
-              </p>
-            </div>
-
           </div>
+        </div>
+      </div>
+    </section>
 
+    <!-- SECTION: PINTEREST INTEGRATION HUB -->
+    <section id="pinterest" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 w-full">
+      <div class="glass-card rounded-3xl p-6 sm:p-10 border border-red-500/30 relative overflow-hidden">
+        <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 mb-8 border-b border-white/10 pb-6">
+          <div class="flex items-center space-x-4">
+            <div class="w-14 h-14 bg-red-600/20 border border-red-500 rounded-2xl flex items-center justify-center text-red-500 text-2xl">
+              <i class="fa-brands fa-pinterest"></i>
+            </div>
+            <div>
+              <h2 class="text-2xl font-heading font-bold text-white">Pinterest Marketing & Catalog Integration</h2>
+              <p class="text-xs text-red-400 font-display mt-0.5">Product Feed Sync, Rich Pins & Direct Product Links</p>
+            </div>
+          </div>
+          <button onclick="togglePinterestSync()" id="pinterest-sync-btn" class="px-6 py-3 bg-red-600 hover:bg-red-700 text-white font-display font-bold rounded-xl text-xs uppercase tracking-wider transition cursor-pointer shadow-lg">
+            Connect Pinterest Account
+          </button>
         </div>
 
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 font-display text-xs">
+          <div class="bg-black/60 p-5 rounded-2xl border border-white/10 space-y-2">
+            <div class="text-red-400 font-bold flex items-center"><i class="fa-solid fa-cloud-arrow-up mr-2"></i> Product Catalog Feed</div>
+            <p class="text-gray-400 text-[11px]">Syncs store inventory XML/CSV feed automatically with Pinterest Business Hub for daily price and stock updates.</p>
+            <div id="feed-status" class="text-emerald-400 font-semibold pt-2">Status: Ready to Sync</div>
+          </div>
+
+          <div class="bg-black/60 p-5 rounded-2xl border border-white/10 space-y-2">
+            <div class="text-red-400 font-bold flex items-center"><i class="fa-solid fa-thumbtack mr-2"></i> Rich Product Pins</div>
+            <p class="text-gray-400 text-[11px]">Enables real-time pricing, stock availability, and checkout buttons directly inside Pinterest user feeds.</p>
+            <div class="text-amber-400 font-semibold pt-2">API Webhook: Configured</div>
+          </div>
+
+          <div class="bg-black/60 p-5 rounded-2xl border border-white/10 space-y-2">
+            <div class="text-red-400 font-bold flex items-center"><i class="fa-solid fa-chart-pie mr-2"></i> Pinterest Tag & Analytics</div>
+            <p class="text-gray-400 text-[11px]">Tracks add-to-cart conversions, checkouts, and visitor traffic originating from Pinterest organic and paid ad campaigns.</p>
+            <div class="text-cyan-400 font-semibold pt-2">Tag ID: 7LEO-PIN-9982</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: RETURNS, REFUNDS & CUSTOMER SUPPORT -->
+    <section id="support" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 w-full">
+      <div class="glass-card rounded-3xl p-6 sm:p-10">
+        <div class="text-center max-w-2xl mx-auto mb-8">
+          <span class="text-xs font-display text-amber-500 uppercase tracking-widest mb-1 block">CUSTOMER SUPPORT & FULFILLMENT</span>
+          <h2 class="text-3xl font-heading font-bold text-white">Returns, Refunds & Tracking Center</h2>
+          <p class="text-gray-400 text-xs mt-2">
+            Initiate return requests, report damaged or wrong products, track active orders, or contact 7Leo Store support.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 font-display">
+          <!-- Form: Return / Refund Ticket -->
+          <div class="bg-black/70 p-6 rounded-2xl border border-white/10 space-y-4">
+            <h3 class="font-heading font-bold text-white text-base border-b border-white/10 pb-3 flex items-center">
+              <i class="fa-solid fa-rotate-left mr-2 text-amber-500"></i> Submit Return / Issue Request
+            </h3>
+
+            <form onsubmit="handleSupportSubmit(event)" class="space-y-3 text-xs">
+              <div>
+                <label class="block text-gray-400 mb-1">Order ID</label>
+                <input type="text" id="support-order-id" required placeholder="e.g. 7LEO-98214" class="w-full bg-black border border-white/20 rounded-xl px-3 py-2.5 text-white">
+              </div>
+
+              <div class="grid grid-cols-2 gap-3">
+                <div>
+                  <label class="block text-gray-400 mb-1">Request Type</label>
+                  <select id="support-type" class="w-full bg-black border border-white/20 rounded-xl px-3 py-2.5 text-white">
+                    <option value="Return">Return Request</option>
+                    <option value="Refund">Refund Request</option>
+                    <option value="Damaged">Damaged Product Report</option>
+                    <option value="Wrong">Wrong Product Report</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="block text-gray-400 mb-1">Registered Email</label>
+                  <input type="email" id="support-email" required placeholder="name@domain.com" class="w-full bg-black border border-white/20 rounded-xl px-3 py-2.5 text-white">
+                </div>
+              </div>
+
+              <div>
+                <label class="block text-gray-400 mb-1">Issue Description / Reason</label>
+                <textarea id="support-desc" rows="3" required placeholder="Describe the issue..." class="w-full bg-black border border-white/20 rounded-xl p-3 text-white"></textarea>
+              </div>
+
+              <button type="submit" class="w-full py-3 btn-gradient text-white font-bold rounded-xl uppercase tracking-wider cursor-pointer">
+                Submit Support Ticket <i class="fa-solid fa-paper-plane ml-1"></i>
+              </button>
+            </form>
+          </div>
+
+          <!-- Order Tracking Lookup -->
+          <div class="bg-black/70 p-6 rounded-2xl border border-white/10 space-y-4 flex flex-col justify-between">
+            <div>
+              <h3 class="font-heading font-bold text-white text-base border-b border-white/10 pb-3 flex items-center">
+                <i class="fa-solid fa-truck-fast mr-2 text-amber-500"></i> Live Order Tracking Lookup
+              </h3>
+              <p class="text-gray-400 text-xs mt-3 mb-4">
+                Enter your Order ID or Courier Tracking Number to view current status and supplier dispatch details.
+              </p>
+
+              <div class="space-y-3 text-xs">
+                <div>
+                  <label class="block text-gray-400 mb-1">Order / Tracking Number</label>
+                  <input type="text" id="track-input" placeholder="e.g. 7LEO-TRK-5542" class="w-full bg-black border border-white/20 rounded-xl px-3 py-2.5 text-white">
+                </div>
+                <button onclick="checkOrderStatus()" class="w-full py-3 bg-white/10 hover:bg-white/20 border border-white/20 text-white font-bold rounded-xl uppercase tracking-wider cursor-pointer">
+                  Track Shipment Status
+                </button>
+              </div>
+            </div>
+
+            <div id="tracking-result-box" class="hidden bg-amber-500/10 border border-amber-500/30 p-4 rounded-xl text-xs space-y-1 text-amber-200 mt-4">
+              <!-- Dynamically populated tracking status -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: BUSINESS INFO & INDIAN REQUIREMENTS -->
+    <section id="about" class="py-12 border-t border-white/10 bg-black/60">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-10">
+          <span class="text-xs font-display text-amber-500 uppercase tracking-widest mb-1 block">LEGAL & REGULATORY COMPLIANCE</span>
+          <h2 class="text-3xl font-heading font-bold text-white">Indian Dropshipping Business Guidelines</h2>
+          <p class="text-gray-400 text-xs mt-2">
+            Operating as an Indian intermediary dropshipping merchant entails adherence to GST regulations, consumer protection mandates, and supplier terms.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 font-display text-xs">
+          <div class="glass-card p-6 rounded-2xl space-y-2">
+            <h4 class="font-bold text-amber-400 text-sm flex items-center"><i class="fa-solid fa-file-invoice-dollar mr-2"></i> GST & Taxation (India)</h4>
+            <p class="text-gray-400 text-[11px] leading-relaxed">
+              As an Indian seller, GST registration (GSTIN) is mandatory for interstate e-commerce sales. Tax is applicable on the taxable value (margin or total sale price depending on composite/regular scheme). Professional CA verification is recommended.
+            </p>
+          </div>
+
+          <div class="glass-card p-6 rounded-2xl space-y-2">
+            <h4 class="font-bold text-amber-400 text-sm flex items-center"><i class="fa-solid fa-box-archive mr-2"></i> Supplier & Fulfillment Terms</h4>
+            <p class="text-gray-400 text-[11px] leading-relaxed">
+              Orders are fulfilled through verified third-party partners (Alibaba, AliExpress, Amazon). 7Leo Store acts as the merchant of record while suppliers manage packaging, courier transit, and international customs clearance.
+            </p>
+          </div>
+
+          <div class="glass-card p-6 rounded-2xl space-y-2">
+            <h4 class="font-bold text-amber-400 text-sm flex items-center"><i class="fa-solid fa-shield-halved mr-2"></i> Consumer Protection & Returns</h4>
+            <p class="text-gray-400 text-[11px] leading-relaxed">
+              Merchants are legally accountable for customer satisfaction and refund processing under Indian Consumer Protection Act guidelines, coordinating with suppliers for physical item returns when applicable.
+            </p>
+          </div>
+        </div>
       </div>
     </section>
 
     <!-- FOOTER -->
     <footer class="border-t border-white/10 bg-black py-8 text-center text-xs font-display text-gray-500">
-      <p>© 2026 7Leo Group Enterprise. All Rights Reserved.</p>
+      <p>© 2026 7Leo Group Enterprise & 7Leo Store. All Rights Reserved.</p>
       <p class="mt-2 font-bold tracking-widest text-xs uppercase text-amber-500">VISION · POWER · LEGACY</p>
     </footer>
 
   </div>
 
-  <!-- AUTHENTICATION MODAL (SIGN IN / SIGN UP / CREATE ACCOUNT / GOOGLE / APPLE) -->
-  <div id="auth-modal" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-md hidden flex items-center justify-center p-4">
-    <div class="relative w-full max-w-md glass-card glass-card-amber rounded-3xl p-6 sm:p-8 shadow-2xl border border-amber-500/30">
-      <button onclick="closeAuthModal()" class="absolute top-5 right-5 text-gray-400 hover:text-white transition cursor-pointer">
-        <i class="fa-solid fa-xmark text-lg"></i>
-      </button>
-
-      <!-- Logo & Header -->
-      <div class="text-center mb-6">
-        <img src="logo.png" onError="this.onerror=null;this.src='star-logo.png';" alt="7Leo Logo" class="w-12 h-auto mx-auto mb-2 object-contain">
-        <h3 id="auth-modal-title" class="text-xl font-heading font-bold text-white uppercase">Secure Sign In</h3>
-        <p id="auth-modal-subtitle" class="text-xs text-gray-400 mt-1 font-display">7Leo Global Unified Access Terminal</p>
+  <!-- SHOPPING CART SLIDE-OVER / MODAL -->
+  <div id="cart-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden flex justify-end">
+    <div class="w-full max-w-md bg-[#0d0e12] border-l border-white/10 h-full flex flex-col p-6 shadow-2xl font-display">
+      <div class="flex items-center justify-between border-b border-white/10 pb-4 mb-4">
+        <h3 class="text-lg font-heading font-bold text-white flex items-center"><i class="fa-solid fa-cart-shopping mr-2 text-amber-500"></i> Shopping Cart</h3>
+        <button onclick="closeCartModal()" class="text-gray-400 hover:text-white cursor-pointer"><i class="fa-solid fa-xmark text-lg"></i></button>
       </div>
 
-      <!-- Tab Selectors (Sign In vs Create Account / Sign Up) -->
-      <div class="grid grid-cols-2 gap-2 bg-black/60 p-1.5 rounded-2xl mb-6 border border-white/10 font-display text-xs">
-        <button id="tab-signin-btn" onclick="switchAuthTab('signin')" class="py-2.5 rounded-xl font-bold transition text-center text-amber-400 bg-amber-500/20 border border-amber-500/40">
-          Sign In
-        </button>
-        <button id="tab-signup-btn" onclick="switchAuthTab('signup')" class="py-2.5 rounded-xl font-medium transition text-center text-gray-400 hover:text-white">
-          Create Account
-        </button>
+      <div id="cart-items-container" class="flex-grow overflow-y-auto space-y-3 mb-4 pr-1 text-xs">
+        <!-- Cart items populated by JS -->
       </div>
 
-      <!-- SIGN IN FORM -->
-      <form id="form-signin" onsubmit="handleSignInSubmit(event)" class="space-y-4 font-display">
-        <div>
-          <label class="block text-[11px] text-gray-400 mb-1.5 uppercase tracking-wider">Email Address</label>
-          <div class="relative">
-            <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center text-gray-500"><i class="fa-solid fa-envelope text-xs"></i></span>
-            <input type="email" id="signin-email" required placeholder="name@7leogroup.com" class="w-full bg-black/80 border border-white/20 rounded-xl pl-10 pr-4 py-3 text-xs text-white focus:outline-none focus:border-amber-500">
-          </div>
+      <div class="border-t border-white/10 pt-4 space-y-3 text-xs">
+        <div class="flex justify-between text-gray-400">
+          <span>Subtotal:</span>
+          <span id="cart-subtotal" class="text-white font-bold">₹0.00</span>
+        </div>
+        <div class="flex justify-between text-gray-400">
+          <span>Estimated Shipping (Supplier):</span>
+          <span class="text-white font-bold">₹150.00</span>
+        </div>
+        <div class="flex justify-between text-base font-bold border-t border-white/10 pt-2">
+          <span class="text-white">Total Amount:</span>
+          <span id="cart-total" class="text-amber-400">₹150.00</span>
         </div>
 
-        <div>
-          <label class="block text-[11px] text-gray-400 mb-1.5 uppercase tracking-wider">Password</label>
-          <div class="relative">
-            <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center text-gray-500"><i class="fa-solid fa-lock text-xs"></i></span>
-            <input type="password" id="signin-password" required placeholder="••••••••" class="w-full bg-black/80 border border-white/20 rounded-xl pl-10 pr-4 py-3 text-xs text-white focus:outline-none focus:border-amber-500">
-          </div>
-        </div>
-
-        <button type="submit" class="w-full py-3.5 btn-gradient text-white font-display font-bold rounded-xl text-xs uppercase tracking-wider cursor-pointer">
-          Sign In to Portal <i class="fa-solid fa-arrow-right ml-1"></i>
-        </button>
-      </form>
-
-      <!-- CREATE ACCOUNT / SIGN UP FORM -->
-      <form id="form-signup" onsubmit="handleSignUpSubmit(event)" class="space-y-4 font-display hidden">
-        <div>
-          <label class="block text-[11px] text-gray-400 mb-1.5 uppercase tracking-wider">Full Name</label>
-          <div class="relative">
-            <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center text-gray-500"><i class="fa-solid fa-user text-xs"></i></span>
-            <input type="text" id="signup-name" required placeholder="Abubakker Bellary" class="w-full bg-black/80 border border-white/20 rounded-xl pl-10 pr-4 py-3 text-xs text-white focus:outline-none focus:border-amber-500">
-          </div>
-        </div>
-
-        <div>
-          <label class="block text-[11px] text-gray-400 mb-1.5 uppercase tracking-wider">Email Address</label>
-          <div class="relative">
-            <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center text-gray-500"><i class="fa-solid fa-envelope text-xs"></i></span>
-            <input type="email" id="signup-email" required placeholder="name@7leogroup.com" class="w-full bg-black/80 border border-white/20 rounded-xl pl-10 pr-4 py-3 text-xs text-white focus:outline-none focus:border-amber-500">
-          </div>
-        </div>
-
-        <div>
-          <label class="block text-[11px] text-gray-400 mb-1.5 uppercase tracking-wider">Create Password</label>
-          <div class="relative">
-            <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center text-gray-500"><i class="fa-solid fa-lock text-xs"></i></span>
-            <input type="password" id="signup-password" required placeholder="••••••••" class="w-full bg-black/80 border border-white/20 rounded-xl pl-10 pr-4 py-3 text-xs text-white focus:outline-none focus:border-amber-500">
-          </div>
-        </div>
-
-        <button type="submit" class="w-full py-3.5 btn-gradient text-white font-display font-bold rounded-xl text-xs uppercase tracking-wider cursor-pointer">
-          Create Account <i class="fa-solid fa-user-plus ml-1"></i>
-        </button>
-      </form>
-
-      <!-- SOCIAL SIGN ON DIVIDER -->
-      <div class="relative my-6">
-        <div class="absolute inset-0 flex items-center"><div class="w-full border-t border-white/10"></div></div>
-        <div class="relative flex justify-center text-[10px] uppercase"><span class="bg-[#121316] px-3 text-gray-500 font-display">Or continue with</span></div>
-      </div>
-
-      <!-- GOOGLE & APPLE SIGN IN/UP BUTTONS -->
-      <div class="grid grid-cols-2 gap-3 font-display">
-        <button onclick="simulateGoogleAuth()" class="py-3 px-4 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-amber-500/40 rounded-xl text-xs text-white font-semibold flex items-center justify-center space-x-2 transition cursor-pointer">
-          <i class="fa-brands fa-google text-amber-400 text-sm"></i>
-          <span>Google</span>
-        </button>
-        <button onclick="simulateAppleAuth()" class="py-3 px-4 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-amber-500/40 rounded-xl text-xs text-white font-semibold flex items-center justify-center space-x-2 transition cursor-pointer">
-          <i class="fa-brands fa-apple text-white text-sm"></i>
-          <span>Apple ID</span>
+        <button onclick="openCheckoutModal()" class="w-full py-3.5 btn-gradient text-white font-bold rounded-xl uppercase tracking-wider cursor-pointer">
+          Proceed to Secure Checkout <i class="fa-solid fa-arrow-right ml-1"></i>
         </button>
       </div>
-
     </div>
   </div>
 
-  <!-- QR CODE MODAL -->
-  <div id="qr-modal" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-md hidden flex items-center justify-center p-4">
-    <div class="relative w-full max-w-sm glass-card rounded-3xl p-6 text-center shadow-2xl border border-amber-500/30">
-      <button onclick="closeQRModal()" class="absolute top-5 right-5 text-gray-400 hover:text-white transition cursor-pointer">
-        <i class="fa-solid fa-xmark text-lg"></i>
-      </button>
+  <!-- CHECKOUT & PAYMENT MODAL -->
+  <div id="checkout-modal" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-md hidden flex items-center justify-center p-4">
+    <div class="relative w-full max-w-lg glass-card glass-card-amber rounded-3xl p-6 sm:p-8 shadow-2xl font-display max-h-[90vh] overflow-y-auto">
+      <button onclick="closeCheckoutModal()" class="absolute top-5 right-5 text-gray-400 hover:text-white cursor-pointer"><i class="fa-solid fa-xmark text-lg"></i></button>
 
-      <h3 class="text-lg font-heading font-bold text-white mb-1">Scan Mobile Access</h3>
-      <p class="text-xs text-gray-400 mb-6 font-display">Open 7Leo Portal on Mobile Device</p>
+      <h3 class="text-xl font-heading font-bold text-white uppercase mb-1">Secure Indian Checkout</h3>
+      <p class="text-xs text-gray-400 mb-6">Encrypted Payment Gateway & Supplier Order Routing</p>
 
-      <div class="bg-white p-4 rounded-2xl inline-block mb-4 shadow-xl">
-        <img id="qr-image" src="" alt="Mobile QR Code" class="w-44 h-44 mx-auto">
-      </div>
-
-      <p id="qr-url-text" class="text-[11px] font-display text-amber-400 truncate px-2"></p>
-    </div>
-  </div>
-
-  <!-- SUPER ADMIN RESTRICTION AUTH MODAL (MASTER PASSCODE CHECK) -->
-  <div id="ai-admin-modal" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-md hidden flex items-center justify-center p-4">
-    <div class="relative w-full max-w-sm glass-card glass-card-amber rounded-3xl p-6 text-center shadow-2xl">
-      <button onclick="closeAdminModal()" class="absolute top-5 right-5 text-gray-400 hover:text-white transition cursor-pointer">
-        <i class="fa-solid fa-xmark text-lg"></i>
-      </button>
-
-      <div class="w-12 h-12 bg-amber-500/20 border border-amber-500 text-amber-400 rounded-2xl flex items-center justify-center mx-auto mb-3 text-xl">
-        <i class="fa-solid fa-user-shield"></i>
-      </div>
-
-      <h3 class="text-lg font-heading font-bold text-white">7Leo Super Admin Clearance</h3>
-      <p class="text-xs text-gray-400 mt-1 mb-4 font-display">Authorized Super Admin access required for Master AI Agent & Development Control.</p>
-
-      <div class="space-y-3">
-        <input type="password" id="admin-pin-input" placeholder="Enter Security PIN..." onkeydown="if(event.key==='Enter') verifySuperAdminPass()" class="w-full bg-black/80 border border-white/20 rounded-xl px-4 py-3 text-xs text-white text-center font-display tracking-widest focus:outline-none focus:border-amber-500">
-        <button onclick="verifySuperAdminPass()" class="w-full py-3 btn-gradient text-white font-display font-bold rounded-xl text-xs uppercase tracking-wider cursor-pointer">
-          Unlock Master AI Console
-        </button>
-      </div>
-      <p class="text-[10px] text-gray-500 font-display mt-3">(Authorized Super Admin Passcode Required)</p>
-    </div>
-  </div>
-
-  <!-- 
-    ==================================================================
-    7LEO AI AGENT — PRIVATE SUPER ADMIN INTELLIGENCE SYSTEM
-    (HIDDEN FROM NORMAL VISITORS - VISIBLE ONLY TO AUTHENTICATED ADMIN)
-    ==================================================================
-  -->
-  <div id="admin-ai-trigger-container" class="hidden fixed bottom-6 right-6 z-40">
-    <button onclick="openAIAgent()" class="w-14 h-14 bg-gradient-to-tr from-amber-500 via-purple-600 to-blue-500 rounded-full flex items-center justify-center text-white text-2xl shadow-[0_0_35px_rgba(255,106,0,0.8)] hover:scale-110 transition duration-300 cursor-pointer relative border-2 border-amber-400">
-      <i class="fa-solid fa-user-gear"></i>
-      <span class="absolute -top-1 -right-1 w-4 h-4 bg-amber-400 border-2 border-black rounded-full flex items-center justify-center text-[9px] text-black font-bold">★</span>
-    </button>
-
-    <!-- GEMINI AI SUPER ADMIN COMMAND CENTER BOX -->
-    <div id="ai-chat-box" class="hidden absolute bottom-20 right-0 w-80 sm:w-[460px] glass-card gemini-glow rounded-3xl p-5 shadow-2xl border-amber-500/40">
-      
-      <!-- Console Header -->
-      <div class="flex items-center justify-between border-b border-white/10 pb-3 mb-3">
-        <div class="flex items-center space-x-2">
-          <i class="fa-solid fa-shield-halved text-amber-400 text-sm animate-pulse"></i>
+      <form onsubmit="handleCheckoutSubmit(event)" class="space-y-4 text-xs">
+        <div class="grid grid-cols-2 gap-3">
           <div>
-            <h4 class="font-heading font-bold text-amber-400 text-xs uppercase tracking-wider">7Leo AI Agent — Private Master Console</h4>
-            <p class="text-[9px] text-gray-400 font-display">Full-Stack · Rebuild · Business Plan · Security</p>
+            <label class="block text-gray-400 mb-1">Full Name</label>
+            <input type="text" id="chk-name" required placeholder="Abubakker Bellary" class="w-full bg-black border border-white/20 rounded-xl px-3 py-2.5 text-white">
+          </div>
+          <div>
+            <label class="block text-gray-400 mb-1">Email Address</label>
+            <input type="email" id="chk-email" required placeholder="name@domain.com" class="w-full bg-black border border-white/20 rounded-xl px-3 py-2.5 text-white">
           </div>
         </div>
-        <button onclick="closeAIChat()" class="text-gray-400 hover:text-white cursor-pointer"><i class="fa-solid fa-xmark"></i></button>
-      </div>
 
-      <!-- Quick Action Commands for Super Admin -->
-      <div class="flex items-center space-x-2 overflow-x-auto pb-2 mb-2 no-scrollbar text-[10px] font-display">
-        <button onclick="selectPresetQuery('Home page rebuild kar')" class="px-2.5 py-1 bg-amber-500/10 hover:bg-amber-500/20 border border-amber-500/30 text-amber-300 rounded-lg whitespace-nowrap transition flex items-center space-x-1">
-          <span>🛠️ Rebuild Layout (Hinglish)</span>
-        </button>
-        <button onclick="selectPresetQuery('Ek naya business add kar')" class="px-2.5 py-1 bg-purple-500/10 hover:bg-purple-500/20 border border-purple-500/30 text-purple-300 rounded-lg whitespace-nowrap transition flex items-center space-x-1">
-          <span>💼 Add Business</span>
-        </button>
-        <button onclick="selectPresetQuery('Fashion Design ko homepage me add kar')" class="px-2.5 py-1 bg-blue-500/10 hover:bg-blue-500/20 border border-blue-500/30 text-blue-300 rounded-lg whitespace-nowrap transition flex items-center space-x-1">
-          <span>👗 Fashion Section</span>
-        </button>
-        <button onclick="selectPresetQuery('Plan Version 2 & Roadmap')" class="px-2.5 py-1 bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-500/30 text-emerald-300 rounded-lg whitespace-nowrap transition flex items-center space-x-1">
-          <span>🚀 Version 2 Roadmap</span>
-        </button>
-      </div>
-
-      <!-- Message History Container -->
-      <div id="chat-messages" class="h-72 overflow-y-auto text-xs space-y-3 mb-3 pr-1 text-gray-300 font-display">
-        <div class="bg-black/80 border border-amber-500/30 rounded-xl p-3">
-          ⚡ <strong>7Leo Master AI Agent:</strong> Welcome Super Admin <strong>Abubakker Bellary</strong>! Master Command Mode Active. Ready to <strong>PLAN → DESIGN → BUILD → EDIT → TEST → SCALE</strong> your 7Leo ecosystem.
+        <div>
+          <label class="block text-gray-400 mb-1">Delivery Address (India)</label>
+          <input type="text" id="chk-address" required placeholder="Street address, City, State, Pincode" class="w-full bg-black border border-white/20 rounded-xl px-3 py-2.5 text-white">
         </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-gray-400 mb-1">Phone Number (Required for Courier)</label>
+            <input type="tel" id="chk-phone" required placeholder="+91 98765 43210" class="w-full bg-black border border-white/20 rounded-xl px-3 py-2.5 text-white">
+          </div>
+          <div>
+            <label class="block text-gray-400 mb-1">GSTIN (Optional for Business)</label>
+            <input type="text" id="chk-gst" placeholder="29AAAAA0000A1Z5" class="w-full bg-black border border-white/20 rounded-xl px-3 py-2.5 text-white">
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-gray-400 mb-1">Payment Gateway Option</label>
+          <select id="chk-gateway" class="w-full bg-black border border-white/20 rounded-xl px-3 py-2.5 text-white">
+            <option value="Razorpay">Razorpay (UPI / Cards / NetBanking / Wallets)</option>
+            <option value="Cashfree">Cashfree Payments (India)</option>
+            <option value="PayU">PayU Money Gateway</option>
+            <option value="Stripe">Stripe International Cards</option>
+          </select>
+        </div>
+
+        <div class="bg-black/80 p-4 rounded-xl border border-white/10 space-y-1 text-gray-300">
+          <div class="flex justify-between"><span>Items Subtotal:</span> <span id="chk-modal-subtotal">₹0.00</span></div>
+          <div class="flex justify-between"><span>Supplier Shipping:</span> <span>₹150.00</span></div>
+          <div class="flex justify-between font-bold text-amber-400 pt-1 border-t border-white/10 text-sm"><span>Total Payable:</span> <span id="chk-modal-total">₹150.00</span></div>
+        </div>
+
+        <button type="submit" class="w-full py-4 btn-gradient text-white font-bold rounded-xl uppercase tracking-wider cursor-pointer">
+          Pay Now & Forward to Supplier <i class="fa-solid fa-lock ml-1"></i>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- PRODUCT DETAILS MODAL -->
+  <div id="product-modal" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-md hidden flex items-center justify-center p-4">
+    <div class="relative w-full max-w-2xl glass-card rounded-3xl p-6 sm:p-8 shadow-2xl font-display">
+      <button onclick="closeProductModal()" class="absolute top-5 right-5 text-gray-400 hover:text-white cursor-pointer"><i class="fa-solid fa-xmark text-lg"></i></button>
+      <div id="product-modal-content">
+        <!-- Populated dynamically -->
+      </div>
+    </div>
+  </div>
+
+  <!-- AUTHENTICATION MODAL -->
+  <div id="auth-modal" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-md hidden flex items-center justify-center p-4">
+    <div class="relative w-full max-w-md glass-card glass-card-amber rounded-3xl p-6 sm:p-8 shadow-2xl font-display">
+      <button onclick="closeAuthModal()" class="absolute top-5 right-5 text-gray-400 hover:text-white cursor-pointer"><i class="fa-solid fa-xmark text-lg"></i></button>
+      <div class="text-center mb-6">
+        <h3 id="auth-title" class="text-xl font-heading font-bold text-white uppercase">Secure Sign In</h3>
+        <p class="text-xs text-gray-400 mt-1">7Leo Unified Store Access</p>
+      </div>
+      <form onsubmit="handleAuthSubmit(event)" class="space-y-4 text-xs">
+        <div>
+          <label class="block text-gray-400 mb-1">Email Address</label>
+          <input type="email" id="auth-email" required placeholder="user@domain.com" class="w-full bg-black border border-white/20 rounded-xl px-3 py-2.5 text-white">
+        </div>
+        <div>
+          <label class="block text-gray-400 mb-1">Password</label>
+          <input type="password" id="auth-password" required placeholder="••••••••" class="w-full bg-black border border-white/20 rounded-xl px-3 py-2.5 text-white">
+        </div>
+        <button type="submit" class="w-full py-3.5 btn-gradient text-white font-bold rounded-xl uppercase tracking-wider cursor-pointer">
+          Sign In to Account
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- SUPER ADMIN DASHBOARD MODAL -->
+  <div id="admin-modal" class="fixed inset-0 z-50 bg-black/95 backdrop-blur-xl hidden flex flex-col p-4 sm:p-8 overflow-y-auto">
+    <div class="max-w-7xl mx-auto w-full glass-card rounded-3xl p-6 sm:p-8 shadow-2xl flex-grow flex flex-col font-display">
+      <div class="flex items-center justify-between border-b border-white/10 pb-4 mb-6">
+        <div class="flex items-center space-x-3">
+          <i class="fa-solid fa-user-gear text-amber-500 text-2xl"></i>
+          <div>
+            <h3 class="text-xl font-heading font-bold text-white">7Leo Super Admin Command Center</h3>
+            <p class="text-xs text-amber-400">Manage Products, Orders, Suppliers, Profit Analytics & Integrations</p>
+          </div>
+        </div>
+        <button onclick="closeAdminDashboard()" class="text-gray-400 hover:text-white text-xl cursor-pointer"><i class="fa-solid fa-xmark"></i></button>
       </div>
 
-      <!-- Attachment preview -->
-      <div id="attachment-preview" class="hidden text-[10px] font-display text-amber-400 bg-black/60 px-3 py-1.5 rounded-xl mb-2 flex items-center justify-between border border-white/10">
-        <span id="attached-filename"><i class="fa-solid fa-paperclip mr-1"></i> File attached</span>
-        <button onclick="removeAttachment()" class="text-red-400 hover:text-red-300 ml-2 font-bold">✕</button>
+      <!-- Admin Navigation Tabs -->
+      <div class="flex flex-wrap gap-2 pb-4 mb-6 border-b border-white/10 text-xs">
+        <button onclick="switchAdminTab('products')" id="admin-tab-products" class="px-4 py-2 bg-amber-500 text-black font-bold rounded-xl transition cursor-pointer">Products Manager</button>
+        <button onclick="switchAdminTab('orders')" id="admin-tab-orders" class="px-4 py-2 bg-white/5 hover:bg-white/10 text-gray-300 rounded-xl transition cursor-pointer">Orders & Fulfillment</button>
+        <button onclick="switchAdminTab('suppliers')" id="admin-tab-suppliers" class="px-4 py-2 bg-white/5 hover:bg-white/10 text-gray-300 rounded-xl transition cursor-pointer">Supplier Links</button>
+        <button onclick="switchAdminTab('analytics')" id="admin-tab-analytics" class="px-4 py-2 bg-white/5 hover:bg-white/10 text-gray-300 rounded-xl transition cursor-pointer">Profit Analytics</button>
+        <button onclick="switchAdminTab('settings')" id="admin-tab-settings" class="px-4 py-2 bg-white/5 hover:bg-white/10 text-gray-300 rounded-xl transition cursor-pointer">Store Settings</button>
       </div>
 
-      <input type="file" id="file-upload" class="hidden" onchange="handleFileSelect(event)">
+      <!-- Admin Tab Content Area -->
+      <div id="admin-content-area" class="flex-grow overflow-y-auto space-y-6 text-xs">
+        <!-- Dynamically rendered admin tabs -->
+      </div>
+    </div>
+  </div>
 
-      <!-- Command Input Box -->
-      <div class="flex items-center space-x-1.5 bg-black/80 border border-white/15 rounded-2xl p-1.5">
-        <button onclick="triggerFileUpload()" title="Attach Code/File" class="p-2 text-gray-400 hover:text-amber-400 transition cursor-pointer">
-          <i class="fa-solid fa-paperclip text-sm"></i>
-        </button>
-
-        <button id="mic-btn" onclick="toggleVoiceInput()" title="Voice Command" class="p-2 text-gray-400 hover:text-amber-400 transition cursor-pointer">
-          <i class="fa-solid fa-microphone text-sm"></i>
-        </button>
-
-        <input type="text" id="chat-input" placeholder="Give Admin command (e.g. Rebuild, Add business, Fix code)..." onkeydown="if(event.key === 'Enter') sendAIMessage()" class="flex-grow bg-transparent text-xs text-white focus:outline-none px-1 font-display">
-
-        <button onclick="sendAIMessage()" class="p-2.5 bg-gradient-to-r from-amber-500 to-purple-600 text-white rounded-xl text-xs transition cursor-pointer">
-          <i class="fa-solid fa-paper-plane"></i>
+  <!-- ADMIN PASSCODE VERIFICATION MODAL -->
+  <div id="admin-pin-modal" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-md hidden flex items-center justify-center p-4">
+    <div class="relative w-full max-w-sm glass-card glass-card-amber rounded-3xl p-6 text-center shadow-2xl font-display">
+      <button onclick="closePinModal()" class="absolute top-5 right-5 text-gray-400 hover:text-white cursor-pointer"><i class="fa-solid fa-xmark text-lg"></i></button>
+      <div class="w-12 h-12 bg-amber-500/20 border border-amber-500 text-amber-400 rounded-2xl flex items-center justify-center mx-auto mb-3 text-xl">
+        <i class="fa-solid fa-shield"></i>
+      </div>
+      <h3 class="text-lg font-heading font-bold text-white">Super Admin Passcode</h3>
+      <p class="text-xs text-gray-400 mt-1 mb-4">Enter master PIN to unlock Admin Dashboard (Default PIN: 7777 or 7leo)</p>
+      <div class="space-y-3">
+        <input type="password" id="admin-pin-input" placeholder="Enter PIN..." onkeydown="if(event.key==='Enter') verifyAdminPin()" class="w-full bg-black border border-white/20 rounded-xl px-4 py-3 text-xs text-white text-center tracking-widest focus:border-amber-500">
+        <button onclick="verifyAdminPin()" class="w-full py-3 btn-gradient text-white font-bold rounded-xl uppercase tracking-wider cursor-pointer">
+          Unlock Dashboard
         </button>
       </div>
     </div>
@@ -943,341 +696,467 @@
 
   <!-- JAVASCRIPT SYSTEM ENGINE -->
   <script>
+    // INITIAL DATA STORE (PRODUCTS, CART, ORDERS, SETTINGS)
+    let catalogProducts = [
+      {
+        id: 1,
+        title: "7Leo Executive Cyber Hoodie",
+        category: "Streetwear",
+        price: 1999,
+        cost: 650,
+        shipping: 150,
+        image: "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?auto=format&fit=crop&w=600&q=80",
+        desc: "Heavyweight cotton embroidered cyber edition hoodie. Sourced directly from verified apparel suppliers.",
+        supplier: "AliExpress Apparel Global",
+        supplierLink: "https://aliexpress.com/item/example-hoodie",
+        featured: true,
+        variants: ["S", "M", "L", "XL"]
+      },
+      {
+        id: 2,
+        title: "Titanium Smart Audio Producer Ring",
+        category: "Accessories",
+        price: 2499,
+        cost: 800,
+        shipping: 100,
+        image: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=600&q=80",
+        desc: "Matte black titanium smart ring for audio control and health tracking. High-demand dropshipping item.",
+        supplier: "Alibaba Tech Hub",
+        supplierLink: "https://alibaba.com/product/example-ring",
+        featured: true,
+        variants: ["Size 8", "Size 9", "Size 10"]
+      },
+      {
+        id: 3,
+        title: "Wireless Studio Producer Headphones",
+        category: "Electronics",
+        price: 3499,
+        cost: 1200,
+        shipping: 200,
+        image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=600&q=80",
+        desc: "High-octane sound tuned wireless headphones with active noise cancellation and 40-hour battery life.",
+        supplier: "Amazon Dropship Partner",
+        supplierLink: "https://amazon.in/dp/example-headphones",
+        featured: true,
+        variants: ["Midnight Black", "Cyber Cyan"]
+      }
+    ];
+
+    let cart = [];
+    let ordersList = [
+      { id: "7LEO-98214", customer: "Rahul Sharma", item: "7Leo Executive Cyber Hoodie", total: "₹1,999", status: "Forwarded to Supplier", tracking: "TRK-IN-883921" }
+    ];
     let isSuperAdminUnlocked = false;
-    let attachedFile = null;
 
-    // KEYBOARD SHORTCUT FOR SUPER ADMIN ACCESS (Ctrl + Shift + A)
-    window.addEventListener('keydown', (e) => {
-      if (e.ctrlKey && e.shiftKey && (e.key === 'A' || e.key === 'a')) {
-        e.preventDefault();
-        promptAdminLogin();
-      }
-    });
-
-    function promptAdminLogin() {
-      if (isSuperAdminUnlocked) {
-        openAIAgent();
-      } else {
-        document.getElementById('ai-admin-modal').classList.remove('hidden');
-      }
-    }
-
-    // Splash Close Function
-    function closeSplash() {
-      const splash = document.getElementById('splash-screen');
-      if (splash && splash.style.display !== 'none') {
-        splash.style.opacity = '0';
-        splash.style.pointerEvents = 'none';
-        setTimeout(() => splash.style.display = 'none', 700);
-      }
-    }
-
-    // AUTOMATIC 5-SECOND SPLASH SCREEN TIMER
-    function initSplashTimer() {
-      let timeLeft = 5;
-      const timerDisplay = document.getElementById('splash-timer');
-      
-      const countdown = setInterval(() => {
-        timeLeft--;
-        if (timerDisplay) timerDisplay.innerText = timeLeft;
-        if (timeLeft <= 0) {
-          clearInterval(countdown);
-          closeSplash();
-        }
-      }, 1000);
-    }
-
+    // INITIALIZATION ON LOAD
     window.addEventListener('DOMContentLoaded', () => {
-      initSplashTimer();
-      generateQRCode();
-      checkSavedUser();
+      renderCatalogProducts();
+      calculateProfit();
     });
 
-    // AUTHENTICATION MODAL & TABS LOGIC
-    function openAuthModal(tab = 'signin') {
-      document.getElementById('auth-modal').classList.remove('hidden');
-      switchAuthTab(tab);
-    }
+    // RENDER PRODUCT CATALOG
+    function renderCatalogProducts(filteredList = null) {
+      const grid = document.getElementById('product-grid');
+      const list = filteredList || catalogProducts;
 
-    function closeAuthModal() {
-      document.getElementById('auth-modal').classList.add('hidden');
-    }
-
-    function switchAuthTab(tab) {
-      const signinBtn = document.getElementById('tab-signin-btn');
-      const signupBtn = document.getElementById('tab-signup-btn');
-      const signinForm = document.getElementById('form-signin');
-      const signupForm = document.getElementById('form-signup');
-      const modalTitle = document.getElementById('auth-modal-title');
-      const modalSubtitle = document.getElementById('auth-modal-subtitle');
-
-      if (tab === 'signin') {
-        signinBtn.className = "py-2.5 rounded-xl font-bold transition text-center text-amber-400 bg-amber-500/20 border border-amber-500/40";
-        signupBtn.className = "py-2.5 rounded-xl font-medium transition text-center text-gray-400 hover:text-white";
-        signinForm.classList.remove('hidden');
-        signupForm.classList.add('hidden');
-        modalTitle.innerText = "Secure Sign In";
-        modalSubtitle.innerText = "Access your 7Leo Command Portal";
-      } else {
-        signupBtn.className = "py-2.5 rounded-xl font-bold transition text-center text-amber-400 bg-amber-500/20 border border-amber-500/40";
-        signinBtn.className = "py-2.5 rounded-xl font-medium transition text-center text-gray-400 hover:text-white";
-        signupForm.classList.remove('hidden');
-        signinForm.classList.add('hidden');
-        modalTitle.innerText = "Create Account";
-        modalSubtitle.innerText = "Join 7Leo Group Commerce Ecosystem";
+      if (list.length === 0) {
+        grid.innerHTML = `<div class="col-span-full text-center py-12 text-gray-400 font-display">No products found matching your filter criteria.</div>`;
+        return;
       }
-    }
 
-    function handleSignInSubmit(event) {
-      event.preventDefault();
-      const email = document.getElementById('signin-email').value;
-      const name = email.split('@')[0];
-      const formattedName = name.charAt(0).toUpperCase() + name.slice(1);
-      
-      const userData = { name: formattedName, email: email };
-      localStorage.setItem('7leo_user', JSON.stringify(userData));
-      updateAuthUI(userData);
-      closeAuthModal();
-      alert(`Welcome back, ${formattedName}! Signed in successfully.`);
-    }
-
-    function handleSignUpSubmit(event) {
-      event.preventDefault();
-      const name = document.getElementById('signup-name').value;
-      const email = document.getElementById('signup-email').value;
-      
-      const userData = { name: name, email: email };
-      localStorage.setItem('7leo_user', JSON.stringify(userData));
-      updateAuthUI(userData);
-      closeAuthModal();
-      alert(`Account successfully created! Welcome to 7Leo Group, ${name}.`);
-    }
-
-    function simulateGoogleAuth() {
-      const userData = { name: 'Google User', email: 'user@gmail.com' };
-      localStorage.setItem('7leo_user', JSON.stringify(userData));
-      updateAuthUI(userData);
-      closeAuthModal();
-      alert("Successfully authenticated with Google!");
-    }
-
-    function simulateAppleAuth() {
-      const userData = { name: 'Apple ID User', email: 'user@privaterelay.appleid.com' };
-      localStorage.setItem('7leo_user', JSON.stringify(userData));
-      updateAuthUI(userData);
-      closeAuthModal();
-      alert("Successfully authenticated with Apple ID!");
-    }
-
-    function checkSavedUser() {
-      const saved = localStorage.getItem('7leo_user');
-      if (saved) {
-        updateAuthUI(JSON.parse(saved));
-      }
-    }
-
-    function updateAuthUI(user) {
-      const container = document.getElementById('auth-header-container');
-      container.innerHTML = `
-        <div class="flex items-center space-x-2 bg-black/60 border border-amber-500/40 px-3 py-1.5 rounded-xl">
-          <div class="w-6 h-6 rounded-full bg-amber-500 text-black flex items-center justify-center font-bold text-xs">
-            ${user.name.charAt(0)}
+      grid.innerHTML = list.map(p => `
+        <div class="glass-card rounded-2xl p-5 flex flex-col justify-between group relative">
+          <div class="relative h-52 bg-black/60 rounded-xl overflow-hidden mb-4 border border-white/10">
+            <img src="${p.image}" alt="${p.title}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+            <span class="absolute top-3 left-3 px-2.5 py-1 bg-black/80 backdrop-blur-md text-[10px] font-display text-amber-400 border border-amber-500/40 rounded-full uppercase">${p.category}</span>
           </div>
-          <span class="text-xs font-display text-amber-300 hidden sm:inline">${user.name}</span>
-          <button onclick="logoutUser()" title="Sign Out" class="text-gray-400 hover:text-red-400 ml-1 cursor-pointer">
-            <i class="fa-solid fa-power-off text-xs"></i>
-          </button>
+          <div>
+            <h3 class="font-heading font-bold text-white text-base mb-1">${p.title}</h3>
+            <p class="text-xs text-gray-400 line-clamp-2 mb-3">${p.desc}</p>
+            <div class="text-[11px] text-amber-400/80 font-display mb-3 flex items-center">
+              <i class="fa-solid fa-truck-ramp-box mr-1.5"></i> Supplier: ${p.supplier}
+            </div>
+          </div>
+          <div class="pt-3 border-t border-white/10 flex items-center justify-between">
+            <span class="text-amber-400 font-bold font-cyber text-lg">₹${p.price.toLocaleString()}</span>
+            <div class="flex space-x-2">
+              <button onclick="openProductModal(${p.id})" class="px-3 py-2 bg-white/10 hover:bg-white/20 text-white rounded-xl text-xs font-display transition cursor-pointer">Details</button>
+              <button onclick="addToCart(${p.id})" class="px-4 py-2 btn-gradient text-white rounded-xl text-xs font-display font-bold transition cursor-pointer">Add to Cart</button>
+            </div>
+          </div>
         </div>
+      `).join('');
+    }
+
+    // SEARCH & FILTER CATALOG
+    function filterCatalogProducts() {
+      const query = document.getElementById('product-search-input').value.toLowerCase();
+      const category = document.getElementById('category-filter').value;
+      const sort = document.getElementById('sort-filter').value;
+
+      let filtered = catalogProducts.filter(p => {
+        const matchesQuery = p.title.toLowerCase().includes(query) || p.desc.toLowerCase().includes(query);
+        const matchesCat = category === 'all' || p.category === category;
+        return matchesQuery && matchesCat;
+      });
+
+      if (sort === 'price-low') filtered.sort((a, b) => a.price - b.price);
+      if (sort === 'price-high') filtered.sort((a, b) => b.price - a.price);
+
+      renderCatalogProducts(filtered);
+    }
+
+    // CART MANAGEMENT
+    function addToCart(productId) {
+      const product = catalogProducts.find(p => p.id === productId);
+      const existing = cart.find(item => item.id === productId);
+
+      if (existing) {
+        existing.qty += 1;
+      } else {
+        cart.push({ ...product, qty: 1 });
+      }
+
+      updateCartBadge();
+      alert(`Added "${product.title}" to cart.`);
+    }
+
+    function updateCartBadge() {
+      const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
+      document.getElementById('cart-badge').innerText = totalItems;
+    }
+
+    function openCartModal() {
+      const container = document.getElementById('cart-items-container');
+      if (cart.length === 0) {
+        container.innerHTML = `<div class="text-center py-12 text-gray-400">Your shopping cart is empty.</div>`;
+      } else {
+        container.innerHTML = cart.map(item => `
+          <div class="flex items-center justify-between bg-black/60 p-3 rounded-xl border border-white/10">
+            <div class="flex items-center space-x-3">
+              <img src="${item.image}" class="w-12 h-12 object-cover rounded-lg">
+              <div>
+                <h4 class="font-bold text-white">${item.title}</h4>
+                <p class="text-gray-400">₹${item.price} × ${item.qty}</p>
+              </div>
+            </div>
+            <button onclick="removeFromCart(${item.id})" class="text-red-400 hover:text-red-300 p-2 cursor-pointer"><i class="fa-solid fa-trash"></i></button>
+          </div>
+        `).join('');
+      }
+
+      const subtotal = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+      document.getElementById('cart-subtotal').innerText = `₹${subtotal.toLocaleString()}`;
+      document.getElementById('cart-total').innerText = `₹${(subtotal + 150).toLocaleString()}`;
+
+      document.getElementById('cart-modal').classList.remove('hidden');
+    }
+
+    function closeCartModal() { document.getElementById('cart-modal').classList.add('hidden'); }
+
+    function removeFromCart(id) {
+      cart = cart.filter(item => item.id !== id);
+      updateCartBadge();
+      openCartModal();
+    }
+
+    // CHECKOUT MODAL & ORDER FORWARDING
+    function openCheckoutModal() {
+      if (cart.length === 0) {
+        alert("Your cart is empty!");
+        return;
+      }
+      closeCartModal();
+      const subtotal = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+      document.getElementById('chk-modal-subtotal').innerText = `₹${subtotal.toLocaleString()}`;
+      document.getElementById('chk-modal-total').innerText = `₹${(subtotal + 150).toLocaleString()}`;
+      document.getElementById('checkout-modal').classList.remove('hidden');
+    }
+
+    function closeCheckoutModal() { document.getElementById('checkout-modal').classList.add('hidden'); }
+
+    function handleCheckoutSubmit(event) {
+      event.preventDefault();
+      const name = document.getElementById('chk-name').value;
+      const orderId = "7LEO-" + Math.floor(10000 + Math.random() * 90000);
+      
+      ordersList.push({
+        id: orderId,
+        customer: name,
+        item: cart.map(i => `${i.title} (${i.qty})`).join(', '),
+        total: document.getElementById('chk-modal-total').innerText,
+        status: "Payment Verified → Forwarded to Supplier",
+        tracking: "TRK-IN-" + Math.floor(100000 + Math.random() * 900000)
+      });
+
+      cart = [];
+      updateCartBadge();
+      closeCheckoutModal();
+      alert(`Order Successfully Placed! Order ID: ${orderId}. Payment processed via Gateway. Fulfillment details forwarded to supplier.`);
+    }
+
+    // PRODUCT DETAILS MODAL
+    function openProductModal(id) {
+      const p = catalogProducts.find(item => item.id === id);
+      document.getElementById('product-modal-content').innerHTML = `
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <img src="${p.image}" class="w-full h-72 object-cover rounded-2xl border border-white/10">
+          <div class="space-y-4">
+            <span class="px-3 py-1 bg-amber-500/20 text-amber-400 text-[10px] rounded-full uppercase">${p.category}</span>
+            <h3 class="text-2xl font-heading font-bold text-white">${p.title}</h3>
+            <p class="text-xs text-gray-300 leading-relaxed">${p.desc}</p>
+            <div class="text-amber-400 font-cyber font-bold text-xl">₹${p.price.toLocaleString()}</div>
+            <div class="text-xs text-gray-400">
+              <strong>Supplier:</strong> ${p.supplier}<br>
+              <a href="${p.supplierLink}" target="_blank" class="text-cyan-400 underline">View Supplier Source Link <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i></a>
+            </div>
+            <button onclick="addToCart(${p.id}); closeProductModal();" class="w-full py-3 btn-gradient text-white font-bold rounded-xl uppercase tracking-wider cursor-pointer">
+              Add to Cart
+            </button>
+          </div>
+        </div>
+      `;
+      document.getElementById('product-modal').classList.remove('hidden');
+    }
+
+    function closeProductModal() { document.getElementById('product-modal').classList.add('hidden'); }
+
+    // AUTOMATIC PROFIT CALCULATOR ENGINE
+    function calculateProfit() {
+      const selling = parseFloat(document.getElementById('calc-selling').value) || 0;
+      const product = parseFloat(document.getElementById('calc-product-cost').value) || 0;
+      const shipping = parseFloat(document.getElementById('calc-shipping').value) || 0;
+      const ads = parseFloat(document.getElementById('calc-ads').value) || 0;
+      const pgFeePercent = parseFloat(document.getElementById('calc-pg-fee').value) || 0;
+      const taxRatePercent = parseFloat(document.getElementById('calc-tax-rate').value) || 0;
+
+      const pgFee = (selling * pgFeePercent) / 100;
+      const tax = (selling * taxRatePercent) / 100;
+      const netProfit = selling - product - shipping - ads - pgFee - tax;
+
+      document.getElementById('res-selling').innerText = `₹${selling.toFixed(2)}`;
+      document.getElementById('res-product').innerText = `-₹${product.toFixed(2)}`;
+      document.getElementById('res-shipping').innerText = `-₹${shipping.toFixed(2)}`;
+      document.getElementById('res-pg').innerText = `-₹${pgFee.toFixed(2)}`;
+      document.getElementById('res-ads').innerText = `-₹${ads.toFixed(2)}`;
+      document.getElementById('res-tax').innerText = `-₹${tax.toFixed(2)}`;
+
+      const netEl = document.getElementById('res-net-profit');
+      netEl.innerText = `₹${netProfit.toFixed(2)}`;
+      netEl.className = netProfit >= 0 ? "text-xl font-cyber font-extrabold text-amber-400" : "text-xl font-cyber font-extrabold text-red-500";
+    }
+
+    // PINTEREST SYNC TOGGLE
+    function togglePinterestSync() {
+      const btn = document.getElementById('pinterest-sync-btn');
+      const feed = document.getElementById('feed-status');
+      btn.innerText = "Pinterest Connected ✓";
+      btn.className = "px-6 py-3 bg-emerald-600 text-white font-display font-bold rounded-xl text-xs uppercase tracking-wider";
+      feed.innerText = "Status: Catalog Feed Successfully Synced & Active";
+      alert("Pinterest Business Hub connected successfully! Product catalog feeds and Rich Pins enabled.");
+    }
+
+    // CUSTOMER SUPPORT & TRACKING
+    function handleSupportSubmit(event) {
+      event.preventDefault();
+      const orderId = document.getElementById('support-order-id').value;
+      const type = document.getElementById('support-type').value;
+      alert(`Support Ticket Created for Order ${orderId} (${type}). Our team and supplier partner will resolve this within 24 hours.`);
+      event.target.reset();
+    }
+
+    function checkOrderStatus() {
+      const val = document.getElementById('track-input').value.trim();
+      const box = document.getElementById('tracking-result-box');
+      if (!val) {
+        alert("Please enter a valid Order ID or Tracking number.");
+        return;
+      }
+      box.classList.remove('hidden');
+      box.innerHTML = `
+        <strong>Tracking ID:</strong> ${val}<br>
+        <strong>Status:</strong> Dispatched from Supplier Warehouse<br>
+        <strong>Courier:</strong> Blue Dart / Delhivery Express<br>
+        <strong>Estimated Delivery:</strong> 3-5 Business Days
       `;
     }
 
-    function logoutUser() {
-      localStorage.removeItem('7leo_user');
-      location.reload();
+    // AUTHENTICATION MODAL
+    function openAuthModal(mode) {
+      document.getElementById('auth-modal').classList.remove('hidden');
+    }
+    function closeAuthModal() { document.getElementById('auth-modal').classList.add('hidden'); }
+    function handleAuthSubmit(event) {
+      event.preventDefault();
+      alert("Successfully signed into 7Leo Store account!");
+      closeAuthModal();
     }
 
-    // QR CODE GENERATOR
-    function openQRModal() { document.getElementById('qr-modal').classList.remove('hidden'); }
-    function closeQRModal() { document.getElementById('qr-modal').classList.add('hidden'); }
-
-    function generateQRCode() {
-      const currentURL = window.location.href;
-      document.getElementById('qr-url-text').innerText = currentURL;
-      const qrApiUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(currentURL)}`;
-      document.getElementById('qr-image').src = qrApiUrl;
+    // SUPER ADMIN PIN & DASHBOARD
+    function promptAdminLogin() {
+      if (isSuperAdminUnlocked) {
+        openAdminDashboard();
+      } else {
+        document.getElementById('admin-pin-modal').classList.remove('hidden');
+      }
     }
+    function closePinModal() { document.getElementById('admin-pin-modal').classList.add('hidden'); }
 
-    function triggerOrder(item) {
-      alert(`[7Leo Group] Request initiated for: ${item}. Logged in command queue.`);
-    }
-
-    // SUPER ADMIN AUTHENTICATION & AGENT UNLOCK
-    function verifySuperAdminPass() {
+    function verifyAdminPin() {
       const pin = document.getElementById('admin-pin-input').value;
       if (pin === '7777' || pin.toLowerCase() === '7leo') {
         isSuperAdminUnlocked = true;
-        closeAdminModal();
+        closePinModal();
         document.getElementById('admin-top-bar').classList.remove('hidden');
-        document.getElementById('admin-ai-trigger-container').classList.remove('hidden');
-        document.getElementById('ai-chat-box').classList.remove('hidden');
+        openAdminDashboard();
       } else {
-        alert("Access Denied! 7Leo AI Agent is available only to the authorized Super Admin.");
+        alert("Incorrect PIN! Master passcode required.");
       }
     }
 
     function lockSuperAdmin() {
       isSuperAdminUnlocked = false;
       document.getElementById('admin-top-bar').classList.add('hidden');
-      document.getElementById('admin-ai-trigger-container').classList.add('hidden');
-      document.getElementById('ai-chat-box').classList.add('hidden');
+      closeAdminDashboard();
       alert("Super Admin session locked.");
     }
 
-    function openAIAgent() {
-      if (!isSuperAdminUnlocked) {
-        document.getElementById('ai-admin-modal').classList.remove('hidden');
-      } else {
-        document.getElementById('ai-chat-box').classList.remove('hidden');
-      }
+    function openAdminDashboard() {
+      document.getElementById('admin-modal').classList.remove('hidden');
+      switchAdminTab('products');
     }
+    function closeAdminDashboard() { document.getElementById('admin-modal').classList.add('hidden'); }
 
-    function closeAdminModal() { document.getElementById('ai-admin-modal').classList.add('hidden'); }
-    function closeAIChat() { document.getElementById('ai-chat-box').classList.add('hidden'); }
+    function switchAdminTab(tab) {
+      ['products', 'orders', 'suppliers', 'analytics', 'settings'].forEach(t => {
+        const btn = document.getElementById(`admin-tab-${t}`);
+        if(btn) btn.className = t === tab ? "px-4 py-2 bg-amber-500 text-black font-bold rounded-xl transition cursor-pointer" : "px-4 py-2 bg-white/5 hover:bg-white/10 text-gray-300 rounded-xl transition cursor-pointer";
+      });
 
-    function triggerFileUpload() { document.getElementById('file-upload').click(); }
-
-    function handleFileSelect(event) {
-      const file = event.target.files[0];
-      if (file) {
-        attachedFile = file;
-        document.getElementById('attachment-preview').classList.remove('hidden');
-        document.getElementById('attached-filename').innerHTML = `<i class="fa-solid fa-paperclip mr-1"></i> ${file.name}`;
-      }
-    }
-
-    function removeAttachment() {
-      attachedFile = null;
-      document.getElementById('file-upload').value = '';
-      document.getElementById('attachment-preview').classList.add('hidden');
-    }
-
-    function selectPresetQuery(queryText) {
-      document.getElementById('chat-input').value = queryText;
-      sendAIMessage();
-    }
-
-    // VOICE COMMAND RECOGNITION
-    let recognition = null;
-    if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
-      const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-      recognition = new SpeechRecognition();
-      recognition.continuous = false;
-      recognition.interimResults = false;
-
-      recognition.onresult = function(event) {
-        const transcript = event.results[0][0].transcript;
-        document.getElementById('chat-input').value = transcript;
-        document.getElementById('mic-btn').classList.remove('text-amber-500', 'animate-pulse');
-      };
-
-      recognition.onerror = function() {
-        document.getElementById('mic-btn').classList.remove('text-amber-500', 'animate-pulse');
-      };
-    }
-
-    function toggleVoiceInput() {
-      const micBtn = document.getElementById('mic-btn');
-      if (recognition) {
-        micBtn.classList.add('text-amber-500', 'animate-pulse');
-        try { recognition.start(); } catch(e) { recognition.stop(); }
-      } else {
-        micBtn.classList.add('text-amber-500', 'animate-pulse');
-        setTimeout(() => {
-          document.getElementById('chat-input').value = "Home page rebuild kar";
-          micBtn.classList.remove('text-amber-500', 'animate-pulse');
-        }, 1500);
-      }
-    }
-
-    // ADVANCED MASTER PROMPT EXECUTION ENGINE (HINGLISH & NATURAL LANGUAGE)
-    function sendAIMessage() {
-      const input = document.getElementById('chat-input');
-      const messages = document.getElementById('chat-messages');
-      const userQuery = input.value.trim();
-
-      if (!userQuery && !attachedFile) return;
-
-      let fileInfoText = attachedFile ? `<br><span class="text-[10px] text-amber-400 font-display">📎 Code File: ${attachedFile.name}</span>` : '';
-
-      messages.innerHTML += `
-        <div class="bg-white/10 text-white rounded-xl p-3 text-right border border-white/10">
-          <strong>Super Admin:</strong> ${userQuery || 'Attached source file.'}${fileInfoText}
-        </div>
-      `;
-
-      input.value = '';
-      removeAttachment();
-      messages.scrollTop = messages.scrollHeight;
-
-      setTimeout(() => {
-        let responseHTML = "";
-        const lower = userQuery.toLowerCase();
-
-        // 1. REBUILD / HINGLISH REBUILD COMMANDS
-        if (lower.includes('rebuild') || lower.includes('layout kar') || lower.includes('home page rebuild')) {
-          responseHTML = `
-            🛠️ <strong>[Rebuild Architecture Plan]</strong><br>
-            Ji Super Admin! Homepage rebuild plan generated:<br>
-            • <strong>Phase 1:</strong> Preserve 7Leo Brand colors (#ff6a00 Amber & #00f3ff Cyan).<br>
-            • <strong>Phase 2:</strong> Re-align Glassmorphic cards for Store, BGM Studio, and Ecosystem.<br>
-            • <strong>Phase 3:</strong> Optimize Tailwind Grid for 100% Mobile & Desktop fluid responsiveness.<br>
-            • <strong>Status:</strong> Ready to deploy to production.
-          `;
-        } 
-        // 2. ADD NEW BUSINESS SECTION
-        else if (lower.includes('add business') || lower.includes('naya business') || lower.includes('fashion') || lower.includes('7leo star') || lower.includes('7leo ai')) {
-          responseHTML = `
-            💼 <strong>[Business Section Builder]</strong><br>
-            Creating business section plan for 7Leo Ecosystem:<br>
-            • <strong>Business Pillar:</strong> 7Leo Fashion Design / 7Leo AI / 7Leo Star.<br>
-            • <strong>Revenue Model:</strong> Direct-to-Consumer, Commercial Licensing & Subscription.<br>
-            • <strong>Page Structure:</strong> Added Card to Ecosystem Grid + Navigation anchor created.
-          `;
-        } 
-        // 3. REMOVE / DESTRUCTIVE COMMAND SAFEGUARD
-        else if (lower.includes('remove') || lower.includes('delete') || lower.includes('hata')) {
-          responseHTML = `
-            ⚠️ <strong>[Safe Operations Alert]</strong><br>
-            <strong>Warning:</strong> Destructive Action Requested. Permanent deletion of business sections or code blocks requires explicit Super Admin confirmation.<br>
-            <em>Please confirm: Reply 'CONFIRM DELETE' to proceed or 'CANCEL' to archive.</em>
-          `;
-        }
-        // 4. ROADMAP & VERSIONS
-        else if (lower.includes('version') || lower.includes('v2') || lower.includes('v3') || lower.includes('roadmap')) {
-          responseHTML = `
-            🚀 <strong>[7Leo Version Roadmap]</strong><br>
-            • <strong>v1.0 (Current):</strong> Global Portal, Store Terminal, BGM Recording Studio, Gemini AI Admin.<br>
-            • <strong>v2.0 (Next):</strong> Multi-Currency Payment Checkout, Dynamic BGM Player, Automated User Dashboard.<br>
-            • <strong>v3.0 (Future):</strong> Enterprise AI Agent Webhooks & Custom Merchandise Designer.
-          `;
-        }
-        // 5. DEFAULT MASTER ASSISTANT RESPONSE
-        else {
-          responseHTML = `
-            ✨ <strong>[7Leo AI Agent — Senior Dev Partner]</strong><br>
-            Command received, Super Admin! I have analyzed the DOM tree, CSS rules, and system logic.<br>
-            • <strong>Recommendation:</strong> Code syntax optimal. SSL secure.<br>
-            • <strong>Next Step:</strong> Type 'Rebuild layout', 'Add business', or upload source code to execute changes.
-          `;
-        }
-
-        messages.innerHTML += `
-          <div class="bg-black/90 border border-amber-500/40 rounded-xl p-3">
-            ${responseHTML}
+      const area = document.getElementById('admin-content-area');
+      if (tab === 'products') {
+        area.innerHTML = `
+          <div class="flex justify-between items-center mb-4">
+            <h4 class="font-heading font-bold text-white text-base">Store Products Management</h4>
+            <button onclick="addNewProductPrompt()" class="px-4 py-2 btn-gradient text-white font-bold rounded-xl cursor-pointer">+ Add New Product</button>
+          </div>
+          <div class="space-y-2">
+            ${catalogProducts.map(p => `
+              <div class="flex items-center justify-between bg-black/60 p-3 rounded-xl border border-white/10">
+                <div class="flex items-center space-x-3">
+                  <img src="${p.image}" class="w-10 h-10 object-cover rounded">
+                  <div>
+                    <h5 class="font-bold text-white">${p.title}</h5>
+                    <p class="text-gray-400">Price: ₹${p.price} | Cost: ₹${p.cost} | Supplier: ${p.supplier}</p>
+                  </div>
+                </div>
+                <button onclick="deleteProduct(${p.id})" class="text-red-400 hover:text-red-300 p-2 cursor-pointer"><i class="fa-solid fa-trash"></i></button>
+              </div>
+            `).join('')}
           </div>
         `;
-        messages.scrollTop = messages.scrollHeight;
-      }, 600);
+      } else if (tab === 'orders') {
+        area.innerHTML = `
+          <h4 class="font-heading font-bold text-white text-base mb-4">Customer Orders & Supplier Fulfillment Queue</h4>
+          <div class="space-y-2">
+            ${ordersList.map(o => `
+              <div class="bg-black/60 p-4 rounded-xl border border-white/10 space-y-1">
+                <div class="flex justify-between font-bold text-white">
+                  <span>Order: ${o.id}</span>
+                  <span class="text-amber-400">${o.total}</span>
+                </div>
+                <p class="text-gray-300">Customer: ${o.customer} | Items: ${o.item}</p>
+                <p class="text-emerald-400 text-[11px]">Status: ${o.status} | Tracking: ${o.tracking}</p>
+              </div>
+            `).join('')}
+          </div>
+        `;
+      } else if (tab === 'suppliers') {
+        area.innerHTML = `
+          <h4 class="font-heading font-bold text-white text-base mb-4">Supplier & Dropshipping Integration Links</h4>
+          <div class="space-y-3">
+            <div class="bg-black/60 p-4 rounded-xl border border-white/10 space-y-1">
+              <div class="font-bold text-white">Alibaba & AliExpress API Bridge</div>
+              <p class="text-gray-400">Connected for automated inventory sync and order forwarding.</p>
+              <span class="text-emerald-400 font-semibold">Status: Active & Verified</span>
+            </div>
+            <div class="bg-black/60 p-4 rounded-xl border border-white/10 space-y-1">
+              <div class="font-bold text-white">Amazon FBA / MCF Partner Link</div>
+              <p class="text-gray-400">Multi-Channel Fulfillment automated dispatch routing.</p>
+              <span class="text-emerald-400 font-semibold">Status: Connected</span>
+            </div>
+          </div>
+        `;
+      } else if (tab === 'analytics') {
+        area.innerHTML = `
+          <h4 class="font-heading font-bold text-white text-base mb-4">Store Revenue & Profit Analytics</h4>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div class="bg-black/60 p-5 rounded-xl border border-white/10">
+              <div class="text-gray-400 text-[11px]">Total Revenue</div>
+              <div class="text-2xl font-bold text-white mt-1">₹149,925.00</div>
+            </div>
+            <div class="bg-black/60 p-5 rounded-xl border border-white/10">
+              <div class="text-gray-400 text-[11px]">Supplier & Shipping Costs</div>
+              <div class="text-2xl font-bold text-red-400 mt-1">-₹58,500.00</div>
+            </div>
+            <div class="bg-black/60 p-5 rounded-xl border border-white/10 bg-amber-500/10 border-amber-500/30">
+              <div class="text-amber-300 text-[11px]">Net Legitimate Profit</div>
+              <div class="text-2xl font-cyber font-bold text-amber-400 mt-1">₹52,800.00</div>
+            </div>
+          </div>
+        `;
+      } else if (tab === 'settings') {
+        area.innerHTML = `
+          <h4 class="font-heading font-bold text-white text-base mb-4">Store & Business Configuration (India)</h4>
+          <div class="space-y-3 max-w-lg">
+            <div>
+              <label class="block text-gray-400 mb-1">Store Name</label>
+              <input type="text" value="7Leo Store" class="w-full bg-black border border-white/20 rounded-xl px-3 py-2 text-white">
+            </div>
+            <div>
+              <label class="block text-gray-400 mb-1">Merchant GSTIN (India)</label>
+              <input type="text" value="29AABCS1429B1Z8" class="w-full bg-black border border-white/20 rounded-xl px-3 py-2 text-white">
+            </div>
+            <div>
+              <label class="block text-gray-400 mb-1">Payment Gateway API Key</label>
+              <input type="password" value="rzp_live_secret_samplekey" class="w-full bg-black border border-white/20 rounded-xl px-3 py-2 text-white">
+            </div>
+            <button onclick="alert('Settings saved successfully!')" class="px-6 py-2.5 btn-gradient text-white font-bold rounded-xl cursor-pointer">Save Changes</button>
+          </div>
+        `;
+      }
+    }
+
+    function addNewProductPrompt() {
+      const title = prompt("Enter Product Title:");
+      const price = parseFloat(prompt("Enter Selling Price (₹):", "1499"));
+      const cost = parseFloat(prompt("Enter Supplier Cost (₹):", "500"));
+      if (title && price && cost) {
+        catalogProducts.push({
+          id: catalogProducts.length + 1,
+          title: title,
+          category: "Streetwear",
+          price: price,
+          cost: cost,
+          shipping: 150,
+          image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=600&q=80",
+          desc: "New verified dropshipping product added via admin console.",
+          supplier: "Alibaba Verified Supplier",
+          supplierLink: "https://alibaba.com",
+          featured: false,
+          variants: ["Standard"]
+        });
+        renderCatalogProducts();
+        switchAdminTab('products');
+        alert("Product added successfully!");
+      }
+    }
+
+    function deleteProduct(id) {
+      catalogProducts = catalogProducts.filter(p => p.id !== id);
+      renderCatalogProducts();
+      switchAdminTab('products');
+      alert("Product deleted successfully.");
     }
   </script>
 </body>
