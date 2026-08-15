@@ -1,1027 +1,1235 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>7Leo Group Commerce & BGM</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        leoDark: '#0b0f19',
-                        leoCard: '#111827',
-                        leoBorder: '#1f2937',
-                        leoGold: '#f59e0b',
-                        leoGoldHover: '#d97706'
-                    }
-                }
-            }
-        }
-    </script>
-    <!-- FontAwesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>7Leo Store — Global Commerce & Dropshipping Platform</title>
+    <!-- Tailwind CSS v4 CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- Alpine.js -->
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Inter', sans-serif; }
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #0b0f19; }
-        ::-webkit-scrollbar-thumb { background: #1f2937; border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: #374151; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        h1, h2, h3, h4, .font-heading { font-family: 'Space Grotesk', sans-serif; }
+        .neon-glow-blue { box-shadow: 0 0 25px rgba(0, 243, 255, 0.25); }
+        .neon-glow-red { box-shadow: 0 0 25px rgba(255, 45, 85, 0.25); }
+        .neon-glow-orange { box-shadow: 0 0 25px rgba(255, 149, 0, 0.25); }
+        .rainbow-gradient { background: linear-gradient(135deg, #00f3ff 0%, #ff2d55 50%, #ff9500 100%); }
+        .glass-panel { background: rgba(18, 18, 24, 0.85); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.08); }
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: #0a0a0f; }
+        ::-webkit-scrollbar-thumb { background: #27273a; border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: #00f3ff; }
     </style>
 </head>
-<body class="bg-leoDark text-gray-100 min-h-screen flex flex-col selection:bg-leoGold selection:text-black">
+<body class="bg-[#07070a] text-gray-100 min-h-screen selection:bg-[#00f3ff] selection:text-black" x-data="storeApp()" x-init="initStore()">
 
-    <!-- HEADER / NAVIGATION -->
-    <header class="sticky top-0 z-50 bg-leoDark/90 backdrop-blur-md border-b border-leoBorder">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-            <!-- Brand Logo -->
-            <a href="#" class="flex items-center space-x-3 group">
-                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-leoGold to-amber-300 flex items-center justify-center text-black font-extrabold text-xl shadow-lg shadow-leoGold/20 group-hover:scale-105 transition-transform">
-                    7L
+    <!-- Toast Notification Banner -->
+    <div class="fixed top-5 right-5 z-50 flex flex-col gap-2 max-w-sm w-full pointer-events-none">
+        <template x-for="toast in notifications" :key="toast.id">
+            <div class="pointer-events-auto glass-panel p-4 rounded-xl shadow-2xl flex items-center justify-between border-l-4 animate-bounce"
+                 :class="{
+                    'border-[#00f3ff]': toast.type === 'info',
+                    'border-[#10b981]': toast.type === 'success',
+                    'border-[#ff2d55]': toast.type === 'error'
+                 }">
+                <div class="flex items-center gap-3">
+                    <span x-text="toast.message" class="text-sm font-medium"></span>
                 </div>
-                <div>
-                    <span class="text-xl font-extrabold tracking-wider text-white">7LEO <span class="text-leoGold">GROUP</span></span>
-                    <span class="block text-[10px] tracking-widest text-gray-400 uppercase font-medium">Commerce & Media</span>
-                </div>
-            </a>
-
-            <!-- Desktop Navigation -->
-            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium">
-                <a href="#home" class="hover:text-leoGold transition-colors">Home</a>
-                <a href="#store" class="hover:text-leoGold transition-colors">Store</a>
-                <a href="#bgm" class="hover:text-leoGold transition-colors">7Leo BGM</a>
-                <a href="#about" class="hover:text-leoGold transition-colors">About & Founder</a>
-                <a href="#licensing" class="hover:text-leoGold transition-colors">Licensing</a>
-            </nav>
-
-            <!-- Action Buttons -->
-            <div class="hidden md:flex items-center space-x-4">
-                <button onclick="openCartModal()" class="relative p-2.5 rounded-xl bg-leoCard border border-leoBorder hover:border-leoGold/50 text-gray-300 hover:text-leoGold transition-all">
-                    <i class="fa-solid fa-shopping-cart text-lg"></i>
-                    <span id="cartBadge" class="absolute -top-1 -right-1 bg-leoGold text-black text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center shadow">0</span>
-                </button>
-                <button onclick="openAccountModal()" class="flex items-center space-x-2 px-4 py-2.5 rounded-xl bg-leoGold text-black font-semibold hover:bg-leoGoldHover transition-colors shadow-lg shadow-leoGold/10">
-                    <i class="fa-solid fa-user text-sm"></i>
-                    <span>Account</span>
-                </button>
+                <button @click="removeToast(toast.id)" class="text-gray-400 hover:text-white">&times;</button>
             </div>
+        </template>
+    </div>
 
-            <!-- Mobile Menu Button -->
-            <div class="flex items-center space-x-3 md:hidden">
-                <button onclick="openCartModal()" class="relative p-2 rounded-lg bg-leoCard border border-leoBorder text-gray-300">
-                    <i class="fa-solid fa-shopping-cart"></i>
-                    <span id="cartBadgeMobile" class="absolute -top-1 -right-1 bg-leoGold text-black text-[9px] font-bold w-4 h-4 rounded-full flex items-center justify-center">0</span>
-                </button>
-                <button onclick="toggleMobileMenu()" class="p-2 rounded-lg bg-leoCard border border-leoBorder text-gray-300 hover:text-white">
-                    <i id="mobileMenuIcon" class="fa-solid fa-bars text-xl"></i>
-                </button>
-            </div>
+    <!-- Top Announcement Bar -->
+    <div class="bg-gradient-to-r from-[#00f3ff]/10 via-[#ff2d55]/10 to-[#ff9500]/10 border-b border-white/10 text-xs py-2 px-4 text-center text-gray-300 flex justify-between items-center max-w-7xl mx-auto">
+        <div class="flex items-center gap-2">
+            <span class="inline-block w-2 h-2 rounded-full bg-[#00f3ff] animate-pulse"></span>
+            <span>Global Express Shipping & Automated Fulfillment Enabled</span>
         </div>
+        <div class="flex items-center gap-4">
+            <select x-model="currency" @change="saveSettings()" class="bg-black/40 border border-white/20 rounded px-2 py-0.5 text-xs text-gray-200 outline-none">
+                <option value="INR">₹ INR (Base)</option>
+                <option value="USD">$ USD</option>
+                <option value="EUR">€ EUR</option>
+                <option value="GBP">£ GBP</option>
+            </select>
+            <button @click="currentView = 'admin'" class="text-[#00f3ff] hover:underline font-semibold flex items-center gap-1">
+                <i data-lucide="shield-check" class="w-3.5 h-3.5"></i> Super Admin
+            </button>
+        </div>
+    </div>
 
-        <!-- Mobile Dropdown Menu -->
-        <div id="mobileMenu" class="hidden md:hidden bg-leoCard border-b border-leoBorder px-4 pt-2 pb-6 space-y-3">
-            <a href="#home" onclick="toggleMobileMenu()" class="block py-2 text-gray-300 hover:text-leoGold font-medium">Home</a>
-            <a href="#store" onclick="toggleMobileMenu()" class="block py-2 text-gray-300 hover:text-leoGold font-medium">Store</a>
-            <a href="#bgm" onclick="toggleMobileMenu()" class="block py-2 text-gray-300 hover:text-leoGold font-medium">7Leo BGM</a>
-            <a href="#about" onclick="toggleMobileMenu()" class="block py-2 text-gray-300 hover:text-leoGold font-medium">About & Founder</a>
-            <a href="#licensing" onclick="toggleMobileMenu()" class="block py-2 text-gray-300 hover:text-leoGold font-medium">Music Licensing</a>
-            <div class="pt-2 border-t border-leoBorder flex items-center justify-between">
-                <button onclick="openAccountModal(); toggleMobileMenu();" class="w-full py-2.5 rounded-xl bg-leoGold text-black font-semibold text-center">
-                    <i class="fa-solid fa-user mr-2"></i> Account / Login
+    <!-- Sticky Main Navigation -->
+    <header class="sticky top-0 z-40 glass-panel border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
+            
+            <!-- Logo & Brand -->
+            <div class="flex items-center gap-3 cursor-pointer" @click="currentView = 'home'">
+                <div class="w-10 h-10 rounded-xl rainbow-gradient flex items-center justify-center font-black text-black text-xl shadow-lg neon-glow-blue">7L</div>
+                <div>
+                    <span class="font-heading text-xl font-bold tracking-wider text-white">7LEO <span class="text-[#00f3ff]">STORE</span></span>
+                    <span class="block text-[10px] text-gray-400 tracking-widest uppercase">Global Commerce</span>
+                </div>
+            </div>
+
+            <!-- Search Bar -->
+            <div class="hidden md:flex flex-1 max-w-md relative">
+                <input type="text" x-model="searchQuery" @keyup.enter="currentView = 'shop'" placeholder="Search futuristic gear, tech, smart lifestyle..." class="w-full bg-black/50 border border-white/15 rounded-xl py-2.5 pl-10 pr-4 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-[#00f3ff] transition">
+                <i data-lucide="search" class="w-4 h-4 text-gray-400 absolute left-3.5 top-3.5"></i>
+                <button @click="currentView = 'shop'" class="absolute right-2 top-2 bg-[#00f3ff]/20 text-[#00f3ff] px-3 py-1 rounded-lg text-xs font-semibold hover:bg-[#00f3ff]/30 transition">Search</button>
+            </div>
+
+            <!-- Navigation Actions -->
+            <div class="flex items-center gap-4 sm:gap-6">
+                <button @click="currentView = 'shop'" class="hidden lg:flex items-center gap-1.5 text-sm font-medium text-gray-300 hover:text-[#00f3ff] transition">
+                    <i data-lucide="shopping-bag" class="w-4 h-4"></i> Explore Store
+                </button>
+                <button @click="currentView = 'tracking'" class="hidden sm:flex items-center gap-1.5 text-sm font-medium text-gray-300 hover:text-[#ff9500] transition">
+                    <i data-lucide="truck" class="w-4 h-4"></i> Track Order
+                </button>
+                
+                <!-- Wishlist Button -->
+                <button @click="currentView = 'account'; activeAccountTab = 'wishlist'" class="relative p-2 rounded-xl bg-white/5 hover:bg-white/10 text-gray-300 hover:text-white transition">
+                    <i data-lucide="heart" class="w-5 h-5"></i>
+                    <span x-show="wishlist.length > 0" x-text="wishlist.length" class="absolute -top-1 -right-1 bg-[#ff2d55] text-black text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center"></span>
+                </button>
+
+                <!-- Cart Button -->
+                <button @click="currentView = 'cart'" class="relative p-2.5 rounded-xl bg-gradient-to-r from-[#00f3ff]/20 to-[#ff2d55]/20 hover:from-[#00f3ff]/30 hover:to-[#ff2d55]/30 text-white transition flex items-center gap-2 border border-white/10">
+                    <i data-lucide="shopping-cart" class="w-5 h-5 text-[#00f3ff]"></i>
+                    <span class="hidden sm:inline text-xs font-bold" x-text="formatCurrency(cartTotal())"></span>
+                    <span x-show="cart.length > 0" x-text="cartItemCount()" class="absolute -top-1.5 -right-1.5 bg-[#00f3ff] text-black text-[11px] font-extrabold w-5 h-5 rounded-full flex items-center justify-center shadow-lg"></span>
+                </button>
+
+                <!-- Account / Login -->
+                <button @click="currentView = 'account'" class="p-2 rounded-xl bg-white/5 hover:bg-white/10 text-gray-300 hover:text-white transition flex items-center gap-2">
+                    <i data-lucide="user" class="w-5 h-5"></i>
+                    <span class="hidden md:inline text-xs font-semibold" x-text="currentUser ? currentUser.name : 'Account'"></span>
+                </button>
+
+                <!-- PWA Install & QR Modal Trigger -->
+                <button @click="showPwaModal = true" class="hidden xl:flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-xs font-bold text-[#00f3ff] border border-[#00f3ff]/30 transition">
+                    <i data-lucide="qr-code" class="w-4 h-4"></i> Install App
                 </button>
             </div>
         </div>
     </header>
 
-    <!-- MAIN CONTENT CONTAINER -->
-    <main class="flex-grow">
+    <!-- Main Content Dynamic Views -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
 
-        <!-- HERO SECTION -->
-        <section id="home" class="relative overflow-hidden py-24 lg:py-32 border-b border-leoBorder">
-            <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-amber-500/10 via-transparent to-transparent pointer-events-none"></div>
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-                    <div class="lg:col-span-7 space-y-8 text-center lg:text-left">
-                        <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-leoCard border border-leoBorder text-leoGold text-xs font-semibold tracking-wide uppercase">
-                            <i class="fa-solid fa-sparkles"></i>
-                            <span>Next-Gen Commerce & Original Grooves</span>
-                        </div>
-                        <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-white leading-tight">
-                            Welcome to <span class="bg-gradient-to-r from-leoGold to-amber-200 bg-clip-text text-transparent">7Leo Group</span> Commerce
+        <!-- ================= 1. HOME VIEW ================= -->
+        <template x-if="currentView === 'home'">
+            <div class="space-y-16">
+                <!-- Hero Section -->
+                <div class="relative rounded-3xl overflow-hidden glass-panel p-8 sm:p-16 border border-white/10 flex flex-col lg:flex-row items-center justify-between gap-12">
+                    <div class="absolute -top-24 -left-24 w-96 h-96 bg-[#00f3ff]/15 rounded-full blur-3xl pointer-events-none"></div>
+                    <div class="absolute -bottom-24 -right-24 w-96 h-96 bg-[#ff2d55]/15 rounded-full blur-3xl pointer-events-none"></div>
+                    
+                    <div class="max-w-xl space-y-6 z-10">
+                        <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#00f3ff]/10 border border-[#00f3ff]/30 text-[#00f3ff] text-xs font-bold uppercase tracking-wider">
+                            <span class="w-2 h-2 rounded-full bg-[#00f3ff] animate-pulse"></span> Next-Gen Global Commerce
+                        </span>
+                        <h1 class="font-heading text-4xl sm:text-6xl font-extrabold tracking-tight leading-none text-white">
+                            Discover the <span class="bg-clip-text text-transparent rainbow-gradient">Future of Retail</span> Today.
                         </h1>
-                        <p class="text-lg text-gray-300 max-w-2xl mx-auto lg:mx-0 font-normal leading-relaxed">
-                            Discover curated dropshipped products from global marketplaces alongside original instrumental soundscapes crafted through GroovePad for creators, brands, and media productions.
+                        <p class="text-gray-300 text-base sm:text-lg">
+                            Direct-to-consumer futuristic gadgets, smart wearables, and global lifestyle essentials delivered right to your doorstep with automated precision.
                         </p>
-                        <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start space-y-4 sm:space-y-0 sm:space-x-4">
-                            <a href="#store" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-leoGold text-black font-bold hover:bg-leoGoldHover transition-all shadow-lg shadow-leoGold/20 text-center">
-                                <i class="fa-solid fa-store mr-2"></i> Explore 7Leo Store
-                            </a>
-                            <a href="#bgm" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-leoCard border border-leoBorder hover:border-leoGold/50 text-white font-semibold transition-all text-center">
-                                <i class="fa-solid fa-music mr-2 text-leoGold"></i> Explore 7Leo BGM
-                            </a>
+                        <div class="flex flex-wrap gap-4 pt-2">
+                            <button @click="currentView = 'shop'" class="px-8 py-4 rounded-xl bg-gradient-to-r from-[#00f3ff] to-[#00a8ff] text-black font-extrabold text-sm shadow-lg hover:neon-glow-blue transition transform hover:-translate-y-0.5">
+                                Shop Now
+                            </button>
+                            <button @click="currentView = 'shop'; selectedCategory = 'All'" class="px-8 py-4 rounded-xl glass-panel text-white font-bold text-sm hover:bg-white/10 transition border border-white/20">
+                                Explore Products
+                            </button>
                         </div>
                     </div>
-                    <div class="lg:col-span-5">
-                        <div class="relative mx-auto max-w-md lg:max-w-none">
-                            <div class="absolute -inset-1 bg-gradient-to-r from-leoGold to-amber-500 rounded-3xl blur-xl opacity-20 animate-pulse"></div>
-                            <div class="relative rounded-3xl bg-leoCard border border-leoBorder p-8 shadow-2xl space-y-6">
-                                <div class="flex items-center justify-between pb-6 border-b border-leoBorder">
-                                    <div class="flex items-center space-x-3">
-                                        <div class="w-3 h-3 rounded-full bg-red-500"></div>
-                                        <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
-                                        <div class="w-3 h-3 rounded-full bg-green-500"></div>
-                                    </div>
-                                    <span class="text-xs text-gray-400 font-mono">7leo-system.core</span>
-                                </div>
-                                <div class="space-y-4">
-                                    <div class="p-4 rounded-xl bg-leoDark border border-leoBorder flex items-center justify-between">
-                                        <div class="flex items-center space-x-3">
-                                            <i class="fa-solid fa-box-open text-leoGold text-xl"></i>
-                                            <div>
-                                                <h4 class="text-sm font-semibold">Curated Store Active</h4>
-                                                <p class="text-xs text-gray-400">Amazon & Alibaba Discovery</p>
-                                            </div>
-                                        </div>
-                                        <span class="px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-400 text-xs font-medium">Live</span>
-                                    </div>
-                                    <div class="p-4 rounded-xl bg-leoDark border border-leoBorder flex items-center justify-between">
-                                        <div class="flex items-center space-x-3">
-                                            <i class="fa-solid fa-headphones text-leoGold text-xl"></i>
-                                            <div>
-                                                <h4 class="text-sm font-semibold">GroovePad BGM Series</h4>
-                                                <p class="text-xs text-gray-400">6 Professional Playlists</p>
-                                            </div>
-                                        </div>
-                                        <span class="px-2.5 py-1 rounded-full bg-amber-500/10 text-leoGold text-xs font-medium">Ready</span>
-                                    </div>
-                                </div>
-                                <div class="pt-2 text-center">
-                                    <span class="text-xs text-gray-500 font-mono">© 7Leo Group — All Rights Reserved</span>
-                                </div>
+                    
+                    <div class="relative z-10 w-full lg:w-auto flex justify-center">
+                        <div class="w-72 h-72 sm:w-96 sm:h-96 rounded-3xl rainbow-gradient p-1 shadow-2xl neon-glow-red">
+                            <div class="w-full h-full bg-[#0a0a0f] rounded-[22px] overflow-hidden flex flex-col items-center justify-center p-6 text-center relative">
+                                <i data-lucide="zap" class="w-24 h-24 text-[#00f3ff] mb-4 animate-pulse"></i>
+                                <h3 class="font-heading text-xl font-bold text-white">7Leo Smart Pod X1</h3>
+                                <p class="text-xs text-gray-400 mt-1">Autonomous Global Dropship Integration</p>
+                                <span class="mt-4 px-3 py-1 rounded-full bg-[#ff9500]/20 text-[#ff9500] text-xs font-bold">Limited Edition</span>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
 
-        <!-- EXPLORE 7LEO STORE SECTION -->
-        <section id="store" class="py-20 border-b border-leoBorder bg-leoDark/50">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
-                    <div>
-                        <span class="text-leoGold text-xs font-bold uppercase tracking-widest">Dropshipping Commerce</span>
-                        <h2 class="text-3xl font-extrabold text-white mt-1">Explore 7Leo Store</h2>
-                        <p class="text-gray-400 text-sm mt-2 max-w-xl">
-                            Curated selections sourced through trusted platforms like Amazon, Alibaba, and Pinterest discovery. Fulfillment, shipping, and returns are handled securely by third-party merchant partners.
-                        </p>
-                    </div>
-                    <!-- Search & Filter Controls -->
-                    <div class="mt-6 md:mt-0 flex flex-col sm:flex-row gap-3">
-                        <div class="relative">
-                            <i class="fa-solid fa-search absolute left-3.5 top-3.5 text-gray-400 text-sm"></i>
-                            <input type="text" id="storeSearchInput" oninput="filterStoreProducts()" placeholder="Search products..." class="w-full sm:w-64 pl-10 pr-4 py-2.5 rounded-xl bg-leoCard border border-leoBorder text-sm text-white focus:outline-none focus:border-leoGold transition-colors">
+                <!-- Trust / Security Badges -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div class="glass-panel p-6 rounded-2xl flex items-center gap-4 border border-white/5">
+                        <div class="p-3 rounded-xl bg-[#00f3ff]/10 text-[#00f3ff]"><i data-lucide="globe" class="w-6 h-6"></i></div>
+                        <div>
+                            <h4 class="font-bold text-sm">Global Shipping</h4>
+                            <p class="text-xs text-gray-400">Fast worldwide delivery</p>
                         </div>
-                        <select id="categoryFilter" onchange="filterStoreProducts()" class="px-4 py-2.5 rounded-xl bg-leoCard border border-leoBorder text-sm text-white focus:outline-none focus:border-leoGold transition-colors">
-                            <option value="all">All Categories</option>
-                            <option value="tech">Tech & Gadgets</option>
-                            <option value="lifestyle">Lifestyle & Home</option>
-                            <option value="discovery">Pinterest Finds</option>
+                    </div>
+                    <div class="glass-panel p-6 rounded-2xl flex items-center gap-4 border border-white/5">
+                        <div class="p-3 rounded-xl bg-[#ff2d55]/10 text-[#ff2d55]"><i data-lucide="shield-check" class="w-6 h-6"></i></div>
+                        <div>
+                            <h4 class="font-bold text-sm">Secure Payments</h4>
+                            <p class="text-xs text-gray-400">Encrypted gateway checkout</p>
+                        </div>
+                    </div>
+                    <div class="glass-panel p-6 rounded-2xl flex items-center gap-4 border border-white/5">
+                        <div class="p-3 rounded-xl bg-[#ff9500]/10 text-[#ff9500]"><i data-lucide="refresh-cw" class="w-6 h-6"></i></div>
+                        <div>
+                            <h4 class="font-bold text-sm">Easy Returns</h4>
+                            <p class="text-xs text-gray-400">Hassle-free refund policy</p>
+                        </div>
+                    </div>
+                    <div class="glass-panel p-6 rounded-2xl flex items-center gap-4 border border-white/5">
+                        <div class="p-3 rounded-xl bg-[#10b981]/10 text-[#10b981]"><i data-lucide="headset" class="w-6 h-6"></i></div>
+                        <div>
+                            <h4 class="font-bold text-sm">24/7 Support</h4>
+                            <p class="text-xs text-gray-400">Dedicated founder assistance</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Categories -->
+                <div>
+                    <div class="flex justify-between items-center mb-6">
+                        <h2 class="font-heading text-2xl font-bold text-white">Browse Categories</h2>
+                        <button @click="currentView = 'shop'" class="text-xs text-[#00f3ff] hover:underline font-semibold">View All →</button>
+                    </div>
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                        <template x-for="cat in categories" :key="cat">
+                            <div @click="selectedCategory = cat; currentView = 'shop'" class="glass-panel p-6 rounded-2xl cursor-pointer hover:border-[#00f3ff] transition group text-center space-y-3">
+                                <div class="w-12 h-12 rounded-xl bg-white/5 group-hover:bg-[#00f3ff]/20 mx-auto flex items-center justify-center text-[#00f3ff] transition">
+                                    <i data-lucide="box" class="w-6 h-6"></i>
+                                </div>
+                                <h3 class="font-bold text-sm text-white group-hover:text-[#00f3ff] transition" x-text="cat"></h3>
+                            </div>
+                        </template>
+                    </div>
+                </div>
+
+                <!-- Featured Products Grid -->
+                <div>
+                    <div class="flex justify-between items-center mb-6">
+                        <h2 class="font-heading text-2xl font-bold text-white">Featured Products</h2>
+                        <button @click="currentView = 'shop'" class="text-xs text-[#00f3ff] hover:underline font-semibold">Explore Shop →</button>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <template x-for="product in products.slice(0, 4)" :key="product.id">
+                            <div class="glass-panel rounded-2xl overflow-hidden border border-white/10 flex flex-col justify-between group hover:border-[#00f3ff]/50 transition">
+                                <div class="relative aspect-square overflow-hidden bg-black/40">
+                                    <img :src="product.image" :alt="product.title" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                                    <span class="absolute top-3 left-3 px-2.5 py-1 rounded-md bg-[#00f3ff]/20 text-[#00f3ff] text-[10px] font-bold uppercase tracking-wider backdrop-blur-md" x-text="product.category"></span>
+                                    <button @click="toggleWishlist(product.id)" class="absolute top-3 right-3 p-2 rounded-xl bg-black/50 text-white hover:text-[#ff2d55] backdrop-blur-md transition">
+                                        <i data-lucide="heart" class="w-4 h-4" :class="{'fill-[#ff2d55] text-[#ff2d55]': wishlist.includes(product.id)}"></i>
+                                    </button>
+                                </div>
+                                <div class="p-5 space-y-3 flex-1 flex flex-col justify-between">
+                                    <div>
+                                        <h3 @click="viewProduct(product)" class="font-bold text-sm text-white cursor-pointer hover:text-[#00f3ff] transition line-clamp-1" x-text="product.title"></h3>
+                                        <div class="flex items-center gap-1 mt-1 text-yellow-400 text-xs">
+                                            <template x-for="i in 5">
+                                                <i data-lucide="star" class="w-3.5 h-3.5" :class="i <= product.rating ? 'fill-current' : 'text-gray-600'"></i>
+                                            </template>
+                                            <span class="text-gray-400 ml-1" x-text="'(' + product.reviews + ')'"></span>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center justify-between pt-2 border-t border-white/10">
+                                        <div>
+                                            <span class="text-xs text-gray-400 line-through" x-text="formatCurrency(product.price * 1.2)"></span>
+                                            <span class="block font-heading font-bold text-lg text-white" x-text="formatCurrency(product.price)"></span>
+                                        </div>
+                                        <button @click="addToCart(product)" class="px-4 py-2 rounded-xl bg-[#00f3ff] text-black text-xs font-bold hover:neon-glow-blue transition">
+                                            Add to Cart
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+                </div>
+            </div>
+        </template>
+
+        <!-- ================= 2. SHOP / PRODUCTS VIEW ================= -->
+        <template x-if="currentView === 'shop'">
+            <div class="space-y-8">
+                <!-- Shop Header & Filters -->
+                <div class="glass-panel p-6 rounded-2xl flex flex-col md:flex-row justify-between items-center gap-4">
+                    <div>
+                        <h1 class="font-heading text-3xl font-bold text-white">7Leo Store Catalog</h1>
+                        <p class="text-xs text-gray-400">Discover verified items ready for automated global fulfillment.</p>
+                    </div>
+                    <div class="flex flex-wrap items-center gap-3 w-full md:w-auto">
+                        <input type="text" x-model="searchQuery" placeholder="Filter items..." class="bg-black/50 border border-white/15 rounded-xl px-4 py-2 text-xs text-white placeholder-gray-500 focus:outline-none focus:border-[#00f3ff]">
+                        <select x-model="selectedCategory" class="bg-black/50 border border-white/15 rounded-xl px-4 py-2 text-xs text-white focus:outline-none focus:border-[#00f3ff]">
+                            <option value="All">All Categories</option>
+                            <template x-for="cat in categories">
+                                <option :value="cat" x-text="cat"></option>
+                            </template>
+                        </select>
+                        <select x-model="sortBy" class="bg-black/50 border border-white/15 rounded-xl px-4 py-2 text-xs text-white focus:outline-none focus:border-[#00f3ff]">
+                            <option value="newest">Newest Arrivals</option>
+                            <option value="price-low">Price: Low to High</option>
+                            <option value="price-high">Price: High to Low</option>
+                            <option value="rating">Top Rated</option>
                         </select>
                     </div>
                 </div>
 
-                <!-- Product Grid -->
-                <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <!-- Products injected dynamically via JS -->
+                <!-- Products Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                    <template x-for="product in filteredProducts()" :key="product.id">
+                        <div class="glass-panel rounded-2xl overflow-hidden border border-white/10 flex flex-col justify-between group hover:border-[#00f3ff]/50 transition">
+                            <div class="relative aspect-square overflow-hidden bg-black/40">
+                                <img :src="product.image" :alt="product.title" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                                <span class="absolute top-3 left-3 px-2.5 py-1 rounded-md bg-[#00f3ff]/20 text-[#00f3ff] text-[10px] font-bold uppercase tracking-wider backdrop-blur-md" x-text="product.category"></span>
+                                <button @click="toggleWishlist(product.id)" class="absolute top-3 right-3 p-2 rounded-xl bg-black/50 text-white hover:text-[#ff2d55] backdrop-blur-md transition">
+                                    <i data-lucide="heart" class="w-4 h-4" :class="{'fill-[#ff2d55] text-[#ff2d55]': wishlist.includes(product.id)}"></i>
+                                </button>
+                            </div>
+                            <div class="p-5 space-y-3 flex-1 flex flex-col justify-between">
+                                <div>
+                                    <h3 @click="viewProduct(product)" class="font-bold text-sm text-white cursor-pointer hover:text-[#00f3ff] transition line-clamp-1" x-text="product.title"></h3>
+                                    <p class="text-xs text-gray-400 mt-1 line-clamp-2" x-text="product.description"></p>
+                                    <div class="flex items-center gap-1 mt-2 text-yellow-400 text-xs">
+                                        <template x-for="i in 5">
+                                            <i data-lucide="star" class="w-3.5 h-3.5" :class="i <= product.rating ? 'fill-current' : 'text-gray-600'"></i>
+                                        </template>
+                                        <span class="text-gray-400 ml-1" x-text="'(' + product.reviews + ')'"></span>
+                                    </div>
+                                </div>
+                                <div class="flex items-center justify-between pt-3 border-t border-white/10">
+                                    <div>
+                                        <span class="text-xs text-gray-400 line-through" x-text="formatCurrency(product.price * 1.2)"></span>
+                                        <span class="block font-heading font-bold text-lg text-white" x-text="formatCurrency(product.price)"></span>
+                                    </div>
+                                    <div class="flex gap-2">
+                                        <button @click="viewProduct(product)" class="p-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white text-xs transition">
+                                            <i data-lucide="eye" class="w-4 h-4"></i>
+                                        </button>
+                                        <button @click="addToCart(product)" class="px-4 py-2 rounded-xl bg-[#00f3ff] text-black text-xs font-bold hover:neon-glow-blue transition">
+                                            Add
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </template>
                 </div>
             </div>
-        </section>
+        </template>
 
-        <!-- 7LEO BGM & PLAYLISTS SECTION -->
-        <section id="bgm" class="py-20 border-b border-leoBorder">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center max-w-3xl mx-auto mb-16">
-                    <span class="text-leoGold text-xs font-bold uppercase tracking-widest">GroovePad Instrumental Soundscapes</span>
-                    <h2 class="text-3xl font-extrabold text-white mt-1">Explore 7Leo BGM</h2>
-                    <p class="text-gray-400 text-sm mt-3">
-                        Original instrumental tracks created using GroovePad. Browse our curated playlist series designed for creators, trailers, gaming, and commercial media productions.
-                    </p>
-                </div>
-
-                <!-- Playlist Series Selector Tabs -->
-                <div class="flex flex-wrap justify-center gap-2 mb-10" id="playlistTabs">
-                    <button onclick="switchPlaylist('drive')" class="playlist-tab px-5 py-2.5 rounded-xl bg-leoGold text-black font-semibold text-sm transition-all shadow-md shadow-leoGold/10" data-series="drive">7Leo Drive</button>
-                    <button onclick="switchPlaylist('chill')" class="playlist-tab px-5 py-2.5 rounded-xl bg-leoCard border border-leoBorder text-gray-300 hover:text-white font-semibold text-sm transition-all" data-series="chill">7Leo Chill</button>
-                    <button onclick="switchPlaylist('gangster')" class="playlist-tab px-5 py-2.5 rounded-xl bg-leoCard border border-leoBorder text-gray-300 hover:text-white font-semibold text-sm transition-all" data-series="gangster">7Leo Gangster</button>
-                    <button onclick="switchPlaylist('dj')" class="playlist-tab px-5 py-2.5 rounded-xl bg-leoCard border border-leoBorder text-gray-300 hover:text-white font-semibold text-sm transition-all" data-series="dj">7Leo DJ</button>
-                    <button onclick="switchPlaylist('cinematic')" class="playlist-tab px-5 py-2.5 rounded-xl bg-leoCard border border-leoBorder text-gray-300 hover:text-white font-semibold text-sm transition-all" data-series="cinematic">7Leo Cinematic</button>
-                    <button onclick="switchPlaylist('songs')" class="playlist-tab px-5 py-2.5 rounded-xl bg-leoCard border border-leoBorder text-gray-300 hover:text-white font-semibold text-sm transition-all" data-series="songs">7Leo Songs</button>
-                </div>
-
-                <!-- Active Playlist Track List Container -->
-                <div class="bg-leoCard border border-leoBorder rounded-3xl p-6 sm:p-8 max-w-4xl mx-auto shadow-2xl">
-                    <div class="flex items-center justify-between pb-6 border-b border-leoBorder mb-6">
-                        <div>
-                            <h3 id="currentPlaylistTitle" class="text-xl font-bold text-white">7Leo Drive Series</h3>
-                            <p id="currentPlaylistDesc" class="text-xs text-gray-400 mt-1">High-energy driving beats and highway rhythms.</p>
-                        </div>
-                        <span id="trackCountBadge" class="px-3 py-1 rounded-full bg-leoDark border border-leoBorder text-leoGold text-xs font-mono">4 Tracks</span>
-                    </div>
-                    <div id="trackList" class="space-y-3">
-                        <!-- Tracks populated via JS -->
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ABOUT & FOUNDER SECTION -->
-        <section id="about" class="py-20 border-b border-leoBorder bg-leoDark/50">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center max-w-3xl mx-auto mb-16">
-                    <span class="text-leoGold text-xs font-bold uppercase tracking-widest">Vision & Leadership</span>
-                    <h2 class="text-3xl font-extrabold text-white mt-1">About 7Leo & The Founder</h2>
-                    <p class="text-gray-400 text-sm mt-3">
-                        Discover the story, mission, and vision driving 7Leo Group Commerce and BGM productions.
-                    </p>
-                </div>
-
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-                    <!-- About 7Leo Card -->
-                    <div class="bg-leoCard border border-leoBorder rounded-3xl p-8 shadow-xl space-y-6">
-                        <div class="flex items-center space-x-4">
-                            <div class="w-12 h-12 rounded-2xl bg-leoGold/10 border border-leoGold/20 flex items-center justify-center text-leoGold text-2xl font-bold">
-                                <i class="fa-solid fa-layer-group"></i>
-                            </div>
-                            <div>
-                                <h3 class="text-xl font-bold text-white">About 7Leo Group</h3>
-                                <p class="text-xs text-gray-400">Digital Commerce & Audio Media Studio</p>
-                            </div>
-                        </div>
-                        <p class="text-gray-300 text-sm leading-relaxed">
-                            7Leo Group is a modern multi-disciplinary digital enterprise uniting curated ecommerce exploration with professional instrumental music production. We bridge consumer convenience with creative media soundscapes.
-                        </p>
-                        <div class="space-y-3 pt-2">
-                            <div class="p-4 rounded-xl bg-leoDark border border-leoBorder">
-                                <h4 class="text-sm font-semibold text-leoGold mb-1"><i class="fa-solid fa-bullseye mr-2"></i> Our Vision</h4>
-                                <p class="text-xs text-gray-400">To build a seamlessly integrated digital ecosystem connecting high-demand lifestyle products with captivating original audio media.</p>
-                            </div>
-                            <div class="p-4 rounded-xl bg-leoDark border border-leoBorder">
-                                <h4 class="text-sm font-semibold text-leoGold mb-1"><i class="fa-solid fa-rocket mr-2"></i> Our Mission</h4>
-                                <p class="text-xs text-gray-400">To deliver transparent curated commerce experiences while empowering creators and filmmakers worldwide with high-quality original BGM tracks.</p>
-                            </div>
-                        </div>
-                        <div class="grid grid-cols-3 gap-3 pt-2 text-center">
-                            <div class="p-3 rounded-xl bg-leoDark border border-leoBorder">
-                                <span class="block text-leoGold font-bold text-base">Commerce</span>
-                                <span class="text-[10px] text-gray-400">Dropship & Curation</span>
-                            </div>
-                            <div class="p-3 rounded-xl bg-leoDark border border-leoBorder">
-                                <span class="block text-leoGold font-bold text-base">Music / BGM</span>
-                                <span class="text-[10px] text-gray-400">GroovePad Creator</span>
-                            </div>
-                            <div class="p-3 rounded-xl bg-leoDark border border-leoBorder">
-                                <span class="block text-leoGold font-bold text-base">Digital</span>
-                                <span class="text-[10px] text-gray-400">Future Projects</span>
-                            </div>
+        <!-- ================= 3. PRODUCT DETAIL VIEW ================= -->
+        <template x-if="currentView === 'product-detail' && selectedProduct">
+            <div class="space-y-8">
+                <button @click="currentView = 'shop'" class="text-xs text-[#00f3ff] hover:underline flex items-center gap-1 font-semibold">
+                    ← Back to Catalog
+                </button>
+                <div class="glass-panel p-6 sm:p-10 rounded-3xl grid grid-cols-1 lg:grid-cols-2 gap-12 border border-white/10">
+                    <div class="space-y-4">
+                        <div class="aspect-square rounded-2xl overflow-hidden bg-black/50 border border-white/10">
+                            <img :src="selectedProduct.image" :alt="selectedProduct.title" class="w-full h-full object-cover">
                         </div>
                     </div>
+                    <div class="space-y-6 flex flex-col justify-between">
+                        <div class="space-y-4">
+                            <span class="px-3 py-1 rounded-full bg-[#00f3ff]/10 text-[#00f3ff] text-xs font-bold uppercase tracking-wider border border-[#00f3ff]/30" x-text="selectedProduct.category"></span>
+                            <h1 class="font-heading text-3xl sm:text-4xl font-extrabold text-white" x-text="selectedProduct.title"></h1>
+                            <div class="flex items-center gap-2 text-yellow-400 text-sm">
+                                <template x-for="i in 5">
+                                    <i data-lucide="star" class="w-4 h-4" :class="i <= selectedProduct.rating ? 'fill-current' : 'text-gray-600'"></i>
+                                </template>
+                                <span class="text-gray-400 ml-2" x-text="selectedProduct.rating + ' (' + selectedProduct.reviews + ' verified reviews)'"></span>
+                            </div>
+                            <div class="text-3xl font-heading font-extrabold text-white" x-text="formatCurrency(selectedProduct.price)"></div>
+                            <p class="text-gray-300 text-sm leading-relaxed" x-text="selectedProduct.description"></p>
+                            
+                            <div class="space-y-2 pt-4 border-t border-white/10">
+                                <span class="text-xs text-gray-400 font-semibold uppercase">Select Variant:</span>
+                                <div class="flex gap-3">
+                                    <button class="px-4 py-2 rounded-xl bg-[#00f3ff]/20 border border-[#00f3ff] text-[#00f3ff] text-xs font-bold">Standard Edition</button>
+                                    <button class="px-4 py-2 rounded-xl bg-white/5 border border-white/15 text-gray-300 text-xs font-bold hover:border-white">Pro Max Variant</button>
+                                </div>
+                            </div>
 
-                    <!-- Meet the Founder Card -->
-                    <div class="bg-leoCard border border-leoBorder rounded-3xl p-8 shadow-xl space-y-6">
-                        <div class="flex items-center space-x-4">
-                            <div class="w-12 h-12 rounded-2xl bg-leoGold/10 border border-leoGold/20 flex items-center justify-center text-leoGold text-2xl font-bold">
-                                <i class="fa-solid fa-user-tie"></i>
-                            </div>
-                            <div>
-                                <h3 class="text-xl font-bold text-white">Meet the Founder</h3>
-                                <p class="text-xs text-gray-400">Creator & Visionary behind 7Leo Group</p>
-                            </div>
-                        </div>
-                        <div class="flex items-center space-x-4 p-4 rounded-xl bg-leoDark border border-leoBorder">
-                            <div class="w-16 h-16 rounded-xl bg-gradient-to-tr from-amber-500 to-leoGold flex items-center justify-center text-black font-extrabold text-2xl shadow">
-                                7L
-                            </div>
-                            <div>
-                                <h4 class="text-base font-bold text-white">7Leo Founder</h4>
-                                <p class="text-xs text-leoGold font-medium">Lead Developer & GroovePad Music Producer</p>
-                            </div>
-                        </div>
-                        <p class="text-gray-300 text-sm leading-relaxed">
-                            As the creative force behind 7Leo Group, the founder combines a passion for modern digital commerce with original instrumental sound design. Driven by an entrepreneurial spirit, every product selection and GroovePad composition reflects a commitment to quality and innovation.
-                        </p>
-                        <div class="p-4 rounded-xl bg-leoDark border border-leoBorder space-y-2">
-                            <h4 class="text-sm font-semibold text-leoGold"><i class="fa-solid fa-link mr-2"></i> Connection to 7Leo Group</h4>
-                            <p class="text-xs text-gray-400 leading-relaxed">
-                                7Leo Group was founded as a direct manifestation of creative independence—uniting curated product discovery with personalized instrumental soundtracks under one unified brand identity.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- MUSIC PURCHASE & LICENSING SECTION -->
-        <section id="licensing" class="py-20 border-b border-leoBorder">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="max-w-4xl mx-auto bg-gradient-to-br from-leoCard to-leoDark border border-leoBorder rounded-3xl p-8 sm:p-12 shadow-2xl relative overflow-hidden">
-                    <div class="absolute -right-16 -top-16 w-64 h-64 bg-leoGold/5 rounded-full blur-3xl pointer-events-none"></div>
-                    <div class="relative z-10 space-y-6">
-                        <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-leoDark border border-leoBorder text-leoGold text-xs font-semibold uppercase">
-                            <i class="fa-solid fa-certificate"></i>
-                            <span>Professional Licensing</span>
-                        </div>
-                        <h2 class="text-3xl font-extrabold text-white">Music Purchase & Licensing</h2>
-                        <p class="text-gray-300 text-sm leading-relaxed">
-                            Looking to use 7Leo BGM tracks in your commercial or independent media productions? Our instrumental soundscapes are available for licensing across multiple formats.
-                        </p>
-                        
-                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 py-2 text-xs font-medium text-gray-300">
-                            <div class="p-3 rounded-xl bg-leoDark border border-leoBorder flex items-center space-x-2">
-                                <i class="fa-solid fa-film text-leoGold"></i>
-                                <span>Films & Trailers</span>
-                            </div>
-                            <div class="p-3 rounded-xl bg-leoDark border border-leoBorder flex items-center space-x-2">
-                                <i class="fa-solid fa-video text-leoGold"></i>
-                                <span>YouTube & Reels</span>
-                            </div>
-                            <div class="p-3 rounded-xl bg-leoDark border border-leoBorder flex items-center space-x-2">
-                                <i class="fa-solid fa-gamepad text-leoGold"></i>
-                                <span>Game Development</span>
-                            </div>
-                            <div class="p-3 rounded-xl bg-leoDark border border-leoBorder flex items-center space-x-2">
-                                <i class="fa-solid fa-bullhorn text-leoGold"></i>
-                                <span>Advertisements</span>
+                            <div class="space-y-1 text-xs text-gray-400">
+                                <p><span class="text-white font-semibold">SKU:</span> <span x-text="selectedProduct.sku"></span></p>
+                                <p><span class="text-white font-semibold">Stock Status:</span> <span class="text-[#10b981] font-semibold">In Stock (Ready for Global Dispatch)</span></p>
+                                <p><span class="text-white font-semibold">Estimated Delivery:</span> 4-7 Business Days Worldwide</p>
                             </div>
                         </div>
 
-                        <div class="p-5 rounded-2xl bg-leoDark border border-leoBorder space-y-3 text-xs text-gray-400 leading-relaxed">
-                            <p><strong class="text-white">Licensing Guidelines:</strong> Music availability is subject to confirmation. Licensing terms depend on intended use. Commercial usage requires a separate license. Customers should contact 7Leo before using tracks commercially.</p>
-                            <p class="text-leoGold font-mono">© 7Leo Group — All Rights Reserved unless explicitly licensed otherwise.</p>
-                        </div>
-
-                        <div class="pt-2 flex flex-col sm:flex-row items-center gap-4">
-                            <button onclick="openLicensingModal()" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-leoGold text-black font-bold hover:bg-leoGoldHover transition-all shadow-lg shadow-leoGold/20 text-center">
-                                <i class="fa-solid fa-envelope-open-text mr-2"></i> Contact for Music Purchase & Licensing
+                        <div class="flex gap-4 pt-6">
+                            <button @click="addToCart(selectedProduct)" class="flex-1 py-4 rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold text-sm border border-white/20 transition">
+                                Add to Cart
+                            </button>
+                            <button @click="addToCart(selectedProduct); currentView = 'checkout'" class="flex-1 py-4 rounded-xl bg-[#00f3ff] text-black font-extrabold text-sm hover:neon-glow-blue transition">
+                                Buy Now
                             </button>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
+        </template>
+
+        <!-- ================= 4. SHOPPING CART VIEW ================= -->
+        <template x-if="currentView === 'cart'">
+            <div class="space-y-8 max-w-4xl mx-auto">
+                <div class="flex justify-between items-center">
+                    <h1 class="font-heading text-3xl font-bold text-white">Your Shopping Cart</h1>
+                    <button @click="currentView = 'shop'" class="text-xs text-[#00f3ff] hover:underline font-semibold">Continue Shopping →</button>
+                </div>
+
+                <template x-if="cart.length === 0">
+                    <div class="glass-panel p-12 rounded-3xl text-center space-y-4 border border-white/10">
+                        <i data-lucide="shopping-cart" class="w-16 h-16 text-gray-500 mx-auto"></i>
+                        <h3 class="font-heading text-xl font-bold text-white">Your cart is currently empty</h3>
+                        <p class="text-xs text-gray-400">Explore the 7Leo Store catalog to add futuristic gear and lifestyle items.</p>
+                        <button @click="currentView = 'shop'" class="px-6 py-3 rounded-xl bg-[#00f3ff] text-black text-xs font-extrabold hover:neon-glow-blue transition">
+                            Start Shopping
+                        </button>
+                    </div>
+                </template>
+
+                <template x-if="cart.length > 0">
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                        <div class="lg:col-span-2 space-y-4">
+                            <template x-for="(item, index) in cart" :key="index">
+                                <div class="glass-panel p-4 rounded-2xl flex items-center gap-4 border border-white/10">
+                                    <img :src="item.image" class="w-20 h-20 rounded-xl object-cover bg-black/40">
+                                    <div class="flex-1">
+                                        <h3 class="font-bold text-sm text-white" x-text="item.title"></h3>
+                                        <div class="text-xs text-[#00f3ff] font-semibold mt-1" x-text="formatCurrency(item.price)"></div>
+                                        <div class="flex items-center gap-3 mt-3">
+                                            <button @click="updateQuantity(index, -1)" class="w-6 h-6 rounded-lg bg-white/10 flex items-center justify-center text-white hover:bg-white/20">-</button>
+                                            <span class="text-xs font-bold" x-text="item.quantity"></span>
+                                            <button @click="updateQuantity(index, 1)" class="w-6 h-6 rounded-lg bg-white/10 flex items-center justify-center text-white hover:bg-white/20">+</button>
+                                        </div>
+                                    </div>
+                                    <button @click="removeFromCart(index)" class="text-gray-500 hover:text-[#ff2d55] p-2">
+                                        <i data-lucide="trash-2" class="w-5 h-5"></i>
+                                    </button>
+                                </div>
+                            </template>
+                        </div>
+
+                        <!-- Order Summary Card -->
+                        <div class="glass-panel p-6 rounded-2xl space-y-6 h-fit border border-white/10">
+                            <h3 class="font-heading text-lg font-bold text-white">Order Summary</h3>
+                            <div class="space-y-3 text-sm text-gray-300">
+                                <div class="flex justify-between">
+                                    <span>Subtotal</span>
+                                    <span x-text="formatCurrency(cartTotal())"></span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span>Estimated Shipping</span>
+                                    <span class="text-[#00f3ff]">FREE (Global Express)</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span>Taxes / Duties</span>
+                                    <span>Calculated at checkout</span>
+                                </div>
+                                <div class="pt-3 border-t border-white/10 flex justify-between font-heading text-lg font-extrabold text-white">
+                                    <span>Total</span>
+                                    <span x-text="formatCurrency(cartTotal())"></span>
+                                </div>
+                            </div>
+                            <button @click="currentView = 'checkout'" class="w-full py-4 rounded-xl bg-[#00f3ff] text-black font-extrabold text-sm hover:neon-glow-blue transition">
+                                Proceed to Checkout
+                            </button>
+                        </div>
+                    </div>
+                </template>
+            </div>
+        </template>
+
+        <!-- ================= 5. CHECKOUT VIEW ================= -->
+        <template x-if="currentView === 'checkout'">
+            <div class="space-y-8 max-w-4xl mx-auto">
+                <h1 class="font-heading text-3xl font-bold text-white">Secure Secure Checkout</h1>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    <!-- Checkout Form -->
+                    <form @submit.prevent="processCheckout()" class="lg:col-span-2 glass-panel p-8 rounded-3xl space-y-6 border border-white/10">
+                        <h3 class="font-heading text-lg font-bold text-white border-b border-white/10 pb-3">Shipping & Customer Information</h3>
+                        
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div class="space-y-1">
+                                <label class="text-xs text-gray-400 font-semibold">Full Name *</label>
+                                <input type="text" x-model="checkoutForm.name" required placeholder="Alex Turner" class="w-full bg-black/50 border border-white/15 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-[#00f3ff]">
+                            </div>
+                            <div class="space-y-1">
+                                <label class="text-xs text-gray-400 font-semibold">Email Address *</label>
+                                <input type="email" x-model="checkoutForm.email" required placeholder="alex@7leogroup.com" class="w-full bg-black/50 border border-white/15 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-[#00f3ff]">
+                            </div>
+                        </div>
+
+                        <div class="space-y-1">
+                            <label class="text-xs text-gray-400 font-semibold">Street Address *</label>
+                            <input type="text" x-model="checkoutForm.address" required placeholder="123 Futuristic Avenue, Suite 7" class="w-full bg-black/50 border border-white/15 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-[#00f3ff]">
+                        </div>
+
+                        <div class="grid grid-cols-3 gap-4">
+                            <div class="space-y-1">
+                                <label class="text-xs text-gray-400 font-semibold">City *</label>
+                                <input type="text" x-model="checkoutForm.city" required placeholder="New York" class="w-full bg-black/50 border border-white/15 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-[#00f3ff]">
+                            </div>
+                            <div class="space-y-1">
+                                <label class="text-xs text-gray-400 font-semibold">State/Province *</label>
+                                <input type="text" x-model="checkoutForm.state" required placeholder="NY" class="w-full bg-black/50 border border-white/15 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-[#00f3ff]">
+                            </div>
+                            <div class="space-y-1">
+                                <label class="text-xs text-gray-400 font-semibold">Postal Code *</label>
+                                <input type="text" x-model="checkoutForm.zip" required placeholder="10001" class="w-full bg-black/50 border border-white/15 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-[#00f3ff]">
+                            </div>
+                        </div>
+
+                        <div class="space-y-1">
+                            <label class="text-xs text-gray-400 font-semibold">Country *</label>
+                            <select x-model="checkoutForm.country" class="w-full bg-black/50 border border-white/15 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-[#00f3ff]">
+                                <option value="India">India (INR Settlement)</option>
+                                <option value="United States">United States</option>
+                                <option value="United Kingdom">United Kingdom</option>
+                                <option value="European Union">European Union</option>
+                            </select>
+                        </div>
+
+                        <h3 class="font-heading text-lg font-bold text-white border-b border-white/10 pt-4 pb-3">Payment Gateway (Secure SSL)</h3>
+                        <div class="space-y-3">
+                            <label class="flex items-center gap-3 p-4 rounded-xl glass-panel border border-white/15 cursor-pointer">
+                                <input type="radio" name="payment" checked class="text-[#00f3ff]">
+                                <div>
+                                    <span class="font-bold text-sm text-white block">Secure International Card / UPI / Razorpay / Stripe</span>
+                                    <span class="text-xs text-gray-400">Encrypted payment verification with automated webhooks.</span>
+                                </div>
+                            </label>
+                        </div>
+
+                        <button type="submit" class="w-full py-4 rounded-xl bg-gradient-to-r from-[#00f3ff] to-[#ff2d55] text-black font-extrabold text-sm shadow-lg hover:neon-glow-blue transition">
+                            Complete Order & Pay <span x-text="formatCurrency(cartTotal())"></span>
+                        </button>
+                    </form>
+
+                    <!-- Sidebar Summary -->
+                    <div class="glass-panel p-6 rounded-3xl space-y-4 h-fit border border-white/10">
+                        <h3 class="font-heading text-lg font-bold text-white">Cart Summary</h3>
+                        <div class="space-y-2 max-h-60 overflow-y-auto">
+                            <template x-for="item in cart">
+                                <div class="flex justify-between text-xs text-gray-300">
+                                    <span x-text="item.title + ' (x' + item.quantity + ')'"></span>
+                                    <span x-text="formatCurrency(item.price * item.quantity)"></span>
+                                </div>
+                            </template>
+                        </div>
+                        <div class="pt-4 border-t border-white/10 flex justify-between font-heading font-extrabold text-white">
+                            <span>Total Due</span>
+                            <span x-text="formatCurrency(cartTotal())"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </template>
+
+        <!-- ================= 6. ORDER TRACKING VIEW ================= -->
+        <template x-if="currentView === 'tracking'">
+            <div class="space-y-8 max-w-2xl mx-auto">
+                <div class="glass-panel p-8 rounded-3xl space-y-6 border border-white/10 text-center">
+                    <h1 class="font-heading text-3xl font-bold text-white">Global Order Tracking</h1>
+                    <p class="text-xs text-gray-400">Enter your order ID or email to track automated supplier fulfillment and shipment status.</p>
+                    
+                    <div class="flex gap-3">
+                        <input type="text" x-model="trackingQuery" placeholder="e.g. 7LEO-98421" class="flex-1 bg-black/50 border border-white/15 rounded-xl px-4 py-3 text-xs text-white focus:outline-none focus:border-[#00f3ff]">
+                        <button @click="searchTracking()" class="px-6 py-3 rounded-xl bg-[#00f3ff] text-black text-xs font-bold hover:neon-glow-blue transition">Track</button>
+                    </div>
+
+                    <div x-show="trackingResult" class="space-y-6 pt-6 text-left border-t border-white/10">
+                        <div class="flex justify-between items-center bg-white/5 p-4 rounded-xl">
+                            <div>
+                                <span class="text-xs text-gray-400">Order ID: <strong class="text-white" x-text="trackingResult.id"></strong></span>
+                                <span class="block text-xs text-[#00f3ff] font-semibold mt-1" x-text="'Status: ' + trackingResult.status"></span>
+                            </div>
+                            <span class="px-3 py-1 rounded-full bg-[#10b981]/20 text-[#10b981] text-xs font-bold" x-text="trackingResult.fulfillment"></span>
+                        </div>
+
+                        <!-- Workflow steps -->
+                        <div class="space-y-4">
+                            <template x-for="step in trackingSteps">
+                                <div class="flex items-center gap-4">
+                                    <div class="w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold"
+                                         :class="step.completed ? 'bg-[#00f3ff] text-black' : 'bg-white/10 text-gray-500'"
+                                         x-text="step.id"></div>
+                                    <div>
+                                        <h4 class="font-bold text-sm text-white" x-text="step.title"></h4>
+                                        <p class="text-xs text-gray-400" x-text="step.desc"></p>
+                                    </div>
+                                </div>
+                            </template>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </template>
+
+        <!-- ================= 7. CUSTOMER ACCOUNT VIEW ================= -->
+        <template x-if="currentView === 'account'">
+            <div class="space-y-8 max-w-4xl mx-auto">
+                <div class="glass-panel p-8 rounded-3xl space-y-6 border border-white/10">
+                    <div class="flex justify-between items-center border-b border-white/10 pb-4">
+                        <div>
+                            <h1 class="font-heading text-2xl font-bold text-white">Customer Account Portal</h1>
+                            <p class="text-xs text-gray-400">Manage your profile, saved addresses, orders, and wishlist.</p>
+                        </div>
+                        <template x-if="currentUser">
+                            <button @click="logout()" class="px-4 py-2 rounded-xl bg-[#ff2d55]/20 text-[#ff2d55] text-xs font-bold hover:bg-[#ff2d55]/30 transition">Sign Out</button>
+                        </template>
+                    </div>
+
+                    <template x-if="!currentUser">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 pt-4">
+                            <!-- Sign In -->
+                            <div class="space-y-4">
+                                <h3 class="font-heading text-lg font-bold text-white">Sign In</h3>
+                                <form @submit.prevent="login()" class="space-y-3">
+                                    <input type="email" x-model="loginEmail" required placeholder="Email Address" class="w-full bg-black/50 border border-white/15 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-[#00f3ff]">
+                                    <input type="password" required placeholder="Password" class="w-full bg-black/50 border border-white/15 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-[#00f3ff]">
+                                    <button type="submit" class="w-full py-3 rounded-xl bg-[#00f3ff] text-black font-bold text-xs hover:neon-glow-blue transition">Sign In</button>
+                                </form>
+                            </div>
+                            <!-- Sign Up -->
+                            <div class="space-y-4">
+                                <h3 class="font-heading text-lg font-bold text-white">Create Account</h3>
+                                <form @submit.prevent="signup()" class="space-y-3">
+                                    <input type="text" x-model="signupName" required placeholder="Full Name" class="w-full bg-black/50 border border-white/15 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-[#00f3ff]">
+                                    <input type="email" x-model="signupEmail" required placeholder="Email Address" class="w-full bg-black/50 border border-white/15 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-[#00f3ff]">
+                                    <input type="password" required placeholder="Password" class="w-full bg-black/50 border border-white/15 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-[#00f3ff]">
+                                    <button type="submit" class="w-full py-3 rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold text-xs border border-white/20 transition">Sign Up</button>
+                                </form>
+                            </div>
+                        </div>
+                    </template>
+
+                    <template x-if="currentUser">
+                        <div class="space-y-6">
+                            <div class="flex gap-4 border-b border-white/10 pb-4">
+                                <button @click="activeAccountTab = 'orders'" class="px-4 py-2 rounded-xl text-xs font-bold transition" :class="activeAccountTab === 'orders' ? 'bg-[#00f3ff] text-black' : 'bg-white/5 text-gray-300'">Order History</button>
+                                <button @click="activeAccountTab = 'wishlist'" class="px-4 py-2 rounded-xl text-xs font-bold transition" :class="activeAccountTab === 'wishlist' ? 'bg-[#00f3ff] text-black' : 'bg-white/5 text-gray-300'">Wishlist</button>
+                            </div>
+
+                            <template x-if="activeAccountTab === 'orders'">
+                                <div class="space-y-3">
+                                    <template x-for="order in userOrders">
+                                        <div class="glass-panel p-4 rounded-xl flex justify-between items-center border border-white/5">
+                                            <div>
+                                                <span class="font-bold text-sm text-white" x-text="order.id"></span>
+                                                <span class="block text-xs text-gray-400 mt-0.5" x-text="order.date + ' • ' + order.items + ' items'"></span>
+                                            </div>
+                                            <div class="text-right">
+                                                <span class="text-xs text-[#00f3ff] font-bold" x-text="formatCurrency(order.total)"></span>
+                                                <span class="block text-[10px] text-green-400" x-text="order.status"></span>
+                                            </div>
+                                        </div>
+                                    </template>
+                                </div>
+                            </template>
+
+                            <template x-if="activeAccountTab === 'wishlist'">
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                    <template x-for="id in wishlist">
+                                        <div class="glass-panel p-4 rounded-xl flex items-center justify-between border border-white/5">
+                                            <div class="flex items-center gap-3">
+                                                <img :src="getProductById(id).image" class="w-12 h-12 rounded-lg object-cover">
+                                                <div>
+                                                    <h4 class="font-bold text-xs text-white" x-text="getProductById(id).title"></h4>
+                                                    <span class="text-[10px] text-[#00f3ff]" x-text="formatCurrency(getProductById(id).price)"></span>
+                                                </div>
+                                            </div>
+                                            <button @click="toggleWishlist(id)" class="text-red-400 hover:text-red-300"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
+                                        </div>
+                                    </template>
+                                </div>
+                            </template>
+                        </div>
+                    </template>
+                </div>
+            </div>
+        </template>
+
+        <!-- ================= 8. SUPER ADMIN DASHBOARD VIEW ================= -->
+        <template x-if="currentView === 'admin'">
+            <div class="space-y-8">
+                <!-- Admin Header -->
+                <div class="glass-panel p-6 rounded-3xl flex flex-col md:flex-row justify-between items-center gap-4 border border-[#00f3ff]/30">
+                    <div>
+                        <div class="flex items-center gap-2">
+                            <span class="px-2 py-0.5 rounded bg-[#00f3ff]/20 text-[#00f3ff] text-[10px] font-bold uppercase">Super Admin</span>
+                            <h1 class="font-heading text-2xl font-bold text-white">7Leo Store Command Center</h1>
+                        </div>
+                        <p class="text-xs text-gray-400 mt-1">Mobile-first control panel for products, orders, supplier automation, and profit calculation.</p>
+                    </div>
+                    <div class="flex gap-2">
+                        <button @click="currentView = 'home'" class="px-4 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-xs font-bold text-white transition">Exit Admin</button>
+                    </div>
+                </div>
+
+                <!-- Admin Navigation Tabs -->
+                <div class="flex flex-wrap gap-2">
+                    <button @click="adminTab = 'overview'" class="px-4 py-2.5 rounded-xl text-xs font-bold transition" :class="adminTab === 'overview' ? 'bg-[#00f3ff] text-black shadow-lg neon-glow-blue' : 'glass-panel text-gray-300 hover:text-white'">Overview</button>
+                    <button @click="adminTab = 'products'" class="px-4 py-2.5 rounded-xl text-xs font-bold transition" :class="adminTab === 'products' ? 'bg-[#00f3ff] text-black shadow-lg neon-glow-blue' : 'glass-panel text-gray-300 hover:text-white'">Products</button>
+                    <button @click="adminTab = 'orders'" class="px-4 py-2.5 rounded-xl text-xs font-bold transition" :class="adminTab === 'orders' ? 'bg-[#00f3ff] text-black shadow-lg neon-glow-blue' : 'glass-panel text-gray-300 hover:text-white'">Orders</button>
+                    <button @click="adminTab = 'suppliers'" class="px-4 py-2.5 rounded-xl text-xs font-bold transition" :class="adminTab === 'suppliers' ? 'bg-[#00f3ff] text-black shadow-lg neon-glow-blue' : 'glass-panel text-gray-300 hover:text-white'">Suppliers</button>
+                    <button @click="adminTab = 'discovery'" class="px-4 py-2.5 rounded-xl text-xs font-bold transition" :class="adminTab === 'discovery' ? 'bg-[#00f3ff] text-black shadow-lg neon-glow-blue' : 'glass-panel text-gray-300 hover:text-white'">Product Discovery</button>
+                    <button @click="adminTab = 'profit'" class="px-4 py-2.5 rounded-xl text-xs font-bold transition" :class="adminTab === 'profit' ? 'bg-[#00f3ff] text-black shadow-lg neon-glow-blue' : 'glass-panel text-gray-300 hover:text-white'">Profit Calculator</button>
+                    <button @click="adminTab = 'settings'" class="px-4 py-2.5 rounded-xl text-xs font-bold transition" :class="adminTab === 'settings' ? 'bg-[#00f3ff] text-black shadow-lg neon-glow-blue' : 'glass-panel text-gray-300 hover:text-white'">Settings</button>
+                </div>
+
+                <!-- Admin Tab Content: Overview -->
+                <template x-if="adminTab === 'overview'">
+                    <div class="space-y-6">
+                        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+                            <div class="glass-panel p-6 rounded-2xl border border-white/5 space-y-2">
+                                <span class="text-xs text-gray-400">Total Sales (INR)</span>
+                                <div class="font-heading text-2xl font-bold text-white">₹4,82,900</div>
+                                <span class="text-[10px] text-green-400">+18.4% this month</span>
+                            </div>
+                            <div class="glass-panel p-6 rounded-2xl border border-white/5 space-y-2">
+                                <span class="text-xs text-gray-400">Active Orders</span>
+                                <div class="font-heading text-2xl font-bold text-white">34</div>
+                                <span class="text-[10px] text-[#00f3ff]">12 awaiting supplier sync</span>
+                            </div>
+                            <div class="glass-panel p-6 rounded-2xl border border-white/5 space-y-2">
+                                <span class="text-xs text-gray-400">Estimated Net Profit</span>
+                                <div class="font-heading text-2xl font-bold text-white">₹1,45,200</div>
+                                <span class="text-[10px] text-green-400">30.1% margin avg</span>
+                            </div>
+                            <div class="glass-panel p-6 rounded-2xl border border-white/5 space-y-2">
+                                <span class="text-xs text-gray-400">Connected Suppliers</span>
+                                <div class="font-heading text-2xl font-bold text-white">2 Active</div>
+                                <span class="text-[10px] text-yellow-400">Alibaba API Ready</span>
+                            </div>
+                        </div>
+                    </div>
+                </template>
+
+                <!-- Admin Tab Content: Products -->
+                <template x-if="adminTab === 'products'">
+                    <div class="glass-panel p-6 rounded-3xl space-y-6 border border-white/10">
+                        <div class="flex justify-between items-center">
+                            <h3 class="font-heading text-lg font-bold text-white">Manage Store Products</h3>
+                            <button @click="showAddProductModal = true" class="px-4 py-2 rounded-xl bg-[#00f3ff] text-black text-xs font-bold hover:neon-glow-blue transition">Add New Product</button>
+                        </div>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-left text-xs text-gray-300">
+                                <thead class="border-b border-white/10 text-gray-400">
+                                    <tr>
+                                        <th class="py-3 px-4">Product</th>
+                                        <th class="py-3 px-4">Category</th>
+                                        <th class="py-3 px-4">Price</th>
+                                        <th class="py-3 px-4">SKU</th>
+                                        <th class="py-3 px-4 text-right">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <template x-for="product in products" :key="product.id">
+                                        <tr class="border-b border-white/5 hover:bg-white/5 transition">
+                                            <td class="py-3 px-4 flex items-center gap-3">
+                                                <img :src="product.image" class="w-10 h-10 rounded-lg object-cover">
+                                                <span class="font-bold text-white" x-text="product.title"></span>
+                                            </td>
+                                            <td class="py-3 px-4" x-text="product.category"></td>
+                                            <td class="py-3 px-4" x-text="formatCurrency(product.price)"></td>
+                                            <td class="py-3 px-4 font-mono text-[10px]" x-text="product.sku"></td>
+                                            <td class="py-3 px-4 text-right">
+                                                <button @click="deleteProduct(product.id)" class="text-red-400 hover:text-red-300"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
+                                            </td>
+                                        </tr>
+                                    </template>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </template>
+
+                <!-- Admin Tab Content: Orders -->
+                <template x-if="adminTab === 'orders'">
+                    <div class="glass-panel p-6 rounded-3xl space-y-6 border border-white/10">
+                        <h3 class="font-heading text-lg font-bold text-white">Order Automation & Fulfillment</h3>
+                        <div class="space-y-3">
+                            <template x-for="order in adminOrders">
+                                <div class="glass-panel p-4 rounded-xl flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border border-white/5">
+                                    <div>
+                                        <span class="font-bold text-sm text-white" x-text="order.id + ' — ' + order.customer"></span>
+                                        <span class="block text-xs text-gray-400 mt-1" x-text="order.items + ' items • ' + formatCurrency(order.total)"></span>
+                                    </div>
+                                    <div class="flex items-center gap-3">
+                                        <span class="px-3 py-1 rounded-full text-xs font-bold" 
+                                              :class="order.fulfillment === 'Synced with Supplier' ? 'bg-[#10b981]/20 text-[#10b981]' : 'bg-[#ff9500]/20 text-[#ff9500]'"
+                                              x-text="order.fulfillment"></span>
+                                        <button @click="syncOrderToSupplier(order.id)" class="px-3 py-1.5 rounded-lg bg-[#00f3ff] text-black text-xs font-bold hover:neon-glow-blue transition">Sync Supplier</button>
+                                    </div>
+                                </div>
+                            </template>
+                        </div>
+                    </div>
+                </template>
+
+                <!-- Admin Tab Content: Suppliers -->
+                <template x-if="adminTab === 'suppliers'">
+                    <div class="glass-panel p-6 rounded-3xl space-y-6 border border-white/10">
+                        <h3 class="font-heading text-lg font-bold text-white">Supplier & Dropshipping Integrations</h3>
+                        <p class="text-xs text-gray-400">Connect verified fulfillment partners (Alibaba, CJ Dropshipping, etc.) to automate order placement.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="glass-panel p-6 rounded-2xl border border-white/10 space-y-4">
+                                <div class="flex justify-between items-center">
+                                    <h4 class="font-bold text-sm text-white">Alibaba Official API</h4>
+                                    <span class="px-2.5 py-1 rounded-full bg-[#10b981]/20 text-[#10b981] text-[10px] font-bold">Connected</span>
+                                </div>
+                                <p class="text-xs text-gray-400">Automated inventory sync, pricing updates, and tracking webhook active.</p>
+                                <button class="px-4 py-2 rounded-xl bg-white/10 text-white text-xs font-bold hover:bg-white/20">Configure API Keys</button>
+                            </div>
+                            <div class="glass-panel p-6 rounded-2xl border border-white/10 space-y-4">
+                                <div class="flex justify-between items-center">
+                                    <h4 class="font-bold text-sm text-white">Global Fulfillment Partner B</h4>
+                                    <span class="px-2.5 py-1 rounded-full bg-yellow-500/20 text-yellow-400 text-[10px] font-bold">Integration Not Configured</span>
+                                </div>
+                                <p class="text-xs text-gray-400">Requires secret API token and webhook endpoint credentials.</p>
+                                <button class="px-4 py-2 rounded-xl bg-[#00f3ff] text-black text-xs font-bold hover:neon-glow-blue">Connect Integration</button>
+                            </div>
+                        </div>
+                    </div>
+                </template>
+
+                <!-- Admin Tab Content: Product Discovery -->
+                <template x-if="adminTab === 'discovery'">
+                    <div class="glass-panel p-6 rounded-3xl space-y-6 border border-white/10">
+                        <h3 class="font-heading text-lg font-bold text-white">Pinterest & Amazon Product Discovery</h3>
+                        <p class="text-xs text-gray-400">Research winning product trends, calculate estimated margins, and add verified items to your store.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                            <div class="glass-panel p-5 rounded-2xl space-y-3 border border-white/10">
+                                <span class="px-2 py-0.5 rounded bg-red-500/20 text-red-400 text-[10px] font-bold">Pinterest Trend #42</span>
+                                <h4 class="font-bold text-sm text-white">Neon Cyberpunk LED Glasses</h4>
+                                <p class="text-xs text-gray-400">Estimated Supplier Cost: ₹450 | Suggested Price: ₹1,899</p>
+                                <button @click="importDiscoveryProduct('Neon Cyberpunk LED Glasses', 1899, 450)" class="w-full py-2 rounded-xl bg-[#00f3ff] text-black text-xs font-bold">Import to Store</button>
+                            </div>
+                            <div class="glass-panel p-5 rounded-2xl space-y-3 border border-white/10">
+                                <span class="px-2 py-0.5 rounded bg-orange-500/20 text-orange-400 text-[10px] font-bold">Amazon Best Seller</span>
+                                <h4 class="font-bold text-sm text-white">Magnetic Levitation Floating Globe</h4>
+                                <p class="text-xs text-gray-400">Estimated Supplier Cost: ₹1,200 | Suggested Price: ₹3,999</p>
+                                <button @click="importDiscoveryProduct('Magnetic Levitation Floating Globe', 3999, 1200)" class="w-full py-2 rounded-xl bg-[#00f3ff] text-black text-xs font-bold">Import to Store</button>
+                            </div>
+                        </div>
+                    </div>
+                </template>
+
+                <!-- Admin Tab Content: Profit Calculator -->
+                <template x-if="adminTab === 'profit'">
+                    <div class="glass-panel p-6 sm:p-8 rounded-3xl space-y-6 max-w-2xl mx-auto border border-white/10">
+                        <h3 class="font-heading text-xl font-bold text-white">Solo Founder Profit Calculator</h3>
+                        <p class="text-xs text-gray-400">Calculate net margins instantly before launching or scaling ad spend.</p>
+                        
+                        <div class="space-y-4">
+                            <div class="space-y-1">
+                                <label class="text-xs text-gray-400 font-semibold">Selling Price (INR)</label>
+                                <input type="number" x-model.number="calcPrice" class="w-full bg-black/50 border border-white/15 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-[#00f3ff]">
+                            </div>
+                            <div class="space-y-1">
+                                <label class="text-xs text-gray-400 font-semibold">Supplier Cost (INR)</label>
+                                <input type="number" x-model.number="calcCost" class="w-full bg-black/50 border border-white/15 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-[#00f3ff]">
+                            </div>
+                            <div class="space-y-1">
+                                <label class="text-xs text-gray-400 font-semibold">Estimated Shipping & Fees (INR)</label>
+                                <input type="number" x-model.number="calcFees" class="w-full bg-black/50 border border-white/15 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-[#00f3ff]">
+                            </div>
+                        </div>
+
+                        <div class="p-6 rounded-2xl bg-white/5 border border-white/10 space-y-2">
+                            <div class="flex justify-between text-sm">
+                                <span class="text-gray-400">Estimated Net Profit per Unit:</span>
+                                <span class="font-bold text-green-400" x-text="formatCurrency(calcPrice - calcCost - calcFees)"></span>
+                            </div>
+                            <div class="flex justify-between text-sm">
+                                <span class="text-gray-400">Estimated Profit Margin:</span>
+                                <span class="font-bold text-[#00f3ff]" x-text="calcPrice > 0 ? ((calcPrice - calcCost - calcFees) / calcPrice * 100).toFixed(1) + '%' : '0%'"></span>
+                            </div>
+                        </div>
+                    </div>
+                </template>
+
+                <!-- Admin Tab Content: Settings -->
+                <template x-if="adminTab === 'settings'">
+                    <div class="glass-panel p-6 rounded-3xl space-y-6 border border-white/10 max-w-2xl mx-auto">
+                        <h3 class="font-heading text-lg font-bold text-white">Store Settings</h3>
+                        <div class="space-y-4">
+                            <div class="space-y-1">
+                                <label class="text-xs text-gray-400 font-semibold">Store Name</label>
+                                <input type="text" value="7Leo Store" class="w-full bg-black/50 border border-white/15 rounded-xl px-4 py-2.5 text-xs text-white">
+                            </div>
+                            <div class="space-y-1">
+                                <label class="text-xs text-gray-400 font-semibold">Base Currency</label>
+                                <input type="text" value="INR (Indian Rupee)" disabled class="w-full bg-black/50 border border-white/15 rounded-xl px-4 py-2.5 text-xs text-gray-500">
+                            </div>
+                            <button @click="showToast('Store settings saved successfully', 'success')" class="px-6 py-3 rounded-xl bg-[#00f3ff] text-black text-xs font-bold hover:neon-glow-blue">Save Changes</button>
+                        </div>
+                    </div>
+                </template>
+            </div>
+        </template>
+
+        <!-- Add Product Modal for Admin -->
+        <template x-if="showAddProductModal">
+            <div class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
+                <div class="glass-panel p-8 rounded-3xl max-w-lg w-full space-y-6 border border-white/20">
+                    <h3 class="font-heading text-xl font-bold text-white">Add New Product to Catalog</h3>
+                    <div class="space-y-4">
+                        <input type="text" x-model="newProdTitle" placeholder="Product Title" class="w-full bg-black/50 border border-white/15 rounded-xl px-4 py-2.5 text-xs text-white">
+                        <input type="number" x-model.number="newProdPrice" placeholder="Price (INR)" class="w-full bg-black/50 border border-white/15 rounded-xl px-4 py-2.5 text-xs text-white">
+                        <select x-model="newProdCategory" class="w-full bg-black/50 border border-white/15 rounded-xl px-4 py-2.5 text-xs text-white">
+                            <template x-for="cat in categories">
+                                <option :value="cat" x-text="cat"></option>
+                            </template>
+                        </select>
+                        <textarea x-model="newProdDesc" placeholder="Product Description" class="w-full bg-black/50 border border-white/15 rounded-xl px-4 py-2.5 text-xs text-white"></textarea>
+                    </div>
+                    <div class="flex gap-4">
+                        <button @click="showAddProductModal = false" class="flex-1 py-3 rounded-xl bg-white/10 text-white text-xs font-bold">Cancel</button>
+                        <button @click="addNewProduct()" class="flex-1 py-3 rounded-xl bg-[#00f3ff] text-black text-xs font-extrabold">Save Product</button>
+                    </div>
+                </div>
+            </div>
+        </template>
+
+        <!-- PWA Install & QR Code Modal -->
+        <template x-if="showPwaModal">
+            <div class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
+                <div class="glass-panel p-8 rounded-3xl max-w-md w-full space-y-6 text-center border border-[#00f3ff]/30">
+                    <div class="w-16 h-16 rounded-2xl rainbow-gradient mx-auto flex items-center justify-center text-black font-extrabold text-2xl shadow-lg neon-glow-blue">7L</div>
+                    <h3 class="font-heading text-xl font-bold text-white">Install 7Leo Store PWA</h3>
+                    <p class="text-xs text-gray-400">Scan this QR code with your mobile device or install directly to your home screen for lightning-fast commerce access.</p>
+                    <div class="bg-white p-4 rounded-2xl inline-block">
+                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=https://7leogroup.com" alt="QR Code" class="w-40 h-40 mx-auto">
+                    </div>
+                    <div class="flex gap-4">
+                        <button @click="showPwaModal = false" class="w-full py-3 rounded-xl bg-[#00f3ff] text-black text-xs font-extrabold">Close</button>
+                    </div>
+                </div>
+            </div>
+        </template>
 
     </main>
 
-    <!-- FOOTER -->
-    <footer class="bg-leoDark border-t border-leoBorder py-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
-            <div class="flex items-center space-x-3">
-                <div class="w-8 h-8 rounded-lg bg-leoGold flex items-center justify-center text-black font-bold text-sm">
-                    7L
+    <!-- Footer -->
+    <footer class="mt-20 border-t border-white/10 glass-panel py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div class="space-y-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-xl rainbow-gradient flex items-center justify-center font-black text-black text-sm">7L</div>
+                    <span class="font-heading font-bold text-white tracking-wider">7LEO STORE</span>
                 </div>
-                <span class="text-sm font-bold text-white">7LEO GROUP COMMERCE</span>
+                <p class="text-xs text-gray-400">Next-generation global commerce and automated fulfillment platform for solo founders.</p>
             </div>
-            <p class="text-xs text-gray-500 font-mono">© 7Leo Group — All Rights Reserved.</p>
-            <div class="flex items-center space-x-4 text-gray-400 text-sm">
-                <a href="#home" class="hover:text-leoGold transition-colors">Home</a>
-                <a href="#store" class="hover:text-leoGold transition-colors">Store</a>
-                <a href="#bgm" class="hover:text-leoGold transition-colors">BGM</a>
-                <a href="#about" class="hover:text-leoGold transition-colors">About</a>
-                <a href="#licensing" class="hover:text-leoGold transition-colors">Licensing</a>
+            <div>
+                <h4 class="font-bold text-sm text-white mb-3">Quick Links</h4>
+                <ul class="space-y-2 text-xs text-gray-400">
+                    <li><button @click="currentView = 'shop'" class="hover:text-[#00f3ff]">Catalog</button></li>
+                    <li><button @click="currentView = 'tracking'" class="hover:text-[#00f3ff]">Track Order</button></li>
+                    <li><button @click="currentView = 'account'" class="hover:text-[#00f3ff]">Customer Account</button></li>
+                </ul>
             </div>
+            <div>
+                <h4 class="font-bold text-sm text-white mb-3">Legal & Trust</h4>
+                <ul class="space-y-2 text-xs text-gray-400">
+                    <li><a href="#" class="hover:text-[#00f3ff]">Privacy Policy</a></li>
+                    <li><a href="#" class="hover:text-[#00f3ff]">Terms & Conditions</a></li>
+                    <li><a href="#" class="hover:text-[#00f3ff]">Returns & Refunds</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold text-sm text-white mb-3">Founder Support</h4>
+                <p class="text-xs text-gray-400">Support inquiries processed instantly through automated ticketing.</p>
+                <button @click="showToast('Support ticket submitted successfully', 'success')" class="mt-3 px-4 py-2 rounded-xl bg-white/10 text-white text-xs font-bold hover:bg-white/20">Contact Founder</button>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8 pt-8 border-t border-white/10 text-center text-xs text-gray-500">
+            &copy; 2026 7Leo Group Commerce. All rights reserved. Live Website Integration.
         </div>
     </footer>
 
-    <!-- STICKY AUDIO PLAYER BAR -->
-    <div id="audioPlayerBar" class="fixed bottom-0 left-0 right-0 z-40 bg-leoCard/95 backdrop-blur-md border-t border-leoBorder py-3 px-4 sm:px-8 shadow-2xl">
-        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-            <div class="flex items-center space-x-3 w-full sm:w-auto justify-between sm:justify-start">
-                <div class="w-10 h-10 rounded-xl bg-leoDark border border-leoBorder flex items-center justify-center text-leoGold">
-                    <i id="playerIcon" class="fa-solid fa-music"></i>
-                </div>
-                <div>
-                    <h4 id="playerTrackTitle" class="text-xs sm:text-sm font-bold text-white">Select a track to play</h4>
-                    <p id="playerTrackSeries" class="text-[10px] text-gray-400">7Leo BGM Player</p>
-                </div>
-            </div>
-            <!-- Player Controls -->
-            <div class="flex items-center space-x-4">
-                <button onclick="playPrevTrack()" class="p-2 rounded-lg bg-leoDark border border-leoBorder text-gray-300 hover:text-leoGold transition-colors">
-                    <i class="fa-solid fa-backward-step text-xs"></i>
-                </button>
-                <button onclick="togglePlayPause()" class="w-10 h-10 rounded-full bg-leoGold text-black flex items-center justify-center font-bold hover:bg-leoGoldHover transition-colors shadow">
-                    <i id="playPauseBtnIcon" class="fa-solid fa-play text-sm"></i>
-                </button>
-                <button onclick="playNextTrack()" class="p-2 rounded-lg bg-leoDark border border-leoBorder text-gray-300 hover:text-leoGold transition-colors">
-                    <i class="fa-solid fa-forward-step text-xs"></i>
-                </button>
-            </div>
-            <!-- Progress & Volume -->
-            <div class="hidden md:flex items-center space-x-4 w-1/3">
-                <span id="currentTime" class="text-[10px] font-mono text-gray-400">0:00</span>
-                <input type="range" id="progressBar" value="0" max="100" oninput="seekAudio(this.value)" class="w-full h-1 bg-leoDark rounded-lg appearance-none cursor-pointer accent-leoGold">
-                <span id="durationTime" class="text-[10px] font-mono text-gray-400">0:00</span>
-            </div>
-        </div>
-    </div>
-
-    <!-- MODALS -->
-
-    <!-- Cart Modal / Drawer -->
-    <div id="cartModal" class="fixed inset-0 z-50 hidden bg-black/70 backdrop-blur-sm flex justify-end">
-        <div class="bg-leoCard border-l border-leoBorder w-full max-w-md h-full flex flex-col p-6 shadow-2xl animate-in slide-in-from-right duration-300">
-            <div class="flex items-center justify-between pb-4 border-b border-leoBorder">
-                <h3 class="text-lg font-bold text-white flex items-center"><i class="fa-solid fa-shopping-cart text-leoGold mr-2"></i> Your 7Leo Cart</h3>
-                <button onclick="closeCartModal()" class="p-2 rounded-lg bg-leoDark border border-leoBorder text-gray-400 hover:text-white">
-                    <i class="fa-solid fa-xmark"></i>
-                </button>
-            </div>
-            <div id="cartItemsList" class="flex-grow overflow-y-auto py-4 space-y-3">
-                <!-- Cart items populated via JS -->
-            </div>
-            <div class="pt-4 border-t border-leoBorder space-y-4">
-                <div class="flex items-center justify-between text-sm">
-                    <span class="text-gray-400">Total:</span>
-                    <span id="cartTotalPrice" class="text-lg font-extrabold text-leoGold">$0.00</span>
-                </div>
-                <button onclick="proceedToCheckout()" class="w-full py-3.5 rounded-xl bg-leoGold text-black font-bold hover:bg-leoGoldHover transition-colors shadow">
-                    Proceed to Secure Checkout
-                </button>
-                <p class="text-[10px] text-center text-gray-500">Fulfilled by trusted third-party partners (Amazon / Alibaba).</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Product Details Modal -->
-    <div id="productModal" class="fixed inset-0 z-50 hidden bg-black/70 backdrop-blur-sm flex items-center justify-center p-4">
-        <div class="bg-leoCard border border-leoBorder rounded-3xl max-w-lg w-full p-6 sm:p-8 space-y-6 shadow-2xl relative">
-            <button onclick="closeProductModal()" class="absolute top-4 right-4 p-2 rounded-lg bg-leoDark border border-leoBorder text-gray-400 hover:text-white">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
-            <div id="productModalContent" class="space-y-4">
-                <!-- Populated via JS -->
-            </div>
-        </div>
-    </div>
-
-    <!-- Account / Login Modal -->
-    <div id="accountModal" class="fixed inset-0 z-50 hidden bg-black/70 backdrop-blur-sm flex items-center justify-center p-4">
-        <div class="bg-leoCard border border-leoBorder rounded-3xl max-w-md w-full p-6 sm:p-8 space-y-6 shadow-2xl relative">
-            <button onclick="closeAccountModal()" class="absolute top-4 right-4 p-2 rounded-lg bg-leoDark border border-leoBorder text-gray-400 hover:text-white">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
-            <div class="text-center space-y-2">
-                <div class="w-12 h-12 rounded-2xl bg-leoGold/10 border border-leoGold/20 mx-auto flex items-center justify-center text-leoGold text-xl font-bold">
-                    <i class="fa-solid fa-user"></i>
-                </div>
-                <h3 class="text-xl font-bold text-white">7Leo Account Portal</h3>
-                <p class="text-xs text-gray-400">Sign in or create your account</p>
-            </div>
-
-            <div class="flex rounded-xl bg-leoDark p-1 border border-leoBorder">
-                <button onclick="switchAuthTab('login')" id="loginTabBtn" class="flex-1 py-2 rounded-lg bg-leoGold text-black font-semibold text-xs transition-all">Sign In</button>
-                <button onclick="switchAuthTab('signup')" id="signupTabBtn" class="flex-1 py-2 text-gray-400 hover:text-white font-semibold text-xs transition-all">Create Account</button>
-            </div>
-
-            <form id="authForm" onsubmit="handleAuthSubmit(event)" class="space-y-4">
-                <div id="nameFieldContainer" class="hidden space-y-1">
-                    <label class="text-xs text-gray-400 font-medium">Full Name</label>
-                    <input type="text" id="authName" placeholder="Enter your name" class="w-full px-4 py-2.5 rounded-xl bg-leoDark border border-leoBorder text-sm text-white focus:outline-none focus:border-leoGold">
-                </div>
-                <div class="space-y-1">
-                    <label class="text-xs text-gray-400 font-medium">Email Address</label>
-                    <input type="email" id="authEmail" required placeholder="name@example.com" class="w-full px-4 py-2.5 rounded-xl bg-leoDark border border-leoBorder text-sm text-white focus:outline-none focus:border-leoGold">
-                </div>
-                <div class="space-y-1">
-                    <label class="text-xs text-gray-400 font-medium">Password</label>
-                    <div class="relative">
-                        <input type="password" id="authPassword" required placeholder="••••••••" class="w-full px-4 py-2.5 rounded-xl bg-leoDark border border-leoBorder text-sm text-white focus:outline-none focus:border-leoGold pr-10">
-                        <button type="button" onclick="togglePasswordVisibility()" class="absolute right-3 top-3 text-gray-400 hover:text-white text-xs">
-                            <i id="eyeIcon" class="fa-solid fa-eye"></i>
-                        </button>
-                    </div>
-                </div>
-                <div id="authErrorMsg" class="text-xs text-red-400 hidden"></div>
-                <button type="submit" id="authSubmitBtn" class="w-full py-3 rounded-xl bg-leoGold text-black font-bold hover:bg-leoGoldHover transition-colors shadow">
-                    Sign In
-                </button>
-            </form>
-
-            <div class="relative flex py-2 items-center">
-                <div class="flex-grow border-t border-leoBorder"></div>
-                <span class="flex-shrink mx-4 text-gray-500 text-[10px] uppercase font-mono">Or continue with</span>
-                <div class="flex-grow border-t border-leoBorder"></div>
-            </div>
-
-            <div class="grid grid-cols-2 gap-3">
-                <button onclick="handleOAuth('Google')" class="py-2.5 px-4 rounded-xl bg-leoDark border border-leoBorder hover:border-leoGold/50 text-xs font-semibold text-white flex items-center justify-center space-x-2 transition-all">
-                    <i class="fa-brands fa-google text-red-500"></i>
-                    <span>Google</span>
-                </button>
-                <button onclick="handleOAuth('Apple')" class="py-2.5 px-4 rounded-xl bg-leoDark border border-leoBorder hover:border-leoGold/50 text-xs font-semibold text-white flex items-center justify-center space-x-2 transition-all">
-                    <i class="fa-brands fa-apple text-white"></i>
-                    <span>Apple</span>
-                </button>
-            </div>
-            <p class="text-[10px] text-center text-gray-500">OAuth integration-ready for Firebase, Supabase or Auth0.</p>
-        </div>
-    </div>
-
-    <!-- Music Licensing Contact Modal -->
-    <div id="licensingModal" class="fixed inset-0 z-50 hidden bg-black/70 backdrop-blur-sm flex items-center justify-center p-4">
-        <div class="bg-leoCard border border-leoBorder rounded-3xl max-w-lg w-full p-6 sm:p-8 space-y-6 shadow-2xl relative">
-            <button onclick="closeLicensingModal()" class="absolute top-4 right-4 p-2 rounded-lg bg-leoDark border border-leoBorder text-gray-400 hover:text-white">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
-            <div class="space-y-2">
-                <h3 class="text-xl font-bold text-white">Music Licensing Inquiry</h3>
-                <p class="text-xs text-gray-400">Fill out your project details for commercial BGM licensing confirmation.</p>
-            </div>
-            <form onsubmit="handleLicensingSubmit(event)" class="space-y-4">
-                <div class="space-y-1">
-                    <label class="text-xs text-gray-400 font-medium">Your Name / Organization</label>
-                    <input type="text" required placeholder="Name or Company" class="w-full px-4 py-2.5 rounded-xl bg-leoDark border border-leoBorder text-sm text-white focus:outline-none focus:border-leoGold">
-                </div>
-                <div class="space-y-1">
-                    <label class="text-xs text-gray-400 font-medium">Contact Email</label>
-                    <input type="email" required placeholder="email@domain.com" class="w-full px-4 py-2.5 rounded-xl bg-leoDark border border-leoBorder text-sm text-white focus:outline-none focus:border-leoGold">
-                </div>
-                <div class="space-y-1">
-                    <label class="text-xs text-gray-400 font-medium">Intended Use (Ads, Film, YouTube, Game, etc.)</label>
-                    <input type="text" required placeholder="e.g., YouTube channel & Commercial Ad" class="w-full px-4 py-2.5 rounded-xl bg-leoDark border border-leoBorder text-sm text-white focus:outline-none focus:border-leoGold">
-                </div>
-                <div class="space-y-1">
-                    <label class="text-xs text-gray-400 font-medium">Project Details & Track Series</label>
-                    <textarea rows="3" required placeholder="Describe your media project and preferred tracks..." class="w-full px-4 py-2.5 rounded-xl bg-leoDark border border-leoBorder text-sm text-white focus:outline-none focus:border-leoGold"></textarea>
-                </div>
-                <button type="submit" class="w-full py-3 rounded-xl bg-leoGold text-black font-bold hover:bg-leoGoldHover transition-colors shadow">
-                    Submit Licensing Inquiry
-                </button>
-            </form>
-            <p class="text-[10px] text-center text-gray-500">Configured for direct email dispatch upon backend integration.</p>
-        </div>
-    </div>
-
-    <!-- JAVASCRIPT LOGIC -->
+    <!-- Application Script Engine -->
     <script>
-        /* --- STORE DATA & LOGIC --- */
-        const storeProducts = [
-            { id: 1, title: '7Leo Horizon Smartwatch Pro', category: 'tech', price: 79.99, image: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=600&q=80', description: 'Advanced fitness tracking, AMOLED display, and Bluetooth calling. Fulfilled via trusted Amazon partner.', supplier: 'Amazon Partner' },
-            { id: 2, title: 'Minimalist Ambient Desk Lamp', category: 'lifestyle', price: 45.50, image: 'https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=600&q=80', description: 'Sleek aluminum LED desk lamp with adjustable color temperatures. Pinterest discovery favorite.', supplier: 'Alibaba Merchant' },
-            { id: 3, title: 'Wireless Noise-Canceling Pods', category: 'tech', price: 59.99, image: 'https://images.unsplash.com/photo-1590658268037-6bf12165a8df?auto=format&fit=crop&w=600&q=80', description: 'Immersive sound quality with active noise cancellation and long battery life.', supplier: 'Amazon Partner' },
-            { id: 4, title: 'Ergonomic Creator Desk Mat', category: 'lifestyle', price: 29.99, image: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=600&q=80', description: 'Extra-large waterproof PU leather desk mat for ultimate workspace aesthetics.', supplier: 'Pinterest Discovery' },
-            { id: 5, title: 'Portable RGB Creator Light', category: 'tech', price: 38.00, image: 'https://images.unsplash.com/photo-1513506003901-1e6a229e2d15?auto=format&fit=crop&w=600&q=80', description: 'Pocket-sized LED panel with adjustable RGB hues for content creators and streamers.', supplier: 'Alibaba Merchant' },
-            { id: 6, title: 'Aesthetic Ceramic Coffee Mug', category: 'lifestyle', price: 22.50, image: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=600&q=80', description: 'Handcrafted ceramic mug designed for late-night editing sessions and morning focus.', supplier: 'Pinterest Discovery' },
-            { id: 7, title: 'Ultra-Slim Power Bank 20000mAh', category: 'tech', price: 49.99, image: 'https://images.unsplash.com/photo-1609592424154-d2e4112b0a39?auto=format&fit=crop&w=600&q=80', description: 'Fast-charging portable power bank for phones, tablets, and accessories on the go.', supplier: 'Amazon Partner' },
-            { id: 8, title: 'Minimalist Mechanical Keyboard', category: 'tech', price: 89.99, image: 'https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=600&q=80', description: 'Compact wireless mechanical keyboard with customizable backlighting.', supplier: 'Alibaba Merchant' }
-        ];
+        function storeApp() {
+            return {
+                currentView: 'home',
+                currency: 'INR',
+                searchQuery: '',
+                selectedCategory: 'All',
+                sortBy: 'newest',
+                selectedProduct: null,
+                activeAccountTab: 'orders',
+                adminTab: 'overview',
+                showAddProductModal: false,
+                showPwaModal: false,
+                
+                // Profit calculator defaults
+                calcPrice: 1999,
+                calcCost: 650,
+                calcFees: 150,
 
-        let cart = [];
+                // Auth states
+                currentUser: null,
+                loginEmail: '',
+                signupName: '',
+                signupEmail: '',
 
-        function renderStoreProducts(productsToRender) {
-            const grid = document.getElementById('productGrid');
-            if (!grid) return;
-            grid.innerHTML = '';
-            if (productsToRender.length === 0) {
-                grid.innerHTML = `<div class="col-span-full text-center py-12 text-gray-400">No products found matching your search.</div>`;
-                return;
-            }
-            productsToRender.forEach(p => {
-                grid.innerHTML += `
-                    <div class="bg-leoCard border border-leoBorder rounded-3xl overflow-hidden shadow-lg group hover:border-leoGold/50 transition-all flex flex-col justify-between">
-                        <div>
-                            <div class="relative overflow-hidden h-48 bg-leoDark">
-                                <img src="${p.image}" alt="${p.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                                <span class="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-leoDark/80 backdrop-blur-md text-[10px] font-mono text-leoGold border border-leoBorder">${p.supplier}</span>
-                            </div>
-                            <div class="p-5 space-y-2">
-                                <h4 class="font-bold text-white text-base group-hover:text-leoGold transition-colors">${p.title}</h4>
-                                <p class="text-xs text-gray-400 line-clamp-2">${p.description}</p>
-                            </div>
-                        </div>
-                        <div class="p-5 pt-0 flex items-center justify-between">
-                            <span class="text-lg font-extrabold text-leoGold">$${p.price.toFixed(2)}</span>
-                            <div class="space-x-2">
-                                <button onclick="openProductModal(${p.id})" class="px-3 py-2 rounded-xl bg-leoDark border border-leoBorder text-gray-300 hover:text-white text-xs font-semibold transition-colors">Details</button>
-                                <button onclick="addToCart(${p.id})" class="px-4 py-2 rounded-xl bg-leoGold text-black text-xs font-bold hover:bg-leoGoldHover transition-colors shadow">Add</button>
-                            </div>
-                        </div>
-                    </div>
-                `;
-            });
-        }
+                // Checkout form
+                checkoutForm: {
+                    name: 'Alex Turner',
+                    email: 'alex@7leogroup.com',
+                    address: '777 Cyber Boulevard',
+                    city: 'Hyderabad',
+                    state: 'Telangana',
+                    zip: '500081',
+                    country: 'India'
+                },
 
-        function filterStoreProducts() {
-            const query = document.getElementById('storeSearchInput').value.toLowerCase();
-            const category = document.getElementById('categoryFilter').value;
-            const filtered = storeProducts.filter(p => {
-                const matchesQuery = p.title.toLowerCase().includes(query) || p.description.toLowerCase().includes(query);
-                const matchesCat = category === 'all' || p.category === category;
-                return matchesQuery && matchesCat;
-            });
-            renderStoreProducts(filtered);
-        }
+                // Tracking query
+                trackingQuery: '',
+                trackingResult: null,
+                trackingSteps: [
+                    { id: 1, title: 'Payment Confirmed', desc: 'Secure payment verified via gateway.', completed: true },
+                    { id: 2, title: 'Supplier Processing', desc: 'Order transmitted to Alibaba official API.', completed: true },
+                    { id: 3, title: 'Global Dispatch', desc: 'Shipped via Express Air Courier.', completed: true },
+                    { id: 4, title: 'Delivered', desc: 'Out for final delivery.', completed: false }
+                ],
 
-        function openProductModal(id) {
-            const p = storeProducts.find(item => item.id === id);
-            if (!p) return;
-            const content = document.getElementById('productModalContent');
-            content.innerHTML = `
-                <div class="rounded-2xl overflow-hidden h-64 bg-leoDark border border-leoBorder mb-4">
-                    <img src="${p.image}" alt="${p.title}" class="w-full h-full object-cover">
-                </div>
-                <div class="space-y-2">
-                    <span class="text-xs font-mono text-leoGold uppercase">${p.supplier}</span>
-                    <h3 class="text-2xl font-bold text-white">${p.title}</h3>
-                    <p class="text-sm text-gray-300">${p.description}</p>
-                    <div class="pt-2 flex items-center justify-between">
-                        <span class="text-xl font-extrabold text-leoGold">$${p.price.toFixed(2)}</span>
-                        <button onclick="addToCart(${p.id}); closeProductModal();" class="px-6 py-3 rounded-xl bg-leoGold text-black font-bold hover:bg-leoGoldHover transition-colors">Add to Cart</button>
-                    </div>
-                </div>
-            `;
-            document.getElementById('productModal').classList.remove('hidden');
-        }
+                // Notifications
+                notifications: [],
 
-        function closeProductModal() {
-            document.getElementById('productModal').classList.add('hidden');
-        }
+                // Wishlist
+                wishlist: [1, 3],
 
-        /* --- CART LOGIC --- */
-        function addToCart(id) {
-            const p = storeProducts.find(item => item.id === id);
-            if (!p) return;
-            const existing = cart.find(item => item.id === id);
-            if (existing) {
-                existing.qty += 1;
-            } else {
-                cart.push({ ...p, qty: 1 });
-            }
-            updateCartUI();
-        }
+                // Categories
+                categories: ['Tech & Gadgets', 'Smart Wearables', 'Global Essentials', 'Futuristic Lifestyle'],
 
-        function updateCartQty(id, change) {
-            const item = cart.find(i => i.id === id);
-            if (!item) return;
-            item.qty += change;
-            if (item.qty <= 0) {
-                cart = cart.filter(i => i.id !== id);
-            }
-            updateCartUI();
-        }
+                // Products dataset
+                products: [
+                    { id: 1, title: '7Leo Smart Pod X1', category: 'Tech & Gadgets', price: 2499, rating: 5, reviews: 42, description: 'Next-generation smart audio pod with active noise cancellation and futuristic glow housing.', image: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500&auto=format&fit=crop&q=60', sku: '7LEO-POD-01' },
+                    { id: 2, title: 'Cyberpunk LED Glasses', category: 'Futuristic Lifestyle', price: 1899, rating: 4, reviews: 18, description: 'Customizable neon visor with RGB animation modes for events and night commutes.', image: 'https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=500&auto=format&fit=crop&q=60', sku: '7LEO-CYBER-02' },
+                    { id: 3, title: 'Quantum Fitness Smartband', category: 'Smart Wearables', price: 3299, rating: 5, reviews: 96, description: 'Advanced biometric tracker monitoring blood oxygen, sleep cycles, and athletic performance.', image: 'https://images.unsplash.com/photo-1575311373937-040b8e1fd5b6?w=500&auto=format&fit=crop&q=60', sku: '7LEO-FIT-03' },
+                    { id: 4, title: 'Levitating Floating Globe', category: 'Global Essentials', price: 4499, rating: 4, reviews: 29, description: 'Magnetic suspension desk lamp and globe featuring sleek futuristic aesthetics.', image: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=500&auto=format&fit=crop&q=60', sku: '7LEO-GLOBE-04' }
+                ],
 
-        function removeFromCart(id) {
-            cart = cart.filter(i => i.id !== id);
-            updateCartUI();
-        }
+                // Cart
+                cart: [
+                    { id: 1, title: '7Leo Smart Pod X1', price: 2499, quantity: 1, image: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500&auto=format&fit=crop&q=60' }
+                ],
 
-        function updateCartUI() {
-            const totalItems = cart.reduce((sum, i) => sum + i.qty, 0);
-            document.getElementById('cartBadge').innerText = totalItems;
-            document.getElementById('cartBadgeMobile').innerText = totalItems;
+                // User Orders
+                userOrders: [
+                    { id: '7LEO-98421', date: 'August 12, 2026', items: 2, total: 4398, status: 'Shipped & Trackable' }
+                ],
 
-            const list = document.getElementById('cartItemsList');
-            if (!list) return;
-            list.innerHTML = '';
-            if (cart.length === 0) {
-                list.innerHTML = `<div class="text-center py-12 text-gray-500 text-sm">Your cart is currently empty.</div>`;
-                document.getElementById('cartTotalPrice').innerText = '$0.00';
-                return;
-            }
+                // Admin Orders
+                adminOrders: [
+                    { id: '7LEO-98421', customer: 'Alex Turner', items: 2, total: 4398, fulfillment: 'Synced with Supplier' },
+                    { id: '7LEO-98422', customer: 'Sarah Jenkins', items: 1, total: 2499, fulfillment: 'Manual Fulfillment Required' }
+                ],
 
-            let totalPrice = 0;
-            cart.forEach(i => {
-                totalPrice += i.price * i.qty;
-                list.innerHTML += `
-                    <div class="flex items-center justify-between p-3 rounded-2xl bg-leoDark border border-leoBorder">
-                        <div class="flex items-center space-x-3">
-                            <img src="${i.image}" class="w-12 h-12 rounded-xl object-cover" alt="${i.title}">
-                            <div>
-                                <h5 class="text-xs font-bold text-white line-clamp-1">${i.title}</h5>
-                                <p class="text-xs text-leoGold font-mono">$${i.price.toFixed(2)}</p>
-                            </div>
-                        </div>
-                        <div class="flex items-center space-x-2">
-                            <button onclick="updateCartQty(${i.id}, -1)" class="w-6 h-6 rounded-lg bg-leoCard border border-leoBorder text-gray-300 flex items-center justify-center text-xs">-</button>
-                            <span class="text-xs font-mono text-white">${i.qty}</span>
-                            <button onclick="updateCartQty(${i.id}, 1)" class="w-6 h-6 rounded-lg bg-leoCard border border-leoBorder text-gray-300 flex items-center justify-center text-xs">+</button>
-                            <button onclick="removeFromCart(${i.id})" class="text-red-400 hover:text-red-300 p-1 ml-1 text-xs"><i class="fa-solid fa-trash"></i></button>
-                        </div>
-                    </div>
-                `;
-            });
-            document.getElementById('cartTotalPrice').innerText = `$${totalPrice.toFixed(2)}`;
-        }
+                initStore() {
+                    lucide.createIcons();
+                    // Watch for view changes to re-initialize lucide icons
+                    this.$watch('currentView', () => {
+                        setTimeout(() => lucide.createIcons(), 50);
+                    });
+                    this.$watch('adminTab', () => {
+                        setTimeout(() => lucide.createIcons(), 50);
+                    });
+                },
 
-        function openCartModal() {
-            document.getElementById('cartModal').classList.remove('hidden');
-        }
+                showToast(message, type = 'info') {
+                    const id = Date.now();
+                    this.notifications.push({ id, message, type });
+                    setTimeout(() => {
+                        this.notifications = this.notifications.filter(n => n.id !== id);
+                    }, 4000);
+                },
 
-        function closeCartModal() {
-            document.getElementById('cartModal').classList.add('hidden');
-        }
+                formatCurrency(amountInINR) {
+                    const rates = { INR: 1, USD: 0.012, EUR: 0.011, GBP: 0.0095 };
+                    const symbols = { INR: '₹', USD: '$', EUR: '€', GBP: '£' };
+                    const converted = amountInINR * (rates[this.currency] || 1);
+                    return (symbols[this.currency] || '₹') + converted.toLocaleString('en-US', { maximumFractionDigits: 2 });
+                },
 
-        function proceedToCheckout() {
-            if (cart.length === 0) {
-                alert('Your cart is empty.');
-                return;
-            }
-            alert('Redirecting to secure partner checkout gateway (Amazon / Alibaba fulfillment integration point).');
-        }
+                cartItemCount() {
+                    return this.cart.reduce((sum, item) => sum + item.quantity, 0);
+                },
 
+                cartTotal() {
+                    return this.cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+                },
 
-        /* --- 7LEO BGM & PLAYLIST DATA & LOGIC --- */
-        const playlistsData = {
-            drive: {
-                title: '7Leo Drive Series',
-                desc: 'High-energy driving beats and highway rhythms crafted in GroovePad.',
-                tracks: [
-                    { title: 'Midnight Highway Pursuit', duration: '2:45', src: 'https://actions.google.com/sounds/v1/ambiences/highway_traffic.ogg' },
-                    { title: 'Turbo Drift Anthem', duration: '3:10', src: 'https://actions.google.com/sounds/v1/transportation/car_accelerating.ogg' },
-                    { title: 'Neon Dashboard Groove', duration: '2:55', src: 'https://actions.google.com/sounds/v1/science_fiction/scifi_engine_hum.ogg' },
-                    { title: 'Velocity Express', duration: '3:20', src: 'https://actions.google.com/sounds/v1/ambiences/city_traffic.ogg' }
-                ]
-            },
-            chill: {
-                title: '7Leo Chill Series',
-                desc: 'Relaxing ambient electronic soundscapes and smooth lofi grooves.',
-                tracks: [
-                    { title: 'Sunset Lounge Beats', duration: '3:15', src: 'https://actions.google.com/sounds/v1/ambiences/rain_heavy.ogg' },
-                    { title: 'Ocean Breeze Vibe', duration: '3:40', src: 'https://actions.google.com/sounds/v1/water/waves_ocean.ogg' },
-                    { title: 'Starlight Relaxation', duration: '3:05', src: 'https://actions.google.com/sounds/v1/ambiences/night_crickets.ogg' }
-                ]
-            },
-            gangster: {
-                title: '7Leo Gangster Series',
-                desc: 'Gritty urban basslines, heavy trap beats, and cinematic street rhythms.',
-                tracks: [
-                    { title: 'Underground Syndicate', duration: '2:50', src: 'https://actions.google.com/sounds/v1/ambiences/subway_station_ambience.ogg' },
-                    { title: 'Urban Alleyway Trap', duration: '3:25', src: 'https://actions.google.com/sounds/v1/industrial/factory_machinery.ogg' },
-                    { title: 'Shadow Syndicate Beat', duration: '3:00', src: 'https://actions.google.com/sounds/v1/ambiences/storm_thunder.ogg' }
-                ]
-            },
-            dj: {
-                title: '7Leo DJ Series',
-                desc: 'Club-ready electronic dance mixes, synth drops, and energetic club loops.',
-                tracks: [
-                    { title: 'Mainstage Electro Drop', duration: '3:30', src: 'https://actions.google.com/sounds/v1/science_fiction/laser_gun.ogg' },
-                    { title: 'Club Horizon Remix', duration: '3:05', src: 'https://actions.google.com/sounds/v1/ambiences/indoor_pub_ambience.ogg' },
-                    { title: 'Neon Floor Energy', duration: '3:45', src: 'https://actions.google.com/sounds/v1/weather/wind_gust.ogg' }
-                ]
-            },
-            cinematic: {
-                title: '7Leo Cinematic Series',
-                desc: 'Epic orchestral atmospheres, trailer tension builders, and dramatic swells.',
-                tracks: [
-                    { title: 'Awakening of Empires', duration: '4:10', src: 'https://actions.google.com/sounds/v1/ambiences/outdoor_wind.ogg' },
-                    { title: 'Tension & Horizon', duration: '3:50', src: 'https://actions.google.com/sounds/v1/science_fiction/spaceship_interior.ogg' },
-                    { title: 'Final Confrontation', duration: '4:00', src: 'https://actions.google.com/sounds/v1/weather/thunder_crack.ogg' }
-                ]
-            },
-            songs: {
-                title: '7Leo Songs Series',
-                desc: 'Melodic vocal chops, catchy hook arrangements, and signature GroovePad anthems.',
-                tracks: [
-                    { title: 'Echoes of Tomorrow', duration: '3:10', src: 'https://actions.google.com/sounds/v1/ambiences/daytime_forest_birds.ogg' },
-                    { title: 'Golden Horizon Vocal Loop', duration: '2:55', src: 'https://actions.google.com/sounds/v1/water/gentle_stream.ogg' }
-                ]
-            }
-        };
+                addToCart(product) {
+                    const existing = this.cart.find(i => i.id === product.id);
+                    if (existing) {
+                        existing.quantity++;
+                    } else {
+                        this.cart.push({ ...product, quantity: 1 });
+                    }
+                    this.showToast('Added ' + product.title + ' to cart', 'success');
+                },
 
-        let currentSeries = 'drive';
-        let currentTrackIndex = 0;
-        let audioElement = new Audio();
-        let isPlaying = false;
+                updateQuantity(index, delta) {
+                    this.cart[index].quantity += delta;
+                    if (this.cart[index].quantity <= 0) {
+                        this.cart.splice(index, 1);
+                    }
+                },
 
-        function switchPlaylist(seriesKey) {
-            currentSeries = seriesKey;
-            currentTrackIndex = 0;
-            
-            // Update Tab UI
-            document.querySelectorAll('.playlist-tab').forEach(btn => {
-                if (btn.dataset.series === seriesKey) {
-                    btn.className = 'playlist-tab px-5 py-2.5 rounded-xl bg-leoGold text-black font-semibold text-sm transition-all shadow-md shadow-leoGold/10';
-                } else {
-                    btn.className = 'playlist-tab px-5 py-2.5 rounded-xl bg-leoCard border border-leoBorder text-gray-300 hover:text-white font-semibold text-sm transition-all';
+                removeFromCart(index) {
+                    this.cart.splice(index, 1);
+                    this.showToast('Item removed from cart', 'info');
+                },
+
+                toggleWishlist(productId) {
+                    const idx = this.wishlist.indexOf(productId);
+                    if (idx > -1) {
+                        this.wishlist.splice(idx, 1);
+                        this.showToast('Removed from wishlist', 'info');
+                    } else {
+                        this.wishlist.push(productId);
+                        this.showToast('Added to wishlist', 'success');
+                    }
+                },
+
+                viewProduct(product) {
+                    this.selectedProduct = product;
+                    this.currentView = 'product-detail';
+                },
+
+                filteredProducts() {
+                    let result = this.products;
+                    if (this.selectedCategory !== 'All') {
+                        result = result.filter(p => p.category === this.selectedCategory);
+                    }
+                    if (this.searchQuery.trim() !== '') {
+                        const q = this.searchQuery.toLowerCase();
+                        result = result.filter(p => p.title.toLowerCase().includes(q) || p.description.toLowerCase().includes(q));
+                    }
+                    return result;
+                },
+
+                getProductById(id) {
+                    return this.products.find(p => p.id === id) || this.products[0];
+                },
+
+                processCheckout() {
+                    if (this.cart.length === 0) {
+                        this.showToast('Your cart is empty', 'error');
+                        return;
+                    }
+                    const orderId = '7LEO-' + Math.floor(10000 + Math.random() * 90000);
+                    this.userOrders.unshift({
+                        id: orderId,
+                        date: new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }),
+                        items: this.cartItemCount(),
+                        total: this.cartTotal(),
+                        status: 'Payment Confirmed & Processing'
+                    });
+                    this.cart = [];
+                    this.showToast('Order ' + orderId + ' placed successfully!', 'success');
+                    this.trackingQuery = orderId;
+                    this.currentView = 'tracking';
+                    this.searchTracking();
+                },
+
+                searchTracking() {
+                    if (!this.trackingQuery) return;
+                    this.trackingResult = {
+                        id: this.trackingQuery,
+                        status: 'Automated Fulfillment in Progress',
+                        fulfillment: 'Synced with Alibaba Supplier API'
+                    };
+                    this.showToast('Tracking details loaded', 'success');
+                },
+
+                login() {
+                    this.currentUser = { name: this.loginEmail.split('@')[0] || 'Alex Turner' };
+                    this.showToast('Signed in successfully', 'success');
+                },
+
+                signup() {
+                    this.currentUser = { name: this.signupName };
+                    this.showToast('Account created successfully', 'success');
+                },
+
+                logout() {
+                    this.currentUser = null;
+                    this.showToast('Signed out', 'info');
+                },
+
+                addNewProduct() {
+                    if (!this.newProdTitle || !this.newProdPrice) {
+                        this.showToast('Please fill in product title and price', 'error');
+                        return;
+                    }
+                    this.products.push({
+                        id: Date.now(),
+                        title: this.newProdTitle,
+                        category: this.newProdCategory || 'Tech & Gadgets',
+                        price: this.newProdPrice,
+                        rating: 5,
+                        reviews: 1,
+                        description: this.newProdDesc || 'High-performance futuristic item.',
+                        image: 'https://images.unsplash.com/photo-1526738549149-8e07eca6c147?w=500&auto=format&fit=crop&q=60',
+                        sku: '7LEO-NEW-' + Math.floor(100 + Math.random() * 900)
+                    });
+                    this.showAddProductModal = false;
+                    this.newProdTitle = '';
+                    this.newProdPrice = '';
+                    this.newProdDesc = '';
+                    this.showToast('New product added to catalog', 'success');
+                },
+
+                deleteProduct(id) {
+                    this.products = this.products.filter(p => p.id !== id);
+                    this.showToast('Product removed', 'info');
+                },
+
+                syncOrderToSupplier(orderId) {
+                    const order = this.adminOrders.find(o => o.id === orderId);
+                    if (order) {
+                        order.fulfillment = 'Synced with Supplier';
+                        this.showToast('Order ' + orderId + ' successfully transmitted to supplier API', 'success');
+                    }
+                },
+
+                importDiscoveryProduct(title, price, cost) {
+                    this.products.push({
+                        id: Date.now(),
+                        title: title,
+                        category: 'Futuristic Lifestyle',
+                        price: price,
+                        rating: 5,
+                        reviews: 1,
+                        description: 'Trending product discovered via platform research.',
+                        image: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500&auto=format&fit=crop&q=60',
+                        sku: '7LEO-DISC-' + Math.floor(100 + Math.random() * 900)
+                    });
+                    this.showToast('Successfully imported "' + title + '" to store catalog', 'success');
+                },
+
+                saveSettings() {
+                    this.showToast('Currency updated to ' + this.currency, 'info');
                 }
-            });
-
-            const playlist = playlistsData[seriesKey];
-            document.getElementById('currentPlaylistTitle').innerText = playlist.title;
-            document.getElementById('currentPlaylistDesc').innerText = playlist.desc;
-            document.getElementById('trackCountBadge').innerText = `${playlist.tracks.length} Tracks`;
-
-            renderTrackList();
-        }
-
-        function renderTrackList() {
-            const listContainer = document.getElementById('trackList');
-            const playlist = playlistsData[currentSeries];
-            listContainer.innerHTML = '';
-            playlist.tracks.forEach((track, idx) => {
-                const isActive = (idx === currentTrackIndex);
-                listContainer.innerHTML += `
-                    <div onclick="selectAndPlayTrack(${idx})" class="p-4 rounded-2xl border ${isActive ? 'bg-leoGold/10 border-leoGold text-white' : 'bg-leoDark border-leoBorder text-gray-300 hover:border-leoGold/40'} flex items-center justify-between cursor-pointer transition-all">
-                        <div class="flex items-center space-x-3">
-                            <div class="w-8 h-8 rounded-lg ${isActive ? 'bg-leoGold text-black font-bold' : 'bg-leoCard border border-leoBorder text-leoGold'} flex items-center justify-center text-xs">
-                                <i class="fa-solid ${isActive && isPlaying ? 'fa-pause' : 'fa-play'}"></i>
-                            </div>
-                            <div>
-                                <h5 class="text-xs sm:text-sm font-semibold">${track.title}</h5>
-                                <p class="text-[10px] text-gray-400">${playlist.title}</p>
-                            </div>
-                        </div>
-                        <span class="text-xs font-mono text-gray-400">${track.duration}</span>
-                    </div>
-                `;
-            });
-        }
-
-        function selectAndPlayTrack(idx) {
-            currentTrackIndex = idx;
-            const track = playlistsData[currentSeries].tracks[idx];
-            audioElement.src = track.src;
-            audioElement.play().then(() => {
-                isPlaying = true;
-                updatePlayerBar();
-                renderTrackList();
-            }).catch(err => {
-                console.log('Audio playback preview error:', err);
-                isPlaying = true;
-                updatePlayerBar();
-                renderTrackList();
-            });
-        }
-
-        function togglePlayPause() {
-            const playlist = playlistsData[currentSeries];
-            if (!audioElement.src) {
-                selectAndPlayTrack(0);
-                return;
-            }
-            if (isPlaying) {
-                audioElement.pause();
-                isPlaying = false;
-            } else {
-                audioElement.play().catch(() => {});
-                isPlaying = true;
-            }
-            updatePlayerBar();
-            renderTrackList();
-        }
-
-        function playNextTrack() {
-            const playlist = playlistsData[currentSeries];
-            currentTrackIndex = (currentTrackIndex + 1) % playlist.tracks.length;
-            selectAndPlayTrack(currentTrackIndex);
-        }
-
-        function playPrevTrack() {
-            const playlist = playlistsData[currentSeries];
-            currentTrackIndex = (currentTrackIndex - 1 + playlist.tracks.length) % playlist.tracks.length;
-            selectAndPlayTrack(currentTrackIndex);
-        }
-
-        function updatePlayerBar() {
-            const playlist = playlistsData[currentSeries];
-            const track = playlist.tracks[currentTrackIndex];
-            document.getElementById('playerTrackTitle').innerText = track ? track.title : 'Select a track to play';
-            document.getElementById('playerTrackSeries').innerText = playlist.title;
-            const icon = document.getElementById('playPauseBtnIcon');
-            icon.className = isPlaying ? 'fa-solid fa-pause text-sm' : 'fa-solid fa-play text-sm';
-        }
-
-        audioElement.addEventListener('timeupdate', () => {
-            if (audioElement.duration) {
-                const progress = (audioElement.currentTime / audioElement.duration) * 100;
-                document.getElementById('progressBar').value = progress;
-                document.getElementById('currentTime').innerText = formatTime(audioElement.currentTime);
-                document.getElementById('durationTime').innerText = formatTime(audioElement.duration);
-            }
-        });
-
-        audioElement.addEventListener('ended', () => {
-            playNextTrack();
-        });
-
-        function seekAudio(val) {
-            if (audioElement.duration) {
-                audioElement.currentTime = (val / 100) * audioElement.duration;
             }
         }
-
-        function formatTime(seconds) {
-            const mins = Math.floor(seconds / 60);
-            const secs = Math.floor(seconds % 60);
-            return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
-        }
-
-
-        /* --- ACCOUNT & MODAL LOGIC --- */
-        let authMode = 'login';
-
-        function openAccountModal() {
-            document.getElementById('accountModal').classList.remove('hidden');
-        }
-
-        function closeAccountModal() {
-            document.getElementById('accountModal').classList.add('hidden');
-        }
-
-        function switchAuthTab(mode) {
-            authMode = mode;
-            const loginBtn = document.getElementById('loginTabBtn');
-            const signupBtn = document.getElementById('signupTabBtn');
-            const nameField = document.getElementById('nameFieldContainer');
-            const submitBtn = document.getElementById('authSubmitBtn');
-            const errorDiv = document.getElementById('authErrorMsg');
-            errorDiv.classList.add('hidden');
-
-            if (mode === 'login') {
-                loginBtn.className = 'flex-1 py-2 rounded-lg bg-leoGold text-black font-semibold text-xs transition-all';
-                signupBtn.className = 'flex-1 py-2 text-gray-400 hover:text-white font-semibold text-xs transition-all';
-                nameField.classList.add('hidden');
-                submitBtn.innerText = 'Sign In';
-            } else {
-                signupBtn.className = 'flex-1 py-2 rounded-lg bg-leoGold text-black font-semibold text-xs transition-all';
-                loginBtn.className = 'flex-1 py-2 text-gray-400 hover:text-white font-semibold text-xs transition-all';
-                nameField.classList.remove('hidden');
-                submitBtn.innerText = 'Create Account';
-            }
-        }
-
-        function togglePasswordVisibility() {
-            const pwd = document.getElementById('authPassword');
-            const icon = document.getElementById('eyeIcon');
-            if (pwd.type === 'password') {
-                pwd.type = 'text';
-                icon.className = 'fa-solid fa-eye-slash';
-            } else {
-                pwd.type = 'password';
-                icon.className = 'fa-solid fa-eye';
-            }
-        }
-
-        function handleAuthSubmit(e) {
-            e.preventDefault();
-            const email = document.getElementById('authEmail').value;
-            const password = document.getElementById('authPassword').value;
-            const errorDiv = document.getElementById('authErrorMsg');
-
-            if (password.length < 6) {
-                errorDiv.innerText = 'Password must be at least 6 characters long.';
-                errorDiv.classList.remove('hidden');
-                return;
-            }
-
-            errorDiv.classList.add('hidden');
-            alert(`${authMode === 'login' ? 'Sign In' : 'Account Creation'} interface ready. Connect your Firebase / Supabase backend for real authentication.`);
-            closeAccountModal();
-        }
-
-        function handleOAuth(provider) {
-            alert(`${provider} OAuth integration-ready. Configure client ID and redirect URI in backend settings.`);
-        }
-
-
-        /* --- LICENSING MODAL LOGIC --- */
-        function openLicensingModal() {
-            document.getElementById('licensingModal').classList.remove('hidden');
-        }
-
-        function closeLicensingModal() {
-            document.getElementById('licensingModal').classList.add('hidden');
-        }
-
-        function handleLicensingSubmit(e) {
-            e.preventDefault();
-            alert('Licensing inquiry submitted successfully! 7Leo Group will review your project details and contact you shortly.');
-            closeLicensingModal();
-        }
-
-
-        /* --- MOBILE MENU & INIT --- */
-        function toggleMobileMenu() {
-            const menu = document.getElementById('mobileMenu');
-            const icon = document.getElementById('mobileMenuIcon');
-            menu.classList.toggle('hidden');
-            if (menu.classList.contains('hidden')) {
-                icon.className = 'fa-solid fa-bars text-xl';
-            } else {
-                icon.className = 'fa-solid fa-xmark text-xl';
-            }
-        }
-
-        // Initialize Store Products & Playlists on Load
-        window.addEventListener('DOMContentLoaded', () => {
-            renderStoreProducts(storeProducts);
-            renderTrackList();
-            updatePlayerBar();
-        });
     </script>
 </body>
 </html>
