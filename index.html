@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+                <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -50,7 +50,7 @@
         .hidden { display: none !important; }
         
         /* Buttons & Inputs */
-        .btn { padding: 12px 24px; border: none; cursor: pointer; font-weight: bold; border-radius: 6px; transition: 0.3s; font-size: 0.95rem; }
+        .btn { padding: 12px 24px; border: none; cursor: pointer; font-weight: bold; border-radius: 6px; transition: 0.3s; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.5px; }
         .btn-neon { background: transparent; border: 1px solid var(--neon-blue); color: var(--neon-blue); }
         .btn-neon:hover { background: var(--neon-blue); color: #000; box-shadow: 0 0 20px var(--neon-blue); }
         .btn-red { background: var(--red); color: var(--white); }
@@ -85,7 +85,6 @@
 
         /* BGM Universe */
         .bgm-hero { display: flex; gap: 40px; align-items: center; border-color: var(--neon-blue); }
-        .music-player-box { background: rgba(0,0,0,0.85); padding: 25px; border-radius: 10px; border: 1px solid var(--orange); margin-top: 25px; }
 
         /* Footer */
         footer { background: #050505; text-align: center; padding: 40px 20px; border-top: 1px solid var(--grey); margin-top: 60px; color: var(--grey); }
@@ -154,9 +153,9 @@
             wishlist: JSON.parse(localStorage.getItem('7leo_wishlist')) || [],
             selectedProduct: null,
             products: JSON.parse(localStorage.getItem('7leo_products')) || [
-                { id: 1, title: '7Leo Futuristic Hoodie', price: 99.00, category: 'Fashion', image: 'logo.png', stock: 15, desc: 'High-grade futuristic apparel crafted for absolute comfort and style.' },
-                { id: 2, title: 'GroovePad Audio Pro', price: 149.00, category: 'Tech', image: 'bgm-logo.png', stock: 8, desc: 'Professional audio production pad engineered for creators and beatmakers.' },
-                { id: 3, title: 'Vision Legacy Cap', price: 39.00, category: 'Fashion', image: 'logo.png', stock: 25, desc: 'Embroidered legacy headwear featuring the signature 7Leo identity.' }
+                { id: 1, title: '7Leo Futuristic Hoodie', price: 7499.00, category: 'Fashion', image: 'logo.png', stock: 15, desc: 'High-grade futuristic apparel crafted for absolute comfort and style.' },
+                { id: 2, title: 'GroovePad Audio Pro', price: 12499.00, category: 'Tech', image: 'bgm-logo.png', stock: 8, desc: 'Professional audio production pad engineered for creators and beatmakers.' },
+                { id: 3, title: 'Vision Legacy Cap', price: 2999.00, category: 'Fashion', image: 'logo.png', stock: 25, desc: 'Embroidered legacy headwear featuring the signature 7Leo identity.' }
             ],
             categories: ['All', 'Fashion', 'Tech', 'Music'],
             activeCategory: 'All',
@@ -209,12 +208,555 @@
                                 </div>
                             </section>
 
-                            <!-- About Section -->
+                            <!-- About / Bio Section -->
                             <section class="section-card">
                                 <h2>7Leo Group Commerce — About & Bio</h2>
-                                <p style="margin:20px 0; line-height:1.8; color:var(--grey); font-size:1.1rem;">7Leo Group Commerce is a modern digital commerce platform focused on bringing shopping, fashion, creativity, and digital services together in one place. Our goal is to build a simple, innovative, and user-friendly experience for everyone.</p>
+                                <p style="margin:20px 0; line-height:1.8; color:var(--grey); font-size:1.1rem;">7Leo Group Commerce is a modern digital commerce platform focused on bringing shopping, fashion, creativity, technology, and digital services together in one place. Our goal is to build a simple, innovative, and user-friendly experience for everyone.</p>
                                 <p style="font-size:1.2rem; color:var(--neon-blue); font-weight:bold;">7Leo Group Commerce — Shop. Create. Explore.</p>
                                 <p style="color:var(--grey); margin-top:8px;">A growing digital platform connecting commerce, fashion, creativity, and technology.</p>
+                            </section>
+
+                            <!-- Explore Store Preview -->
+                            <section class="section-card" style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:30px; border-color:var(--neon-blue);">
+                                <div style="display:flex; align-items:center; gap:25px; flex-wrap:wrap;">
+                                    <img src="file_00000000f2948207a9d90f38705cd83d.png" style="width:100px; height:100px; object-fit:contain;" alt="Store Logo">
+                                    <div>
+                                        <h2>EXPLORE 7LEO STORE</h2>
+                                        <p style="color:var(--grey); margin-top:8px;">Browse premium apparel, hardware, and creative gear in Indian Rupees (₹).</p>
+                                    </div>
+                                </div>
+                                <button class="btn btn-neon" onclick="router('store')">Enter 7Leo Store</button>
+                            </section>
+
+                            <!-- Explore BGM Preview -->
+                            <section class="section-card" style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:30px; border-color:var(--orange);">
+                                <div style="display:flex; align-items:center; gap:25px; flex-wrap:wrap;">
+                                    <img src="bgm-logo.png" style="width:100px; height:100px; object-fit:contain;" alt="BGM Logo">
+                                    <div>
+                                        <h2>EXPLORE 7LEO BGM</h2>
+                                        <p style="color:var(--grey); margin-top:8px;">Enter the musical universe of GroovePad audio and professional licensing.</p>
+                                    </div>
+                                </div>
+                                <button class="btn btn-orange" onclick="router('bgm')">Enter 7Leo BGM</button>
+                            </section>
+                        </div>`;
+                    break;
+
+                case 'store':
+                    const filteredProducts = state.activeCategory === 'All' 
+                        ? state.products 
+                        : state.products.filter(p => p.category === state.activeCategory);
+
+                    app.innerHTML = `
+                        <div class="container">
+                            <div style="display:flex; align-items:center; gap:20px; margin-bottom:25px; flex-wrap:wrap;">
+                                <img src="file_00000000f2948207a9d90f38705cd83d.png" style="width:90px; height:90px; object-fit:contain;" alt="Store Logo">
+                                <div>
+                                    <h2>7Leo Store</h2>
+                                    <p style="color:var(--grey)">Full functional e-commerce catalog with instant search, filters, and checkout architecture (Currency: ₹).</p>
+                                </div>
+                            </div>
+
+                            <input type="text" id="search-bar" placeholder="Search products by title..." oninput="filterProducts(this.value)">
+                            
+                            <div style="display:flex; gap:10px; margin:20px 0; flex-wrap:wrap;">
+                                ${state.categories.map(cat => `
+                                    <button class="btn ${state.activeCategory === cat ? 'btn-neon' : ''}" style="background:${state.activeCategory === cat ? '' : 'rgba(255,255,255,0.05)'}" onclick="setCategory('${cat}')">${cat}</button>
+                                `).join('')}
+                            </div>
+
+                            <div class="product-grid" id="product-container">
+                                ${filteredProducts.map(p => `
+                                    <div class="product-card" onclick="router('product-detail', ${p.id})">
+                                        <div>
+                                            <img src="${p.image}" alt="${p.title}">
+                                            <h3>${p.title}</h3>
+                                            <p style="color:var(--neon-blue); margin: 12px 0; font-size:1.1rem; font-weight:bold;">₹${p.price.toLocaleString('en-IN', {minimumFractionDigits: 2})}</p>
+                                        </div>
+                                        <div style="display:flex; gap:10px; margin-top:10px;" onclick="event.stopPropagation()">
+                                            <button class="btn btn-neon" style="flex:1;" onclick="addToCart(${p.id})">Add to Cart</button>
+                                            <button class="btn btn-red" style="padding:10px 14px;" onclick="toggleWishlist(${p.id})">❤️</button>
+                                        </div>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>`;
+                    break;
+
+                case 'product-detail':
+                    const p = state.products.find(item => item.id === state.selectedProduct) || state.products[0];
+                    app.innerHTML = `
+                        <div class="container" style="max-width:900px;">
+                            <button class="btn btn-neon" style="margin-bottom:20px;" onclick="router('store')">← Back to Store</button>
+                            <div style="display:flex; gap:40px; background:rgba(255,255,255,0.02); padding:40px; border-radius:12px; border:1px solid var(--grey); flex-wrap:wrap;">
+                                <img src="${p.image}" style="max-width:350px; width:100%; height:300px; object-fit:cover; border-radius:8px;" alt="${p.title}">
+                                <div style="flex:1;">
+                                    <h2>${p.title}</h2>
+                                    <p style="color:var(--neon-blue); font-size:1.5rem; font-weight:bold; margin: 15px 0;">₹${p.price.toLocaleString('en-IN', {minimumFractionDigits: 2})}</p>
+                                    <p style="color:var(--grey); line-height:1.6; margin-bottom:20px;">${p.desc}</p>
+                                    <p style="margin-bottom:15px; font-size:0.95rem;">Stock Status: <strong style="color:${p.stock > 0 ? 'var(--neon-blue)' : 'var(--red)'}">${p.stock > 0 ? `${p.stock} Available` : 'Out of Stock'}</strong></p>
+                                    <div style="display:flex; gap:15px; flex-wrap:wrap;">
+                                        <button class="btn btn-neon" onclick="addToCart(${p.id})">Add to Cart</button>
+                                        <button class="btn btn-orange" onclick="router('cart')">View Cart</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>`;
+                    break;
+
+                case 'cart':
+                    const cartTotal = state.cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+                    app.innerHTML = `
+                        <div class="container" style="max-width:850px;">
+                            <h2>Shopping Cart & Secure Checkout</h2>
+                            ${state.cart.length === 0 ? '<p style="margin-top:25px; color:var(--grey);">Your cart is currently empty.</p>' : `
+                                <div style="margin-top:25px;">
+                                    ${state.cart.map(i => `
+                                        <div style="display:flex; justify-content:space-between; align-items:center; padding:18px; border-bottom:1px solid var(--grey); flex-wrap:wrap; gap:15px;">
+                                            <div>
+                                                <strong>${i.title}</strong>
+                                                <div style="color:var(--grey); font-size:0.9rem; margin-top:4px;">₹${i.price.toLocaleString('en-IN', {minimumFractionDigits: 2})} each</div>
+                                            </div>
+                                            <div style="display:flex; align-items:center; gap:20px;">
+                                                <div style="display:flex; align-items:center; gap:8px;">
+                                                    <button class="btn btn-neon" style="padding:4px 10px;" onclick="updateQty(${i.id}, -1)">-</button>
+                                                    <span>${i.qty}</span>
+                                                    <button class="btn btn-neon" style="padding:4px 10px;" onclick="updateQty(${i.id}, 1)">+</button>
+                                                </div>
+                                                <span style="font-weight:bold; color:var(--neon-blue);">₹${(i.price * i.qty).toLocaleString('en-IN', {minimumFractionDigits: 2})}</span>
+                                                <button class="btn btn-red" style="padding:6px 12px; font-size:0.85rem;" onclick="removeFromCart(${i.id})">Remove</button>
+                                            </div>
+                                        </div>
+                                    `).join('')}
+                                    
+                                    <div style="margin-top:35px; background:rgba(255,255,255,0.02); padding:30px; border:1px solid var(--orange); border-radius:10px;">
+                                        <h3>Order Summary & Checkout Architecture</h3>
+                                        <p style="color:var(--grey); margin:10px 0 20px 0;">Total Amount: <strong style="color:var(--white); font-size:1.3rem;">₹${cartTotal.toLocaleString('en-IN', {minimumFractionDigits: 2})}</strong></p>
+                                        <form onsubmit="handleCheckout(event)" style="display:grid; gap:15px;">
+                                            <input type="text" id="chk-name" placeholder="Full Customer Name" required>
+                                            <input type="email" id="chk-email" placeholder="Customer Email" required>
+                                            <textarea id="chk-address" placeholder="Shipping / Cargo Address (India)" rows="3" required></textarea>
+                                            <div style="background:rgba(255,153,0,0.1); border:1px solid var(--orange); padding:15px; border-radius:6px; font-size:0.9rem; color:var(--orange);">
+                                                ⚠️ <strong>Integration-Ready Notice:</strong> Razorpay or Stripe payment gateway credentials are not currently bound. Checkout is architected for live integration.
+                                            </div>
+                                            <button type="submit" class="btn btn-orange">Proceed to Secure Checkout</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            `}
+                        </div>`;
+                    break;
+
+                case 'bgm':
+                    app.innerHTML = `
+                        <div class="container">
+                            <div class="bgm-hero section-card">
+                                <img src="bgm-logo.png" style="width:130px; height:130px; object-fit:contain;" alt="BGM Logo">
+                                <div>
+                                    <img src="bgm-banmer.png" style="max-width:100%; height:auto; margin-bottom:15px; border-radius:8px;" alt="BGM Banner">
+                                    <h2>7LEO BGM — MUSIC WORLD</h2>
+                                    <p style="color:var(--grey)">Cinematic sound. GroovePad production. Professional audio culture.</p>
+                                    <p style="margin: 10px 0; font-size: 0.95rem; line-height: 1.5; color: #ccc;">Drive • Chill • Gangster • DJ • Cinematic. Handcrafted instrumental background music designed to elevate your creative projects.</p>
+                                    <div style="margin-top:20px; display:flex; gap:15px; flex-wrap:wrap;">
+                                        <button class="btn btn-red" onclick="window.open('https://www.youtube.com/@7LeoBGM', '_blank')">WATCH 7LEO BGM ON YOUTUBE</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Music Playlists -->
+                            <div class="section-card">
+                                <h3>Music Playlists (Studio Collection)</h3>
+                                <div style="display:flex; gap:10px; margin:20px 0; flex-wrap:wrap;">
+                                    <span style="background:rgba(0,242,255,0.1); border:1px solid var(--neon-blue); padding:8px 14px; border-radius:6px; font-size:0.85rem;">Featured Music</span>
+                                    <span style="background:rgba(255,255,255,0.05); padding:8px 14px; border-radius:6px; font-size:0.85rem;">Cinematic Collection</span>
+                                    <span style="background:rgba(255,255,255,0.05); padding:8px 14px; border-radius:6px; font-size:0.85rem;">Advertisement Music</span>
+                                    <span style="background:rgba(255,255,255,0.05); padding:8px 14px; border-radius:6px; font-size:0.85rem;">Trailer Music</span>
+                                    <span style="background:rgba(255,255,255,0.05); padding:8px 14px; border-radius:6px; font-size:0.85rem;">Shorts & Reels</span>
+                                    <span style="background:rgba(255,255,255,0.05); padding:8px 14px; border-radius:6px; font-size:0.85rem;">Royalty-Free Collection</span>
+                                </div>
+
+                                <ul style="list-style:none; margin-top:20px; display:grid; gap:15px;">
+                                    ${state.tracks.map(t => `
+                                        <li style="background:rgba(255,255,255,0.02); padding:18px; border:1px solid var(--grey); border-radius:8px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+                                            <div>
+                                                <strong style="font-size:1.05rem;">${t.title}</strong>
+                                                <div style="font-size:0.85rem; color:var(--grey); margin-top:4px;">${t.series} — Duration: ${t.duration}</div>
+                                            </div>
+                                            <div style="display:flex; gap:10px;">
+                                                <button class="btn btn-neon" onclick="alert('Playing: ${t.title}')">Play</button>
+                                                <button class="btn btn-orange" onclick="alert('Queued next')">Queue</button>
+                                            </div>
+                                        </li>
+                                    `).join('')}
+                                </ul>
+                            </div>
+
+                            <!-- Music Purchase & Licensing Section -->
+                            <div class="section-card" style="border-color:var(--orange);">
+                                <h2>Music Purchase & Licensing</h2>
+                                <p style="margin:15px 0; color:var(--grey); line-height:1.6;">Need music for your project? 7Leo BGM provides professional music purchasing and licensing options for creators, brands, and commercial productions.</p>
+                                
+                                <p style="font-weight:bold; margin-top:20px;">Supported project categories include:</p>
+                                <ul style="margin:10px 0 25px 20px; color:var(--grey); display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:8px;">
+                                    <li>Advertisements</li>
+                                    <li>Trailers</li>
+                                    <li>Shorts & Reels</li>
+                                    <li>YouTube videos</li>
+                                    <li>Promotional videos</li>
+                                    <li>Brand videos</li>
+                                    <li>Product launches</li>
+                                    <li>Commercial projects</li>
+                                    <li>Cinematic projects</li>
+                                    <li>Social media content</li>
+                                </ul>
+
+                                <div style="display:flex; gap:12px; flex-wrap:wrap; margin-bottom:30px;">
+                                    <button class="btn btn-neon" onclick="setReqType('Music Purchase')">Purchase Music</button>
+                                    <button class="btn btn-orange" onclick="setReqType('Music Licensing')">Music Licensing</button>
+                                    <button class="btn btn-neon" onclick="setReqType('Advertisement')">Music for Advertisement</button>
+                                    <button class="btn btn-orange" onclick="setReqType('Trailer')">Music for Trailer</button>
+                                    <button class="btn btn-neon" onclick="setReqType('Shorts & Reels')">Music for Shorts & Reels</button>
+                                    <button class="btn btn-orange" onclick="setReqType('Promotional Video')">Music for Promotional Video</button>
+                                    <button class="btn btn-neon" onclick="setReqType('Commercial Project')">Music for Commercial Project</button>
+                                    <button class="btn btn-orange" onclick="setReqType('Request a License')">Request a License</button>
+                                </div>
+
+                                <h3>Licensing Inquiry & Purchase Request Form</h3>
+                                <form onsubmit="handleMusicRequest(event)" style="margin-top:20px; display:grid; gap:15px;">
+                                    <input type="text" id="req-name" placeholder="Your Name" required>
+                                    <input type="email" id="req-email" placeholder="Your Email Address" required>
+                                    <input type="text" id="req-brand" placeholder="Project / Brand Name" required>
+                                    <select id="req-type">
+                                        <option value="Music Purchase">Music Purchase</option>
+                                        <option value="Music Licensing">Music Licensing</option>
+                                        <option value="Advertisement">Advertisement</option>
+                                        <option value="Promotional Video">Promotional video</option>
+                                        <option value="Trailer">Trailer</option>
+                                        <option value="Shorts & Reels">Shorts & Reels</option>
+                                        <option value="YouTube Video">YouTube video</option>
+                                        <option value="Brand Video">Brand video</option>
+                                        <option value="Commercial Project">Commercial project</option>
+                                        <option value="Cinematic Project">Cinematic project</option>
+                                        <option value="Request a License">Request a License</option>
+                                    </select>
+                                    <input type="text" id="req-requirement" placeholder="Music Requirement / Style">
+                                    <input type="text" id="req-platform" placeholder="Intended Platform (YouTube, Instagram, etc.)">
+                                    <input type="text" id="req-duration" placeholder="Duration / Usage Scope">
+                                    <input type="text" id="req-budget" placeholder="Budget (Optional)">
+                                    <textarea id="req-msg" placeholder="Detailed message about your project..." rows="3" required></textarea>
+                                    <div style="background:rgba(255,255,255,0.03); border:1px solid var(--grey); padding:15px; border-radius:6px; font-size:0.9rem; color:var(--grey);">
+                                        ℹ️ <strong>Backend Configuration Notice:</strong> Email delivery service (e.g. SendGrid / Formspree) is required to transmit submissions live.
+                                    </div>
+                                    <button type="submit" class="btn btn-orange">SUBMIT LICENSING REQUEST</button>
+                                </form>
+                            </div>
+                        </div>`;
+                    break;
+
+                case 'founder':
+                    app.innerHTML = `
+                        <div class="container">
+                            <div class="section-card founder-box">
+                                <img src="founder.jpg" alt="AbuBakker Bellary">
+                                <div>
+                                    <h2>Meet the Founder & CEO</h2>
+                                    <h3 style="color:var(--neon-blue); margin: 10px 0;">ABUBAKKER BELLARY</h3>
+                                    <p style="color:var(--grey); margin-bottom: 15px;">Karnataka State | Hospet – 583201 | Vijayanaga Zilla</p>
+                                    <p style="line-height:1.7;">This website was built entirely on a mobile phone — with no friends, no team support, and no investors. Just a solo founder with a vision, dedication, and the determination to build something meaningful from the ground up.</p>
+                                    <p style="margin-top:20px; font-weight:bold; color:var(--orange); font-size:1.1rem;">Built solo. Dreamed big.</p>
+                                </div>
+                            </div>
+                        </div>`;
+                    break;
+
+                case 'about':
+                    app.innerHTML = `
+                        <div class="container" style="max-width:850px;">
+                            <div class="section-card" style="text-align:center;">
+                                <h2>7Leo Group Commerce — About & Bio</h2>
+                                <p style="margin:25px 0; line-height:1.8; color:var(--grey); font-size:1.1rem;">7Leo Group Commerce is a modern digital commerce platform focused on bringing shopping, fashion, creativity, technology, and digital services together in one place. Our goal is to build a simple, innovative, and user-friendly experience for everyone.</p>
+                                <p style="font-size:1.3rem; color:var(--neon-blue); font-weight:bold;">7Leo Group Commerce — Shop. Create. Explore.</p>
+                                <p style="color:var(--grey); margin-top:10px; font-size:1.05rem;">A growing digital platform connecting commerce, fashion, creativity, and technology.</p>
+                            </div>
+                        </div>`;
+                    break;
+
+                case 'qr':
+                    app.innerHTML = `
+                        <div class="container" style="text-align:center; max-width:600px;">
+                            <h2>Scan & Enter 7Leo Group Commerce</h2>
+                            <p style="color:var(--grey); margin:15px 0;">Take 7Leo Group Commerce with you everywhere.</p>
+                            
+                            <div class="section-card">
+                                <div id="qrcode-box" style="margin-bottom:20px;">
+                                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=" + encodeURIComponent(window.location.href) alt="Dynamic QR Code" style="background:#fff; padding:10px; border-radius:6px;">
+                                </div>
+                                <p style="word-break:break-all; font-size:0.9rem; color:var(--neon-blue);">${window.location.href}</p>
+                            </div>
+
+                            <div style="display:flex; gap:15px; justify-content:center; flex-wrap:wrap;">
+                                <button class="btn btn-neon" onclick="navigator.clipboard.writeText(window.location.href); alert('Website link copied to clipboard!');">Copy Website Link</button>
+                                <button class="btn btn-orange" onclick="alert('To Install: Open browser menu (⋮ or Share) and select Add to Home Screen or Install App.')">Install App PWA</button>
+                            </div>
+                        </div>`;
+                    break;
+
+                case 'account':
+                    app.innerHTML = `
+                        <div class="container" style="max-width:600px;">
+                            <h2>Account & Authentication</h2>
+                            ${state.user ? `
+                                <div class="section-card">
+                                    <h3>Profile Dashboard</h3>
+                                    <p style="margin:15px 0;">Signed in as: <strong>${state.user.email}</strong></p>
+                                    <p style="margin-bottom:20px; color:var(--grey);">Account Role: <strong>${state.user.role}</strong></p>
+                                    <button class="btn btn-red" onclick="logout()">Sign Out</button>
+                                </div>
+                            ` : `
+                                <div class="section-card" style="display:grid; gap:20px;">
+                                    <h3>Sign In / Create Account</h3>
+                                    <form onsubmit="handleEmailAuth(event)" style="display:grid; gap:12px;">
+                                        <input type="email" id="auth-email" placeholder="Email address" required>
+                                        <input type="password" id="auth-password" placeholder="Password" required>
+                                        <input type="password" id="auth-password-confirm" placeholder="Confirm Password (for Create Account)">
+                                        <div style="display:flex; justify-content:space-between; align-items:center; font-size:0.85rem; color:var(--grey);">
+                                            <span>Secure 7Leo Portal</span>
+                                            <span style="cursor:pointer; color:var(--neon-blue);" onclick="alert('Password reset link sent to your email if registered.')">Forgot Password?</span>
+                                        </div>
+                                        <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:5px;">
+                                            <button type="submit" class="btn btn-neon" style="flex:1;">Sign In / Create Account</button>
+                                        </div>
+                                    </form>
+                                    <div style="text-align:center; color:var(--grey); font-size:0.9rem;">or connect with external providers</div>
+                                    <button class="btn btn-neon" onclick="handleOAuth('Google')">Sign in with Google</button>
+                                    <button class="btn btn-neon" onclick="handleOAuth('Apple')">Sign in with Apple</button>
+                                    <div style="background:rgba(255,255,255,0.03); border:1px solid var(--grey); padding:12px; border-radius:6px; font-size:0.85rem; color:var(--grey);">
+                                        ℹ️ <strong>Configuration Notice:</strong> Google and Apple OAuth client credentials require backend configuration for live authentication.
+                                    </div>
+                                    <p style="font-size:0.85rem; color:var(--grey); text-align:center;">Super Admin login: <strong>7leogroup@gmail.com</strong></p>
+                                </div>
+                            `}
+                        </div>`;
+                    break;
+
+                case 'admin':
+                    if (state.user?.email === '7leogroup@gmail.com') {
+                        app.innerHTML = `
+                            <div class="container">
+                                <h2 style="color:var(--orange);">Super Admin Management Dashboard</h2>
+                                <p style="color:var(--grey); margin-bottom:25px;">Full administrative control over store inventory and publishing.</p>
+                                
+                                <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:25px;">
+                                    <div class="section-card">
+                                        <h3>Add New Product (₹)</h3>
+                                        <input type="text" id="adm-title" placeholder="Product Title">
+                                        <input type="number" id="adm-price" placeholder="Price (₹)">
+                                        <input type="text" id="adm-cat" placeholder="Category (Fashion / Tech)">
+                                        <input type="number" id="adm-stock" placeholder="Stock Quantity">
+                                        <textarea id="adm-desc" placeholder="Product Description" rows="2"></textarea>
+                                        <button class="btn btn-neon" style="margin-top:12px; width:100%;" onclick="adminAddProduct()">Publish Product</button>
+                                    </div>
+
+                                    <div class="section-card">
+                                        <h3>Existing Inventory (${state.products.length})</h3>
+                                        <div style="max-height:300px; overflow-y:auto; margin-top:15px; display:grid; gap:10px;">
+                                            ${state.products.map(pr => `
+                                                <div style="background:rgba(255,255,255,0.02); padding:12px; border:1px solid var(--grey); border-radius:6px; display:flex; justify-content:space-between; align-items:center;">
+                                                    <div>
+                                                        <strong>${pr.title}</strong>
+                                                        <div style="font-size:0.85rem; color:var(--neon-blue);">₹${pr.price.toLocaleString('en-IN', {minimumFractionDigits: 2})} — Stock: ${pr.stock}</div>
+                                                    </div>
+                                                    <button class="btn btn-red" style="padding:4px 10px; font-size:0.8rem;" onclick="adminDeleteProduct(${pr.id})">Delete</button>
+                                                </div>
+                                            `).join('')}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>`;
+                    } else {
+                        app.innerHTML = `<div class="container"><div class="section-card"><h2>Access Denied</h2><p style="margin-top:15px; color:var(--grey);">Super Admin privileges are required to view this panel.</p></div></div>`;
+                    }
+                    break;
+
+                default:
+                    app.innerHTML = `<div class="container"><h2>Page not found</h2></div>`;
+            }
+        };
+
+        // Actions & Event Handlers
+        window.setCategory = (cat) => { state.activeCategory = cat; render(); };
+        window.filterProducts = (query) => {
+            const container = document.getElementById('product-container');
+            const filtered = state.products.filter(p => p.title.toLowerCase().includes(query.toLowerCase()));
+            container.innerHTML = filtered.map(p => `
+                <div class="product-card" onclick="router('product-detail', ${p.id})">
+                    <div>
+                        <img src="${p.image}" alt="${p.title}">
+                        <h3>${p.title}</h3>
+                        <p style="color:var(--neon-blue); margin: 12px 0; font-size:1.1rem; font-weight:bold;">₹${p.price.toLocaleString('en-IN', {minimumFractionDigits: 2})}</p>
+                    </div>
+                    <div style="display:flex; gap:10px; margin-top:10px;" onclick="event.stopPropagation()">
+                        <button class="btn btn-neon" style="flex:1;" onclick="addToCart(${p.id})">Add to Cart</button>
+                        <button class="btn btn-red" style="padding:10px 14px;" onclick="toggleWishlist(${p.id})">❤️</button>
+                    </div>
+                </div>
+            `).join('') || '<p style="grid-column:1/-1; text-align:center; color:var(--grey);">No products found matching your search.</p>';
+        };
+
+        window.addToCart = (id) => {
+            const product = state.products.find(p => p.id === id);
+            const existing = state.cart.find(item => item.id === id);
+            if (existing) {
+                existing.qty += 1;
+            } else {
+                state.cart.push({ ...product, qty: 1 });
+            }
+            localStorage.setItem('7leo_cart', JSON.stringify(state.cart));
+            updateNavAuth();
+            alert('Product added to cart successfully!');
+        };
+
+        window.updateQty = (id, delta) => {
+            const item = state.cart.find(i => i.id === id);
+            if (item) {
+                item.qty += delta;
+                if (item.qty <= 0) {
+                    state.cart = state.cart.filter(i => i.id !== id);
+                }
+                localStorage.setItem('7leo_cart', JSON.stringify(state.cart));
+                render();
+            }
+        };
+
+        window.removeFromCart = (id) => {
+            state.cart = state.cart.filter(item => item.id !== id);
+            localStorage.setItem('7leo_cart', JSON.stringify(state.cart));
+            render();
+        };
+
+        window.toggleWishlist = (id) => {
+            if (state.wishlist.includes(id)) {
+                state.wishlist = state.wishlist.filter(i => i !== id);
+                alert('Removed from wishlist.');
+            } else {
+                state.wishlist.push(id);
+                alert('Added to wishlist!');
+            }
+            localStorage.setItem('7leo_wishlist', JSON.stringify(state.wishlist));
+        };
+
+        window.handleCheckout = (e) => {
+            e.preventDefault();
+            alert('Checkout architecture verified. Integration-ready payment gateway credentials (Razorpay/Stripe) are required to complete live transaction processing.');
+        };
+
+        window.setReqType = (type) => {
+            const select = document.getElementById('req-type');
+            if (select) select.value = type;
+            window.scrollTo({ top: document.getElementById('req-type').offsetTop - 100, behavior: 'smooth' });
+        };
+
+        window.handleMusicRequest = (e) => {
+            e.preventDefault();
+            const name = document.getElementById('req-name').value;
+            const email = document.getElementById('req-email').value;
+            const brand = document.getElementById('req-brand').value;
+            const type = document.getElementById('req-type').value;
+            const msg = document.getElementById('req-msg').value;
+            
+            state.licensingRequests.push({ name, email, brand, type, msg, date: new Date().toLocaleString() });
+            localStorage.setItem('7leo_requests', JSON.stringify(state.licensingRequests));
+            alert('Music licensing inquiry stored successfully! Backend email notification service required for live delivery.');
+            e.target.reset();
+        };
+
+        window.handleEmailAuth = (e) => {
+            e.preventDefault();
+            const email = document.getElementById('auth-email').value;
+            state.user = { email, role: email === '7leogroup@gmail.com' ? 'SUPER_ADMIN' : 'VISITOR' };
+            localStorage.setItem('7leo_user', JSON.stringify(state.user));
+            router('account');
+        };
+
+        window.handleOAuth = (provider) => {
+            alert(`${provider} authentication configuration required. Please connect OAuth credentials.`);
+        };
+
+        window.logout = () => {
+            state.user = null;
+            localStorage.removeItem('7leo_user');
+            router('home');
+        };
+
+        window.adminAddProduct = () => {
+            const title = document.getElementById('adm-title').value;
+            const price = parseFloat(document.getElementById('adm-price').value);
+            const category = document.getElementById('adm-cat').value || 'General';
+            const stock = parseInt(document.getElementById('adm-stock').value) || 10;
+            const desc = document.getElementById('adm-desc').value || 'Official 7Leo Product.';
+
+            if (!title || isNaN(price)) return alert('Please enter valid product title and price.');
+            state.products.push({ id: Date.now(), title, price, category, image: 'logo.png', stock, desc });
+            localStorage.setItem('7leo_products', JSON.stringify(state.products));
+            alert('Product published successfully!');
+            render();
+        };
+
+        window.adminDeleteProduct = (id) => {
+            if (confirm('Are you sure you want to delete this product?')) {
+                state.products = state.products.filter(p => p.id !== id);
+                localStorage.setItem('7leo_products', JSON.stringify(state.products));
+                render();
+            }
+        };
+
+        const updateNavAuth = () => {
+            const totalCount = state.cart.reduce((a, c) => a + c.qty, 0);
+            const cartSpan = document.getElementById('cart-count');
+            if (cartSpan) cartSpan.innerText = totalCount;
+            
+            const adminLink = document.getElementById('nav-admin');
+            if (adminLink) {
+                if (state.user?.email === '7leogroup@gmail.com') {
+                    adminLink.classList.remove('hidden');
+                } else {
+                    adminLink.classList.add('hidden');
+                }
+            }
+        };
+
+        window.onload = () => {
+            setTimeout(() => {
+                const splash = document.getElementById('splash-screen');
+                if (splash) {
+                    splash.style.opacity = '0';
+                    setTimeout(() => splash.remove(), 1000);
+                }
+            }, 4000);
+            render();
+        };
+
+        // Service Worker registration for PWA
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('data:text/javascript;base64,' + btoa(`
+                    const CACHE_NAME = '7leo-commerce-v4';
+                    self.addEventListener('install', e => e.waitUntil(self.skipWaiting()));
+                    self.addEventListener('activate', e => e.waitUntil(
+                        caches.keys().then(keys => Promise.all(
+                            keys.map(key => { if (key !== CACHE_NAME) return caches.delete(key); })
+                        )).then(() => self.clients.claim())
+                    ));
+                    self.addEventListener('fetch', e => e.respondWith(
+                        fetch(e.request).catch(() => caches.match(e.request))
+                    ));
+                `)).catch(() => {});
+            });
+        }
+    </script>
+</body>
+</html>
+                <p style="color:var(--grey); margin-top:8px;">A growing digital platform connecting commerce, fashion, creativity, and technology.</p>
                             </section>
 
                             <!-- Explore Store Preview -->
