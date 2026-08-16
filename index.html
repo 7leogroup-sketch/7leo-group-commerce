@@ -3,17 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>7Leo Group - Premium Store & BGM</title>
+    <title>7Leo Group</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         @keyframes rainbowGlow {
-            0% { border-color: #ff0000; box-shadow: 0 0 15px rgba(255,0,0,0.5); }
-            20% { border-color: #ff7f00; box-shadow: 0 0 15px rgba(255,127,0,0.5); }
-            40% { border-color: #ffff00; box-shadow: 0 0 15px rgba(255,255,0,0.5); }
-            60% { border-color: #00ff00; box-shadow: 0 0 15px rgba(0,255,0,0.5); }
-            80% { border-color: #0000ff; box-shadow: 0 0 15px rgba(0,0,255,0.5); }
-            100% { border-color: #8b00ff; box-shadow: 0 0 15px rgba(139,0,255,0.5); }
+            0% { border-color: #ff0000; box-shadow: 0 0 20px rgba(255,0,0,0.6); }
+            20% { border-color: #ff7f00; box-shadow: 0 0 20px rgba(255,127,0,0.6); }
+            40% { border-color: #ffff00; box-shadow: 0 0 20px rgba(255,255,0,0.6); }
+            60% { border-color: #00ff00; box-shadow: 0 0 20px rgba(0,255,0,0.6); }
+            80% { border-color: #0000ff; box-shadow: 0 0 20px rgba(0,0,255,0.6); }
+            100% { border-color: #8b00ff; box-shadow: 0 0 20px rgba(139,0,255,0.6); }
         }
         .rainbow-border {
             animation: rainbowGlow 6s infinite;
@@ -28,7 +28,7 @@
 </head>
 <body class="bg-slate-950 text-white font-sans antialiased selection:bg-blue-500 selection:text-white">
     <!-- Navbar -->
-    <nav class="sticky top-0 z-50 backdrop-blur-md bg-slate-950/80 border-b border-slate-800">
+    <nav class="sticky top-0 z-50 backdrop-blur-md bg-slate-950/80 border-b border-slate-900">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
             <div class="flex items-center space-x-3">
                 <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 via-red-500 to-yellow-400 p-[2px] flex items-center justify-center font-black text-xl">
@@ -53,75 +53,47 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <header id="home" class="relative overflow-hidden py-24 lg:py-32">
-        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-900/20 via-slate-950 to-slate-950 pointer-events-none"></div>
+    <!-- Blank / Minimalist Hero Section -->
+    <header id="home" class="relative overflow-hidden py-32 lg:py-44">
+        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-900/10 via-slate-950 to-slate-950 pointer-events-none"></div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-            <div class="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full border border-red-500/50 bg-red-950/30 text-red-400 text-xs font-semibold uppercase tracking-wider mb-8 neon-red-glow">
-                <span class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
-                <span>World-Class Premium Collection</span>
-            </div>
-            <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white mb-6">
-                Elevate Your Lifestyle With <span class="bg-gradient-to-r from-blue-400 via-red-500 to-yellow-400 bg-clip-text text-transparent">Ultimate Excellence</span>
-            </h1>
-            <p class="max-w-2xl mx-auto text-lg sm:text-xl text-slate-300 mb-10">
-                Discover hand-curated high-end products and exclusive cinematic soundscapes engineered for peak performance and absolute luxury.
-            </p>
-            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a href="#store" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-500 hover:to-blue-600 font-bold text-white blue-glow transition transform hover:-translate-y-1 flex items-center justify-center space-x-3">
-                    <i class="fa-solid fa-store"></i>
-                    <span>Explore 7Leo Store</span>
-                </a>
-                <a href="#bgm" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-slate-900 hover:bg-slate-800 border-2 border-red-500/80 font-bold text-white neon-red-glow transition transform hover:-translate-y-1 flex items-center justify-center space-x-3">
-                    <i class="fa-solid fa-music"></i>
-                    <span>Explore 7Leo BGM</span>
-                </a>
+            <!-- Blank space as requested, clean layout styling -->
+            <div class="w-24 h-24 mx-auto rounded-3xl bg-slate-900 border border-slate-800 rainbow-border flex items-center justify-center mb-6">
+                <i class="fa-solid fa-infinity text-3xl text-slate-400"></i>
             </div>
         </div>
     </header>
 
-    <!-- Product Showcase / Store Section -->
-    <section id="store" class="py-20 border-t border-slate-900 bg-slate-900/50">
+    <!-- 7Leo Store Section -->
+    <section id="store" class="py-20 border-t border-slate-900 bg-slate-900/40">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <h2 class="text-3xl sm:text-4xl font-black tracking-tight text-white mb-4">7Leo Store Highlights</h2>
-                <p class="text-slate-400 max-w-xl mx-auto">Engineered for quality, designed for distinction. Grab your favorites today.</p>
+                <h2 class="text-3xl sm:text-4xl font-black tracking-tight text-white mb-4">Explore 7Leo Store</h2>
+                <p class="text-slate-400 max-w-xl mx-auto">Discover elite products crafted with premium standards.</p>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Product 1 -->
-                <div class="bg-slate-900 rounded-2xl p-6 border border-slate-800 hover:border-blue-500 transition group">
-                    <div class="h-48 rounded-xl bg-gradient-to-br from-blue-900/40 to-slate-800 mb-6 flex items-center justify-center text-blue-400 group-hover:scale-105 transition duration-300">
-                        <i class="fa-solid fa-gem text-5xl"></i>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <!-- Store Item 1 -->
+                <div class="bg-slate-900 rounded-2xl p-6 border border-slate-800 blue-glow transition group">
+                    <div class="h-48 rounded-xl bg-gradient-to-br from-blue-950/50 to-slate-800 mb-6 flex items-center justify-center text-blue-400 group-hover:scale-105 transition duration-300">
+                        <i class="fa-solid fa-store text-5xl"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-white mb-2">Signature Elite Item</h3>
-                    <p class="text-slate-400 text-sm mb-4">Premium grade crafted masterpiece built for ultimate lifestyle utility.</p>
+                    <h3 class="text-xl font-bold text-white mb-2">Exclusive Merchandise</h3>
+                    <p class="text-slate-400 text-sm mb-4">High quality lifestyle gear curated exclusively for top collectors.</p>
                     <div class="flex items-center justify-between">
                         <span class="text-xl font-extrabold text-blue-400">$149.00</span>
                         <button class="px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-semibold text-sm transition">Buy Now</button>
                     </div>
                 </div>
-                <!-- Product 2 -->
-                <div class="bg-slate-900 rounded-2xl p-6 border border-slate-800 rainbow-border transition group">
-                    <div class="h-48 rounded-xl bg-gradient-to-br from-red-950/40 to-slate-800 mb-6 flex items-center justify-center text-red-400 group-hover:scale-105 transition duration-300">
-                        <i class="fa-solid fa-fire text-5xl"></i>
+                <!-- Store Item 2 -->
+                <div class="bg-slate-900 rounded-2xl p-6 border border-slate-800 neon-red-glow transition group">
+                    <div class="h-48 rounded-xl bg-gradient-to-br from-red-950/50 to-slate-800 mb-6 flex items-center justify-center text-red-400 group-hover:scale-105 transition duration-300">
+                        <i class="fa-solid fa-gem text-5xl"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-white mb-2">Neon Red Edition</h3>
-                    <p class="text-slate-400 text-sm mb-4">High-impact design featuring signature neon aesthetics and supreme finish.</p>
+                    <h3 class="text-xl font-bold text-white mb-2">Limited Edition Vault</h3>
+                    <p class="text-slate-400 text-sm mb-4">Ultra-rare premium drops featuring vibrant neon red highlights.</p>
                     <div class="flex items-center justify-between">
-                        <span class="text-xl font-extrabold text-red-400">$199.00</span>
+                        <span class="text-xl font-extrabold text-red-400">$249.00</span>
                         <button class="px-4 py-2 rounded-lg bg-red-600 hover:bg-red-500 text-white font-semibold text-sm transition">Buy Now</button>
-                    </div>
-                </div>
-                <!-- Product 3 -->
-                <div class="bg-slate-900 rounded-2xl p-6 border border-slate-800 hover:border-yellow-500 transition group">
-                    <div class="h-48 rounded-xl bg-gradient-to-br from-yellow-950/40 to-slate-800 mb-6 flex items-center justify-center text-yellow-400 group-hover:scale-105 transition duration-300">
-                        <i class="fa-solid fa-crown text-5xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-2">Royal Crown Bundle</h3>
-                    <p class="text-slate-400 text-sm mb-4">The absolute pinnacle of luxury curation for elite collectors worldwide.</p>
-                    <div class="flex items-center justify-between">
-                        <span class="text-xl font-extrabold text-yellow-400">$299.00</span>
-                        <button class="px-4 py-2 rounded-lg bg-yellow-600 hover:bg-yellow-500 text-slate-950 font-bold text-sm transition">Buy Now</button>
                     </div>
                 </div>
             </div>
@@ -131,14 +103,14 @@
     <!-- 7Leo BGM Section -->
     <section id="bgm" class="py-20 border-t border-slate-900">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <div class="max-w-3xl mx-auto bg-gradient-to-r from-slate-900 via-blue-950/30 to-slate-900 rounded-3xl p-8 sm:p-12 border border-blue-500/30 blue-glow">
-                <div class="w-16 h-16 rounded-2xl bg-blue-600/20 text-blue-400 flex items-center justify-center mx-auto mb-6 text-2xl">
-                    <i class="fa-solid fa-headphones"></i>
+            <div class="max-w-3xl mx-auto bg-slate-900 rounded-3xl p-8 sm:p-12 border border-slate-800 rainbow-border">
+                <div class="w-16 h-16 rounded-2xl bg-slate-800 text-yellow-400 flex items-center justify-center mx-auto mb-6 text-2xl">
+                    <i class="fa-solid fa-music"></i>
                 </div>
-                <h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-4">7Leo BGM Soundtracks</h2>
-                <p class="text-slate-300 mb-8">Immerse yourself in cinematic instrumental soundscapes and high-fidelity beats crafted for creators and dreamers.</p>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-4">Explore 7Leo BGM</h2>
+                <p class="text-slate-300 mb-8">Cinematic soundtracks and soundscapes built for immersive digital experiences.</p>
                 <button class="px-8 py-4 rounded-xl bg-white text-slate-950 font-extrabold hover:bg-slate-200 transition shadow-lg">
-                    Stream & Download Audio
+                    Listen Now
                 </button>
             </div>
         </div>
@@ -147,7 +119,7 @@
     <!-- Footer -->
     <footer id="contact" class="bg-slate-950 border-t border-slate-900 py-12 text-center text-slate-500 text-sm">
         <div class="max-w-7xl mx-auto px-4">
-            <p>&copy; 2026 7Leo Group. All Rights Reserved. Designed with world-class excellence.</p>
+            <p>&copy; 2026 7Leo Group. All Rights Reserved.</p>
         </div>
     </footer>
 </body>
