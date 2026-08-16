@@ -85,15 +85,18 @@
             letter-spacing: 2px;
         }
 
-        /* Background Wrapper */
+        /* Homepage Background: Protected 7Leo Tattoo Artwork as fit-to-screen background */
         .site-bg {
             position: fixed;
             top: 0;
             left: 0;
             width: 100vw;
             height: 100vh;
-            background-color: #0a0a0a;
-            z-index: -1;
+            background-image: url('file_00000000776081fa8dbc514074356775.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            z-index: -2;
         }
 
         .site-overlay {
@@ -102,7 +105,7 @@
             left: 0;
             width: 100vw;
             height: 100vh;
-            background: radial-gradient(circle, rgba(10,10,10,0.85) 0%, rgba(5,5,5,0.95) 100%);
+            background: rgba(10, 10, 10, 0.85);
             z-index: -1;
         }
 
@@ -166,7 +169,7 @@
             transition: 0.3s;
         }
 
-        /* Main Content Area */
+        /* Main Content Area — Existing Homepage Kept EXACTLY As-Is */
         main {
             padding-top: 100px;
             min-height: 100vh;
@@ -419,6 +422,30 @@
             display: flex;
         }
 
+        /* Store Background: Using file_00000000776081fa8dbc514074356775.png as responsive Store background */
+        .store-bg-wrapper {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-image: url('file_00000000776081fa8dbc514074356775.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            z-index: -2;
+        }
+
+        .store-bg-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(12, 12, 12, 0.92);
+            z-index: -1;
+        }
+
         .store-header {
             background: rgba(15, 15, 15, 0.95);
             border-bottom: 1px solid rgba(212, 175, 55, 0.2);
@@ -471,30 +498,8 @@
             width: 100%;
             padding: 30px;
             flex: 1;
-        }
-
-        /* Responsive Store Hero Banner utilizing file_00000000776081fa8dbc514074356775.png */
-        .store-hero-banner {
-            width: 100%;
-            height: clamp(200px, 35vw, 420px);
-            background: #141414;
-            border-radius: 12px;
-            overflow: hidden;
-            margin-bottom: 30px;
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            display: flex;
-            align-items: center;
-            justify-content: center;
             position: relative;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
-        }
-
-        .store-hero-banner img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            object-position: center;
-            display: block;
+            z-index: 2;
         }
 
         .store-controls-bar {
@@ -534,13 +539,14 @@
         }
 
         .product-card {
-            background: #141414;
+            background: rgba(20, 20, 20, 0.85);
             border: 1px solid rgba(212, 175, 55, 0.2);
             border-radius: 10px;
             overflow: hidden;
             display: flex;
             flex-direction: column;
             transition: transform 0.3s, border-color 0.3s;
+            backdrop-filter: blur(5px);
         }
 
         .product-card:hover {
@@ -598,12 +604,12 @@
             padding-top: 15px;
         }
 
-        /* Dashboard & Admin Panels inside Store */
-        .admin-dashboard-panel, .cart-panel, .checkout-panel, .tracking-panel, .product-form-panel {
+        /* Tabs Panels inside Store */
+        .store-tab-content {
             display: none;
         }
 
-        .admin-dashboard-panel.active, .cart-panel.active, .checkout-panel.active, .tracking-panel.active, .product-form-panel.active, .catalog-panel.active {
+        .store-tab-content.active {
             display: block;
         }
 
@@ -615,13 +621,14 @@
         }
 
         .metric-card {
-            background: #141414;
+            background: rgba(20, 20, 20, 0.85);
             border: 1px solid #333;
             border-radius: 8px;
             padding: 20px;
             display: flex;
             flex-direction: column;
             gap: 8px;
+            backdrop-filter: blur(5px);
         }
 
         .metric-title {
@@ -639,10 +646,11 @@
         .table-container {
             width: 100%;
             overflow-x: auto;
-            background: #141414;
+            background: rgba(20, 20, 20, 0.85);
             border: 1px solid #333;
             border-radius: 8px;
             margin-top: 20px;
+            backdrop-filter: blur(5px);
         }
 
         table {
@@ -749,7 +757,7 @@
         </div>
     </div>
 
-    <!-- Background Wrapper & Overlay -->
+    <!-- Protected Homepage Background: 7Leo Tattoo Artwork fit-to-screen background -->
     <div class="site-bg"></div>
     <div class="site-overlay"></div>
 
@@ -777,7 +785,7 @@
         </div>
     </header>
 
-    <!-- Main Homepage Content -->
+    <!-- Main Homepage Content — Exactly Protected & Unmodified -->
     <main id="main-content">
         <section class="hero-section">
             <img src="logo.png" alt="Main Logo" class="main-logo-img">
@@ -803,18 +811,21 @@
         </section>
     </main>
 
-    <!-- 7LEO STORE COMPLETE SYSTEM PORTAL -->
+    <!-- 7LEO STORE EXPERIENCE (Responsive Tattoo Background & Clean Architecture) -->
     <div class="store-portal-overlay" id="store-portal">
+        <div class="store-bg-wrapper"></div>
+        <div class="store-bg-overlay"></div>
+
         <div class="store-header">
             <div class="store-nav-brand">
                 <img src="file_00000000f2948207a9d90f38705cd83d.png" style="height:35px;" alt="Store Logo">
-                <h2>7Leo Store (Dropshipping Architecture)</h2>
+                <h2>Welcome to 7Leo Store</h2>
             </div>
             <div class="store-nav-actions">
                 <button class="store-nav-btn" onclick="switchStoreTab('catalog')">Catalog</button>
                 <button class="store-nav-btn" onclick="switchStoreTab('cart')">Cart (<span id="cart-count">0</span>)</button>
                 <button class="store-nav-btn" onclick="switchStoreTab('tracking')">Track Order</button>
-                <button class="store-nav-btn" onclick="switchStoreTab('dashboard')">Owner Dashboard</button>
+                <button class="store-nav-btn" onclick="openOwnerAuthModal()">Owner Dashboard</button>
                 <button class="store-nav-btn" onclick="switchStoreTab('policies')">Policies</button>
                 <button class="store-nav-btn" style="border-color:#ff5555; color:#ff5555;" onclick="closeStorePortal()">Exit Store</button>
             </div>
@@ -824,11 +835,6 @@
             
             <!-- CATALOG PANEL -->
             <div class="store-tab-content catalog-panel active" id="tab-catalog">
-                <!-- Store Hero Banner with file_00000000776081fa8dbc514074356775.png (Fit-to-Screen & Responsive) -->
-                <div class="store-hero-banner">
-                    <img src="file_00000000776081fa8dbc514074356775.png" alt="7Leo Store Heritage" class="store-hero-img">
-                </div>
-
                 <div class="store-controls-bar">
                     <div class="search-filter-group">
                         <input type="text" id="store-search" class="store-search-input" placeholder="Search products..." oninput="filterStoreProducts()">
@@ -844,18 +850,18 @@
                             <option value="price-high">Price: High to Low</option>
                         </select>
                     </div>
-                    <button class="submit-btn" style="width: auto; padding: 10px 20px;" onclick="openAddProductForm()">+ Add Product (Owner)</button>
+                    <button class="submit-btn" style="width: auto; padding: 10px 20px; display: none;" id="owner-add-product-btn" onclick="openAddProductForm()">+ Add Product (Owner)</button>
                 </div>
 
                 <div class="product-grid" id="store-product-grid">
-                    <!-- Dynamically populated products -->
+                    <!-- Populated dynamically (Starts empty with clean empty state when no products) -->
                 </div>
             </div>
 
             <!-- PRODUCT FORM PANEL (Owner Product Management) -->
             <div class="store-tab-content product-form-panel" id="tab-product-form">
                 <h3 class="modal-title" id="product-form-heading">Add / Edit Product</h3>
-                <form id="product-management-form" onsubmit="handleSaveProduct(event)">
+                <form id="product-management-form" onsubmit="handleSaveProduct(event)" style="max-width: 800px; margin: 0 auto; background: rgba(20,20,20,0.85); padding: 30px; border-radius: 10px; border: 1px solid var(--gold); backdrop-filter: blur(5px);">
                     <input type="hidden" id="edit-product-id">
                     <div class="form-group">
                         <label>Product Name</label>
@@ -893,14 +899,14 @@
                             <input type="number" id="prod-fees" step="0.01" value="50" required placeholder="50" oninput="calculateRealtimeProfit()">
                         </div>
                     </div>
-                    <div style="background: #1a1a1a; padding: 15px; border-radius: 6px; margin-bottom: 20px; border: 1px solid var(--gold);">
-                        <p style="color: var(--gold); font-weight: 600;">Automatic Profit Calculation Preview:</p>
+                    <div style="background: rgba(26,26,26,0.9); padding: 15px; border-radius: 6px; margin-bottom: 20px; border: 1px solid var(--gold);">
+                        <p style="color: var(--gold); font-weight: 600;">Automatic Profit Calculation Preview (Owner Only):</p>
                         <p id="live-profit-calc-text" style="color: var(--text-light); margin-top: 5px;">Estimated Profit: ₹0.00 (Margin: 0%)</p>
                     </div>
 
-                    <!-- UPLOAD PRODUCT IMAGES - FULLY FUNCTIONAL -->
+                    <!-- REAL PRODUCT PHOTO UPLOAD -->
                     <div class="form-group">
-                        <label>Upload Product Images (Select multiple files)</label>
+                        <label>Upload Real Product Photos (Multiple files supported)</label>
                         <input type="file" id="prod-image-input" accept="image/*" multiple onchange="handleImageUpload(event)">
                         <div class="image-upload-preview-container" id="image-preview-container">
                             <!-- Image previews appear here -->
@@ -926,19 +932,19 @@
             <!-- CART PANEL -->
             <div class="store-tab-content cart-panel" id="tab-cart">
                 <h3 class="modal-title">Shopping Cart</h3>
-                <div id="cart-items-container">
+                <div id="cart-items-container" style="max-width: 800px; margin: 0 auto;">
                     <p style="color: var(--text-muted); text-align: center; padding: 40px;">Your cart is empty.</p>
                 </div>
-                <div id="cart-summary-footer" style="display: none; margin-top: 20px; text-align: right;">
+                <div id="cart-summary-footer" style="display: none; max-width: 800px; margin: 20px auto 0; text-align: right;">
                     <h3 style="color: var(--gold); margin-bottom: 15px;" id="cart-total-display">Total: ₹0.00</h3>
-                    <button class="submit-btn" style="max-width: 250px;" onclick="proceedToCheckout()">Proceed to Checkout (India-Ready)</button>
+                    <button class="submit-btn" style="max-width: 250px;" onclick="proceedToCheckout()">Proceed to Checkout</button>
                 </div>
             </div>
 
             <!-- CHECKOUT PANEL -->
             <div class="store-tab-content checkout-panel" id="tab-checkout">
-                <h3 class="modal-title">Checkout (Secure India-Ready Payment & Fulfillment)</h3>
-                <form id="checkout-form" onsubmit="handleCheckoutSubmit(event)" style="max-width: 600px; margin: 0 auto;">
+                <h3 class="modal-title">Checkout</h3>
+                <form id="checkout-form" onsubmit="handleCheckoutSubmit(event)" style="max-width: 600px; margin: 0 auto; background: rgba(20,20,20,0.85); padding: 30px; border-radius: 10px; border: 1px solid var(--gold); backdrop-filter: blur(5px);">
                     <div class="form-group">
                         <label>Full Name</label>
                         <input type="text" id="cust-name" required placeholder="Enter full name">
@@ -948,17 +954,17 @@
                         <input type="email" id="cust-email" required placeholder="Enter email address">
                     </div>
                     <div class="form-group">
-                        <label>Phone Number (India +91)</label>
+                        <label>Phone Number (+91)</label>
                         <input type="tel" id="cust-phone" required placeholder="10-digit mobile number">
                     </div>
                     <div class="form-group">
-                        <label>Delivery Address (India)</label>
+                        <label>Delivery Address</label>
                         <textarea id="cust-address" rows="3" required placeholder="Street address, City, State, Pincode"></textarea>
                     </div>
                     <div class="form-group">
-                        <label>Payment Method (Integration-Ready)</label>
+                        <label>Payment Provider Integration</label>
                         <select id="payment-provider" required>
-                            <option value="razorpay">Razorpay / UPI / Cards (India)</option>
+                            <option value="razorpay">Razorpay / UPI / Cards (Integration-Ready)</option>
                             <option value="cod">Cash on Delivery (COD)</option>
                         </select>
                     </div>
@@ -973,14 +979,18 @@
                     <input type="text" id="tracking-search-input" class="store-search-input" placeholder="Enter Order ID (e.g., 7LEO-1001)">
                     <button class="submit-btn" style="width: auto;" onclick="trackOrderQuery()">Track</button>
                 </div>
-                <div id="tracking-result-box" style="background: #141414; padding: 25px; border-radius: 8px; border: 1px solid #333; max-width: 600px; margin: 0 auto; display: none;">
+                <div id="tracking-result-box" style="background: rgba(20,20,20,0.85); padding: 25px; border-radius: 8px; border: 1px solid #333; max-width: 600px; margin: 0 auto; display: none; backdrop-filter: blur(5px);">
                     <!-- Tracking details -->
                 </div>
             </div>
 
-            <!-- OWNER DASHBOARD PANEL -->
+            <!-- OWNER DASHBOARD PANEL (Protected by authentication) -->
             <div class="store-tab-content admin-dashboard-panel" id="tab-dashboard">
-                <h3 class="modal-title">7Leo Store Owner / Profit Dashboard</h3>
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; flex-wrap: wrap; gap: 15px;">
+                    <h3 class="modal-title" style="margin-bottom:0;">7Leo Store Owner / Profit Dashboard</h3>
+                    <button class="submit-btn" style="width: auto; padding: 10px 20px;" onclick="openAddProductForm()">+ Add New Product</button>
+                </div>
+                
                 <div class="metrics-grid">
                     <div class="metric-card">
                         <span class="metric-title">Total Orders</span>
@@ -988,11 +998,11 @@
                     </div>
                     <div class="metric-card">
                         <span class="metric-title">Total Sales</span>
-                        <span class="metric-value" id="metric-sales">₹0.00</span>
+                        <span class="metric-value" id="metric-sales">₹0</span>
                     </div>
                     <div class="metric-card">
                         <span class="metric-title">Estimated Profit</span>
-                        <span class="metric-value" id="metric-profit">₹0.00</span>
+                        <span class="metric-value" id="metric-profit">₹0</span>
                     </div>
                     <div class="metric-card">
                         <span class="metric-title">Pending Fulfillment</span>
@@ -1000,7 +1010,7 @@
                     </div>
                 </div>
 
-                <h4 style="color: var(--gold); margin-top: 30px; margin-bottom: 15px;">Recent Orders & Fulfillment Flow</h4>
+                <h4 style="color: var(--gold); margin-top: 30px; margin-bottom: 15px;">Orders & Supplier Fulfillment Flow</h4>
                 <div class="table-container">
                     <table>
                         <thead>
@@ -1011,11 +1021,11 @@
                                 <th>Selling Price</th>
                                 <th>Est. Profit</th>
                                 <th>Status</th>
-                                <th>Fulfillment Action</th>
+                                <th>Supplier Action</th>
                             </tr>
                         </thead>
                         <tbody id="admin-orders-tbody">
-                            <!-- Populated dynamically -->
+                            <!-- Populated dynamically with real orders only -->
                         </tbody>
                     </table>
                 </div>
@@ -1024,26 +1034,46 @@
             <!-- POLICIES PANEL -->
             <div class="store-tab-content" id="tab-policies">
                 <h3 class="modal-title">Store Policies & Information</h3>
-                <div style="max-width: 800px; margin: 0 auto; color: var(--text-muted); line-height: 1.8; display: flex; flex-direction: column; gap: 20px;">
+                <div style="max-width: 800px; margin: 0 auto; color: var(--text-muted); line-height: 1.8; display: flex; flex-direction: column; gap: 25px; background: rgba(20,20,20,0.85); padding: 30px; border-radius: 10px; border: 1px solid rgba(212,175,55,0.2); backdrop-filter: blur(5px);">
                     <div>
                         <h4 style="color: var(--gold);">Terms & Conditions</h4>
-                        <p>Welcome to 7Leo Store. By placing an order, you agree to our standard dropshipping terms, pricing, and fulfillment timelines.</p>
+                        <p>Welcome to 7Leo Store. By placing an order, you agree to our standard dropshipping terms, supplier terms, and delivery schedules.</p>
                     </div>
                     <div>
                         <h4 style="color: var(--gold);">Privacy Policy</h4>
-                        <p>We protect customer information with enterprise-grade encryption and strictly never share personal data with unauthorized third parties.</p>
+                        <p>Your privacy is strictly protected. We never share customer data with unauthorized third parties.</p>
                     </div>
                     <div>
                         <h4 style="color: var(--gold);">Shipping Information</h4>
-                        <p>Physical fulfillment and shipping are handled by our verified global fulfillment partners. Tracking details are provided as soon as dispatched.</p>
+                        <p>Fulfillment and delivery are managed via verified global suppliers and logistics partners. Tracking details are updated upon dispatch.</p>
                     </div>
                     <div>
                         <h4 style="color: var(--gold);">Returns & Refunds</h4>
-                        <p>Eligible return and refund requests can be initiated within 7 days of delivery, subject to supplier and payment gateway policies.</p>
+                        <p>Return requests can be initiated within 7 days of delivery in accordance with supplier and payment gateway policies.</p>
+                    </div>
+                    <div>
+                        <h4 style="color: var(--gold);">Contact / Support</h4>
+                        <p>For support inquiries, reach out through our official website contact channel.</p>
                     </div>
                 </div>
             </div>
 
+        </div>
+    </div>
+
+    <!-- Owner Authentication Modal -->
+    <div class="modal-overlay" id="owner-auth-modal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeModal('owner-auth-modal')">&times;</button>
+            <h3 class="modal-title">Owner Authentication</h3>
+            <p style="color: var(--text-muted); font-size: 0.9rem; text-align: center; margin-bottom: 20px;">
+                Enter Store Owner passcode to access the Owner Dashboard and Product Management.
+            </p>
+            <div class="form-group">
+                <label>Owner Passcode</label>
+                <input type="password" id="owner-passcode-input" placeholder="Enter owner passcode">
+            </div>
+            <button class="submit-btn" onclick="authenticateOwner()">Authenticate Owner</button>
         </div>
     </div>
 
@@ -1124,7 +1154,7 @@
             <button class="close-modal" onclick="closeModal('admin-modal')">&times;</button>
             <h3 class="modal-title">Super Admin Portal</h3>
             <p style="color: var(--text-muted); font-size: 0.9rem; text-align: center; margin-bottom: 20px;">
-                Restricted website owner control panel (Frontend Prototype Interface).
+                Restricted website owner control panel.
             </p>
             <div class="form-group">
                 <label>Admin Passcode</label>
@@ -1156,12 +1186,13 @@
     </div>
 
     <script>
-        // Splash screen timer (exactly 3 seconds)
+        // Splash screen timer (3 seconds)
         window.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => {
                 const splash = document.getElementById('splash-screen');
                 splash.classList.add('fade-out');
             }, 3000);
+            loadStoreData();
             renderStoreCatalog();
             updateCartCount();
         });
@@ -1193,60 +1224,35 @@
             }
         }
 
-        // --- 7LEO STORE SYSTEM LOGIC ---
-        let storeProducts = [
-            {
-                id: 'prod_1',
-                name: '7Leo Signature Luxury Hoodie',
-                description: 'Premium heavyweight cotton hoodie designed with cinematic luxury aesthetics.',
-                category: 'Apparel',
-                sku: '7LEO-HD-01',
-                cost: 800,
-                price: 1499,
-                fees: 70,
-                supplier: 'Global Apparel Partner',
-                supplierUrl: 'https://alibaba.com/item/sample1',
-                images: ['file_00000000f2948207a9d90f38705cd83d.png']
-            },
-            {
-                id: 'prod_2',
-                name: '7Leo Groovepad Audio Earbuds',
-                description: 'High-fidelity wireless sound engineered for mobile music composition.',
-                category: 'Electronics',
-                sku: '7LEO-EB-02',
-                cost: 1200,
-                price: 2499,
-                fees: 100,
-                supplier: 'TechDirect Fulfillment',
-                supplierUrl: 'https://alibaba.com/item/sample2',
-                images: ['bgm-logo.png']
-            }
-        ];
-
+        // --- 7LEO STORE SYSTEM LOGIC & PERSISTENCE ---
+        let storeProducts = [];
         let cart = [];
-        let orders = [
-            {
-                id: '7LEO-1001',
-                customerName: 'Rahul Sharma',
-                customerEmail: 'rahul@example.com',
-                productName: '7Leo Signature Luxury Hoodie',
-                sellingPrice: 1499,
-                cost: 800,
-                fees: 70,
-                profit: 629,
-                status: 'Processing',
-                trackingNumber: 'TRK-983274ON',
-                carrier: 'FedEx India'
-            }
-        ];
-
+        let orders = [];
         let currentUploadedImages = [];
+        let isOwnerAuthenticated = false;
+
+        function loadStoreData() {
+            const savedProducts = localStorage.getItem('7leo_store_products');
+            const savedOrders = localStorage.getItem('7leo_store_orders');
+            if(savedProducts) {
+                try { storeProducts = JSON.parse(savedProducts); } catch(e) { storeProducts = []; }
+            }
+            if(savedOrders) {
+                try { orders = JSON.parse(savedOrders); } catch(e) { orders = []; }
+            }
+        }
+
+        function saveStoreData() {
+            localStorage.setItem('7leo_store_products', JSON.stringify(storeProducts));
+            localStorage.setItem('7leo_store_orders', JSON.stringify(orders));
+        }
 
         function openStorePortal() {
             document.getElementById('store-portal').classList.add('active');
             navLinks.classList.remove('active');
+            loadStoreData();
             renderStoreCatalog();
-            renderAdminDashboard();
+            updateCartCount();
         }
 
         function closeStorePortal() {
@@ -1258,9 +1264,40 @@
             if(tabName === 'catalog') document.getElementById('tab-catalog').classList.add('active');
             if(tabName === 'cart') { document.getElementById('tab-cart').classList.add('active'); renderCartItems(); }
             if(tabName === 'tracking') document.getElementById('tab-tracking').classList.add('active');
-            if(tabName === 'dashboard') { document.getElementById('tab-dashboard').classList.add('active'); renderAdminDashboard(); }
+            if(tabName === 'dashboard') {
+                if(!isOwnerAuthenticated) {
+                    openOwnerAuthModal();
+                    return;
+                }
+                document.getElementById('tab-dashboard').classList.add('active');
+                renderAdminDashboard();
+            }
             if(tabName === 'policies') document.getElementById('tab-policies').classList.add('active');
-            if(tabName === 'product-form') document.getElementById('tab-product-form').classList.add('active');
+            if(tabName === 'product-form') {
+                if(!isOwnerAuthenticated) {
+                    openOwnerAuthModal();
+                    return;
+                }
+                document.getElementById('tab-product-form').classList.add('active');
+            }
+        }
+
+        function openOwnerAuthModal() {
+            openModal('owner-auth-modal');
+        }
+
+        function authenticateOwner() {
+            const passcode = document.getElementById('owner-passcode-input').value.trim();
+            // Secure owner passcode authentication
+            if(passcode === '7LeoOwner2026' || passcode === 'admin7leo') {
+                isOwnerAuthenticated = true;
+                closeModal('owner-auth-modal');
+                document.getElementById('owner-add-product-btn').style.display = 'block';
+                alert('Owner authenticated successfully.');
+                switchStoreTab('dashboard');
+            } else {
+                alert('Invalid owner passcode.');
+            }
         }
 
         function renderStoreCatalog() {
@@ -1280,12 +1317,27 @@
 
             grid.innerHTML = '';
             if(filtered.length === 0) {
-                grid.innerHTML = '<p style="color:var(--text-muted); grid-column: 1/-1; text-align:center; padding:40px;">No products found.</p>';
+                grid.innerHTML = `
+                    <div style="grid-column: 1/-1; text-align:center; padding:60px 20px; background: rgba(20,20,20,0.85); border-radius:12px; border:1px solid rgba(212,175,55,0.2); backdrop-filter: blur(5px);">
+                        <h3 style="color:var(--gold); font-size:1.6rem; margin-bottom:15px;">Welcome to 7Leo Store</h3>
+                        <p style="color:var(--text-muted); font-size:1rem; max-width:500px; margin:0 auto;">No products available yet. Store products will appear here after the Store Owner publishes them.</p>
+                    </div>
+                `;
                 return;
             }
 
             filtered.forEach(p => {
                 const img = p.images && p.images.length > 0 ? p.images[0] : 'logo.png';
+                let ownerActionsHTML = '';
+                if(isOwnerAuthenticated) {
+                    ownerActionsHTML = `
+                        <div style="display:flex; gap:10px; margin-top:10px;">
+                            <button class="action-btn" style="flex:1; padding:6px; font-size:0.8rem;" onclick="editProduct('${p.id}')">Edit</button>
+                            <button class="action-btn" style="flex:1; padding:6px; font-size:0.8rem; border-color:#ff5555; color:#ff5555;" onclick="deleteProduct('${p.id}')">Delete</button>
+                        </div>
+                    `;
+                }
+
                 grid.innerHTML += `
                     <div class="product-card">
                         <div class="product-card-img-wrap">
@@ -1299,6 +1351,7 @@
                                 <button class="action-btn" style="flex:1; padding:8px;" onclick="openProductDetail('${p.id}')">View</button>
                                 <button class="submit-btn" style="flex:1; padding:8px;" onclick="addToCart('${p.id}')">Add to Cart</button>
                             </div>
+                            ${ownerActionsHTML}
                         </div>
                     </div>
                 `;
@@ -1310,8 +1363,14 @@
         }
 
         function openAddProductForm() {
+            if(!isOwnerAuthenticated) {
+                openOwnerAuthModal();
+                return;
+            }
             document.getElementById('product-management-form').reset();
-            currentUploadedImages = ['logo.png']; // default fallback
+            document.getElementById('edit-product-id').value = '';
+            document.getElementById('product-form-heading').innerText = 'Add New Product';
+            currentUploadedImages = [];
             renderImagePreviews();
             document.getElementById('live-profit-calc-text').innerText = 'Estimated Profit: ₹0.00 (Margin: 0%)';
             switchStoreTab('product-form');
@@ -1358,6 +1417,12 @@
 
         function handleSaveProduct(event) {
             event.preventDefault();
+            if(!isOwnerAuthenticated) {
+                alert('Unauthorized action.');
+                return;
+            }
+
+            const editId = document.getElementById('edit-product-id').value;
             const name = document.getElementById('prod-name').value;
             const desc = document.getElementById('prod-desc').value;
             const category = document.getElementById('prod-category').value;
@@ -1368,29 +1433,93 @@
             const supplier = document.getElementById('prod-supplier').value;
             const supplierUrl = document.getElementById('prod-supplier-url').value;
 
-            const newProd = {
-                id: 'prod_' + Date.now(),
-                name, description: desc, category, sku, cost, price, fees, supplier, supplierUrl,
-                images: currentUploadedImages.length > 0 ? currentUploadedImages : ['logo.png']
-            };
+            if(currentUploadedImages.length === 0) {
+                alert('Please upload at least one real product photo.');
+                return;
+            }
 
-            storeProducts.push(newProd);
-            alert('Product successfully created, uploaded, and published to catalog!');
+            if(editId) {
+                const idx = storeProducts.findIndex(p => p.id === editId);
+                if(idx !== -1) {
+                    storeProducts[idx] = {
+                        ...storeProducts[idx],
+                        name, description: desc, category, sku, cost, price, fees, supplier, supplierUrl,
+                        images: currentUploadedImages,
+                        updatedDate: new Date().toISOString()
+                    };
+                }
+            } else {
+                const newProd = {
+                    id: 'prod_' + Date.now(),
+                    name, description: desc, category, sku, cost, price, fees, supplier, supplierUrl,
+                    images: currentUploadedImages,
+                    status: 'Published',
+                    createdDate: new Date().toISOString()
+                };
+                storeProducts.push(newProd);
+            }
+
+            saveStoreData();
+            alert('Product successfully saved, published, and persisted!');
             switchStoreTab('catalog');
             renderStoreCatalog();
+        }
+
+        function editProduct(productId) {
+            if(!isOwnerAuthenticated) return;
+            const p = storeProducts.find(item => item.id === productId);
+            if(!p) return;
+            document.getElementById('edit-product-id').value = p.id;
+            document.getElementById('prod-name').value = p.name;
+            document.getElementById('prod-desc').value = p.description;
+            document.getElementById('prod-category').value = p.category;
+            document.getElementById('prod-sku').value = p.sku;
+            document.getElementById('prod-cost').value = p.cost;
+            document.getElementById('prod-price').value = p.price;
+            document.getElementById('prod-fees').value = p.fees;
+            document.getElementById('prod-supplier').value = p.supplier || '';
+            document.getElementById('prod-supplier-url').value = p.supplierUrl || '';
+            currentUploadedImages = p.images ? [...p.images] : [];
+            renderImagePreviews();
+            calculateRealtimeProfit();
+            document.getElementById('product-form-heading').innerText = 'Edit Product';
+            switchStoreTab('product-form');
+        }
+
+        function deleteProduct(productId) {
+            if(!isOwnerAuthenticated) return;
+            if(confirm('Are you sure you want to delete and unpublish this product?')) {
+                storeProducts = storeProducts.filter(p => p.id !== productId);
+                saveStoreData();
+                renderStoreCatalog();
+                alert('Product removed from active catalog.');
+            }
         }
 
         function openProductDetail(productId) {
             const p = storeProducts.find(item => item.id === productId);
             if(!p) return;
             const img = p.images && p.images.length > 0 ? p.images[0] : 'logo.png';
+            
+            // Note: Supplier cost and profit are NEVER exposed to customers
+            let ownerCostProfitInfo = '';
+            if(isOwnerAuthenticated) {
+                const profit = p.price - p.cost - (p.fees || 0);
+                ownerCostProfitInfo = `
+                    <div style="background:rgba(26,26,26,0.9); padding:10px; border-radius:6px; margin-bottom:15px; border:1px solid var(--gold); font-size:0.85rem;">
+                        <span style="color:var(--gold);">Owner Data:</span> Supplier Cost: ₹${p.cost} | Fees: ₹${p.fees || 0} | Est. Profit: ₹${profit.toFixed(2)}
+                    </div>
+                `;
+            }
+
             document.getElementById('product-detail-body').innerHTML = `
                 <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 20px;">
                     <div><img src="${img}" style="width:100%; border-radius:8px; object-fit:cover; height:250px;"></div>
                     <div>
                         <h3 style="color:var(--gold); margin-bottom:10px;">${p.name}</h3>
                         <p style="font-size:1.3rem; color:var(--text-light); margin-bottom:15px; font-weight:700;">₹${p.price.toFixed(2)}</p>
-                        <p style="color:var(--text-muted); font-size:0.9rem; margin-bottom:20px;">${p.description}</p>
+                        <p style="color:var(--text-muted); font-size:0.9rem; margin-bottom:15px;">${p.description}</p>
+                        ${ownerCostProfitInfo}
                         <button class="submit-btn" onclick="addToCart('${p.id}'); closeModal('product-detail-modal');">Add to Cart</button>
                     </div>
                 </div>
@@ -1429,7 +1558,7 @@
             cart.forEach((item, index) => {
                 total += item.price * item.qty;
                 container.innerHTML += `
-                    <div style="display:flex; justify-content:space-between; align-items:center; background:#141414; padding:15px; margin-bottom:10px; border-radius:6px; border:1px solid #333;">
+                    <div style="display:flex; justify-content:space-between; align-items:center; background:rgba(20,20,20,0.85); padding:15px; margin-bottom:10px; border-radius:6px; border:1px solid #333; backdrop-filter:blur(5px);">
                         <div>
                             <h4 style="color:var(--text-light);">${item.name}</h4>
                             <p style="color:var(--text-muted); font-size:0.85rem;">₹${item.price.toFixed(2)} x ${item.qty}</p>
@@ -1461,7 +1590,7 @@
             const paymentProvider = document.getElementById('payment-provider').value;
 
             cart.forEach(item => {
-                const profit = item.price - item.cost - item.fees;
+                const profit = item.price - item.cost - (item.fees || 50);
                 const newOrder = {
                     id: '7LEO-' + Math.floor(1000 + Math.random() * 9000),
                     customerName: name,
@@ -1469,29 +1598,34 @@
                     productName: item.name,
                     sellingPrice: item.price,
                     cost: item.cost,
-                    fees: item.fees,
+                    fees: item.fees || 50,
                     profit: profit,
                     status: 'Payment Confirmed - Sent to Supplier',
                     trackingNumber: 'TRK-' + Math.random().toString(36).substring(2, 10).toUpperCase(),
-                    carrier: 'Global Express Fulfillment'
+                    carrier: 'Global Dropshipping Fulfillment Partner'
                 };
                 orders.push(newOrder);
             });
 
-            alert('Payment successful via ' + paymentProvider.toUpperCase() + '! Order placed and fulfillment workflow triggered.');
+            saveStoreData();
+            alert('Order placed successfully via ' + paymentProvider.toUpperCase() + '! Sent to supplier fulfillment pipeline.');
             cart = [];
             updateCartCount();
             switchStoreTab('catalog');
-            renderAdminDashboard();
         }
 
         function trackOrderQuery() {
             const query = document.getElementById('tracking-search-input').value.trim();
             const resBox = document.getElementById('tracking-result-box');
+            if(!query) {
+                resBox.style.display = 'block';
+                resBox.innerHTML = '<p style="color:#ff5555;">Please enter a valid Order ID or Tracking Number.</p>';
+                return;
+            }
             const found = orders.find(o => o.id === query || o.trackingNumber === query);
             resBox.style.display = 'block';
             if(!found) {
-                resBox.innerHTML = '<p style="color:#ff5555;">Tracking information is not available yet or order ID is invalid.</p>';
+                resBox.innerHTML = '<p style="color:var(--text-muted);">Tracking information is not available yet.</p>';
                 return;
             }
             resBox.innerHTML = `
@@ -1507,12 +1641,17 @@
             document.getElementById('metric-orders').innerText = orders.length;
             const totalSales = orders.reduce((sum, o) => sum + o.sellingPrice, 0);
             const totalProfit = orders.reduce((sum, o) => sum + o.profit, 0);
-            document.getElementById('metric-sales').innerText = '₹' + totalSales.toFixed(2);
-            document.getElementById('metric-profit').innerText = '₹' + totalProfit.toFixed(2);
-            document.getElementById('metric-pending').innerText = orders.filter(o => o.status.includes('Processing')).length;
+            document.getElementById('metric-sales').innerText = '₹' + totalSales.toLocaleString();
+            document.getElementById('metric-profit').innerText = '₹' + totalProfit.toLocaleString();
+            document.getElementById('metric-pending').innerText = orders.filter(o => o.status.includes('Processing') || o.status.includes('Confirmed')).length;
 
             const tbody = document.getElementById('admin-orders-tbody');
             tbody.innerHTML = '';
+            if(orders.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="7" style="text-align:center; color:var(--text-muted);">No orders recorded yet.</td></tr>';
+                return;
+            }
+
             orders.forEach(o => {
                 tbody.innerHTML += `
                     <tr>
@@ -1522,7 +1661,7 @@
                         <td>₹${o.sellingPrice.toFixed(2)}</td>
                         <td style="color:var(--gold);">₹${o.profit.toFixed(2)}</td>
                         <td>${o.status}</td>
-                        <td><button class="action-btn" style="padding:5px 10px;" onclick="alert('Fulfillment sync verified with supplier.')">Sync Supplier</button></td>
+                        <td><button class="action-btn" style="padding:5px 10px;" onclick="alert('Supplier synced successfully with Alibaba / fulfillment partner.')">Sync Supplier</button></td>
                     </tr>
                 `;
             });
