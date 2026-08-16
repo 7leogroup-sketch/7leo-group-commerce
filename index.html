@@ -15,109 +15,130 @@
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #000000;
-            color: #ffffff;
+            background-color: #0e0f13;
+            color: #e2e8f0;
             overflow-x: hidden;
         }
         h1, h2, h3, h4, h5, h6, .font-heading {
             font-family: 'Montserrat', sans-serif;
-            font-weight: 900;
+            font-weight: 800;
         }
-        @keyframes rainbow {
-            0% { filter: hue-rotate(0deg); }
-            100% { filter: hue-rotate(360deg); }
-        }
-        @keyframes pulseGlow {
-            0%, 100% { opacity: 0.6; filter: drop-shadow(0 0 15px rgba(255,0,0,0.5)); }
-            33% { opacity: 0.8; filter: drop-shadow(0 0 15px rgba(0,255,0,0.5)); }
-            66% { opacity: 0.8; filter: drop-shadow(0 0 15px rgba(0,0,255,0.5)); }
-        }
-        .rainbow-text {
-            background: linear-gradient(90deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #8b00ff);
+        /* Orange to Red Gradient */
+        .orange-red-gradient {
+            background: linear-gradient(135deg, #f97316 0%, #ef4444 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            animation: rainbow 6s linear infinite;
         }
-        .rainbow-bg {
-            background: linear-gradient(90deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #8b00ff);
-            animation: rainbow 6s linear infinite;
+        .orange-red-bg {
+            background: linear-gradient(135deg, #f97316 0%, #ef4444 100%);
         }
-        .rainbow-border {
-            border-image: linear-gradient(90deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #8b00ff) 1;
-            animation: rainbow 6s linear infinite;
+        /* Electric Blue Neon Glow */
+        .neon-blue-glow {
+            text-shadow: 0 0 10px rgba(59, 130, 246, 0.6), 0 0 20px rgba(59, 130, 246, 0.4);
         }
+        .neon-blue-box {
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.25), inset 0 0 15px rgba(59, 130, 246, 0.15);
+            border-color: rgba(59, 130, 246, 0.4);
+        }
+        .neon-blue-box:hover {
+            box-shadow: 0 0 30px rgba(59, 130, 246, 0.45), inset 0 0 20px rgba(59, 130, 246, 0.25);
+            border-color: rgba(59, 130, 246, 0.7);
+        }
+        /* Glassmorphism Cards */
         .glass-card {
-            background: rgba(255, 255, 255, 0.03);
+            background: rgba(22, 24, 30, 0.75);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
             border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.5);
         }
         .glass-nav {
-            background: rgba(0, 0, 0, 0.6);
+            background: rgba(14, 15, 19, 0.85);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
         }
-        .neon-glow {
-            box-shadow: 0 0 25px rgba(255, 255, 255, 0.15);
+        /* Subtle Rainbow Hover / Divider */
+        .subtle-rainbow-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.5), rgba(239, 68, 68, 0.5), rgba(245, 158, 11, 0.5), transparent);
+        }
+        .rainbow-hover-border {
+            transition: all 0.3s ease;
+        }
+        .rainbow-hover-border:hover {
+            border-color: transparent;
+            background-image: linear-gradient(rgba(22, 24, 30, 0.85), rgba(22, 24, 30, 0.85)), linear-gradient(135deg, #3b82f6, #ef4444, #f59e0b);
+            background-origin: border-box;
+            background-clip: padding-box, border-box;
         }
     </style>
 </head>
-<body class="bg-black text-white antialiased">
+<body class="antialiased selection:bg-blue-500 selection:text-white">
 
-    <!-- Navbar -->
+    <!-- Fixed Glassmorphism Navbar -->
     <nav class="fixed top-0 left-0 w-full z-50 glass-nav transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-            <a href="#" class="text-2xl font-black tracking-wider rainbow-text">7Leo Group</a>
+            <!-- Logo -->
+            <a href="#" class="text-2xl font-black tracking-wider orange-red-gradient font-heading">7Leo Group</a>
             
-            <div class="hidden md:flex items-center space-x-8 text-sm font-semibold tracking-wide text-neutral-300">
-                <a href="#store" class="hover:text-white transition-colors">7Leo Store</a>
-                <a href="#bgm" class="hover:text-white transition-colors">7Leo BGM</a>
-                <a href="#founder" class="hover:text-white transition-colors">Meet The Founder</a>
-                <a href="#about" class="hover:text-white transition-colors">About</a>
-                <a href="#contact" class="hover:text-white transition-colors">Contact</a>
+            <!-- Navigation Links -->
+            <div class="hidden lg:flex items-center space-x-8 text-sm font-semibold tracking-wide text-neutral-300">
+                <a href="#store" class="hover:text-blue-400 transition-colors">7Leo Store</a>
+                <a href="#bgm" class="hover:text-blue-400 transition-colors">7Leo BGM</a>
+                <a href="#founder" class="hover:text-blue-400 transition-colors">Meet The Founder</a>
+                <a href="#about" class="hover:text-blue-400 transition-colors">About</a>
+                <a href="#contact" class="hover:text-blue-400 transition-colors">Contact</a>
             </div>
 
+            <!-- Sign Up Action & Mobile Toggle -->
             <div class="flex items-center space-x-4">
-                <button onclick="openModal()" class="px-6 py-2.5 rounded-full rainbow-bg text-black font-extrabold text-sm shadow-lg transform hover:scale-105 transition-all duration-300 neon-glow">
+                <button onclick="openModal('signup')" class="px-6 py-2.5 rounded-full orange-red-bg text-white font-extrabold text-sm shadow-lg hover:shadow-orange-500/25 transform hover:-translate-y-0.5 transition-all duration-300">
                     Sign Up
                 </button>
-                <button id="menu-btn" class="md:hidden text-2xl text-neutral-300 focus:outline-none">
+                <button id="menu-btn" class="lg:hidden text-2xl text-neutral-300 focus:outline-none hover:text-white transition-colors">
                     <i class="fa-solid fa-bars"></i>
                 </button>
             </div>
         </div>
 
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden glass-card border-t border-white/10 px-6 py-6 space-y-4">
-            <a href="#store" class="block text-neutral-300 hover:text-white font-medium">7Leo Store</a>
-            <a href="#bgm" class="block text-neutral-300 hover:text-white font-medium">7Leo BGM</a>
-            <a href="#founder" class="block text-neutral-300 hover:text-white font-medium">Meet The Founder</a>
-            <a href="#about" class="block text-neutral-300 hover:text-white font-medium">About</a>
-            <a href="#contact" class="block text-neutral-300 hover:text-white font-medium">Contact</a>
+        <!-- Mobile Menu Drawer -->
+        <div id="mobile-menu" class="hidden lg:hidden glass-card border-t border-white/10 px-6 py-6 space-y-4">
+            <a href="#store" onclick="closeMobileMenu()" class="block text-neutral-300 hover:text-blue-400 font-medium transition-colors">7Leo Store</a>
+            <a href="#bgm" onclick="closeMobileMenu()" class="block text-neutral-300 hover:text-blue-400 font-medium transition-colors">7Leo BGM</a>
+            <a href="#founder" onclick="closeMobileMenu()" class="block text-neutral-300 hover:text-blue-400 font-medium transition-colors">Meet The Founder</a>
+            <a href="#about" onclick="closeMobileMenu()" class="block text-neutral-300 hover:text-blue-400 font-medium transition-colors">About</a>
+            <a href="#contact" onclick="closeMobileMenu()" class="block text-neutral-300 hover:text-blue-400 font-medium transition-colors">Contact</a>
         </div>
     </nav>
 
     <!-- Hero Section -->
     <header class="relative min-h-screen flex items-center justify-center text-center px-4 pt-20 overflow-hidden">
-        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-purple-900/10 via-black to-black pointer-events-none"></div>
+        <!-- Ambient Neon Glow Background Elements -->
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-[120px] pointer-events-none"></div>
+        <div class="absolute bottom-10 right-10 w-[350px] h-[350px] bg-orange-600/10 rounded-full blur-[100px] pointer-events-none"></div>
+
         <div class="relative z-10 max-w-4xl mx-auto space-y-8">
-            <span class="inline-block px-4 py-1.5 rounded-full glass-card text-xs font-bold tracking-widest uppercase rainbow-text border border-white/10">
-                Official Ecosystem
-            </span>
-            <h1 class="text-5xl sm:text-7xl lg:text-8xl font-black tracking-tight uppercase">
-                <span class="rainbow-text">7Leo Group</span>
+            <div class="inline-flex items-center space-x-2 px-4 py-2 rounded-full glass-card text-xs font-bold tracking-widest uppercase text-blue-400 neon-blue-box">
+                <span class="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span>
+                <span>The Ecosystem Horizon</span>
+            </div>
+            
+            <h1 class="text-5xl sm:text-7xl lg:text-8xl font-black tracking-tight uppercase font-heading">
+                <span class="orange-red-gradient">7Leo Group</span>
             </h1>
-            <p class="text-xl sm:text-2xl font-bold tracking-wide text-neutral-400 uppercase">
+            
+            <p class="text-xl sm:text-3xl font-extrabold tracking-wide text-blue-400 uppercase neon-blue-glow font-heading">
                 Commerce and Music
             </p>
-            <p class="max-w-xl mx-auto text-neutral-400 text-base sm:text-lg leading-relaxed font-light">
-                Experience the ultimate convergence of curated high-end commerce and immersive cinematic soundscapes designed for visionary creators.
+            
+            <p class="max-w-2xl mx-auto text-neutral-400 text-base sm:text-lg leading-relaxed font-light">
+                Discover the ultimate intersection of elite digital commerce and immersive cinematic soundscapes engineered for modern visionaries.
             </p>
+            
             <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
-                <a href="#store" class="w-full sm:w-auto px-8 py-4 rounded-xl rainbow-bg text-black font-extrabold text-base shadow-xl transform hover:-translate-y-1 transition-all duration-300">
-                    Get Started
+                <a href="#store" class="w-full sm:w-auto px-8 py-4 rounded-xl orange-red-bg text-white font-extrabold text-base shadow-lg shadow-orange-500/20 transform hover:-translate-y-1 transition-all duration-300">
+                    Explore Store
                 </a>
                 <a href="#about" class="w-full sm:w-auto px-8 py-4 rounded-xl glass-card text-white font-extrabold text-base hover:bg-white/10 transition-all duration-300 border border-white/20">
                     Learn More
@@ -126,118 +147,134 @@
         </div>
     </header>
 
+    <div class="subtle-rainbow-divider my-12"></div>
+
     <!-- 7Leo Store Section -->
-    <section id="store" class="py-32 relative">
+    <section id="store" class="py-24 relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center space-y-4 mb-20">
-                <span class="text-xs font-extrabold uppercase tracking-widest rainbow-text">Catalog</span>
-                <h2 class="text-4xl sm:text-5xl font-black tracking-tight">7Leo Store</h2>
-                <p class="text-neutral-400 max-w-xl mx-auto">Explore elite merchandise, high-grade hardware, and exclusive lifestyle collections.</p>
+            <div class="text-center space-y-4 mb-16">
+                <span class="text-xs font-extrabold uppercase tracking-widest text-blue-400 neon-blue-glow">Curated Catalog</span>
+                <h2 class="text-4xl sm:text-5xl font-black tracking-tight font-heading">7Leo Store</h2>
+                <p class="text-neutral-400 max-w-xl mx-auto">Explore high-end merchandise, specialized technical hardware, and exclusive lifestyle artifacts.</p>
             </div>
+            
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Card 1 -->
-                <div class="glass-card rounded-3xl p-8 relative group hover:border-white/30 transition-all duration-500">
-                    <div class="h-60 rounded-2xl mb-6 bg-gradient-to-br from-neutral-900 to-neutral-950 flex items-center justify-center border border-white/5 group-hover:scale-[1.02] transition-transform duration-500">
-                        <i class="fa-solid fa-shirt text-6xl rainbow-text"></i>
+                <!-- Product Card 1 -->
+                <div class="glass-card rounded-3xl p-8 relative group neon-blue-box rainbow-hover-border">
+                    <div class="h-60 rounded-2xl mb-6 bg-[#0e0f13] flex items-center justify-center border border-white/5 relative overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-tr from-blue-600/10 to-transparent"></div>
+                        <i class="fa-solid fa-shirt text-6xl text-blue-400 neon-blue-glow"></i>
                     </div>
-                    <h3 class="text-2xl font-bold mb-2">Signature Apparel</h3>
-                    <p class="text-neutral-400 text-sm mb-6 font-light">Engineered with high-grade technical fabrics for ultimate comfort and durability.</p>
+                    <h3 class="text-2xl font-bold mb-2 font-heading">Signature Apparel</h3>
+                    <p class="text-neutral-400 text-sm mb-6 font-light">Constructed with high-grade technical textiles built for durability and unmatched comfort.</p>
                     <div class="flex items-center justify-between">
-                        <span class="text-xl font-bold rainbow-text">$180.00</span>
-                        <button onclick="openModal()" class="px-4 py-2 rounded-xl glass-card text-sm font-bold hover:bg-white/10 transition-colors">Acquire</button>
+                        <span class="text-xl font-extrabold text-blue-400">$180.00</span>
+                        <button onclick="openModal('signup')" class="px-5 py-2.5 rounded-xl orange-red-bg text-white text-xs font-bold uppercase tracking-wider shadow-md hover:shadow-orange-500/20 transition-all">Acquire</button>
                     </div>
                 </div>
-                <!-- Card 2 -->
-                <div class="glass-card rounded-3xl p-8 relative group hover:border-white/30 transition-all duration-500">
-                    <div class="h-60 rounded-2xl mb-6 bg-gradient-to-br from-neutral-900 to-neutral-950 flex items-center justify-center border border-white/5 group-hover:scale-[1.02] transition-transform duration-500">
-                        <i class="fa-solid fa-headphones text-6xl rainbow-text"></i>
+
+                <!-- Product Card 2 -->
+                <div class="glass-card rounded-3xl p-8 relative group neon-blue-box rainbow-hover-border">
+                    <div class="h-60 rounded-2xl mb-6 bg-[#0e0f13] flex items-center justify-center border border-white/5 relative overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-tr from-blue-600/10 to-transparent"></div>
+                        <i class="fa-solid fa-headphones text-6xl text-blue-400 neon-blue-glow"></i>
                     </div>
-                    <h3 class="text-2xl font-bold mb-2">Acoustic Gear</h3>
-                    <p class="text-neutral-400 text-sm mb-6 font-light">Studio-grade master monitors built for pristine frequency response and clarity.</p>
+                    <h3 class="text-2xl font-bold mb-2 font-heading">Studio Hardware</h3>
+                    <p class="text-neutral-400 text-sm mb-6 font-light">Studio-grade monitoring gear engineered for pristine frequency response and acoustic clarity.</p>
                     <div class="flex items-center justify-between">
-                        <span class="text-xl font-bold rainbow-text">$450.00</span>
-                        <button onclick="openModal()" class="px-4 py-2 rounded-xl glass-card text-sm font-bold hover:bg-white/10 transition-colors">Acquire</button>
+                        <span class="text-xl font-extrabold text-blue-400">$450.00</span>
+                        <button onclick="openModal('signup')" class="px-5 py-2.5 rounded-xl orange-red-bg text-white text-xs font-bold uppercase tracking-wider shadow-md hover:shadow-orange-500/20 transition-all">Acquire</button>
                     </div>
                 </div>
-                <!-- Card 3 -->
-                <div class="glass-card rounded-3xl p-8 relative group hover:border-white/30 transition-all duration-500">
-                    <div class="h-60 rounded-2xl mb-6 bg-gradient-to-br from-neutral-900 to-neutral-950 flex items-center justify-center border border-white/5 group-hover:scale-[1.02] transition-transform duration-500">
-                        <i class="fa-solid fa-gem text-6xl rainbow-text"></i>
+
+                <!-- Product Card 3 -->
+                <div class="glass-card rounded-3xl p-8 relative group neon-blue-box rainbow-hover-border">
+                    <div class="h-60 rounded-2xl mb-6 bg-[#0e0f13] flex items-center justify-center border border-white/5 relative overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-tr from-blue-600/10 to-transparent"></div>
+                        <i class="fa-solid fa-gem text-6xl text-blue-400 neon-blue-glow"></i>
                     </div>
-                    <h3 class="text-2xl font-bold mb-2">Collector Vault</h3>
-                    <p class="text-neutral-400 text-sm mb-6 font-light">Limited release artifacts representing the pinnacle of aesthetic design.</p>
+                    <h3 class="text-2xl font-bold mb-2 font-heading">Collector Artifacts</h3>
+                    <p class="text-neutral-400 text-sm mb-6 font-light">Limited-run physical releases representing the absolute peak of modern minimalist design.</p>
                     <div class="flex items-center justify-between">
-                        <span class="text-xl font-bold rainbow-text">$1,200.00</span>
-                        <button onclick="openModal()" class="px-4 py-2 rounded-xl glass-card text-sm font-bold hover:bg-white/10 transition-colors">Acquire</button>
+                        <span class="text-xl font-extrabold text-blue-400">$1,200.00</span>
+                        <button onclick="openModal('signup')" class="px-5 py-2.5 rounded-xl orange-red-bg text-white text-xs font-bold uppercase tracking-wider shadow-md hover:shadow-orange-500/20 transition-all">Acquire</button>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
+    <div class="subtle-rainbow-divider my-12"></div>
+
     <!-- 7Leo BGM Section -->
-    <section id="bgm" class="py-32 relative bg-neutral-950/50">
+    <section id="bgm" class="py-24 relative bg-[#0b0c10]/50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center space-y-4 mb-20">
-                <span class="text-xs font-extrabold uppercase tracking-widest rainbow-text">Audio Architecture</span>
-                <h2 class="text-4xl sm:text-5xl font-black tracking-tight">7Leo BGM</h2>
-                <p class="text-neutral-400 max-w-xl mx-auto">Cinematic soundscapes and master tracks composed for elite creative projects.</p>
+            <div class="text-center space-y-4 mb-16">
+                <span class="text-xs font-extrabold uppercase tracking-widest text-blue-400 neon-blue-glow">Acoustic Architecture</span>
+                <h2 class="text-4xl sm:text-5xl font-black tracking-tight font-heading">7Leo BGM</h2>
+                <p class="text-neutral-400 max-w-xl mx-auto">Immersive cinematic soundtracks and master soundscapes composed for high-impact visual projects.</p>
             </div>
+            
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-                <!-- Track 1 -->
-                <div class="glass-card rounded-3xl p-8 flex items-center justify-between group hover:border-white/30 transition-all duration-300">
+                <!-- Track Item 1 -->
+                <div class="glass-card rounded-3xl p-6 sm:p-8 flex items-center justify-between group neon-blue-box rainbow-hover-border">
                     <div class="flex items-center space-x-6">
-                        <div class="w-16 h-16 rounded-2xl rainbow-bg flex items-center justify-center text-black font-bold text-2xl shadow-lg">
+                        <div class="w-16 h-16 rounded-2xl orange-red-bg flex items-center justify-center text-white font-bold text-xl shadow-lg">
                             <i class="fa-solid fa-play"></i>
                         </div>
                         <div>
-                            <h3 class="text-xl font-bold">Resonance of Cosmos</h3>
+                            <h3 class="text-xl font-bold font-heading">Resonance of Cosmos</h3>
                             <p class="text-neutral-400 text-xs font-medium uppercase tracking-wider mt-1">Cinematic Electronic · 4:32</p>
                         </div>
                     </div>
-                    <button onclick="openModal()" class="p-3 rounded-xl glass-card hover:bg-white/10 transition-colors">
-                        <i class="fa-solid fa-arrow-down text-lg rainbow-text"></i>
+                    <button onclick="openModal('signup')" class="p-3.5 rounded-xl glass-card hover:bg-white/10 transition-colors text-blue-400 neon-blue-glow">
+                        <i class="fa-solid fa-download text-lg"></i>
                     </button>
                 </div>
-                <!-- Track 2 -->
-                <div class="glass-card rounded-3xl p-8 flex items-center justify-between group hover:border-white/30 transition-all duration-300">
+
+                <!-- Track Item 2 -->
+                <div class="glass-card rounded-3xl p-6 sm:p-8 flex items-center justify-between group neon-blue-box rainbow-hover-border">
                     <div class="flex items-center space-x-6">
-                        <div class="w-16 h-16 rounded-2xl rainbow-bg flex items-center justify-center text-black font-bold text-2xl shadow-lg">
+                        <div class="w-16 h-16 rounded-2xl orange-red-bg flex items-center justify-center text-white font-bold text-xl shadow-lg">
                             <i class="fa-solid fa-play"></i>
                         </div>
                         <div>
-                            <h3 class="text-xl font-bold">Neon Horizon</h3>
+                            <h3 class="text-xl font-bold font-heading">Neon Horizon</h3>
                             <p class="text-neutral-400 text-xs font-medium uppercase tracking-wider mt-1">Ambient Soundscape · 5:14</p>
                         </div>
                     </div>
-                    <button onclick="openModal()" class="p-3 rounded-xl glass-card hover:bg-white/10 transition-colors">
-                        <i class="fa-solid fa-arrow-down text-lg rainbow-text"></i>
+                    <button onclick="openModal('signup')" class="p-3.5 rounded-xl glass-card hover:bg-white/10 transition-colors text-blue-400 neon-blue-glow">
+                        <i class="fa-solid fa-download text-lg"></i>
                     </button>
                 </div>
             </div>
         </div>
     </section>
 
+    <div class="subtle-rainbow-divider my-12"></div>
+
     <!-- Meet The Founder Section -->
-    <section id="founder" class="py-32 relative">
+    <section id="founder" class="py-24 relative">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="glass-card rounded-3xl p-8 sm:p-16 border border-white/10 relative overflow-hidden">
-                <div class="absolute -right-20 -bottom-20 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="glass-card rounded-3xl p-8 sm:p-16 neon-blue-box relative overflow-hidden">
+                <div class="absolute -right-20 -bottom-20 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl pointer-events-none"></div>
+                
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
                     <div class="lg:col-span-5">
-                        <div class="aspect-square rounded-2xl glass-card border border-white/20 flex items-center justify-center relative group overflow-hidden">
-                            <div class="absolute inset-0 bg-gradient-to-tr from-purple-900/40 via-transparent to-blue-900/40"></div>
+                        <div class="aspect-square rounded-2xl glass-card border border-white/20 flex items-center justify-center relative overflow-hidden group">
+                            <div class="absolute inset-0 bg-gradient-to-tr from-blue-900/20 via-transparent to-orange-900/20"></div>
                             <i class="fa-solid fa-user-tie text-8xl text-neutral-600 group-hover:scale-110 transition-transform duration-500"></i>
                         </div>
                     </div>
+                    
                     <div class="lg:col-span-7 space-y-6">
-                        <span class="text-xs font-extrabold uppercase tracking-widest rainbow-text">Visionary Leadership</span>
-                        <h2 class="text-3xl sm:text-4xl font-black tracking-tight">Meet The Founder</h2>
+                        <span class="text-xs font-extrabold uppercase tracking-widest text-blue-400 neon-blue-glow">Visionary Leadership</span>
+                        <h2 class="text-3xl sm:text-4xl font-black tracking-tight font-heading">Meet The Founder</h2>
                         <p class="text-neutral-300 leading-relaxed font-light">
-                            Driven by an unwavering passion for sonic architecture and exceptional products, our founder established this ecosystem to bridge the gap between high-end digital commerce and emotive musical production.
+                            Driven by an uncompromising passion for audio architecture and pristine physical goods, our leadership established 7Leo Group to bridge the gap between high-end digital commerce and emotive musical production.
                         </p>
                         <p class="text-neutral-400 text-sm font-light">
-                            Every single curation reflects an uncompromising commitment to minimalist design, superior craftsmanship, and boundless creative expression.
+                            Every single product curation and sonic piece reflects a dedication to minimalist design, superior engineering, and absolute creative freedom.
                         </p>
                     </div>
                 </div>
@@ -245,41 +282,46 @@
         </div>
     </section>
 
+    <div class="subtle-rainbow-divider my-12"></div>
+
     <!-- About Section -->
-    <section id="about" class="py-32 relative bg-neutral-950/50">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8">
-            <span class="text-xs font-extrabold uppercase tracking-widest rainbow-text">Philosophy</span>
-            <h2 class="text-4xl sm:text-5xl font-black tracking-tight">About 7Leo Group</h2>
-            <p class="text-xl text-neutral-300 max-w-3xl mx-auto font-light leading-relaxed">
-                We operate at the precise intersection where modern commerce meets avant-garde music. Our mission is to build immersive digital realities that empower creators, collectors, and innovators globally.
+    <section id="about" class="py-24 relative bg-[#0b0c10]/50">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8">
+            <span class="text-xs font-extrabold uppercase tracking-widest text-blue-400 neon-blue-glow">Core Philosophy</span>
+            <h2 class="text-4xl sm:text-5xl font-black tracking-tight font-heading">About 7Leo Group</h2>
+            <p class="text-xl text-neutral-300 leading-relaxed font-light">
+                We operate at the precise intersection where modern digital commerce meets avant-garde music production. Our mission is to build seamless digital ecosystems that empower creators, collectors, and innovators globally.
             </p>
         </div>
     </section>
 
+    <div class="subtle-rainbow-divider my-12"></div>
+
     <!-- Contact Section -->
-    <section id="contact" class="py-32 relative">
+    <section id="contact" class="py-24 relative">
         <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center space-y-4 mb-16">
-                <span class="text-xs font-extrabold uppercase tracking-widest rainbow-text">Inquiries</span>
-                <h2 class="text-4xl sm:text-5xl font-black tracking-tight">Contact Us</h2>
-                <p class="text-neutral-400">Connect with our executive team for partnerships, inquiries, or support.</p>
+                <span class="text-xs font-extrabold uppercase tracking-widest text-blue-400 neon-blue-glow">Get In Touch</span>
+                <h2 class="text-4xl sm:text-5xl font-black tracking-tight font-heading">Contact Us</h2>
+                <p class="text-neutral-400">Connect with our executive operations team for enterprise partnerships, licensing inquiries, or customer support.</p>
             </div>
-            <form onsubmit="event.preventDefault(); alert('Message dispatched successfully.');" class="glass-card rounded-3xl p-8 sm:p-12 space-y-6 border border-white/10">
+            
+            <form onsubmit="event.preventDefault(); alert('Message dispatched successfully.');" class="glass-card rounded-3xl p-8 sm:p-12 space-y-6 neon-blue-box">
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <div class="space-y-2">
                         <label class="text-xs font-bold uppercase tracking-wider text-neutral-400">Your Name</label>
-                        <input type="text" required class="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-3.5 text-white focus:outline-none focus:border-white/40 transition-colors" placeholder="Enter your name">
+                        <input type="text" required class="w-full bg-[#0e0f13] border border-white/10 rounded-xl px-4 py-3.5 text-white focus:outline-none focus:border-blue-500 transition-colors" placeholder="Enter your name">
                     </div>
                     <div class="space-y-2">
                         <label class="text-xs font-bold uppercase tracking-wider text-neutral-400">Your Email</label>
-                        <input type="email" required class="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-3.5 text-white focus:outline-none focus:border-white/40 transition-colors" placeholder="Enter your email">
+                        <input type="email" required class="w-full bg-[#0e0f13] border border-white/10 rounded-xl px-4 py-3.5 text-white focus:outline-none focus:border-blue-500 transition-colors" placeholder="Enter your email">
                     </div>
                 </div>
                 <div class="space-y-2">
                     <label class="text-xs font-bold uppercase tracking-wider text-neutral-400">Message</label>
-                    <textarea rows="5" required class="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-3.5 text-white focus:outline-none focus:border-white/40 transition-colors" placeholder="Type your message here..."></textarea>
+                    <textarea rows="5" required class="w-full bg-[#0e0f13] border border-white/10 rounded-xl px-4 py-3.5 text-white focus:outline-none focus:border-blue-500 transition-colors" placeholder="Type your message here..."></textarea>
                 </div>
-                <button type="submit" class="w-full py-4 rounded-xl rainbow-bg text-black font-extrabold text-base shadow-xl transform hover:-translate-y-0.5 transition-all duration-300">
+                <button type="submit" class="w-full py-4 rounded-xl orange-red-bg text-white font-extrabold text-base shadow-lg shadow-orange-500/20 transform hover:-translate-y-0.5 transition-all duration-300">
                     Send Message
                 </button>
             </form>
@@ -287,23 +329,23 @@
     </section>
 
     <!-- Footer -->
-    <footer class="py-12 border-t border-white/10 bg-black text-center text-neutral-500 text-sm">
+    <footer class="py-12 border-t border-white/10 bg-[#0a0b0e] text-center text-neutral-500 text-sm">
         <div class="max-w-7xl mx-auto px-4 space-y-4">
-            <p class="font-bold tracking-wider rainbow-text text-lg">7Leo Group</p>
+            <p class="font-bold tracking-wider orange-red-gradient text-lg font-heading">7Leo Group</p>
             <p>&copy; 2026 7Leo Group Commerce and Music. All rights reserved.</p>
         </div>
     </footer>
 
-    <!-- Signup Modal -->
+    <!-- Signup / Sign In Modal -->
     <div id="auth-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-xl hidden">
-        <div class="glass-card rounded-3xl w-full max-w-md p-8 relative border border-white/20 shadow-2xl animate-in fade-in zoom-in duration-300">
-            <button onclick="closeModal()" class="absolute top-6 right-6 text-neutral-400 hover:text-white text-xl focus:outline-none">
+        <div class="glass-card rounded-3xl w-full max-w-md p-8 relative neon-blue-box shadow-2xl animate-in fade-in zoom-in duration-300">
+            <button onclick="closeModal()" class="absolute top-6 right-6 text-neutral-400 hover:text-white text-xl focus:outline-none transition-colors">
                 <i class="fa-solid fa-xmark"></i>
             </button>
             
             <div class="text-center space-y-3 mb-8">
-                <h3 class="text-2xl font-black tracking-tight">Welcome to 7Leo Group Commerce and Music</h3>
-                <p class="text-xs text-neutral-400 font-light">Access your ecosystem portal</p>
+                <h3 class="text-xl sm:text-2xl font-black tracking-tight font-heading leading-snug">Welcome to 7Leo Group Commerce and Music</h3>
+                <p class="text-xs text-neutral-400 font-light">Access your secure ecosystem portal</p>
             </div>
 
             <!-- Tabs -->
@@ -316,30 +358,32 @@
             <form id="form-signup" onsubmit="event.preventDefault(); alert('Account created successfully.'); closeModal();" class="space-y-4">
                 <div class="space-y-1">
                     <label class="text-xs font-bold uppercase tracking-wider text-neutral-400">Name</label>
-                    <input type="text" required class="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-white/40">
+                    <input type="text" required class="w-full bg-[#0e0f13] border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-blue-500 transition-colors" placeholder="Enter your full name">
                 </div>
                 <div class="space-y-1">
                     <label class="text-xs font-bold uppercase tracking-wider text-neutral-400">Email</label>
-                    <input type="email" required class="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-white/40">
+                    <input type="email" required class="w-full bg-[#0e0f13] border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-blue-500 transition-colors" placeholder="Enter your email address">
                 </div>
                 <div class="space-y-1">
                     <label class="text-xs font-bold uppercase tracking-wider text-neutral-400">Password</label>
-                    <input type="password" required class="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-white/40">
+                    <input type="password" required class="w-full bg-[#0e0f13] border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-blue-500 transition-colors" placeholder="Create a secure password">
                 </div>
-                <button type="submit" class="w-full py-3.5 rounded-xl rainbow-bg text-black font-extrabold text-sm shadow-xl mt-2">
+                <button type="submit" class="w-full py-3.5 rounded-xl orange-red-bg text-white font-extrabold text-sm shadow-lg shadow-orange-500/20 mt-2">
                     Create Account
                 </button>
+                
                 <div class="relative flex py-2 items-center">
                     <div class="flex-grow border-t border-white/10"></div>
                     <span class="flex-shrink mx-4 text-neutral-500 text-xs uppercase tracking-widest">Or</span>
                     <div class="flex-grow border-t border-white/10"></div>
                 </div>
+
                 <div class="grid grid-cols-2 gap-4">
-                    <button type="button" onclick="alert('Social Authentication Simulated')" class="py-3 rounded-xl glass-card border border-white/10 text-xs font-bold flex items-center justify-center space-x-2 hover:bg-white/10 transition-colors">
+                    <button type="button" onclick="alert('Google authentication simulated')" class="py-3 rounded-xl glass-card border border-white/10 text-xs font-bold flex items-center justify-center space-x-2 hover:bg-white/10 transition-colors">
                         <i class="fa-brands fa-google"></i>
                         <span>Google</span>
                     </button>
-                    <button type="button" onclick="alert('Social Authentication Simulated')" class="py-3 rounded-xl glass-card border border-white/10 text-xs font-bold flex items-center justify-center space-x-2 hover:bg-white/10 transition-colors">
+                    <button type="button" onclick="alert('Apple authentication simulated')" class="py-3 rounded-xl glass-card border border-white/10 text-xs font-bold flex items-center justify-center space-x-2 hover:bg-white/10 transition-colors">
                         <i class="fa-brands fa-apple"></i>
                         <span>Apple</span>
                     </button>
@@ -350,26 +394,28 @@
             <form id="form-signin" onsubmit="event.preventDefault(); alert('Signed in successfully.'); closeModal();" class="space-y-4 hidden">
                 <div class="space-y-1">
                     <label class="text-xs font-bold uppercase tracking-wider text-neutral-400">Email</label>
-                    <input type="email" required class="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-white/40">
+                    <input type="email" required class="w-full bg-[#0e0f13] border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-blue-500 transition-colors" placeholder="Enter your email address">
                 </div>
                 <div class="space-y-1">
                     <label class="text-xs font-bold uppercase tracking-wider text-neutral-400">Password</label>
-                    <input type="password" required class="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-white/40">
+                    <input type="password" required class="w-full bg-[#0e0f13] border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-blue-500 transition-colors" placeholder="Enter your password">
                 </div>
-                <button type="submit" class="w-full py-3.5 rounded-xl rainbow-bg text-black font-extrabold text-sm shadow-xl mt-2">
+                <button type="submit" class="w-full py-3.5 rounded-xl orange-red-bg text-white font-extrabold text-sm shadow-lg shadow-orange-500/20 mt-2">
                     Sign In
                 </button>
+                
                 <div class="relative flex py-2 items-center">
                     <div class="flex-grow border-t border-white/10"></div>
                     <span class="flex-shrink mx-4 text-neutral-500 text-xs uppercase tracking-widest">Or</span>
                     <div class="flex-grow border-t border-white/10"></div>
                 </div>
+
                 <div class="grid grid-cols-2 gap-4">
-                    <button type="button" onclick="alert('Social Authentication Simulated')" class="py-3 rounded-xl glass-card border border-white/10 text-xs font-bold flex items-center justify-center space-x-2 hover:bg-white/10 transition-colors">
+                    <button type="button" onclick="alert('Google authentication simulated')" class="py-3 rounded-xl glass-card border border-white/10 text-xs font-bold flex items-center justify-center space-x-2 hover:bg-white/10 transition-colors">
                         <i class="fa-brands fa-google"></i>
                         <span>Google</span>
                     </button>
-                    <button type="button" onclick="alert('Social Authentication Simulated')" class="py-3 rounded-xl glass-card border border-white/10 text-xs font-bold flex items-center justify-center space-x-2 hover:bg-white/10 transition-colors">
+                    <button type="button" onclick="alert('Apple authentication simulated')" class="py-3 rounded-xl glass-card border border-white/10 text-xs font-bold flex items-center justify-center space-x-2 hover:bg-white/10 transition-colors">
                         <i class="fa-brands fa-apple"></i>
                         <span>Apple</span>
                     </button>
@@ -378,8 +424,9 @@
         </div>
     </div>
 
-    <!-- JavaScript -->
+    <!-- JavaScript Interactivity -->
     <script>
+        // Mobile menu toggle
         const menuBtn = document.getElementById('menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
 
@@ -387,9 +434,15 @@
             mobileMenu.classList.toggle('hidden');
         });
 
-        function openModal() {
+        function closeMobileMenu() {
+            mobileMenu.classList.add('hidden');
+        }
+
+        // Modal Controls
+        function openModal(tabName) {
             document.getElementById('auth-modal').classList.remove('hidden');
             document.body.style.overflow = 'hidden';
+            switchTab(tabName);
         }
 
         function closeModal() {
@@ -420,7 +473,7 @@
             }
         }
 
-        // Close modal on outside click
+        // Close modal when clicking outside content backdrop
         window.onclick = function(event) {
             const modal = document.getElementById('auth-modal');
             if (event.target === modal) {
