@@ -1,485 +1,527 @@
+cat > /mnt/user-data/outputs/index.html << 'HTMLEOF'
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>7Leo Group Commerce and Music</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts: Montserrat & Inter -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
-    <!-- FontAwesome for Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #0e0f13;
-            color: #e2e8f0;
-            overflow-x: hidden;
-        }
-        h1, h2, h3, h4, h5, h6, .font-heading {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 800;
-        }
-        /* Orange to Red Gradient */
-        .orange-red-gradient {
-            background: linear-gradient(135deg, #f97316 0%, #ef4444 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .orange-red-bg {
-            background: linear-gradient(135deg, #f97316 0%, #ef4444 100%);
-        }
-        /* Electric Blue Neon Glow */
-        .neon-blue-glow {
-            text-shadow: 0 0 10px rgba(59, 130, 246, 0.6), 0 0 20px rgba(59, 130, 246, 0.4);
-        }
-        .neon-blue-box {
-            box-shadow: 0 0 20px rgba(59, 130, 246, 0.25), inset 0 0 15px rgba(59, 130, 246, 0.15);
-            border-color: rgba(59, 130, 246, 0.4);
-        }
-        .neon-blue-box:hover {
-            box-shadow: 0 0 30px rgba(59, 130, 246, 0.45), inset 0 0 20px rgba(59, 130, 246, 0.25);
-            border-color: rgba(59, 130, 246, 0.7);
-        }
-        /* Glassmorphism Cards */
-        .glass-card {
-            background: rgba(22, 24, 30, 0.75);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.5);
-        }
-        .glass-nav {
-            background: rgba(14, 15, 19, 0.85);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-        }
-        /* Subtle Rainbow Hover / Divider */
-        .subtle-rainbow-divider {
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.5), rgba(239, 68, 68, 0.5), rgba(245, 158, 11, 0.5), transparent);
-        }
-        .rainbow-hover-border {
-            transition: all 0.3s ease;
-        }
-        .rainbow-hover-border:hover {
-            border-color: transparent;
-            background-image: linear-gradient(rgba(22, 24, 30, 0.85), rgba(22, 24, 30, 0.85)), linear-gradient(135deg, #3b82f6, #ef4444, #f59e0b);
-            background-origin: border-box;
-            background-clip: padding-box, border-box;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>7Leo Group — Commerce & Music</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #111318;
+      --bg2:       #181b22;
+      --glass:     rgba(255,255,255,0.04);
+      --glass-b:   rgba(255,255,255,0.10);
+      --white:     #f2f4f8;
+      --muted:     rgba(242,244,248,0.50);
+      --blue:      #1fb6ff;
+      --blue-glow: rgba(31,182,255,0.22);
+      --orange:    #ff6a00;
+      --red:       #ee0979;
+      --or-grad:   linear-gradient(90deg, #ff6a00, #ee0979);
+      --rainbow:   linear-gradient(90deg,#ff0080,#ff6600,#ffee00,#00ff88,#00cfff,#7b2fff,#ff0080);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--white);
+      font-family: 'Inter', sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ambient glow */
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background:
+        radial-gradient(ellipse 55% 35% at 15% 25%, rgba(31,182,255,0.09) 0%, transparent 70%),
+        radial-gradient(ellipse 45% 35% at 85% 75%, rgba(238,9,121,0.08) 0%, transparent 70%),
+        radial-gradient(ellipse 35% 25% at 50% 50%, rgba(255,106,0,0.05) 0%, transparent 70%);
+      pointer-events: none; z-index: 0;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 5%; height: 62px;
+      background: rgba(17,19,24,0.75);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--glass-b);
+    }
+
+    .nav-logo {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900; font-size: 1.15rem; letter-spacing: 0.04em;
+      background: var(--or-grad);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .nav-links { display: flex; gap: 1.8rem; list-style: none; align-items: center; }
+    .nav-links a {
+      color: var(--muted); text-decoration: none;
+      font-size: 0.83rem; font-weight: 500; letter-spacing: 0.03em;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--white); }
+
+    .nav-cta {
+      padding: 8px 20px; border-radius: 999px;
+      background: var(--or-grad);
+      color: #fff !important; font-weight: 700 !important;
+      font-size: 0.82rem !important;
+      -webkit-text-fill-color: #fff !important;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .nav-cta:hover { box-shadow: 0 0 18px rgba(255,106,0,0.45); transform: translateY(-1px); }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative; z-index: 1;
+      min-height: 100vh;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center; padding: 100px 6% 60px;
+    }
+
+    .hero-eye {
+      font-size: 0.7rem; letter-spacing: 0.26em; text-transform: uppercase;
+      color: var(--blue); margin-bottom: 1.4rem;
+      text-shadow: 0 0 12px var(--blue-glow);
+    }
+
+    .hero-title {
+      font-family: 'Montserrat', sans-serif; font-weight: 900;
+      font-size: clamp(2.6rem, 8vw, 6rem); line-height: 1.05;
+      background: var(--or-grad);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text; margin-bottom: 0.5rem;
+    }
+
+    .hero-sub {
+      font-family: 'Montserrat', sans-serif; font-weight: 600;
+      font-size: clamp(1rem, 2.5vw, 1.4rem);
+      color: var(--white); opacity: 0.8; margin-bottom: 1.6rem;
+      letter-spacing: 0.08em; text-transform: uppercase;
+    }
+
+    .hero-desc {
+      max-width: 480px; font-size: 0.97rem; line-height: 1.75;
+      color: var(--muted); margin-bottom: 2.4rem;
+    }
+
+    .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
+
+    .btn-primary {
+      padding: 13px 34px; border-radius: 999px;
+      background: var(--or-grad); color: #fff;
+      font-weight: 700; font-size: 0.92rem; border: none;
+      cursor: pointer; text-decoration: none; display: inline-block;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(255,106,0,0.38); }
+
+    .btn-ghost {
+      padding: 12px 34px; border-radius: 999px;
+      background: transparent; color: var(--white);
+      font-weight: 600; font-size: 0.92rem;
+      border: 1px solid var(--glass-b);
+      cursor: pointer; text-decoration: none; display: inline-block;
+      backdrop-filter: blur(8px);
+      transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
+    }
+    .btn-ghost:hover {
+      border-color: var(--blue);
+      box-shadow: 0 0 14px var(--blue-glow);
+      background: rgba(31,182,255,0.06);
+    }
+
+    /* ── RAINBOW DIVIDER ── */
+    .rainbow-line {
+      border: none; height: 1px;
+      background: var(--rainbow); background-size: 300%;
+      animation: rbShift 6s linear infinite;
+      opacity: 0.35;
+    }
+    @keyframes rbShift {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 300% 50%; }
+    }
+
+    /* ── SECTIONS ── */
+    section {
+      position: relative; z-index: 1;
+      padding: 88px 8%;
+    }
+
+    .s-label {
+      display: inline-block;
+      font-size: 0.68rem; letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--blue); margin-bottom: 0.9rem;
+      text-shadow: 0 0 10px var(--blue-glow);
+    }
+
+    .s-title {
+      font-family: 'Montserrat', sans-serif; font-weight: 800;
+      font-size: clamp(1.8rem, 4vw, 2.7rem); margin-bottom: 1rem; line-height: 1.2;
+    }
+
+    .s-desc {
+      color: var(--muted); font-size: 0.97rem;
+      line-height: 1.75; max-width: 520px; margin-bottom: 2.8rem;
+    }
+
+    /* ── CARDS ── */
+    .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.3rem; }
+
+    .card {
+      background: var(--glass);
+      border: 1px solid var(--glass-b);
+      border-radius: 20px; padding: 2rem;
+      backdrop-filter: blur(14px);
+      transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(31,182,255,0.3);
+      box-shadow: 0 12px 36px rgba(0,0,0,0.35), 0 0 20px var(--blue-glow);
+    }
+
+    .card-icon { font-size: 1.9rem; margin-bottom: 0.9rem; }
+    .card-title { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 1.05rem; margin-bottom: 0.5rem; }
+    .card-desc { color: var(--muted); font-size: 0.86rem; line-height: 1.6; }
+
+    /* ── FOUNDER ── */
+    .founder-wrap {
+      display: grid; grid-template-columns: auto 1fr;
+      gap: 4rem; align-items: center;
+    }
+    @media (max-width: 680px) { .founder-wrap { grid-template-columns: 1fr; gap: 2rem; } }
+
+    .founder-avatar {
+      width: 160px; height: 160px; border-radius: 50%;
+      background: linear-gradient(135deg, #1fb6ff22, #ee097922);
+      border: 2px solid rgba(31,182,255,0.3);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 3.5rem;
+      box-shadow: 0 0 32px var(--blue-glow);
+    }
+
+    .founder-name {
+      font-family: 'Montserrat', sans-serif; font-weight: 800;
+      font-size: 1.7rem; margin-bottom: 0.3rem;
+    }
+
+    .founder-role {
+      font-size: 0.78rem; font-weight: 600; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--blue);
+      text-shadow: 0 0 8px var(--blue-glow);
+      margin-bottom: 1.1rem;
+    }
+
+    .founder-bio { color: var(--muted); line-height: 1.78; font-size: 0.94rem; }
+
+    /* ── CONTACT ── */
+    .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.1rem; }
+
+    .contact-item {
+      background: var(--glass); border: 1px solid var(--glass-b);
+      border-radius: 16px; padding: 1.5rem; backdrop-filter: blur(10px);
+    }
+    .contact-item h4 {
+      font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--muted); margin-bottom: 0.45rem;
+    }
+    .contact-item p { font-size: 0.93rem; font-weight: 500; }
+
+    /* ── FOOTER ── */
+    footer {
+      position: relative; z-index: 1;
+      text-align: center; padding: 2.2rem 5%;
+      color: var(--muted); font-size: 0.78rem;
+      border-top: 1px solid var(--glass-b);
+    }
+    footer span {
+      background: var(--or-grad);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text; font-weight: 700;
+    }
+
+    /* ── MODAL ── */
+    .overlay {
+      display: none; position: fixed; inset: 0; z-index: 200;
+      background: rgba(10,11,16,0.88); backdrop-filter: blur(12px);
+      align-items: center; justify-content: center; padding: 1rem;
+    }
+    .overlay.on { display: flex; }
+
+    .modal {
+      background: rgba(22,25,34,0.97);
+      border: 1px solid var(--glass-b);
+      border-radius: 26px; padding: 2.4rem 2.8rem;
+      width: 100%; max-width: 410px;
+      position: relative;
+      box-shadow: 0 24px 70px rgba(0,0,0,0.6), 0 0 40px var(--blue-glow);
+    }
+
+    .modal-x {
+      position: absolute; top: 1.1rem; right: 1.3rem;
+      background: none; border: none; color: var(--muted);
+      font-size: 1.3rem; cursor: pointer; transition: color 0.2s;
+    }
+    .modal-x:hover { color: var(--white); }
+
+    .modal-logo {
+      font-family: 'Montserrat', sans-serif; font-weight: 900;
+      font-size: 0.88rem; letter-spacing: 0.06em;
+      background: var(--or-grad);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text; text-align: center; margin-bottom: 0.3rem;
+    }
+
+    .modal-head {
+      font-family: 'Montserrat', sans-serif; font-weight: 800;
+      font-size: 1.25rem; text-align: center; margin-bottom: 0.3rem;
+    }
+
+    .modal-tag { text-align: center; color: var(--muted); font-size: 0.8rem; margin-bottom: 1.7rem; }
+
+    .tabs {
+      display: flex; background: rgba(255,255,255,0.05);
+      border-radius: 12px; padding: 4px; margin-bottom: 1.5rem;
+    }
+    .tab {
+      flex: 1; padding: 9px; border-radius: 9px; border: none;
+      background: transparent; color: var(--muted);
+      font-family: 'Inter', sans-serif; font-size: 0.84rem; font-weight: 600;
+      cursor: pointer; transition: background 0.2s, color 0.2s;
+    }
+    .tab.on { background: rgba(31,182,255,0.15); color: var(--white); }
+
+    .panel { display: none; }
+    .panel.on { display: block; }
+
+    .fg { margin-bottom: 0.95rem; }
+    .fg label {
+      display: block; font-size: 0.74rem; font-weight: 600;
+      letter-spacing: 0.07em; text-transform: uppercase;
+      color: var(--muted); margin-bottom: 0.38rem;
+    }
+    .fg input {
+      width: 100%; background: rgba(255,255,255,0.06);
+      border: 1px solid var(--glass-b); border-radius: 11px;
+      padding: 10px 13px; color: var(--white);
+      font-family: 'Inter', sans-serif; font-size: 0.88rem;
+      outline: none; transition: border-color 0.2s;
+    }
+    .fg input:focus { border-color: rgba(31,182,255,0.55); }
+    .fg input::placeholder { color: rgba(242,244,248,0.22); }
+
+    .sub-btn {
+      width: 100%; padding: 12px; border-radius: 12px;
+      background: var(--or-grad); border: none; color: #fff;
+      font-family: 'Montserrat', sans-serif; font-weight: 700;
+      font-size: 0.92rem; cursor: pointer;
+      margin-top: 0.3rem; margin-bottom: 1.1rem;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .sub-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 22px rgba(255,106,0,0.38); }
+
+    .or-div {
+      text-align: center; color: var(--muted); font-size: 0.78rem;
+      margin-bottom: 0.9rem; position: relative;
+    }
+    .or-div::before, .or-div::after {
+      content: ''; position: absolute; top: 50%;
+      width: 38%; height: 1px; background: var(--glass-b);
+    }
+    .or-div::before { left: 0; } .or-div::after { right: 0; }
+
+    .soc-btns { display: flex; flex-direction: column; gap: 0.65rem; }
+    .soc-btn {
+      display: flex; align-items: center; justify-content: center; gap: 0.65rem;
+      padding: 10px; border-radius: 11px;
+      background: rgba(255,255,255,0.05); border: 1px solid var(--glass-b);
+      color: var(--white); font-family: 'Inter', sans-serif;
+      font-size: 0.86rem; font-weight: 500; cursor: pointer;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .soc-btn:hover { background: rgba(255,255,255,0.09); border-color: rgba(255,255,255,0.2); }
+    .soc-btn svg { width: 17px; height: 17px; flex-shrink: 0; }
+
+    /* responsive */
+    @media (max-width: 620px) {
+      .nav-links li:not(:last-child) { display: none; }
+      section { padding: 68px 6%; }
+      .modal { padding: 2rem 1.5rem; }
+    }
+  </style>
 </head>
-<body class="antialiased selection:bg-blue-500 selection:text-white">
+<body>
 
-    <!-- Fixed Glassmorphism Navbar -->
-    <nav class="fixed top-0 left-0 w-full z-50 glass-nav transition-all duration-300">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-            <!-- Logo -->
-            <a href="#" class="text-2xl font-black tracking-wider orange-red-gradient font-heading">7Leo Group</a>
-            
-            <!-- Navigation Links -->
-            <div class="hidden lg:flex items-center space-x-8 text-sm font-semibold tracking-wide text-neutral-300">
-                <a href="#store" class="hover:text-blue-400 transition-colors">7Leo Store</a>
-                <a href="#bgm" class="hover:text-blue-400 transition-colors">7Leo BGM</a>
-                <a href="#founder" class="hover:text-blue-400 transition-colors">Meet The Founder</a>
-                <a href="#about" class="hover:text-blue-400 transition-colors">About</a>
-                <a href="#contact" class="hover:text-blue-400 transition-colors">Contact</a>
-            </div>
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">7Leo Group</div>
+  <ul class="nav-links">
+    <li><a href="#store">7Leo Store</a></li>
+    <li><a href="#bgm">7Leo BGM</a></li>
+    <li><a href="#founder">Founder</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#" class="nav-cta" onclick="openM(event)">Sign Up</a></li>
+  </ul>
+</nav>
 
-            <!-- Sign Up Action & Mobile Toggle -->
-            <div class="flex items-center space-x-4">
-                <button onclick="openModal('signup')" class="px-6 py-2.5 rounded-full orange-red-bg text-white font-extrabold text-sm shadow-lg hover:shadow-orange-500/25 transform hover:-translate-y-0.5 transition-all duration-300">
-                    Sign Up
-                </button>
-                <button id="menu-btn" class="lg:hidden text-2xl text-neutral-300 focus:outline-none hover:text-white transition-colors">
-                    <i class="fa-solid fa-bars"></i>
-                </button>
-            </div>
-        </div>
+<!-- HERO -->
+<section class="hero">
+  <p class="hero-eye">Commerce · Music · Identity</p>
+  <h1 class="hero-title">7Leo Group</h1>
+  <p class="hero-sub">Commerce and Music</p>
+  <p class="hero-desc">A creative house bringing original music to the world and building commerce that means something.</p>
+  <div class="hero-btns">
+    <a href="#" class="btn-primary" onclick="openM(event)">Get Started</a>
+    <a href="#about" class="btn-ghost">Learn More</a>
+  </div>
+</section>
 
-        <!-- Mobile Menu Drawer -->
-        <div id="mobile-menu" class="hidden lg:hidden glass-card border-t border-white/10 px-6 py-6 space-y-4">
-            <a href="#store" onclick="closeMobileMenu()" class="block text-neutral-300 hover:text-blue-400 font-medium transition-colors">7Leo Store</a>
-            <a href="#bgm" onclick="closeMobileMenu()" class="block text-neutral-300 hover:text-blue-400 font-medium transition-colors">7Leo BGM</a>
-            <a href="#founder" onclick="closeMobileMenu()" class="block text-neutral-300 hover:text-blue-400 font-medium transition-colors">Meet The Founder</a>
-            <a href="#about" onclick="closeMobileMenu()" class="block text-neutral-300 hover:text-blue-400 font-medium transition-colors">About</a>
-            <a href="#contact" onclick="closeMobileMenu()" class="block text-neutral-300 hover:text-blue-400 font-medium transition-colors">Contact</a>
-        </div>
-    </nav>
+<hr class="rainbow-line" />
 
-    <!-- Hero Section -->
-    <header class="relative min-h-screen flex items-center justify-center text-center px-4 pt-20 overflow-hidden">
-        <!-- Ambient Neon Glow Background Elements -->
-        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-[120px] pointer-events-none"></div>
-        <div class="absolute bottom-10 right-10 w-[350px] h-[350px] bg-orange-600/10 rounded-full blur-[100px] pointer-events-none"></div>
+<!-- STORE -->
+<section id="store">
+  <span class="s-label">7Leo Store</span>
+  <h2 class="s-title">Commerce with Soul</h2>
+  <p class="s-desc">Products and services curated under the 7Leo brand — rooted in quality, driven by purpose.</p>
+  <div class="cards">
+    <div class="card"><div class="card-icon">🛍️</div><div class="card-title">Featured Products</div><div class="card-desc">Handpicked offerings from the 7Leo collection, launching soon.</div></div>
+    <div class="card"><div class="card-icon">🌟</div><div class="card-title">Exclusive Drops</div><div class="card-desc">Limited releases and special editions — only for 7Leo members.</div></div>
+    <div class="card"><div class="card-icon">📦</div><div class="card-title">Shipping & Support</div><div class="card-desc">Reliable fulfillment with dedicated customer care.</div></div>
+  </div>
+</section>
 
-        <div class="relative z-10 max-w-4xl mx-auto space-y-8">
-            <div class="inline-flex items-center space-x-2 px-4 py-2 rounded-full glass-card text-xs font-bold tracking-widest uppercase text-blue-400 neon-blue-box">
-                <span class="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span>
-                <span>The Ecosystem Horizon</span>
-            </div>
-            
-            <h1 class="text-5xl sm:text-7xl lg:text-8xl font-black tracking-tight uppercase font-heading">
-                <span class="orange-red-gradient">7Leo Group</span>
-            </h1>
-            
-            <p class="text-xl sm:text-3xl font-extrabold tracking-wide text-blue-400 uppercase neon-blue-glow font-heading">
-                Commerce and Music
-            </p>
-            
-            <p class="max-w-2xl mx-auto text-neutral-400 text-base sm:text-lg leading-relaxed font-light">
-                Discover the ultimate intersection of elite digital commerce and immersive cinematic soundscapes engineered for modern visionaries.
-            </p>
-            
-            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
-                <a href="#store" class="w-full sm:w-auto px-8 py-4 rounded-xl orange-red-bg text-white font-extrabold text-base shadow-lg shadow-orange-500/20 transform hover:-translate-y-1 transition-all duration-300">
-                    Explore Store
-                </a>
-                <a href="#about" class="w-full sm:w-auto px-8 py-4 rounded-xl glass-card text-white font-extrabold text-base hover:bg-white/10 transition-all duration-300 border border-white/20">
-                    Learn More
-                </a>
-            </div>
-        </div>
-    </header>
+<hr class="rainbow-line" />
 
-    <div class="subtle-rainbow-divider my-12"></div>
+<!-- BGM -->
+<section id="bgm">
+  <span class="s-label">7Leo BGM</span>
+  <h2 class="s-title">Original Instrumental Music</h2>
+  <p class="s-desc">Background music composed from the heart — cinematic, emotional, entirely original. Find us on YouTube at <strong>@7LeoBGM</strong>.</p>
+  <div class="cards">
+    <div class="card"><div class="card-icon">🎵</div><div class="card-title">Original Compositions</div><div class="card-desc">Every track crafted from scratch — no loops, no templates.</div></div>
+    <div class="card"><div class="card-icon">🎬</div><div class="card-title">Cinematic BGM</div><div class="card-desc">Music built for mood, motion, and storytelling.</div></div>
+    <div class="card"><div class="card-icon">▶️</div><div class="card-title">YouTube Channel</div><div class="card-desc">Subscribe to @7LeoBGM for new releases every week.</div></div>
+  </div>
+</section>
 
-    <!-- 7Leo Store Section -->
-    <section id="store" class="py-24 relative">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center space-y-4 mb-16">
-                <span class="text-xs font-extrabold uppercase tracking-widest text-blue-400 neon-blue-glow">Curated Catalog</span>
-                <h2 class="text-4xl sm:text-5xl font-black tracking-tight font-heading">7Leo Store</h2>
-                <p class="text-neutral-400 max-w-xl mx-auto">Explore high-end merchandise, specialized technical hardware, and exclusive lifestyle artifacts.</p>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Product Card 1 -->
-                <div class="glass-card rounded-3xl p-8 relative group neon-blue-box rainbow-hover-border">
-                    <div class="h-60 rounded-2xl mb-6 bg-[#0e0f13] flex items-center justify-center border border-white/5 relative overflow-hidden">
-                        <div class="absolute inset-0 bg-gradient-to-tr from-blue-600/10 to-transparent"></div>
-                        <i class="fa-solid fa-shirt text-6xl text-blue-400 neon-blue-glow"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-2 font-heading">Signature Apparel</h3>
-                    <p class="text-neutral-400 text-sm mb-6 font-light">Constructed with high-grade technical textiles built for durability and unmatched comfort.</p>
-                    <div class="flex items-center justify-between">
-                        <span class="text-xl font-extrabold text-blue-400">$180.00</span>
-                        <button onclick="openModal('signup')" class="px-5 py-2.5 rounded-xl orange-red-bg text-white text-xs font-bold uppercase tracking-wider shadow-md hover:shadow-orange-500/20 transition-all">Acquire</button>
-                    </div>
-                </div>
+<hr class="rainbow-line" />
 
-                <!-- Product Card 2 -->
-                <div class="glass-card rounded-3xl p-8 relative group neon-blue-box rainbow-hover-border">
-                    <div class="h-60 rounded-2xl mb-6 bg-[#0e0f13] flex items-center justify-center border border-white/5 relative overflow-hidden">
-                        <div class="absolute inset-0 bg-gradient-to-tr from-blue-600/10 to-transparent"></div>
-                        <i class="fa-solid fa-headphones text-6xl text-blue-400 neon-blue-glow"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-2 font-heading">Studio Hardware</h3>
-                    <p class="text-neutral-400 text-sm mb-6 font-light">Studio-grade monitoring gear engineered for pristine frequency response and acoustic clarity.</p>
-                    <div class="flex items-center justify-between">
-                        <span class="text-xl font-extrabold text-blue-400">$450.00</span>
-                        <button onclick="openModal('signup')" class="px-5 py-2.5 rounded-xl orange-red-bg text-white text-xs font-bold uppercase tracking-wider shadow-md hover:shadow-orange-500/20 transition-all">Acquire</button>
-                    </div>
-                </div>
+<!-- FOUNDER -->
+<section id="founder">
+  <span class="s-label">Meet the Founder</span>
+  <div class="founder-wrap">
+    <div class="founder-avatar">🎼</div>
+    <div>
+      <h2 class="founder-name">The Founder</h2>
+      <p class="founder-role">Founder · Composer · Entrepreneur</p>
+      <p class="founder-bio">An independent music composer and entrepreneur behind 7Leo Group — creating original instrumental background music under the <strong>7Leo BGM</strong> banner, and building commerce with purpose.<br /><br />7Leo Group is a vision where music and commerce coexist — authentic, grounded, and built to last.</p>
+    </div>
+  </div>
+</section>
 
-                <!-- Product Card 3 -->
-                <div class="glass-card rounded-3xl p-8 relative group neon-blue-box rainbow-hover-border">
-                    <div class="h-60 rounded-2xl mb-6 bg-[#0e0f13] flex items-center justify-center border border-white/5 relative overflow-hidden">
-                        <div class="absolute inset-0 bg-gradient-to-tr from-blue-600/10 to-transparent"></div>
-                        <i class="fa-solid fa-gem text-6xl text-blue-400 neon-blue-glow"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-2 font-heading">Collector Artifacts</h3>
-                    <p class="text-neutral-400 text-sm mb-6 font-light">Limited-run physical releases representing the absolute peak of modern minimalist design.</p>
-                    <div class="flex items-center justify-between">
-                        <span class="text-xl font-extrabold text-blue-400">$1,200.00</span>
-                        <button onclick="openModal('signup')" class="px-5 py-2.5 rounded-xl orange-red-bg text-white text-xs font-bold uppercase tracking-wider shadow-md hover:shadow-orange-500/20 transition-all">Acquire</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<hr class="rainbow-line" />
 
-    <div class="subtle-rainbow-divider my-12"></div>
+<!-- ABOUT -->
+<section id="about">
+  <span class="s-label">About</span>
+  <h2 class="s-title">What is 7Leo Group?</h2>
+  <p class="s-desc" style="max-width:660px;">7Leo Group Commerce and Music is an independent creative and commercial venture. We believe good music and honest commerce are not separate worlds — they are expressions of the same intention: to create something real and share it with people who care.<br /><br />From original BGM compositions to curated products, everything under the 7Leo name is made with care, identity, and purpose.</p>
+</section>
 
-    <!-- 7Leo BGM Section -->
-    <section id="bgm" class="py-24 relative bg-[#0b0c10]/50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center space-y-4 mb-16">
-                <span class="text-xs font-extrabold uppercase tracking-widest text-blue-400 neon-blue-glow">Acoustic Architecture</span>
-                <h2 class="text-4xl sm:text-5xl font-black tracking-tight font-heading">7Leo BGM</h2>
-                <p class="text-neutral-400 max-w-xl mx-auto">Immersive cinematic soundtracks and master soundscapes composed for high-impact visual projects.</p>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-                <!-- Track Item 1 -->
-                <div class="glass-card rounded-3xl p-6 sm:p-8 flex items-center justify-between group neon-blue-box rainbow-hover-border">
-                    <div class="flex items-center space-x-6">
-                        <div class="w-16 h-16 rounded-2xl orange-red-bg flex items-center justify-center text-white font-bold text-xl shadow-lg">
-                            <i class="fa-solid fa-play"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-xl font-bold font-heading">Resonance of Cosmos</h3>
-                            <p class="text-neutral-400 text-xs font-medium uppercase tracking-wider mt-1">Cinematic Electronic · 4:32</p>
-                        </div>
-                    </div>
-                    <button onclick="openModal('signup')" class="p-3.5 rounded-xl glass-card hover:bg-white/10 transition-colors text-blue-400 neon-blue-glow">
-                        <i class="fa-solid fa-download text-lg"></i>
-                    </button>
-                </div>
+<hr class="rainbow-line" />
 
-                <!-- Track Item 2 -->
-                <div class="glass-card rounded-3xl p-6 sm:p-8 flex items-center justify-between group neon-blue-box rainbow-hover-border">
-                    <div class="flex items-center space-x-6">
-                        <div class="w-16 h-16 rounded-2xl orange-red-bg flex items-center justify-center text-white font-bold text-xl shadow-lg">
-                            <i class="fa-solid fa-play"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-xl font-bold font-heading">Neon Horizon</h3>
-                            <p class="text-neutral-400 text-xs font-medium uppercase tracking-wider mt-1">Ambient Soundscape · 5:14</p>
-                        </div>
-                    </div>
-                    <button onclick="openModal('signup')" class="p-3.5 rounded-xl glass-card hover:bg-white/10 transition-colors text-blue-400 neon-blue-glow">
-                        <i class="fa-solid fa-download text-lg"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- CONTACT -->
+<section id="contact">
+  <span class="s-label">Contact</span>
+  <h2 class="s-title">Get in Touch</h2>
+  <p class="s-desc">For music licensing, business enquiries, or just a hello.</p>
+  <div class="contact-grid">
+    <div class="contact-item"><h4>YouTube</h4><p>@7LeoBGM</p></div>
+    <div class="contact-item"><h4>Business</h4><p>7Leo Group Commerce & Music</p></div>
+  </div>
+</section>
 
-    <div class="subtle-rainbow-divider my-12"></div>
+<footer>
+  <p>© 2026 <span>7Leo Group Commerce and Music</span>. All rights reserved.</p>
+</footer>
 
-    <!-- Meet The Founder Section -->
-    <section id="founder" class="py-24 relative">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="glass-card rounded-3xl p-8 sm:p-16 neon-blue-box relative overflow-hidden">
-                <div class="absolute -right-20 -bottom-20 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl pointer-events-none"></div>
-                
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-                    <div class="lg:col-span-5">
-                        <div class="aspect-square rounded-2xl glass-card border border-white/20 flex items-center justify-center relative overflow-hidden group">
-                            <div class="absolute inset-0 bg-gradient-to-tr from-blue-900/20 via-transparent to-orange-900/20"></div>
-                            <i class="fa-solid fa-user-tie text-8xl text-neutral-600 group-hover:scale-110 transition-transform duration-500"></i>
-                        </div>
-                    </div>
-                    
-                    <div class="lg:col-span-7 space-y-6">
-                        <span class="text-xs font-extrabold uppercase tracking-widest text-blue-400 neon-blue-glow">Visionary Leadership</span>
-                        <h2 class="text-3xl sm:text-4xl font-black tracking-tight font-heading">Meet The Founder</h2>
-                        <p class="text-neutral-300 leading-relaxed font-light">
-                            Driven by an uncompromising passion for audio architecture and pristine physical goods, our leadership established 7Leo Group to bridge the gap between high-end digital commerce and emotive musical production.
-                        </p>
-                        <p class="text-neutral-400 text-sm font-light">
-                            Every single product curation and sonic piece reflects a dedication to minimalist design, superior engineering, and absolute creative freedom.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- MODAL -->
+<div class="overlay" id="ov" onclick="closeOv(event)">
+  <div class="modal">
+    <button class="modal-x" onclick="closeM()">✕</button>
+    <p class="modal-logo">7Leo Group</p>
+    <h2 class="modal-head">Welcome!</h2>
+    <p class="modal-tag">7Leo Group Commerce and Music</p>
 
-    <div class="subtle-rainbow-divider my-12"></div>
-
-    <!-- About Section -->
-    <section id="about" class="py-24 relative bg-[#0b0c10]/50">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8">
-            <span class="text-xs font-extrabold uppercase tracking-widest text-blue-400 neon-blue-glow">Core Philosophy</span>
-            <h2 class="text-4xl sm:text-5xl font-black tracking-tight font-heading">About 7Leo Group</h2>
-            <p class="text-xl text-neutral-300 leading-relaxed font-light">
-                We operate at the precise intersection where modern digital commerce meets avant-garde music production. Our mission is to build seamless digital ecosystems that empower creators, collectors, and innovators globally.
-            </p>
-        </div>
-    </section>
-
-    <div class="subtle-rainbow-divider my-12"></div>
-
-    <!-- Contact Section -->
-    <section id="contact" class="py-24 relative">
-        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center space-y-4 mb-16">
-                <span class="text-xs font-extrabold uppercase tracking-widest text-blue-400 neon-blue-glow">Get In Touch</span>
-                <h2 class="text-4xl sm:text-5xl font-black tracking-tight font-heading">Contact Us</h2>
-                <p class="text-neutral-400">Connect with our executive operations team for enterprise partnerships, licensing inquiries, or customer support.</p>
-            </div>
-            
-            <form onsubmit="event.preventDefault(); alert('Message dispatched successfully.');" class="glass-card rounded-3xl p-8 sm:p-12 space-y-6 neon-blue-box">
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                    <div class="space-y-2">
-                        <label class="text-xs font-bold uppercase tracking-wider text-neutral-400">Your Name</label>
-                        <input type="text" required class="w-full bg-[#0e0f13] border border-white/10 rounded-xl px-4 py-3.5 text-white focus:outline-none focus:border-blue-500 transition-colors" placeholder="Enter your name">
-                    </div>
-                    <div class="space-y-2">
-                        <label class="text-xs font-bold uppercase tracking-wider text-neutral-400">Your Email</label>
-                        <input type="email" required class="w-full bg-[#0e0f13] border border-white/10 rounded-xl px-4 py-3.5 text-white focus:outline-none focus:border-blue-500 transition-colors" placeholder="Enter your email">
-                    </div>
-                </div>
-                <div class="space-y-2">
-                    <label class="text-xs font-bold uppercase tracking-wider text-neutral-400">Message</label>
-                    <textarea rows="5" required class="w-full bg-[#0e0f13] border border-white/10 rounded-xl px-4 py-3.5 text-white focus:outline-none focus:border-blue-500 transition-colors" placeholder="Type your message here..."></textarea>
-                </div>
-                <button type="submit" class="w-full py-4 rounded-xl orange-red-bg text-white font-extrabold text-base shadow-lg shadow-orange-500/20 transform hover:-translate-y-0.5 transition-all duration-300">
-                    Send Message
-                </button>
-            </form>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="py-12 border-t border-white/10 bg-[#0a0b0e] text-center text-neutral-500 text-sm">
-        <div class="max-w-7xl mx-auto px-4 space-y-4">
-            <p class="font-bold tracking-wider orange-red-gradient text-lg font-heading">7Leo Group</p>
-            <p>&copy; 2026 7Leo Group Commerce and Music. All rights reserved.</p>
-        </div>
-    </footer>
-
-    <!-- Signup / Sign In Modal -->
-    <div id="auth-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-xl hidden">
-        <div class="glass-card rounded-3xl w-full max-w-md p-8 relative neon-blue-box shadow-2xl animate-in fade-in zoom-in duration-300">
-            <button onclick="closeModal()" class="absolute top-6 right-6 text-neutral-400 hover:text-white text-xl focus:outline-none transition-colors">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
-            
-            <div class="text-center space-y-3 mb-8">
-                <h3 class="text-xl sm:text-2xl font-black tracking-tight font-heading leading-snug">Welcome to 7Leo Group Commerce and Music</h3>
-                <p class="text-xs text-neutral-400 font-light">Access your secure ecosystem portal</p>
-            </div>
-
-            <!-- Tabs -->
-            <div class="flex rounded-xl glass-card p-1 mb-8 border border-white/10">
-                <button onclick="switchTab('signup')" id="tab-signup-btn" class="flex-1 py-2.5 rounded-lg text-xs font-bold uppercase tracking-wider transition-all duration-300 bg-white/10 text-white">Create Account</button>
-                <button onclick="switchTab('signin')" id="tab-signin-btn" class="flex-1 py-2.5 rounded-lg text-xs font-bold uppercase tracking-wider transition-all duration-300 text-neutral-400 hover:text-white">Sign In</button>
-            </div>
-
-            <!-- Create Account Form -->
-            <form id="form-signup" onsubmit="event.preventDefault(); alert('Account created successfully.'); closeModal();" class="space-y-4">
-                <div class="space-y-1">
-                    <label class="text-xs font-bold uppercase tracking-wider text-neutral-400">Name</label>
-                    <input type="text" required class="w-full bg-[#0e0f13] border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-blue-500 transition-colors" placeholder="Enter your full name">
-                </div>
-                <div class="space-y-1">
-                    <label class="text-xs font-bold uppercase tracking-wider text-neutral-400">Email</label>
-                    <input type="email" required class="w-full bg-[#0e0f13] border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-blue-500 transition-colors" placeholder="Enter your email address">
-                </div>
-                <div class="space-y-1">
-                    <label class="text-xs font-bold uppercase tracking-wider text-neutral-400">Password</label>
-                    <input type="password" required class="w-full bg-[#0e0f13] border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-blue-500 transition-colors" placeholder="Create a secure password">
-                </div>
-                <button type="submit" class="w-full py-3.5 rounded-xl orange-red-bg text-white font-extrabold text-sm shadow-lg shadow-orange-500/20 mt-2">
-                    Create Account
-                </button>
-                
-                <div class="relative flex py-2 items-center">
-                    <div class="flex-grow border-t border-white/10"></div>
-                    <span class="flex-shrink mx-4 text-neutral-500 text-xs uppercase tracking-widest">Or</span>
-                    <div class="flex-grow border-t border-white/10"></div>
-                </div>
-
-                <div class="grid grid-cols-2 gap-4">
-                    <button type="button" onclick="alert('Google authentication simulated')" class="py-3 rounded-xl glass-card border border-white/10 text-xs font-bold flex items-center justify-center space-x-2 hover:bg-white/10 transition-colors">
-                        <i class="fa-brands fa-google"></i>
-                        <span>Google</span>
-                    </button>
-                    <button type="button" onclick="alert('Apple authentication simulated')" class="py-3 rounded-xl glass-card border border-white/10 text-xs font-bold flex items-center justify-center space-x-2 hover:bg-white/10 transition-colors">
-                        <i class="fa-brands fa-apple"></i>
-                        <span>Apple</span>
-                    </button>
-                </div>
-            </form>
-
-            <!-- Sign In Form -->
-            <form id="form-signin" onsubmit="event.preventDefault(); alert('Signed in successfully.'); closeModal();" class="space-y-4 hidden">
-                <div class="space-y-1">
-                    <label class="text-xs font-bold uppercase tracking-wider text-neutral-400">Email</label>
-                    <input type="email" required class="w-full bg-[#0e0f13] border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-blue-500 transition-colors" placeholder="Enter your email address">
-                </div>
-                <div class="space-y-1">
-                    <label class="text-xs font-bold uppercase tracking-wider text-neutral-400">Password</label>
-                    <input type="password" required class="w-full bg-[#0e0f13] border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-blue-500 transition-colors" placeholder="Enter your password">
-                </div>
-                <button type="submit" class="w-full py-3.5 rounded-xl orange-red-bg text-white font-extrabold text-sm shadow-lg shadow-orange-500/20 mt-2">
-                    Sign In
-                </button>
-                
-                <div class="relative flex py-2 items-center">
-                    <div class="flex-grow border-t border-white/10"></div>
-                    <span class="flex-shrink mx-4 text-neutral-500 text-xs uppercase tracking-widest">Or</span>
-                    <div class="flex-grow border-t border-white/10"></div>
-                </div>
-
-                <div class="grid grid-cols-2 gap-4">
-                    <button type="button" onclick="alert('Google authentication simulated')" class="py-3 rounded-xl glass-card border border-white/10 text-xs font-bold flex items-center justify-center space-x-2 hover:bg-white/10 transition-colors">
-                        <i class="fa-brands fa-google"></i>
-                        <span>Google</span>
-                    </button>
-                    <button type="button" onclick="alert('Apple authentication simulated')" class="py-3 rounded-xl glass-card border border-white/10 text-xs font-bold flex items-center justify-center space-x-2 hover:bg-white/10 transition-colors">
-                        <i class="fa-brands fa-apple"></i>
-                        <span>Apple</span>
-                    </button>
-                </div>
-            </form>
-        </div>
+    <div class="tabs">
+      <button class="tab on" onclick="swTab('signup',this)">Create Account</button>
+      <button class="tab" onclick="swTab('signin',this)">Sign In</button>
     </div>
 
-    <!-- JavaScript Interactivity -->
-    <script>
-        // Mobile menu toggle
-        const menuBtn = document.getElementById('menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
+    <!-- CREATE ACCOUNT -->
+    <div class="panel on" id="p-signup">
+      <div class="fg"><label>Full Name</label><input type="text" placeholder="Your name" /></div>
+      <div class="fg"><label>Email</label><input type="email" placeholder="you@example.com" /></div>
+      <div class="fg"><label>Password</label><input type="password" placeholder="Create a password" /></div>
+      <button class="sub-btn">Create Account</button>
+      <div class="or-div">or sign up with</div>
+      <div class="soc-btns">
+        <button class="soc-btn">
+          <svg viewBox="0 0 48 48"><path d="M44.5 20H24v8.5h11.7C34.2 33.9 29.6 37 24 37c-7.2 0-13-5.8-13-13s5.8-13 13-13c3.1 0 5.9 1.1 8.1 2.9l6-6C34.6 5.1 29.6 3 24 3 12.4 3 3 12.4 3 24s9.4 21 21 21c10.5 0 20-7.5 20-21 0-1.3-.2-2.7-.5-4z" fill="#FFC107"/><path d="M6.3 14.7l7 5.1C15.1 16.1 19.2 13 24 13c3.1 0 5.9 1.1 8.1 2.9l6-6C34.6 5.1 29.6 3 24 3 16.3 3 9.7 7.9 6.3 14.7z" fill="#FF3D00"/><path d="M24 45c5.5 0 10.5-2 14.3-5.4l-6.6-5.6C29.7 35.8 27 37 24 37c-5.6 0-10.3-3.7-11.9-8.8l-6.9 5.3C9.2 40.7 16 45 24 45z" fill="#4CAF50"/><path d="M44.5 20H24v8.5h11.7c-.7 2.1-2.1 3.9-3.9 5.1l6.6 5.6C41.7 36.1 45 30.5 45 24c0-1.3-.2-2.7-.5-4z" fill="#1976D2"/></svg>
+          Sign up with Google
+        </button>
+        <button class="soc-btn">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+          Sign up with Apple
+        </button>
+      </div>
+    </div>
 
-        menuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
+    <!-- SIGN IN -->
+    <div class="panel" id="p-signin">
+      <div class="fg"><label>Email</label><input type="email" placeholder="you@example.com" /></div>
+      <div class="fg"><label>Password</label><input type="password" placeholder="Your password" /></div>
+      <button class="sub-btn">Sign In</button>
+      <div class="or-div">or continue with</div>
+      <div class="soc-btns">
+        <button class="soc-btn">
+          <svg viewBox="0 0 48 48"><path d="M44.5 20H24v8.5h11.7C34.2 33.9 29.6 37 24 37c-7.2 0-13-5.8-13-13s5.8-13 13-13c3.1 0 5.9 1.1 8.1 2.9l6-6C34.6 5.1 29.6 3 24 3 12.4 3 3 12.4 3 24s9.4 21 21 21c10.5 0 20-7.5 20-21 0-1.3-.2-2.7-.5-4z" fill="#FFC107"/><path d="M6.3 14.7l7 5.1C15.1 16.1 19.2 13 24 13c3.1 0 5.9 1.1 8.1 2.9l6-6C34.6 5.1 29.6 3 24 3 16.3 3 9.7 7.9 6.3 14.7z" fill="#FF3D00"/><path d="M24 45c5.5 0 10.5-2 14.3-5.4l-6.6-5.6C29.7 35.8 27 37 24 37c-5.6 0-10.3-3.7-11.9-8.8l-6.9 5.3C9.2 40.7 16 45 24 45z" fill="#4CAF50"/><path d="M44.5 20H24v8.5h11.7c-.7 2.1-2.1 3.9-3.9 5.1l6.6 5.6C41.7 36.1 45 30.5 45 24c0-1.3-.2-2.7-.5-4z" fill="#1976D2"/></svg>
+          Sign in with Google
+        </button>
+        <button class="soc-btn">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+          Sign in with Apple
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
 
-        function closeMobileMenu() {
-            mobileMenu.classList.add('hidden');
-        }
-
-        // Modal Controls
-        function openModal(tabName) {
-            document.getElementById('auth-modal').classList.remove('hidden');
-            document.body.style.overflow = 'hidden';
-            switchTab(tabName);
-        }
-
-        function closeModal() {
-            document.getElementById('auth-modal').classList.add('hidden');
-            document.body.style.overflow = 'auto';
-        }
-
-        function switchTab(tab) {
-            const signupForm = document.getElementById('form-signup');
-            const signinForm = document.getElementById('form-signin');
-            const signupBtn = document.getElementById('tab-signup-btn');
-            const signinBtn = document.getElementById('tab-signin-btn');
-
-            if(tab === 'signup') {
-                signupForm.classList.remove('hidden');
-                signinForm.classList.add('hidden');
-                signupBtn.classList.add('bg-white/10', 'text-white');
-                signupBtn.classList.remove('text-neutral-400');
-                signinBtn.classList.remove('bg-white/10', 'text-white');
-                signinBtn.classList.add('text-neutral-400');
-            } else {
-                signinForm.classList.remove('hidden');
-                signupForm.classList.add('hidden');
-                signinBtn.classList.add('bg-white/10', 'text-white');
-                signinBtn.classList.remove('text-neutral-400');
-                signupBtn.classList.remove('bg-white/10', 'text-white');
-                signupBtn.classList.add('text-neutral-400');
-            }
-        }
-
-        // Close modal when clicking outside content backdrop
-        window.onclick = function(event) {
-            const modal = document.getElementById('auth-modal');
-            if (event.target === modal) {
-                closeModal();
-            }
-        }
-    </script>
+<script>
+  function openM(e) { e.preventDefault(); document.getElementById('ov').classList.add('on'); }
+  function closeM() { document.getElementById('ov').classList.remove('on'); }
+  function closeOv(e) { if (e.target === document.getElementById('ov')) closeM(); }
+  function swTab(id, btn) {
+    document.querySelectorAll('.tab').forEach(b => b.classList.remove('on'));
+    document.querySelectorAll('.panel').forEach(p => p.classList.remove('on'));
+    btn.classList.add('on');
+    document.getElementById('p-' + id).classList.add('on');
+  }
+</script>
 </body>
 </html>
+HTMLEOF
