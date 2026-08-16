@@ -85,17 +85,14 @@
             letter-spacing: 2px;
         }
 
-        /* Background Tattoo Wrapper */
+        /* Background Wrapper */
         .site-bg {
             position: fixed;
             top: 0;
             left: 0;
             width: 100vw;
             height: 100vh;
-            background-image: url('file_00000000776081fa8dbc514074356775.png');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
+            background-color: #0a0a0a;
             z-index: -1;
         }
 
@@ -449,6 +446,7 @@
             display: flex;
             gap: 15px;
             align-items: center;
+            flex-wrap: wrap;
         }
 
         .store-nav-btn {
@@ -473,6 +471,30 @@
             width: 100%;
             padding: 30px;
             flex: 1;
+        }
+
+        /* Responsive Store Hero Banner utilizing file_00000000776081fa8dbc514074356775.png */
+        .store-hero-banner {
+            width: 100%;
+            height: clamp(200px, 35vw, 420px);
+            background: #141414;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 30px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+        }
+
+        .store-hero-banner img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            object-position: center;
+            display: block;
         }
 
         .store-controls-bar {
@@ -657,7 +679,7 @@
             height: 80px;
             border-radius: 6px;
             border: 1px solid var(--gold);
-            overflow: position;
+            overflow: hidden;
             position: relative;
             background: #222;
         }
@@ -727,7 +749,7 @@
         </div>
     </div>
 
-    <!-- Background Tattoo & Overlay -->
+    <!-- Background Wrapper & Overlay -->
     <div class="site-bg"></div>
     <div class="site-overlay"></div>
 
@@ -802,6 +824,11 @@
             
             <!-- CATALOG PANEL -->
             <div class="store-tab-content catalog-panel active" id="tab-catalog">
+                <!-- Store Hero Banner with file_00000000776081fa8dbc514074356775.png (Fit-to-Screen & Responsive) -->
+                <div class="store-hero-banner">
+                    <img src="file_00000000776081fa8dbc514074356775.png" alt="7Leo Store Heritage" class="store-hero-img">
+                </div>
+
                 <div class="store-controls-bar">
                     <div class="search-filter-group">
                         <input type="text" id="store-search" class="store-search-input" placeholder="Search products..." oninput="filterStoreProducts()">
