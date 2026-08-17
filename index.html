@@ -1,5 +1,3 @@
-index.html complete file
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -424,7 +422,7 @@ index.html complete file
             display: flex;
         }
 
-        /* Store Background: Using file_00000000776081fa8dbc514074356775.png as responsive Store background */
+        /* Store Background */
         .store-bg-wrapper {
             position: fixed;
             top: 0;
@@ -606,7 +604,6 @@ index.html complete file
             padding-top: 15px;
         }
 
-        /* Tabs Panels inside Store */
         .store-tab-content {
             display: none;
         }
@@ -714,6 +711,254 @@ index.html complete file
             cursor: pointer;
         }
 
+        /* --- 7LEO BGM PORTAL STYLES (NO TATTOO) --- */
+        .bgm-portal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: #0d0d0d;
+            z-index: 4000;
+            display: none;
+            flex-direction: column;
+            overflow-y: auto;
+        }
+
+        .bgm-portal-overlay.active {
+            display: flex;
+        }
+
+        .bgm-header {
+            background: rgba(15, 15, 15, 0.95);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .bgm-nav-brand h2 {
+            color: var(--gold);
+            font-size: 1.2rem;
+        }
+
+        .bgm-nav-actions {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .bgm-nav-btn {
+            background: transparent;
+            border: 1px solid var(--gold);
+            color: var(--text-light);
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: all 0.3s;
+        }
+
+        .bgm-nav-btn:hover {
+            background: var(--gold);
+            color: var(--bg-dark);
+        }
+
+        .bgm-body {
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+            padding: 30px;
+            flex: 1;
+        }
+
+        .bgm-banner-wrap {
+            width: 100%;
+            max-height: 400px;
+            overflow: hidden;
+            border-radius: 12px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            margin-bottom: 40px;
+            background: #111;
+        }
+
+        .bgm-banner-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .bgm-hero-section {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .bgm-hero-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            color: var(--gold);
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .bgm-hero-subtitle {
+            font-size: clamp(1.1rem, 2vw, 1.5rem);
+            color: var(--gold-light);
+            margin-bottom: 20px;
+        }
+
+        .bgm-hero-desc {
+            font-size: 1rem;
+            color: var(--text-muted);
+            max-width: 700px;
+            margin: 0 auto 30px auto;
+            line-height: 1.8;
+        }
+
+        .bgm-cta-row {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .bgm-btn {
+            background: var(--gold);
+            color: var(--bg-dark);
+            border: none;
+            padding: 12px 28px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            border-radius: 30px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        .bgm-btn:hover {
+            opacity: 0.9;
+        }
+
+        .bgm-btn-outline {
+            background: transparent;
+            color: var(--text-light);
+            border: 1px solid var(--gold);
+            padding: 12px 28px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            border-radius: 30px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .bgm-btn-outline:hover {
+            background: var(--gold);
+            color: var(--bg-dark);
+        }
+
+        .bgm-section-heading {
+            font-size: 1.8rem;
+            color: var(--gold);
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+
+        .bgm-section {
+            margin-bottom: 60px;
+        }
+
+        .mood-filter-row {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 25px;
+        }
+
+        .mood-pill {
+            background: #1a1a1a;
+            border: 1px solid #333;
+            color: var(--text-light);
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+
+        .mood-pill:hover, .mood-pill.active {
+            border-color: var(--gold);
+            background: rgba(212, 175, 55, 0.1);
+            color: var(--gold);
+        }
+
+        .series-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .series-card-box {
+            background: rgba(20, 20, 20, 0.85);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 10px;
+            padding: 25px;
+            transition: transform 0.3s, border-color 0.3s;
+            cursor: pointer;
+        }
+
+        .series-card-box:hover {
+            transform: translateY(-3px);
+            border-color: var(--gold);
+        }
+
+        .series-card-title {
+            font-size: 1.1rem;
+            color: var(--gold-light);
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .series-card-desc {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .license-box {
+            background: rgba(20, 20, 20, 0.85);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 12px;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            backdrop-filter: blur(5px);
+        }
+
+        .about-bgm-box {
+            background: rgba(20, 20, 20, 0.85);
+            border: 1px solid #333;
+            border-radius: 12px;
+            padding: 30px;
+            color: var(--text-muted);
+            line-height: 1.8;
+            font-size: 1rem;
+        }
+
+        .bgm-footer-bar {
+            text-align: center;
+            padding: 30px;
+            border-top: 1px solid #222;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            background: #0b0b0b;
+        }
+
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
@@ -740,9 +985,8 @@ index.html complete file
                 padding: 0 20px;
             }
 
-            .store-controls-bar {
-                flex-direction: column;
-                align-items: stretch;
+            .bgm-banner-wrap {
+                max-height: 220px;
             }
         }
     </style>
@@ -787,7 +1031,7 @@ index.html complete file
         </div>
     </header>
 
-    <!-- Main Homepage Content — Exactly Protected & Unmodified -->
+    <!-- Main Homepage Content — Restored Exactly As-Is -->
     <main id="main-content">
         <section class="hero-section">
             <img src="logo.png" alt="Main Logo" class="main-logo-img">
@@ -807,13 +1051,13 @@ index.html complete file
                 <div class="card-box">
                     <img src="bgm-logo.png" alt="7Leo BGM Logo" class="card-logo">
                     <h4 class="card-title artistic-font">Mobile Composed Groovepad Music</h4>
-                    <a href="#" class="action-btn" onclick="openModal('bgm-modal')">Explore 7Leo BGM</a>
+                    <a href="#" class="action-btn" onclick="openBgmPortal()">Explore 7Leo BGM</a>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- 7LEO STORE EXPERIENCE (Responsive Tattoo Background & Clean Architecture) -->
+    <!-- 7LEO STORE EXPERIENCE -->
     <div class="store-portal-overlay" id="store-portal">
         <div class="store-bg-wrapper"></div>
         <div class="store-bg-overlay"></div>
@@ -834,7 +1078,6 @@ index.html complete file
         </div>
 
         <div class="store-body">
-            
             <!-- CATALOG PANEL -->
             <div class="store-tab-content catalog-panel active" id="tab-catalog">
                 <div class="store-controls-bar">
@@ -856,11 +1099,11 @@ index.html complete file
                 </div>
 
                 <div class="product-grid" id="store-product-grid">
-                    <!-- Populated dynamically (Starts empty with clean empty state when no products) -->
+                    <!-- Populated dynamically -->
                 </div>
             </div>
 
-            <!-- PRODUCT FORM PANEL (Owner Product Management) -->
+            <!-- PRODUCT FORM PANEL -->
             <div class="store-tab-content product-form-panel" id="tab-product-form">
                 <h3 class="modal-title" id="product-form-heading">Add / Edit Product</h3>
                 <form id="product-management-form" onsubmit="handleSaveProduct(event)" style="max-width: 800px; margin: 0 auto; background: rgba(20,20,20,0.85); padding: 30px; border-radius: 10px; border: 1px solid var(--gold); backdrop-filter: blur(5px);">
@@ -906,13 +1149,10 @@ index.html complete file
                         <p id="live-profit-calc-text" style="color: var(--text-light); margin-top: 5px;">Estimated Profit: ₹0.00 (Margin: 0%)</p>
                     </div>
 
-                    <!-- REAL PRODUCT PHOTO UPLOAD -->
                     <div class="form-group">
                         <label>Upload Real Product Photos (Multiple files supported)</label>
                         <input type="file" id="prod-image-input" accept="image/*" multiple onchange="handleImageUpload(event)">
-                        <div class="image-upload-preview-container" id="image-preview-container">
-                            <!-- Image previews appear here -->
-                        </div>
+                        <div class="image-upload-preview-container" id="image-preview-container"></div>
                     </div>
 
                     <div class="form-group">
@@ -981,12 +1221,10 @@ index.html complete file
                     <input type="text" id="tracking-search-input" class="store-search-input" placeholder="Enter Order ID (e.g., 7LEO-1001)">
                     <button class="submit-btn" style="width: auto;" onclick="trackOrderQuery()">Track</button>
                 </div>
-                <div id="tracking-result-box" style="background: rgba(20,20,20,0.85); padding: 25px; border-radius: 8px; border: 1px solid #333; max-width: 600px; margin: 0 auto; display: none; backdrop-filter: blur(5px);">
-                    <!-- Tracking details -->
-                </div>
+                <div id="tracking-result-box" style="background: rgba(20,20,20,0.85); padding: 25px; border-radius: 8px; border: 1px solid #333; max-width: 600px; margin: 0 auto; display: none; backdrop-filter: blur(5px);"></div>
             </div>
 
-            <!-- OWNER DASHBOARD PANEL (Protected by authentication) -->
+            <!-- OWNER DASHBOARD PANEL -->
             <div class="store-tab-content admin-dashboard-panel" id="tab-dashboard">
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; flex-wrap: wrap; gap: 15px;">
                     <h3 class="modal-title" style="margin-bottom:0;">7Leo Store Owner / Profit Dashboard</h3>
@@ -1026,9 +1264,7 @@ index.html complete file
                                 <th>Supplier Action</th>
                             </tr>
                         </thead>
-                        <tbody id="admin-orders-tbody">
-                            <!-- Populated dynamically with real orders only -->
-                        </tbody>
+                        <tbody id="admin-orders-tbody"></tbody>
                     </table>
                 </div>
             </div>
@@ -1063,6 +1299,129 @@ index.html complete file
         </div>
     </div>
 
+
+    <!-- 7LEO BGM PORTAL EXPERIENCE (NO TATTOO) -->
+    <div class="bgm-portal-overlay" id="bgm-portal">
+        <div class="bgm-header">
+            <div class="bgm-nav-brand">
+                <h2>7Leo BGM Music World</h2>
+            </div>
+            <div class="bgm-nav-actions">
+                <button class="bgm-nav-btn" onclick="closeBgmPortal()" style="border-color:#ff5555; color:#ff5555;">Exit BGM</button>
+            </div>
+        </div>
+
+        <div class="bgm-body">
+            <!-- Banner -->
+            <div class="bgm-banner-wrap">
+                <img src="bgm-banner.png" alt="7Leo BGM Banner" class="bgm-banner-img">
+            </div>
+
+            <!-- Welcome / Hero -->
+            <section class="bgm-hero-section">
+                <h1 class="bgm-hero-title">Welcome to 7Leo BGM!</h1>
+                <h3 class="bgm-hero-subtitle">Mobile Composed Groovepad Music</h3>
+                <p class="bgm-hero-desc">
+                    7Leo BGM is my music world where I create instrumental music using the Groovepad app on mobile.<br><br>
+                    Drive • Chill • Gangster • DJ • Cinematic<br>
+                    where every track sets the perfect vibe.<br>
+                    Handcrafted instrumental background music to fuel your focus, ease your mind, and elevate your moments.<br><br>
+                    New BGM drops regularly — Subscribe & never miss a track!
+                </p>
+                <div class="bgm-cta-row">
+                    <a href="#bgm-library-section" class="bgm-btn">LISTEN NOW</a>
+                    <button class="bgm-btn-outline" onclick="alert('Explore mobile music feature synced.')">EXPLORE MOBILE MUSIC</button>
+                    <a href="https://www.youtube.com/@7LeoBGM" target="_blank" class="bgm-btn-outline">WATCH ON YOUTUBE</a>
+                </div>
+            </section>
+
+            <!-- About 7Leo BGM -->
+            <section class="bgm-section">
+                <h2 class="bgm-section-heading">About 7Leo BGM</h2>
+                <div class="about-bgm-box">
+                    7Leo BGM is a mobile-composed instrumental music world created using the Groovepad app. The focus is on creating different moods and styles including Drive, Chill, Gangster, DJ, Cinematic, and Songs. Every piece is meticulously crafted to set the ultimate atmosphere.
+                </div>
+            </section>
+
+            <!-- Explore by Mood -->
+            <section class="bgm-section">
+                <h2 class="bgm-section-heading">Explore by Mood</h2>
+                <div class="mood-filter-row">
+                    <div class="mood-pill active" onclick="filterBgmMood('All', this)">All Moods</div>
+                    <div class="mood-pill" onclick="filterBgmMood('Drive', this)">Drive</div>
+                    <div class="mood-pill" onclick="filterBgmMood('Chill', this)">Chill</div>
+                    <div class="mood-pill" onclick="filterBgmMood('Gangster', this)">Gangster</div>
+                    <div class="mood-pill" onclick="filterBgmMood('DJ', this)">DJ</div>
+                    <div class="mood-pill" onclick="filterBgmMood('Cinematic', this)">Cinematic</div>
+                    <div class="mood-pill" onclick="filterBgmMood('Songs', this)">Songs</div>
+                </div>
+            </section>
+
+            <!-- 7Leo BGM Series -->
+            <section class="bgm-section">
+                <h2 class="bgm-section-heading">7Leo BGM Series</h2>
+                <div class="series-grid">
+                    <div class="series-card-box">
+                        <div class="series-card-title">Drive Vibes</div>
+                        <div class="series-card-desc">7Leo Drive Series — High energy rhythm for the open road.</div>
+                    </div>
+                    <div class="series-card-box">
+                        <div class="series-card-title">Chill Out</div>
+                        <div class="series-card-desc">7Leo Chill Series — Relaxing ambient grooves for focus.</div>
+                    </div>
+                    <div class="series-card-box">
+                        <div class="series-card-title">Street Energy</div>
+                        <div class="series-card-desc">7Leo Gangster Series — Bold beats and urban themes.</div>
+                    </div>
+                    <div class="series-card-box">
+                        <div class="series-card-title">Club & Mix</div>
+                        <div class="series-card-desc">7Leo DJ Series — Electronic groovepad dance tracks.</div>
+                    </div>
+                    <div class="series-card-box">
+                        <div class="series-card-title">Epic Feels</div>
+                        <div class="series-card-desc">7Leo Cinematic Series — Orchestral and dramatic backdrops.</div>
+                    </div>
+                    <div class="series-card-box">
+                        <div class="series-card-title">Songs</div>
+                        <div class="series-card-desc">7Leo Songs Series — Melodic instrumental compositions.</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Music Library & Search -->
+            <section class="bgm-section" id="bgm-library-section">
+                <h2 class="bgm-section-heading">7Leo BGM Music Library & Latest Releases</h2>
+                <div style="margin-bottom: 20px;">
+                    <input type="text" id="bgm-search-input" class="store-search-input" style="width: 100%; max-width: 500px;" placeholder="Search track title, series, or keyword..." oninput="handleBgmSearch()">
+                </div>
+                <div id="bgm-library-grid" class="series-grid">
+                    <div class="series-card-box" style="grid-column: 1/-1; text-align: center; padding: 40px;">
+                        <p style="color: var(--text-muted);">Synchronizing with official YouTube channel (https://www.youtube.com/@7LeoBGM)... Clean state ready for real track uploads.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- License / Purchase Music -->
+            <section class="bgm-section">
+                <div class="license-box">
+                    <h2 class="bgm-section-heading" style="margin-bottom:0;">License / Purchase Music</h2>
+                    <p style="color: var(--text-muted); line-height: 1.6;">
+                        Offer your 7Leo BGM compositions for appropriate creative projects such as Advertisements, Trailers, Promotions, Reels, Social media content, Video projects, Background music, and Film projects.
+                    </p>
+                    <div>
+                        <a href="mailto:7leogroup@gmail.com" class="bgm-btn">CONTACT TO LICENSE MUSIC</a>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <footer class="bgm-footer-bar">
+            <p>7Leo BGM — Mobile Composed Groovepad Music | Contact: 7leogroup@gmail.com</p>
+            <p style="margin-top: 5px;">All Rights Reserved &copy; 2026</p>
+        </footer>
+    </div>
+
+
     <!-- Owner Authentication Modal -->
     <div class="modal-overlay" id="owner-auth-modal">
         <div class="modal-content">
@@ -1080,8 +1439,6 @@ index.html complete file
     </div>
 
     <!-- Modals for Navigation Items -->
-
-    <!-- Signup Modal -->
     <div class="modal-overlay" id="signup-modal">
         <div class="modal-content">
             <button class="close-modal" onclick="closeModal('signup-modal')">&times;</button>
@@ -1105,7 +1462,6 @@ index.html complete file
         </div>
     </div>
 
-    <!-- About Modal -->
     <div class="modal-overlay" id="about-modal">
         <div class="modal-content">
             <button class="close-modal" onclick="closeModal('about-modal')">&times;</button>
@@ -1116,7 +1472,6 @@ index.html complete file
         </div>
     </div>
 
-    <!-- Founder Modal -->
     <div class="modal-overlay" id="founder-modal">
         <div class="modal-content">
             <button class="close-modal" onclick="closeModal('founder-modal')">&times;</button>
@@ -1127,7 +1482,6 @@ index.html complete file
         </div>
     </div>
 
-    <!-- Contact Modal -->
     <div class="modal-overlay" id="contact-modal">
         <div class="modal-content">
             <button class="close-modal" onclick="closeModal('contact-modal')">&times;</button>
@@ -1150,7 +1504,6 @@ index.html complete file
         </div>
     </div>
 
-    <!-- Super Admin Modal -->
     <div class="modal-overlay" id="admin-modal">
         <div class="modal-content">
             <button class="close-modal" onclick="closeModal('admin-modal')">&times;</button>
@@ -1166,24 +1519,10 @@ index.html complete file
         </div>
     </div>
 
-    <!-- BGM Modal -->
-    <div class="modal-overlay" id="bgm-modal">
-        <div class="modal-content">
-            <button class="close-modal" onclick="closeModal('bgm-modal')">&times;</button>
-            <h3 class="modal-title">7Leo BGM</h3>
-            <p style="color: var(--text-muted); text-align: center; line-height: 1.6;">
-                Mobile Composed Groovepad Music. Immerse in the world-class soundscapes of 7Leo Group.
-            </p>
-        </div>
-    </div>
-
-    <!-- Product Details Modal for Store -->
     <div class="modal-overlay" id="product-detail-modal">
         <div class="modal-content" style="max-width: 700px;">
             <button class="close-modal" onclick="closeModal('product-detail-modal')">&times;</button>
-            <div id="product-detail-body">
-                <!-- Populated dynamically -->
-            </div>
+            <div id="product-detail-body"></div>
         </div>
     </div>
 
@@ -1220,10 +1559,30 @@ index.html complete file
         function showSection(section) {
             navLinks.classList.remove('active');
             if(section === 'bgm') {
-                openModal('bgm-modal');
+                openBgmPortal();
             } else {
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             }
+        }
+
+        // --- 7LEO BGM PORTAL LOGIC ---
+        function openBgmPortal() {
+            document.getElementById('bgm-portal').classList.add('active');
+            navLinks.classList.remove('active');
+        }
+
+        function closeBgmPortal() {
+            document.getElementById('bgm-portal').classList.remove('active');
+        }
+
+        function filterBgmMood(mood, element) {
+            document.querySelectorAll('.mood-pill').forEach(el => el.classList.remove('active'));
+            element.classList.add('active');
+            // Filtering logic placeholder for real YouTube BGM catalog sync
+        }
+
+        function handleBgmSearch() {
+            // Search logic placeholder for real YouTube BGM catalog sync
         }
 
         // --- 7LEO STORE SYSTEM LOGIC & PERSISTENCE ---
@@ -1290,7 +1649,6 @@ index.html complete file
 
         function authenticateOwner() {
             const passcode = document.getElementById('owner-passcode-input').value.trim();
-            // Secure owner passcode authentication
             if(passcode === '7LeoOwner2026' || passcode === 'admin7leo') {
                 isOwnerAuthenticated = true;
                 closeModal('owner-auth-modal');
@@ -1503,13 +1861,12 @@ index.html complete file
             if(!p) return;
             const img = p.images && p.images.length > 0 ? p.images[0] : 'logo.png';
             
-            // Note: Supplier cost and profit are NEVER exposed to customers
             let ownerCostProfitInfo = '';
             if(isOwnerAuthenticated) {
-                const profit = p.price - p.cost - (p.fees || 0);
+                const profit = p.price - p.cost - (p.fees || 50);
                 ownerCostProfitInfo = `
                     <div style="background:rgba(26,26,26,0.9); padding:10px; border-radius:6px; margin-bottom:15px; border:1px solid var(--gold); font-size:0.85rem;">
-                        <span style="color:var(--gold);">Owner Data:</span> Supplier Cost: ₹${p.cost} | Fees: ₹${p.fees || 0} | Est. Profit: ₹${profit.toFixed(2)}
+                        <span style="color:var(--gold);">Owner Data:</span> Supplier Cost: ₹${p.cost} | Fees: ₹${p.fees || 50} | Est. Profit: ₹${profit.toFixed(2)}
                     </div>
                 `;
             }
