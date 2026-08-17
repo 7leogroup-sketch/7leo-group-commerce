@@ -411,7 +411,10 @@
             left: 0;
             width: 100vw;
             height: 100vh;
-            background: #0f0f0f;
+            background: radial-gradient(circle, rgba(10,10,10,0.85) 0%, rgba(5,5,5,0.95) 100%), url('file_00000000776081fa8dbc514074356775.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
             z-index: 3000;
             display: none;
             flex-direction: column;
@@ -449,6 +452,7 @@
             display: flex;
             gap: 15px;
             align-items: center;
+            flex-wrap: wrap;
         }
 
         .store-nav-btn {
@@ -512,13 +516,14 @@
         }
 
         .product-card {
-            background: #141414;
+            background: rgba(20, 20, 20, 0.85);
             border: 1px solid rgba(212, 175, 55, 0.2);
             border-radius: 10px;
             overflow: hidden;
             display: flex;
             flex-direction: column;
             transition: transform 0.3s, border-color 0.3s;
+            backdrop-filter: blur(5px);
         }
 
         .product-card:hover {
@@ -593,13 +598,14 @@
         }
 
         .metric-card {
-            background: #141414;
+            background: rgba(20, 20, 20, 0.85);
             border: 1px solid #333;
             border-radius: 8px;
             padding: 20px;
             display: flex;
             flex-direction: column;
             gap: 8px;
+            backdrop-filter: blur(5px);
         }
 
         .metric-title {
@@ -617,10 +623,11 @@
         .table-container {
             width: 100%;
             overflow-x: auto;
-            background: #141414;
+            background: rgba(20, 20, 20, 0.85);
             border: 1px solid #333;
             border-radius: 8px;
             margin-top: 20px;
+            backdrop-filter: blur(5px);
         }
 
         table {
@@ -657,7 +664,7 @@
             height: 80px;
             border-radius: 6px;
             border: 1px solid var(--gold);
-            overflow: position;
+            overflow: hidden;
             position: relative;
             background: #222;
         }
@@ -785,8 +792,7 @@
     <div class="store-portal-overlay" id="store-portal">
         <div class="store-header">
             <div class="store-nav-brand">
-                <img src="file_00000000f2948207a9d90f38705cd83d.png" style="height:35px;" alt="Store Logo">
-                <h2>7Leo Store (Dropshipping Architecture)</h2>
+                <h2>Welcome to 7Leo Store</h2>
             </div>
             <div class="store-nav-actions">
                 <button class="store-nav-btn" onclick="switchStoreTab('catalog')">Catalog</button>
@@ -866,7 +872,7 @@
                             <input type="number" id="prod-fees" step="0.01" value="50" required placeholder="50" oninput="calculateRealtimeProfit()">
                         </div>
                     </div>
-                    <div style="background: #1a1a1a; padding: 15px; border-radius: 6px; margin-bottom: 20px; border: 1px solid var(--gold);">
+                    <div style="background: rgba(26, 26, 26, 0.85); padding: 15px; border-radius: 6px; margin-bottom: 20px; border: 1px solid var(--gold);">
                         <p style="color: var(--gold); font-weight: 600;">Automatic Profit Calculation Preview:</p>
                         <p id="live-profit-calc-text" style="color: var(--text-light); margin-top: 5px;">Estimated Profit: ₹0.00 (Margin: 0%)</p>
                     </div>
@@ -882,7 +888,7 @@
 
                     <div class="form-group">
                         <label>Supplier Name / Platform</label>
-                        <input type="text" id="prod-supplier" placeholder="e.g., Alibaba / Global Partner">
+                        <input type="text" id="prod-supplier" placeholder="e.g., Global Partner / Supplier">
                     </div>
                     <div class="form-group">
                         <label>Supplier Reference URL</label>
@@ -904,13 +910,16 @@
                 </div>
                 <div id="cart-summary-footer" style="display: none; margin-top: 20px; text-align: right;">
                     <h3 style="color: var(--gold); margin-bottom: 15px;" id="cart-total-display">Total: ₹0.00</h3>
-                    <button class="submit-btn" style="max-width: 250px;" onclick="proceedToCheckout()">Proceed to Checkout (India-Ready)</button>
+                    <button class="submit-btn" style="max-width: 250px;" onclick="proceedToCheckout()">Proceed to Checkout</button>
                 </div>
             </div>
 
             <!-- CHECKOUT PANEL -->
             <div class="store-tab-content checkout-panel" id="tab-checkout">
-                <h3 class="modal-title">Checkout (Secure India-Ready Payment & Fulfillment)</h3>
+                <h3 class="modal-title">Checkout</h3>
+                <div style="background: rgba(212, 175, 55, 0.1); border: 1px solid var(--gold); padding: 12px 15px; border-radius: 6px; margin-bottom: 20px; text-align: center;">
+                    <p style="color: var(--gold-light); font-size: 0.9rem; font-weight: 500;">Payment Gateway Not Connected / Payment Integration Required</p>
+                </div>
                 <form id="checkout-form" onsubmit="handleCheckoutSubmit(event)" style="max-width: 600px; margin: 0 auto;">
                     <div class="form-group">
                         <label>Full Name</label>
@@ -921,21 +930,21 @@
                         <input type="email" id="cust-email" required placeholder="Enter email address">
                     </div>
                     <div class="form-group">
-                        <label>Phone Number (India +91)</label>
-                        <input type="tel" id="cust-phone" required placeholder="10-digit mobile number">
+                        <label>Phone Number</label>
+                        <input type="tel" id="cust-phone" required placeholder="Mobile number">
                     </div>
                     <div class="form-group">
-                        <label>Delivery Address (India)</label>
+                        <label>Delivery Address</label>
                         <textarea id="cust-address" rows="3" required placeholder="Street address, City, State, Pincode"></textarea>
                     </div>
                     <div class="form-group">
-                        <label>Payment Method (Integration-Ready)</label>
+                        <label>Payment Method</label>
                         <select id="payment-provider" required>
-                            <option value="razorpay">Razorpay / UPI / Cards (India)</option>
-                            <option value="cod">Cash on Delivery (COD)</option>
+                            <option value="cod">Cash on Delivery (COD) / Manual Checkout</option>
+                            <option value="pending">Payment Integration Pending</option>
                         </select>
                     </div>
-                    <button type="submit" class="submit-btn" style="margin-top: 20px;">Confirm & Place Order</button>
+                    <button type="submit" class="submit-btn" style="margin-top: 20px;">Place Test Prototype Order</button>
                 </form>
             </div>
 
@@ -946,7 +955,7 @@
                     <input type="text" id="tracking-search-input" class="store-search-input" placeholder="Enter Order ID (e.g., 7LEO-1001)">
                     <button class="submit-btn" style="width: auto;" onclick="trackOrderQuery()">Track</button>
                 </div>
-                <div id="tracking-result-box" style="background: #141414; padding: 25px; border-radius: 8px; border: 1px solid #333; max-width: 600px; margin: 0 auto; display: none;">
+                <div id="tracking-result-box" style="background: rgba(20, 20, 20, 0.85); padding: 25px; border-radius: 8px; border: 1px solid #333; max-width: 600px; margin: 0 auto; display: none; backdrop-filter: blur(5px);">
                     <!-- Tracking details -->
                 </div>
             </div>
@@ -1000,19 +1009,19 @@
                 <div style="max-width: 800px; margin: 0 auto; color: var(--text-muted); line-height: 1.8; display: flex; flex-direction: column; gap: 20px;">
                     <div>
                         <h4 style="color: var(--gold);">Terms & Conditions</h4>
-                        <p>Welcome to 7Leo Store. By placing an order, you agree to our standard dropshipping terms, pricing, and fulfillment timelines.</p>
+                        <p>Welcome to 7Leo Store. As a solo-operated store utilizing dropshipping fulfillment, orders are processed and shipped directly through verified global suppliers and fulfillment partners.</p>
                     </div>
                     <div>
                         <h4 style="color: var(--gold);">Privacy Policy</h4>
-                        <p>We protect customer information with enterprise-grade encryption and strictly never share personal data with unauthorized third parties.</p>
+                        <p>Customer data is handled with strict confidentiality and used solely for order processing and store communication.</p>
                     </div>
                     <div>
-                        <h4 style="color: var(--gold);">Shipping Information</h4>
-                        <p>Physical fulfillment and shipping are handled by our verified global fulfillment partners. Tracking details are provided as soon as dispatched.</p>
+                        <h4 style="color: var(--gold);">Shipping & Fulfillment</h4>
+                        <p>Physical fulfillment, logistics, and delivery are managed by our third-party supplier network. Tracking numbers are provided once dispatch details are confirmed.</p>
                     </div>
                     <div>
                         <h4 style="color: var(--gold);">Returns & Refunds</h4>
-                        <p>Eligible return and refund requests can be initiated within 7 days of delivery, subject to supplier and payment gateway policies.</p>
+                        <p>Return and refund requests are subject to supplier policies and can be initiated within standard support windows upon receipt.</p>
                     </div>
                 </div>
             </div>
@@ -1166,52 +1175,48 @@
             }
         }
 
-        // --- 7LEO STORE SYSTEM LOGIC ---
-        let storeProducts = [
-            {
-                id: 'prod_1',
-                name: '7Leo Signature Luxury Hoodie',
-                description: 'Premium heavyweight cotton hoodie designed with cinematic luxury aesthetics.',
-                category: 'Apparel',
-                sku: '7LEO-HD-01',
-                cost: 800,
-                price: 1499,
-                fees: 70,
-                supplier: 'Global Apparel Partner',
-                supplierUrl: 'https://alibaba.com/item/sample1',
-                images: ['file_00000000f2948207a9d90f38705cd83d.png']
-            },
-            {
-                id: 'prod_2',
-                name: '7Leo Groovepad Audio Earbuds',
-                description: 'High-fidelity wireless sound engineered for mobile music composition.',
-                category: 'Electronics',
-                sku: '7LEO-EB-02',
-                cost: 1200,
-                price: 2499,
-                fees: 100,
-                supplier: 'TechDirect Fulfillment',
-                supplierUrl: 'https://alibaba.com/item/sample2',
-                images: ['bgm-logo.png']
-            }
-        ];
+        // --- 7LEO STORE SYSTEM LOGIC (WITH LOCAL STORAGE PERSISTENCE) ---
+        let storeProducts = JSON.parse(localStorage.getItem('7leo_products'));
+        if(!storeProducts) {
+            storeProducts = [
+                {
+                    id: 'prod_1',
+                    name: '7Leo Signature Luxury Tee',
+                    description: 'Premium organic cotton apparel featuring the iconic 7Leo vision power legacy emblem.',
+                    category: 'Apparel',
+                    sku: '7LEO-APP-01',
+                    cost: 450,
+                    price: 1299,
+                    fees: 50,
+                    supplier: 'Global Apparel Partner',
+                    supplierUrl: '',
+                    images: ['logo.png']
+                },
+                {
+                    id: 'prod_2',
+                    name: '7Leo Gold Series Watch',
+                    description: 'Exquisite timepiece crafted with gold finish and precision movement.',
+                    category: 'Accessories',
+                    sku: '7LEO-ACC-02',
+                    cost: 1500,
+                    price: 4999,
+                    fees: 150,
+                    supplier: 'Luxury Goods Supplier',
+                    supplierUrl: '',
+                    images: ['logo.png']
+                }
+            ];
+            localStorage.setItem('7leo_products', JSON.stringify(storeProducts));
+        }
 
-        let cart = [];
-        let orders = [
-            {
-                id: '7LEO-1001',
-                customerName: 'Rahul Sharma',
-                customerEmail: 'rahul@example.com',
-                productName: '7Leo Signature Luxury Hoodie',
-                sellingPrice: 1499,
-                cost: 800,
-                fees: 70,
-                profit: 629,
-                status: 'Processing',
-                trackingNumber: 'TRK-983274ON',
-                carrier: 'FedEx India'
-            }
-        ];
+        let cart = JSON.parse(localStorage.getItem('7leo_cart')) || [];
+        let orders = JSON.parse(localStorage.getItem('7leo_orders')) || [];
+
+        function saveStoreData() {
+            localStorage.setItem('7leo_products', JSON.stringify(storeProducts));
+            localStorage.setItem('7leo_cart', JSON.stringify(cart));
+            localStorage.setItem('7leo_orders', JSON.stringify(orders));
+        }
 
         let currentUploadedImages = [];
 
@@ -1253,7 +1258,7 @@
 
             grid.innerHTML = '';
             if(filtered.length === 0) {
-                grid.innerHTML = '<p style="color:var(--text-muted); grid-column: 1/-1; text-align:center; padding:40px;">No products found.</p>';
+                grid.innerHTML = '<p style="color:var(--text-muted); grid-column: 1/-1; text-align:center; padding:40px;">No products available yet.</p>';
                 return;
             }
 
@@ -1348,6 +1353,7 @@
             };
 
             storeProducts.push(newProd);
+            saveStoreData();
             alert('Product successfully created, uploaded, and published to catalog!');
             switchStoreTab('catalog');
             renderStoreCatalog();
@@ -1380,6 +1386,7 @@
             } else {
                 cart.push({ ...p, qty: 1 });
             }
+            saveStoreData();
             updateCartCount();
             alert('Product added to cart!');
         }
@@ -1417,6 +1424,7 @@
 
         function removeFromCart(index) {
             cart.splice(index, 1);
+            saveStoreData();
             updateCartCount();
             renderCartItems();
         }
@@ -1431,7 +1439,6 @@
             const email = document.getElementById('cust-email').value;
             const phone = document.getElementById('cust-phone').value;
             const address = document.getElementById('cust-address').value;
-            const paymentProvider = document.getElementById('payment-provider').value;
 
             cart.forEach(item => {
                 const profit = item.price - item.cost - item.fees;
@@ -1444,14 +1451,15 @@
                     cost: item.cost,
                     fees: item.fees,
                     profit: profit,
-                    status: 'Payment Confirmed - Sent to Supplier',
+                    status: 'Order Received — Fulfillment Pending',
                     trackingNumber: 'TRK-' + Math.random().toString(36).substring(2, 10).toUpperCase(),
-                    carrier: 'Global Express Fulfillment'
+                    carrier: 'Global Supplier Fulfillment Network'
                 };
                 orders.push(newOrder);
             });
 
-            alert('Payment successful via ' + paymentProvider.toUpperCase() + '! Order placed and fulfillment workflow triggered.');
+            saveStoreData();
+            alert('Test prototype order placed successfully! Order saved to local storage for fulfillment tracking.');
             cart = [];
             updateCartCount();
             switchStoreTab('catalog');
@@ -1464,14 +1472,14 @@
             const found = orders.find(o => o.id === query || o.trackingNumber === query);
             resBox.style.display = 'block';
             if(!found) {
-                resBox.innerHTML = '<p style="color:#ff5555;">Tracking information is not available yet or order ID is invalid.</p>';
+                resBox.innerHTML = '<p style="color:#ff5555;">Order not found or tracking information is not available yet.</p>';
                 return;
             }
             resBox.innerHTML = `
                 <h4 style="color:var(--gold); margin-bottom:10px;">Order Status: ${found.id}</h4>
                 <p style="color:var(--text-light); margin-bottom:5px;"><strong>Product:</strong> ${found.productName}</p>
                 <p style="color:var(--text-light); margin-bottom:5px;"><strong>Status:</strong> ${found.status}</p>
-                <p style="color:var(--text-light); margin-bottom:5px;"><strong>Carrier:</strong> ${found.carrier}</p>
+                <p style="color:var(--text-light); margin-bottom:5px;"><strong>Fulfillment Partner:</strong> ${found.carrier}</p>
                 <p style="color:var(--text-light); margin-bottom:5px;"><strong>Tracking Number:</strong> ${found.trackingNumber}</p>
             `;
         }
@@ -1482,10 +1490,14 @@
             const totalProfit = orders.reduce((sum, o) => sum + o.profit, 0);
             document.getElementById('metric-sales').innerText = '₹' + totalSales.toFixed(2);
             document.getElementById('metric-profit').innerText = '₹' + totalProfit.toFixed(2);
-            document.getElementById('metric-pending').innerText = orders.filter(o => o.status.includes('Processing')).length;
+            document.getElementById('metric-pending').innerText = orders.filter(o => o.status.includes('Pending')).length;
 
             const tbody = document.getElementById('admin-orders-tbody');
             tbody.innerHTML = '';
+            if(orders.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="7" style="text-align:center; color:var(--text-muted); padding:30px;">No orders recorded yet.</td></tr>';
+                return;
+            }
             orders.forEach(o => {
                 tbody.innerHTML += `
                     <tr>
@@ -1495,7 +1507,7 @@
                         <td>₹${o.sellingPrice.toFixed(2)}</td>
                         <td style="color:var(--gold);">₹${o.profit.toFixed(2)}</td>
                         <td>${o.status}</td>
-                        <td><button class="action-btn" style="padding:5px 10px;" onclick="alert('Fulfillment sync verified with supplier.')">Sync Supplier</button></td>
+                        <td><button class="action-btn" style="padding:5px 10px;" onclick="alert('Fulfillment status logged.')">Sync Supplier</button></td>
                     </tr>
                 `;
             });
