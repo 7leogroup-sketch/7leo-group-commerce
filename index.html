@@ -344,7 +344,30 @@
             cursor: pointer;
         }
 
-        /* --- 7LEO BGM PORTAL (LOCKED / UNTOUCHED) --- */
+        /* --- 7LEO BGM PORTAL (LOCKED / UNTOUCHED & SPECIFICALLY ENHANCED) --- */
+        .bgm-portal-overlay {
+            background-image: url('file_00000000776081fa8dbc514074356775.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: fixed;
+        }
+        .bgm-portal-overlay::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(10,10,10,0.9) 0%, rgba(5,5,5,0.96) 100%);
+            z-index: 0;
+            pointer-events: none;
+        }
+        .bgm-header, .bgm-body {
+            position: relative;
+            z-index: 1;
+        }
+
         .bgm-header {
             background: rgba(15, 15, 15, 0.95);
             border-bottom: 1px solid rgba(212, 175, 55, 0.2);
@@ -363,21 +386,31 @@
         
         .bgm-hero {
             text-align: center;
-            padding: 80px 20px;
-            background: linear-gradient(rgba(10,10,10,0.8), rgba(10,10,10,0.8)), url('bgm-banner.png');
+            padding: 100px 20px;
+            background: linear-gradient(rgba(10,10,10,0.4), rgba(10,10,10,0.4)), url('bgm-banner.png');
             background-size: cover;
             background-position: center;
             border-radius: 20px;
             border: 1px solid rgba(212,175,55,0.2);
-            margin-bottom: 50px;
+            margin-bottom: 30px;
         }
-        .bgm-hero h1 { font-size: 3rem; color: var(--gold); margin-bottom: 15px; }
-        .bgm-hero p { max-width: 700px; margin: 0 auto 30px auto; color: var(--text-muted); line-height: 1.6; }
+
+        .bgm-intro-box {
+            text-align: center;
+            padding: 40px 20px;
+            background: rgba(15, 15, 15, 0.85);
+            border: 1px solid rgba(212,175,55,0.2);
+            border-radius: 16px;
+            margin-bottom: 50px;
+            backdrop-filter: blur(8px);
+        }
+        .bgm-intro-box h1 { font-size: 3rem; color: var(--gold); margin-bottom: 15px; }
+        .bgm-intro-box p { max-width: 700px; margin: 0 auto 30px auto; color: var(--text-muted); line-height: 1.6; }
         .hero-btns { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; }
 
         .series-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin: 40px 0; }
-        .series-card { background: #111; padding: 30px; border-radius: 12px; border: 1px solid #333; text-align: center; transition: 0.3s; }
-        .series-card:hover { border-color: var(--gold); transform: translateY(-5px); }
+        .series-card { background: #111; padding: 30px; border-radius: 12px; border: 1px solid #333; text-align: center; transition: 0.3s; cursor: pointer; }
+        .series-card:hover { border-color: var(--gold); transform: translateY(-5px); box-shadow: 0 5px 20px rgba(212, 175, 55, 0.15); }
         .series-card h3 { color: var(--gold-light); margin-bottom: 10px; }
 
         .latest-bgm-card { background: #1a1a1a; padding: 20px; border-radius: 12px; border: 1px solid #333; }
@@ -660,7 +693,7 @@
         </section>
     </main>
 
-    <!-- 7LEO BGM PORTAL (LOCKED / UNTOUCHED) -->
+    <!-- 7LEO BGM PORTAL -->
     <div class="bgm-portal-overlay" id="bgm-portal">
         <header class="bgm-header">
             <div class="bgm-nav-brand">
@@ -681,6 +714,10 @@
 
         <div class="bgm-body">
             <section class="bgm-hero">
+                <!-- Clean banner image container -->
+            </section>
+
+            <div class="bgm-intro-box">
                 <h1>7Leo BGM</h1>
                 <p style="font-size:1.2rem; font-weight:bold;">Original Instrumental Music Composed on Mobile</p>
                 <p>Welcome to 7Leo BGM! Mobile Composed Groovepad Music. Drive • Chill • Gangster • DJ • Cinematic where every track sets the perfect vibe. Handcrafted instrumental background music to fuel your focus, ease your mind, and elevate your moments. New BGM drops regularly — Subscribe & never miss a track!</p>
@@ -689,17 +726,17 @@
                     <a href="https://www.youtube.com/@7LeoBGM" target="_blank" class="action-btn">WATCH ON YOUTUBE</a>
                     <a href="https://www.youtube.com/@7LeoBGM" target="_blank" class="action-btn" style="background:var(--gold); color:#000;">SUBSCRIBE</a>
                 </div>
-            </section>
+            </div>
 
             <section id="playlists">
                 <h2 style="text-align:center; color:var(--gold-light); margin-bottom:20px;">Music Series</h2>
                 <div class="series-grid">
-                    <div class="series-card"><h3>Drive Vibes</h3><p>7Leo Drive Series</p></div>
-                    <div class="series-card"><h3>Chill Out</h3><p>7Leo Chill Series</p></div>
-                    <div class="series-card"><h3>Street Energy</h3><p>7Leo Gangster Series</p></div>
-                    <div class="series-card"><h3>Club & Mix</h3><p>7Leo DJ Series</p></div>
-                    <div class="series-card"><h3>Epic Feels</h3><p>7Leo Cinematic Series</p></div>
-                    <div class="series-card"><h3>Songs</h3><p>7Leo Songs Series</p></div>
+                    <div class="series-card" onclick="openBgmSeriesModal('Drive Vibes', '7Leo Drive Series')"><h3>Drive Vibes</h3><p>7Leo Drive Series</p></div>
+                    <div class="series-card" onclick="openBgmSeriesModal('Chill Out', '7Leo Chill Series')"><h3>Chill Out</h3><p>7Leo Chill Series</p></div>
+                    <div class="series-card" onclick="openBgmSeriesModal('Street Energy', '7Leo Gangster Series')"><h3>Street Energy</h3><p>7Leo Gangster Series</p></div>
+                    <div class="series-card" onclick="openBgmSeriesModal('Club & Mix', '7Leo DJ Series')"><h3>Club & Mix</h3><p>7Leo DJ Series</p></div>
+                    <div class="series-card" onclick="openBgmSeriesModal('Epic Feels', '7Leo Cinematic Series')"><h3>Epic Feels</h3><p>7Leo Cinematic Series</p></div>
+                    <div class="series-card" onclick="openBgmSeriesModal('Songs', '7Leo Songs Series')"><h3>Songs</h3><p>7Leo Songs Series</p></div>
                 </div>
             </section>
 
@@ -757,7 +794,20 @@
         </div>
     </div>
 
-    <!-- 7LEO STORE PORTAL (POLISHED & ROBUST FRONTEND STORE) -->
+    <!-- BGM Series Playlist Modal -->
+    <div class="modal-overlay" id="bgm-series-modal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeModal('bgm-series-modal')">&times;</button>
+            <h3 class="modal-title" id="bgm-modal-title" style="color:var(--gold); margin-bottom:15px;"></h3>
+            <p id="bgm-modal-desc" style="color:var(--text-muted); margin-bottom:20px;"></p>
+            <div style="background:#111; padding:20px; border-radius:8px; border:1px solid #333; margin-bottom:20px; text-align:center;">
+                <p style="color:var(--text-light); margin-bottom:15px;">Explore tracks and live sessions for this series on our official channel.</p>
+                <a href="https://www.youtube.com/@7LeoBGM" target="_blank" class="action-btn" style="background:var(--gold); color:#000;">OPEN ON YOUTUBE</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- 7LEO STORE PORTAL -->
     <div class="store-portal-overlay" id="store-portal">
         <div class="store-header">
             <div class="store-nav-brand">
@@ -822,13 +872,19 @@
             document.getElementById('bgm-portal').classList.remove('active');
         }
 
-        // --- 7LEO STORE POLISHED FRONTEND ARCHITECTURE ---
+        function openBgmSeriesModal(title, subtitle) {
+            document.getElementById('bgm-modal-title').innerText = title;
+            document.getElementById('bgm-modal-desc').innerText = subtitle + ' - Handcrafted original mobile background music series by 7Leo BGM.';
+            openModal('bgm-series-modal');
+        }
+
+        // --- 7LEO STORE FRONTEND ARCHITECTURE ---
         let storeProductsData = [
             { id: 'p1', name: '7Leo Signature Hoodie', category: 'Fashion', price: 2499, desc: 'Premium heavy cotton fleece hoodie with gold 7Leo emblem embroidery.' },
             { id: 'p2', name: '7Leo Crown Gold Ring', category: 'Accessories', price: 1499, desc: 'Polished stainless steel band with minimalist crown engraving.' },
             { id: 'p3', name: '7Leo Minimalist Leather Wallet', category: 'Lifestyle', price: 999, desc: 'Genuine leather slim cardholder with RFID protection and debossed logo.' },
             { id: 'p4', name: '7Leo Groovepad Beat Pack Vol. 1', category: 'Digital', price: 799, desc: 'Exclusive digital sample pack & project files for mobile music producers.' },
-            { id: 'p5', name: '7Leo Elite Snapback Cap', category: 'Fashion', price: 899, desc: 'Structured structured cap with flat brim and embroidered signature crest.' },
+            { id: 'p5', name: '7Leo Elite Snapback Cap', category: 'Fashion', price: 899, desc: 'Structured cap with flat brim and embroidered signature crest.' },
             { id: 'p6', name: '7Leo Luxury Aviator Sunglasses', category: 'Accessories', price: 1999, desc: 'UV400 protected metallic frame sunglasses built for cinematic clarity.' }
         ];
 
@@ -1103,7 +1159,6 @@
             }
             storeUpdateCartBadge();
             
-            // Subtle visual notification feedback
             const badge = document.getElementById('store-cart-badge');
             if(badge) {
                 badge.style.transform = 'scale(1.3)';
