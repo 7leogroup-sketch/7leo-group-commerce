@@ -695,10 +695,7 @@
             left: 0;
             width: 100vw;
             height: 100vh;
-            background: radial-gradient(circle, rgba(10,10,10,0.85) 0%, rgba(5,5,5,0.95) 100%), url('file_0000000021b0720794b60df8e68bf5a1.png');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
+            background: #0a0a0a;
             z-index: 3500;
             display: none;
             flex-direction: column;
@@ -723,6 +720,16 @@
             display: block;
         }
 
+        .bgm-body-wrapper {
+            background-image: url('file_0000000021b0720794b60df8e68bf5a1.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
         .bgm-body-container {
             max-width: 1100px;
             margin: 0 auto;
@@ -735,7 +742,7 @@
         }
 
         .bgm-intro-box {
-            background: rgba(20, 20, 20, 0.7);
+            background: rgba(20, 20, 20, 0.75);
             border: 1px solid rgba(212, 175, 55, 0.25);
             border-radius: 12px;
             padding: 30px;
@@ -985,59 +992,61 @@
             <img src="bgm-banner.png" alt="7Leo BGM Banner" class="bgm-banner-img">
         </div>
 
-        <div class="bgm-body-container">
-            <!-- BGM Introduction Content -->
-            <div class="bgm-intro-box">
-                <h2>Welcome to 7leo BGM!</h2>
-                <p>Mobile.Composed Groovepad Music<br>Drive • Chill • Gangster • DJ • Cinematic<br>where every track sets the perfect vibe.</p>
-                <p style="margin-top: 15px;">Handcrafted instrumental background music to fuel your focus, ease your mind, and elevate your moments.</p>
-                <p style="margin-top: 15px; color: var(--gold);">New BGM drops regularly — Subscribe & never miss a track!</p>
-            </div>
-
-            <!-- Series Section & Filtering -->
-            <div class="bgm-series-section">
-                <h3>Explore by Series</h3>
-                <div class="bgm-series-filters" id="bgm-series-filters">
-                    <button class="bgm-filter-btn active" onclick="filterBgmSeries('All', this)">All</button>
-                    <button class="bgm-filter-btn" onclick="filterBgmSeries('7Leo Drive Series', this)">7Leo Drive Series</button>
-                    <button class="bgm-filter-btn" onclick="filterBgmSeries('7Leo Chill Series', this)">7Leo Chill Series</button>
-                    <button class="bgm-filter-btn" onclick="filterBgmSeries('7Leo Gangster Series', this)">7Leo Gangster Series</button>
-                    <button class="bgm-filter-btn" onclick="filterBgmSeries('7Leo DJ Series', this)">7Leo DJ Series</button>
-                    <button class="bgm-filter-btn" onclick="filterBgmSeries('7Leo Cinematic Series', this)">7Leo Cinematic Series</button>
-                    <button class="bgm-filter-btn" onclick="filterBgmSeries('7Leo Songs Series', this)">7Leo Songs Series</button>
+        <div class="bgm-body-wrapper">
+            <div class="bgm-body-container">
+                <!-- BGM Introduction Content -->
+                <div class="bgm-intro-box">
+                    <h2>Welcome to 7leo BGM!</h2>
+                    <p>Mobile.Composed Groovepad Music<br>Drive • Chill • Gangster • DJ • Cinematic<br>where every track sets the perfect vibe.</p>
+                    <p style="margin-top: 15px;">Handcrafted instrumental background music to fuel your focus, ease your mind, and elevate your moments.</p>
+                    <p style="margin-top: 15px; color: var(--gold);">New BGM drops regularly — Subscribe & never miss a track!</p>
                 </div>
-            </div>
 
-            <!-- Real BGM Playlist Container -->
-            <div class="bgm-playlist-container" id="bgm-playlist-items">
-                <!-- Populated dynamically via JS -->
-            </div>
-
-            <!-- YouTube & Instagram CTA Section -->
-            <div class="bgm-social-section">
-                <h3>Follow & Stream</h3>
-                <p style="color: var(--text-muted);">Official YouTube: <a href="https://www.youtube.com/@7LeoBGM" target="_blank" style="color: var(--gold);">https://www.youtube.com/@7LeoBGM</a></p>
-                <a href="https://www.youtube.com/@7LeoBGM" target="_blank" class="action-btn">VISIT 7LEO BGM ON YOUTUBE</a>
-                <p style="color: var(--text-muted); margin-top: 10px;">Discover new uploads, listen to latest soundscapes, and subscribe to 7Leo BGM.</p>
-                
-                <div style="margin-top: 15px;">
-                    <a href="https://www.instagram.com/7leo_bgm?igsh=OWxmeHRubTN5ZmJn" target="_blank" class="action-btn">Follow 7Leo BGM on Instagram</a>
+                <!-- Series Section & Filtering -->
+                <div class="bgm-series-section">
+                    <h3>Explore by Series</h3>
+                    <div class="bgm-series-filters" id="bgm-series-filters">
+                        <button class="bgm-filter-btn active" onclick="filterBgmSeries('All', this)">All</button>
+                        <button class="bgm-filter-btn" onclick="filterBgmSeries('7Leo Drive Series', this)">7Leo Drive Series</button>
+                        <button class="bgm-filter-btn" onclick="filterBgmSeries('7Leo Chill Series', this)">7Leo Chill Series</button>
+                        <button class="bgm-filter-btn" onclick="filterBgmSeries('7Leo Gangster Series', this)">7Leo Gangster Series</button>
+                        <button class="bgm-filter-btn" onclick="filterBgmSeries('7Leo DJ Series', this)">7Leo DJ Series</button>
+                        <button class="bgm-filter-btn" onclick="filterBgmSeries('7Leo Cinematic Series', this)">7Leo Cinematic Series</button>
+                        <button class="bgm-filter-btn" onclick="filterBgmSeries('7Leo Songs Series', this)">7Leo Songs Series</button>
+                    </div>
                 </div>
-            </div>
 
-            <!-- Music Licensing / Sales Section -->
-            <div class="bgm-licensing-section">
-                <h3>License 7Leo BGM</h3>
-                <p>7Leo BGM offers original instrumental music suitable for Advertisements, Promotions, Trailers, Movies, Short films, Reels, Social media content, Brand videos, Promotional campaigns, Cinematic projects, and Creative productions.</p>
-                <p>Our compositions are crafted by 7Leo BGM and are available for licensing and commercial use subject to applicable license terms and permissions.</p>
-                <div style="margin-top: 10px;">
-                    <a href="mailto:7leogroup@gmail.com?subject=Commercial%20Music%20Licensing%20Inquiry%20-%207Leo%20BGM" class="action-btn">Contact 7Leo Group for Music Licensing</a>
+                <!-- Real BGM Playlist Container -->
+                <div class="bgm-playlist-container" id="bgm-playlist-items">
+                    <!-- Populated dynamically via JS -->
                 </div>
-            </div>
 
-            <!-- Footer Copyright -->
-            <div class="bgm-footer-copyright">
-                © 2026 7Leo BGM / 7Leo Group. All Rights Reserved.
+                <!-- YouTube & Instagram CTA Section -->
+                <div class="bgm-social-section">
+                    <h3>Follow & Stream</h3>
+                    <p style="color: var(--text-muted);">Official YouTube: <a href="https://www.youtube.com/@7LeoBGM" target="_blank" style="color: var(--gold);">https://www.youtube.com/@7LeoBGM</a></p>
+                    <a href="https://www.youtube.com/@7LeoBGM" target="_blank" class="action-btn">VISIT 7LEO BGM ON YOUTUBE</a>
+                    <p style="color: var(--text-muted); margin-top: 10px;">Discover new uploads, listen to latest soundscapes, and subscribe to 7Leo BGM.</p>
+                    
+                    <div style="margin-top: 15px;">
+                        <a href="https://www.instagram.com/7leo_bgm?igsh=OWxmeHRubTN5ZmJn" target="_blank" class="action-btn">Follow 7Leo BGM on Instagram</a>
+                    </div>
+                </div>
+
+                <!-- Music Licensing / Sales Section -->
+                <div class="bgm-licensing-section">
+                    <h3>License 7Leo BGM</h3>
+                    <p>7Leo BGM offers original instrumental music suitable for Advertisements, Promotions, Trailers, Movies, Short films, Reels, Social media content, Brand videos, Promotional campaigns, Cinematic projects, and Creative productions.</p>
+                    <p>Our compositions are crafted by 7Leo BGM and are available for licensing and commercial use subject to applicable license terms and permissions.</p>
+                    <div style="margin-top: 10px;">
+                        <a href="mailto:7leogroup@gmail.com?subject=Commercial%20Music%20Licensing%20Inquiry%20-%207Leo%20BGM" class="action-btn">Contact 7Leo Group for Music Licensing</a>
+                    </div>
+                </div>
+
+                <!-- Footer Copyright -->
+                <div class="bgm-footer-copyright">
+                    © 2026 7Leo BGM / 7Leo Group. All Rights Reserved.
+                </div>
             </div>
         </div>
 
@@ -1494,7 +1503,7 @@ Founder, 7Leo Group</p>
             }
         }
 
-        // --- 7LEO BGM SYSTEM LOGIC (LOCKED / PRESERVED) ---
+        // --- 7LEO BGM SYSTEM LOGIC (LOCKED / PRESERVED & EMOJI-FREE) ---
         let bgmTracks = JSON.parse(localStorage.getItem('7leo_bgm_tracks'));
         if(!bgmTracks) {
             bgmTracks = [
@@ -1587,7 +1596,7 @@ Founder, 7Leo Group</p>
                     <div class="bgm-track-card">
                         <div class="bgm-track-info">
                             <span class="bgm-track-title">${track.title}</span>
-                            <span class="bgm-track-meta">${track.series} &bull; ${track.duration} &bull; Released: ${track.releaseDate}</span>
+                            <span class="bgm-track-meta">${track.series} - ${track.duration} - Released: ${track.releaseDate}</span>
                             <p class="bgm-track-desc">${track.description}</p>
                         </div>
                         <div style="min-width: 260px;">
