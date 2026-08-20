@@ -1977,6 +1977,316 @@ VISION. POWER. LEGACY.</p>
                 `;
             });
         }
-    </script>
+    </script>/* ================================
+   AGENT 7LEO — PREVIEW ENGINE CORE
+   Phase 1
+   ================================ */
+
+const PreviewEngine = (() => {
+    const state = {
+        status: 'idle',
+        target: null,
+        data: null,
+        startedAt: null,
+        updatedAt: null,
+        error: null
+    };
+
+    const listeners = new Set();
+
+    function clone(value) {
+        if (value === undefined || value === null) return value;
+
+        try {
+            return JSON.parse(JSON.stringify(value));
+        } catch {
+            return value;
+        }
+    }
+
+    function snapshot() {
+        return clone(state);
+    }
+
+    function emit(eventName, payload = {}) {
+        const event = {
+            name: eventName,
+            timestamp: new Date().toISOString(),
+            state: snapshot(),
+            payload: clone(payload)
+        };
+
+        listeners.forEach(listener => {
+            try {
+                listener(event);
+            } catch (error) {
+                console.error('[7Leo Preview Engine] Listener error:', error);
+            }
+        });
+
+        window.dispatchEvent(
+            new CustomEvent('7leo:preview', {
+                detail: event
+            })
+        );
+
+        return event;
+    }
+
+    function subscribe(listener) {
+        if (typeof listener !== 'function') {
+            throw new TypeError('Preview Engine listener must be a function.');
+        }
+
+        listeners.add(listener);
+
+        return () => {
+            listeners.delete(listener);
+        };
+    }
+
+    function start(target, data = {}) {
+        if (!target) {
+            return fail('Preview target is required.');
+        }
+
+        state.status = 'previewing';
+        state.target = String(target);
+        state.data = clone(data);
+        state.startedAt = new Date().toISOString();
+        state.updatedAt = state.startedAt;
+        state.error = null;
+
+        return emit('preview:start', {
+            target: state.target
+        });
+    }
+
+    function update(data = {}) {
+        if (state.status !== 'previewing') {
+            return fail('Cannot update preview before starting it.');
+        }
+
+        state.data = {
+            ...(state.data || {}),
+            ...clone(data)
+        };
+
+        state.updatedAt = new Date().toISOString();
+        state.error = null;
+
+        return emit('preview:update', {
+            target: state.target
+        });
+    }
+
+    function stop() {
+        if (state.status === 'idle') {
+            return emit('preview:stop', {
+                reason: 'already-idle'
+            });
+        }
+
+        state.status = 'idle';
+        state.target = null;
+        state.data = null;
+        state.startedAt = null;
+        state.updatedAt = new Date().toISOString();
+        state.error = null;
+
+        return emit('preview:stop');
+    }
+
+    function reset() {
+        state.status = 'idle';
+        state.target = null;
+        state.data = null;
+        state.startedAt = null;
+        state.updatedAt = new Date().toISOString();
+        state.error = null;
+
+        return emit('preview:reset');
+    }
+
+    function fail(message) {
+        state.status = 'error';
+        state.error = String(message);
+        state.updatedAt = new Date().toISOString();
+
+        return emit('preview:error', {
+            message: state.error
+        });
+    }
+
+    function getState() {
+        return snapshot();
+    }
+
+    return Object.freeze({
+        start,
+        update,
+        stop,
+        reset,
+        fail,
+        getState,
+        subscribe
+    });
+})();
+
+
+/* ================================
+   AGENT 7LEO — PREVIEW SESSION
+   Phase 1
+   ================================ */
+
+const PreviewSessionManager = (() => {
+    const STORAGE_KEY = '7leo_preview_session';
+
+    function save() {
+        try {
+            localStorage.setItem(
+                STORAGE_KEY,
+                JSON.stringify(PreviewEngine.getState())
+            );
+            return true;
+        } catch (error) {
+            console.warn(
+                '[7Leo Preview Session] Unable to save session:',
+                error
+            );
+            return false;
+        }
+    }
+
+    function load() {
+        try {
+            const saved = localStorage.getItem(STORAGE_KEY);
+
+            if (!saved) return null;
+
+            return JSON.parse(saved);
+        } catch (error) {
+            console.warn(
+                '[7Leo Preview Session] Unable to load session:',
+                error
+            );
+            return null;
+        }
+    }
+
+    function clear() {
+        try {
+            localStorage.removeItem(STORAGE_KEY);
+            return true;
+        } catch (error) {
+            console.warn(
+                '[7Leo Preview Session] Unable to clear session:',
+                error
+            );
+            return false;
+        }
+    }
+
+    PreviewEngine.subscribe(() => {
+        save();
+    });
+
+    return Object.freeze({
+        save,
+        load,
+        clear
+    });
+})();
+
+
+/* ================================
+   AGENT 7LEO — INTEGRATION BRIDGE
+   Phase 1
+   ================================ */
+
+const Agent7LeoBridge = (() => {
+    function command(commandName, payload = {}) {
+        switch (commandName) {
+
+            case 'preview:start':
+                return PreviewEngine.start(
+                    payload.target,
+                    payload.data || {}
+                );
+
+            case 'preview:update':
+                return PreviewEngine.update(
+                    payload.data || {}
+                );
+
+            case 'preview:stop':
+                return PreviewEngine.stop();
+
+            case 'preview:reset':
+                return PreviewEngine.reset();
+
+            case 'preview:state':
+                return PreviewEngine.getState();
+
+            default:
+                return PreviewEngine.fail(
+                    `Unknown Agent 7Leo command: ${commandName}`
+                );
+        }
+    }
+
+    return Object.freeze({
+        command
+    });
+})();
+
+
+/* ================================
+   AGENT 7LEO — GLOBAL PREVIEW API
+   ================================ */
+
+window.Agent7Leo = window.Agent7Leo || {};
+
+window.Agent7Leo.preview = {
+    start: (target, data = {}) =>
+        Agent7LeoBridge.command('preview:start', {
+            target,
+            data
+        }),
+
+    update: (data = {}) =>
+        Agent7LeoBridge.command('preview:update', {
+            data
+        }),
+
+    stop: () =>
+        Agent7LeoBridge.command('preview:stop'),
+
+    reset: () =>
+        Agent7LeoBridge.command('preview:reset'),
+
+    state: () =>
+        Agent7LeoBridge.command('preview:state')
+};
+
+
+/* ================================
+   AGENT 7LEO — READY EVENT
+   ================================ */
+
+window.dispatchEvent(
+    new CustomEvent('7leo:preview-engine-ready', {
+        detail: {
+            version: '1.0.0',
+            phase: 1,
+            timestamp: new Date().toISOString()
+        }
+    })
+);
+
+console.log(
+    '%c[Agent 7Leo] Preview Engine Core ready.',
+    'color:#d4af37;font-weight:bold;'
+);
 </body>
 </html>
