@@ -2288,5 +2288,1116 @@ console.log(
     '%c[Agent 7Leo] Preview Engine Core ready.',
     'color:#d4af37;font-weight:bold;'
 );
+    <!-- ================================
+     AGENT 7LEO — PREVIEW UI
+     Phase 2
+     DO NOT REMOVE EXISTING CODE
+     ================================ -->
+
+<style>
+/* ===== AGENT 7LEO PREVIEW UI ===== */
+
+#agent7leo-preview-launcher {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    z-index: 9998;
+    background: rgba(10,10,10,0.94);
+    border: 1px solid #d4af37;
+    color: #f3e5ab;
+    padding: 11px 18px;
+    border-radius: 30px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    cursor: pointer;
+    box-shadow: 0 0 20px rgba(212,175,55,0.18);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
+#agent7leo-preview-launcher:hover {
+    background: #d4af37;
+    color: #0a0a0a;
+    box-shadow: 0 0 25px rgba(212,175,55,0.4);
+}
+
+#agent7leo-preview-ui {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: min(420px, 94vw);
+    height: 100vh;
+    background: rgba(8,8,8,0.97);
+    border-left: 1px solid rgba(212,175,55,0.35);
+    z-index: 9999;
+    transform: translateX(105%);
+    transition: transform 0.35s ease;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Montserrat', sans-serif;
+    backdrop-filter: blur(18px);
+    box-shadow: -15px 0 40px rgba(0,0,0,0.55);
+}
+
+#agent7leo-preview-ui.active {
+    transform: translateX(0);
+}
+
+.agent7leo-preview-header {
+    padding: 18px;
+    border-bottom: 1px solid rgba(212,175,55,0.2);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.agent7leo-preview-brand {
+    color: #d4af37;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.agent7leo-preview-phase {
+    color: #777;
+    font-size: 10px;
+    margin-top: 4px;
+}
+
+.agent7leo-preview-close {
+    background: transparent;
+    border: 1px solid #333;
+    color: #eee;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.agent7leo-preview-body {
+    padding: 18px;
+    overflow-y: auto;
+    flex: 1;
+}
+
+.agent7leo-preview-status-card {
+    background: rgba(20,20,20,0.9);
+    border: 1px solid #333;
+    border-radius: 10px;
+    padding: 16px;
+    margin-bottom: 15px;
+}
+
+.agent7leo-preview-status-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.agent7leo-preview-label {
+    color: #888;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.7px;
+}
+
+.agent7leo-preview-value {
+    color: #f5f5f5;
+    font-size: 12px;
+    font-weight: 600;
+    text-align: right;
+    word-break: break-word;
+}
+
+.agent7leo-preview-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 5px 10px;
+    border-radius: 20px;
+    background: rgba(212,175,55,0.1);
+    border: 1px solid rgba(212,175,55,0.35);
+    color: #d4af37;
+    font-size: 10px;
+    font-weight: 700;
+}
+
+.agent7leo-preview-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #777;
+}
+
+.agent7leo-preview-dot.active {
+    background: #d4af37;
+    box-shadow: 0 0 8px rgba(212,175,55,0.8);
+}
+
+.agent7leo-preview-dot.error {
+    background: #ff5555;
+}
+
+.agent7leo-preview-section-title {
+    color: #d4af37;
+    font-size: 12px;
+    font-weight: 700;
+    margin: 20px 0 10px;
+}
+
+.agent7leo-preview-input {
+    width: 100%;
+    background: #141414;
+    border: 1px solid #333;
+    color: #f5f5f5;
+    padding: 11px 12px;
+    border-radius: 7px;
+    outline: none;
+    font-family: 'Montserrat', sans-serif;
+    margin-bottom: 10px;
+}
+
+.agent7leo-preview-input:focus {
+    border-color: #d4af37;
+}
+
+.agent7leo-preview-buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 9px;
+    margin-top: 10px;
+}
+
+.agent7leo-preview-btn {
+    padding: 10px 12px;
+    border-radius: 7px;
+    border: 1px solid #d4af37;
+    background: transparent;
+    color: #f3e5ab;
+    cursor: pointer;
+    font-size: 11px;
+    font-weight: 700;
+    transition: all 0.25s ease;
+}
+
+.agent7leo-preview-btn:hover {
+    background: #d4af37;
+    color: #0a0a0a;
+}
+
+.agent7leo-preview-btn.primary {
+    background: #d4af37;
+    color: #0a0a0a;
+}
+
+.agent7leo-preview-btn.danger {
+    border-color: #ff5555;
+    color: #ff7777;
+}
+
+.agent7leo-preview-log {
+    background: #050505;
+    border: 1px solid #292929;
+    border-radius: 8px;
+    padding: 10px;
+    max-height: 190px;
+    overflow-y: auto;
+    font-family: monospace;
+    font-size: 10px;
+    line-height: 1.6;
+    color: #999;
+}
+
+.agent7leo-preview-log-entry {
+    padding: 3px 0;
+    border-bottom: 1px solid #161616;
+}
+
+.agent7leo-preview-log-entry strong {
+    color: #d4af37;
+}
+
+.agent7leo-preview-json {
+    background: #050505;
+    border: 1px solid #292929;
+    border-radius: 8px;
+    padding: 12px;
+    white-space: pre-wrap;
+    word-break: break-word;
+    color: #aaa;
+    font-family: monospace;
+    font-size: 10px;
+    max-height: 220px;
+    overflow-y: auto;
+}
+
+@media (max-width: 600px) {
+    #agent7leo-preview-launcher {
+        right: 12px;
+        bottom: 12px;
+    }
+
+    #agent7leo-preview-ui {
+        width: 100vw;
+    }
+
+    .agent7leo-preview-buttons {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+
+
+<!-- ===== PREVIEW LAUNCHER ===== -->
+
+<button
+    id="agent7leo-preview-launcher"
+    type="button"
+    onclick="Agent7LeoPreviewUI.toggle()">
+    7LEO PREVIEW
+</button>
+
+
+<!-- ===== PREVIEW PANEL ===== -->
+
+<aside id="agent7leo-preview-ui">
+
+    <div class="agent7leo-preview-header">
+
+        <div>
+            <div class="agent7leo-preview-brand">
+                AGENT 7LEO
+            </div>
+
+            <div class="agent7leo-preview-phase">
+                PREVIEW ENGINE • PHASE 2
+            </div>
+        </div>
+
+        <button
+            class="agent7leo-preview-close"
+            type="button"
+            onclick="Agent7LeoPreviewUI.close()">
+            ×
+        </button>
+
+    </div>
+
+
+    <div class="agent7leo-preview-body">
+
+        <!-- STATUS -->
+
+        <div class="agent7leo-preview-status-card">
+
+            <div class="agent7leo-preview-status-row">
+                <span class="agent7leo-preview-label">
+                    Engine
+                </span>
+
+                <span class="agent7leo-preview-badge">
+                    <span
+                        id="agent7leo-preview-dot"
+                        class="agent7leo-preview-dot">
+                    </span>
+
+                    <span id="agent7leo-preview-status">
+                        IDLE
+                    </span>
+                </span>
+            </div>
+
+            <div class="agent7leo-preview-status-row">
+                <span class="agent7leo-preview-label">
+                    Target
+                </span>
+
+                <span
+                    id="agent7leo-preview-target"
+                    class="agent7leo-preview-value">
+                    —
+                </span>
+            </div>
+
+            <div class="agent7leo-preview-status-row">
+                <span class="agent7leo-preview-label">
+                    Updated
+                </span>
+
+                <span
+                    id="agent7leo-preview-updated"
+                    class="agent7leo-preview-value">
+                    —
+                </span>
+            </div>
+
+            <div class="agent7leo-preview-status-row">
+                <span class="agent7leo-preview-label">
+                    Error
+                </span>
+
+                <span
+                    id="agent7leo-preview-error"
+                    class="agent7leo-preview-value">
+                    None
+                </span>
+            </div>
+
+        </div>
+
+
+        <!-- CONTROL -->
+
+        <div class="agent7leo-preview-section-title">
+            Preview Control
+        </div>
+
+        <input
+            id="agent7leo-preview-target-input"
+            class="agent7leo-preview-input"
+            type="text"
+            placeholder="Preview target e.g. homepage">
+
+        <input
+            id="agent7leo-preview-data-input"
+            class="agent7leo-preview-input"
+            type="text"
+            placeholder="Optional data e.g. Phase 2">
+
+
+        <div class="agent7leo-preview-buttons">
+
+            <button
+                type="button"
+                class="agent7leo-preview-btn primary"
+                onclick="Agent7LeoPreviewUI.start()">
+                START PREVIEW
+            </button>
+
+            <button
+                type="button"
+                class="agent7leo-preview-btn"
+                onclick="Agent7LeoPreviewUI.update()">
+                UPDATE
+            </button>
+
+            <button
+                type="button"
+                class="agent7leo-preview-btn danger"
+                onclick="Agent7LeoPreviewUI.stop()">
+                STOP
+            </button>
+
+            <button
+                type="button"
+                class="agent7leo-preview-btn"
+                onclick="Agent7LeoPreviewUI.reset()">
+                RESET
+            </button>
+
+        </div>
+
+
+        <!-- CURRENT STATE -->
+
+        <div class="agent7leo-preview-section-title">
+            Current Engine State
+        </div>
+
+        <pre
+            id="agent7leo-preview-state"
+            class="agent7leo-preview-json">
+{
+  "status": "idle"
+}
+        </pre>
+
+
+        <!-- EVENT LOG -->
+
+        <div class="agent7leo-preview-section-title">
+            Event Log
+        </div>
+
+        <div
+            id="agent7leo-preview-log"
+            class="agent7leo-preview-log">
+
+            <div class="agent7leo-preview-log-entry">
+                <strong>7Leo</strong> Preview UI initialized.
+            </div>
+
+        </div>
+
+    </div>
+
+</aside>
+
+
+<script>
+/* ================================
+   AGENT 7LEO — PREVIEW UI CONTROLLER
+   Phase 2
+   ================================ */
+
+(function () {
+
+    'use strict';
+
+
+    /*
+     * Compatibility layer:
+     * If Phase 1 was executed correctly,
+     * use its existing Preview Engine.
+     *
+     * If the previous Phase 1 text was pasted
+     * outside a script tag, create a safe local
+     * fallback without deleting existing code.
+     */
+
+    if (
+        !window.Agent7Leo ||
+        !window.Agent7Leo.preview
+    ) {
+
+        const fallbackState = {
+            status: 'idle',
+            target: null,
+            data: null,
+            startedAt: null,
+            updatedAt: null,
+            error: null
+        };
+
+        const fallbackListeners = new Set();
+
+        function emitFallback(name, payload) {
+
+            const event = {
+                name: name,
+                timestamp: new Date().toISOString(),
+                state: JSON.parse(JSON.stringify(fallbackState)),
+                payload: payload || {}
+            };
+
+            fallbackListeners.forEach(function (listener) {
+                try {
+                    listener(event);
+                } catch (error) {
+                    console.error(
+                        '[7Leo Preview]',
+                        error
+                    );
+                }
+            });
+
+            window.dispatchEvent(
+                new CustomEvent(
+                    '7leo:preview',
+                    {
+                        detail: event
+                    }
+                )
+            );
+
+            return event;
+        }
+
+        function startFallback(target, data) {
+
+            if (!target) {
+                fallbackState.status = 'error';
+                fallbackState.error =
+                    'Preview target is required.';
+                fallbackState.updatedAt =
+                    new Date().toISOString();
+
+                return emitFallback(
+                    'preview:error',
+                    {
+                        message:
+                            fallbackState.error
+                    }
+                );
+            }
+
+            const now =
+                new Date().toISOString();
+
+            fallbackState.status =
+                'previewing';
+
+            fallbackState.target =
+                String(target);
+
+            fallbackState.data =
+                data || {};
+
+            fallbackState.startedAt =
+                now;
+
+            fallbackState.updatedAt =
+                now;
+
+            fallbackState.error =
+                null;
+
+            return emitFallback(
+                'preview:start',
+                {
+                    target:
+                        fallbackState.target
+                }
+            );
+        }
+
+        function updateFallback(data) {
+
+            if (
+                fallbackState.status !==
+                'previewing'
+            ) {
+
+                fallbackState.status =
+                    'error';
+
+                fallbackState.error =
+                    'Cannot update preview before starting it.';
+
+                fallbackState.updatedAt =
+                    new Date().toISOString();
+
+                return emitFallback(
+                    'preview:error',
+                    {
+                        message:
+                            fallbackState.error
+                    }
+                );
+            }
+
+            fallbackState.data =
+                Object.assign(
+                    {},
+                    fallbackState.data || {},
+                    data || {}
+                );
+
+            fallbackState.updatedAt =
+                new Date().toISOString();
+
+            fallbackState.error =
+                null;
+
+            return emitFallback(
+                'preview:update',
+                {
+                    target:
+                        fallbackState.target
+                }
+            );
+        }
+
+        function stopFallback() {
+
+            fallbackState.status =
+                'idle';
+
+            fallbackState.target =
+                null;
+
+            fallbackState.data =
+                null;
+
+            fallbackState.startedAt =
+                null;
+
+            fallbackState.updatedAt =
+                new Date().toISOString();
+
+            fallbackState.error =
+                null;
+
+            return emitFallback(
+                'preview:stop'
+            );
+        }
+
+        function resetFallback() {
+
+            return stopFallback();
+        }
+
+        window.Agent7Leo =
+            window.Agent7Leo || {};
+
+        window.Agent7Leo.preview = {
+
+            start:
+                startFallback,
+
+            update:
+                updateFallback,
+
+            stop:
+                stopFallback,
+
+            reset:
+                resetFallback,
+
+            state:
+                function () {
+                    return JSON.parse(
+                        JSON.stringify(
+                            fallbackState
+                        )
+                    );
+                },
+
+            subscribe:
+                function (listener) {
+
+                    if (
+                        typeof listener ===
+                        'function'
+                    ) {
+                        fallbackListeners.add(
+                            listener
+                        );
+
+                        return function () {
+                            fallbackListeners.delete(
+                                listener
+                            );
+                        };
+                    }
+
+                    return function () {};
+                }
+        };
+
+    }
+
+
+    const UI = {
+
+        panel: null,
+        log: null,
+
+
+        init: function () {
+
+            this.panel =
+                document.getElementById(
+                    'agent7leo-preview-ui'
+                );
+
+            this.log =
+                document.getElementById(
+                    'agent7leo-preview-log'
+                );
+
+
+            this.bindEngine();
+
+            this.refresh();
+
+            this.logEvent(
+                'preview:ui-ready',
+                'Phase 2 Preview UI ready.'
+            );
+
+        },
+
+
+        bindEngine: function () {
+
+            if (
+                window.Agent7Leo &&
+                window.Agent7Leo.preview &&
+                typeof
+                window.Agent7Leo.preview.subscribe ===
+                'function'
+            ) {
+
+                window.Agent7Leo.preview.subscribe(
+                    function (event) {
+
+                        UI.refresh();
+
+                        if (event) {
+
+                            UI.logEvent(
+                                event.name,
+                                event.payload || {}
+                            );
+
+                        }
+
+                    }
+                );
+
+            }
+
+
+            window.addEventListener(
+                '7leo:preview',
+                function (event) {
+
+                    if (
+                        event &&
+                        event.detail
+                    ) {
+
+                        UI.refresh();
+
+                    }
+
+                }
+            );
+
+        },
+
+
+        toggle: function () {
+
+            if (
+                this.panel.classList.contains(
+                    'active'
+                )
+            ) {
+
+                this.close();
+
+            } else {
+
+                this.open();
+
+            }
+
+        },
+
+
+        open: function () {
+
+            this.panel.classList.add(
+                'active'
+            );
+
+            this.refresh();
+
+        },
+
+
+        close: function () {
+
+            this.panel.classList.remove(
+                'active'
+            );
+
+        },
+
+
+        start: function () {
+
+            const target =
+                document
+                    .getElementById(
+                        'agent7leo-preview-target-input'
+                    )
+                    .value
+                    .trim();
+
+            const dataText =
+                document
+                    .getElementById(
+                        'agent7leo-preview-data-input'
+                    )
+                    .value
+                    .trim();
+
+
+            if (!target) {
+
+                alert(
+                    'Enter a Preview Target first.'
+                );
+
+                return;
+
+            }
+
+
+            let data = {};
+
+            if (dataText) {
+
+                data = {
+                    note: dataText
+                };
+
+            }
+
+
+            window.Agent7Leo.preview.start(
+                target,
+                data
+            );
+
+            this.refresh();
+
+        },
+
+
+        update: function () {
+
+            const dataText =
+                document
+                    .getElementById(
+                        'agent7leo-preview-data-input'
+                    )
+                    .value
+                    .trim();
+
+
+            window.Agent7Leo.preview.update(
+                dataText
+                    ? { note: dataText }
+                    : {}
+            );
+
+            this.refresh();
+
+        },
+
+
+        stop: function () {
+
+            window.Agent7Leo.preview.stop();
+
+            this.refresh();
+
+        },
+
+
+        reset: function () {
+
+            window.Agent7Leo.preview.reset();
+
+            this.refresh();
+
+        },
+
+
+        refresh: function () {
+
+            if (
+                !window.Agent7Leo ||
+                !window.Agent7Leo.preview ||
+                typeof
+                window.Agent7Leo.preview.state !==
+                'function'
+            ) {
+                return;
+            }
+
+
+            const state =
+                window.Agent7Leo.preview.state();
+
+
+            const status =
+                String(
+                    state.status || 'idle'
+                ).toUpperCase();
+
+
+            document.getElementById(
+                'agent7leo-preview-status'
+            ).textContent =
+                status;
+
+
+            document.getElementById(
+                'agent7leo-preview-target'
+            ).textContent =
+                state.target || '—';
+
+
+            document.getElementById(
+                'agent7leo-preview-updated'
+            ).textContent =
+                state.updatedAt
+                    ? new Date(
+                        state.updatedAt
+                    ).toLocaleTimeString()
+                    : '—';
+
+
+            document.getElementById(
+                'agent7leo-preview-error'
+            ).textContent =
+                state.error || 'None';
+
+
+            const dot =
+                document.getElementById(
+                    'agent7leo-preview-dot'
+                );
+
+
+            dot.classList.remove(
+                'active',
+                'error'
+            );
+
+
+            if (
+                state.status ===
+                'previewing'
+            ) {
+
+                dot.classList.add(
+                    'active'
+                );
+
+            }
+
+
+            if (
+                state.status ===
+                'error'
+            ) {
+
+                dot.classList.add(
+                    'error'
+                );
+
+            }
+
+
+            document.getElementById(
+                'agent7leo-preview-state'
+            ).textContent =
+                JSON.stringify(
+                    state,
+                    null,
+                    2
+                );
+
+        },
+
+
+        logEvent: function (
+            eventName,
+            payload
+        ) {
+
+            if (!this.log) return;
+
+
+            const entry =
+                document.createElement(
+                    'div'
+                );
+
+            entry.className =
+                'agent7leo-preview-log-entry';
+
+
+            const time =
+                new Date()
+                    .toLocaleTimeString();
+
+
+            let payloadText = '';
+
+            try {
+
+                payloadText =
+                    typeof payload ===
+                    'string'
+                        ? payload
+                        : JSON.stringify(
+                            payload
+                        );
+
+            } catch {
+
+                payloadText =
+                    '[data]';
+
+            }
+
+
+            entry.innerHTML =
+                '<strong>' +
+                time +
+                '</strong> ' +
+                eventName +
+                ' ' +
+                payloadText;
+
+
+            this.log.prepend(
+                entry
+            );
+
+
+            while (
+                this.log.children.length >
+                40
+            ) {
+
+                this.log.removeChild(
+                    this.log.lastChild
+                );
+
+            }
+
+        }
+
+    };
+
+
+    window.Agent7LeoPreviewUI =
+        UI;
+
+
+    if (
+        document.readyState ===
+        'loading'
+    ) {
+
+        document.addEventListener(
+            'DOMContentLoaded',
+            function () {
+                UI.init();
+            }
+        );
+
+    } else {
+
+        UI.init();
+
+    }
+
+
+    console.log(
+        '%c[Agent 7Leo] Preview UI Phase 2 ready.',
+        'color:#d4af37;font-weight:bold;'
+    );
+
+})();
+</script>
+
+<!-- ================================
+     AGENT 7LEO — PHASE 2 END
+     ================================ -->
 </body>
 </html>
