@@ -4347,5 +4347,58 @@ Ready for command.
 
 })();
 </script>
+    <script>
+(function () {
+    'use strict';
+
+    function addAgentButton() {
+        if (document.getElementById('agent7leo-open-btn')) return;
+
+        const btn = document.createElement('button');
+
+        btn.id = 'agent7leo-open-btn';
+        btn.textContent = 'OPEN AGENT 7LEO';
+        btn.type = 'button';
+
+        btn.style.cssText =
+            'position:fixed;' +
+            'right:18px;' +
+            'bottom:18px;' +
+            'z-index:999999;' +
+            'padding:12px 18px;' +
+            'border:1px solid #d4af37;' +
+            'border-radius:10px;' +
+            'background:#111;' +
+            'color:#d4af37;' +
+            'font-weight:700;' +
+            'cursor:pointer;';
+
+        btn.onclick = function () {
+            if (
+                typeof window.openAgent7LeoConsole ===
+                'function'
+            ) {
+                window.openAgent7LeoConsole();
+            } else {
+                alert(
+                    'Agent 7Leo Console is not loaded yet.'
+                );
+            }
+        };
+
+        document.body.appendChild(btn);
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener(
+            'DOMContentLoaded',
+            addAgentButton
+        );
+    } else {
+        addAgentButton();
+    }
+
+})();
+</script>
 </body>
 </html>
