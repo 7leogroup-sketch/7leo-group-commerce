@@ -3528,5 +3528,694 @@ console.log(
 </script>
 </script>
 </script>
+    <!-- =========================================
+     AGENT 7LEO — PHASE 4
+     COMMAND CONSOLE
+     ========================================= -->
+
+<style>
+    #agent7leo-console {
+        position: fixed;
+        inset: 0;
+        z-index: 99999;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        background: rgba(0, 0, 0, 0.82);
+        backdrop-filter: blur(8px);
+    }
+
+    #agent7leo-console.active {
+        display: flex;
+    }
+
+    .agent7leo-panel {
+        width: min(680px, 100%);
+        max-height: 90vh;
+        overflow-y: auto;
+        background: #101010;
+        border: 1px solid #d4af37;
+        border-radius: 18px;
+        padding: 24px;
+        box-shadow: 0 20px 60px rgba(0,0,0,.6);
+    }
+
+    .agent7leo-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 15px;
+        margin-bottom: 20px;
+    }
+
+    .agent7leo-title {
+        margin: 0;
+        color: #d4af37;
+        font-size: 22px;
+        font-weight: 700;
+    }
+
+    .agent7leo-phase {
+        margin: 4px 0 0;
+        color: #999;
+        font-size: 12px;
+    }
+
+    .agent7leo-close {
+        border: 0;
+        background: transparent;
+        color: #fff;
+        font-size: 25px;
+        cursor: pointer;
+    }
+
+    #agent7leo-command {
+        width: 100%;
+        min-height: 110px;
+        box-sizing: border-box;
+        resize: vertical;
+        padding: 14px;
+        border-radius: 12px;
+        border: 1px solid #444;
+        background: #080808;
+        color: #fff;
+        outline: none;
+        font-family: monospace;
+        font-size: 14px;
+    }
+
+    #agent7leo-command:focus {
+        border-color: #d4af37;
+    }
+
+    .agent7leo-controls {
+        display: flex;
+        gap: 10px;
+        margin-top: 12px;
+        flex-wrap: wrap;
+    }
+
+    .agent7leo-btn {
+        border: 1px solid #d4af37;
+        border-radius: 10px;
+        padding: 10px 16px;
+        background: transparent;
+        color: #d4af37;
+        cursor: pointer;
+        font-weight: 600;
+    }
+
+    .agent7leo-btn.primary {
+        background: #d4af37;
+        color: #000;
+    }
+
+    .agent7leo-status {
+        margin-top: 18px;
+        padding: 10px 12px;
+        border-radius: 9px;
+        background: #080808;
+        color: #d4af37;
+        font-family: monospace;
+        font-size: 13px;
+    }
+
+    #agent7leo-output {
+        margin-top: 12px;
+        min-height: 120px;
+        max-height: 260px;
+        overflow-y: auto;
+        padding: 14px;
+        border-radius: 10px;
+        background: #050505;
+        border: 1px solid #292929;
+        color: #ddd;
+        white-space: pre-wrap;
+        font-family: monospace;
+        font-size: 13px;
+    }
+</style>
+
+<div id="agent7leo-console">
+
+    <div class="agent7leo-panel">
+
+        <div class="agent7leo-header">
+            <div>
+                <h2 class="agent7leo-title">AGENT 7LEO</h2>
+                <p class="agent7leo-phase">
+                    COMMAND CONSOLE • PHASE 4
+                </p>
+            </div>
+
+            <button
+                type="button"
+                class="agent7leo-close"
+                onclick="closeAgent7LeoConsole()">
+                ×
+            </button>
+        </div>
+
+        <textarea
+            id="agent7leo-command"
+            placeholder="Enter Agent command...
+
+Examples:
+Open Store
+Open Catalog
+Open Cart
+Open Tracking
+Open Dashboard
+Open Policies
+Open Product Form
+Preview State
+Stop Preview
+Reset Preview"></textarea>
+
+        <div class="agent7leo-controls">
+
+            <button
+                type="button"
+                class="agent7leo-btn primary"
+                onclick="runAgent7LeoCommand()">
+                RUN AGENT
+            </button>
+
+            <button
+                type="button"
+                class="agent7leo-btn"
+                onclick="clearAgent7LeoCommand()">
+                CLEAR
+            </button>
+
+        </div>
+
+        <div
+            id="agent7leo-status"
+            class="agent7leo-status">
+            Status: READY
+        </div>
+
+        <div id="agent7leo-output">
+Ready for command.
+        </div>
+
+    </div>
+</div>
+
+<script>
+/* =========================================
+   AGENT 7LEO — PHASE 4
+   COMMAND ENGINE
+   ========================================= */
+
+(function () {
+
+    'use strict';
+
+    function output(message) {
+        const box =
+            document.getElementById('agent7leo-output');
+
+        if (box) {
+            box.textContent = message;
+        }
+    }
+
+    function status(message) {
+        const box =
+            document.getElementById('agent7leo-status');
+
+        if (box) {
+            box.textContent = 'Status: ' + message;
+        }
+    }
+
+    window.openAgent7LeoConsole = function () {
+
+        const consoleBox =
+            document.getElementById('agent7leo-console');
+
+        if (consoleBox) {
+            consoleBox.classList.add('active');
+        }
+
+    };
+
+    window.closeAgent7LeoConsole = function () {
+
+        const consoleBox =
+            document.getElementById('agent7leo-console');
+
+        if (consoleBox) {
+            consoleBox.classList.remove('active');
+        }
+
+    };
+
+    window.clearAgent7LeoCommand = function () {
+
+        const input =
+            document.getElementById('agent7leo-command');
+
+        if (input) {
+            input.value = '';
+            input.focus();
+        }
+
+        status('READY');
+        output('Ready for command.');
+
+    };
+
+    window.runAgent7LeoCommand = function () {
+
+        const input =
+            document.getElementById('agent7leo-command');
+
+        if (!input) {
+            return;
+        }
+
+        const command =
+            input.value.trim().toLowerCase();
+
+        if (!command) {
+            status('WAITING');
+            output('Please enter an Agent command.');
+            return;
+        }
+
+        status('RUNNING');
+
+        try {
+
+            /* OPEN STORE */
+
+            if (
+                command === 'open store' ||
+                command === 'store'
+            ) {
+
+                if (
+                    typeof window.openStorePortal ===
+                    'function'
+                ) {
+
+                    window.openStorePortal();
+
+                    if (
+                        window.Agent7Leo &&
+                        window.Agent7Leo.preview
+                    ) {
+
+                        window.Agent7Leo.preview.update({
+                            source: 'Agent 7Leo Command Console',
+                            action: 'open-store',
+                            phase: 4
+                        });
+
+                    }
+
+                    status('SUCCESS');
+                    output(
+                        'Agent executed:\n' +
+                        'Store opened successfully.'
+                    );
+
+                    return;
+                }
+
+                throw new Error(
+                    'openStorePortal() is unavailable.'
+                );
+            }
+
+
+            /* OPEN CATALOG */
+
+            if (
+                command === 'open catalog' ||
+                command === 'catalog'
+            ) {
+
+                if (
+                    typeof window.switchStoreTab ===
+                    'function'
+                ) {
+
+                    window.switchStoreTab('catalog');
+
+                    window.Agent7Leo &&
+                    window.Agent7Leo.preview &&
+                    window.Agent7Leo.preview.update({
+                        source: 'Agent 7Leo Command Console',
+                        action: 'catalog',
+                        phase: 4
+                    });
+
+                    status('SUCCESS');
+                    output(
+                        'Agent executed:\n' +
+                        'Catalog opened successfully.'
+                    );
+
+                    return;
+                }
+
+                throw new Error(
+                    'switchStoreTab() is unavailable.'
+                );
+            }
+
+
+            /* OPEN CART */
+
+            if (
+                command === 'open cart' ||
+                command === 'cart'
+            ) {
+
+                if (
+                    typeof window.switchStoreTab ===
+                    'function'
+                ) {
+
+                    window.switchStoreTab('cart');
+
+                    window.Agent7Leo &&
+                    window.Agent7Leo.preview &&
+                    window.Agent7Leo.preview.update({
+                        source: 'Agent 7Leo Command Console',
+                        action: 'cart',
+                        phase: 4
+                    });
+
+                    status('SUCCESS');
+                    output(
+                        'Agent executed:\n' +
+                        'Cart opened successfully.'
+                    );
+
+                    return;
+                }
+
+                throw new Error(
+                    'switchStoreTab() is unavailable.'
+                );
+            }
+
+
+            /* TRACKING */
+
+            if (
+                command === 'open tracking' ||
+                command === 'tracking' ||
+                command === 'track order'
+            ) {
+
+                if (
+                    typeof window.switchStoreTab ===
+                    'function'
+                ) {
+
+                    window.switchStoreTab('tracking');
+
+                    window.Agent7Leo &&
+                    window.Agent7Leo.preview &&
+                    window.Agent7Leo.preview.update({
+                        source: 'Agent 7Leo Command Console',
+                        action: 'tracking',
+                        phase: 4
+                    });
+
+                    status('SUCCESS');
+                    output(
+                        'Agent executed:\n' +
+                        'Track Order opened successfully.'
+                    );
+
+                    return;
+                }
+
+                throw new Error(
+                    'switchStoreTab() is unavailable.'
+                );
+            }
+
+
+            /* DASHBOARD */
+
+            if (
+                command === 'open dashboard' ||
+                command === 'dashboard'
+            ) {
+
+                if (
+                    typeof window.switchStoreTab ===
+                    'function'
+                ) {
+
+                    window.switchStoreTab('dashboard');
+
+                    window.Agent7Leo &&
+                    window.Agent7Leo.preview &&
+                    window.Agent7Leo.preview.update({
+                        source: 'Agent 7Leo Command Console',
+                        action: 'dashboard',
+                        phase: 4
+                    });
+
+                    status('SUCCESS');
+                    output(
+                        'Agent executed:\n' +
+                        'Owner Dashboard opened successfully.'
+                    );
+
+                    return;
+                }
+
+                throw new Error(
+                    'switchStoreTab() is unavailable.'
+                );
+            }
+
+
+            /* POLICIES */
+
+            if (
+                command === 'open policies' ||
+                command === 'policies'
+            ) {
+
+                if (
+                    typeof window.switchStoreTab ===
+                    'function'
+                ) {
+
+                    window.switchStoreTab('policies');
+
+                    window.Agent7Leo &&
+                    window.Agent7Leo.preview &&
+                    window.Agent7Leo.preview.update({
+                        source: 'Agent 7Leo Command Console',
+                        action: 'policies',
+                        phase: 4
+                    });
+
+                    status('SUCCESS');
+                    output(
+                        'Agent executed:\n' +
+                        'Policies opened successfully.'
+                    );
+
+                    return;
+                }
+
+                throw new Error(
+                    'switchStoreTab() is unavailable.'
+                );
+            }
+
+
+            /* PRODUCT FORM */
+
+            if (
+                command === 'open product form' ||
+                command === 'add product' ||
+                command === 'product form'
+            ) {
+
+                if (
+                    typeof window.openAddProductForm ===
+                    'function'
+                ) {
+
+                    window.openAddProductForm();
+
+                    window.Agent7Leo &&
+                    window.Agent7Leo.preview &&
+                    window.Agent7Leo.preview.update({
+                        source: 'Agent 7Leo Command Console',
+                        action: 'product-form',
+                        phase: 4
+                    });
+
+                    status('SUCCESS');
+                    output(
+                        'Agent executed:\n' +
+                        'Add Product form opened successfully.'
+                    );
+
+                    return;
+                }
+
+                throw new Error(
+                    'openAddProductForm() is unavailable.'
+                );
+            }
+
+
+            /* PREVIEW STATE */
+
+            if (
+                command === 'preview state' ||
+                command === 'state'
+            ) {
+
+                if (
+                    window.Agent7Leo &&
+                    window.Agent7Leo.preview &&
+                    typeof window.Agent7Leo.preview.state ===
+                    'function'
+                ) {
+
+                    const state =
+                        window.Agent7Leo.preview.state();
+
+                    status('SUCCESS');
+                    output(
+                        'Agent Preview State:\n\n' +
+                        JSON.stringify(
+                            state,
+                            null,
+                            2
+                        )
+                    );
+
+                    return;
+                }
+
+                throw new Error(
+                    'Preview Engine is unavailable.'
+                );
+            }
+
+
+            /* STOP PREVIEW */
+
+            if (
+                command === 'stop preview' ||
+                command === 'stop'
+            ) {
+
+                if (
+                    window.Agent7Leo &&
+                    window.Agent7Leo.preview &&
+                    typeof window.Agent7Leo.preview.stop ===
+                    'function'
+                ) {
+
+                    window.Agent7Leo.preview.stop();
+
+                    status('SUCCESS');
+                    output(
+                        'Preview Engine stopped.'
+                    );
+
+                    return;
+                }
+
+                throw new Error(
+                    'Preview Engine is unavailable.'
+                );
+            }
+
+
+            /* RESET PREVIEW */
+
+            if (
+                command === 'reset preview' ||
+                command === 'reset'
+            ) {
+
+                if (
+                    window.Agent7Leo &&
+                    window.Agent7Leo.preview &&
+                    typeof window.Agent7Leo.preview.reset ===
+                    'function'
+                ) {
+
+                    window.Agent7Leo.preview.reset();
+
+                    status('SUCCESS');
+                    output(
+                        'Preview Engine reset.'
+                    );
+
+                    return;
+                }
+
+                throw new Error(
+                    'Preview Engine is unavailable.'
+                );
+            }
+
+
+            /* UNKNOWN COMMAND */
+
+            status('UNKNOWN COMMAND');
+
+            output(
+                'Command not recognized.\n\n' +
+                'Available commands:\n' +
+                '- Open Store\n' +
+                '- Open Catalog\n' +
+                '- Open Cart\n' +
+                '- Open Tracking\n' +
+                '- Open Dashboard\n' +
+                '- Open Policies\n' +
+                '- Open Product Form\n' +
+                '- Preview State\n' +
+                '- Stop Preview\n' +
+                '- Reset Preview'
+            );
+
+        } catch (error) {
+
+            status('ERROR');
+
+            output(
+                'Agent Error:\n' +
+                error.message
+            );
+
+            console.error(
+                '[Agent 7Leo Phase 4]',
+                error
+            );
+
+        }
+
+    };
+
+    console.log(
+        '%c[Agent 7Leo] Phase 4 Command Engine ready.',
+        'color:#d4af37;font-weight:bold;'
+    );
+
+})();
+</script>
 </body>
 </html>
