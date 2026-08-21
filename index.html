@@ -3399,5 +3399,103 @@ console.log(
 <!-- ================================
      AGENT 7LEO — PHASE 2 END
      ================================ -->
+    <script>
+/* =================================
+   AGENT 7LEO — PHASE 3
+   STORE ACTION LISTENER
+   ================================= */
+
+(function () {
+
+    'use strict';
+
+    function connectStoreAction() {
+
+        const buttons =
+            document.querySelectorAll(
+                '.action-btn'
+            );
+
+        buttons.forEach(function (button) {
+
+            if (
+                button.textContent.trim() !==
+                'Explore 7Leo Store'
+            ) {
+                return;
+            }
+
+            if (
+                button.dataset.agent7leoConnected ===
+                'true'
+            ) {
+                return;
+            }
+
+            button.dataset.agent7leoConnected =
+                'true';
+
+            button.addEventListener(
+                'click',
+                function () {
+
+                    if (
+                        window.Agent7LeoPhase3 &&
+                        typeof window.Agent7LeoPhase3.run ===
+                        'function'
+                    ) {
+
+                        window.Agent7LeoPhase3.run(
+                            'preview:store',
+                            {
+                                source:
+                                    'Explore 7Leo Store',
+                                action:
+                                    'open-store'
+                            }
+                        ).catch(function (error) {
+
+                            console.warn(
+                                '[Agent 7Leo] Store action monitor:',
+                                error
+                            );
+
+                        });
+
+                    }
+
+                },
+                false
+            );
+
+        });
+
+    }
+
+
+    if (
+        document.readyState ===
+        'loading'
+    ) {
+
+        document.addEventListener(
+            'DOMContentLoaded',
+            connectStoreAction
+        );
+
+    } else {
+
+        connectStoreAction();
+
+    }
+
+
+    console.log(
+        '%c[Agent 7Leo] Store action listener ready.',
+        'color:#d4af37;font-weight:bold;'
+    );
+
+})();
+</script>
 </body>
 </html>
