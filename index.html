@@ -3440,6 +3440,92 @@ console.log(
     );
 
 })();
+        <script>
+/* =================================
+   AGENT 7LEO — PHASE 3.1
+   STORE INTERNAL ACTION MONITOR
+   ================================= */
+
+(function () {
+
+    'use strict';
+
+    document.addEventListener(
+        'click',
+        function (event) {
+
+            const button =
+                event.target.closest(
+                    '.store-nav-btn'
+                );
+
+            if (!button) {
+                return;
+            }
+
+            const action =
+                button.textContent
+                    .trim()
+                    .replace(/\s*\(\d+\)\s*$/, '')
+                    .trim();
+
+            let target = null;
+
+            if (action === 'Catalog') {
+                target = 'catalog';
+            }
+
+            if (action === 'Cart') {
+                target = 'cart';
+            }
+
+            if (action === 'Track Order') {
+                target = 'tracking';
+            }
+
+            if (action === 'Owner Dashboard') {
+                target = 'dashboard';
+            }
+
+            if (action === 'Policies') {
+                target = 'policies';
+            }
+
+            if (!target) {
+                return;
+            }
+
+            if (
+                window.Agent7Leo &&
+                window.Agent7Leo.preview &&
+                typeof window.Agent7Leo.preview.update ===
+                'function'
+            ) {
+
+                window.Agent7Leo.preview.update({
+                    action: target,
+                    source: '7Leo Store',
+                    phase: '3.1'
+                });
+
+                console.log(
+                    '[Agent 7Leo] Store action:',
+                    target
+                );
+
+            }
+
+        },
+        true
+    );
+
+    console.log(
+        '%c[Agent 7Leo] Store Internal Action Monitor ready.',
+        'color:#d4af37;font-weight:bold;'
+    );
+
+})();
+</script>
 </script>
 </script>
 </body>
