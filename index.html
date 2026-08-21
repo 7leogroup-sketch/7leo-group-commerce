@@ -3799,7 +3799,10 @@ Ready for command.
         }
 
         const command =
-            input.value.trim().toLowerCase();
+    input.value
+        .trim()
+        .toLowerCase()
+        .replace(/\s+/g, ' ');
 
         if (!command) {
             status('WAITING');
