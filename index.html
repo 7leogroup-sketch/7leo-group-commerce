@@ -4400,5 +4400,320 @@ Ready for command.
 
 })();
 </script>
+    <script>
+/* =========================================================
+   AGENT 7LEO — PHASE 5
+   STORE PRODUCT DATA MANAGER
+   ========================================================= */
+
+(function () {
+    'use strict';
+
+    const STORAGE_KEY = '7leo_store_products_v1';
+
+    /*
+     * Existing demo products are intentionally identified here.
+     * They can be removed without affecting Store navigation,
+     * Cart, Dashboard or Preview Engine.
+     */
+
+    const DEMO_PRODUCTS = [
+        '7Leo Signature Luxury Tee',
+        '7Leo Gold Series Watch'
+    ];
+
+    function getProducts() {
+        try {
+            const saved = localStorage.getItem(STORAGE_KEY);
+
+            if (!saved) {
+                return [];
+            }
+
+            const products = JSON.parse(saved);
+
+            return Array.isArray(products) ? products : [];
+
+        } catch (error) {
+            console.warn(
+                '[Agent 7Leo] Unable to load products.',
+                error
+            );
+
+            return [];
+        }
+    }
+
+    function saveProducts(products) {
+        try {
+            localStorage.setItem(
+                STORAGE_KEY,
+                JSON.stringify(products)
+            );
+
+            return true;
+
+        } catch (error) {
+            console.error(
+                '[Agent 7Leo] Unable to save products.',
+                error
+            );
+
+            return false;
+        }
+    }
+
+    function removeDemoProducts() {
+
+        const currentProducts = getProducts();
+
+        const filteredProducts = currentProducts.filter(
+            product =>
+                !DEMO_PRODUCTS.includes(
+                    String(product.name || '').trim()
+                )
+        );
+
+        saveProducts(filteredProducts);
+
+        console.log(
+            '%c[Agent 7Leo] Demo product cleanup completed.',
+            'color:#d4af37;font-weight:bold;'
+        );
+
+        return {
+            removed: currentProducts.length -
+                filteredProducts.length,
+            remaining: filteredProducts.length
+        };
+    }
+
+    function addProduct(product) {
+
+        if (!product || typeof product !== 'object') {
+            return {
+                success: false,
+                error: 'Invalid product data.'
+            };
+        }
+
+        const products = getProducts();
+
+        const newProduct = {
+            id:
+                product.id ||
+                '7leo-' +
+                Date.now(),
+
+            name:
+                String(product.name || '').trim(),
+
+            price:
+                Number(product.price || 0),
+
+            category:
+                String(
+                    product.category || 'General'
+                ).trim(),
+
+            description:
+                String(
+                    product.description || ''
+                ).trim(),
+
+            image:
+                String(
+                    product.image || ''
+                ).trim(),
+
+            createdAt:
+                new Date().toISOString()
+        };
+
+        if (!newProduct.name) {
+            return {
+                success: false,
+                error: 'Product name is required.'
+            };
+        }
+
+        products.push(newProduct);
+
+        saveProducts(products);
+
+        return {
+            success: true,
+            product: newProduct
+        };
+    }
+
+    function deleteProduct(id) {
+
+        const products = getProducts();
+
+        const filtered =
+            products.filter(
+                product =>
+                    String(product.id) !==
+                    String(id)
+            );
+
+        saveProducts(filtered);
+
+        return {
+            success:
+                filtered.length !== products.length
+        };
+    }
+
+    function updateProduct(id, changes) {
+
+        const products = getProducts();
+
+        const index =
+            products.findIndex(
+                product =>
+                    String(product.id) ===
+                    String(id)
+            );
+
+        if (index === -1) {
+            return {
+                success: false,
+                error: 'Product not found.'
+            };
+        }
+
+        products[index] = {
+            ...products[index],
+            ...changes,
+            id: products[index].id,
+            updatedAt:
+                new Date().toISOString()
+        };
+
+        saveProducts(products);
+
+        return {
+            success: true,
+            product: products[index]
+        };
+    }
+
+    function clearAllProducts() {
+
+        saveProducts([]);
+
+        console.log(
+            '%c[Agent 7Leo] Product database cleared.',
+            'color:#d4af37;font-weight:bold;'
+        );
+
+        return true;
+    }
+
+    window.Agent7Leo =
+        window.Agent7Leo || {};
+
+    window.Agent7Leo.store =
+        window.Agent7Leo.store || {};
+
+    window.Agent7Leo.store.products = {
+
+        get: getProducts,
+
+        add: addProduct,
+
+        update: updateProduct,
+
+        delete: deleteProduct,
+
+        removeDemo:
+            removeDemoProducts,
+
+        clear:
+            clearAllProducts
+
+    };
+
+    /*
+     * Agent command integration
+     */
+
+    window.Agent7Leo.command =
+        window.Agent7Leo.command ||
+        function (command) {
+
+            const normalized =
+                String(command || '')
+                    .trim()
+                    .toLowerCase();
+
+            if (
+                normalized ===
+                'remove demo products'
+            ) {
+
+                const result =
+                    removeDemoProducts();
+
+                return {
+                    success: true,
+                    message:
+                        'Demo products removed.',
+                    result
+                };
+            }
+
+            if (
+                normalized ===
+                'clear products'
+            ) {
+
+                clearAllProducts();
+
+                return {
+                    success: true,
+                    message:
+                        'All stored products cleared.'
+                };
+            }
+
+            if (
+                normalized ===
+                'list products'
+            ) {
+
+                return {
+                    success: true,
+                    products:
+                        getProducts()
+                };
+            }
+
+            return {
+                success: false,
+                error:
+                    'Unknown Store Product command.'
+            };
+        };
+
+    /*
+     * Automatic cleanup only removes products stored
+     * in Agent 7Leo's own product database.
+     *
+     * It does NOT modify the homepage,
+     * navigation or existing Store UI.
+     */
+
+    removeDemoProducts();
+
+    console.log(
+        '%c[Agent 7Leo] Phase 5 Store Product Manager ready.',
+        'color:#d4af37;font-weight:bold;'
+    );
+
+})();
+</script>
 </body>
 </html>
