@@ -1685,46 +1685,7 @@ VISION. POWER. LEGACY.</p>
 
         let currentUploadedImages = [];
 
-        function function openStorePortal() {
-
-    /* =================================
-       AGENT 7LEO — PHASE 3
-       STORE ACTION CONNECTION
-       ================================= */
-
-    if (
-        window.Agent7LeoPhase3 &&
-        typeof window.Agent7LeoPhase3.run === 'function'
-    ) {
-        window.Agent7LeoPhase3.run(
-            'preview:store',
-            {
-                source: 'Explore 7Leo Store',
-                action: 'open-store'
-            }
-        ).catch(function (error) {
-            console.warn(
-                '[Agent 7Leo] Store preview action failed:',
-                error
-            );
-        });
-    }
-
-    /* =================================
-       EXISTING STORE LOGIC
-       DO NOT REMOVE
-       ================================= */
-
-    document
-        .getElementById('store-portal')
-        .classList.add('active');
-
-    navLinks.classList.remove('active');
-
-    renderStoreCatalog();
-
-    renderAdminDashboard();
-}
+        function openStorePortal() {
             document.getElementById('store-portal').classList.add('active');
             navLinks.classList.remove('active');
             renderStoreCatalog();
