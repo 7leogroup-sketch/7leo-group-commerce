@@ -3431,29 +3431,29 @@ console.log(
             }
 
             if (
-                window.Agent7LeoPhase3 &&
-                typeof window.Agent7LeoPhase3.run ===
-                'function'
-            ) {
+    window.Agent7LeoPhase3 &&
+    typeof window.Agent7LeoPhase3.run ===
+    'function'
+) {
 
-                window.Agent7LeoPhase3.run(
-                    'preview:store',
-                    {
-                        source:
-                            'Explore 7Leo Store',
-                        action:
-                            'open-store'
-                    }
-                ).catch(function (error) {
+    window.Agent7LeoPhase3.run(
+        'preview:store',
+        {
+            source:
+                'Explore 7Leo Store',
+            action:
+                'open-store'
+        }
+    ).catch(function (error) {
 
-                    console.warn(
-                        '[Agent 7Leo] Store action monitor:',
-                        error
-                    );
+        console.warn(
+            '[Agent 7Leo] Store action monitor:',
+            error
+        );
 
-                });
+    });
 
-            }
+}
 
         },
         false
