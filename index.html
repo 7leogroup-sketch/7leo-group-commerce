@@ -5083,5 +5083,57 @@ Ready for command.
 
 })();
 </script>
+    <script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+import {
+    getAuth,
+    createUserWithEmailAndPassword,
+    signInWithEmailAndPassword,
+    GoogleAuthProvider,
+    signInWithPopup,
+    onAuthStateChanged,
+    signOut
+} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+
+const firebaseConfig = {
+    apiKey: "AIzaSyDW6baPm21PRPrqlVQ2UZLdMM7Ax7LF2bQ",
+    authDomain: "leo-group-auth-c0b5c.firebaseapp.com",
+    projectId: "leo-group-auth-c0b5c",
+    storageBucket: "leo-group-auth-c0b5c.firebasestorage.app",
+    messagingSenderId: "115112069405",
+    appId: "1:115112069405:web:0bc57d35c3771ed60879f4",
+    measurementId: "G-YBLGZFQSPD"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+
+window.Firebase7Leo = {
+    auth,
+    createUserWithEmailAndPassword,
+    signInWithEmailAndPassword,
+    GoogleAuthProvider,
+    signInWithPopup,
+    signOut
+};
+
+onAuthStateChanged(auth, (user) => {
+    if (user) {
+        console.log(
+            "[7Leo Firebase] Signed in:",
+            user.email
+        );
+    } else {
+        console.log(
+            "[7Leo Firebase] No user signed in."
+        );
+    }
+});
+
+console.log(
+    "%c[7Leo Firebase] Authentication connected.",
+    "color:#d4af37;font-weight:bold;"
+);
+</script>
 </body>
 </html>
