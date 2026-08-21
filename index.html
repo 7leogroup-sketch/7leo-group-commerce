@@ -3400,23 +3400,28 @@ console.log(
      AGENT 7LEO — PHASE 2 END
      ================================ -->
     <script>
+<script>
 /* =================================
    AGENT 7LEO — PHASE 3
-   STORE ACTION LISTENER
+   STORE ACTION LISTENER v2
    ================================= */
 
 (function () {
 
     'use strict';
 
-    function connectStoreAction() {
+    document.addEventListener(
+        'click',
+        function (event) {
 
-        const buttons =
-            document.querySelectorAll(
-                '.action-btn'
-            );
+            const button =
+                event.target.closest(
+                    '.action-btn'
+                );
 
-        buttons.forEach(function (button) {
+            if (!button) {
+                return;
+            }
 
             if (
                 button.textContent.trim() !==
@@ -3426,76 +3431,42 @@ console.log(
             }
 
             if (
-                button.dataset.agent7leoConnected ===
-                'true'
+                window.Agent7LeoPhase3 &&
+                typeof window.Agent7LeoPhase3.run ===
+                'function'
             ) {
-                return;
+
+                window.Agent7LeoPhase3.run(
+                    'preview:store',
+                    {
+                        source:
+                            'Explore 7Leo Store',
+                        action:
+                            'open-store'
+                    }
+                ).catch(function (error) {
+
+                    console.warn(
+                        '[Agent 7Leo] Store action monitor:',
+                        error
+                    );
+
+                });
+
             }
 
-            button.dataset.agent7leoConnected =
-                'true';
-
-            button.addEventListener(
-                'click',
-                function () {
-
-                    if (
-                        window.Agent7LeoPhase3 &&
-                        typeof window.Agent7LeoPhase3.run ===
-                        'function'
-                    ) {
-
-                        window.Agent7LeoPhase3.run(
-                            'preview:store',
-                            {
-                                source:
-                                    'Explore 7Leo Store',
-                                action:
-                                    'open-store'
-                            }
-                        ).catch(function (error) {
-
-                            console.warn(
-                                '[Agent 7Leo] Store action monitor:',
-                                error
-                            );
-
-                        });
-
-                    }
-
-                },
-                false
-            );
-
-        });
-
-    }
-
-
-    if (
-        document.readyState ===
-        'loading'
-    ) {
-
-        document.addEventListener(
-            'DOMContentLoaded',
-            connectStoreAction
-        );
-
-    } else {
-
-        connectStoreAction();
-
-    }
+        },
+        false
+    );
 
 
     console.log(
-        '%c[Agent 7Leo] Store action listener ready.',
+        '%c[Agent 7Leo] Store action listener v2 ready.',
         'color:#d4af37;font-weight:bold;'
     );
 
 })();
+</script>
 </script>
 </body>
 </html>
