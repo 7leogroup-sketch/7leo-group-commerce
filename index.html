@@ -4217,5 +4217,82 @@ Ready for command.
 
 })();
 </script>
+    <script>
+/* =========================================
+   AGENT 7LEO — PHASE 4
+   OPEN CONSOLE BUTTON
+   ========================================= */
+
+(function () {
+
+    'use strict';
+
+    function createAgentButton() {
+
+        if (document.getElementById('agent7leo-open-btn')) {
+            return;
+        }
+
+        const button = document.createElement('button');
+
+        button.id = 'agent7leo-open-btn';
+        button.type = 'button';
+        button.textContent = 'OPEN AGENT 7LEO';
+
+        button.style.cssText = `
+            position: fixed;
+            right: 18px;
+            bottom: 18px;
+            z-index: 99990;
+            padding: 12px 18px;
+            border: 1px solid #d4af37;
+            border-radius: 10px;
+            background: #111;
+            color: #d4af37;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 6px 25px rgba(0,0,0,.45);
+        `;
+
+        button.addEventListener('click', function () {
+
+            if (
+                typeof window.openAgent7LeoConsole ===
+                'function'
+            ) {
+                window.openAgent7LeoConsole();
+            } else {
+
+                console.warn(
+                    '[Agent 7Leo] Command Console is not available.'
+                );
+
+            }
+
+        });
+
+        document.body.appendChild(button);
+
+        console.log(
+            '%c[Agent 7Leo] Open Agent button ready.',
+            'color:#d4af37;font-weight:bold;'
+        );
+    }
+
+    if (document.readyState === 'loading') {
+
+        document.addEventListener(
+            'DOMContentLoaded',
+            createAgentButton
+        );
+
+    } else {
+
+        createAgentButton();
+
+    }
+
+})();
+</script>
 </body>
 </html>
