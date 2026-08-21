@@ -3791,6 +3791,371 @@ Ready for command.
 
     window.runAgent7LeoCommand = function () {
 
+    const input =
+        document.getElementById('agent7leo-command');
+
+    if (!input) {
+        console.error('[Agent 7Leo] Command input not found.');
+        return;
+    }
+
+    /*
+     * NORMALIZE COMMAND
+     * Accepts:
+     * Open Store
+     * open store
+     * OPEN STORE
+     * open    store
+     * Open-Store
+     * open_store
+     */
+    const command = input.value
+        .trim()
+        .toLowerCase()
+        .replace(/[-_]+/g, ' ')
+        .replace(/\s+/g, ' ');
+
+    if (!command) {
+        status('WAITING');
+        output('Please enter an Agent command.');
+        return;
+    }
+
+    status('RUNNING');
+
+    try {
+
+        /* =========================================
+           OPEN STORE
+        ========================================= */
+
+        if (
+            command === 'open store' ||
+            command === 'store'
+        ) {
+
+            if (typeof window.openStorePortal === 'function') {
+
+                window.openStorePortal();
+
+                status('SUCCESS');
+                output(
+                    'Agent executed successfully.\n\n' +
+                    'Store opened successfully.'
+                );
+
+                return;
+            }
+
+            throw new Error(
+                'Store function is unavailable.'
+            );
+        }
+
+
+        /* =========================================
+           OPEN CATALOG
+        ========================================= */
+
+        if (
+            command === 'open catalog' ||
+            command === 'catalog'
+        ) {
+
+            if (typeof window.switchStoreTab === 'function') {
+
+                window.switchStoreTab('catalog');
+
+                status('SUCCESS');
+                output(
+                    'Agent executed successfully.\n\n' +
+                    'Catalog opened successfully.'
+                );
+
+                return;
+            }
+
+            throw new Error(
+                'Catalog function is unavailable.'
+            );
+        }
+
+
+        /* =========================================
+           OPEN CART
+        ========================================= */
+
+        if (
+            command === 'open cart' ||
+            command === 'cart'
+        ) {
+
+            if (typeof window.switchStoreTab === 'function') {
+
+                window.switchStoreTab('cart');
+
+                status('SUCCESS');
+                output(
+                    'Agent executed successfully.\n\n' +
+                    'Cart opened successfully.'
+                );
+
+                return;
+            }
+
+            throw new Error(
+                'Cart function is unavailable.'
+            );
+        }
+
+
+        /* =========================================
+           OPEN TRACKING
+        ========================================= */
+
+        if (
+            command === 'open tracking' ||
+            command === 'tracking' ||
+            command === 'track order'
+        ) {
+
+            if (typeof window.switchStoreTab === 'function') {
+
+                window.switchStoreTab('tracking');
+
+                status('SUCCESS');
+                output(
+                    'Agent executed successfully.\n\n' +
+                    'Track Order opened successfully.'
+                );
+
+                return;
+            }
+
+            throw new Error(
+                'Tracking function is unavailable.'
+            );
+        }
+
+
+        /* =========================================
+           OPEN DASHBOARD
+        ========================================= */
+
+        if (
+            command === 'open dashboard' ||
+            command === 'dashboard' ||
+            command === 'owner dashboard'
+        ) {
+
+            if (typeof window.switchStoreTab === 'function') {
+
+                window.switchStoreTab('dashboard');
+
+                status('SUCCESS');
+                output(
+                    'Agent executed successfully.\n\n' +
+                    'Owner Dashboard opened successfully.'
+                );
+
+                return;
+            }
+
+            throw new Error(
+                'Dashboard function is unavailable.'
+            );
+        }
+
+
+        /* =========================================
+           OPEN POLICIES
+        ========================================= */
+
+        if (
+            command === 'open policies' ||
+            command === 'policies'
+        ) {
+
+            if (typeof window.switchStoreTab === 'function') {
+
+                window.switchStoreTab('policies');
+
+                status('SUCCESS');
+                output(
+                    'Agent executed successfully.\n\n' +
+                    'Policies opened successfully.'
+                );
+
+                return;
+            }
+
+            throw new Error(
+                'Policies function is unavailable.'
+            );
+        }
+
+
+        /* =========================================
+           OPEN PRODUCT FORM
+        ========================================= */
+
+        if (
+            command === 'open product form' ||
+            command === 'product form' ||
+            command === 'add product'
+        ) {
+
+            if (typeof window.openAddProductForm === 'function') {
+
+                window.openAddProductForm();
+
+                status('SUCCESS');
+                output(
+                    'Agent executed successfully.\n\n' +
+                    'Add Product form opened successfully.'
+                );
+
+                return;
+            }
+
+            throw new Error(
+                'Product form function is unavailable.'
+            );
+        }
+
+
+        /* =========================================
+           PREVIEW STATE
+        ========================================= */
+
+        if (
+            command === 'preview state' ||
+            command === 'state'
+        ) {
+
+            if (
+                window.Agent7Leo &&
+                window.Agent7Leo.preview &&
+                typeof window.Agent7Leo.preview.state === 'function'
+            ) {
+
+                const state =
+                    window.Agent7Leo.preview.state();
+
+                status('SUCCESS');
+                output(
+                    'Agent Preview State:\n\n' +
+                    JSON.stringify(state, null, 2)
+                );
+
+                return;
+            }
+
+            throw new Error(
+                'Preview Engine is unavailable.'
+            );
+        }
+
+
+        /* =========================================
+           STOP PREVIEW
+        ========================================= */
+
+        if (
+            command === 'stop preview' ||
+            command === 'stop'
+        ) {
+
+            if (
+                window.Agent7Leo &&
+                window.Agent7Leo.preview &&
+                typeof window.Agent7Leo.preview.stop === 'function'
+            ) {
+
+                window.Agent7Leo.preview.stop();
+
+                status('SUCCESS');
+                output(
+                    'Preview Engine stopped successfully.'
+                );
+
+                return;
+            }
+
+            throw new Error(
+                'Preview Engine is unavailable.'
+            );
+        }
+
+
+        /* =========================================
+           RESET PREVIEW
+        ========================================= */
+
+        if (
+            command === 'reset preview' ||
+            command === 'reset'
+        ) {
+
+            if (
+                window.Agent7Leo &&
+                window.Agent7Leo.preview &&
+                typeof window.Agent7Leo.preview.reset === 'function'
+            ) {
+
+                window.Agent7Leo.preview.reset();
+
+                status('SUCCESS');
+                output(
+                    'Preview Engine reset successfully.'
+                );
+
+                return;
+            }
+
+            throw new Error(
+                'Preview Engine is unavailable.'
+            );
+        }
+
+
+        /* =========================================
+           UNKNOWN COMMAND
+        ========================================= */
+
+        status('UNKNOWN COMMAND');
+
+        output(
+            'Command not recognized.\n\n' +
+            'Try one of these commands:\n\n' +
+            'Open Store\n' +
+            'Open Catalog\n' +
+            'Open Cart\n' +
+            'Open Tracking\n' +
+            'Open Dashboard\n' +
+            'Open Policies\n' +
+            'Open Product Form\n' +
+            'Preview State\n' +
+            'Stop Preview\n' +
+            'Reset Preview'
+        );
+
+    } catch (error) {
+
+        status('ERROR');
+
+        output(
+            'Agent Error:\n\n' +
+            error.message
+        );
+
+        console.error(
+            '[Agent 7Leo Phase 4]',
+            error
+        );
+    }
+};
+
         const input =
             document.getElementById('agent7leo-command');
 
