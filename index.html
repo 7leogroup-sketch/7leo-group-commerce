@@ -1644,32 +1644,6 @@ VISION. POWER. LEGACY.</p>
         let storeProducts = JSON.parse(localStorage.getItem('7leo_products'));
         if(!storeProducts) {
             storeProducts = [
-                {
-                    id: 'prod_1',
-                    name: '7Leo Signature Luxury Tee',
-                    description: 'Premium organic cotton apparel featuring the iconic 7Leo vision power legacy emblem.',
-                    category: 'Apparel',
-                    sku: '7LEO-APP-01',
-                    cost: 450,
-                    price: 1299,
-                    fees: 50,
-                    supplier: 'Global Apparel Partner',
-                    supplierUrl: '',
-                    images: ['logo.png']
-                },
-                {
-                    id: 'prod_2',
-                    name: '7Leo Gold Series Watch',
-                    description: 'Exquisite timepiece crafted with gold finish and precision movement.',
-                    category: 'Accessories',
-                    sku: '7LEO-ACC-02',
-                    cost: 1500,
-                    price: 4999,
-                    fees: 150,
-                    supplier: 'Luxury Goods Supplier',
-                    supplierUrl: '',
-                    images: ['logo.png']
-                }
             ];
             localStorage.setItem('7leo_products', JSON.stringify(storeProducts));
         }
