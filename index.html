@@ -1503,3 +1503,120 @@
     </script>
 </body>
 </html>
+<div id="bgm-portal" style="background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.92)), url('file_00000000776081fa8dbc514074356775.png') no-repeat center center fixed; background-size: cover; padding: 40px 20px; color: #fff; min-height: 100vh; font-family: sans-serif;">
+    <div style="max-width: 800px; margin: 0 auto; background: rgba(15, 15, 15, 0.9); border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 12px; padding: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.8);">
+        
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+            <h2 style="color: #d4af37; font-size: 1.5rem; text-transform: uppercase; margin: 0;">Welcome to 7Leo BGM</h2>
+            <button onclick="switchStoreTab('catalog')" style="background: #d4af37; color: #121212; border: none; padding: 8px 15px; border-radius: 6px; font-weight: bold; cursor: pointer;">Exit BGM Portal</button>
+        </div>
+
+        <div style="margin-bottom: 20px; text-align: center;">
+            <img src="bgm-banner.png" alt="7Leo BGM Banner" style="width: 100%; max-height: 220px; object-fit: cover; border-radius: 8px;">
+        </div>
+
+        <div style="text-align: center; margin-bottom: 25px; color: #aaa; font-size: 0.9rem; line-height: 1.5;">
+            Mobile Composed Groovepad Music | Drive, Chill, Gangster, DJ, Cinematic<br>
+            Handcrafted instrumental background music to fuel your focus, ease your mind, and elevate your moments.<br>
+            New BGM drops regularly — Subscribe and never miss a track!
+        </div>
+
+        <!-- Explore by Series & Playlists -->
+        <div style="margin-bottom: 30px;">
+            <h4 style="color: #d4af37; font-size: 1.1rem; text-transform: uppercase; margin-bottom: 12px;">Explore by Series</h4>
+            <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px;">
+                <button class="bgm-filter-btn" onclick="filterBgmSeries('All')" style="background: #d4af37; color: #121212; border: none; padding: 8px 14px; border-radius: 20px; font-weight: bold; cursor: pointer;">All</button>
+                <button class="bgm-filter-btn" onclick="filterBgmSeries('Drive')" style="background: rgba(255,255,255,0.1); color: #fff; border: 1px solid rgba(212,175,55,0.3); padding: 8px 14px; border-radius: 20px; cursor: pointer;">7Leo Drive Series</button>
+                <button class="bgm-filter-btn" onclick="filterBgmSeries('Chill')" style="background: rgba(255,255,255,0.1); color: #fff; border: 1px solid rgba(212,175,55,0.3); padding: 8px 14px; border-radius: 20px; cursor: pointer;">7Leo Chill Series</button>
+                <button class="bgm-filter-btn" onclick="filterBgmSeries('Gangster')" style="background: rgba(255,255,255,0.1); color: #fff; border: 1px solid rgba(212,175,55,0.3); padding: 8px 14px; border-radius: 20px; cursor: pointer;">7Leo Gangster Series</button>
+                <button class="bgm-filter-btn" onclick="filterBgmSeries('DJ')" style="background: rgba(255,255,255,0.1); color: #fff; border: 1px solid rgba(212,175,55,0.3); padding: 8px 14px; border-radius: 20px; cursor: pointer;">7Leo DJ Series</button>
+                <button class="bgm-filter-btn" onclick="filterBgmSeries('Cinematic')" style="background: rgba(255,255,255,0.1); color: #fff; border: 1px solid rgba(212,175,55,0.3); padding: 8px 14px; border-radius: 20px; cursor: pointer;">7Leo Cinematic Series</button>
+                <button class="bgm-filter-btn" onclick="filterBgmSeries('Songs')" style="background: rgba(255,255,255,0.1); color: #fff; border: 1px solid rgba(212,175,55,0.3); padding: 8px 14px; border-radius: 20px; cursor: pointer;">7Leo Songs Series</button>
+            </div>
+            
+            <div id="bgm-playlist-container" style="display: flex; flex-direction: column; gap: 12px;">
+                <!-- Playlist items injected via JS -->
+            </div>
+        </div>
+
+        <!-- 7Leo Tattoo & Art Section -->
+        <div style="margin-bottom: 30px; background: rgba(0,0,0,0.4); padding: 20px; border-radius: 8px; border: 1px solid rgba(212,175,55,0.2);">
+            <h4 style="color: #d4af37; font-size: 1.1rem; text-transform: uppercase; margin-bottom: 10px;">7Leo Tattoo & Custom Artwork</h4>
+            <p style="color: #ccc; font-size: 0.88rem; line-height: 1.5; margin: 0;">Explore exclusive custom tattoo designs, flash art concepts, and visual style guides created for branding, apparel, and personal expression under the 7Leo creative ecosystem.</p>
+        </div>
+
+        <!-- Follow & Stream -->
+        <div style="margin-bottom: 30px; background: rgba(0,0,0,0.4); padding: 20px; border-radius: 8px; border: 1px solid rgba(212,175,55,0.2); text-align: center;">
+            <h4 style="color: #d4af37; font-size: 1.1rem; text-transform: uppercase; margin-bottom: 10px;">Follow and Stream</h4>
+            <p style="color: #ccc; font-size: 0.9rem; margin-bottom: 12px;">Official YouTube: <a href="https://www.youtube.com/@7LeoBGM" target="_blank" style="color: #d4af37; text-decoration: underline;">https://www.youtube.com/@7LeoBGM</a></p>
+            <a href="https://www.youtube.com/@7LeoBGM" target="_blank" style="display: inline-block; background: #d4af37; color: #121212; padding: 10px 20px; border-radius: 6px; font-weight: bold; text-decoration: none; text-transform: uppercase; margin-bottom: 10px;">Visit 7Leo BGM on YouTube</a>
+            <p style="color: #888; font-size: 0.85rem; margin-top: 10px;">Discover new uploads, listen to latest soundscapes, and subscribe to 7Leo BGM.</p>
+        </div>
+
+        <!-- License 7Leo BGM (Music Selling / Licensing Draft) -->
+        <div style="margin-bottom: 25px; background: rgba(0,0,0,0.4); padding: 20px; border-radius: 8px; border: 1px solid rgba(212,175,55,0.2);">
+            <h4 style="color: #d4af37; font-size: 1.1rem; text-transform: uppercase; margin-bottom: 10px;">License 7Leo BGM</h4>
+            <p style="color: #ccc; font-size: 0.88rem; line-height: 1.5; margin-bottom: 12px;">7Leo BGM offers original Instrumental music suitable for Advertisements, Promotions, Trailers, Movies, Short films, Reels, Social media content, Brand videos, Promotional campaigns, Cinematic projects, and Creative productions.</p>
+            <div style="text-align: right;">
+                <a href="mailto:7Leogroup@gmail.com" style="background: #d4af37; color: #121212; padding: 8px 16px; border-radius: 5px; font-weight: bold; text-decoration: none; font-size: 0.85rem; text-transform: uppercase;">Inquire Licensing</a>
+            </div>
+        </div>
+
+        <!-- Footer / All Rights Reserved -->
+        <div style="text-align: center; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 15px;">
+            <p style="color: #888; font-size: 0.85rem; margin: 0;">All Rights Reserved. 7Leo Group / 7Leo BGM.</p>
+        </div>
+    </div>
+</div>
+
+<script>
+    const bgmTracks = [
+        { id: 1, title: 'Night Speed Drive', series: 'Drive', duration: '03:45', released: '2026-01-15', desc: 'High energy night driving instrumental soundscape crafted with groovepad beats.' },
+        { id: 2, title: 'Midnight Chill Lounge', series: 'Chill', duration: '04:12', released: '2026-02-01', desc: 'Relaxing ambient vibe designed for focus, deep thinking, and late-night relaxation.' },
+        { id: 3, title: 'Street Energy Anthem', series: 'Gangster', duration: '03:30', released: '2026-02-10', desc: 'Heavy basslines and bold rhythm patterns built for powerful cinematic moments.' },
+        { id: 4, title: 'Club Groove Master', series: 'DJ', duration: '03:00', released: '2026-02-18', desc: 'Upbeat electronic dance mix engineered for energetic club performances and reels.' },
+        { id: 5, title: 'Epic Cinematic Journey', series: 'Cinematic', duration: '04:45', released: '2026-03-01', desc: 'Orchestral cinematic atmosphere suited for trailers, films, and grand promotional reels.' },
+        { id: 6, title: 'Signature 7Leo Anthem', series: 'Songs', duration: '03:55', released: '2026-03-10', desc: 'The defining vocal and instrumental track carrying the vision power legacy.' }
+    ];
+
+    function renderBgmPlaylist(filterSeries) {
+        const container = document.getElementById('bgm-playlist-container');
+        if(!container) return;
+        container.innerHTML = '';
+        
+        const filtered = filterSeries === 'All' ? bgmTracks : bgmTracks.filter(t => t.series === filterSeries);
+        
+        filtered.forEach((track) => {
+            container.innerHTML += `
+                <div style="background: rgba(30,30,30,0.8); border: 1px solid rgba(212,175,55,0.2); border-radius: 8px; padding: 15px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; flex-wrap: wrap; gap: 10px;">
+                        <div>
+                            <h5 style="color: #fff; font-size: 1rem; margin: 0 0 4px 0;">${track.title}</h5>
+                            <p style="color: #d4af37; font-size: 0.8rem; margin: 0;">7Leo ${track.series} Series - ${track.duration} - Released: ${track.released}</p>
+                        </div>
+                        <div>
+                            <button onclick="alert('Playing preview for ${track.title}')" style="background: #d4af37; color: #121212; border: none; padding: 6px 12px; border-radius: 4px; font-weight: bold; cursor: pointer; font-size: 0.85rem;">Play / Pause</button>
+                        </div>
+                    </div>
+                    <p style="color: #bbb; font-size: 0.85rem; margin: 0;">${track.desc}</p>
+                </div>
+            `;
+        });
+    }
+
+    function filterBgmSeries(series) {
+        document.querySelectorAll('.bgm-filter-btn').forEach(btn => {
+            btn.style.background = 'rgba(255,255,255,0.1)';
+            btn.style.color = '#fff';
+            btn.style.fontWeight = 'normal';
+        });
+        event.target.style.background = '#d4af37';
+        event.target.style.color = '#121212';
+        event.target.style.fontWeight = 'bold';
+        renderBgmPlaylist(series);
+    }
+
+    if(document.getElementById('bgm-playlist-container')) {
+        renderBgmPlaylist('All');
+    }
+</script>
