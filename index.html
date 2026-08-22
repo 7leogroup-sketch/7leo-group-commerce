@@ -975,6 +975,117 @@
             </div>
         </section>
     </main>
+    <!-- 7Leo BGM Standard Homepage Section -->
+<div id="bgm-portal" style="background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.92)), url('file_00000000776081fa8dbc514074356775.png') no-repeat center center fixed; background-size: cover; padding: 40px 20px; color: #fff; min-height: 100vh; font-family: sans-serif;">
+    <div style="max-width: 800px; margin: 0 auto; background: rgba(15, 15, 15, 0.9); border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 12px; padding: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.8);">
+
+        <!-- BGM Banner Image -->
+        <div style="margin-bottom: 20px; text-align: center;">
+            <img src="bgm-banner.png" alt="7Leo BGM Banner" style="width: 100%; max-height: 220px; object-fit: cover; border-radius: 8px;">
+        </div>
+
+        <!-- Header -->
+        <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 25px; border-bottom: 1px solid rgba(255, 255, 255, 0.1); padding-bottom: 15px;">
+            <img src="bgm-logo.png" alt="7Leo BGM Logo" style="height: 55px; width: auto; border-radius: 8px; object-fit: contain;">
+            <div>
+                <h2 style="color: #d4af37; font-size: 1.6rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin: 0;">7Leo BGM Studio</h2>
+                <p style="color: #aaaaaa; font-size: 0.95rem; margin: 4px 0 0 0;">Mobile Rhythm & Groovepad Production</p>
+            </div>
+        </div>
+
+        <!-- Interactive Groovepad -->
+        <div style="margin-bottom: 30px;">
+            <h4 style="color: #d4af37; font-size: 1.15rem; margin-bottom: 12px; text-transform: uppercase;">Interactive Groovepad</h4>
+            <div id="groovepad" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 15px;">
+                <div class="pad" data-note="261.63" style="background: rgba(40, 40, 40, 0.9); border: 2px solid rgba(212, 175, 55, 0.2); border-radius: 8px; padding: 25px 10px; text-align: center; cursor: pointer; font-weight: bold; color: #fff; transition: 0.2s;">Kick</div>
+                <div class="pad" data-note="329.63" style="background: rgba(40, 40, 40, 0.9); border: 2px solid rgba(212, 175, 55, 0.2); border-radius: 8px; padding: 25px 10px; text-align: center; cursor: pointer; font-weight: bold; color: #fff; transition: 0.2s;">Snare</div>
+                <div class="pad" data-note="392.00" style="background: rgba(40, 40, 40, 0.9); border: 2px solid rgba(212, 175, 55, 0.2); border-radius: 8px; padding: 25px 10px; text-align: center; cursor: pointer; font-weight: bold; color: #fff; transition: 0.2s;">Hi-Hat</div>
+                <div class="pad" data-note="523.25" style="background: rgba(40, 40, 40, 0.9); border: 2px solid rgba(212, 175, 55, 0.2); border-radius: 8px; padding: 25px 10px; text-align: center; cursor: pointer; font-weight: bold; color: #fff; transition: 0.2s;">Clap</div>
+                
+                <div class="pad" data-note="440.00" style="background: rgba(40, 40, 40, 0.9); border: 2px solid rgba(212, 175, 55, 0.2); border-radius: 8px; padding: 25px 10px; text-align: center; cursor: pointer; font-weight: bold; color: #fff; transition: 0.2s;">Synth A</div>
+                <div class="pad" data-note="493.88" style="background: rgba(40, 40, 40, 0.9); border: 2px solid rgba(212, 175, 55, 0.2); border-radius: 8px; padding: 25px 10px; text-align: center; cursor: pointer; font-weight: bold; color: #fff; transition: 0.2s;">Bass</div>
+                <div class="pad" data-note="587.33" style="background: rgba(40, 40, 40, 0.9); border: 2px solid rgba(212, 175, 55, 0.2); border-radius: 8px; padding: 25px 10px; text-align: center; cursor: pointer; font-weight: bold; color: #fff; transition: 0.2s;">Bell</div>
+                <div class="pad" data-note="659.25" style="background: rgba(40, 40, 40, 0.9); border: 2px solid rgba(212, 175, 55, 0.2); border-radius: 8px; padding: 25px 10px; text-align: center; cursor: pointer; font-weight: bold; color: #fff; transition: 0.2s;">Lead</div>
+            </div>
+
+            <!-- Controls Panel -->
+            <div style="display: flex; justify-content: space-between; align-items: center; background: rgba(0,0,0,0.4); padding: 12px 15px; border-radius: 8px; flex-wrap: wrap; gap: 15px; margin-bottom: 15px;">
+                <div style="display: flex; flex-direction: column; gap: 5px;">
+                    <label style="font-size: 0.75rem; color: #aaaaaa; text-transform: uppercase;">Tempo (BPM): <span id="bpmVal">120</span></label>
+                    <input type="range" id="bpmRange" min="80" max="180" value="120" style="accent-color: #d4af37; cursor: pointer;">
+                </div>
+                <div style="display: flex; flex-direction: column; gap: 5px;">
+                    <label style="font-size: 0.75rem; color: #aaaaaa; text-transform: uppercase;">Master Volume</label>
+                    <input type="range" id="volRange" min="0" max="1" step="0.05" value="0.7" style="accent-color: #d4af37; cursor: pointer;">
+                </div>
+                <button id="demoSequenceBtn" style="background: #d4af37; color: #121212; border: none; padding: 10px 18px; border-radius: 6px; font-weight: bold; cursor: pointer;">Play Demo Loop</button>
+            </div>
+
+            <!-- Explore for Music Active Button -->
+            <div style="text-align: center;">
+                <a href="https://www.youtube.com/@7LeoBGM" target="_blank" style="display: block; width: 100%; background: linear-gradient(135deg, #d4af37, #aa8c2c); color: #121212; padding: 14px; border-radius: 6px; font-weight: bold; text-decoration: none; font-size: 1rem; text-transform: uppercase; letter-spacing: 1px; box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);">🎵 Explore for Music (Full Library on YouTube)</a>
+            </div>
+        </div>
+
+        <!-- Explore by Series (Active Playlist Links) -->
+        <div style="margin-bottom: 30px; background: rgba(0, 0, 0, 0.4); padding: 20px; border-radius: 8px; border: 1px solid rgba(212, 175, 55, 0.2);">
+            <h4 style="color: #d4af37; font-size: 1.15rem; margin-bottom: 12px; text-transform: uppercase;">Explore by Series (Active Playlists)</h4>
+            <div style="display: flex; flex-direction: column; gap: 10px;">
+                <a href="https://www.youtube.com/@7LeoBGM" target="_blank" style="display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.05); padding: 10px 15px; border-radius: 6px; color: #fff; text-decoration: none; border-left: 3px solid #d4af37; transition: 0.2s;">
+                    <span><strong>Drive Vibes</strong> &rarr; 7Leo Drive Series</span>
+                    <span style="font-size: 0.8rem; background: #d4af37; color: #121212; padding: 3px 8px; border-radius: 4px; font-weight: bold;">Play on YT</span>
+                </a>
+                <a href="https://www.youtube.com/@7LeoBGM" target="_blank" style="display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.05); padding: 10px 15px; border-radius: 6px; color: #fff; text-decoration: none; border-left: 3px solid #d4af37; transition: 0.2s;">
+                    <span><strong>Chill Out</strong> &rarr; 7Leo Chill Series</span>
+                    <span style="font-size: 0.8rem; background: #d4af37; color: #121212; padding: 3px 8px; border-radius: 4px; font-weight: bold;">Play on YT</span>
+                </a>
+                <a href="https://www.youtube.com/@7LeoBGM" target="_blank" style="display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.05); padding: 10px 15px; border-radius: 6px; color: #fff; text-decoration: none; border-left: 3px solid #d4af37; transition: 0.2s;">
+                    <span><strong>Street Energy</strong> &rarr; 7Leo Gangster Series</span>
+                    <span style="font-size: 0.8rem; background: #d4af37; color: #121212; padding: 3px 8px; border-radius: 4px; font-weight: bold;">Play on YT</span>
+                </a>
+                <a href="https://www.youtube.com/@7LeoBGM" target="_blank" style="display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.05); padding: 10px 15px; border-radius: 6px; color: #fff; text-decoration: none; border-left: 3px solid #d4af37; transition: 0.2s;">
+                    <span><strong>Club & Mix</strong> &rarr; 7Leo DJ Series</span>
+                    <span style="font-size: 0.8rem; background: #d4af37; color: #121212; padding: 3px 8px; border-radius: 4px; font-weight: bold;">Play on YT</span>
+                </a>
+                <a href="https://www.youtube.com/@7LeoBGM" target="_blank" style="display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.05); padding: 10px 15px; border-radius: 6px; color: #fff; text-decoration: none; border-left: 3px solid #d4af37; transition: 0.2s;">
+                    <span><strong>Epic Feels</strong> &rarr; 7Leo Cinematic Series</span>
+                    <span style="font-size: 0.8rem; background: #d4af37; color: #121212; padding: 3px 8px; border-radius: 4px; font-weight: bold;">Play on YT</span>
+                </a>
+                <a href="https://www.youtube.com/@7LeoBGM" target="_blank" style="display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.05); padding: 10px 15px; border-radius: 6px; color: #fff; text-decoration: none; border-left: 3px solid #d4af37; transition: 0.2s;">
+                    <span><strong>Songs Library</strong> &rarr; 7Leo Songs Series</span>
+                    <span style="font-size: 0.8rem; background: #d4af37; color: #121212; padding: 3px 8px; border-radius: 4px; font-weight: bold;">Play on YT</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Commercial Licensing & Features Section -->
+        <div style="margin-bottom: 30px; background: rgba(0, 0, 0, 0.5); padding: 20px; border-radius: 8px; border: 1px solid rgba(212, 175, 55, 0.3);">
+            <h4 style="color: #d4af37; font-size: 1.15rem; margin-bottom: 12px; text-transform: uppercase;">Custom Music & Licensing Solutions</h4>
+            <p style="color: #cccccc; font-size: 0.9rem; line-height: 1.6; margin-bottom: 15px;">
+                Professional compositions and exclusive tracks tailored for high-impact commercial media:
+            </p>
+            <ul style="color: #dddddd; font-size: 0.88rem; margin-bottom: 15px; padding-left: 20px; display: flex; flex-direction: column; gap: 6px;">
+                <li><strong>Commercial Ads & Marketing:</strong> High-conversion, catchy rhythms designed to hook customers instantly.</li>
+                <li><strong>Social Media Reels & Shorts:</strong> Trendy, fast-paced audio tracks optimized for viral video platform algorithms.</li>
+                <li><strong>Cinematic Movie Trailers:</strong> Epic soundscapes, suspense builds, and heavy sub-bass drops for maximum thrill.</li>
+                <li><strong>Brand Promos & Teasers:</strong> Sleek corporate audio branding tailored for corporate intros and presentations.</li>
+            </ul>
+            <div style="background: rgba(212, 175, 55, 0.1); padding: 12px 15px; border-radius: 6px; border-left: 3px solid #d4af37; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+                <span style="color: #f3f3f3; font-size: 0.9rem; font-weight: 600;">Want custom tracks or licensing rights?</span>
+                <a href="mailto:7Leogroup@gmail.com" style="background: #d4af37; color: #121212; padding: 8px 16px; border-radius: 5px; font-weight: bold; text-decoration: none; font-size: 0.88rem;">Contact for Licensing</a>
+            </div>
+        </div>
+
+        <!-- Footer Copyright -->
+        <div style="text-align: center; border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 15px; margin-top: 20px;">
+            <p style="color: #888888; font-size: 0.85rem; letter-spacing: 0.5px; margin: 0;">All Rights Reserved. 7Leo Group / 7Leo BGM.</p>
+        </div>
+    </div>
+</div>
+
+<!-- Web Audio API Script for Groovepad -->
+<script>
+
     <div class="modal-overlay" id="bgm-portal">
     <div class="modal-content" style="max-width: 750px; background: rgba(15, 15, 15, 0.95); border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 12px; max-height: 85vh; overflow-y: auto; padding: 25px; position: relative; color: #fff;">
         <button class="close-modal" onclick="closeBgmPortal()" style="position: absolute; top: 15px; right: 15px; background: rgba(255,255,255,0.1); border: none; color: #fff; font-size: 1.2rem; width: 35px; height: 35px; border-radius: 50%; cursor: pointer; z-index: 10;">&times;</button>
@@ -1099,20 +1210,6 @@
         osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
 
         gainNode.gain.setValueAtTime(volInput, audioCtx.currentTime);
-        gainNode.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
-
-        osc.connect(gainNode);
-        gainNode.connect(audioCtx.destination);
-
-        osc.start();
-        osc.stop(audioCtx.currentTime + duration);
-    }
-
-    const pads = document.querySelectorAll('.pad');
-    pads.forEach(pad => {
-        pad.addEventListener('click', () => {
-            const freq = parseFloat(pad.getAttribute('data-note'));
-            playTone(freq, 'triangle', 0.4);
 
             pad.style.background = '#d4af37';
             pad.style.borderColor = '#fff';
