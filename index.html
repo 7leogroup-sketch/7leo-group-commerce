@@ -1,98 +1,1982 @@
-<div id="bgm-portal" style="background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.92)), url('file_00000000776081fa8dbc514074356775.png') no-repeat center center fixed; background-size: cover; padding: 40px 20px; color: #fff; min-height: 100vh; font-family: sans-serif;">
-    <div style="max-width: 800px; margin: 0 auto; background: rgba(15, 15, 15, 0.9); border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 12px; padding: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.8);">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7Leo Group</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+        
+        :root {
+            --bg-dark: #0a0a0a;
+            --gold: #d4af37;
+            --gold-light: #f3e5ab;
+            --text-light: #f5f5f5;
+            --text-muted: #b0b0b0;
+        }
 
-        <div style="margin-bottom: 20px; text-align: center;">
-            <img src="bgm-banner.png" alt="7Leo BGM Banner" style="width: 100%; max-height: 220px; object-fit: cover; border-radius: 8px;">
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        .artistic-font {
+            font-family: 'Lucida Handwriting', 'Brush Script MT', cursive;
+        }
+
+        /* Splash Screen */
+        #splash-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: #000;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.8s ease, visibility 0.8s ease;
+        }
+
+        #splash-screen.fade-out {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .splash-image-container {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            overflow: hidden;
+        }
+
+        .splash-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.5;
+        }
+
+        .splash-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .splash-title {
+            font-size: clamp(2rem, 5vw, 4rem);
+            color: var(--gold-light);
+            text-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+            font-weight: 300;
+            letter-spacing: 2px;
+        }
+
+        /* Background Tattoo Wrapper */
+        .site-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-image: url('file_00000000776081fa8dbc514074356775.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            z-index: -1;
+        }
+
+        .site-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: radial-gradient(circle, rgba(10,10,10,0.85) 0%, rgba(5,5,5,0.95) 100%);
+            z-index: -1;
+        }
+
+        /* Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(10, 10, 10, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 30px;
+        }
+
+        .nav-logo img {
+            height: 40px;
+            width: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            cursor: pointer;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 2px;
+            background: var(--text-light);
+            transition: 0.3s;
+        }
+
+        /* Main Content Area */
+        main {
+            padding-top: 100px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding-bottom: 80px;
+        }
+
+        .hero-section {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .main-logo-img {
+            max-width: 150px;
+            height: auto;
+            margin-bottom: 10px;
+            filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.3));
+        }
+
+        .vision-power-legacy {
+            font-size: clamp(1.8rem, 4vw, 3rem);
+            color: var(--gold);
+            margin-bottom: 5px;
+            font-weight: normal;
+        }
+
+        .welcome-msg {
+            font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+            color: var(--text-light);
+            font-weight: normal;
+            margin-bottom: 10px;
+        }
+
+        .core-text {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin-bottom: 40px;
+            font-weight: 400;
+        }
+
+        /* Store + BGM Layout */
+        .commerce-music-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            width: 100%;
+            max-width: 900px;
+            margin-top: 20px;
+        }
+
+        .card-box {
+            background: rgba(20, 20, 20, 0.6);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 12px;
+            padding: 40px 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            backdrop-filter: blur(5px);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .card-box:hover {
+            transform: translateY(-5px);
+            border-color: var(--gold);
+        }
+
+        .card-logo {
+            max-height: 70px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            color: var(--gold-light);
+            font-weight: normal;
+        }
+
+        .action-btn {
+            background: transparent;
+            color: var(--text-light);
+            border: 1px solid var(--gold);
+            padding: 12px 28px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .action-btn:hover {
+            background: var(--gold);
+            color: var(--bg-dark);
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+        }
+
+        /* Modals for Navigation Items */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background: #141414;
+            border: 1px solid var(--gold);
+            border-radius: 12px;
+            width: 90%;
+            max-width: 500px;
+            padding: 40px;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: var(--text-light);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .modal-title {
+            font-size: 1.8rem;
+            color: var(--gold);
+            margin-bottom: 25px;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            background: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 6px;
+            color: var(--text-light);
+            font-size: 1rem;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: var(--gold);
+        }
+
+        .auth-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .oauth-btn {
+            background: #222;
+            color: var(--text-light);
+            border: 1px solid #444;
+            padding: 12px;
+            border-radius: 6px;
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: background 0.3s;
+        }
+
+        .oauth-btn:hover {
+            background: #2a2a2a;
+            border-color: var(--gold);
+        }
+
+        .submit-btn {
+            background: var(--gold);
+            color: var(--bg-dark);
+            border: none;
+            padding: 12px;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            transition: opacity 0.3s;
+        }
+
+        .submit-btn:hover {
+            opacity: 0.9;
+        }
+
+        /* Full Screen Store Experience Layout */
+        .store-portal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: radial-gradient(circle, rgba(10,10,10,0.85) 0%, rgba(5,5,5,0.95) 100%), url('file_00000000776081fa8dbc514074356775.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            z-index: 3000;
+            display: none;
+            flex-direction: column;
+            overflow-y: auto;
+        }
+
+        .store-portal-overlay.active {
+            display: flex;
+        }
+
+        .store-header {
+            background: rgba(15, 15, 15, 0.95);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .store-nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .store-nav-brand h2 {
+            color: var(--gold);
+            font-size: 1.2rem;
+        }
+
+        .store-nav-actions {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .store-nav-btn {
+            background: transparent;
+            border: 1px solid var(--gold);
+            color: var(--text-light);
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: all 0.3s;
+        }
+
+        .store-nav-btn:hover {
+            background: var(--gold);
+            color: var(--bg-dark);
+        }
+
+        .store-body {
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+            padding: 30px;
+            flex: 1;
+        }
+
+        .store-controls-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .search-filter-group {
+            display: flex;
+            gap: 15px;
+            flex: 1;
+            flex-wrap: wrap;
+        }
+
+        .store-search-input, .store-filter-select {
+            padding: 10px 15px;
+            background: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 6px;
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .store-search-input {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .product-card {
+            background: rgba(20, 20, 20, 0.85);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 10px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s, border-color 0.3s;
+            backdrop-filter: blur(5px);
+        }
+
+        .product-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--gold);
+        }
+
+        .product-card-img-wrap {
+            width: 100%;
+            height: 220px;
+            background: #222;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-card-img-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .product-card-info {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            flex: 1;
+        }
+
+        .product-card-title {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            font-weight: 600;
+        }
+
+        .product-card-price {
+            font-size: 1.2rem;
+            color: var(--gold);
+            font-weight: 700;
+        }
+
+        .product-card-desc {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .product-card-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: auto;
+            padding-top: 15px;
+        }
+
+        .admin-dashboard-panel, .cart-panel, .checkout-panel, .tracking-panel, .product-form-panel {
+            display: none;
+        }
+
+        .admin-dashboard-panel.active, .cart-panel.active, .checkout-panel.active, .tracking-panel.active, .product-form-panel.active, .catalog-panel.active {
+            display: block;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .metric-card {
+            background: rgba(20, 20, 20, 0.85);
+            border: 1px solid #333;
+            border-radius: 8px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            backdrop-filter: blur(5px);
+        }
+
+        .metric-title {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+        }
+
+        .metric-value {
+            font-size: 1.6rem;
+            color: var(--gold-light);
+            font-weight: 700;
+        }
+
+        .table-container {
+            width: 100%;
+            overflow-x: auto;
+            background: rgba(20, 20, 20, 0.85);
+            border: 1px solid #333;
+            border-radius: 8px;
+            margin-top: 20px;
+            backdrop-filter: blur(5px);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 0.9rem;
+        }
+
+        th, td {
+            padding: 15px;
+            border-bottom: 1px solid #222;
+        }
+
+        th {
+            background: #1a1a1a;
+            color: var(--gold);
+            font-weight: 600;
+        }
+
+        td {
+            color: var(--text-light);
+        }
+
+        .image-upload-preview-container {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
+        .image-preview-thumb {
+            width: 80px;
+            height: 80px;
+            border-radius: 6px;
+            border: 1px solid var(--gold);
+            overflow: hidden;
+            position: relative;
+            background: #222;
+        }
+
+        .image-preview-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .image-preview-thumb button {
+            position: absolute;
+            top: 2px;
+            right: 2px;
+            background: rgba(0,0,0,0.7);
+            color: #ff5555;
+            border: none;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            font-size: 10px;
+            cursor: pointer;
+        }
+
+        /* 7LEO BGM PORTAL EXPERIENCE */
+        .bgm-portal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: radial-gradient(circle, rgba(10,10,10,0.92) 0%, rgba(5,5,5,0.98) 100%);
+            z-index: 3500;
+            display: none;
+            flex-direction: column;
+            overflow-y: auto;
+        }
+
+        .bgm-portal-overlay.active {
+            display: flex;
+        }
+
+        .bgm-banner-container {
+            width: 100%;
+            background: #000;
+            overflow: hidden;
+        }
+
+        .bgm-banner-img {
+            width: 100%;
+            height: auto;
+            max-height: 450px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .bgm-body-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            width: 100%;
+            padding: 40px 30px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .bgm-intro-box {
+            background: rgba(20, 20, 20, 0.7);
+            border: 1px solid rgba(212, 175, 55, 0.25);
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .bgm-intro-box h2 {
+            font-size: clamp(1.5rem, 3vw, 2.2rem);
+            color: var(--gold-light);
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .bgm-intro-box p {
+            font-size: 1.05rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        .bgm-series-section h3 {
+            color: var(--gold);
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .bgm-series-filters {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .bgm-filter-btn {
+            background: rgba(20, 20, 20, 0.8);
+            border: 1px solid #333;
+            color: var(--text-light);
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .bgm-filter-btn:hover, .bgm-filter-btn.active {
+            background: var(--gold);
+            color: var(--bg-dark);
+            border-color: var(--gold);
+        }
+
+        .bgm-playlist-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .bgm-track-card {
+            background: rgba(20, 20, 20, 0.85);
+            border: 1px solid #333;
+            border-radius: 10px;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            backdrop-filter: blur(5px);
+            transition: border-color 0.3s;
+        }
+
+        .bgm-track-card:hover {
+            border-color: var(--gold);
+        }
+
+        .bgm-track-info {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            flex: 1;
+        }
+
+        .bgm-track-title {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            font-weight: 600;
+        }
+
+        .bgm-track-meta {
+            font-size: 0.85rem;
+            color: var(--gold);
+        }
+
+        .bgm-track-desc {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .bgm-social-section {
+            background: rgba(20, 20, 20, 0.85);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 12px;
+            padding: 35px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            backdrop-filter: blur(5px);
+        }
+
+        .bgm-licensing-section {
+            background: rgba(20, 20, 20, 0.85);
+            border: 1px solid #333;
+            border-radius: 12px;
+            padding: 35px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            backdrop-filter: blur(5px);
+        }
+
+        .bgm-licensing-section h3 {
+            color: var(--gold);
+            font-size: 1.4rem;
+        }
+
+        .bgm-licensing-section p {
+            color: var(--text-muted);
+            line-height: 1.7;
+        }
+
+        .bgm-footer-copyright {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            padding: 20px 0;
+            border-top: 1px solid #222;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: rgba(10, 10, 10, 0.95);
+                padding: 20px 0;
+                border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            .commerce-music-container {
+                grid-template-columns: 1fr;
+                padding: 0 20px;
+            }
+
+            .store-controls-bar {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .bgm-track-card {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Splash Screen -->
+    <div id="splash-screen">
+        <div class="splash-image-container">
+            <img src="file_0000000028fc81f8b878489375475bad.png" alt="Splash Background">
         </div>
-
-        <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 25px; border-bottom: 1px solid rgba(255, 255, 255, 0.1); padding-bottom: 15px;">
-            <img src="bgm-logo.png" alt="7Leo BGM Logo" style="height: 55px; width: auto; border-radius: 8px; object-fit: contain;">
-            <div>
-                <h2 style="color: #d4af37; font-size: 1.6rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin: 0;">7Leo BGM Studio</h2>
-                <p style="color: #aaaaaa; font-size: 0.95rem; margin: 4px 0 0 0;">Mobile Rhythm & Groovepad Production</p>
-            </div>
-        </div>
-
-        <div style="margin-bottom: 30px;">
-            <h4 style="color: #d4af37; font-size: 1.15rem; margin-bottom: 12px; text-transform: uppercase;">Interactive Groovepad</h4>
-            <div id="groovepad" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 15px;">
-                <div class="pad" data-note="261.63" style="background: rgba(40, 40, 40, 0.9); border: 2px solid rgba(212, 175, 55, 0.2); border-radius: 8px; padding: 25px 10px; text-align: center; cursor: pointer; font-weight: bold; color: #fff; transition: 0.2s;">Kick</div>
-                <div class="pad" data-note="329.63" style="background: rgba(40, 40, 40, 0.9); border: 2px solid rgba(212, 175, 55, 0.2); border-radius: 8px; padding: 25px 10px; text-align: center; cursor: pointer; font-weight: bold; color: #fff; transition: 0.2s;">Snare</div>
-                <div class="pad" data-note="392.00" style="background: rgba(40, 40, 40, 0.9); border: 2px solid rgba(212, 175, 55, 0.2); border-radius: 8px; padding: 25px 10px; text-align: center; cursor: pointer; font-weight: bold; color: #fff; transition: 0.2s;">Hi-Hat</div>
-                <div class="pad" data-note="523.25" style="background: rgba(40, 40, 40, 0.9); border: 2px solid rgba(212, 175, 55, 0.2); border-radius: 8px; padding: 25px 10px; text-align: center; cursor: pointer; font-weight: bold; color: #fff; transition: 0.2s;">Clap</div>
-                
-                <div class="pad" data-note="440.00" style="background: rgba(40, 40, 40, 0.9); border: 2px solid rgba(212, 175, 55, 0.2); border-radius: 8px; padding: 25px 10px; text-align: center; cursor: pointer; font-weight: bold; color: #fff; transition: 0.2s;">Synth A</div>
-                <div class="pad" data-note="493.88" style="background: rgba(40, 40, 40, 0.9); border: 2px solid rgba(212, 175, 55, 0.2); border-radius: 8px; padding: 25px 10px; text-align: center; cursor: pointer; font-weight: bold; color: #fff; transition: 0.2s;">Bass</div>
-                <div class="pad" data-note="587.33" style="background: rgba(40, 40, 40, 0.9); border: 2px solid rgba(212, 175, 55, 0.2); border-radius: 8px; padding: 25px 10px; text-align: center; cursor: pointer; font-weight: bold; color: #fff; transition: 0.2s;">Bell</div>
-                <div class="pad" data-note="659.25" style="background: rgba(40, 40, 40, 0.9); border: 2px solid rgba(212, 175, 55, 0.2); border-radius: 8px; padding: 25px 10px; text-align: center; cursor: pointer; font-weight: bold; color: #fff; transition: 0.2s;">Lead</div>
-            </div>
-
-            <div style="display: flex; justify-content: space-between; align-items: center; background: rgba(0,0,0,0.4); padding: 12px 15px; border-radius: 8px; flex-wrap: wrap; gap: 15px; margin-bottom: 15px;">
-                <div style="display: flex; flex-direction: column; gap: 5px;">
-                    <label style="font-size: 0.75rem; color: #aaaaaa; text-transform: uppercase;">Tempo (BPM): <span id="bpmVal">120</span></label>
-                    <input type="range" id="bpmRange" min="80" max="180" value="120" style="accent-color: #d4af37; cursor: pointer;">
-                </div>
-                <div style="display: flex; flex-direction: column; gap: 5px;">
-                    <label style="font-size: 0.75rem; color: #aaaaaa; text-transform: uppercase;">Master Volume</label>
-                    <input type="range" id="volRange" min="0" max="1" step="0.05" value="0.7" style="accent-color: #d4af37; cursor: pointer;">
-                </div>
-                <button id="demoSequenceBtn" style="background: #d4af37; color: #121212; border: none; padding: 10px 18px; border-radius: 6px; font-weight: bold; cursor: pointer;">Play Demo Loop</button>
-            </div>
-
-            <div style="text-align: center;">
-                <a href="https://www.youtube.com/@7LeoBGM" target="_blank" style="display: block; width: 100%; background: linear-gradient(135deg, #d4af37, #aa8c2c); color: #121212; padding: 14px; border-radius: 6px; font-weight: bold; text-decoration: none; font-size: 1rem; text-transform: uppercase; letter-spacing: 1px; box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);">🎵 Explore for Music (Full Library on YouTube)</a>
-            </div>
-        </div>
-
-        <div style="margin-bottom: 30px; background: rgba(0, 0, 0, 0.4); padding: 20px; border-radius: 8px; border: 1px solid rgba(212, 175, 55, 0.2);">
-            <h4 style="color: #d4af37; font-size: 1.15rem; margin-bottom: 12px; text-transform: uppercase;">Explore by Series (Active Playlists)</h4>
-            <div style="display: flex; flex-direction: column; gap: 10px;">
-                <a href="https://www.youtube.com/@7LeoBGM" target="_blank" style="display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.05); padding: 10px 15px; border-radius: 6px; color: #fff; text-decoration: none; border-left: 3px solid #d4af37; transition: 0.2s;">
-                    <span><strong>Drive Vibes</strong> &rarr; 7Leo Drive Series</span>
-                    <span style="font-size: 0.8rem; background: #d4af37; color: #121212; padding: 3px 8px; border-radius: 4px; font-weight: bold;">Play on YT</span>
-                </a>
-                <a href="https://www.youtube.com/@7LeoBGM" target="_blank" style="display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.05); padding: 10px 15px; border-radius: 6px; color: #fff; text-decoration: none; border-left: 3px solid #d4af37; transition: 0.2s;">
-                    <span><strong>Chill Out</strong> &rarr; 7Leo Chill Series</span>
-                    <span style="font-size: 0.8rem; background: #d4af37; color: #121212; padding: 3px 8px; border-radius: 4px; font-weight: bold;">Play on YT</span>
-                </a>
-                <a href="https://www.youtube.com/@7LeoBGM" target="_blank" style="display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.05); padding: 10px 15px; border-radius: 6px; color: #fff; text-decoration: none; border-left: 3px solid #d4af37; transition: 0.2s;">
-                    <span><strong>Street Energy</strong> &rarr; 7Leo Gangster Series</span>
-                    <span style="font-size: 0.8rem; background: #d4af37; color: #121212; padding: 3px 8px; border-radius: 4px; font-weight: bold;">Play on YT</span>
-                </a>
-                <a href="https://www.youtube.com/@7LeoBGM" target="_blank" style="display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.05); padding: 10px 15px; border-radius: 6px; color: #fff; text-decoration: none; border-left: 3px solid #d4af37; transition: 0.2s;">
-                    <span><strong>Club & Mix</strong> &rarr; 7Leo DJ Series</span>
-                    <span style="font-size: 0.8rem; background: #d4af37; color: #121212; padding: 3px 8px; border-radius: 4px; font-weight: bold;">Play on YT</span>
-                </a>
-                <a href="https://www.youtube.com/@7LeoBGM" target="_blank" style="display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.05); padding: 10px 15px; border-radius: 6px; color: #fff; text-decoration: none; border-left: 3px solid #d4af37; transition: 0.2s;">
-                    <span><strong>Epic Feels</strong> &rarr; 7Leo Cinematic Series</span>
-                    <span style="font-size: 0.8rem; background: #d4af37; color: #121212; padding: 3px 8px; border-radius: 4px; font-weight: bold;">Play on YT</span>
-                </a>
-                <a href="https://www.youtube.com/@7LeoBGM" target="_blank" style="display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.05); padding: 10px 15px; border-radius: 6px; color: #fff; text-decoration: none; border-left: 3px solid #d4af37; transition: 0.2s;">
-                    <span><strong>Songs Library</strong> &rarr; 7Leo Songs Series</span>
-                    <span style="font-size: 0.8rem; background: #d4af37; color: #121212; padding: 3px 8px; border-radius: 4px; font-weight: bold;">Play on YT</span>
-                </a>
-            </div>
-        </div>
-
-        <div style="margin-bottom: 30px; background: rgba(0, 0, 0, 0.5); padding: 20px; border-radius: 8px; border: 1px solid rgba(212, 175, 55, 0.3);">
-            <h4 style="color: #d4af37; font-size: 1.15rem; margin-bottom: 12px; text-transform: uppercase;">Custom Music & Licensing Solutions</h4>
-            <p style="color: #cccccc; font-size: 0.9rem; line-height: 1.6; margin-bottom: 15px;">
-                Professional compositions and exclusive tracks tailored for high-impact commercial media:
-            </p>
-            <ul style="color: #dddddd; font-size: 0.88rem; margin-bottom: 15px; padding-left: 20px; display: flex; flex-direction: column; gap: 6px;">
-                <li><strong>Commercial Ads & Marketing:</strong> High-conversion, catchy rhythms designed to hook customers instantly.</li>
-                <li><strong>Social Media Reels & Shorts:</strong> Trendy, fast-paced audio tracks optimized for viral video platform algorithms.</li>
-                <li><strong>Cinematic Movie Trailers:</strong> Epic soundscapes, suspense builds, and heavy sub-bass drops for maximum thrill.</li>
-                <li><strong>Brand Promos & Teasers:</strong> Sleek corporate audio branding tailored for corporate intros and presentations.</li>
-            </ul>
-            <div style="background: rgba(212, 175, 55, 0.1); padding: 12px 15px; border-radius: 6px; border-left: 3px solid #d4af37; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
-                <span style="color: #f3f3f3; font-size: 0.9rem; font-weight: 600;">Want custom tracks or licensing rights?</span>
-                <a href="mailto:7Leogroup@gmail.com" style="background: #d4af37; color: #121212; padding: 8px 16px; border-radius: 5px; font-weight: bold; text-decoration: none; font-size: 0.88rem;">Contact for Licensing</a>
-            </div>
-        </div>
-
-        <div style="text-align: center; border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 15px; margin-top: 20px;">
-            <p style="color: #888888; font-size: 0.85rem; letter-spacing: 0.5px; margin: 0;">All Rights Reserved. 7Leo Group / 7Leo BGM.</p>
+        <div class="splash-content">
+            <h1 class="splash-title">Vision*Power"Legacy</h1>
         </div>
     </div>
-</div>
+
+    <!-- Background Tattoo & Overlay -->
+    <div class="site-bg"></div>
+    <div class="site-overlay"></div>
+
+    <!-- Navigation -->
+    <header>
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="logo.png" alt="7Leo Group Logo">
+            </div>
+            <div class="menu-toggle" id="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#" onclick="showSection('home')">Home</a></li>
+                <li><a href="#" onclick="openStorePortal()">7Leo Store</a></li>
+                <li><a href="#" onclick="openBgmPortal()">7Leo BGM</a></li>
+                <li><a href="#" onclick="openModal('about-modal')">About</a></li>
+                <li><a href="#" onclick="openModal('founder-modal')">Meet The founder</a></li>
+                <li><a href="#" onclick="openModal('admin-modal')">Super Admin</a></li>
+                <li><a href="#" onclick="openModal('contact-modal')">Contact</a></li>
+                <li><a href="#" onclick="openModal('signup-modal')">Signup</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Main Homepage Content -->
+    <main id="main-content">
+        <section class="hero-section">
+            <img src="logo.png" alt="Main Logo" class="main-logo-img">
+            <h2 class="vision-power-legacy artistic-font">VISIONPOWERLEGACY</h2>
+            <h3 class="welcome-msg artistic-font">Hello welcome to 7Leo Website</h3>
+            <p class="core-text">Welcome to 7Leo Group Commerce and Music</p>
+
+            <div class="commerce-music-container">
+                <!-- Store Box -->
+                <div class="card-box">
+                    <img src="file_00000000f2948207a9d90f38705cd83d.png" alt="7Leo Store Logo" class="card-logo">
+                    <h4 class="card-title artistic-font">Build to buy</h4>
+                    <button class="action-btn" onclick="openStorePortal()">Explore 7Leo Store</button>
+                </div>
+
+                <!-- BGM Box -->
+                <div class="card-box">
+                    <img src="bgm-logo.png" alt="7Leo BGM Logo" class="card-logo">
+                    <h4 class="card-title artistic-font">Mobile Composed Groovepad Music</h4>
+                    <button class="action-btn" onclick="openBgmPortal()">Explore 7Leo BGM</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 7LEO BGM PORTAL EXPERIENCE -->
+    <div class="bgm-portal-overlay" id="bgm-portal">
+        <!-- Banner Rule: Banner-bg.png at top, clean, nothing placed over it -->
+        <div class="bgm-banner-container">
+            <img src="Banner-bg.png" alt="7Leo BGM Banner" class="bgm-banner-img">
+        </div>
+
+        <div class="bgm-body-container">
+            <!-- BGM Introduction Content -->
+            <div class="bgm-intro-box">
+                <h2>🎵 Welcome to 7leo BGM! 🎵</h2>
+                <p>🎵 Mobile.Composed Groovepad Music<br>Drive • Chill • Gangster • DJ • Cinematic 🎧<br>where every track sets the perfect vibe.</p>
+                <p style="margin-top: 15px;">Handcrafted instrumental background music to fuel your focus, ease your mind, and elevate your moments. 🦁🔥</p>
+                <p style="margin-top: 15px; color: var(--gold);">🎬 New BGM drops regularly — Subscribe & never miss a track!</p>
+            </div>
+
+            <!-- Series Section & Filtering -->
+            <div class="bgm-series-section">
+                <h3>📌 Explore by Series</h3>
+                <div class="bgm-series-filters" id="bgm-series-filters">
+                    <button class="bgm-filter-btn active" onclick="filterBgmSeries('All', this)">All</button>
+                    <button class="bgm-filter-btn" onclick="filterBgmSeries('7Leo Drive Series', this)">🚗 7Leo Drive Series</button>
+                    <button class="bgm-filter-btn" onclick="filterBgmSeries('7Leo Chill Series', this)">😌 7Leo Chill Series</button>
+                    <button class="bgm-filter-btn" onclick="filterBgmSeries('7Leo Gangster Series', this)">😈 7Leo Gangster Series</button>
+                    <button class="bgm-filter-btn" onclick="filterBgmSeries('7Leo DJ Series', this)">🎧 7Leo DJ Series</button>
+                    <button class="bgm-filter-btn" onclick="filterBgmSeries('7Leo Cinematic Series', this)">🎬 7Leo Cinematic Series</button>
+                    <button class="bgm-filter-btn" onclick="filterBgmSeries('7Leo Songs Series', this)">🌟 7Leo Songs Series</button>
+                </div>
+            </div>
+
+            <!-- Real BGM Playlist Container -->
+            <div class="bgm-playlist-container" id="bgm-playlist-items">
+                <!-- Populated dynamically via JS -->
+            </div>
+
+            <!-- YouTube & Instagram CTA Section -->
+            <div class="bgm-social-section">
+                <h3>🎶 Follow & Stream</h3>
+                <p style="color: var(--text-muted);">Official YouTube: <a href="https://www.youtube.com/@7LeoBGM" target="_blank" style="color: var(--gold);">https://www.youtube.com/@7LeoBGM</a></p>
+                <a href="https://www.youtube.com/@7LeoBGM" target="_blank" class="action-btn">🎵 VISIT 7LEO BGM ON YOUTUBE</a>
+                <p style="color: var(--text-muted); margin-top: 10px;">Discover new uploads, listen to latest soundscapes, and subscribe to 7Leo BGM.</p>
+                
+                <div style="margin-top: 15px;">
+                    <a href="https://www.instagram.com/7leo_bgm?igsh=OWxmeHRubTN5ZmJn" target="_blank" class="action-btn">📸 Follow 7Leo BGM on Instagram</a>
+                </div>
+            </div>
+
+            <!-- Music Licensing / Sales Section -->
+            <div class="bgm-licensing-section">
+                <h3>🎬 License 7Leo BGM</h3>
+                <p>7Leo BGM offers original instrumental music suitable for Advertisements, Promotions, Trailers, Movies, Short films, Reels, Social media content, Brand videos, Promotional campaigns, Cinematic projects, and Creative productions.</p>
+                <p>Our compositions are crafted by 7Leo BGM and are available for licensing and commercial use subject to applicable license terms and permissions.</p>
+                <div style="margin-top: 10px;">
+                    <a href="mailto:7leogroup@gmail.com?subject=Commercial%20Music%20Licensing%20Inquiry%20-%207Leo%20BGM" class="action-btn">📧 Contact 7Leo Group for Music Licensing</a>
+                </div>
+            </div>
+
+            <!-- Footer Copyright -->
+            <div class="bgm-footer-copyright">
+                © 2026 7Leo BGM / 7Leo Group. All Rights Reserved.
+            </div>
+        </div>
+
+        <button class="action-btn" style="position: fixed; top: 20px; right: 20px; z-index: 4000; background: rgba(10,10,10,0.85);" onclick="closeBgmPortal()">Exit BGM Portal</button>
+    </div>
+
+    <!-- 7LEO STORE COMPLETE SYSTEM PORTAL -->
+    <div class="store-portal-overlay" id="store-portal">
+        <div class="store-header">
+            <div class="store-nav-brand">
+                <h2>Welcome to 7Leo Store</h2>
+            </div>
+            <div class="store-nav-actions">
+                <button class="store-nav-btn" onclick="switchStoreTab('catalog')">Catalog</button>
+                <button class="store-nav-btn" onclick="switchStoreTab('cart')">Cart (<span id="cart-count">0</span>)</button>
+                <button class="store-nav-btn" onclick="switchStoreTab('tracking')">Track Order</button>
+                <button class="store-nav-btn" onclick="switchStoreTab('dashboard')">Owner Dashboard</button>
+                <button class="store-nav-btn" onclick="switchStoreTab('policies')">Policies</button>
+                <button class="store-nav-btn" style="border-color:#ff5555; color:#ff5555;" onclick="closeStorePortal()">Exit Store</button>
+            </div>
+        </div>
+
+        <div class="store-body">
+            
+            <!-- CATALOG PANEL -->
+            <div class="store-tab-content catalog-panel active" id="tab-catalog">
+                <div class="store-controls-bar">
+                    <div class="search-filter-group">
+                        <input type="text" id="store-search" class="store-search-input" placeholder="Search products..." oninput="filterStoreProducts()">
+                        <select id="store-category-filter" class="store-filter-select" onchange="filterStoreProducts()">
+                            <option value="">All Categories</option>
+                            <option value="Apparel">Apparel</option>
+                            <option value="Accessories">Accessories</option>
+                            <option value="Electronics">Electronics</option>
+                        </select>
+                        <select id="store-sort" class="store-filter-select" onchange="filterStoreProducts()">
+                            <option value="newest">Newest First</option>
+                            <option value="price-low">Price: Low to High</option>
+                            <option value="price-high">Price: High to Low</option>
+                        </select>
+                    </div>
+                    <button class="submit-btn" style="width: auto; padding: 10px 20px;" onclick="openAddProductForm()">+ Add Product (Owner)</button>
+                </div>
+
+                <div class="product-grid" id="store-product-grid">
+                    <!-- Dynamically populated products -->
+                </div>
+            </div>
+
+            <!-- PRODUCT FORM PANEL (Owner Product Management) -->
+            <div class="store-tab-content product-form-panel" id="tab-product-form">
+                <h3 class="modal-title" id="product-form-heading">Add / Edit Product</h3>
+                <form id="product-management-form" onsubmit="handleSaveProduct(event)">
+                    <input type="hidden" id="edit-product-id">
+                    <div class="form-group">
+                        <label>Product Name</label>
+                        <input type="text" id="prod-name" required placeholder="Enter product name">
+                    </div>
+                    <div class="form-group">
+                        <label>Description</label>
+                        <textarea id="prod-desc" rows="3" required placeholder="Product description"></textarea>
+                    </div>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                        <div class="form-group">
+                            <label>Category</label>
+                            <select id="prod-category" required>
+                                <option value="Apparel">Apparel</option>
+                                <option value="Accessories">Accessories</option>
+                                <option value="Electronics">Electronics</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>SKU</label>
+                            <input type="text" id="prod-sku" required placeholder="SKU-12345">
+                        </div>
+                    </div>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px;">
+                        <div class="form-group">
+                            <label>Supplier Cost (₹)</label>
+                            <input type="number" id="prod-cost" step="0.01" required placeholder="500" oninput="calculateRealtimeProfit()">
+                        </div>
+                        <div class="form-group">
+                            <label>Selling Price (₹)</label>
+                            <input type="number" id="prod-price" step="0.01" required placeholder="799" oninput="calculateRealtimeProfit()">
+                        </div>
+                        <div class="form-group">
+                            <label>Estimated Fees (₹)</label>
+                            <input type="number" id="prod-fees" step="0.01" value="50" required placeholder="50" oninput="calculateRealtimeProfit()">
+                        </div>
+                    </div>
+                    <div style="background: rgba(26, 26, 26, 0.85); padding: 15px; border-radius: 6px; margin-bottom: 20px; border: 1px solid var(--gold);">
+                        <p style="color: var(--gold); font-weight: 600;">Automatic Profit Calculation Preview:</p>
+                        <p id="live-profit-calc-text" style="color: var(--text-light); margin-top: 5px;">Estimated Profit: ₹0.00 (Margin: 0%)</p>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Upload Product Images (Select multiple files)</label>
+                        <input type="file" id="prod-image-input" accept="image/*" multiple onchange="handleImageUpload(event)">
+                        <div class="image-upload-preview-container" id="image-preview-container">
+                            <!-- Image previews appear here -->
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Supplier Name / Platform</label>
+                        <input type="text" id="prod-supplier" placeholder="e.g., Global Partner / Supplier">
+                    </div>
+                    <div class="form-group">
+                        <label>Supplier Reference URL</label>
+                        <input type="url" id="prod-supplier-url" placeholder="https://supplier.com/item">
+                    </div>
+
+                    <div style="display: flex; gap: 15px; margin-top: 25px;">
+                        <button type="submit" class="submit-btn">Save & Publish Product</button>
+                        <button type="button" class="action-btn" onclick="switchStoreTab('catalog')">Cancel</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- CART PANEL -->
+            <div class="store-tab-content cart-panel" id="tab-cart">
+                <h3 class="modal-title">Shopping Cart</h3>
+                <div id="cart-items-container">
+                    <p style="color: var(--text-muted); text-align: center; padding: 40px;">Your cart is empty.</p>
+                </div>
+                <div id="cart-summary-footer" style="display: none; margin-top: 20px; text-align: right;">
+                    <h3 style="color: var(--gold); margin-bottom: 15px;" id="cart-total-display">Total: ₹0.00</h3>
+                    <button class="submit-btn" style="max-width: 250px;" onclick="proceedToCheckout()">Proceed to Checkout</button>
+                </div>
+            </div>
+
+            <!-- CHECKOUT PANEL -->
+            <div class="store-tab-content checkout-panel" id="tab-checkout">
+                <h3 class="modal-title">Checkout</h3>
+                <div style="background: rgba(212, 175, 55, 0.1); border: 1px solid var(--gold); padding: 12px 15px; border-radius: 6px; margin-bottom: 20px; text-align: center;">
+                    <p style="color: var(--gold-light); font-size: 0.9rem; font-weight: 500;">Payment Gateway Not Connected / Payment Integration Required</p>
+                </div>
+                <form id="checkout-form" onsubmit="handleCheckoutSubmit(event)" style="max-width: 600px; margin: 0 auto;">
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" id="cust-name" required placeholder="Enter full name">
+                    </div>
+                    <div class="form-group">
+                        <label>Email Address</label>
+                        <input type="email" id="cust-email" required placeholder="Enter email address">
+                    </div>
+                    <div class="form-group">
+                        <label>Phone Number</label>
+                        <input type="tel" id="cust-phone" required placeholder="Mobile number">
+                    </div>
+                    <div class="form-group">
+                        <label>Delivery Address</label>
+                        <textarea id="cust-address" rows="3" required placeholder="Street address, City, State, Pincode"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Payment Method</label>
+                        <select id="payment-provider" required>
+                            <option value="cod">Cash on Delivery (COD) / Manual Checkout</option>
+                            <option value="pending">Payment Integration Pending</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="submit-btn" style="margin-top: 20px;">Place Test Prototype Order</button>
+                </form>
+            </div>
+
+            <!-- ORDER TRACKING PANEL -->
+            <div class="store-tab-content tracking-panel" id="tab-tracking">
+                <h3 class="modal-title">Order Tracking & Fulfillment</h3>
+                <div style="max-width: 600px; margin: 0 auto; display: flex; gap: 10px; margin-bottom: 30px;">
+                    <input type="text" id="tracking-search-input" class="store-search-input" placeholder="Enter Order ID (e.g., 7LEO-1001)">
+                    <button class="submit-btn" style="width: auto;" onclick="trackOrderQuery()">Track</button>
+                </div>
+                <div id="tracking-result-box" style="background: rgba(20, 20, 20, 0.85); padding: 25px; border-radius: 8px; border: 1px solid #333; max-width: 600px; margin: 0 auto; display: none; backdrop-filter: blur(5px);">
+                    <!-- Tracking details -->
+                </div>
+            </div>
+
+            <!-- OWNER DASHBOARD PANEL -->
+            <div class="store-tab-content admin-dashboard-panel" id="tab-dashboard">
+                <h3 class="modal-title">7Leo Store Owner / Profit Dashboard</h3>
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <span class="metric-title">Total Orders</span>
+                        <span class="metric-value" id="metric-orders">0</span>
+                    </div>
+                    <div class="metric-card">
+                        <span class="metric-title">Total Sales</span>
+                        <span class="metric-value" id="metric-sales">₹0.00</span>
+                    </div>
+                    <div class="metric-card">
+                        <span class="metric-title">Estimated Profit</span>
+                        <span class="metric-value" id="metric-profit">₹0.00</span>
+                    </div>
+                    <div class="metric-card">
+                        <span class="metric-title">Pending Fulfillment</span>
+                        <span class="metric-value" id="metric-pending">0</span>
+                    </div>
+                </div>
+
+                <h4 style="color: var(--gold); margin-top: 30px; margin-bottom: 15px;">Recent Orders & Fulfillment Flow</h4>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Order ID</th>
+                                <th>Customer</th>
+                                <th>Product</th>
+                                <th>Selling Price</th>
+                                <th>Est. Profit</th>
+                                <th>Status</th>
+                                <th>Fulfillment Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="admin-orders-tbody">
+                            <!-- Populated dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- POLICIES PANEL -->
+            <div class="store-tab-content" id="tab-policies">
+                <h3 class="modal-title">Store Policies & Information</h3>
+                <div style="max-width: 800px; margin: 0 auto; color: var(--text-muted); line-height: 1.8; display: flex; flex-direction: column; gap: 20px;">
+                    <div>
+                        <h4 style="color: var(--gold);">Terms & Conditions</h4>
+                        <p>Welcome to 7Leo Store. As a solo-operated store utilizing dropshipping fulfillment, orders are processed and shipped directly through verified global suppliers and fulfillment partners.</p>
+                    </div>
+                    <div>
+                        <h4 style="color: var(--gold);">Privacy Policy</h4>
+                        <p>Customer data is handled with strict confidentiality and used solely for order processing and store communication.</p>
+                    </div>
+                    <div>
+                        <h4 style="color: var(--gold);">Shipping & Fulfillment</h4>
+                        <p>Physical fulfillment, logistics, and delivery are managed by our third-party supplier network. Tracking numbers are provided once dispatch details are confirmed.</p>
+                    </div>
+                    <div>
+                        <h4 style="color: var(--gold);">Returns & Refunds</h4>
+                        <p>Return and refund requests are subject to supplier policies and can be initiated within standard support windows upon receipt.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Modals for Navigation Items -->
+
+    <!-- Signup Modal -->
+    <div class="modal-overlay" id="signup-modal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeModal('signup-modal')">&times;</button>
+            <h3 class="modal-title">Sign Up / Sign In</h3>
+            <div class="auth-buttons">
+                <button class="oauth-btn" onclick="alert('Google Authentication Prototype')">Sign in with Google</button>
+                <button class="oauth-btn" onclick="alert('Apple Authentication Prototype')">Sign up with Apple</button>
+            </div>
+            <hr style="border: 0; border-top: 1px solid #333; margin: 20px 0;">
+            <form onsubmit="event.preventDefault(); alert('Account action simulated successfully.'); closeModal('signup-modal');">
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" required placeholder="Enter your email">
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" required placeholder="Enter your password">
+                </div>
+                <button type="submit" class="submit-btn">Create Account / Sign In</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- About Modal -->
+    <div class="modal-overlay" id="about-modal">
+        <div class="modal-content" style="max-width: 700px;">
+            <button class="close-modal" onclick="closeModal('about-modal')">&times;</button>
+            <h3 class="modal-title">About 7Leo Group</h3>
+            <div style="display: flex; flex-direction: column; gap: 30px; text-align: left; max-height: 70vh; overflow-y: auto; padding-right: 10px;">
+                
+                <div style="background: rgba(20, 20, 20, 0.6); border: 1px solid rgba(212, 175, 55, 0.2); border-radius: 10px; padding: 20px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 15px;">
+                    <img src="logo.png" alt="7Leo Group Logo" style="height: 50px; width: auto;">
+                    <h4 style="color: var(--gold); font-size: 1.2rem;">ABOUT 7LEO GROUP</h4>
+                    <p style="color: var(--text-muted); line-height: 1.6; white-space: pre-line; font-size: 0.95rem;">7Leo Group is an independent digital vision built from Karnataka, bringing together creativity, commerce, music, technology, and a growing collection of digital experiences under one identity.
+
+7Leo Group began from zero with a simple idea — to build something meaningful with the resources available.
+
+What started with a mobile phone, Wi-Fi, determination, and a dream is becoming a platform designed to grow across different creative and business directions.
+
+7Leo Group is home to experiences such as 7Leo Store and 7Leo BGM, with more ideas and projects planned for the future.
+
+But 7Leo Group is bigger than any single project.
+
+It represents the journey of starting from nothing, learning along the way, facing challenges, and continuing forward without giving up.
+
+VISION — See beyond today.
+POWER — Keep moving through challenges.
+LEGACY — Build something that can live beyond the beginning.
+
+7Leo Group is not just a website.
+
+It is a journey from ZERO toward something greater.
+
+The journey has only begun.
+
+7LEO GROUP
+VISION. POWER. LEGACY.</p>
+                </div>
+
+                <div style="background: rgba(20, 20, 20, 0.6); border: 1px solid rgba(212, 175, 55, 0.2); border-radius: 10px; padding: 20px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 15px;">
+                    <img src="file_00000000f2948207a9d90f38705cd83d.png" alt="7Leo Store Logo" style="height: 50px; width: auto; object-fit: contain;">
+                    <h4 style="color: var(--gold); font-size: 1.2rem;">ABOUT 7LEO STORE</h4>
+                    <p style="color: var(--text-muted); line-height: 1.6; white-space: pre-line; font-size: 0.95rem;">7Leo Store is the official commerce experience of 7Leo Group, created to bring together premium lifestyle products, fashion, accessories, and selected everyday essentials.
+
+Our vision is simple — Build to Buy.
+
+7Leo Store is designed around a modern, premium shopping experience with carefully presented products, order handling, fulfillment support, order tracking, and a smooth customer journey.
+
+Through our supplier and fulfillment network, products can be sourced and delivered while maintaining the 7Leo Group vision of quality, style, innovation, and legacy.
+
+7Leo Store — Build to Buy.</p>
+                </div>
+
+                <div style="background: rgba(20, 20, 20, 0.6); border: 1px solid rgba(212, 175, 55, 0.2); border-radius: 10px; padding: 20px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 15px;">
+                    <img src="bgm-logo.png" alt="7Leo BGM Logo" style="height: 50px; width: auto; object-fit: contain;">
+                    <h4 style="color: var(--gold); font-size: 1.2rem;">ABOUT 7LEO BGM</h4>
+                    <p style="color: var(--text-muted); line-height: 1.6; white-space: pre-line; font-size: 0.95rem;">7Leo BGM is the music experience of 7Leo Group, created for original mobile-composed music and creative soundscapes.
+
+Built around mobile music creation and Groovepad-inspired composition, 7Leo BGM explores rhythm, atmosphere, energy, and creativity through original musical ideas.
+
+Every soundscape represents another side of the 7Leo Group vision — creative freedom, experimentation, and artistic expression.
+
+7Leo BGM — Feel the Sound. Create the Legacy.</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Founder Modal -->
+    <div class="modal-overlay" id="founder-modal">
+        <div class="modal-content" style="max-width: 700px;">
+            <button class="close-modal" onclick="closeModal('founder-modal')">&times;</button>
+            <h3 class="modal-title">Meet The founder</h3>
+            <div style="max-height: 70vh; overflow-y: auto; padding-right: 10px; color: var(--text-muted); line-height: 1.6; display: flex; flex-direction: column; gap: 20px; text-align: left;">
+                
+                <div style="text-align: center;">
+                    <img src="founder.jpg" alt="Abubakker Bellary" style="width: 140px; height: 140px; border-radius: 50%; object-fit: cover; border: 2px solid var(--gold); margin: 0 auto 15px auto; box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);">
+                    <h4 style="color: var(--gold-light); font-size: 1.3rem; font-weight: 600;">ABUBAKKER BELLARY</h4>
+                    <p style="color: var(--gold); font-size: 0.95rem; font-weight: 500; margin-top: 5px;">Founder — 7Leo Group</p>
+                    <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 3px;">From Karnataka<br>Hospet – 583201<br>Vijayanagara Zilla</p>
+                </div>
+
+                <hr style="border: 0; border-top: 1px solid rgba(212, 175, 55, 0.2);">
+
+                <div>
+                    <h4 style="color: var(--gold); font-size: 1.1rem; margin-bottom: 10px;">Founder Story</h4>
+                    <p style="white-space: pre-line; font-size: 0.95rem;">7Leo Group was not built from a perfect beginning.
+It was built from a dream.
+
+With no financial support, no business team, no friends beside me, and no laptop — I started with only a mobile phone, Wi-Fi, and the determination to create something of my own.
+
+The journey was not easy.
+There were difficulties, limitations, doubts, and moments when giving up would have been the easier choice.
+
+But I kept going.
+
+Every step was taken from zero.
+Every idea was built with patience.
+Every challenge became another reason to learn, improve, and continue.
+
+7Leo Group represents that journey — from starting with almost nothing to building a vision for something greater.
+
+This is not a story of having everything.
+It is a story of starting with what you have.
+
+Sometimes you have to walk alone before others understand where you are going.
+
+I may have started alone, but I believe a strong vision can become bigger than the person who started it.
+
+7Leo Group is my journey of Vision, Power, and Legacy.
+
+The journey has only begun.
+
+— ABUBAKKER BELLARY
+Founder, 7Leo Group</p>
+                </div>
+
+                <hr style="border: 0; border-top: 1px solid rgba(212, 175, 55, 0.2);">
+
+                <div>
+                    <h4 style="color: var(--gold); font-size: 1.1rem; margin-bottom: 10px;">Founder Bio</h4>
+                    <p style="white-space: pre-line; font-size: 0.95rem;">ABUBAKKER BELLARY is the Founder of 7Leo Group, an independent vision built from Karnataka.
+
+Starting with only a mobile phone, Wi-Fi, determination, and a dream — without a laptop, financial backing, or a team — he began building 7Leo Group from zero.
+
+His journey represents perseverance, self-belief, creativity, and the courage to keep moving forward even when the path has to be walked alone.
+
+For him, 7Leo Group is more than a website or a business.
+
+It is proof that a small beginning can carry a big vision.
+
+VISION. POWER. LEGACY.</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Modal -->
+    <div class="modal-overlay" id="contact-modal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeModal('contact-modal')">&times;</button>
+            <h3 class="modal-title">Contact 7Leo Group</h3>
+            <form onsubmit="event.preventDefault(); alert('Message sent successfully.'); closeModal('contact-modal');">
+                <div class="form-group">
+                    <label>Your Name</label>
+                    <input type="text" required placeholder="Enter your name">
+                </div>
+                <div class="form-group">
+                    <label>Your Email</label>
+                    <input type="email" required placeholder="Enter your email">
+                </div>
+                <div class="form-group">
+                    <label>Message</label>
+                    <input type="text" required placeholder="Type your message">
+                </div>
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Super Admin Modal -->
+    <div class="modal-overlay" id="admin-modal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeModal('admin-modal')">&times;</button>
+            <h3 class="modal-title">Super Admin Portal</h3>
+            <p style="color: var(--text-muted); font-size: 0.9rem; text-align: center; margin-bottom: 20px;">
+                Restricted website owner control panel (Frontend Prototype Interface).
+            </p>
+            <div class="form-group">
+                <label>Admin Passcode</label>
+                <input type="password" placeholder="Enter admin credentials">
+            </div>
+            <button class="submit-btn" onclick="alert('Access restricted to verified website owner.')">Authenticate Owner</button>
+        </div>
+    </div>
+
+    <!-- Product Details Modal for Store -->
+    <div class="modal-overlay" id="product-detail-modal">
+        <div class="modal-content" style="max-width: 700px;">
+            <button class="close-modal" onclick="closeModal('product-detail-modal')">&times;</button>
+            <div id="product-detail-body">
+                <!-- Populated dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Splash screen timer (exactly 3 seconds)
+        window.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                const splash = document.getElementById('splash-screen');
+                splash.classList.add('fade-out');
+            }, 3000);
+            renderStoreCatalog();
+            updateCartCount();
+            renderBgmPlaylist('All');
+        });
+
+        // Mobile Menu Toggle
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navLinks = document.getElementById('nav-links');
+
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Modal Controls
+        function openModal(modalId) {
+            document.getElementById(modalId).classList.add('active');
+            navLinks.classList.remove('active');
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.remove('active');
+        }
+
+        function showSection(section) {
+            navLinks.classList.remove('active');
+            if(section === 'bgm') {
+                openBgmPortal();
+            } else {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
+
+        // --- 7LEO BGM SYSTEM LOGIC (LOCAL STORAGE PERSISTENT) ---
+        let bgmTracks = JSON.parse(localStorage.getItem('7leo_bgm_tracks'));
+        if(!bgmTracks) {
+            bgmTracks = [
+                {
+                    id: 'bgm_1',
+                    title: 'Night Speed Drive',
+                    series: '7Leo Drive Series',
+                    duration: '03:45',
+                    description: 'High energy night driving instrumental soundscape crafted with groovepad beats.',
+                    releaseDate: '2026-01-15',
+                    audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3'
+                },
+                {
+                    id: 'bgm_2',
+                    title: 'Midnight Chill Lounge',
+                    series: '7Leo Chill Series',
+                    duration: '04:12',
+                    description: 'Relaxing ambient vibe designed for focus, deep thinking, and late-night relaxation.',
+                    releaseDate: '2026-02-01',
+                    audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3'
+                },
+                {
+                    id: 'bgm_3',
+                    title: 'Street Energy Anthem',
+                    series: '7Leo Gangster Series',
+                    duration: '03:30',
+                    description: 'Heavy basslines and bold rhythm patterns built for powerful cinematic moments.',
+                    releaseDate: '2026-02-10',
+                    audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3'
+                },
+                {
+                    id: 'bgm_4',
+                    title: 'Club Groove Master',
+                    series: '7Leo DJ Series',
+                    duration: '05:00',
+                    description: 'Upbeat electronic dance mix engineered for energetic club performances and reels.',
+                    releaseDate: '2026-02-18',
+                    audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3'
+                },
+                {
+                    id: 'bgm_5',
+                    title: 'Epic Cinematic Journey',
+                    series: '7Leo Cinematic Series',
+                    duration: '04:45',
+                    description: 'Orchestral cinematic atmosphere suited for trailers, films, and grand promotional reels.',
+                    releaseDate: '2026-03-01',
+                    audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3'
+                },
+                {
+                    id: 'bgm_6',
+                    title: 'Signature 7Leo Anthem',
+                    series: '7Leo Songs Series',
+                    duration: '03:55',
+                    description: 'The defining vocal and instrumental track carrying the vision power legacy.',
+                    releaseDate: '2026-03-10',
+                    audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3'
+                }
+            ];
+            localStorage.setItem('7leo_bgm_tracks', JSON.stringify(bgmTracks));
+        }
+
+        function openBgmPortal() {
+            document.getElementById('bgm-portal').classList.add('active');
+            navLinks.classList.remove('active');
+            renderBgmPlaylist('All');
+        }
+
+        function closeBgmPortal() {
+            document.getElementById('bgm-portal').classList.remove('active');
+        }
+
+        function filterBgmSeries(seriesName, btnElement) {
+            document.querySelectorAll('.bgm-filter-btn').forEach(btn => btn.classList.remove('active'));
+            if(btnElement) btnElement.classList.add('active');
+            renderBgmPlaylist(seriesName);
+        }
+
+        function renderBgmPlaylist(selectedSeries) {
+            const container = document.getElementById('bgm-playlist-items');
+            const filtered = selectedSeries === 'All' ? bgmTracks : bgmTracks.filter(t => t.series === selectedSeries);
+            
+            container.innerHTML = '';
+            if(filtered.length === 0) {
+                container.innerHTML = '<p style="color: var(--text-muted); text-align: center; padding: 30px;">No tracks available in this series.</p>';
+                return;
+            }
+
+            filtered.forEach(track => {
+                container.innerHTML += `
+                    <div class="bgm-track-card">
+                        <div class="bgm-track-info">
+                            <span class="bgm-track-title">${track.title}</span>
+                            <span class="bgm-track-meta">${track.series} &bull; ${track.duration} &bull; Released: ${track.releaseDate}</span>
+                            <p class="bgm-track-desc">${track.description}</p>
+                        </div>
+                        <div style="min-width: 260px;">
+                            <audio controls preload="none" style="width: 100%;">
+                                <source src="${track.audioUrl}" type="audio/mpeg">
+                                Your browser does not support the audio element.
+                            </audio>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+
+        // --- 7LEO STORE SYSTEM LOGIC (WITH LOCAL STORAGE PERSISTENCE) ---
+        let storeProducts = JSON.parse(localStorage.getItem('7leo_products'));
+        if(!storeProducts) {
+            storeProducts = [
+                {
+                    id: 'prod_1',
+                    name: '7Leo Signature Luxury Tee',
+                    description: 'Premium organic cotton apparel featuring the iconic 7Leo vision power legacy emblem.',
+                    category: 'Apparel',
+                    sku: '7LEO-APP-01',
+                    cost: 450,
+                    price: 1299,
+                    fees: 50,
+                    supplier: 'Global Apparel Partner',
+                    supplierUrl: '',
+                    images: ['logo.png']
+                },
+                {
+                    id: 'prod_2',
+                    name: '7Leo Gold Series Watch',
+                    description: 'Exquisite timepiece crafted with gold finish and precision movement.',
+                    category: 'Accessories',
+                    sku: '7LEO-ACC-02',
+                    cost: 1500,
+                    price: 4999,
+                    fees: 150,
+                    supplier: 'Luxury Goods Supplier',
+                    supplierUrl: '',
+                    images: ['logo.png']
+                }
+            ];
+            localStorage.setItem('7leo_products', JSON.stringify(storeProducts));
+        }
+
+        let cart = JSON.parse(localStorage.getItem('7leo_cart')) || [];
+        let orders = JSON.parse(localStorage.getItem('7leo_orders')) || [];
+
+        function saveStoreData() {
+            localStorage.setItem('7leo_products', JSON.stringify(storeProducts));
+            localStorage.setItem('7leo_cart', JSON.stringify(cart));
+            localStorage.setItem('7leo_orders', JSON.stringify(orders));
+        }
+
+        let currentUploadedImages = [];
+
+        function openStorePortal() {
+            document.getElementById('store-portal').classList.add('active');
+            navLinks.classList.remove('active');
+            renderStoreCatalog();
+            renderAdminDashboard();
+        }
+
+        function closeStorePortal() {
+            document.getElementById('store-portal').classList.remove('active');
+        }
+
+        function switchStoreTab(tabName) {
+            document.querySelectorAll('.store-tab-content').forEach(el => el.classList.remove('active'));
+            if(tabName === 'catalog') document.getElementById('tab-catalog').classList.add('active');
+            if(tabName === 'cart') { document.getElementById('tab-cart').classList.add('active'); renderCartItems(); }
+            if(tabName === 'tracking') document.getElementById('tab-tracking').classList.add('active');
+            if(tabName === 'dashboard') { document.getElementById('tab-dashboard').classList.add('active'); renderAdminDashboard(); }
+            if(tabName === 'policies') document.getElementById('tab-policies').classList.add('active');
+            if(tabName === 'product-form') document.getElementById('tab-product-form').classList.add('active');
+        }
+
+        function renderStoreCatalog() {
+            const grid = document.getElementById('store-product-grid');
+            const search = document.getElementById('store-search').value.toLowerCase();
+            const category = document.getElementById('store-category-filter').value;
+            const sort = document.getElementById('store-sort').value;
+
+            let filtered = storeProducts.filter(p => {
+                const matchSearch = p.name.toLowerCase().includes(search) || p.description.toLowerCase().includes(search);
+                const matchCat = category === '' || p.category === category;
+                return matchSearch && matchCat;
+            });
+
+            if(sort === 'price-low') filtered.sort((a,b) => a.price - b.price);
+            if(sort === 'price-high') filtered.sort((a,b) => b.price - a.price);
+
+            grid.innerHTML = '';
+            if(filtered.length === 0) {
+                grid.innerHTML = '<p style="color:var(--text-muted); grid-column: 1/-1; text-align:center; padding:40px;">No products available yet.</p>';
+                return;
+            }
+
+            filtered.forEach(p => {
+                const img = p.images && p.images.length > 0 ? p.images[0] : 'logo.png';
+                grid.innerHTML += `
+                    <div class="product-card">
+                        <div class="product-card-img-wrap">
+                            <img src="${img}" alt="${p.name}">
+                        </div>
+                        <div class="product-card-info">
+                            <h4 class="product-card-title">${p.name}</h4>
+                            <div class="product-card-price">₹${p.price.toFixed(2)}</div>
+                            <p class="product-card-desc">${p.description}</p>
+                            <div class="product-card-actions">
+                                <button class="action-btn" style="flex:1; padding:8px;" onclick="openProductDetail('${p.id}')">View</button>
+                                <button class="submit-btn" style="flex:1; padding:8px;" onclick="addToCart('${p.id}')">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        function filterStoreProducts() {
+            renderStoreCatalog();
+        }
+
+        function openAddProductForm() {
+            document.getElementById('product-management-form').reset();
+            currentUploadedImages = ['logo.png'];
+            renderImagePreviews();
+            document.getElementById('live-profit-calc-text').innerText = 'Estimated Profit: ₹0.00 (Margin: 0%)';
+            switchStoreTab('product-form');
+        }
+
+        function handleImageUpload(event) {
+            const files = event.target.files;
+            for(let i=0; i<files.length; i++) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    currentUploadedImages.push(e.target.result);
+                    renderImagePreviews();
+                }
+                reader.readAsDataURL(files[i]);
+            }
+        }
+
+        function renderImagePreviews() {
+            const container = document.getElementById('image-preview-container');
+            container.innerHTML = '';
+            currentUploadedImages.forEach((imgSrc, index) => {
+                container.innerHTML += `
+                    <div class="image-preview-thumb">
+                        <img src="${imgSrc}" alt="Preview">
+                        <button type="button" onclick="removeUploadedImage(${index})">&times;</button>
+                    </div>
+                `;
+            });
+        }
+
+        function removeUploadedImage(index) {
+            currentUploadedImages.splice(index, 1);
+            renderImagePreviews();
+        }
+
+        function calculateRealtimeProfit() {
+            const cost = parseFloat(document.getElementById('prod-cost').value) || 0;
+            const price = parseFloat(document.getElementById('prod-price').value) || 0;
+            const fees = parseFloat(document.getElementById('prod-fees').value) || 0;
+            const profit = price - cost - fees;
+            const margin = price > 0 ? ((profit / price) * 100).toFixed(1) : 0;
+            document.getElementById('live-profit-calc-text').innerText = `Estimated Profit: ₹${profit.toFixed(2)} (Margin: ${margin}%)`;
+        }
+
+        function handleSaveProduct(event) {
+            event.preventDefault();
+            const name = document.getElementById('prod-name').value;
+            const desc = document.getElementById('prod-desc').value;
+            const category = document.getElementById('prod-category').value;
+            const sku = document.getElementById('prod-sku').value;
+            const cost = parseFloat(document.getElementById('prod-cost').value);
+            const price = parseFloat(document.getElementById('prod-price').value);
+            const fees = parseFloat(document.getElementById('prod-fees').value);
+            const supplier = document.getElementById('prod-supplier').value;
+            const supplierUrl = document.getElementById('prod-supplier-url').value;
+
+            const newProd = {
+                id: 'prod_' + Date.now(),
+                name, description: desc, category, sku, cost, price, fees, supplier, supplierUrl,
+                images: currentUploadedImages.length > 0 ? currentUploadedImages : ['logo.png']
+            };
+
+            storeProducts.push(newProd);
+            saveStoreData();
+            alert('Product successfully created, uploaded, and published to catalog!');
+            switchStoreTab('catalog');
+            renderStoreCatalog();
+        }
+
+        function openProductDetail(productId) {
+            const p = storeProducts.find(item => item.id === productId);
+            if(!p) return;
+            const img = p.images && p.images.length > 0 ? p.images[0] : 'logo.png';
+            document.getElementById('product-detail-body').innerHTML = `
+                <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                    <div><img src="${img}" style="width:100%; border-radius:8px; object-fit:cover; height:250px;"></div>
+                    <div>
+                        <h3 style="color:var(--gold); margin-bottom:10px;">${p.name}</h3>
+                        <p style="font-size:1.3rem; color:var(--text-light); margin-bottom:15px; font-weight:700;">₹${p.price.toFixed(2)}</p>
+                        <p style="color:var(--text-muted); font-size:0.9rem; margin-bottom:20px;">${p.description}</p>
+                        <button class="submit-btn" onclick="addToCart('${p.id}'); closeModal('product-detail-modal');">Add to Cart</button>
+                    </div>
+                </div>
+            `;
+            openModal('product-detail-modal');
+        }
+
+        function addToCart(productId) {
+            const p = storeProducts.find(item => item.id === productId);
+            if(!p) return;
+            const existing = cart.find(item => item.id === productId);
+            if(existing) {
+                existing.qty += 1;
+            } else {
+                cart.push({ ...p, qty: 1 });
+            }
+            saveStoreData();
+            updateCartCount();
+            alert('Product added to cart!');
+        }
+
+        function updateCartCount() {
+            const count = cart.reduce((sum, item) => sum + item.qty, 0);
+            document.getElementById('cart-count').innerText = count;
+        }
+
+        function renderCartItems() {
+            const container = document.getElementById('cart-items-container');
+            const footer = document.getElementById('cart-summary-footer');
+            if(cart.length === 0) {
+                container.innerHTML = '<p style="color: var(--text-muted); text-align: center; padding: 40px;">Your cart is empty.</p>';
+                footer.style.display = 'none';
+                return;
+            }
+            container.innerHTML = '';
+            let total = 0;
+            cart.forEach((item, index) => {
+                total += item.price * item.qty;
+                container.innerHTML += `
+                    <div style="display:flex; justify-content:space-between; align-items:center; background:#141414; padding:15px; margin-bottom:10px; border-radius:6px; border:1px solid #333;">
+                        <div>
+                            <h4 style="color:var(--text-light);">${item.name}</h4>
+                            <p style="color:var(--text-muted); font-size:0.85rem;">₹${item.price.toFixed(2)} x ${item.qty}</p>
+                        </div>
+                        <button class="action-btn" style="border-color:#ff5555; color:#ff5555; padding:5px 10px;" onclick="removeFromCart(${index})">Remove</button>
+                    </div>
+                `;
+            });
+            document.getElementById('cart-total-display').innerText = `Total: ₹${total.toFixed(2)}`;
+            footer.style.display = 'block';
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            saveStoreData();
+            updateCartCount();
+            renderCartItems();
+        }
+
+        function proceedToCheckout() {
+            switchStoreTab('checkout');
+        }
+
+        function handleCheckoutSubmit(event) {
+            event.preventDefault();
+            const name = document.getElementById('cust-name').value;
+            const email = document.getElementById('cust-email').value;
+            const phone = document.getElementById('cust-phone').value;
+            const address = document.getElementById('cust-address').value;
+
+            cart.forEach(item => {
+                const profit = item.price - item.cost - item.fees;
+                const newOrder = {
+                    id: '7LEO-' + Math.floor(1000 + Math.random() * 9000),
+                    customerName: name,
+                    customerEmail: email,
+                    productName: item.name,
+                    sellingPrice: item.price,
+                    cost: item.cost,
+                    fees: item.fees,
+                    profit: profit,
+                    status: 'Order Received — Fulfillment Pending',
+                    trackingNumber: 'TRK-' + Math.random().toString(36).substring(2, 10).toUpperCase(),
+                    carrier: 'Global Supplier Fulfillment Network'
+                };
+                orders.push(newOrder);
+            });
+
+            saveStoreData();
+            alert('Test prototype order placed successfully! Order saved to local storage for fulfillment tracking.');
+            cart = [];
+            updateCartCount();
+            switchStoreTab('catalog');
+            renderAdminDashboard();
+        }
+
+        function trackOrderQuery() {
+            const query = document.getElementById('tracking-search-input').value.trim();
+            const resBox = document.getElementById('tracking-result-box');
+            const found = orders.find(o => o.id === query || o.trackingNumber === query);
+            resBox.style.display = 'block';
+            if(!found) {
+                resBox.innerHTML = '<p style="color:#ff5555;">Order not found or tracking information is not available yet.</p>';
+                return;
+            }
+            resBox.innerHTML = `
+                <h4 style="color:var(--gold); margin-bottom:10px;">Order Status: ${found.id}</h4>
+                <p style="color:var(--text-light); margin-bottom:5px;"><strong>Product:</strong> ${found.productName}</p>
+                <p style="color:var(--text-light); margin-bottom:5px;"><strong>Status:</strong> ${found.status}</p>
+                <p style="color:var(--text-light); margin-bottom:5px;"><strong>Fulfillment Partner:</strong> ${found.carrier}</p>
+                <p style="color:var(--text-light); margin-bottom:5px;"><strong>Tracking Number:</strong> ${found.trackingNumber}</p>
+            `;
+        }
+
+        function renderAdminDashboard() {
+            document.getElementById('metric-orders').innerText = orders.length;
+            const totalSales = orders.reduce((sum, o) => sum + o.sellingPrice, 0);
+            const totalProfit = orders.reduce((sum, o) => sum + o.profit, 0);
+            document.getElementById('metric-sales').innerText = '₹' + totalSales.toFixed(2);
+            document.getElementById('metric-profit').innerText = '₹' + totalProfit.toFixed(2);
+            document.getElementById('metric-pending').innerText = orders.filter(o => o.status.includes('Pending')).length;
+
+            const tbody = document.getElementById('admin-orders-tbody');
+            tbody.innerHTML = '';
+            if(orders.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="7" style="text-align:center; color:var(--text-muted); padding:30px;">No orders recorded yet.</td></tr>';
+                return;
+            }
+            orders.forEach(o => {
+                tbody.innerHTML += `
+                    <tr>
+                        <td>${o.id}</td>
+                        <td>${o.customerName}</td>
+                        <td>${o.productName}</td>
+                        <td>₹${o.sellingPrice.toFixed(2)}</td>
+                        <td style="color:var(--gold);">₹${o.profit.toFixed(2)}</td>
+                        <td>${o.status}</td>
+                        <td><button class="action-btn" style="padding:5px 10px;" onclick="alert('Fulfillment status logged.')">Sync Supplier</button></td>
+                    </tr>
+                `;
+            });
+        }
+    </script>
+</body>
+</html>
