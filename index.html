@@ -695,7 +695,10 @@
             left: 0;
             width: 100vw;
             height: 100vh;
-            background: radial-gradient(circle, rgba(10,10,10,0.92) 0%, rgba(5,5,5,0.98) 100%);
+            background: radial-gradient(circle, rgba(10,10,10,0.92) 0%, rgba(5,5,5,0.98) 100%), url('file_00000000776081fa8dbc514074356775.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
             z-index: 3500;
             display: none;
             flex-direction: column;
@@ -918,7 +921,7 @@
             <img src="file_0000000028fc81f8b878489375475bad.png" alt="Splash Background">
         </div>
         <div class="splash-content">
-            <h1 class="splash-title">Vision*Power"Legacy</h1>
+            <h1 class="splash-title">Vision*Power*Legacy</h1>
         </div>
     </div>
 
@@ -942,7 +945,7 @@
                 <li><a href="#" onclick="openStorePortal()">7Leo Store</a></li>
                 <li><a href="#" onclick="openBgmPortal()">7Leo BGM</a></li>
                 <li><a href="#" onclick="openModal('about-modal')">About</a></li>
-                <li><a href="#" onclick="openModal('founder-modal')">Meet The founder</a></li>
+                <li><a href="#" onclick="openModal('founder-modal')">Meet The Founder</a></li>
                 <li><a href="#" onclick="openModal('admin-modal')">Super Admin</a></li>
                 <li><a href="#" onclick="openModal('contact-modal')">Contact</a></li>
                 <li><a href="#" onclick="openModal('signup-modal')">Signup</a></li>
@@ -962,7 +965,7 @@
                 <!-- Store Box -->
                 <div class="card-box">
                     <img src="file_00000000f2948207a9d90f38705cd83d.png" alt="7Leo Store Logo" class="card-logo">
-                    <h4 class="card-title artistic-font">Build to buy</h4>
+                    <h4 class="card-title artistic-font">Build to Buy</h4>
                     <button class="action-btn" onclick="openStorePortal()">Explore 7Leo Store</button>
                 </div>
 
@@ -978,64 +981,65 @@
 
     <!-- 7LEO BGM PORTAL EXPERIENCE -->
     <div class="bgm-portal-overlay" id="bgm-portal">
-        <!-- Banner Rule: Banner-bg.png at top, clean, nothing placed over it -->
+        <!-- Banner Rule: file_00000000776081fa8dbc514074356775.png or Banner-bg.png at top, clean, nothing placed over it -->
         <div class="bgm-banner-container">
-            <img src="Banner-bg.png" alt="7Leo BGM Banner" class="bgm-banner-img">
+            <img src="file_00000000776081fa8dbc514074356775.png" alt="7Leo BGM Banner" class="bgm-banner-img">
         </div>
 
         <div class="bgm-body-container">
             <!-- BGM Introduction Content -->
             <div class="bgm-intro-box">
-                <h2>🎵 Welcome to 7leo BGM! 🎵</h2>
-                <p>🎵 Mobile.Composed Groovepad Music<br>Drive • Chill • Gangster • DJ • Cinematic 🎧<br>where every track sets the perfect vibe.</p>
-                <p style="margin-top: 15px;">Handcrafted instrumental background music to fuel your focus, ease your mind, and elevate your moments. 🦁🔥</p>
-                <p style="margin-top: 15px; color: var(--gold);">🎬 New BGM drops regularly — Subscribe & never miss a track!</p>
+                <h2>Welcome to 7Leo BGM</h2>
+                <p>Mobile Composed Groovepad Music<br>Drive, Chill, Gangster, DJ, Cinematic<br>Where every track sets the perfect vibe.</p>
+                <p style="margin-top: 15px;">Handcrafted instrumental background music to fuel your focus, ease your mind, and elevate your moments.</p>
+                <p style="margin-top: 15px; color: var(--gold);">New BGM drops regularly. Subscribe and never miss a track.</p>
             </div>
 
             <!-- Series Section & Filtering -->
             <div class="bgm-series-section">
-                <h3>📌 Explore by Series</h3>
+                <h3>Explore by Series</h3>
                 <div class="bgm-series-filters" id="bgm-series-filters">
                     <button class="bgm-filter-btn active" onclick="filterBgmSeries('All', this)">All</button>
-                    <button class="bgm-filter-btn" onclick="filterBgmSeries('7Leo Drive Series', this)">🚗 7Leo Drive Series</button>
-                    <button class="bgm-filter-btn" onclick="filterBgmSeries('7Leo Chill Series', this)">😌 7Leo Chill Series</button>
-                    <button class="bgm-filter-btn" onclick="filterBgmSeries('7Leo Gangster Series', this)">😈 7Leo Gangster Series</button>
-                    <button class="bgm-filter-btn" onclick="filterBgmSeries('7Leo DJ Series', this)">🎧 7Leo DJ Series</button>
-                    <button class="bgm-filter-btn" onclick="filterBgmSeries('7Leo Cinematic Series', this)">🎬 7Leo Cinematic Series</button>
-                    <button class="bgm-filter-btn" onclick="filterBgmSeries('7Leo Songs Series', this)">🌟 7Leo Songs Series</button>
+                    <button class="bgm-filter-btn" onclick="filterBgmSeries('7Leo Drive Series', this)">7Leo Drive Series</button>
+                    <button class="bgm-filter-btn" onclick="filterBgmSeries('7Leo Chill Series', this)">7Leo Chill Series</button>
+                    <button class="bgm-filter-btn" onclick="filterBgmSeries('7Leo Gangster Series', this)">7Leo Gangster Series</button>
+                    <button class="bgm-filter-btn" onclick="filterBgmSeries('7Leo DJ Series', this)">7Leo DJ Series</button>
+                    <button class="bgm-filter-btn" onclick="filterBgmSeries('7Leo Cinematic Series', this)">7Leo Cinematic Series</button>
+                    <button class="bgm-filter-btn" onclick="filterBgmSeries('7Leo Songs Series', this)">7Leo Songs Series</button>
                 </div>
             </div>
 
-            <!-- Real BGM Playlist Container -->
+            <!-- Real BGM Playlist Container (Operable & Active with Selling Drafts) -->
             <div class="bgm-playlist-container" id="bgm-playlist-items">
                 <!-- Populated dynamically via JS -->
             </div>
 
             <!-- YouTube & Instagram CTA Section -->
             <div class="bgm-social-section">
-                <h3>🎶 Follow & Stream</h3>
+                <h3>Follow and Stream</h3>
                 <p style="color: var(--text-muted);">Official YouTube: <a href="https://www.youtube.com/@7LeoBGM" target="_blank" style="color: var(--gold);">https://www.youtube.com/@7LeoBGM</a></p>
-                <a href="https://www.youtube.com/@7LeoBGM" target="_blank" class="action-btn">🎵 VISIT 7LEO BGM ON YOUTUBE</a>
+                <a href="https://www.youtube.com/@7LeoBGM" target="_blank" class="action-btn">VISIT 7LEO BGM ON YOUTUBE</a>
                 <p style="color: var(--text-muted); margin-top: 10px;">Discover new uploads, listen to latest soundscapes, and subscribe to 7Leo BGM.</p>
                 
                 <div style="margin-top: 15px;">
-                    <a href="https://www.instagram.com/7leo_bgm?igsh=OWxmeHRubTN5ZmJn" target="_blank" class="action-btn">📸 Follow 7Leo BGM on Instagram</a>
+                    <a href="https://www.instagram.com/7leo_bgm?igsh=OWxmeHRubTN5ZmJn" target="_blank" class="action-btn">Follow 7Leo BGM on Instagram</a>
                 </div>
             </div>
 
             <!-- Music Licensing / Sales Section -->
             <div class="bgm-licensing-section">
-                <h3>🎬 License 7Leo BGM</h3>
+                <h3>License 7Leo BGM</h3>
                 <p>7Leo BGM offers original instrumental music suitable for Advertisements, Promotions, Trailers, Movies, Short films, Reels, Social media content, Brand videos, Promotional campaigns, Cinematic projects, and Creative productions.</p>
                 <p>Our compositions are crafted by 7Leo BGM and are available for licensing and commercial use subject to applicable license terms and permissions.</p>
+                <p style="color: var(--gold);">For music licensing contact 7leogroup@gmail.com</p>
                 <div style="margin-top: 10px;">
-                    <a href="mailto:7leogroup@gmail.com?subject=Commercial%20Music%20Licensing%20Inquiry%20-%207Leo%20BGM" class="action-btn">📧 Contact 7Leo Group for Music Licensing</a>
+                    <a href="mailto:7leogroup@gmail.com?subject=Commercial%20Music%20Licensing%20Inquiry%20-%207Leo%20BGM" class="action-btn">Contact 7Leo Group for Music Licensing</a>
                 </div>
             </div>
 
             <!-- Footer Copyright -->
             <div class="bgm-footer-copyright">
-                © 2026 7Leo BGM / 7Leo Group. All Rights Reserved.
+                (c) 2026 7Leo BGM / 7Leo Group. All Rights Reserved.
             </div>
         </div>
 
@@ -1070,6 +1074,7 @@
                             <option value="Apparel">Apparel</option>
                             <option value="Accessories">Accessories</option>
                             <option value="Electronics">Electronics</option>
+                            <option value="Music Tracks">Music Tracks</option>
                         </select>
                         <select id="store-sort" class="store-filter-select" onchange="filterStoreProducts()">
                             <option value="newest">Newest First</option>
@@ -1105,6 +1110,7 @@
                                 <option value="Apparel">Apparel</option>
                                 <option value="Accessories">Accessories</option>
                                 <option value="Electronics">Electronics</option>
+                                <option value="Music Tracks">Music Tracks</option>
                             </select>
                         </div>
                         <div class="form-group">
@@ -1114,21 +1120,21 @@
                     </div>
                     <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px;">
                         <div class="form-group">
-                            <label>Supplier Cost (₹)</label>
+                            <label>Supplier Cost (INR)</label>
                             <input type="number" id="prod-cost" step="0.01" required placeholder="500" oninput="calculateRealtimeProfit()">
                         </div>
                         <div class="form-group">
-                            <label>Selling Price (₹)</label>
+                            <label>Selling Price (INR)</label>
                             <input type="number" id="prod-price" step="0.01" required placeholder="799" oninput="calculateRealtimeProfit()">
                         </div>
                         <div class="form-group">
-                            <label>Estimated Fees (₹)</label>
+                            <label>Estimated Fees (INR)</label>
                             <input type="number" id="prod-fees" step="0.01" value="50" required placeholder="50" oninput="calculateRealtimeProfit()">
                         </div>
                     </div>
                     <div style="background: rgba(26, 26, 26, 0.85); padding: 15px; border-radius: 6px; margin-bottom: 20px; border: 1px solid var(--gold);">
                         <p style="color: var(--gold); font-weight: 600;">Automatic Profit Calculation Preview:</p>
-                        <p id="live-profit-calc-text" style="color: var(--text-light); margin-top: 5px;">Estimated Profit: ₹0.00 (Margin: 0%)</p>
+                        <p id="live-profit-calc-text" style="color: var(--text-light); margin-top: 5px;">Estimated Profit: INR 0.00 (Margin: 0%)</p>
                     </div>
 
                     <div class="form-group">
@@ -1162,7 +1168,7 @@
                     <p style="color: var(--text-muted); text-align: center; padding: 40px;">Your cart is empty.</p>
                 </div>
                 <div id="cart-summary-footer" style="display: none; margin-top: 20px; text-align: right;">
-                    <h3 style="color: var(--gold); margin-bottom: 15px;" id="cart-total-display">Total: ₹0.00</h3>
+                    <h3 style="color: var(--gold); margin-bottom: 15px;" id="cart-total-display">Total: INR 0.00</h3>
                     <button class="submit-btn" style="max-width: 250px;" onclick="proceedToCheckout()">Proceed to Checkout</button>
                 </div>
             </div>
@@ -1223,11 +1229,11 @@
                     </div>
                     <div class="metric-card">
                         <span class="metric-title">Total Sales</span>
-                        <span class="metric-value" id="metric-sales">₹0.00</span>
+                        <span class="metric-value" id="metric-sales">INR 0.00</span>
                     </div>
                     <div class="metric-card">
                         <span class="metric-title">Estimated Profit</span>
-                        <span class="metric-value" id="metric-profit">₹0.00</span>
+                        <span class="metric-value" id="metric-profit">INR 0.00</span>
                     </div>
                     <div class="metric-card">
                         <span class="metric-title">Pending Fulfillment</span>
@@ -1378,7 +1384,7 @@ Every soundscape represents another side of the 7Leo Group vision — creative f
     <div class="modal-overlay" id="founder-modal">
         <div class="modal-content" style="max-width: 700px;">
             <button class="close-modal" onclick="closeModal('founder-modal')">&times;</button>
-            <h3 class="modal-title">Meet The founder</h3>
+            <h3 class="modal-title">Meet The Founder</h3>
             <div style="max-height: 70vh; overflow-y: auto; padding-right: 10px; color: var(--text-muted); line-height: 1.6; display: flex; flex-direction: column; gap: 20px; text-align: left;">
                 
                 <div style="text-align: center;">
@@ -1532,7 +1538,7 @@ VISION. POWER. LEGACY.</p>
             }
         }
 
-        // --- 7LEO BGM SYSTEM LOGIC (LOCAL STORAGE PERSISTENT) ---
+        // --- 7LEO BGM SYSTEM LOGIC (LOCAL STORAGE PERSISTENT & GROOVEPAD SELLING DRAFTS) ---
         let bgmTracks = JSON.parse(localStorage.getItem('7leo_bgm_tracks'));
         if(!bgmTracks) {
             bgmTracks = [
@@ -1543,7 +1549,9 @@ VISION. POWER. LEGACY.</p>
                     duration: '03:45',
                     description: 'High energy night driving instrumental soundscape crafted with groovepad beats.',
                     releaseDate: '2026-01-15',
-                    audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3'
+                    audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3',
+                    price: 499,
+                    forSale: true
                 },
                 {
                     id: 'bgm_2',
@@ -1552,7 +1560,9 @@ VISION. POWER. LEGACY.</p>
                     duration: '04:12',
                     description: 'Relaxing ambient vibe designed for focus, deep thinking, and late-night relaxation.',
                     releaseDate: '2026-02-01',
-                    audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3'
+                    audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3',
+                    price: 499,
+                    forSale: true
                 },
                 {
                     id: 'bgm_3',
@@ -1561,7 +1571,9 @@ VISION. POWER. LEGACY.</p>
                     duration: '03:30',
                     description: 'Heavy basslines and bold rhythm patterns built for powerful cinematic moments.',
                     releaseDate: '2026-02-10',
-                    audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3'
+                    audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3',
+                    price: 599,
+                    forSale: true
                 },
                 {
                     id: 'bgm_4',
@@ -1570,7 +1582,9 @@ VISION. POWER. LEGACY.</p>
                     duration: '05:00',
                     description: 'Upbeat electronic dance mix engineered for energetic club performances and reels.',
                     releaseDate: '2026-02-18',
-                    audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3'
+                    audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3',
+                    price: 599,
+                    forSale: true
                 },
                 {
                     id: 'bgm_5',
@@ -1579,7 +1593,9 @@ VISION. POWER. LEGACY.</p>
                     duration: '04:45',
                     description: 'Orchestral cinematic atmosphere suited for trailers, films, and grand promotional reels.',
                     releaseDate: '2026-03-01',
-                    audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3'
+                    audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3',
+                    price: 799,
+                    forSale: true
                 },
                 {
                     id: 'bgm_6',
@@ -1588,7 +1604,9 @@ VISION. POWER. LEGACY.</p>
                     duration: '03:55',
                     description: 'The defining vocal and instrumental track carrying the vision power legacy.',
                     releaseDate: '2026-03-10',
-                    audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3'
+                    audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3',
+                    price: 699,
+                    forSale: true
                 }
             ];
             localStorage.setItem('7leo_bgm_tracks', JSON.stringify(bgmTracks));
@@ -1625,18 +1643,39 @@ VISION. POWER. LEGACY.</p>
                     <div class="bgm-track-card">
                         <div class="bgm-track-info">
                             <span class="bgm-track-title">${track.title}</span>
-                            <span class="bgm-track-meta">${track.series} &bull; ${track.duration} &bull; Released: ${track.releaseDate}</span>
+                            <span class="bgm-track-meta">${track.series} &bull; ${track.duration} &bull; Released: ${track.releaseDate} &bull; Price: INR ${track.price || 499}</span>
                             <p class="bgm-track-desc">${track.description}</p>
                         </div>
-                        <div style="min-width: 260px;">
+                        <div style="min-width: 260px; display: flex; flex-direction: column; gap: 10px;">
                             <audio controls preload="none" style="width: 100%;">
                                 <source src="${track.audioUrl}" type="audio/mpeg">
                                 Your browser does not support the audio element.
                             </audio>
+                            <button class="action-btn" style="padding: 8px 12px; font-size: 0.85rem;" onclick="addMusicTrackToStoreCart('${track.id}')">Buy / License Track (Draft)</button>
                         </div>
                     </div>
                 `;
             });
+        }
+
+        function addMusicTrackToStoreCart(trackId) {
+            const track = bgmTracks.find(t => t.id === trackId);
+            if(!track) return;
+            let cart = JSON.parse(localStorage.getItem('7leo_cart')) || [];
+            const existing = cart.find(item => item.id === track.id);
+            if(existing) {
+                existing.qty += 1;
+            } else {
+                cart.push({
+                    id: track.id,
+                    name: `Music Track: ${track.title} (${track.series})`,
+                    price: track.price || 499,
+                    qty: 1
+                });
+            }
+            localStorage.setItem('7leo_cart', JSON.stringify(cart));
+            updateCartCount();
+            alert('Music track selling draft added to cart successfully!');
         }
 
 
@@ -1736,7 +1775,7 @@ VISION. POWER. LEGACY.</p>
                         </div>
                         <div class="product-card-info">
                             <h4 class="product-card-title">${p.name}</h4>
-                            <div class="product-card-price">₹${p.price.toFixed(2)}</div>
+                            <div class="product-card-price">INR ${p.price.toFixed(2)}</div>
                             <p class="product-card-desc">${p.description}</p>
                             <div class="product-card-actions">
                                 <button class="action-btn" style="flex:1; padding:8px;" onclick="openProductDetail('${p.id}')">View</button>
@@ -1756,7 +1795,7 @@ VISION. POWER. LEGACY.</p>
             document.getElementById('product-management-form').reset();
             currentUploadedImages = ['logo.png'];
             renderImagePreviews();
-            document.getElementById('live-profit-calc-text').innerText = 'Estimated Profit: ₹0.00 (Margin: 0%)';
+            document.getElementById('live-profit-calc-text').innerText = 'Estimated Profit: INR 0.00 (Margin: 0%)';
             switchStoreTab('product-form');
         }
 
@@ -1796,7 +1835,7 @@ VISION. POWER. LEGACY.</p>
             const fees = parseFloat(document.getElementById('prod-fees').value) || 0;
             const profit = price - cost - fees;
             const margin = price > 0 ? ((profit / price) * 100).toFixed(1) : 0;
-            document.getElementById('live-profit-calc-text').innerText = `Estimated Profit: ₹${profit.toFixed(2)} (Margin: ${margin}%)`;
+            document.getElementById('live-profit-calc-text').innerText = `Estimated Profit: INR ${profit.toFixed(2)} (Margin: ${margin}%)`;
         }
 
         function handleSaveProduct(event) {
@@ -1833,7 +1872,7 @@ VISION. POWER. LEGACY.</p>
                     <div><img src="${img}" style="width:100%; border-radius:8px; object-fit:cover; height:250px;"></div>
                     <div>
                         <h3 style="color:var(--gold); margin-bottom:10px;">${p.name}</h3>
-                        <p style="font-size:1.3rem; color:var(--text-light); margin-bottom:15px; font-weight:700;">₹${p.price.toFixed(2)}</p>
+                        <p style="font-size:1.3rem; color:var(--text-light); margin-bottom:15px; font-weight:700;">INR ${p.price.toFixed(2)}</p>
                         <p style="color:var(--text-muted); font-size:0.9rem; margin-bottom:20px;">${p.description}</p>
                         <button class="submit-btn" onclick="addToCart('${p.id}'); closeModal('product-detail-modal');">Add to Cart</button>
                     </div>
@@ -1877,13 +1916,13 @@ VISION. POWER. LEGACY.</p>
                     <div style="display:flex; justify-content:space-between; align-items:center; background:#141414; padding:15px; margin-bottom:10px; border-radius:6px; border:1px solid #333;">
                         <div>
                             <h4 style="color:var(--text-light);">${item.name}</h4>
-                            <p style="color:var(--text-muted); font-size:0.85rem;">₹${item.price.toFixed(2)} x ${item.qty}</p>
+                            <p style="color:var(--text-muted); font-size:0.85rem;">INR ${item.price.toFixed(2)} x ${item.qty}</p>
                         </div>
                         <button class="action-btn" style="border-color:#ff5555; color:#ff5555; padding:5px 10px;" onclick="removeFromCart(${index})">Remove</button>
                     </div>
                 `;
             });
-            document.getElementById('cart-total-display').innerText = `Total: ₹${total.toFixed(2)}`;
+            document.getElementById('cart-total-display').innerText = `Total: INR ${total.toFixed(2)}`;
             footer.style.display = 'block';
         }
 
@@ -1906,76 +1945,88 @@ VISION. POWER. LEGACY.</p>
             const address = document.getElementById('cust-address').value;
 
             cart.forEach(item => {
-                const profit = item.price - item.cost - item.fees;
+                const profit = item.price - (item.cost || 100) - (item.fees || 20);
                 const newOrder = {
                     id: '7LEO-' + Math.floor(1000 + Math.random() * 9000),
                     customerName: name,
                     customerEmail: email,
                     productName: item.name,
                     sellingPrice: item.price,
-                    cost: item.cost,
-                    fees: item.fees,
-                    profit: profit,
-                    status: 'Order Received — Fulfillment Pending',
-                    trackingNumber: 'TRK-' + Math.random().toString(36).substring(2, 10).toUpperCase(),
-                    carrier: 'Global Supplier Fulfillment Network'
+                    estProfit: profit > 0 ? profit : item.price * 0.5,
+                    status: 'Pending Fulfillment'
                 };
                 orders.push(newOrder);
             });
 
-            saveStoreData();
-            alert('Test prototype order placed successfully! Order saved to local storage for fulfillment tracking.');
             cart = [];
+            saveStoreData();
             updateCartCount();
-            switchStoreTab('catalog');
-            renderAdminDashboard();
+            alert('Test prototype order placed successfully!');
+            switchStoreTab('tracking');
         }
 
         function trackOrderQuery() {
-            const query = document.getElementById('tracking-search-input').value.trim();
-            const resBox = document.getElementById('tracking-result-box');
-            const found = orders.find(o => o.id === query || o.trackingNumber === query);
-            resBox.style.display = 'block';
+            const queryId = document.getElementById('tracking-search-input').value.trim();
+            const box = document.getElementById('tracking-result-box');
+            const found = orders.find(o => o.id.toLowerCase() === queryId.toLowerCase());
+            box.style.display = 'block';
             if(!found) {
-                resBox.innerHTML = '<p style="color:#ff5555;">Order not found or tracking information is not available yet.</p>';
+                box.innerHTML = '<p style="color: #ff5555;">Order not found. Please check your Order ID.</p>';
                 return;
             }
-            resBox.innerHTML = `
-                <h4 style="color:var(--gold); margin-bottom:10px;">Order Status: ${found.id}</h4>
+            box.innerHTML = `
+                <h4 style="color:var(--gold); margin-bottom:10px;">Order ID: ${found.id}</h4>
+                <p style="color:var(--text-light); margin-bottom:5px;"><strong>Customer:</strong> ${found.customerName}</p>
                 <p style="color:var(--text-light); margin-bottom:5px;"><strong>Product:</strong> ${found.productName}</p>
-                <p style="color:var(--text-light); margin-bottom:5px;"><strong>Status:</strong> ${found.status}</p>
-                <p style="color:var(--text-light); margin-bottom:5px;"><strong>Fulfillment Partner:</strong> ${found.carrier}</p>
-                <p style="color:var(--text-light); margin-bottom:5px;"><strong>Tracking Number:</strong> ${found.trackingNumber}</p>
+                <p style="color:var(--text-light); margin-bottom:10px;"><strong>Status:</strong> <span style="color:var(--gold);">${found.status}</span></p>
+                <p style="color:var(--text-muted); font-size:0.85rem;">Fulfillment in progress via verified logistics and supplier partner network.</p>
             `;
         }
 
         function renderAdminDashboard() {
-            document.getElementById('metric-orders').innerText = orders.length;
-            const totalSales = orders.reduce((sum, o) => sum + o.sellingPrice, 0);
-            const totalProfit = orders.reduce((sum, o) => sum + o.profit, 0);
-            document.getElementById('metric-sales').innerText = '₹' + totalSales.toFixed(2);
-            document.getElementById('metric-profit').innerText = '₹' + totalProfit.toFixed(2);
-            document.getElementById('metric-pending').innerText = orders.filter(o => o.status.includes('Pending')).length;
+            const totalOrders = orders.length;
+            let totalSales = 0;
+            let totalProfit = 0;
+            let pendingCount = 0;
+
+            orders.forEach(o => {
+                totalSales += o.sellingPrice;
+                totalProfit += o.estProfit;
+                if(o.status === 'Pending Fulfillment') pendingCount++;
+            });
+
+            document.getElementById('metric-orders').innerText = totalOrders;
+            document.getElementById('metric-sales').innerText = `INR ${totalSales.toFixed(2)}`;
+            document.getElementById('metric-profit').innerText = `INR ${totalProfit.toFixed(2)}`;
+            document.getElementById('metric-pending').innerText = pendingCount;
 
             const tbody = document.getElementById('admin-orders-tbody');
             tbody.innerHTML = '';
             if(orders.length === 0) {
-                tbody.innerHTML = '<tr><td colspan="7" style="text-align:center; color:var(--text-muted); padding:30px;">No orders recorded yet.</td></tr>';
+                tbody.innerHTML = '<tr><td colspan="7" style="text-align:center; color:var(--text-muted);">No orders recorded yet.</td></tr>';
                 return;
             }
-            orders.forEach(o => {
+
+            orders.forEach((o, index) => {
                 tbody.innerHTML += `
                     <tr>
                         <td>${o.id}</td>
                         <td>${o.customerName}</td>
                         <td>${o.productName}</td>
-                        <td>₹${o.sellingPrice.toFixed(2)}</td>
-                        <td style="color:var(--gold);">₹${o.profit.toFixed(2)}</td>
+                        <td>INR ${o.sellingPrice.toFixed(2)}</td>
+                        <td style="color:var(--gold);">INR ${o.estProfit.toFixed(2)}</td>
                         <td>${o.status}</td>
-                        <td><button class="action-btn" style="padding:5px 10px;" onclick="alert('Fulfillment status logged.')">Sync Supplier</button></td>
+                        <td><button class="action-btn" style="padding:5px 10px; font-size:0.8rem;" onclick="fulfillOrder(${index})">Fulfill / Dispatch</button></td>
                     </tr>
                 `;
             });
+        }
+
+        function fulfillOrder(index) {
+            orders[index].status = 'Fulfilled & Shipped';
+            saveStoreData();
+            renderAdminDashboard();
+            alert(`Order ${orders[index].id} marked as fulfilled and dispatched!`);
         }
     </script>
 </body>
