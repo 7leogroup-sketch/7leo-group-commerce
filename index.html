@@ -411,7 +411,10 @@
             left: 0;
             width: 100vw;
             height: 100vh;
-            background: #0f0f0f;
+            background: radial-gradient(circle, rgba(10,10,10,0.85) 0%, rgba(5,5,5,0.95) 100%), url('file_00000000776081fa8dbc514074356775.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
             z-index: 3000;
             display: none;
             flex-direction: column;
@@ -449,6 +452,7 @@
             display: flex;
             gap: 15px;
             align-items: center;
+            flex-wrap: wrap;
         }
 
         .store-nav-btn {
@@ -512,13 +516,14 @@
         }
 
         .product-card {
-            background: #141414;
+            background: rgba(20, 20, 20, 0.85);
             border: 1px solid rgba(212, 175, 55, 0.2);
             border-radius: 10px;
             overflow: hidden;
             display: flex;
             flex-direction: column;
             transition: transform 0.3s, border-color 0.3s;
+            backdrop-filter: blur(5px);
         }
 
         .product-card:hover {
@@ -576,7 +581,6 @@
             padding-top: 15px;
         }
 
-        /* Dashboard & Admin Panels inside Store */
         .admin-dashboard-panel, .cart-panel, .checkout-panel, .tracking-panel, .product-form-panel {
             display: none;
         }
@@ -593,13 +597,14 @@
         }
 
         .metric-card {
-            background: #141414;
+            background: rgba(20, 20, 20, 0.85);
             border: 1px solid #333;
             border-radius: 8px;
             padding: 20px;
             display: flex;
             flex-direction: column;
             gap: 8px;
+            backdrop-filter: blur(5px);
         }
 
         .metric-title {
@@ -617,10 +622,11 @@
         .table-container {
             width: 100%;
             overflow-x: auto;
-            background: #141414;
+            background: rgba(20, 20, 20, 0.85);
             border: 1px solid #333;
             border-radius: 8px;
             margin-top: 20px;
+            backdrop-filter: blur(5px);
         }
 
         table {
@@ -657,7 +663,7 @@
             height: 80px;
             border-radius: 6px;
             border: 1px solid var(--gold);
-            overflow: position;
+            overflow: hidden;
             position: relative;
             background: #222;
         }
@@ -680,6 +686,190 @@
             height: 20px;
             font-size: 10px;
             cursor: pointer;
+        }
+
+        /* 7LEO BGM PORTAL EXPERIENCE */
+        .bgm-portal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: radial-gradient(circle, rgba(10,10,10,0.92) 0%, rgba(5,5,5,0.98) 100%);
+            z-index: 3500;
+            display: none;
+            flex-direction: column;
+            overflow-y: auto;
+        }
+
+        .bgm-portal-overlay.active {
+            display: flex;
+        }
+
+        .bgm-banner-container {
+            width: 100%;
+            background: #000;
+            overflow: hidden;
+        }
+
+        .bgm-banner-img {
+            width: 100%;
+            height: auto;
+            max-height: 450px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .bgm-body-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            width: 100%;
+            padding: 40px 30px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .bgm-intro-box {
+            background: rgba(20, 20, 20, 0.7);
+            border: 1px solid rgba(212, 175, 55, 0.25);
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .bgm-intro-box h2 {
+            font-size: clamp(1.5rem, 3vw, 2.2rem);
+            color: var(--gold-light);
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .bgm-intro-box p {
+            font-size: 1.05rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        .bgm-series-section h3 {
+            color: var(--gold);
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .bgm-series-filters {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .bgm-filter-btn {
+            background: rgba(20, 20, 20, 0.8);
+            border: 1px solid #333;
+            color: var(--text-light);
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .bgm-filter-btn:hover, .bgm-filter-btn.active {
+            background: var(--gold);
+            color: var(--bg-dark);
+            border-color: var(--gold);
+        }
+
+        .bgm-playlist-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .bgm-track-card {
+            background: rgba(20, 20, 20, 0.85);
+            border: 1px solid #333;
+            border-radius: 10px;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            backdrop-filter: blur(5px);
+            transition: border-color 0.3s;
+        }
+
+        .bgm-track-card:hover {
+            border-color: var(--gold);
+        }
+
+        .bgm-track-info {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            flex: 1;
+        }
+
+        .bgm-track-title {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            font-weight: 600;
+        }
+
+        .bgm-track-meta {
+            font-size: 0.85rem;
+            color: var(--gold);
+        }
+
+        .bgm-track-desc {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .bgm-social-section {
+            background: rgba(20, 20, 20, 0.85);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 12px;
+            padding: 35px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            backdrop-filter: blur(5px);
+        }
+
+        .bgm-licensing-section {
+            background: rgba(20, 20, 20, 0.85);
+            border: 1px solid #333;
+            border-radius: 12px;
+            padding: 35px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            backdrop-filter: blur(5px);
+        }
+
+        .bgm-licensing-section h3 {
+            color: var(--gold);
+            font-size: 1.4rem;
+        }
+
+        .bgm-licensing-section p {
+            color: var(--text-muted);
+            line-height: 1.7;
+        }
+
+        .bgm-footer-copyright {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            padding: 20px 0;
+            border-top: 1px solid #222;
         }
 
         @media (max-width: 768px) {
@@ -711,6 +901,11 @@
             .store-controls-bar {
                 flex-direction: column;
                 align-items: stretch;
+            }
+
+            .bgm-track-card {
+                flex-direction: column;
+                align-items: flex-start;
             }
         }
     </style>
@@ -745,7 +940,7 @@
             <ul class="nav-links" id="nav-links">
                 <li><a href="#" onclick="showSection('home')">Home</a></li>
                 <li><a href="#" onclick="openStorePortal()">7Leo Store</a></li>
-                <li><a href="#" onclick="showSection('bgm')">7Leo BGM</a></li>
+                <li><a href="#" onclick="openBgmPortal()">7Leo BGM</a></li>
                 <li><a href="#" onclick="openModal('about-modal')">About</a></li>
                 <li><a href="#" onclick="openModal('founder-modal')">Meet The founder</a></li>
                 <li><a href="#" onclick="openModal('admin-modal')">Super Admin</a></li>
@@ -775,18 +970,83 @@
                 <div class="card-box">
                     <img src="bgm-logo.png" alt="7Leo BGM Logo" class="card-logo">
                     <h4 class="card-title artistic-font">Mobile Composed Groovepad Music</h4>
-                    <a href="#" class="action-btn" onclick="openModal('bgm-modal')">Explore 7Leo BGM</a>
+                    <button class="action-btn" onclick="openBgmPortal()">Explore 7Leo BGM</button>
                 </div>
             </div>
         </section>
     </main>
 
+    <!-- 7LEO BGM PORTAL EXPERIENCE -->
+    <div class="bgm-portal-overlay" id="bgm-portal">
+        <!-- Banner Rule: Banner-bg.png at top, clean, nothing placed over it -->
+        <div class="bgm-banner-container">
+            <img src="Banner-bg.png" alt="7Leo BGM Banner" class="bgm-banner-img">
+        </div>
+
+        <div class="bgm-body-container">
+            <!-- BGM Introduction Content -->
+            <div class="bgm-intro-box">
+                <h2>🎵 Welcome to 7leo BGM! 🎵</h2>
+                <p>🎵 Mobile.Composed Groovepad Music<br>Drive • Chill • Gangster • DJ • Cinematic 🎧<br>where every track sets the perfect vibe.</p>
+                <p style="margin-top: 15px;">Handcrafted instrumental background music to fuel your focus, ease your mind, and elevate your moments. 🦁🔥</p>
+                <p style="margin-top: 15px; color: var(--gold);">🎬 New BGM drops regularly — Subscribe & never miss a track!</p>
+            </div>
+
+            <!-- Series Section & Filtering -->
+            <div class="bgm-series-section">
+                <h3>📌 Explore by Series</h3>
+                <div class="bgm-series-filters" id="bgm-series-filters">
+                    <button class="bgm-filter-btn active" onclick="filterBgmSeries('All', this)">All</button>
+                    <button class="bgm-filter-btn" onclick="filterBgmSeries('7Leo Drive Series', this)">🚗 7Leo Drive Series</button>
+                    <button class="bgm-filter-btn" onclick="filterBgmSeries('7Leo Chill Series', this)">😌 7Leo Chill Series</button>
+                    <button class="bgm-filter-btn" onclick="filterBgmSeries('7Leo Gangster Series', this)">😈 7Leo Gangster Series</button>
+                    <button class="bgm-filter-btn" onclick="filterBgmSeries('7Leo DJ Series', this)">🎧 7Leo DJ Series</button>
+                    <button class="bgm-filter-btn" onclick="filterBgmSeries('7Leo Cinematic Series', this)">🎬 7Leo Cinematic Series</button>
+                    <button class="bgm-filter-btn" onclick="filterBgmSeries('7Leo Songs Series', this)">🌟 7Leo Songs Series</button>
+                </div>
+            </div>
+
+            <!-- Real BGM Playlist Container -->
+            <div class="bgm-playlist-container" id="bgm-playlist-items">
+                <!-- Populated dynamically via JS -->
+            </div>
+
+            <!-- YouTube & Instagram CTA Section -->
+            <div class="bgm-social-section">
+                <h3>🎶 Follow & Stream</h3>
+                <p style="color: var(--text-muted);">Official YouTube: <a href="https://www.youtube.com/@7LeoBGM" target="_blank" style="color: var(--gold);">https://www.youtube.com/@7LeoBGM</a></p>
+                <a href="https://www.youtube.com/@7LeoBGM" target="_blank" class="action-btn">🎵 VISIT 7LEO BGM ON YOUTUBE</a>
+                <p style="color: var(--text-muted); margin-top: 10px;">Discover new uploads, listen to latest soundscapes, and subscribe to 7Leo BGM.</p>
+                
+                <div style="margin-top: 15px;">
+                    <a href="https://www.instagram.com/7leo_bgm?igsh=OWxmeHRubTN5ZmJn" target="_blank" class="action-btn">📸 Follow 7Leo BGM on Instagram</a>
+                </div>
+            </div>
+
+            <!-- Music Licensing / Sales Section -->
+            <div class="bgm-licensing-section">
+                <h3>🎬 License 7Leo BGM</h3>
+                <p>7Leo BGM offers original instrumental music suitable for Advertisements, Promotions, Trailers, Movies, Short films, Reels, Social media content, Brand videos, Promotional campaigns, Cinematic projects, and Creative productions.</p>
+                <p>Our compositions are crafted by 7Leo BGM and are available for licensing and commercial use subject to applicable license terms and permissions.</p>
+                <div style="margin-top: 10px;">
+                    <a href="mailto:7leogroup@gmail.com?subject=Commercial%20Music%20Licensing%20Inquiry%20-%207Leo%20BGM" class="action-btn">📧 Contact 7Leo Group for Music Licensing</a>
+                </div>
+            </div>
+
+            <!-- Footer Copyright -->
+            <div class="bgm-footer-copyright">
+                © 2026 7Leo BGM / 7Leo Group. All Rights Reserved.
+            </div>
+        </div>
+
+        <button class="action-btn" style="position: fixed; top: 20px; right: 20px; z-index: 4000; background: rgba(10,10,10,0.85);" onclick="closeBgmPortal()">Exit BGM Portal</button>
+    </div>
+
     <!-- 7LEO STORE COMPLETE SYSTEM PORTAL -->
     <div class="store-portal-overlay" id="store-portal">
         <div class="store-header">
             <div class="store-nav-brand">
-                <img src="file_00000000f2948207a9d90f38705cd83d.png" style="height:35px;" alt="Store Logo">
-                <h2>7Leo Store (Dropshipping Architecture)</h2>
+                <h2>Welcome to 7Leo Store</h2>
             </div>
             <div class="store-nav-actions">
                 <button class="store-nav-btn" onclick="switchStoreTab('catalog')">Catalog</button>
@@ -866,12 +1126,11 @@
                             <input type="number" id="prod-fees" step="0.01" value="50" required placeholder="50" oninput="calculateRealtimeProfit()">
                         </div>
                     </div>
-                    <div style="background: #1a1a1a; padding: 15px; border-radius: 6px; margin-bottom: 20px; border: 1px solid var(--gold);">
+                    <div style="background: rgba(26, 26, 26, 0.85); padding: 15px; border-radius: 6px; margin-bottom: 20px; border: 1px solid var(--gold);">
                         <p style="color: var(--gold); font-weight: 600;">Automatic Profit Calculation Preview:</p>
                         <p id="live-profit-calc-text" style="color: var(--text-light); margin-top: 5px;">Estimated Profit: ₹0.00 (Margin: 0%)</p>
                     </div>
 
-                    <!-- UPLOAD PRODUCT IMAGES - FULLY FUNCTIONAL -->
                     <div class="form-group">
                         <label>Upload Product Images (Select multiple files)</label>
                         <input type="file" id="prod-image-input" accept="image/*" multiple onchange="handleImageUpload(event)">
@@ -882,7 +1141,7 @@
 
                     <div class="form-group">
                         <label>Supplier Name / Platform</label>
-                        <input type="text" id="prod-supplier" placeholder="e.g., Alibaba / Global Partner">
+                        <input type="text" id="prod-supplier" placeholder="e.g., Global Partner / Supplier">
                     </div>
                     <div class="form-group">
                         <label>Supplier Reference URL</label>
@@ -904,13 +1163,16 @@
                 </div>
                 <div id="cart-summary-footer" style="display: none; margin-top: 20px; text-align: right;">
                     <h3 style="color: var(--gold); margin-bottom: 15px;" id="cart-total-display">Total: ₹0.00</h3>
-                    <button class="submit-btn" style="max-width: 250px;" onclick="proceedToCheckout()">Proceed to Checkout (India-Ready)</button>
+                    <button class="submit-btn" style="max-width: 250px;" onclick="proceedToCheckout()">Proceed to Checkout</button>
                 </div>
             </div>
 
             <!-- CHECKOUT PANEL -->
             <div class="store-tab-content checkout-panel" id="tab-checkout">
-                <h3 class="modal-title">Checkout (Secure India-Ready Payment & Fulfillment)</h3>
+                <h3 class="modal-title">Checkout</h3>
+                <div style="background: rgba(212, 175, 55, 0.1); border: 1px solid var(--gold); padding: 12px 15px; border-radius: 6px; margin-bottom: 20px; text-align: center;">
+                    <p style="color: var(--gold-light); font-size: 0.9rem; font-weight: 500;">Payment Gateway Not Connected / Payment Integration Required</p>
+                </div>
                 <form id="checkout-form" onsubmit="handleCheckoutSubmit(event)" style="max-width: 600px; margin: 0 auto;">
                     <div class="form-group">
                         <label>Full Name</label>
@@ -921,21 +1183,21 @@
                         <input type="email" id="cust-email" required placeholder="Enter email address">
                     </div>
                     <div class="form-group">
-                        <label>Phone Number (India +91)</label>
-                        <input type="tel" id="cust-phone" required placeholder="10-digit mobile number">
+                        <label>Phone Number</label>
+                        <input type="tel" id="cust-phone" required placeholder="Mobile number">
                     </div>
                     <div class="form-group">
-                        <label>Delivery Address (India)</label>
+                        <label>Delivery Address</label>
                         <textarea id="cust-address" rows="3" required placeholder="Street address, City, State, Pincode"></textarea>
                     </div>
                     <div class="form-group">
-                        <label>Payment Method (Integration-Ready)</label>
+                        <label>Payment Method</label>
                         <select id="payment-provider" required>
-                            <option value="razorpay">Razorpay / UPI / Cards (India)</option>
-                            <option value="cod">Cash on Delivery (COD)</option>
+                            <option value="cod">Cash on Delivery (COD) / Manual Checkout</option>
+                            <option value="pending">Payment Integration Pending</option>
                         </select>
                     </div>
-                    <button type="submit" class="submit-btn" style="margin-top: 20px;">Confirm & Place Order</button>
+                    <button type="submit" class="submit-btn" style="margin-top: 20px;">Place Test Prototype Order</button>
                 </form>
             </div>
 
@@ -946,7 +1208,7 @@
                     <input type="text" id="tracking-search-input" class="store-search-input" placeholder="Enter Order ID (e.g., 7LEO-1001)">
                     <button class="submit-btn" style="width: auto;" onclick="trackOrderQuery()">Track</button>
                 </div>
-                <div id="tracking-result-box" style="background: #141414; padding: 25px; border-radius: 8px; border: 1px solid #333; max-width: 600px; margin: 0 auto; display: none;">
+                <div id="tracking-result-box" style="background: rgba(20, 20, 20, 0.85); padding: 25px; border-radius: 8px; border: 1px solid #333; max-width: 600px; margin: 0 auto; display: none; backdrop-filter: blur(5px);">
                     <!-- Tracking details -->
                 </div>
             </div>
@@ -1000,19 +1262,19 @@
                 <div style="max-width: 800px; margin: 0 auto; color: var(--text-muted); line-height: 1.8; display: flex; flex-direction: column; gap: 20px;">
                     <div>
                         <h4 style="color: var(--gold);">Terms & Conditions</h4>
-                        <p>Welcome to 7Leo Store. By placing an order, you agree to our standard dropshipping terms, pricing, and fulfillment timelines.</p>
+                        <p>Welcome to 7Leo Store. As a solo-operated store utilizing dropshipping fulfillment, orders are processed and shipped directly through verified global suppliers and fulfillment partners.</p>
                     </div>
                     <div>
                         <h4 style="color: var(--gold);">Privacy Policy</h4>
-                        <p>We protect customer information with enterprise-grade encryption and strictly never share personal data with unauthorized third parties.</p>
+                        <p>Customer data is handled with strict confidentiality and used solely for order processing and store communication.</p>
                     </div>
                     <div>
-                        <h4 style="color: var(--gold);">Shipping Information</h4>
-                        <p>Physical fulfillment and shipping are handled by our verified global fulfillment partners. Tracking details are provided as soon as dispatched.</p>
+                        <h4 style="color: var(--gold);">Shipping & Fulfillment</h4>
+                        <p>Physical fulfillment, logistics, and delivery are managed by our third-party supplier network. Tracking numbers are provided once dispatch details are confirmed.</p>
                     </div>
                     <div>
                         <h4 style="color: var(--gold);">Returns & Refunds</h4>
-                        <p>Eligible return and refund requests can be initiated within 7 days of delivery, subject to supplier and payment gateway policies.</p>
+                        <p>Return and refund requests are subject to supplier policies and can be initiated within standard support windows upon receipt.</p>
                     </div>
                 </div>
             </div>
@@ -1048,23 +1310,137 @@
 
     <!-- About Modal -->
     <div class="modal-overlay" id="about-modal">
-        <div class="modal-content">
+        <div class="modal-content" style="max-width: 700px;">
             <button class="close-modal" onclick="closeModal('about-modal')">&times;</button>
             <h3 class="modal-title">About 7Leo Group</h3>
-            <p style="color: var(--text-muted); line-height: 1.6; text-align: center;">
-                7Leo Group represents a world-class convergence of vision, power, legacy, commerce, music, and artistic expression. Designed with minimalism and cinematic luxury.
-            </p>
+            <div style="display: flex; flex-direction: column; gap: 30px; text-align: left; max-height: 70vh; overflow-y: auto; padding-right: 10px;">
+                
+                <div style="background: rgba(20, 20, 20, 0.6); border: 1px solid rgba(212, 175, 55, 0.2); border-radius: 10px; padding: 20px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 15px;">
+                    <img src="logo.png" alt="7Leo Group Logo" style="height: 50px; width: auto;">
+                    <h4 style="color: var(--gold); font-size: 1.2rem;">ABOUT 7LEO GROUP</h4>
+                    <p style="color: var(--text-muted); line-height: 1.6; white-space: pre-line; font-size: 0.95rem;">7Leo Group is an independent digital vision built from Karnataka, bringing together creativity, commerce, music, technology, and a growing collection of digital experiences under one identity.
+
+7Leo Group began from zero with a simple idea — to build something meaningful with the resources available.
+
+What started with a mobile phone, Wi-Fi, determination, and a dream is becoming a platform designed to grow across different creative and business directions.
+
+7Leo Group is home to experiences such as 7Leo Store and 7Leo BGM, with more ideas and projects planned for the future.
+
+But 7Leo Group is bigger than any single project.
+
+It represents the journey of starting from nothing, learning along the way, facing challenges, and continuing forward without giving up.
+
+VISION — See beyond today.
+POWER — Keep moving through challenges.
+LEGACY — Build something that can live beyond the beginning.
+
+7Leo Group is not just a website.
+
+It is a journey from ZERO toward something greater.
+
+The journey has only begun.
+
+7LEO GROUP
+VISION. POWER. LEGACY.</p>
+                </div>
+
+                <div style="background: rgba(20, 20, 20, 0.6); border: 1px solid rgba(212, 175, 55, 0.2); border-radius: 10px; padding: 20px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 15px;">
+                    <img src="file_00000000f2948207a9d90f38705cd83d.png" alt="7Leo Store Logo" style="height: 50px; width: auto; object-fit: contain;">
+                    <h4 style="color: var(--gold); font-size: 1.2rem;">ABOUT 7LEO STORE</h4>
+                    <p style="color: var(--text-muted); line-height: 1.6; white-space: pre-line; font-size: 0.95rem;">7Leo Store is the official commerce experience of 7Leo Group, created to bring together premium lifestyle products, fashion, accessories, and selected everyday essentials.
+
+Our vision is simple — Build to Buy.
+
+7Leo Store is designed around a modern, premium shopping experience with carefully presented products, order handling, fulfillment support, order tracking, and a smooth customer journey.
+
+Through our supplier and fulfillment network, products can be sourced and delivered while maintaining the 7Leo Group vision of quality, style, innovation, and legacy.
+
+7Leo Store — Build to Buy.</p>
+                </div>
+
+                <div style="background: rgba(20, 20, 20, 0.6); border: 1px solid rgba(212, 175, 55, 0.2); border-radius: 10px; padding: 20px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 15px;">
+                    <img src="bgm-logo.png" alt="7Leo BGM Logo" style="height: 50px; width: auto; object-fit: contain;">
+                    <h4 style="color: var(--gold); font-size: 1.2rem;">ABOUT 7LEO BGM</h4>
+                    <p style="color: var(--text-muted); line-height: 1.6; white-space: pre-line; font-size: 0.95rem;">7Leo BGM is the music experience of 7Leo Group, created for original mobile-composed music and creative soundscapes.
+
+Built around mobile music creation and Groovepad-inspired composition, 7Leo BGM explores rhythm, atmosphere, energy, and creativity through original musical ideas.
+
+Every soundscape represents another side of the 7Leo Group vision — creative freedom, experimentation, and artistic expression.
+
+7Leo BGM — Feel the Sound. Create the Legacy.</p>
+                </div>
+
+            </div>
         </div>
     </div>
 
     <!-- Founder Modal -->
     <div class="modal-overlay" id="founder-modal">
-        <div class="modal-content">
+        <div class="modal-content" style="max-width: 700px;">
             <button class="close-modal" onclick="closeModal('founder-modal')">&times;</button>
             <h3 class="modal-title">Meet The founder</h3>
-            <p style="color: var(--text-muted); line-height: 1.6; text-align: center;">
-                The visionary leader behind 7Leo Group driving innovation across commerce, music, and luxury digital experiences.
-            </p>
+            <div style="max-height: 70vh; overflow-y: auto; padding-right: 10px; color: var(--text-muted); line-height: 1.6; display: flex; flex-direction: column; gap: 20px; text-align: left;">
+                
+                <div style="text-align: center;">
+                    <img src="founder.jpg" alt="Abubakker Bellary" style="width: 140px; height: 140px; border-radius: 50%; object-fit: cover; border: 2px solid var(--gold); margin: 0 auto 15px auto; box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);">
+                    <h4 style="color: var(--gold-light); font-size: 1.3rem; font-weight: 600;">ABUBAKKER BELLARY</h4>
+                    <p style="color: var(--gold); font-size: 0.95rem; font-weight: 500; margin-top: 5px;">Founder — 7Leo Group</p>
+                    <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 3px;">From Karnataka<br>Hospet – 583201<br>Vijayanagara Zilla</p>
+                </div>
+
+                <hr style="border: 0; border-top: 1px solid rgba(212, 175, 55, 0.2);">
+
+                <div>
+                    <h4 style="color: var(--gold); font-size: 1.1rem; margin-bottom: 10px;">Founder Story</h4>
+                    <p style="white-space: pre-line; font-size: 0.95rem;">7Leo Group was not built from a perfect beginning.
+It was built from a dream.
+
+With no financial support, no business team, no friends beside me, and no laptop — I started with only a mobile phone, Wi-Fi, and the determination to create something of my own.
+
+The journey was not easy.
+There were difficulties, limitations, doubts, and moments when giving up would have been the easier choice.
+
+But I kept going.
+
+Every step was taken from zero.
+Every idea was built with patience.
+Every challenge became another reason to learn, improve, and continue.
+
+7Leo Group represents that journey — from starting with almost nothing to building a vision for something greater.
+
+This is not a story of having everything.
+It is a story of starting with what you have.
+
+Sometimes you have to walk alone before others understand where you are going.
+
+I may have started alone, but I believe a strong vision can become bigger than the person who started it.
+
+7Leo Group is my journey of Vision, Power, and Legacy.
+
+The journey has only begun.
+
+— ABUBAKKER BELLARY
+Founder, 7Leo Group</p>
+                </div>
+
+                <hr style="border: 0; border-top: 1px solid rgba(212, 175, 55, 0.2);">
+
+                <div>
+                    <h4 style="color: var(--gold); font-size: 1.1rem; margin-bottom: 10px;">Founder Bio</h4>
+                    <p style="white-space: pre-line; font-size: 0.95rem;">ABUBAKKER BELLARY is the Founder of 7Leo Group, an independent vision built from Karnataka.
+
+Starting with only a mobile phone, Wi-Fi, determination, and a dream — without a laptop, financial backing, or a team — he began building 7Leo Group from zero.
+
+His journey represents perseverance, self-belief, creativity, and the courage to keep moving forward even when the path has to be walked alone.
+
+For him, 7Leo Group is more than a website or a business.
+
+It is proof that a small beginning can carry a big vision.
+
+VISION. POWER. LEGACY.</p>
+                </div>
+
+            </div>
         </div>
     </div>
 
@@ -1107,17 +1483,6 @@
         </div>
     </div>
 
-    <!-- BGM Modal -->
-    <div class="modal-overlay" id="bgm-modal">
-        <div class="modal-content">
-            <button class="close-modal" onclick="closeModal('bgm-modal')">&times;</button>
-            <h3 class="modal-title">7Leo BGM</h3>
-            <p style="color: var(--text-muted); text-align: center; line-height: 1.6;">
-                Mobile Composed Groovepad Music. Immerse in the world-class soundscapes of 7Leo Group.
-            </p>
-        </div>
-    </div>
-
     <!-- Product Details Modal for Store -->
     <div class="modal-overlay" id="product-detail-modal">
         <div class="modal-content" style="max-width: 700px;">
@@ -1137,6 +1502,7 @@
             }, 3000);
             renderStoreCatalog();
             updateCartCount();
+            renderBgmPlaylist('All');
         });
 
         // Mobile Menu Toggle
@@ -1160,58 +1526,162 @@
         function showSection(section) {
             navLinks.classList.remove('active');
             if(section === 'bgm') {
-                openModal('bgm-modal');
+                openBgmPortal();
             } else {
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             }
         }
 
-        // --- 7LEO STORE SYSTEM LOGIC ---
-        let storeProducts = [
-            {
-                id: 'prod_1',
-                name: '7Leo Signature Luxury Hoodie',
-                description: 'Premium heavyweight cotton hoodie designed with cinematic luxury aesthetics.',
-                category: 'Apparel',
-                sku: '7LEO-HD-01',
-                cost: 800,
-                price: 1499,
-                fees: 70,
-                supplier: 'Global Apparel Partner',
-                supplierUrl: 'https://alibaba.com/item/sample1',
-                images: ['file_00000000f2948207a9d90f38705cd83d.png']
-            },
-            {
-                id: 'prod_2',
-                name: '7Leo Groovepad Audio Earbuds',
-                description: 'High-fidelity wireless sound engineered for mobile music composition.',
-                category: 'Electronics',
-                sku: '7LEO-EB-02',
-                cost: 1200,
-                price: 2499,
-                fees: 100,
-                supplier: 'TechDirect Fulfillment',
-                supplierUrl: 'https://alibaba.com/item/sample2',
-                images: ['bgm-logo.png']
-            }
-        ];
+        // --- 7LEO BGM SYSTEM LOGIC (LOCAL STORAGE PERSISTENT) ---
+        let bgmTracks = JSON.parse(localStorage.getItem('7leo_bgm_tracks'));
+        if(!bgmTracks) {
+            bgmTracks = [
+                {
+                    id: 'bgm_1',
+                    title: 'Night Speed Drive',
+                    series: '7Leo Drive Series',
+                    duration: '03:45',
+                    description: 'High energy night driving instrumental soundscape crafted with groovepad beats.',
+                    releaseDate: '2026-01-15',
+                    audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3'
+                },
+                {
+                    id: 'bgm_2',
+                    title: 'Midnight Chill Lounge',
+                    series: '7Leo Chill Series',
+                    duration: '04:12',
+                    description: 'Relaxing ambient vibe designed for focus, deep thinking, and late-night relaxation.',
+                    releaseDate: '2026-02-01',
+                    audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3'
+                },
+                {
+                    id: 'bgm_3',
+                    title: 'Street Energy Anthem',
+                    series: '7Leo Gangster Series',
+                    duration: '03:30',
+                    description: 'Heavy basslines and bold rhythm patterns built for powerful cinematic moments.',
+                    releaseDate: '2026-02-10',
+                    audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3'
+                },
+                {
+                    id: 'bgm_4',
+                    title: 'Club Groove Master',
+                    series: '7Leo DJ Series',
+                    duration: '05:00',
+                    description: 'Upbeat electronic dance mix engineered for energetic club performances and reels.',
+                    releaseDate: '2026-02-18',
+                    audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3'
+                },
+                {
+                    id: 'bgm_5',
+                    title: 'Epic Cinematic Journey',
+                    series: '7Leo Cinematic Series',
+                    duration: '04:45',
+                    description: 'Orchestral cinematic atmosphere suited for trailers, films, and grand promotional reels.',
+                    releaseDate: '2026-03-01',
+                    audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3'
+                },
+                {
+                    id: 'bgm_6',
+                    title: 'Signature 7Leo Anthem',
+                    series: '7Leo Songs Series',
+                    duration: '03:55',
+                    description: 'The defining vocal and instrumental track carrying the vision power legacy.',
+                    releaseDate: '2026-03-10',
+                    audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3'
+                }
+            ];
+            localStorage.setItem('7leo_bgm_tracks', JSON.stringify(bgmTracks));
+        }
 
-        let cart = [];
-        let orders = [
-            {
-                id: '7LEO-1001',
-                customerName: 'Rahul Sharma',
-                customerEmail: 'rahul@example.com',
-                productName: '7Leo Signature Luxury Hoodie',
-                sellingPrice: 1499,
-                cost: 800,
-                fees: 70,
-                profit: 629,
-                status: 'Processing',
-                trackingNumber: 'TRK-983274ON',
-                carrier: 'FedEx India'
+        function openBgmPortal() {
+            document.getElementById('bgm-portal').classList.add('active');
+            navLinks.classList.remove('active');
+            renderBgmPlaylist('All');
+        }
+
+        function closeBgmPortal() {
+            document.getElementById('bgm-portal').classList.remove('active');
+        }
+
+        function filterBgmSeries(seriesName, btnElement) {
+            document.querySelectorAll('.bgm-filter-btn').forEach(btn => btn.classList.remove('active'));
+            if(btnElement) btnElement.classList.add('active');
+            renderBgmPlaylist(seriesName);
+        }
+
+        function renderBgmPlaylist(selectedSeries) {
+            const container = document.getElementById('bgm-playlist-items');
+            const filtered = selectedSeries === 'All' ? bgmTracks : bgmTracks.filter(t => t.series === selectedSeries);
+            
+            container.innerHTML = '';
+            if(filtered.length === 0) {
+                container.innerHTML = '<p style="color: var(--text-muted); text-align: center; padding: 30px;">No tracks available in this series.</p>';
+                return;
             }
-        ];
+
+            filtered.forEach(track => {
+                container.innerHTML += `
+                    <div class="bgm-track-card">
+                        <div class="bgm-track-info">
+                            <span class="bgm-track-title">${track.title}</span>
+                            <span class="bgm-track-meta">${track.series} &bull; ${track.duration} &bull; Released: ${track.releaseDate}</span>
+                            <p class="bgm-track-desc">${track.description}</p>
+                        </div>
+                        <div style="min-width: 260px;">
+                            <audio controls preload="none" style="width: 100%;">
+                                <source src="${track.audioUrl}" type="audio/mpeg">
+                                Your browser does not support the audio element.
+                            </audio>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+
+        // --- 7LEO STORE SYSTEM LOGIC (WITH LOCAL STORAGE PERSISTENCE) ---
+        let storeProducts = JSON.parse(localStorage.getItem('7leo_products'));
+        if(!storeProducts) {
+            storeProducts = [
+                {
+                    id: 'prod_1',
+                    name: '7Leo Signature Luxury Tee',
+                    description: 'Premium organic cotton apparel featuring the iconic 7Leo vision power legacy emblem.',
+                    category: 'Apparel',
+                    sku: '7LEO-APP-01',
+                    cost: 450,
+                    price: 1299,
+                    fees: 50,
+                    supplier: 'Global Apparel Partner',
+                    supplierUrl: '',
+                    images: ['logo.png']
+                },
+                {
+                    id: 'prod_2',
+                    name: '7Leo Gold Series Watch',
+                    description: 'Exquisite timepiece crafted with gold finish and precision movement.',
+                    category: 'Accessories',
+                    sku: '7LEO-ACC-02',
+                    cost: 1500,
+                    price: 4999,
+                    fees: 150,
+                    supplier: 'Luxury Goods Supplier',
+                    supplierUrl: '',
+                    images: ['logo.png']
+                }
+            ];
+            localStorage.setItem('7leo_products', JSON.stringify(storeProducts));
+        }
+
+        let cart = JSON.parse(localStorage.getItem('7leo_cart')) || [];
+        let orders = JSON.parse(localStorage.getItem('7leo_orders')) || [];
+
+        function saveStoreData() {
+            localStorage.setItem('7leo_products', JSON.stringify(storeProducts));
+            localStorage.setItem('7leo_cart', JSON.stringify(cart));
+            localStorage.setItem('7leo_orders', JSON.stringify(orders));
+        }
 
         let currentUploadedImages = [];
 
@@ -1253,7 +1723,7 @@
 
             grid.innerHTML = '';
             if(filtered.length === 0) {
-                grid.innerHTML = '<p style="color:var(--text-muted); grid-column: 1/-1; text-align:center; padding:40px;">No products found.</p>';
+                grid.innerHTML = '<p style="color:var(--text-muted); grid-column: 1/-1; text-align:center; padding:40px;">No products available yet.</p>';
                 return;
             }
 
@@ -1284,7 +1754,7 @@
 
         function openAddProductForm() {
             document.getElementById('product-management-form').reset();
-            currentUploadedImages = ['logo.png']; // default fallback
+            currentUploadedImages = ['logo.png'];
             renderImagePreviews();
             document.getElementById('live-profit-calc-text').innerText = 'Estimated Profit: ₹0.00 (Margin: 0%)';
             switchStoreTab('product-form');
@@ -1348,6 +1818,7 @@
             };
 
             storeProducts.push(newProd);
+            saveStoreData();
             alert('Product successfully created, uploaded, and published to catalog!');
             switchStoreTab('catalog');
             renderStoreCatalog();
@@ -1380,6 +1851,7 @@
             } else {
                 cart.push({ ...p, qty: 1 });
             }
+            saveStoreData();
             updateCartCount();
             alert('Product added to cart!');
         }
@@ -1417,6 +1889,7 @@
 
         function removeFromCart(index) {
             cart.splice(index, 1);
+            saveStoreData();
             updateCartCount();
             renderCartItems();
         }
@@ -1431,7 +1904,6 @@
             const email = document.getElementById('cust-email').value;
             const phone = document.getElementById('cust-phone').value;
             const address = document.getElementById('cust-address').value;
-            const paymentProvider = document.getElementById('payment-provider').value;
 
             cart.forEach(item => {
                 const profit = item.price - item.cost - item.fees;
@@ -1444,14 +1916,15 @@
                     cost: item.cost,
                     fees: item.fees,
                     profit: profit,
-                    status: 'Payment Confirmed - Sent to Supplier',
+                    status: 'Order Received — Fulfillment Pending',
                     trackingNumber: 'TRK-' + Math.random().toString(36).substring(2, 10).toUpperCase(),
-                    carrier: 'Global Express Fulfillment'
+                    carrier: 'Global Supplier Fulfillment Network'
                 };
                 orders.push(newOrder);
             });
 
-            alert('Payment successful via ' + paymentProvider.toUpperCase() + '! Order placed and fulfillment workflow triggered.');
+            saveStoreData();
+            alert('Test prototype order placed successfully! Order saved to local storage for fulfillment tracking.');
             cart = [];
             updateCartCount();
             switchStoreTab('catalog');
@@ -1464,14 +1937,14 @@
             const found = orders.find(o => o.id === query || o.trackingNumber === query);
             resBox.style.display = 'block';
             if(!found) {
-                resBox.innerHTML = '<p style="color:#ff5555;">Tracking information is not available yet or order ID is invalid.</p>';
+                resBox.innerHTML = '<p style="color:#ff5555;">Order not found or tracking information is not available yet.</p>';
                 return;
             }
             resBox.innerHTML = `
                 <h4 style="color:var(--gold); margin-bottom:10px;">Order Status: ${found.id}</h4>
                 <p style="color:var(--text-light); margin-bottom:5px;"><strong>Product:</strong> ${found.productName}</p>
                 <p style="color:var(--text-light); margin-bottom:5px;"><strong>Status:</strong> ${found.status}</p>
-                <p style="color:var(--text-light); margin-bottom:5px;"><strong>Carrier:</strong> ${found.carrier}</p>
+                <p style="color:var(--text-light); margin-bottom:5px;"><strong>Fulfillment Partner:</strong> ${found.carrier}</p>
                 <p style="color:var(--text-light); margin-bottom:5px;"><strong>Tracking Number:</strong> ${found.trackingNumber}</p>
             `;
         }
@@ -1482,10 +1955,14 @@
             const totalProfit = orders.reduce((sum, o) => sum + o.profit, 0);
             document.getElementById('metric-sales').innerText = '₹' + totalSales.toFixed(2);
             document.getElementById('metric-profit').innerText = '₹' + totalProfit.toFixed(2);
-            document.getElementById('metric-pending').innerText = orders.filter(o => o.status.includes('Processing')).length;
+            document.getElementById('metric-pending').innerText = orders.filter(o => o.status.includes('Pending')).length;
 
             const tbody = document.getElementById('admin-orders-tbody');
             tbody.innerHTML = '';
+            if(orders.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="7" style="text-align:center; color:var(--text-muted); padding:30px;">No orders recorded yet.</td></tr>';
+                return;
+            }
             orders.forEach(o => {
                 tbody.innerHTML += `
                     <tr>
@@ -1495,7 +1972,7 @@
                         <td>₹${o.sellingPrice.toFixed(2)}</td>
                         <td style="color:var(--gold);">₹${o.profit.toFixed(2)}</td>
                         <td>${o.status}</td>
-                        <td><button class="action-btn" style="padding:5px 10px;" onclick="alert('Fulfillment sync verified with supplier.')">Sync Supplier</button></td>
+                        <td><button class="action-btn" style="padding:5px 10px;" onclick="alert('Fulfillment status logged.')">Sync Supplier</button></td>
                     </tr>
                 `;
             });
