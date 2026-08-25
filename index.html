@@ -695,7 +695,9 @@
             left: 0;
             width: 100vw;
             height: 100vh;
-            background: radial-gradient(circle, rgba(10,10,10,0.92) 0%, rgba(5,5,5,0.98) 100%);
+            background:
+                linear-gradient(rgba(0, 0, 0, 0.84), rgba(0, 0, 0, 0.92)),
+                url("file_00000000776081fa8dbc514074356775.png") center / cover fixed;
             z-index: 3500;
             display: none;
             flex-direction: column;
@@ -760,6 +762,10 @@
             font-weight: 600;
         }
 
+        .bgm-primary-cta {
+            margin-top: 22px;
+        }
+
         .bgm-series-filters {
             display: flex;
             gap: 12px;
@@ -807,6 +813,43 @@
             border-color: var(--gold);
         }
 
+        .bgm-sync-notice,
+        .bgm-series-block {
+            background: rgba(12, 12, 12, 0.88);
+            border: 1px solid rgba(212, 175, 55, 0.18);
+            border-radius: 12px;
+            padding: 22px;
+            backdrop-filter: blur(5px);
+        }
+
+        .bgm-sync-notice {
+            color: var(--text-muted);
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            line-height: 1.6;
+        }
+
+        .bgm-sync-notice strong,
+        .bgm-series-block h4 {
+            color: var(--gold-light);
+        }
+
+        .bgm-sync-notice a,
+        .bgm-footer-copyright a {
+            color: var(--gold);
+        }
+
+        .bgm-series-block h4 {
+            font-size: 1.15rem;
+            margin-bottom: 15px;
+        }
+
+        .bgm-empty-series {
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
         .bgm-track-info {
             display: flex;
             flex-direction: column;
@@ -828,6 +871,17 @@
         .bgm-track-desc {
             font-size: 0.85rem;
             color: var(--text-muted);
+        }
+
+        .bgm-track-actions {
+            min-width: 260px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .bgm-track-actions audio {
+            width: 100%;
         }
 
         .bgm-social-section {
@@ -859,17 +913,37 @@
             font-size: 1.4rem;
         }
 
-        .bgm-licensing-section p {
+        .bgm-licensing-section p,
+        .bgm-licensing-section li {
             color: var(--text-muted);
             line-height: 1.7;
+        }
+
+        .bgm-licensing-section ul {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 8px 20px;
+            padding-left: 20px;
         }
 
         .bgm-footer-copyright {
             text-align: center;
             color: var(--text-muted);
             font-size: 0.85rem;
-            padding: 20px 0;
+            line-height: 1.7;
+            padding: 25px 0;
             border-top: 1px solid #222;
+        }
+
+        .bgm-footer-copyright strong {
+            color: var(--gold-light);
+            display: block;
+            margin-bottom: 12px;
+        }
+
+        .bgm-footer-copyright p {
+            margin: 8px auto;
+            max-width: 900px;
         }
 
         @media (max-width: 768px) {
@@ -906,6 +980,23 @@
             .bgm-track-card {
                 flex-direction: column;
                 align-items: flex-start;
+            }
+
+            .bgm-track-actions {
+                min-width: 100%;
+                width: 100%;
+            }
+
+            .bgm-body-container {
+                padding: 30px 18px;
+            }
+
+            .bgm-series-filters {
+                flex-direction: column;
+            }
+
+            .bgm-filter-btn {
+                width: 100%;
             }
         }
     </style>
@@ -978,31 +1069,34 @@
 
     <!-- 7LEO BGM PORTAL EXPERIENCE -->
     <div class="bgm-portal-overlay" id="bgm-portal">
-        <!-- Banner Rule: Banner-bg.png at top, clean, nothing placed over it -->
+        <!-- Banner Rule: bgm-banner.png at top, clean, nothing placed over it -->
         <div class="bgm-banner-container">
-            <img src="Banner-bg.png" alt="7Leo BGM Banner" class="bgm-banner-img">
+            <img src="bgm-banner.png" alt="7Leo BGM Banner" class="bgm-banner-img">
         </div>
 
         <div class="bgm-body-container">
             <!-- BGM Introduction Content -->
             <div class="bgm-intro-box">
-                <h2>🎵 Welcome to 7leo BGM! 🎵</h2>
-                <p>🎵 Mobile.Composed Groovepad Music<br>Drive • Chill • Gangster • DJ • Cinematic 🎧<br>where every track sets the perfect vibe.</p>
-                <p style="margin-top: 15px;">Handcrafted instrumental background music to fuel your focus, ease your mind, and elevate your moments. 🦁🔥</p>
-                <p style="margin-top: 15px; color: var(--gold);">🎬 New BGM drops regularly — Subscribe & never miss a track!</p>
+                <h2>Welcome to 7Leo BGM!</h2>
+                <p><strong>Mobile-Composed Groovepad Music</strong></p>
+                <p>Drive • Chill • Gangster • DJ • Cinematic</p>
+                <p style="margin-top: 15px;">Where every track sets the perfect vibe.</p>
+                <p>Handcrafted instrumental background music to fuel your focus, ease your mind, and elevate your moments.</p>
+                <p style="margin-top: 15px; color: var(--gold);">New BGM drops regularly — Subscribe and never miss a track!</p>
+                <a href="https://www.youtube.com/@7LeoBGM" target="_blank" rel="noopener noreferrer" class="action-btn bgm-primary-cta">Enter the World of Music</a>
             </div>
 
             <!-- Series Section & Filtering -->
             <div class="bgm-series-section">
-                <h3>📌 Explore by Series</h3>
+                <h3>Explore by Series</h3>
                 <div class="bgm-series-filters" id="bgm-series-filters">
                     <button class="bgm-filter-btn active" onclick="filterBgmSeries('All', this)">All</button>
-                    <button class="bgm-filter-btn" onclick="filterBgmSeries('7Leo Drive Series', this)">🚗 7Leo Drive Series</button>
-                    <button class="bgm-filter-btn" onclick="filterBgmSeries('7Leo Chill Series', this)">😌 7Leo Chill Series</button>
-                    <button class="bgm-filter-btn" onclick="filterBgmSeries('7Leo Gangster Series', this)">😈 7Leo Gangster Series</button>
-                    <button class="bgm-filter-btn" onclick="filterBgmSeries('7Leo DJ Series', this)">🎧 7Leo DJ Series</button>
-                    <button class="bgm-filter-btn" onclick="filterBgmSeries('7Leo Cinematic Series', this)">🎬 7Leo Cinematic Series</button>
-                    <button class="bgm-filter-btn" onclick="filterBgmSeries('7Leo Songs Series', this)">🌟 7Leo Songs Series</button>
+                    <button class="bgm-filter-btn" onclick="filterBgmSeries('7Leo Drive Series', this)">7Leo Drive Series</button>
+                    <button class="bgm-filter-btn" onclick="filterBgmSeries('7Leo Chill Series', this)">7Leo Chill Series</button>
+                    <button class="bgm-filter-btn" onclick="filterBgmSeries('7Leo Gangster Series', this)">7Leo Gangster Series</button>
+                    <button class="bgm-filter-btn" onclick="filterBgmSeries('7Leo DJ Series', this)">7Leo DJ Series</button>
+                    <button class="bgm-filter-btn" onclick="filterBgmSeries('7Leo Cinematic Series', this)">7Leo Cinematic Series</button>
+                    <button class="bgm-filter-btn" onclick="filterBgmSeries('7Leo Songs Series', this)">7Leo Songs Series</button>
                 </div>
             </div>
 
@@ -1013,29 +1107,43 @@
 
             <!-- YouTube & Instagram CTA Section -->
             <div class="bgm-social-section">
-                <h3>🎶 Follow & Stream</h3>
-                <p style="color: var(--text-muted);">Official YouTube: <a href="https://www.youtube.com/@7LeoBGM" target="_blank" style="color: var(--gold);">https://www.youtube.com/@7LeoBGM</a></p>
-                <a href="https://www.youtube.com/@7LeoBGM" target="_blank" class="action-btn">🎵 VISIT 7LEO BGM ON YOUTUBE</a>
+                <h3>Follow & Stream</h3>
+                <p style="color: var(--text-muted);">Official YouTube Music / YouTube — 7Leo BGM</p>
+                <a href="https://www.youtube.com/@7LeoBGM" target="_blank" rel="noopener noreferrer" class="action-btn">YouTube Music / YouTube — 7Leo BGM</a>
                 <p style="color: var(--text-muted); margin-top: 10px;">Discover new uploads, listen to latest soundscapes, and subscribe to 7Leo BGM.</p>
-                
                 <div style="margin-top: 15px;">
-                    <a href="https://www.instagram.com/7leo_bgm?igsh=OWxmeHRubTN5ZmJn" target="_blank" class="action-btn">📸 Follow 7Leo BGM on Instagram</a>
+                    <a href="https://www.instagram.com/7leo_bgm?igsh=OWxmeHRubTN5ZmJn" target="_blank" rel="noopener noreferrer" class="action-btn">Instagram — 7Leo BGM</a>
                 </div>
             </div>
 
             <!-- Music Licensing / Sales Section -->
             <div class="bgm-licensing-section">
-                <h3>🎬 License 7Leo BGM</h3>
-                <p>7Leo BGM offers original instrumental music suitable for Advertisements, Promotions, Trailers, Movies, Short films, Reels, Social media content, Brand videos, Promotional campaigns, Cinematic projects, and Creative productions.</p>
-                <p>Our compositions are crafted by 7Leo BGM and are available for licensing and commercial use subject to applicable license terms and permissions.</p>
+                <h3>7Leo BGM Music Licensing & Sales</h3>
+                <p>Original music and songs are available for licensing and commercial creative projects, including:</p>
+                <ul>
+                    <li>Advertisements</li>
+                    <li>Trailers</li>
+                    <li>Reels</li>
+                    <li>Promotions</li>
+                    <li>Social media content</li>
+                    <li>Brand videos</li>
+                    <li>Creative projects</li>
+                    <li>Film/video projects</li>
+                    <li>Background music requirements</li>
+                </ul>
+                <p>Music is offered by 7Leo BGM, and purchase or licensing terms can be discussed directly by email.</p>
                 <div style="margin-top: 10px;">
-                    <a href="mailto:7leogroup@gmail.com?subject=Commercial%20Music%20Licensing%20Inquiry%20-%207Leo%20BGM" class="action-btn">📧 Contact 7Leo Group for Music Licensing</a>
+                    <a href="mailto:7leogroup@gmail.com?subject=Commercial%20Music%20Licensing%20Inquiry%20-%207Leo%20BGM" class="action-btn">Contact 7Leo BGM for Music Licensing</a>
                 </div>
             </div>
 
             <!-- Footer Copyright -->
             <div class="bgm-footer-copyright">
-                © 2026 7Leo BGM / 7Leo Group. All Rights Reserved.
+                <strong>© 2026 7Leo BGM. All Rights Reserved.</strong>
+                <p>All original music, songs, compositions, soundscapes, artwork, branding, and creative content published under 7Leo BGM are protected by applicable copyright laws unless otherwise stated.</p>
+                <p>Unauthorized copying, reproduction, redistribution, re-uploading, reselling, modifying for redistribution, or commercial use without appropriate permission is prohibited.</p>
+                <p>For music licensing, commercial usage, advertisements, trailers, reels, promotions, brand projects, film/video projects, or other usage inquiries, contact: <a href="mailto:7leogroup@gmail.com">7leogroup@gmail.com</a></p>
+                <p>7Leo BGM reserves the right to determine applicable licensing terms and permissions for each project.</p>
             </div>
         </div>
 
@@ -1532,72 +1640,68 @@ VISION. POWER. LEGACY.</p>
             }
         }
 
-        // --- 7LEO BGM SYSTEM LOGIC (LOCAL STORAGE PERSISTENT) ---
-        let bgmTracks = JSON.parse(localStorage.getItem('7leo_bgm_tracks'));
-        if(!bgmTracks) {
-            bgmTracks = [
-                {
-                    id: 'bgm_1',
-                    title: 'Night Speed Drive',
-                    series: '7Leo Drive Series',
-                    duration: '03:45',
-                    description: 'High energy night driving instrumental soundscape crafted with groovepad beats.',
-                    releaseDate: '2026-01-15',
-                    audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3'
-                },
-                {
-                    id: 'bgm_2',
-                    title: 'Midnight Chill Lounge',
-                    series: '7Leo Chill Series',
-                    duration: '04:12',
-                    description: 'Relaxing ambient vibe designed for focus, deep thinking, and late-night relaxation.',
-                    releaseDate: '2026-02-01',
-                    audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3'
-                },
-                {
-                    id: 'bgm_3',
-                    title: 'Street Energy Anthem',
-                    series: '7Leo Gangster Series',
-                    duration: '03:30',
-                    description: 'Heavy basslines and bold rhythm patterns built for powerful cinematic moments.',
-                    releaseDate: '2026-02-10',
-                    audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3'
-                },
-                {
-                    id: 'bgm_4',
-                    title: 'Club Groove Master',
-                    series: '7Leo DJ Series',
-                    duration: '05:00',
-                    description: 'Upbeat electronic dance mix engineered for energetic club performances and reels.',
-                    releaseDate: '2026-02-18',
-                    audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3'
-                },
-                {
-                    id: 'bgm_5',
-                    title: 'Epic Cinematic Journey',
-                    series: '7Leo Cinematic Series',
-                    duration: '04:45',
-                    description: 'Orchestral cinematic atmosphere suited for trailers, films, and grand promotional reels.',
-                    releaseDate: '2026-03-01',
-                    audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3'
-                },
-                {
-                    id: 'bgm_6',
-                    title: 'Signature 7Leo Anthem',
-                    series: '7Leo Songs Series',
-                    duration: '03:55',
-                    description: 'The defining vocal and instrumental track carrying the vision power legacy.',
-                    releaseDate: '2026-03-10',
-                    audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3'
-                }
-            ];
-            localStorage.setItem('7leo_bgm_tracks', JSON.stringify(bgmTracks));
+        // --- 7LEO BGM SYSTEM LOGIC (YOUTUBE-READY, NO FAKE TRACK DATA) ---
+        const bgmSeries = [
+            '7Leo Drive Series',
+            '7Leo Chill Series',
+            '7Leo Gangster Series',
+            '7Leo DJ Series',
+            '7Leo Cinematic Series',
+            '7Leo Songs Series'
+        ];
+
+        const bgmOfficialLinks = {
+            youtube: 'https://www.youtube.com/@7LeoBGM',
+            instagram: 'https://www.instagram.com/7leo_bgm?igsh=OWxmeHRubTN5ZmJn'
+        };
+
+        // Configure this with a real backend endpoint or checked-in JSON feed that mirrors
+        // official 7Leo BGM YouTube channel playlists. Do not hardcode API keys in this file.
+        const bgmYouTubeSyncConfig = {
+            endpoint: '',
+            apiKeyEnv: 'YOUTUBE_DATA_API_KEY',
+            channel: bgmOfficialLinks.youtube
+        };
+
+        let bgmTracks = [];
+        let bgmActiveSeries = 'All';
+
+        function normalizeBgmTrack(track) {
+            return {
+                id: track.id || track.videoId || track.url || `bgm_${Date.now()}`,
+                title: track.title || 'Untitled 7Leo BGM track',
+                series: bgmSeries.includes(track.series) ? track.series : '7Leo Songs Series',
+                duration: track.duration || '',
+                description: track.description || '',
+                releaseDate: track.releaseDate || track.publishedAt || '',
+                audioUrl: track.audioUrl || '',
+                youtubeUrl: track.youtubeUrl || (track.videoId ? `https://www.youtube.com/watch?v=${track.videoId}` : bgmOfficialLinks.youtube)
+            };
+        }
+
+        async function syncBgmFromYouTube() {
+            if(!bgmYouTubeSyncConfig.endpoint) {
+                renderBgmPlaylist(bgmActiveSeries);
+                return;
+            }
+
+            try {
+                const response = await fetch(bgmYouTubeSyncConfig.endpoint, { cache: 'no-store' });
+                if(!response.ok) throw new Error('BGM sync endpoint unavailable');
+                const payload = await response.json();
+                const tracks = Array.isArray(payload) ? payload : (payload.tracks || []);
+                bgmTracks = tracks.map(normalizeBgmTrack);
+            } catch (error) {
+                console.warn('7Leo BGM YouTube sync could not complete:', error);
+            }
+
+            renderBgmPlaylist(bgmActiveSeries);
         }
 
         function openBgmPortal() {
             document.getElementById('bgm-portal').classList.add('active');
             navLinks.classList.remove('active');
-            renderBgmPlaylist('All');
+            syncBgmFromYouTube();
         }
 
         function closeBgmPortal() {
@@ -1605,6 +1709,7 @@ VISION. POWER. LEGACY.</p>
         }
 
         function filterBgmSeries(seriesName, btnElement) {
+            bgmActiveSeries = seriesName;
             document.querySelectorAll('.bgm-filter-btn').forEach(btn => btn.classList.remove('active'));
             if(btnElement) btnElement.classList.add('active');
             renderBgmPlaylist(seriesName);
@@ -1613,29 +1718,45 @@ VISION. POWER. LEGACY.</p>
         function renderBgmPlaylist(selectedSeries) {
             const container = document.getElementById('bgm-playlist-items');
             const filtered = selectedSeries === 'All' ? bgmTracks : bgmTracks.filter(t => t.series === selectedSeries);
-            
-            container.innerHTML = '';
-            if(filtered.length === 0) {
-                container.innerHTML = '<p style="color: var(--text-muted); text-align: center; padding: 30px;">No tracks available in this series.</p>';
-                return;
-            }
+            const visibleSeries = selectedSeries === 'All' ? bgmSeries : [selectedSeries];
 
-            filtered.forEach(track => {
-                container.innerHTML += `
-                    <div class="bgm-track-card">
-                        <div class="bgm-track-info">
-                            <span class="bgm-track-title">${track.title}</span>
-                            <span class="bgm-track-meta">${track.series} &bull; ${track.duration} &bull; Released: ${track.releaseDate}</span>
-                            <p class="bgm-track-desc">${track.description}</p>
-                        </div>
-                        <div style="min-width: 260px;">
-                            <audio controls preload="none" style="width: 100%;">
-                                <source src="${track.audioUrl}" type="audio/mpeg">
-                                Your browser does not support the audio element.
-                            </audio>
-                        </div>
-                    </div>
-                `;
+            container.innerHTML = '';
+
+            const syncNotice = document.createElement('div');
+            syncNotice.className = 'bgm-sync-notice';
+            syncNotice.innerHTML = `
+                <strong>YouTube synchronization ready.</strong>
+                <span>Connect a backend endpoint using the official ${bgmYouTubeSyncConfig.apiKeyEnv} configuration to mirror uploads, title changes, removals, and playlist updates from <a href="${bgmOfficialLinks.youtube}" target="_blank" rel="noopener noreferrer">7Leo BGM on YouTube</a>. No demo tracks are displayed.</span>
+            `;
+            container.appendChild(syncNotice);
+
+            visibleSeries.forEach(series => {
+                const seriesTracks = selectedSeries === 'All' ? filtered.filter(track => track.series === series) : filtered;
+                const seriesBlock = document.createElement('div');
+                seriesBlock.className = 'bgm-series-block';
+                seriesBlock.innerHTML = `<h4>${series}</h4>`;
+
+                if(seriesTracks.length === 0) {
+                    seriesBlock.innerHTML += '<p class="bgm-empty-series">No tracks are currently available in this series. Tracks will appear here after the official YouTube sync feed is connected and populated.</p>';
+                } else {
+                    seriesTracks.forEach(track => {
+                        seriesBlock.innerHTML += `
+                            <div class="bgm-track-card">
+                                <div class="bgm-track-info">
+                                    <span class="bgm-track-title">${track.title}</span>
+                                    <span class="bgm-track-meta">${track.series}${track.duration ? ` &bull; ${track.duration}` : ''}${track.releaseDate ? ` &bull; Released: ${track.releaseDate}` : ''}</span>
+                                    ${track.description ? `<p class="bgm-track-desc">${track.description}</p>` : ''}
+                                </div>
+                                <div class="bgm-track-actions">
+                                    ${track.audioUrl ? `<audio controls preload="none"><source src="${track.audioUrl}" type="audio/mpeg">Your browser does not support the audio element.</audio>` : ''}
+                                    <a href="${track.youtubeUrl}" target="_blank" rel="noopener noreferrer" class="action-btn">Listen on YouTube</a>
+                                </div>
+                            </div>
+                        `;
+                    });
+                }
+
+                container.appendChild(seriesBlock);
             });
         }
 
