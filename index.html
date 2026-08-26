@@ -688,7 +688,7 @@
             cursor: pointer;
         }
 
-        /* 7LEO BGM PORTAL EXPERIENCE */
+        /* 7LEO BGM PORTAL EXPERIENCE (Thicker & Darker Tattoo Overlay + bgm-banner.png) */
         .bgm-portal-overlay {
             position: fixed;
             top: 0;
@@ -696,7 +696,7 @@
             width: 100vw;
             height: 100vh;
             background:
-                linear-gradient(rgba(0, 0, 0, 0.94), rgba(0, 0, 0, 0.98)),
+                linear-gradient(rgba(0, 0, 0, 0.96), rgba(0, 0, 0, 0.99)),
                 url("file_00000000776081fa8dbc514074356775.png") center / cover fixed;
             z-index: 3500;
             display: none;
@@ -794,23 +794,6 @@
             display: flex;
             flex-direction: column;
             gap: 15px;
-        }
-
-        .bgm-track-card {
-            background: rgba(20, 20, 20, 0.85);
-            border: 1px solid #333;
-            border-radius: 10px;
-            padding: 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 20px;
-            backdrop-filter: blur(5px);
-            transition: border-color 0.3s;
-        }
-
-        .bgm-track-card:hover {
-            border-color: var(--gold);
         }
 
         .bgm-series-block {
@@ -1006,7 +989,7 @@
 
     <!-- 7LEO BGM PORTAL EXPERIENCE -->
     <div class="bgm-portal-overlay" id="bgm-portal">
-        <!-- Banner Rule: bgm-banner.png at top, clean, nothing placed over it -->
+        <!-- Banner: bgm-banner.png placed cleanly without text overlay -->
         <div class="bgm-banner-container">
             <img src="bgm-banner.png" alt="7Leo BGM Banner" class="bgm-banner-img">
         </div>
