@@ -696,7 +696,7 @@
             width: 100vw;
             height: 100vh;
             background:
-                linear-gradient(rgba(0, 0, 0, 0.94), rgba(0, 0, 0, 0.98)),
+                linear-gradient(rgba(0, 0, 0, 0.97), rgba(0, 0, 0, 0.99)),
                 url("file_00000000776081fa8dbc514074356775.png") center / cover fixed;
             z-index: 3500;
             display: none;
@@ -1028,12 +1028,12 @@
                 <h3>Explore by Series</h3>
                 <div class="bgm-series-filters" id="bgm-series-filters">
                     <button class="bgm-filter-btn active" onclick="filterBgmSeries('All', this)">All</button>
-                    <button class="bgm-filter-btn" onclick="filterBgmSeries('7Leo Drive Series', this)">7Leo Drive Series</button>
+                    <button class="bgm-filter-btn" onclick="filterBgmSeries('7Leo Songs Series', this)">7Leo Songs Series</button>
+                    <button class="bgm-filter-btn" onclick="filterBgmSeries('7Leo Cinematic Series', this)">7Leo Cinematic Series</button>
                     <button class="bgm-filter-btn" onclick="filterBgmSeries('7Leo Chill Series', this)">7Leo Chill Series</button>
                     <button class="bgm-filter-btn" onclick="filterBgmSeries('7Leo Gangster Series', this)">7Leo Gangster Series</button>
+                    <button class="bgm-filter-btn" onclick="filterBgmSeries('7Leo Drive Series', this)">7Leo Drive Series</button>
                     <button class="bgm-filter-btn" onclick="filterBgmSeries('7Leo DJ Series', this)">7Leo DJ Series</button>
-                    <button class="bgm-filter-btn" onclick="filterBgmSeries('7Leo Cinematic Series', this)">7Leo Cinematic Series</button>
-                    <button class="bgm-filter-btn" onclick="filterBgmSeries('7Leo Songs Series', this)">7Leo Songs Series</button>
                 </div>
             </div>
 
@@ -1579,21 +1579,21 @@ VISION. POWER. LEGACY.</p>
 
         // --- 7LEO BGM SYSTEM LOGIC (REAL YOUTUBE PLAYLISTS) ---
         const bgmSeries = [
-            '7Leo Drive Series',
+            '7Leo Songs Series',
+            '7Leo Cinematic Series',
             '7Leo Chill Series',
             '7Leo Gangster Series',
-            '7Leo DJ Series',
-            '7Leo Cinematic Series',
-            '7Leo Songs Series'
+            '7Leo Drive Series',
+            '7Leo DJ Series'
         ];
 
         const bgmPlaylistUrls = {
-            '7Leo Drive Series': 'https://youtube.com/playlist?list=PLN1Bi1oDr2FE',
-            '7Leo Chill Series': 'https://youtube.com/playlist?list=PLCkCTxka7G8k',
-            '7Leo Gangster Series': 'https://youtube.com/playlist?list=PLXRsoxraLgzE',
-            '7Leo DJ Series': 'https://youtube.com/playlist?list=PLTQ2Nap4kPeU',
-            '7Leo Cinematic Series': 'https://youtube.com/playlist?list=PLJdOd5hcuYn0',
-            '7Leo Songs Series': 'https://youtube.com/playlist?list=PLPEZdyb_C5wo'
+            '7Leo Songs Series': 'https://youtube.com/playlist?list=PLN1Bi1oDr2FE&si=a767BEHZHp6WQGE0',
+            '7Leo Cinematic Series': 'https://youtube.com/playlist?list=PLCkCTxka7G8k&si=DS4PkIXBEFdnz1_5',
+            '7Leo Chill Series': 'https://youtube.com/playlist?list=PLXRsoxraLgzE&si=MC5-Vf_mSSYxq4Fd',
+            '7Leo Gangster Series': 'https://youtube.com/playlist?list=PLTQ2Nap4kPeU&si=Khl2_ZAq6-c21ifI',
+            '7Leo Drive Series': 'https://youtube.com/playlist?list=PLJdOd5hcuYn0&si=9tVuxLRsFPjMBdW5',
+            '7Leo DJ Series': 'https://youtube.com/playlist?list=PLPEZdyb_C5wo&si=surwdY3lOSLMHSFp'
         };
 
         let bgmActiveSeries = 'All';
