@@ -696,7 +696,7 @@
             width: 100vw;
             height: 100vh;
             background:
-                linear-gradient(rgba(0, 0, 0, 0.84), rgba(0, 0, 0, 0.92)),
+                linear-gradient(rgba(0, 0, 0, 0.94), rgba(0, 0, 0, 0.98)),
                 url("file_00000000776081fa8dbc514074356775.png") center / cover fixed;
             z-index: 3500;
             display: none;
@@ -813,7 +813,6 @@
             border-color: var(--gold);
         }
 
-        .bgm-sync-notice,
         .bgm-series-block {
             background: rgba(12, 12, 12, 0.88);
             border: 1px solid rgba(212, 175, 55, 0.18);
@@ -822,66 +821,10 @@
             backdrop-filter: blur(5px);
         }
 
-        .bgm-sync-notice {
-            color: var(--text-muted);
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            line-height: 1.6;
-        }
-
-        .bgm-sync-notice strong,
         .bgm-series-block h4 {
             color: var(--gold-light);
-        }
-
-        .bgm-sync-notice a,
-        .bgm-footer-copyright a {
-            color: var(--gold);
-        }
-
-        .bgm-series-block h4 {
             font-size: 1.15rem;
-            margin-bottom: 15px;
-        }
-
-        .bgm-empty-series {
-            color: var(--text-muted);
-            line-height: 1.6;
-        }
-
-        .bgm-track-info {
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-            flex: 1;
-        }
-
-        .bgm-track-title {
-            font-size: 1.1rem;
-            color: var(--text-light);
-            font-weight: 600;
-        }
-
-        .bgm-track-meta {
-            font-size: 0.85rem;
-            color: var(--gold);
-        }
-
-        .bgm-track-desc {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-        }
-
-        .bgm-track-actions {
-            min-width: 260px;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .bgm-track-actions audio {
-            width: 100%;
+            margin-bottom: 8px;
         }
 
         .bgm-social-section {
@@ -946,6 +889,10 @@
             max-width: 900px;
         }
 
+        .bgm-footer-copyright a {
+            color: var(--gold);
+        }
+
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
@@ -975,16 +922,6 @@
             .store-controls-bar {
                 flex-direction: column;
                 align-items: stretch;
-            }
-
-            .bgm-track-card {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .bgm-track-actions {
-                min-width: 100%;
-                width: 100%;
             }
 
             .bgm-body-container {
@@ -1100,7 +1037,7 @@
                 </div>
             </div>
 
-            <!-- Real BGM Playlist Container -->
+            <!-- Real YouTube Playlists Container -->
             <div class="bgm-playlist-container" id="bgm-playlist-items">
                 <!-- Populated dynamically via JS -->
             </div>
@@ -1640,7 +1577,7 @@ VISION. POWER. LEGACY.</p>
             }
         }
 
-        // --- 7LEO BGM SYSTEM LOGIC (YOUTUBE-READY, NO FAKE TRACK DATA) ---
+        // --- 7LEO BGM SYSTEM LOGIC (REAL YOUTUBE PLAYLISTS) ---
         const bgmSeries = [
             '7Leo Drive Series',
             '7Leo Chill Series',
@@ -1650,58 +1587,21 @@ VISION. POWER. LEGACY.</p>
             '7Leo Songs Series'
         ];
 
-        const bgmOfficialLinks = {
-            youtube: 'https://www.youtube.com/@7LeoBGM',
-            instagram: 'https://www.instagram.com/7leo_bgm?igsh=OWxmeHRubTN5ZmJn'
+        const bgmPlaylistUrls = {
+            '7Leo Drive Series': 'https://youtube.com/playlist?list=PLN1Bi1oDr2FE',
+            '7Leo Chill Series': 'https://youtube.com/playlist?list=PLCkCTxka7G8k',
+            '7Leo Gangster Series': 'https://youtube.com/playlist?list=PLXRsoxraLgzE',
+            '7Leo DJ Series': 'https://youtube.com/playlist?list=PLTQ2Nap4kPeU',
+            '7Leo Cinematic Series': 'https://youtube.com/playlist?list=PLJdOd5hcuYn0',
+            '7Leo Songs Series': 'https://youtube.com/playlist?list=PLPEZdyb_C5wo'
         };
 
-        // Configure this with a real backend endpoint or checked-in JSON feed that mirrors
-        // official 7Leo BGM YouTube channel playlists. Do not hardcode API keys in this file.
-        const bgmYouTubeSyncConfig = {
-            endpoint: '',
-            apiKeyEnv: 'YOUTUBE_DATA_API_KEY',
-            channel: bgmOfficialLinks.youtube
-        };
-
-        let bgmTracks = [];
         let bgmActiveSeries = 'All';
-
-        function normalizeBgmTrack(track) {
-            return {
-                id: track.id || track.videoId || track.url || `bgm_${Date.now()}`,
-                title: track.title || 'Untitled 7Leo BGM track',
-                series: bgmSeries.includes(track.series) ? track.series : '7Leo Songs Series',
-                duration: track.duration || '',
-                description: track.description || '',
-                releaseDate: track.releaseDate || track.publishedAt || '',
-                audioUrl: track.audioUrl || '',
-                youtubeUrl: track.youtubeUrl || (track.videoId ? `https://www.youtube.com/watch?v=${track.videoId}` : bgmOfficialLinks.youtube)
-            };
-        }
-
-        async function syncBgmFromYouTube() {
-            if(!bgmYouTubeSyncConfig.endpoint) {
-                renderBgmPlaylist(bgmActiveSeries);
-                return;
-            }
-
-            try {
-                const response = await fetch(bgmYouTubeSyncConfig.endpoint, { cache: 'no-store' });
-                if(!response.ok) throw new Error('BGM sync endpoint unavailable');
-                const payload = await response.json();
-                const tracks = Array.isArray(payload) ? payload : (payload.tracks || []);
-                bgmTracks = tracks.map(normalizeBgmTrack);
-            } catch (error) {
-                console.warn('7Leo BGM YouTube sync could not complete:', error);
-            }
-
-            renderBgmPlaylist(bgmActiveSeries);
-        }
 
         function openBgmPortal() {
             document.getElementById('bgm-portal').classList.add('active');
             navLinks.classList.remove('active');
-            syncBgmFromYouTube();
+            renderBgmPlaylist(bgmActiveSeries);
         }
 
         function closeBgmPortal() {
@@ -1717,45 +1617,23 @@ VISION. POWER. LEGACY.</p>
 
         function renderBgmPlaylist(selectedSeries) {
             const container = document.getElementById('bgm-playlist-items');
-            const filtered = selectedSeries === 'All' ? bgmTracks : bgmTracks.filter(t => t.series === selectedSeries);
             const visibleSeries = selectedSeries === 'All' ? bgmSeries : [selectedSeries];
 
             container.innerHTML = '';
 
-            const syncNotice = document.createElement('div');
-            syncNotice.className = 'bgm-sync-notice';
-            syncNotice.innerHTML = `
-                <strong>YouTube synchronization ready.</strong>
-                <span>Connect a backend endpoint using the official ${bgmYouTubeSyncConfig.apiKeyEnv} configuration to mirror uploads, title changes, removals, and playlist updates from <a href="${bgmOfficialLinks.youtube}" target="_blank" rel="noopener noreferrer">7Leo BGM on YouTube</a>. No demo tracks are displayed.</span>
-            `;
-            container.appendChild(syncNotice);
-
             visibleSeries.forEach(series => {
-                const seriesTracks = selectedSeries === 'All' ? filtered.filter(track => track.series === series) : filtered;
+                const playlistUrl = bgmPlaylistUrls[series] || 'https://www.youtube.com/@7LeoBGM';
                 const seriesBlock = document.createElement('div');
                 seriesBlock.className = 'bgm-series-block';
-                seriesBlock.innerHTML = `<h4>${series}</h4>`;
-
-                if(seriesTracks.length === 0) {
-                    seriesBlock.innerHTML += '<p class="bgm-empty-series">No tracks are currently available in this series. Tracks will appear here after the official YouTube sync feed is connected and populated.</p>';
-                } else {
-                    seriesTracks.forEach(track => {
-                        seriesBlock.innerHTML += `
-                            <div class="bgm-track-card">
-                                <div class="bgm-track-info">
-                                    <span class="bgm-track-title">${track.title}</span>
-                                    <span class="bgm-track-meta">${track.series}${track.duration ? ` &bull; ${track.duration}` : ''}${track.releaseDate ? ` &bull; Released: ${track.releaseDate}` : ''}</span>
-                                    ${track.description ? `<p class="bgm-track-desc">${track.description}</p>` : ''}
-                                </div>
-                                <div class="bgm-track-actions">
-                                    ${track.audioUrl ? `<audio controls preload="none"><source src="${track.audioUrl}" type="audio/mpeg">Your browser does not support the audio element.</audio>` : ''}
-                                    <a href="${track.youtubeUrl}" target="_blank" rel="noopener noreferrer" class="action-btn">Listen on YouTube</a>
-                                </div>
-                            </div>
-                        `;
-                    });
-                }
-
+                seriesBlock.innerHTML = `
+                    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px;">
+                        <div>
+                            <h4>${series}</h4>
+                            <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 4px;">Official 7Leo BGM curated YouTube playlist.</p>
+                        </div>
+                        <a href="${playlistUrl}" target="_blank" rel="noopener noreferrer" class="action-btn">Open YouTube Playlist</a>
+                    </div>
+                `;
                 container.appendChild(seriesBlock);
             });
         }
