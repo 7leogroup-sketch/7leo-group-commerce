@@ -272,7 +272,6 @@
             transition: all 0.3s ease;
             text-decoration: none;
             display: inline-block;
-            font-family: 'Montserrat', sans-serif;
         }
 
         .action-btn:hover {
@@ -280,177 +279,6 @@
             color: var(--bg-dark);
             box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
         }
-
-        /* --- 7LEO IDEA SECTION STYLING (THEMED) --- */
-        .leo-idea-hub {
-            background: rgba(10, 10, 10, 0.95);
-            color: var(--text-light);
-            padding: 80px 20px;
-            width: 100%;
-            position: relative;
-            overflow: hidden;
-            border-top: 1px solid rgba(212, 175, 55, 0.2);
-            text-align: left;
-            margin-top: 60px;
-        }
-        .leo-container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        .leo-header {
-            text-align: center;
-            margin-bottom: 50px;
-        }
-        .leo-header h2 {
-            font-size: 2.5rem;
-            color: var(--gold-light);
-            text-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
-            margin-bottom: 10px;
-            font-weight: 600;
-        }
-        .leo-header p {
-            color: var(--text-muted);
-            font-size: 1.1rem;
-        }
-        /* Stats Counter Bar */
-        .leo-stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 20px;
-            margin-bottom: 50px;
-        }
-        .stat-card {
-            background: rgba(20, 20, 20, 0.85);
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            padding: 20px;
-            border-radius: 12px;
-            text-align: center;
-            backdrop-filter: blur(10px);
-            transition: transform 0.3s, border-color 0.3s;
-        }
-        .stat-card:hover {
-            transform: translateY(-4px);
-            border-color: var(--gold);
-        }
-        .stat-card h3 {
-            font-size: 2rem;
-            color: var(--gold);
-            margin-bottom: 5px;
-        }
-        .stat-card p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-        }
-        /* Grid Layout for Gallery & Challenges */
-        .leo-grid {
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 30px;
-        }
-        @media (max-width: 900px) {
-            .leo-grid { grid-template-columns: 1fr; }
-        }
-        .leo-card {
-            background: rgba(20, 20, 20, 0.85);
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            border-radius: 16px;
-            padding: 30px;
-            margin-bottom: 30px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
-            backdrop-filter: blur(5px);
-        }
-        .leo-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 20px;
-            color: var(--gold-light);
-            border-left: 4px solid var(--gold);
-            padding-left: 12px;
-            font-weight: 600;
-        }
-        /* Concept Items */
-        .concept-item {
-            background: rgba(26, 26, 26, 0.9);
-            border: 1px solid #333;
-            padding: 20px;
-            border-radius: 10px;
-            margin-bottom: 20px;
-            transition: 0.3s ease;
-        }
-        .concept-item:hover {
-            border-color: var(--gold);
-            transform: translateY(-3px);
-        }
-        .tech-badges {
-            display: flex;
-            gap: 8px;
-            flex-wrap: wrap;
-            margin: 12px 0;
-        }
-        .badge {
-            background: rgba(212, 175, 55, 0.1);
-            color: var(--gold-light);
-            padding: 4px 10px;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            border: 1px solid rgba(212, 175, 55, 0.3);
-        }
-        /* Action Buttons for Idea Lab */
-        .leo-btn {
-            background: transparent;
-            color: var(--text-light);
-            border: 1px solid var(--gold);
-            padding: 10px 20px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            font-family: 'Montserrat', sans-serif;
-        }
-        .leo-btn:hover {
-            background: var(--gold);
-            color: var(--bg-dark);
-            box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
-            transform: scale(1.02);
-        }
-        .leo-idea-hub input, .leo-idea-hub textarea {
-            width: 100%;
-            padding: 12px 15px;
-            background: #1a1a1a;
-            border: 1px solid #333;
-            border-radius: 6px;
-            color: var(--text-light);
-            font-size: 1rem;
-            font-family: 'Montserrat', sans-serif;
-            margin-bottom: 15px;
-        }
-        .leo-idea-hub input:focus, .leo-idea-hub textarea:focus {
-            outline: none;
-            border-color: var(--gold);
-        }
-        /* Timeline */
-        .timeline {
-            border-left: 2px solid rgba(212, 175, 55, 0.3);
-            padding-left: 20px;
-            margin-left: 10px;
-        }
-        .timeline-item {
-            position: relative;
-            margin-bottom: 25px;
-        }
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -27px;
-            top: 4px;
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: var(--gold);
-            border: 2px solid var(--bg-dark);
-        }
-        .timeline-item h4 { font-size: 1rem; color: var(--gold-light); margin-bottom: 4px; }
-        .timeline-item p { font-size: 0.85rem; color: var(--text-muted); }
 
         /* Modals for Navigation Items */
         .modal-overlay {
@@ -570,7 +398,6 @@
             cursor: pointer;
             width: 100%;
             transition: opacity 0.3s;
-            font-family: 'Montserrat', sans-serif;
         }
 
         .submit-btn:hover {
@@ -637,7 +464,6 @@
             cursor: pointer;
             font-size: 0.85rem;
             transition: all 0.3s;
-            font-family: 'Montserrat', sans-serif;
         }
 
         .store-nav-btn:hover {
@@ -676,7 +502,6 @@
             border-radius: 6px;
             color: var(--text-light);
             font-size: 0.9rem;
-            font-family: 'Montserrat', sans-serif;
         }
 
         .store-search-input {
@@ -871,7 +696,7 @@
             width: 100vw;
             height: 100vh;
             background:
-                linear-gradient(rgba(0, 0, 0, 0.96), rgba(0, 0, 0, 0.99)),
+                linear-gradient(rgba(0, 0, 0, 0.94), rgba(0, 0, 0, 0.98)),
                 url("file_00000000776081fa8dbc514074356775.png") center / cover fixed;
             z-index: 3500;
             display: none;
@@ -957,7 +782,6 @@
             font-size: 0.9rem;
             font-weight: 500;
             transition: all 0.3s;
-            font-family: 'Montserrat', sans-serif;
         }
 
         .bgm-filter-btn:hover, .bgm-filter-btn.active {
@@ -970,6 +794,23 @@
             display: flex;
             flex-direction: column;
             gap: 15px;
+        }
+
+        .bgm-track-card {
+            background: rgba(20, 20, 20, 0.85);
+            border: 1px solid #333;
+            border-radius: 10px;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            backdrop-filter: blur(5px);
+            transition: border-color 0.3s;
+        }
+
+        .bgm-track-card:hover {
+            border-color: var(--gold);
         }
 
         .bgm-series-block {
@@ -1128,7 +969,6 @@
                 <li><a href="#" onclick="showSection('home')">Home</a></li>
                 <li><a href="#" onclick="openStorePortal()">7Leo Store</a></li>
                 <li><a href="#" onclick="openBgmPortal()">7Leo BGM</a></li>
-                <li><a href="#" onclick="showSection('idea-lab')">Idea Lab</a></li>
                 <li><a href="#" onclick="openModal('about-modal')">About</a></li>
                 <li><a href="#" onclick="openModal('founder-modal')">Meet The founder</a></li>
                 <li><a href="#" onclick="openModal('admin-modal')">Super Admin</a></li>
@@ -1162,117 +1002,11 @@
                 </div>
             </div>
         </section>
-
-        <!-- ================= 7LEO IDEA SECTION START ================= -->
-        <section id="7leo-idea" class="leo-idea-hub">
-            <div class="leo-container">
-                <!-- Header -->
-                <div class="leo-header">
-                    <h2>7Leo Idea Lab & Ecosystem Hub</h2>
-                    <p>Exploring next-gen AI agents, automated workflows, and futuristic tech concepts.</p>
-                </div>
-
-                <!-- Stats Bar -->
-                <div class="leo-stats">
-                    <div class="stat-card">
-                        <h3>14+</h3>
-                        <p>Active Concepts</p>
-                    </div>
-                    <div class="stat-card">
-                        <h3>04</h3>
-                        <p>Live Deployed Projects</p>
-                    </div>
-                    <div class="stat-card">
-                        <h3>99.9%</h3>
-                        <p>Automation Uptime</p>
-                    </div>
-                    <div class="stat-card">
-                        <h3>Vercel & AI</h3>
-                        <p>Core Infrastructure</p>
-                    </div>
-                </div>
-
-                <!-- Main Content Grid -->
-                <div class="leo-grid">
-                    <!-- Left Column: Concept Gallery & Blueprints -->
-                    <div>
-                        <div class="leo-card">
-                            <h3>💡 Featured Innovations & Concepts</h3>
-                            
-                            <!-- Concept 1 -->
-                            <div class="concept-item">
-                                <h4>Autonomous BotLab Command Stream</h4>
-                                <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 10px;">Building automated Discord command systems integrated with real-time webhooks and triggers.</p>
-                                <div class="tech-badges">
-                                    <span class="badge">BotLab</span>
-                                    <span class="badge">Discord API</span>
-                                    <span class="badge">Automation</span>
-                                </div>
-                                <button class="leo-btn" onclick="alert('Blueprint loaded from GitHub 7leogroup-sketch!')">View Tech Blueprint</button>
-                            </div>
-
-                            <!-- Concept 2 -->
-                            <div class="concept-item">
-                                <h4>Real-Time Collaboration Engine</h4>
-                                <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 10px;">Integrating Liveblocks SDK for instant multi-user syncing across 7-leo-ecosystem apps.</p>
-                                <div class="tech-badges">
-                                    <span class="badge">Liveblocks</span>
-                                    <span class="badge">Vercel</span>
-                                    <span class="badge">WebSockets</span>
-                                </div>
-                                <button class="leo-btn" onclick="alert('Quick copy prompt triggered!')">Copy Prompt / Code</button>
-                            </div>
-                        </div>
-
-                        <!-- Submission Form -->
-                        <div class="leo-card">
-                            <h3>🚀 Submit a New Concept</h3>
-                            <form onsubmit="event.preventDefault(); alert('Idea submitted successfully to 7Leo Lab!');">
-                                <input type="text" placeholder="Your Idea Title / Name" required>
-                                <textarea placeholder="Describe your tech or workflow idea..." style="height:100px;" required></textarea>
-                                <button type="submit" class="leo-btn">Dispatch Idea to Ecosystem</button>
-                            </form>
-                        </div>
-                    </div>
-
-                    <!-- Right Column: Weekly Challenge & Timeline -->
-                    <div>
-                        <!-- Weekly Challenge / Poll -->
-                        <div class="leo-card">
-                            <h3>⭐ Weekly Innovation Poll</h3>
-                            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 15px;">Which automation stack should 7Leo explore next?</p>
-                            <button class="leo-btn" style="width:100%; margin-bottom:10px; background: rgba(212, 175, 55, 0.15);" onclick="alert('Vote recorded for Google AI Studio / Gemini API!')">🤖 Gemini API Agents (65%)</button>
-                            <button class="leo-btn" style="width:100%;" onclick="alert('Vote recorded for Cloudflare Workers!')">⚡ Cloudflare Workers (35%)</button>
-                        </div>
-
-                        <!-- Changelog / Milestone Timeline -->
-                        <div class="leo-card">
-                            <h3>📈 Ecosystem Timeline</h3>
-                            <div class="timeline">
-                                <div class="timeline-item">
-                                    <h4>Cloud Infrastructure Setup</h4>
-                                    <p>Integrated professional developer programs and cloud environments.</p>
-                                </div>
-                                <div class="timeline-item">
-                                    <h4>Vercel & GitHub Sync</h4>
-                                    <p>Automated deployments for 7-leo-group-enterprises projects.</p>
-                                </div>
-                                <div class="timeline-item">
-                                    <h4>7Leo Idea Lab Launch</h4>
-                                    <p>Live interactive workspace for community ideation.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- ================= 7LEO IDEA SECTION END ================= -->
     </main>
 
     <!-- 7LEO BGM PORTAL EXPERIENCE -->
     <div class="bgm-portal-overlay" id="bgm-portal">
-        <!-- Banner: bgm-banner.png placed cleanly without text overlay -->
+        <!-- Banner Rule: bgm-banner.png at top, clean, nothing placed over it -->
         <div class="bgm-banner-container">
             <img src="bgm-banner.png" alt="7Leo BGM Banner" class="bgm-banner-img">
         </div>
@@ -1838,9 +1572,6 @@ VISION. POWER. LEGACY.</p>
             navLinks.classList.remove('active');
             if(section === 'bgm') {
                 openBgmPortal();
-            } else if(section === 'idea-lab') {
-                const el = document.getElementById('7leo-idea');
-                if(el) el.scrollIntoView({ behavior: 'smooth' });
             } else {
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             }
