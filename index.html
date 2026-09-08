@@ -916,6 +916,12 @@
             gap: 15px;
         }
 
+        .star-nav-brand img {
+            height: 35px;
+            width: auto;
+            filter: drop-shadow(0 0 8px rgba(0, 240, 255, 0.4));
+        }
+
         .star-nav-brand h2 {
             color: var(--electric-blue);
             font-size: 1.3rem;
@@ -925,7 +931,7 @@
 
         .star-nav-actions {
             display: flex;
-            gap: 12px;
+            gap: 10px;
             align-items: center;
             flex-wrap: wrap;
         }
@@ -934,14 +940,14 @@
             background: transparent;
             border: 1px solid var(--electric-blue);
             color: var(--text-light);
-            padding: 8px 16px;
+            padding: 7px 14px;
             border-radius: 20px;
             cursor: pointer;
-            font-size: 0.85srem;
+            font-size: 0.85rem;
             transition: all 0.3s;
         }
 
-        .star-nav-btn:hover {
+        .star-nav-btn:hover, .star-nav-btn.active {
             background: var(--electric-blue);
             color: var(--bg-dark);
             box-shadow: 0 0 15px rgba(0, 240, 255, 0.4);
@@ -1039,6 +1045,83 @@
             width: fit-content;
         }
 
+        /* Star Chat Assistant UI */
+        .star-chat-container {
+            background: rgba(18, 18, 18, 0.9);
+            border: 1px solid rgba(0, 240, 255, 0.3);
+            border-radius: 12px;
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            height: 550px;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+
+        .star-chat-header {
+            padding: 20px;
+            background: rgba(10, 10, 10, 0.95);
+            border-bottom: 1px solid #333;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .star-chat-messages {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .chat-bubble {
+            max-width: 80%;
+            padding: 12px 18px;
+            border-radius: 10px;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .chat-bubble.user {
+            background: rgba(0, 240, 255, 0.2);
+            color: var(--text-light);
+            align-self: flex-end;
+            border: 1px solid var(--electric-blue);
+        }
+
+        .chat-bubble.assistant {
+            background: rgba(212, 175, 55, 0.15);
+            color: var(--text-light);
+            align-self: flex-start;
+            border: 1px solid var(--gold);
+        }
+
+        .star-chat-input-area {
+            padding: 15px 20px;
+            background: rgba(10, 10, 10, 0.95);
+            border-top: 1px solid #333;
+            display: flex;
+            gap: 10px;
+        }
+
+        .star-chat-input-area input {
+            flex: 1;
+            padding: 12px 15px;
+            background: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 6px;
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        .star-chat-input-area input:focus {
+            outline: none;
+            border-color: var(--electric-blue);
+        }
+
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
@@ -1084,6 +1167,10 @@
 
             .star-body {
                 padding: 20px 15px;
+            }
+
+            .star-nav-actions {
+                display: none; /* Can be expanded via mobile dropdown if needed */
             }
         }
     </style>
@@ -1138,14 +1225,14 @@
             <p class="core-text">Welcome to 7Leo Group Commerce, Music, and Star Identity</p>
 
             <div class="commerce-music-container">
-                <!-- Store Box -->
+                <!-- Store Box (UNTOUCHED) -->
                 <div class="card-box">
                     <img src="file_00000000f2948207a9d90f38705cd83d.png" alt="7Leo Store Logo" class="card-logo">
                     <h4 class="card-title artistic-font">Build to buy</h4>
                     <button class="action-btn" onclick="openStorePortal()">Explore 7Leo Store</button>
                 </div>
 
-                <!-- BGM Box -->
+                <!-- BGM Box (UNTOUCHED) -->
                 <div class="card-box">
                     <img src="bgm-logo.png" alt="7Leo BGM Logo" class="card-logo">
                     <h4 class="card-title artistic-font">Mobile Composed Groovepad Music</h4>
@@ -1154,7 +1241,7 @@
 
                 <!-- Star Box (NEW ADDITION) -->
                 <div class="card-box">
-                    <img src="logo.png" alt="7Leo Star Logo" class="card-logo">
+                    <img src="file_00000000064c81f7bfa7694c6882429c.png" alt="7Leo Star Logo" class="card-logo">
                     <h4 class="card-title artistic-font">Vision • Power • Identity</h4>
                     <button class="action-btn" onclick="openStarPortal()">Explore 7Leo Star</button>
                 </div>
@@ -1162,79 +1249,210 @@
         </section>
     </main>
 
-    <!-- 7LEO STAR PORTAL EXPERIENCE -->
+    <!-- 7LEO STAR PORTAL EXPERIENCE (COMPLETE MASTER BUILD) -->
     <div class="star-portal-overlay" id="star-portal">
         <div class="star-header">
             <div class="star-nav-brand">
+                <img src="file_00000000064c81f7bfa7694c6882429c.png" alt="7Leo Star Logo">
                 <h2>7Leo Star Portal</h2>
             </div>
             <div class="star-nav-actions">
-                <button class="star-nav-btn" onclick="switchStarTab('dashboard')">Dashboard</button>
-                <button class="star-nav-btn" onclick="switchStarTab('hub')">Star Hub</button>
-                <button class="star-nav-btn" onclick="switchStarTab('profile')">User Profile</button>
-                <button class="star-nav-btn" onclick="switchStarTab('admin')">Star Admin</button>
+                <button class="star-nav-btn active" onclick="switchStarTab('dashboard', this)">Dashboard</button>
+                <button class="star-nav-btn" onclick="switchStarTab('assistant', this)">AI Star</button>
+                <button class="star-nav-btn" onclick="switchStarTab('daily', this)">Daily Star</button>
+                <button class="star-nav-btn" onclick="switchStarTab('personality', this)">Personality & Power</button>
+                <button class="star-nav-btn" onclick="switchStarTab('generators', this)">AI Generators</button>
+                <button class="star-nav-btn" onclick="switchStarTab('quotes', this)">Quotes</button>
+                <button class="star-nav-btn" onclick="switchStarTab('favorites', this)">Favorites</button>
+                <button class="star-nav-btn" onclick="switchStarTab('profile', this)">Profile & Points</button>
+                <button class="star-nav-btn" onclick="switchStarTab('notifications', this)">Notifications</button>
+                <button class="star-nav-btn" onclick="switchStarTab('admin', this)">Star Admin</button>
                 <button class="star-nav-btn" style="border-color:#ff5555; color:#ff5555;" onclick="closeStarPortal()">Exit Star</button>
             </div>
         </div>
 
         <div class="star-body">
             
-            <!-- STAR DASHBOARD TAB -->
+            <!-- 1. STAR DASHBOARD TAB -->
             <div class="star-tab-content active" id="star-tab-dashboard">
                 <div class="star-hero-card">
                     <span class="star-badge" id="star-membership-badge">Free Tier Active</span>
                     <h1 class="artistic-font">Welcome to 7Leo Star</h1>
-                    <p>The pinnacle of the 7Leo journey. Featuring advanced agentic identity, encrypted vaults, exclusive membership perks, and future-ready digital tools.</p>
-                    <button class="submit-btn" style="max-width: 250px; margin: 0 auto; background: var(--electric-blue); color: var(--bg-dark);" onclick="upgradeToStarPremium()">Upgrade to Star Premium</button>
+                    <p>The pinnacle of the 7Leo journey. Featuring advanced agentic identity, AI assistants, encrypted vaults, daily motivational streams, and 7Leo points/streak gamification.</p>
+                    <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; margin-top: 20px;">
+                        <button class="submit-btn" style="max-width: 220px; background: var(--electric-blue); color: var(--bg-dark);" onclick="upgradeToStarPremium()">Upgrade to Star Premium</button>
+                        <button class="action-btn" onclick="switchStarTab('assistant', document.querySelectorAll('.star-nav-btn')[1])">Launch AI Star Assistant</button>
+                    </div>
                 </div>
 
                 <div class="star-grid">
                     <div class="star-card">
-                        <span class="star-badge">Core Identity</span>
-                        <h3>Agentic Wallet & Profile</h3>
-                        <p>Secure, decentralized identity configuration designed for seamless integration across the 7Leo ecosystem.</p>
-                        <button class="action-btn" style="margin-top: auto;" onclick="switchStarTab('profile')">Manage Identity</button>
+                        <span class="star-badge">Daily Motivation</span>
+                        <h3>Daily Star & Streaks</h3>
+                        <p>Receive your personalized daily motivational message and maintain your daily streak to earn 7Leo Points.</p>
+                        <button class="action-btn" style="margin-top: auto;" onclick="switchStarTab('daily', document.querySelectorAll('.star-nav-btn')[2])">View Daily Star</button>
                     </div>
                     <div class="star-card">
-                        <span class="star-badge">Exclusive Vault</span>
-                        <h3>Encrypted Content & Insights</h3>
-                        <p>Access specialized technical roadmaps, private community modules, and early-access drops.</p>
-                        <button class="action-btn" style="margin-top: auto;" onclick="switchStarTab('hub')">Enter Vault</button>
+                        <span class="star-badge">AI Creativity</span>
+                        <h3>AI Generators Suite</h3>
+                        <p>Generate custom quotes, captions, usernames, and personalized motivational strategies instantly.</p>
+                        <button class="action-btn" style="margin-top: auto;" onclick="switchStarTab('generators', document.querySelectorAll('.star-nav-btn')[4])">Open Generators</button>
                     </div>
                     <div class="star-card">
-                        <span class="star-badge">Ecosystem Analytics</span>
-                        <h3>Real-time Usage Tracking</h3>
-                        <p>Monitor your engagement metrics, API utilization, and membership status across all 7Leo platforms.</p>
-                        <button class="action-btn" style="margin-top: auto;" onclick="switchStarTab('dashboard')">View Stats</button>
+                        <span class="star-badge">Gamification</span>
+                        <h3>Points & Level Progression</h3>
+                        <p id="dashboard-level-summary">Current Level: New Star • Points: 120 • Streak: 3 Days</p>
+                        <button class="action-btn" style="margin-top: auto;" onclick="switchStarTab('profile', document.querySelectorAll('.star-nav-btn')[7])">View Profile & Rank</button>
                     </div>
                 </div>
             </div>
 
-            <!-- STAR HUB TAB -->
-            <div class="star-tab-content" id="star-tab-hub">
+            <!-- 2. AI STAR ASSISTANT TAB -->
+            <div class="star-tab-content" id="star-tab-assistant">
+                <div class="star-chat-container">
+                    <div class="star-chat-header">
+                        <div>
+                            <h3 style="color: var(--electric-blue); font-size: 1.1rem;">AI Star Collaborator</h3>
+                            <p style="color: var(--text-muted); font-size: 0.8rem;">Powered by 7Leo Agentic Architecture</p>
+                        </div>
+                        <button class="action-btn" style="padding: 5px 12px; font-size: 0.8rem;" onclick="clearStarChat()">Clear Chat</button>
+                    </div>
+                    <div class="star-chat-messages" id="star-chat-messages">
+                        <div class="chat-bubble assistant">Hello Abubakker! I am your AI Star Assistant. Ask me anything about strategy, motivation, development, or 7Leo Group vision.</div>
+                    </div>
+                    <div class="star-chat-input-area">
+                        <input type="text" id="star-chat-input" placeholder="Type your message to AI Star..." onkeypress="if(event.key==='Enter') sendStarAiMessage()">
+                        <button class="submit-btn" style="width: auto; padding: 0 20px; background: var(--electric-blue); color: var(--bg-dark);" onclick="sendStarAiMessage()">Send</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. DAILY STAR TAB -->
+            <div class="star-tab-content" id="star-tab-daily">
                 <div class="star-hero-card" style="text-align: left;">
-                    <span class="star-badge">7Leo Star Hub</span>
-                    <h2 style="color: var(--gold-light); margin-top: 10px; margin-bottom: 15px;">Advanced Developer & Creator Tools</h2>
-                    <p style="margin: 0 0 20px 0;">Explore community resources, AI-powered conversational tools, and automated hub management suites.</p>
-                </div>
-                <div class="star-grid">
-                    <div class="star-card">
-                        <h3>Conversational Agent Suite</h3>
-                        <p>Deploy interactive AI collaborators and manage custom workflows with high fidelity.</p>
-                        <button class="action-btn" onclick="alert('Agent suite initialized successfully.')">Launch Agent</button>
-                    </div>
-                    <div class="star-card">
-                        <h3>Private Community Hub</h3>
-                        <p>Connect with fellow visionaries, share custom playlists, and access high-tier creator resources.</p>
-                        <button class="action-btn" onclick="alert('Community portal connected.')">Access Hub</button>
+                    <span class="star-badge">Today's Star Wisdom</span>
+                    <h2 id="daily-star-title" style="color: var(--gold-light); margin-top: 15px; margin-bottom: 10px;">"Vision without execution is merely a dream."</h2>
+                    <p id="daily-star-body" style="font-size: 1.05rem; line-height: 1.7; margin-bottom: 25px; color: var(--text-light);">Today's focus is on disciplined action. Take one definitive step toward your ultimate legacy today. No matter how small the beginning, consistent momentum outlasts temporary resistance.</p>
+                    <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+                        <button class="submit-btn" style="max-width: 200px; background: var(--electric-blue); color: var(--bg-dark);" onclick="saveCurrentContent('Daily Star', document.getElementById('daily-star-title').innerText)">Save to Favorites</button>
+                        <button class="action-btn" onclick="refreshDailyStar()">Refresh Daily Star</button>
                     </div>
                 </div>
             </div>
 
-            <!-- STAR USER PROFILE TAB -->
+            <!-- 4. LEO PERSONALITY & POWER MODE TAB -->
+            <div class="star-tab-content" id="star-tab-personality">
+                <div class="star-hero-card" style="text-align: left;">
+                    <span class="star-badge">Leo Mindset & Power Mode</span>
+                    <h2 style="color: var(--gold-light); margin-top: 10px; margin-bottom: 15px;">The 7Leo Philosophy</h2>
+                    <p style="margin-bottom: 20px;">Built on unwavering confidence, relentless leadership, absolute ambition, unyielding strength, and uncompromising creative self-expression.</p>
+                </div>
+                <div class="star-grid">
+                    <div class="star-card">
+                        <h3>Vision</h3>
+                        <p>See beyond today's limitations. Anticipate tomorrow and architect the future with precision.</p>
+                    </div>
+                    <div class="star-card">
+                        <h3>Power Mode</h3>
+                        <p>Activate peak discipline, high-performance focus, and unstoppable momentum through daily challenges.</p>
+                    </div>
+                    <div class="star-card">
+                        <h3>Legacy</h3>
+                        <p>Build something that outlasts the beginning. Create systems, platforms, and works of enduring value.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 5. AI GENERATORS TAB -->
+            <div class="star-tab-content" id="star-tab-generators">
+                <div class="star-hero-card" style="text-align: left;">
+                    <span class="star-badge">Advanced AI Generators</span>
+                    <h2 style="color: var(--gold-light); margin-top: 10px; margin-bottom: 15px;">Instant Content Creation Suite</h2>
+                    <p style="margin-bottom: 25px;">Select a tool below to generate powerful quotes, captions, usernames, and motivation tailored to your vision.</p>
+                    
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px;">
+                        <div style="background: rgba(20,20,20,0.8); padding: 20px; border-radius: 8px; border: 1px solid #333;">
+                            <h4 style="color: var(--gold); margin-bottom: 10px;">AI Quote Generator</h4>
+                            <select id="gen-quote-theme" style="width:100%; padding:10px; background:#1a1a1a; color:#fff; border:1px solid #444; border-radius:5px; margin-bottom:15px;">
+                                <option value="Success">Success</option>
+                                <option value="Money">Money & Power</option>
+                                <option value="Confidence">Confidence</option>
+                                <option value="Discipline">Discipline</option>
+                            </select>
+                            <button class="submit-btn" onclick="generateAiQuote()">Generate Quote</button>
+                            <div id="gen-quote-result" style="margin-top: 15px; color: var(--text-light); font-style: italic;"></div>
+                        </div>
+
+                        <div style="background: rgba(20,20,20,0.8); padding: 20px; border-radius: 8px; border: 1px solid #333;">
+                            <h4 style="color: var(--gold); margin-bottom: 10px;">AI Caption Generator</h4>
+                            <select id="gen-caption-theme" style="width:100%; padding:10px; background:#1a1a1a; color:#fff; border:1px solid #444; border-radius:5px; margin-bottom:15px;">
+                                <option value="Luxury">Luxury & Lifestyle</option>
+                                <option value="Success">Success & Grind</option>
+                                <option value="Attitude">Attitude & Legacy</option>
+                            </select>
+                            <button class="submit-btn" onclick="generateAiCaption()">Generate Caption</button>
+                            <div id="gen-caption-result" style="margin-top: 15px; color: var(--text-light);"></div>
+                        </div>
+
+                        <div style="background: rgba(20,20,20,0.8); padding: 20px; border-radius: 8px; border: 1px solid #333;">
+                            <h4 style="color: var(--gold); margin-bottom: 10px;">AI Username / Brand Generator</h4>
+                            <select id="gen-name-style" style="width:100%; padding:10px; background:#1a1a1a; color:#fff; border:1px solid #444; border-radius:5px; margin-bottom:15px;">
+                                <option value="Elite">Elite / Luxury</option>
+                                <option value="Tech">Tech & Developer</option>
+                                <option value="Dark">Dark / Mysterious</option>
+                            </select>
+                            <button class="submit-btn" onclick="generateAiUsername()">Generate Name</button>
+                            <div id="gen-name-result" style="margin-top: 15px; color: var(--text-light); font-weight: 600;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 6. 7LEO QUOTES TAB -->
+            <div class="star-tab-content" id="star-tab-quotes">
+                <div class="star-hero-card" style="text-align: left;">
+                    <span class="star-badge">7Leo Curated Vault</span>
+                    <h2 style="color: var(--gold-light); margin-top: 10px; margin-bottom: 15px;">Motivational Wisdom</h2>
+                </div>
+                <div class="star-grid" id="quotes-grid">
+                    <div class="star-card">
+                        <h3>Quote #1</h3>
+                        <p>"From zero to legacy. Every giant empire started with a single phone, a connection, and unwavering belief."</p>
+                        <button class="action-btn" style="margin-top: auto;" onclick="saveCurrentContent('Quote', 'From zero to legacy.')">Save Quote</button>
+                    </div>
+                    <div class="star-card">
+                        <h3>Quote #2</h3>
+                        <p>"Walk alone until your vision becomes so undeniable that the world has no choice but to follow."</p>
+                        <button class="action-btn" style="margin-top: auto;" onclick="saveCurrentContent('Quote', 'Walk alone until your vision becomes undeniable.')">Save Quote</button>
+                    </div>
+                    <div class="star-card">
+                        <h3>Quote #3</h3>
+                        <p>"Vision. Power. Legacy. Three words, one lifelong mission."</p>
+                        <button class="action-btn" style="margin-top: auto;" onclick="saveCurrentContent('Quote', 'Vision. Power. Legacy.')">Save Quote</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 7. FAVORITES TAB -->
+            <div class="star-tab-content" id="star-tab-favorites">
+                <div class="star-hero-card" style="text-align: left;">
+                    <span class="star-badge">Saved Vault</span>
+                    <h2 style="color: var(--gold-light); margin-top: 10px; margin-bottom: 15px;">My Favorites & Saved Content</h2>
+                    <p style="margin-bottom: 20px;">All your bookmarked quotes, AI generations, and daily star wisdom in one secure place.</p>
+                </div>
+                <div id="favorites-container" class="star-grid">
+                    <!-- Populated dynamically -->
+                </div>
+            </div>
+
+            <!-- 8. USER PROFILE & POINTS TAB -->
             <div class="star-tab-content" id="star-tab-profile">
                 <div class="modal-content" style="max-width: 600px; margin: 0 auto; background: rgba(18,18,18,0.9);">
-                    <h3 class="modal-title" style="color: var(--electric-blue);">User Profile & Membership</h3>
+                    <h3 class="modal-title" style="color: var(--electric-blue);">User Profile, Points & Streaks</h3>
+                    <div style="background: rgba(0, 240, 255, 0.1); padding: 15px; border-radius: 8px; border: 1px solid var(--electric-blue); margin-bottom: 20px; text-align: center;">
+                        <p style="color: var(--electric-blue); font-weight: 600; font-size: 1.1rem;" id="profile-rank-display">Rank: New Star (120 Points)</p>
+                        <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 5px;">Current Streak: 3 Days Active</p>
+                    </div>
                     <form id="star-profile-form" onsubmit="saveStarProfile(event)">
                         <div class="form-group">
                             <label>Legal / Display Name</label>
@@ -1257,10 +1475,30 @@
                 </div>
             </div>
 
-            <!-- STAR ADMIN TAB -->
+            <!-- 9. NOTIFICATIONS TAB -->
+            <div class="star-tab-content" id="star-tab-notifications">
+                <div class="star-hero-card" style="text-align: left;">
+                    <span class="star-badge">System Notifications</span>
+                    <h2 style="color: var(--gold-light); margin-top: 10px; margin-bottom: 15px;">Updates & Announcements</h2>
+                </div>
+                <div class="star-grid">
+                    <div class="star-card">
+                        <span class="star-badge">New Feature</span>
+                        <h3>7Leo Star Master Build Live</h3>
+                        <p>Advanced agentic AI tools, daily star streaks, and points system are now fully integrated into your ecosystem.</p>
+                    </div>
+                    <div class="star-card">
+                        <span class="star-badge">Announcement</span>
+                        <h3>Global Supplier Sync Active</h3>
+                        <p>Store orders and BGM streaming playlists are operating at peak efficiency across all connected regions.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 10. ADMIN DASHBOARD TAB -->
             <div class="star-tab-content" id="star-tab-admin">
                 <div class="star-hero-card" style="text-align: left;">
-                    <span class="star-badge" style="border-color: #ff5555; color: #ff5555;">Restricted Admin Area</span>
+                    <span class="star-badge" style="border-color: #ff5555; color: #ff5555;">Restricted Owner Area</span>
                     <h2 style="color: var(--gold-light); margin-top: 10px; margin-bottom: 15px;">Star Management & Metrics</h2>
                     <div class="metrics-grid" style="margin-top: 20px;">
                         <div class="metric-card">
@@ -1284,13 +1522,11 @@
 
     <!-- 7LEO BGM PORTAL EXPERIENCE -->
     <div class="bgm-portal-overlay" id="bgm-portal">
-        <!-- Banner Rule: bgm-banner.png at top, clean, nothing placed over it -->
         <div class="bgm-banner-container">
             <img src="bgm-banner.png" alt="7Leo BGM Banner" class="bgm-banner-img">
         </div>
 
         <div class="bgm-body-container">
-            <!-- BGM Introduction Content -->
             <div class="bgm-intro-box">
                 <h2>Welcome to 7Leo BGM!</h2>
                 <p><strong>Mobile-Composed Groovepad Music</strong></p>
@@ -1301,7 +1537,6 @@
                 <a href="https://www.youtube.com/@7LeoBGM" target="_blank" rel="noopener noreferrer" class="action-btn bgm-primary-cta">Enter the World of Music</a>
             </div>
 
-            <!-- Series Section & Filtering -->
             <div class="bgm-series-section">
                 <h3>Explore by Series</h3>
                 <div class="bgm-series-filters" id="bgm-series-filters">
@@ -1315,12 +1550,10 @@
                 </div>
             </div>
 
-            <!-- Real YouTube Playlists Container -->
             <div class="bgm-playlist-container" id="bgm-playlist-items">
                 <!-- Populated dynamically via JS -->
             </div>
 
-            <!-- YouTube & Instagram CTA Section -->
             <div class="bgm-social-section">
                 <h3>Follow & Stream</h3>
                 <p style="color: var(--text-muted);">Official YouTube Music / YouTube — 7Leo BGM</p>
@@ -1331,7 +1564,6 @@
                 </div>
             </div>
 
-            <!-- Music Licensing / Sales Section -->
             <div class="bgm-licensing-section">
                 <h3>7Leo BGM Music Licensing & Sales</h3>
                 <p>Original music and songs are available for licensing and commercial creative projects, including:</p>
@@ -1352,7 +1584,6 @@
                 </div>
             </div>
 
-            <!-- Footer Copyright -->
             <div class="bgm-footer-copyright">
                 <strong>© 2026 7Leo BGM. All Rights Reserved.</strong>
                 <p>All original music, songs, compositions, soundscapes, artwork, branding, and creative content published under 7Leo BGM are protected by applicable copyright laws unless otherwise stated.</p>
@@ -1408,7 +1639,7 @@
                 </div>
             </div>
 
-            <!-- PRODUCT FORM PANEL (Owner Product Management) -->
+            <!-- PRODUCT FORM PANEL -->
             <div class="store-tab-content product-form-panel" id="tab-product-form">
                 <h3 class="modal-title" id="product-form-heading">Add / Edit Product</h3>
                 <form id="product-management-form" onsubmit="handleSaveProduct(event)">
@@ -1457,9 +1688,7 @@
                     <div class="form-group">
                         <label>Upload Product Images (Select multiple files)</label>
                         <input type="file" id="prod-image-input" accept="image/*" multiple onchange="handleImageUpload(event)">
-                        <div class="image-upload-preview-container" id="image-preview-container">
-                            <!-- Image previews appear here -->
-                        </div>
+                        <div class="image-upload-preview-container" id="image-preview-container"></div>
                     </div>
 
                     <div class="form-group">
@@ -1531,9 +1760,7 @@
                     <input type="text" id="tracking-search-input" class="store-search-input" placeholder="Enter Order ID (e.g., 7LEO-1001)">
                     <button class="submit-btn" style="width: auto;" onclick="trackOrderQuery()">Track</button>
                 </div>
-                <div id="tracking-result-box" style="background: rgba(20, 20, 20, 0.85); padding: 25px; border-radius: 8px; border: 1px solid #333; max-width: 600px; margin: 0 auto; display: none; backdrop-filter: blur(5px);">
-                    <!-- Tracking details -->
-                </div>
+                <div id="tracking-result-box" style="background: rgba(20, 20, 20, 0.85); padding: 25px; border-radius: 8px; border: 1px solid #333; max-width: 600px; margin: 0 auto; display: none; backdrop-filter: blur(5px);"></div>
             </div>
 
             <!-- OWNER DASHBOARD PANEL -->
@@ -1572,9 +1799,7 @@
                                 <th>Fulfillment Action</th>
                             </tr>
                         </thead>
-                        <tbody id="admin-orders-tbody">
-                            <!-- Populated dynamically -->
-                        </tbody>
+                        <tbody id="admin-orders-tbody"></tbody>
                     </table>
                 </div>
             </div>
@@ -1631,7 +1856,7 @@
         </div>
     </div>
 
-    <!-- About Modal -->
+    <!-- About Modal (Includes 7Leo Star Block as required) -->
     <div class="modal-overlay" id="about-modal">
         <div class="modal-content" style="max-width: 700px;">
             <button class="close-modal" onclick="closeModal('about-modal')">&times;</button>
@@ -1693,13 +1918,13 @@ Every soundscape represents another side of the 7Leo Group vision — creative f
 7Leo BGM — Feel the Sound. Create the Legacy.</p>
                 </div>
 
-                <!-- About 7Leo Star Block (NEW ADDITION) -->
+                <!-- 7Leo Star Block Added Here as Required -->
                 <div style="background: rgba(20, 20, 20, 0.6); border: 1px solid rgba(0, 240, 255, 0.3); border-radius: 10px; padding: 20px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 15px;">
-                    <img src="logo.png" alt="7Leo Star Logo" style="height: 50px; width: auto; object-fit: contain;">
+                    <img src="file_00000000064c81f7bfa7694c6882429c.png" alt="7Leo Star Logo" style="height: 50px; width: auto; object-fit: contain;">
                     <h4 style="color: var(--electric-blue); font-size: 1.2rem;">ABOUT 7LEO STAR</h4>
                     <p style="color: var(--text-muted); line-height: 1.6; white-space: pre-line; font-size: 0.95rem;">7Leo Star is the premier identity, agentic hub, and advanced membership experience of 7Leo Group.
 
-Designed for elite creators, developers, and visionaries, 7Leo Star brings together cutting-edge digital tools, secure identity management, exclusive vault access, and tiered membership architectures.
+Designed for elite creators, developers, and visionaries, 7Leo Star brings together cutting-edge digital tools, secure identity management, exclusive vault access, daily motivational streams, AI generators, and tiered membership architectures.
 
 Representing the pinnacle of the 7Leo journey — from zero to limitless potential.
 
@@ -1823,14 +2048,12 @@ VISION. POWER. LEGACY.</p>
     <div class="modal-overlay" id="product-detail-modal">
         <div class="modal-content" style="max-width: 700px;">
             <button class="close-modal" onclick="closeModal('product-detail-modal')">&times;</button>
-            <div id="product-detail-body">
-                <!-- Populated dynamically -->
-            </div>
+            <div id="product-detail-body"></div>
         </div>
     </div>
 
     <script>
-        // Splash screen timer (exactly 3 seconds)
+        // Splash screen timer
         window.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => {
                 const splash = document.getElementById('splash-screen');
@@ -1840,6 +2063,7 @@ VISION. POWER. LEGACY.</p>
             updateCartCount();
             renderBgmPlaylist('All');
             loadStarProfileData();
+            renderFavorites();
         });
 
         // Mobile Menu Toggle
@@ -1862,11 +2086,7 @@ VISION. POWER. LEGACY.</p>
 
         function showSection(section) {
             navLinks.classList.remove('active');
-            if(section === 'bgm') {
-                openBgmPortal();
-            } else {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            }
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         // --- 7LEO STAR PORTAL SYSTEM LOGIC ---
@@ -1874,26 +2094,150 @@ VISION. POWER. LEGACY.</p>
             document.getElementById('star-portal').classList.add('active');
             navLinks.classList.remove('active');
             loadStarProfileData();
+            renderFavorites();
         }
 
         function closeStarPortal() {
             document.getElementById('star-portal').classList.remove('active');
         }
 
-        function switchStarTab(tabName) {
+        function switchStarTab(tabName, btnElement) {
             document.querySelectorAll('.star-tab-content').forEach(el => el.classList.remove('active'));
+            if(btnElement) {
+                document.querySelectorAll('.star-nav-btn').forEach(btn => btn.classList.remove('active'));
+                btnElement.classList.add('active');
+            }
             if(tabName === 'dashboard') document.getElementById('star-tab-dashboard').classList.add('active');
-            if(tabName === 'hub') document.getElementById('star-tab-hub').classList.add('active');
+            if(tabName === 'assistant') document.getElementById('star-tab-assistant').classList.add('active');
+            if(tabName === 'daily') document.getElementById('star-tab-daily').classList.add('active');
+            if(tabName === 'personality') document.getElementById('star-tab-personality').classList.add('active');
+            if(tabName === 'generators') document.getElementById('star-tab-generators').classList.add('active');
+            if(tabName === 'quotes') document.getElementById('star-tab-quotes').classList.add('active');
+            if(tabName === 'favorites') { document.getElementById('star-tab-favorites').classList.add('active'); renderFavorites(); }
             if(tabName === 'profile') document.getElementById('star-tab-profile').classList.add('active');
+            if(tabName === 'notifications') document.getElementById('star-tab-notifications').classList.add('active');
             if(tabName === 'admin') document.getElementById('star-tab-admin').classList.add('active');
         }
 
+        // AI Star Assistant Chat
+        function sendStarAiMessage() {
+            const input = document.getElementById('star-chat-input');
+            const msg = input.value.trim();
+            if(!msg) return;
+
+            const chatContainer = document.getElementById('star-chat-messages');
+            chatContainer.innerHTML += `<div class="chat-bubble user">${msg}</div>`;
+            input.value = '';
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+
+            setTimeout(() => {
+                let reply = "I understand your vision. As your AI Star Collaborator, I am here to help you build your legacy with unwavering confidence and precision.";
+                const lower = msg.toLowerCase();
+                if(lower.includes('motivation') || lower.includes('success')) {
+                    reply = "Success belongs to those who start from zero and refuse to stop. Keep pushing through every barrier!";
+                } else if(lower.includes('7leo') || lower.includes('group')) {
+                    reply = "7Leo Group represents Vision, Power, and Legacy. From Hospet to the world, your digital ecosystem is expanding.";
+                } else if(lower.includes('code') || lower.includes('dev')) {
+                    reply = "The architecture is fully scalable and secure. Ready for your next deployment!";
+                }
+                chatContainer.innerHTML += `<div class="chat-bubble assistant">${reply}</div>`;
+                chatContainer.scrollTop = chatContainer.scrollHeight;
+            }, 600);
+        }
+
+        function clearStarChat() {
+            document.getElementById('star-chat-messages').innerHTML = `<div class="chat-bubble assistant">Chat cleared. How can I assist your vision today?</div>`;
+        }
+
+        // Daily Star Refresh
+        const dailyWisdomList = [
+            { title: `"Vision without execution is merely a dream."`, body: `Today's focus is on disciplined action. Take one definitive step toward your ultimate legacy today.` },
+            { title: `"Sometimes you have to walk alone before others understand your direction."`, body: `Embrace the journey from zero. True pioneers pave the path before the crowd arrives.` },
+            { title: `"Power is built in silence and revealed through results."`, body: `Focus intensely on your craft today. Let your completed work speak with absolute authority.` }
+        ];
+
+        function refreshDailyStar() {
+            const rand = dailyWisdomList[Math.floor(Math.random() * dailyWisdomList.length)];
+            document.getElementById('daily-star-title').innerText = rand.title;
+            document.getElementById('daily-star-body').innerText = rand.body;
+            alert('Daily Star refreshed with new wisdom!');
+        }
+
+        // AI Generators
+        function generateAiQuote() {
+            const theme = document.getElementById('gen-quote-theme').value;
+            const quotes = {
+                Success: `"True success is built from zero, requiring no permission and accepting no limits."`,
+                Money: `"Financial mastery and power flow where discipline and relentless execution meet."`,
+                Confidence: `"Confidence is not the absence of doubt; it is the refusal to let doubt dictate your actions."`,
+                Discipline: `"Discipline is choosing between what you want now and what you want most."`
+            };
+            document.getElementById('gen-quote-result').innerText = quotes[theme] || quotes['Success'];
+        }
+
+        function generateAiCaption() {
+            const theme = document.getElementById('gen-caption-theme').value;
+            const captions = {
+                Luxury: `Elevating the standard. Vision. Power. Legacy. ✨⚜️ #7LeoGroup`,
+                Success: `Started from zero. Building toward infinity. 🚀 #Grindset #7LeoStar`,
+                Attitude: `Walk alone, build empires, leave a legacy that outlasts the beginning. 🦁⭐`
+            };
+            document.getElementById('gen-caption-result').innerText = captions[theme] || captions['Luxury'];
+        }
+
+        function generateAiUsername() {
+            const style = document.getElementById('gen-name-style').value;
+            const names = {
+                Elite: `@7LeoElite_Official`,
+                Tech: `@StarDeveloper_7Leo`,
+                Dark: `@ShadowVision_7Leo`
+            };
+            document.getElementById('gen-name-result').innerText = names[style] || `@7LeoStar_Official`;
+        }
+
+        // Favorites Storage
+        function saveCurrentContent(type, contentText) {
+            let favs = JSON.parse(localStorage.getItem('7leo_star_favorites')) || [];
+            favs.push({ type, text: contentText, date: new Date().toLocaleDateString() });
+            localStorage.setItem('7leo_star_favorites', JSON.stringify(favs));
+            alert('Successfully saved to your 7Leo Star Favorites vault!');
+        }
+
+        function renderFavorites() {
+            const container = document.getElementById('favorites-container');
+            if(!container) return;
+            const favs = JSON.parse(localStorage.getItem('7leo_star_favorites')) || [];
+            container.innerHTML = '';
+            if(favs.length === 0) {
+                container.innerHTML = '<p style="color:var(--text-muted); grid-column: 1/-1; text-align:center; padding:30px;">No saved favorites yet. Explore Daily Star or Quotes to save items.</p>';
+                return;
+            }
+            favs.forEach((f, idx) => {
+                container.innerHTML += `
+                    <div class="star-card">
+                        <span class="star-badge">${f.type}</span>
+                        <p style="color:var(--text-light); font-size:1rem; margin-top:5px;">${f.text}</p>
+                        <button class="action-btn" style="border-color:#ff5555; color:#ff5555; margin-top:auto; padding:6px 12px;" onclick="removeFavorite(${idx})">Remove</button>
+                    </div>
+                `;
+            });
+        }
+
+        function removeFavorite(index) {
+            let favs = JSON.parse(localStorage.getItem('7leo_star_favorites')) || [];
+            favs.splice(index, 1);
+            localStorage.setItem('7leo_star_favorites', JSON.stringify(favs));
+            renderFavorites();
+        }
+
+        // Profile & Premium Upgrade
         function upgradeToStarPremium() {
             let profile = JSON.parse(localStorage.getItem('7leo_star_profile')) || { name: 'Abubakker Bellary', email: '7leogroup@gmail.com', tier: 'Free', prefs: '' };
             profile.tier = 'Premium';
             localStorage.setItem('7leo_star_profile', JSON.stringify(profile));
             document.getElementById('star-membership-badge').innerText = 'Premium Star Active';
             document.getElementById('star-profile-tier').value = 'Premium Star Member';
+            document.getElementById('admin-premium-count').innerText = '313';
             alert('Congratulations! Your 7Leo Star membership has been successfully upgraded to Premium.');
         }
 
@@ -1923,7 +2267,7 @@ VISION. POWER. LEGACY.</p>
         }
 
 
-        // --- 7LEO BGM SYSTEM LOGIC (REAL YOUTUBE PLAYLISTS) ---
+        // --- 7LEO BGM SYSTEM LOGIC ---
         const bgmSeries = [
             '7Leo Songs Series',
             '7Leo Cinematic Series',
@@ -1985,7 +2329,7 @@ VISION. POWER. LEGACY.</p>
         }
 
 
-        // --- 7LEO STORE SYSTEM LOGIC (WITH LOCAL STORAGE PERSISTENCE) ---
+        // --- 7LEO STORE SYSTEM LOGIC ---
         let storeProducts = JSON.parse(localStorage.getItem('7leo_products'));
         if(!storeProducts) {
             storeProducts = [
