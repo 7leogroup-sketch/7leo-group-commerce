@@ -1170,7 +1170,7 @@
             }
 
             .star-nav-actions {
-                display: none;
+                display: none; /* Can be expanded via mobile dropdown if needed */
             }
         }
     </style>
@@ -1183,7 +1183,7 @@
             <img src="file_0000000028fc81f8b878489375475bad.png" alt="Splash Background">
         </div>
         <div class="splash-content">
-            <h1 class="splash-title">Vision*Power*Legacy</h1>
+            <h1 class="splash-title">Vision*Power"Legacy</h1>
         </div>
     </div>
 
@@ -1208,7 +1208,7 @@
                 <li><a href="#" onclick="openBgmPortal()">7Leo BGM</a></li>
                 <li><a href="#" onclick="openStarPortal()">7Leo Star</a></li>
                 <li><a href="#" onclick="openModal('about-modal')">About</a></li>
-                <li><a href="#" onclick="openModal('founder-modal')">Meet The Founder</a></li>
+                <li><a href="#" onclick="openModal('founder-modal')">Meet The founder</a></li>
                 <li><a href="#" onclick="openModal('admin-modal')">Super Admin</a></li>
                 <li><a href="#" onclick="openModal('contact-modal')">Contact</a></li>
                 <li><a href="#" onclick="openModal('signup-modal')">Signup</a></li>
@@ -1225,21 +1225,21 @@
             <p class="core-text">Welcome to 7Leo Group Commerce, Music, and Star Identity</p>
 
             <div class="commerce-music-container">
-                <!-- Store Box -->
+                <!-- Store Box (UNTOUCHED) -->
                 <div class="card-box">
                     <img src="file_00000000f2948207a9d90f38705cd83d.png" alt="7Leo Store Logo" class="card-logo">
                     <h4 class="card-title artistic-font">Build to buy</h4>
                     <button class="action-btn" onclick="openStorePortal()">Explore 7Leo Store</button>
                 </div>
 
-                <!-- BGM Box -->
+                <!-- BGM Box (UNTOUCHED) -->
                 <div class="card-box">
                     <img src="bgm-logo.png" alt="7Leo BGM Logo" class="card-logo">
                     <h4 class="card-title artistic-font">Mobile Composed Groovepad Music</h4>
                     <button class="action-btn" onclick="openBgmPortal()">Explore 7Leo BGM</button>
                 </div>
 
-                <!-- Star Box -->
+                <!-- Star Box (NEW ADDITION) -->
                 <div class="card-box">
                     <img src="file_00000000064c81f7bfa7694c6882429c.png" alt="7Leo Star Logo" class="card-logo">
                     <h4 class="card-title artistic-font">Vision • Power • Identity</h4>
@@ -1249,7 +1249,7 @@
         </section>
     </main>
 
-    <!-- 7LEO STAR PORTAL EXPERIENCE -->
+    <!-- 7LEO STAR PORTAL EXPERIENCE (COMPLETE MASTER BUILD) -->
     <div class="star-portal-overlay" id="star-portal">
         <div class="star-header">
             <div class="star-nav-brand">
@@ -1272,7 +1272,8 @@
         </div>
 
         <div class="star-body">
-            <!-- 1. DASHBOARD -->
+            
+            <!-- 1. STAR DASHBOARD TAB -->
             <div class="star-tab-content active" id="star-tab-dashboard">
                 <div class="star-hero-card">
                     <span class="star-badge" id="star-membership-badge">Free Tier Active</span>
@@ -1306,7 +1307,7 @@
                 </div>
             </div>
 
-            <!-- 2. AI ASSISTANT -->
+            <!-- 2. AI STAR ASSISTANT TAB -->
             <div class="star-tab-content" id="star-tab-assistant">
                 <div class="star-chat-container">
                     <div class="star-chat-header">
@@ -1326,7 +1327,7 @@
                 </div>
             </div>
 
-            <!-- 3. DAILY STAR -->
+            <!-- 3. DAILY STAR TAB -->
             <div class="star-tab-content" id="star-tab-daily">
                 <div class="star-hero-card" style="text-align: left;">
                     <span class="star-badge">Today's Star Wisdom</span>
@@ -1339,7 +1340,7 @@
                 </div>
             </div>
 
-            <!-- 4. PERSONALITY & POWER -->
+            <!-- 4. LEO PERSONALITY & POWER MODE TAB -->
             <div class="star-tab-content" id="star-tab-personality">
                 <div class="star-hero-card" style="text-align: left;">
                     <span class="star-badge">Leo Mindset & Power Mode</span>
@@ -1362,7 +1363,7 @@
                 </div>
             </div>
 
-            <!-- 5. AI GENERATORS -->
+            <!-- 5. AI GENERATORS TAB -->
             <div class="star-tab-content" id="star-tab-generators">
                 <div class="star-hero-card" style="text-align: left;">
                     <span class="star-badge">Advanced AI Generators</span>
@@ -1407,7 +1408,7 @@
                 </div>
             </div>
 
-            <!-- 6. QUOTES -->
+            <!-- 6. 7LEO QUOTES TAB -->
             <div class="star-tab-content" id="star-tab-quotes">
                 <div class="star-hero-card" style="text-align: left;">
                     <span class="star-badge">7Leo Curated Vault</span>
@@ -1432,17 +1433,19 @@
                 </div>
             </div>
 
-            <!-- 7. FAVORITES -->
+            <!-- 7. FAVORITES TAB -->
             <div class="star-tab-content" id="star-tab-favorites">
                 <div class="star-hero-card" style="text-align: left;">
                     <span class="star-badge">Saved Vault</span>
                     <h2 style="color: var(--gold-light); margin-top: 10px; margin-bottom: 15px;">My Favorites & Saved Content</h2>
                     <p style="margin-bottom: 20px;">All your bookmarked quotes, AI generations, and daily star wisdom in one secure place.</p>
                 </div>
-                <div id="favorites-container" class="star-grid"></div>
+                <div id="favorites-container" class="star-grid">
+                    <!-- Populated dynamically -->
+                </div>
             </div>
 
-            <!-- 8. PROFILE -->
+            <!-- 8. USER PROFILE & POINTS TAB -->
             <div class="star-tab-content" id="star-tab-profile">
                 <div class="modal-content" style="max-width: 600px; margin: 0 auto; background: rgba(18,18,18,0.9);">
                     <h3 class="modal-title" style="color: var(--electric-blue);">User Profile, Points & Streaks</h3>
@@ -1472,7 +1475,7 @@
                 </div>
             </div>
 
-            <!-- 9. NOTIFICATIONS -->
+            <!-- 9. NOTIFICATIONS TAB -->
             <div class="star-tab-content" id="star-tab-notifications">
                 <div class="star-hero-card" style="text-align: left;">
                     <span class="star-badge">System Notifications</span>
@@ -1492,7 +1495,7 @@
                 </div>
             </div>
 
-            <!-- 10. STAR ADMIN -->
+            <!-- 10. ADMIN DASHBOARD TAB -->
             <div class="star-tab-content" id="star-tab-admin">
                 <div class="star-hero-card" style="text-align: left;">
                     <span class="star-badge" style="border-color: #ff5555; color: #ff5555;">Restricted Owner Area</span>
@@ -1513,6 +1516,7 @@
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
 
@@ -1546,7 +1550,9 @@
                 </div>
             </div>
 
-            <div class="bgm-playlist-container" id="bgm-playlist-items"></div>
+            <div class="bgm-playlist-container" id="bgm-playlist-items">
+                <!-- Populated dynamically via JS -->
+            </div>
 
             <div class="bgm-social-section">
                 <h3>Follow & Stream</h3>
@@ -1581,7 +1587,9 @@
             <div class="bgm-footer-copyright">
                 <strong>© 2026 7Leo BGM. All Rights Reserved.</strong>
                 <p>All original music, songs, compositions, soundscapes, artwork, branding, and creative content published under 7Leo BGM are protected by applicable copyright laws unless otherwise stated.</p>
+                <p>Unauthorized copying, reproduction, redistribution, re-uploading, reselling, modifying for redistribution, or commercial use without appropriate permission is prohibited.</p>
                 <p>For music licensing, commercial usage, advertisements, trailers, reels, promotions, brand projects, film/video projects, or other usage inquiries, contact: <a href="mailto:7leogroup@gmail.com">7leogroup@gmail.com</a></p>
+                <p>7Leo BGM reserves the right to determine applicable licensing terms and permissions for each project.</p>
             </div>
         </div>
 
@@ -1605,6 +1613,7 @@
         </div>
 
         <div class="store-body">
+            
             <!-- CATALOG PANEL -->
             <div class="store-tab-content catalog-panel active" id="tab-catalog">
                 <div class="store-controls-bar">
@@ -1625,7 +1634,9 @@
                     <button class="submit-btn" style="width: auto; padding: 10px 20px;" onclick="openAddProductForm()">+ Add Product (Owner)</button>
                 </div>
 
-                <div class="product-grid" id="store-product-grid"></div>
+                <div class="product-grid" id="store-product-grid">
+                    <!-- Dynamically populated products -->
+                </div>
             </div>
 
             <!-- PRODUCT FORM PANEL -->
@@ -1815,10 +1826,13 @@
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
 
-    <!-- Modals -->
+    <!-- Modals for Navigation Items -->
+
+    <!-- Signup Modal -->
     <div class="modal-overlay" id="signup-modal">
         <div class="modal-content">
             <button class="close-modal" onclick="closeModal('signup-modal')">&times;</button>
@@ -1842,12 +1856,13 @@
         </div>
     </div>
 
-    <!-- About Modal -->
+    <!-- About Modal (Includes 7Leo Star Block as required) -->
     <div class="modal-overlay" id="about-modal">
         <div class="modal-content" style="max-width: 700px;">
             <button class="close-modal" onclick="closeModal('about-modal')">&times;</button>
             <h3 class="modal-title">About 7Leo Group</h3>
             <div style="display: flex; flex-direction: column; gap: 30px; text-align: left; max-height: 70vh; overflow-y: auto; padding-right: 10px;">
+                
                 <div style="background: rgba(20, 20, 20, 0.6); border: 1px solid rgba(212, 175, 55, 0.2); border-radius: 10px; padding: 20px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 15px;">
                     <img src="logo.png" alt="7Leo Group Logo" style="height: 50px; width: auto;">
                     <h4 style="color: var(--gold); font-size: 1.2rem;">ABOUT 7LEO GROUP</h4>
@@ -1859,13 +1874,63 @@ What started with a mobile phone, Wi-Fi, determination, and a dream is becoming 
 
 7Leo Group is home to experiences such as 7Leo Store, 7Leo BGM, and 7Leo Star, with more ideas and projects planned for the future.
 
+But 7Leo Group is bigger than any single project.
+
+It represents the journey of starting from nothing, learning along the way, facing challenges, and continuing forward without giving up.
+
 VISION — See beyond today.
 POWER — Keep moving through challenges.
 LEGACY — Build something that can live beyond the beginning.
 
+7Leo Group is not just a website.
+
+It is a journey from ZERO toward something greater.
+
+The journey has only begun.
+
 7LEO GROUP
 VISION. POWER. LEGACY.</p>
                 </div>
+
+                <div style="background: rgba(20, 20, 20, 0.6); border: 1px solid rgba(212, 175, 55, 0.2); border-radius: 10px; padding: 20px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 15px;">
+                    <img src="file_00000000f2948207a9d90f38705cd83d.png" alt="7Leo Store Logo" style="height: 50px; width: auto; object-fit: contain;">
+                    <h4 style="color: var(--gold); font-size: 1.2rem;">ABOUT 7LEO STORE</h4>
+                    <p style="color: var(--text-muted); line-height: 1.6; white-space: pre-line; font-size: 0.95rem;">7Leo Store is the official commerce experience of 7Leo Group, created to bring together premium lifestyle products, fashion, accessories, and selected everyday essentials.
+
+Our vision is simple — Build to Buy.
+
+7Leo Store is designed around a modern, premium shopping experience with carefully presented products, order handling, fulfillment support, order tracking, and a smooth customer journey.
+
+Through our supplier and fulfillment network, products can be sourced and delivered while maintaining the 7Leo Group vision of quality, style, innovation, and legacy.
+
+7Leo Store — Build to Buy.</p>
+                </div>
+
+                <div style="background: rgba(20, 20, 20, 0.6); border: 1px solid rgba(212, 175, 55, 0.2); border-radius: 10px; padding: 20px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 15px;">
+                    <img src="bgm-logo.png" alt="7Leo BGM Logo" style="height: 50px; width: auto; object-fit: contain;">
+                    <h4 style="color: var(--gold); font-size: 1.2rem;">ABOUT 7LEO BGM</h4>
+                    <p style="color: var(--text-muted); line-height: 1.6; white-space: pre-line; font-size: 0.95rem;">7Leo BGM is the music experience of 7Leo Group, created for original mobile-composed music and creative soundscapes.
+
+Built around mobile music creation and Groovepad-inspired composition, 7Leo BGM explores rhythm, atmosphere, energy, and creativity through original musical ideas.
+
+Every soundscape represents another side of the 7Leo Group vision — creative freedom, experimentation, and artistic expression.
+
+7Leo BGM — Feel the Sound. Create the Legacy.</p>
+                </div>
+
+                <!-- 7Leo Star Block Added Here as Required -->
+                <div style="background: rgba(20, 20, 20, 0.6); border: 1px solid rgba(0, 240, 255, 0.3); border-radius: 10px; padding: 20px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 15px;">
+                    <img src="file_00000000064c81f7bfa7694c6882429c.png" alt="7Leo Star Logo" style="height: 50px; width: auto; object-fit: contain;">
+                    <h4 style="color: var(--electric-blue); font-size: 1.2rem;">ABOUT 7LEO STAR</h4>
+                    <p style="color: var(--text-muted); line-height: 1.6; white-space: pre-line; font-size: 0.95rem;">7Leo Star is the premier identity, agentic hub, and advanced membership experience of 7Leo Group.
+
+Designed for elite creators, developers, and visionaries, 7Leo Star brings together cutting-edge digital tools, secure identity management, exclusive vault access, daily motivational streams, AI generators, and tiered membership architectures.
+
+Representing the pinnacle of the 7Leo journey — from zero to limitless potential.
+
+7Leo Star — Vision. Power. Identity.</p>
+                </div>
+
             </div>
         </div>
     </div>
@@ -1874,14 +1939,68 @@ VISION. POWER. LEGACY.</p>
     <div class="modal-overlay" id="founder-modal">
         <div class="modal-content" style="max-width: 700px;">
             <button class="close-modal" onclick="closeModal('founder-modal')">&times;</button>
-            <h3 class="modal-title">Meet The Founder</h3>
+            <h3 class="modal-title">Meet The founder</h3>
             <div style="max-height: 70vh; overflow-y: auto; padding-right: 10px; color: var(--text-muted); line-height: 1.6; display: flex; flex-direction: column; gap: 20px; text-align: left;">
+                
                 <div style="text-align: center;">
                     <img src="founder.jpg" alt="Abubakker Bellary" style="width: 140px; height: 140px; border-radius: 50%; object-fit: cover; border: 2px solid var(--gold); margin: 0 auto 15px auto; box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);">
                     <h4 style="color: var(--gold-light); font-size: 1.3rem; font-weight: 600;">ABUBAKKER BELLARY</h4>
                     <p style="color: var(--gold); font-size: 0.95rem; font-weight: 500; margin-top: 5px;">Founder — 7Leo Group</p>
-                    <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 3px;">Hospet – 583201<br>Vijayanagara Zilla, Karnataka</p>
+                    <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 3px;">From Karnataka<br>Hospet – 583201<br>Vijayanagara Zilla</p>
                 </div>
+
+                <hr style="border: 0; border-top: 1px solid rgba(212, 175, 55, 0.2);">
+
+                <div>
+                    <h4 style="color: var(--gold); font-size: 1.1rem; margin-bottom: 10px;">Founder Story</h4>
+                    <p style="white-space: pre-line; font-size: 0.95rem;">7Leo Group was not built from a perfect beginning.
+It was built from a dream.
+
+With no financial support, no business team, no friends beside me, and no laptop — I started with only a mobile phone, Wi-Fi, and the determination to create something of my own.
+
+The journey was not easy.
+There were difficulties, limitations, doubts, and moments when giving up would have been the easier choice.
+
+But I kept going.
+
+Every step was taken from zero.
+Every idea was built with patience.
+Every challenge became another reason to learn, improve, and continue.
+
+7Leo Group represents that journey — from starting with almost nothing to building a vision for something greater.
+
+This is not a story of having everything.
+It is a story of starting with what you have.
+
+Sometimes you have to walk alone before others understand where you are going.
+
+I may have started alone, but I believe a strong vision can become bigger than the person who started it.
+
+7Leo Group is my journey of Vision, Power, and Legacy.
+
+The journey has only begun.
+
+— ABUBAKKER BELLARY
+Founder, 7Leo Group</p>
+                </div>
+
+                <hr style="border: 0; border-top: 1px solid rgba(212, 175, 55, 0.2);">
+
+                <div>
+                    <h4 style="color: var(--gold); font-size: 1.1rem; margin-bottom: 10px;">Founder Bio</h4>
+                    <p style="white-space: pre-line; font-size: 0.95rem;">ABUBAKKER BELLARY is the Founder of 7Leo Group, an independent vision built from Karnataka.
+
+Starting with only a mobile phone, Wi-Fi, determination, and a dream — without a laptop, financial backing, or a team — he began building 7Leo Group from zero.
+
+His journey represents perseverance, self-belief, creativity, and the courage to keep moving forward even when the path has to be walked alone.
+
+For him, 7Leo Group is more than a website or a business.
+
+It is proof that a small beginning can carry a big vision.
+
+VISION. POWER. LEGACY.</p>
+                </div>
+
             </div>
         </div>
     </div>
@@ -1925,7 +2044,7 @@ VISION. POWER. LEGACY.</p>
         </div>
     </div>
 
-    <!-- Product Details Modal -->
+    <!-- Product Details Modal for Store -->
     <div class="modal-overlay" id="product-detail-modal">
         <div class="modal-content" style="max-width: 700px;">
             <button class="close-modal" onclick="closeModal('product-detail-modal')">&times;</button>
@@ -1934,7 +2053,7 @@ VISION. POWER. LEGACY.</p>
     </div>
 
     <script>
-        // Splash screen timer & initializers
+        // Splash screen timer
         window.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => {
                 const splash = document.getElementById('splash-screen');
@@ -2000,6 +2119,7 @@ VISION. POWER. LEGACY.</p>
             if(tabName === 'admin') document.getElementById('star-tab-admin').classList.add('active');
         }
 
+        // AI Star Assistant Chat
         function sendStarAiMessage() {
             const input = document.getElementById('star-chat-input');
             const msg = input.value.trim();
@@ -2029,6 +2149,7 @@ VISION. POWER. LEGACY.</p>
             document.getElementById('star-chat-messages').innerHTML = `<div class="chat-bubble assistant">Chat cleared. How can I assist your vision today?</div>`;
         }
 
+        // Daily Star Refresh
         const dailyWisdomList = [
             { title: `"Vision without execution is merely a dream."`, body: `Today's focus is on disciplined action. Take one definitive step toward your ultimate legacy today.` },
             { title: `"Sometimes you have to walk alone before others understand your direction."`, body: `Embrace the journey from zero. True pioneers pave the path before the crowd arrives.` },
@@ -2042,6 +2163,7 @@ VISION. POWER. LEGACY.</p>
             alert('Daily Star refreshed with new wisdom!');
         }
 
+        // AI Generators
         function generateAiQuote() {
             const theme = document.getElementById('gen-quote-theme').value;
             const quotes = {
@@ -2073,6 +2195,7 @@ VISION. POWER. LEGACY.</p>
             document.getElementById('gen-name-result').innerText = names[style] || `@7LeoStar_Official`;
         }
 
+        // Favorites Storage
         function saveCurrentContent(type, contentText) {
             let favs = JSON.parse(localStorage.getItem('7leo_star_favorites')) || [];
             favs.push({ type, text: contentText, date: new Date().toLocaleDateString() });
@@ -2107,6 +2230,7 @@ VISION. POWER. LEGACY.</p>
             renderFavorites();
         }
 
+        // Profile & Premium Upgrade
         function upgradeToStarPremium() {
             let profile = JSON.parse(localStorage.getItem('7leo_star_profile')) || { name: 'Abubakker Bellary', email: '7leogroup@gmail.com', tier: 'Free', prefs: '' };
             profile.tier = 'Premium';
@@ -2141,6 +2265,7 @@ VISION. POWER. LEGACY.</p>
                 }
             }
         }
+
 
         // --- 7LEO BGM SYSTEM LOGIC ---
         const bgmSeries = [
@@ -2203,7 +2328,8 @@ VISION. POWER. LEGACY.</p>
             });
         }
 
-        // --- 7LEO STORE COMPLETE SYSTEM LOGIC ---
+
+        // --- 7LEO STORE SYSTEM LOGIC ---
         let storeProducts = JSON.parse(localStorage.getItem('7leo_products'));
         if(!storeProducts) {
             storeProducts = [
@@ -2239,13 +2365,14 @@ VISION. POWER. LEGACY.</p>
 
         let cart = JSON.parse(localStorage.getItem('7leo_cart')) || [];
         let orders = JSON.parse(localStorage.getItem('7leo_orders')) || [];
-        let currentUploadedImages = [];
 
         function saveStoreData() {
             localStorage.setItem('7leo_products', JSON.stringify(storeProducts));
             localStorage.setItem('7leo_cart', JSON.stringify(cart));
             localStorage.setItem('7leo_orders', JSON.stringify(orders));
         }
+
+        let currentUploadedImages = [];
 
         function openStorePortal() {
             document.getElementById('store-portal').classList.add('active');
@@ -2259,129 +2386,50 @@ VISION. POWER. LEGACY.</p>
         }
 
         function switchStoreTab(tabName) {
-            document.querySelectorAll('.store-portal-overlay .store-tab-content').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.store-tab-content').forEach(el => el.classList.remove('active'));
             if(tabName === 'catalog') document.getElementById('tab-catalog').classList.add('active');
-            if(tabName === 'cart') { document.getElementById('tab-cart').classList.add('active'); renderCart(); }
+            if(tabName === 'cart') { document.getElementById('tab-cart').classList.add('active'); renderCartItems(); }
             if(tabName === 'tracking') document.getElementById('tab-tracking').classList.add('active');
             if(tabName === 'dashboard') { document.getElementById('tab-dashboard').classList.add('active'); renderAdminDashboard(); }
             if(tabName === 'policies') document.getElementById('tab-policies').classList.add('active');
-        }
-
-        function openAddProductForm() {
-            document.getElementById('product-form-heading').innerText = 'Add New Product';
-            document.getElementById('product-management-form').reset();
-            document.getElementById('edit-product-id').value = '';
-            document.getElementById('image-preview-container').innerHTML = '';
-            currentUploadedImages = [];
-            document.getElementById('live-profit-calc-text').innerText = 'Estimated Profit: ₹0.00 (Margin: 0%)';
-            document.querySelectorAll('.store-portal-overlay .store-tab-content').forEach(el => el.classList.remove('active'));
-            document.getElementById('tab-product-form').classList.add('active');
-        }
-
-        function calculateRealtimeProfit() {
-            const cost = parseFloat(document.getElementById('prod-cost').value) || 0;
-            const price = parseFloat(document.getElementById('prod-price').value) || 0;
-            const fees = parseFloat(document.getElementById('prod-fees').value) || 0;
-            const profit = price - cost - fees;
-            const margin = price > 0 ? ((profit / price) * 100).toFixed(1) : 0;
-            document.getElementById('live-profit-calc-text').innerText = `Estimated Profit: ₹${profit.toFixed(2)} (Margin: ${margin}%)`;
-        }
-
-        function handleImageUpload(event) {
-            const files = event.target.files;
-            for(let i = 0; i < files.length; i++) {
-                const file = files[i];
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    currentUploadedImages.push(e.target.result);
-                    renderImagePreviews();
-                }
-                reader.readAsDataURL(file);
-            }
-        }
-
-        function renderImagePreviews() {
-            const previewContainer = document.getElementById('image-preview-container');
-            previewContainer.innerHTML = '';
-            currentUploadedImages.forEach((imgSrc, idx) => {
-                previewContainer.innerHTML += `
-                    <div class="image-preview-thumb">
-                        <img src="${imgSrc}" alt="Preview">
-                        <button type="button" onclick="removeUploadedImage(${idx})">&times;</button>
-                    </div>
-                `;
-            });
-        }
-
-        function removeUploadedImage(index) {
-            currentUploadedImages.splice(index, 1);
-            renderImagePreviews();
-        }
-
-        function handleSaveProduct(event) {
-            event.preventDefault();
-            const id = document.getElementById('edit-product-id').value || 'prod_' + Date.now();
-            const name = document.getElementById('prod-name').value;
-            const description = document.getElementById('prod-desc').value;
-            const category = document.getElementById('prod-category').value;
-            const sku = document.getElementById('prod-sku').value;
-            const cost = parseFloat(document.getElementById('prod-cost').value);
-            const price = parseFloat(document.getElementById('prod-price').value);
-            const fees = parseFloat(document.getElementById('prod-fees').value);
-            const supplier = document.getElementById('prod-supplier').value;
-            const supplierUrl = document.getElementById('prod-supplier-url').value;
-            const images = currentUploadedImages.length > 0 ? currentUploadedImages : ['logo.png'];
-
-            const existingIndex = storeProducts.findIndex(p => p.id === id);
-            const productData = { id, name, description, category, sku, cost, price, fees, supplier, supplierUrl, images };
-
-            if(existingIndex >= 0) {
-                storeProducts[existingIndex] = productData;
-            } else {
-                storeProducts.push(productData);
-            }
-
-            saveStoreData();
-            switchStoreTab('catalog');
-            renderStoreCatalog();
-            alert('Product saved and published successfully!');
+            if(tabName === 'product-form') document.getElementById('tab-product-form').classList.add('active');
         }
 
         function renderStoreCatalog() {
             const grid = document.getElementById('store-product-grid');
-            if(!grid) return;
             const search = document.getElementById('store-search').value.toLowerCase();
-            const catFilter = document.getElementById('store-category-filter').value;
-            const sortVal = document.getElementById('store-sort').value;
+            const category = document.getElementById('store-category-filter').value;
+            const sort = document.getElementById('store-sort').value;
 
             let filtered = storeProducts.filter(p => {
-                const matchesSearch = p.name.toLowerCase().includes(search) || p.description.toLowerCase().includes(search);
-                const matchesCat = !catFilter || p.category === catFilter;
-                return matchesSearch && matchesCat;
+                const matchSearch = p.name.toLowerCase().includes(search) || p.description.toLowerCase().includes(search);
+                const matchCat = category === '' || p.category === category;
+                return matchSearch && matchCat;
             });
 
-            if(sortVal === 'price-low') filtered.sort((a,b) => a.price - b.price);
-            if(sortVal === 'price-high') filtered.sort((a,b) => b.price - a.price);
+            if(sort === 'price-low') filtered.sort((a,b) => a.price - b.price);
+            if(sort === 'price-high') filtered.sort((a,b) => b.price - a.price);
 
             grid.innerHTML = '';
             if(filtered.length === 0) {
-                grid.innerHTML = '<p style="color:var(--text-muted); grid-column:1/-1; text-align:center; padding:40px;">No products found.</p>';
+                grid.innerHTML = '<p style="color:var(--text-muted); grid-column: 1/-1; text-align:center; padding:40px;">No products available yet.</p>';
                 return;
             }
 
             filtered.forEach(p => {
+                const img = p.images && p.images.length > 0 ? p.images[0] : 'logo.png';
                 grid.innerHTML += `
                     <div class="product-card">
                         <div class="product-card-img-wrap">
-                            <img src="${p.images[0]}" alt="${p.name}">
+                            <img src="${img}" alt="${p.name}">
                         </div>
                         <div class="product-card-info">
                             <h4 class="product-card-title">${p.name}</h4>
                             <div class="product-card-price">₹${p.price.toFixed(2)}</div>
                             <p class="product-card-desc">${p.description}</p>
                             <div class="product-card-actions">
-                                <button class="action-btn" style="flex:1; padding:8px;" onclick="addToCart('${p.id}')">Add to Cart</button>
-                                <button class="action-btn" style="padding:8px;" onclick="viewProductDetails('${p.id}')">Details</button>
+                                <button class="action-btn" style="flex:1; padding:8px;" onclick="openProductDetail('${p.id}')">View</button>
+                                <button class="submit-btn" style="flex:1; padding:8px;" onclick="addToCart('${p.id}')">Add to Cart</button>
                             </div>
                         </div>
                     </div>
@@ -2393,18 +2441,91 @@ VISION. POWER. LEGACY.</p>
             renderStoreCatalog();
         }
 
-        function viewProductDetails(productId) {
+        function openAddProductForm() {
+            document.getElementById('product-management-form').reset();
+            currentUploadedImages = ['logo.png'];
+            renderImagePreviews();
+            document.getElementById('live-profit-calc-text').innerText = 'Estimated Profit: ₹0.00 (Margin: 0%)';
+            switchStoreTab('product-form');
+        }
+
+        function handleImageUpload(event) {
+            const files = event.target.files;
+            for(let i=0; i<files.length; i++) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    currentUploadedImages.push(e.target.result);
+                    renderImagePreviews();
+                }
+                reader.readAsDataURL(files[i]);
+            }
+        }
+
+        function renderImagePreviews() {
+            const container = document.getElementById('image-preview-container');
+            container.innerHTML = '';
+            currentUploadedImages.forEach((imgSrc, index) => {
+                container.innerHTML += `
+                    <div class="image-preview-thumb">
+                        <img src="${imgSrc}" alt="Preview">
+                        <button type="button" onclick="removeUploadedImage(${index})">&times;</button>
+                    </div>
+                `;
+            });
+        }
+
+        function removeUploadedImage(index) {
+            currentUploadedImages.splice(index, 1);
+            renderImagePreviews();
+        }
+
+        function calculateRealtimeProfit() {
+            const cost = parseFloat(document.getElementById('prod-cost').value) || 0;
+            const price = parseFloat(document.getElementById('prod-price').value) || 0;
+            const fees = parseFloat(document.getElementById('prod-fees').value) || 0;
+            const profit = price - cost - fees;
+            const margin = price > 0 ? ((profit / price) * 100).toFixed(1) : 0;
+            document.getElementById('live-profit-calc-text').innerText = `Estimated Profit: ₹${profit.toFixed(2)} (Margin: ${margin}%)`;
+        }
+
+        function handleSaveProduct(event) {
+            event.preventDefault();
+            const name = document.getElementById('prod-name').value;
+            const desc = document.getElementById('prod-desc').value;
+            const category = document.getElementById('prod-category').value;
+            const sku = document.getElementById('prod-sku').value;
+            const cost = parseFloat(document.getElementById('prod-cost').value);
+            const price = parseFloat(document.getElementById('prod-price').value);
+            const fees = parseFloat(document.getElementById('prod-fees').value);
+            const supplier = document.getElementById('prod-supplier').value;
+            const supplierUrl = document.getElementById('prod-supplier-url').value;
+
+            const newProd = {
+                id: 'prod_' + Date.now(),
+                name, description: desc, category, sku, cost, price, fees, supplier, supplierUrl,
+                images: currentUploadedImages.length > 0 ? currentUploadedImages : ['logo.png']
+            };
+
+            storeProducts.push(newProd);
+            saveStoreData();
+            alert('Product successfully created, uploaded, and published to catalog!');
+            switchStoreTab('catalog');
+            renderStoreCatalog();
+        }
+
+        function openProductDetail(productId) {
             const p = storeProducts.find(item => item.id === productId);
             if(!p) return;
-            const modalBody = document.getElementById('product-detail-body');
-            modalBody.innerHTML = `
-                <div style="display:flex; flex-direction:column; gap:20px;">
-                    <img src="${p.images[0]}" alt="${p.name}" style="width:100%; height:300px; object-fit:cover; border-radius:8px;">
-                    <h3 style="color:var(--gold); font-size:1.5rem;">${p.name}</h3>
-                    <div style="font-size:1.3rem; color:var(--gold-light); font-weight:700;">₹${p.price.toFixed(2)}</div>
-                    <p style="color:var(--text-muted); line-height:1.6;">${p.description}</p>
-                    <p style="color:var(--text-muted); font-size:0.85rem;">Category: ${p.category} | SKU: ${p.sku}</p>
-                    <button class="submit-btn" onclick="addToCart('${p.id}'); closeModal('product-detail-modal');">Add to Cart</button>
+            const img = p.images && p.images.length > 0 ? p.images[0] : 'logo.png';
+            document.getElementById('product-detail-body').innerHTML = `
+                <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                    <div><img src="${img}" style="width:100%; border-radius:8px; object-fit:cover; height:250px;"></div>
+                    <div>
+                        <h3 style="color:var(--gold); margin-bottom:10px;">${p.name}</h3>
+                        <p style="font-size:1.3rem; color:var(--text-light); margin-bottom:15px; font-weight:700;">₹${p.price.toFixed(2)}</p>
+                        <p style="color:var(--text-muted); font-size:0.9rem; margin-bottom:20px;">${p.description}</p>
+                        <button class="submit-btn" onclick="addToCart('${p.id}'); closeModal('product-detail-modal');">Add to Cart</button>
+                    </div>
                 </div>
             `;
             openModal('product-detail-modal');
@@ -2413,80 +2534,56 @@ VISION. POWER. LEGACY.</p>
         function addToCart(productId) {
             const p = storeProducts.find(item => item.id === productId);
             if(!p) return;
-            const existing = cart.find(item => item.product.id === productId);
+            const existing = cart.find(item => item.id === productId);
             if(existing) {
-                existing.quantity += 1;
+                existing.qty += 1;
             } else {
-                cart.push({ product: p, quantity: 1 });
+                cart.push({ ...p, qty: 1 });
             }
             saveStoreData();
             updateCartCount();
-            alert(`${p.name} added to cart!`);
+            alert('Product added to cart!');
         }
 
         function updateCartCount() {
-            const count = cart.reduce((sum, item) => sum + item.quantity, 0);
-            const badge = document.getElementById('cart-count');
-            if(badge) badge.innerText = count;
+            const count = cart.reduce((sum, item) => sum + item.qty, 0);
+            document.getElementById('cart-count').innerText = count;
         }
 
-        function renderCart() {
+        function renderCartItems() {
             const container = document.getElementById('cart-items-container');
             const footer = document.getElementById('cart-summary-footer');
-            if(!container) return;
-
             if(cart.length === 0) {
                 container.innerHTML = '<p style="color: var(--text-muted); text-align: center; padding: 40px;">Your cart is empty.</p>';
-                if(footer) footer.style.display = 'none';
+                footer.style.display = 'none';
                 return;
             }
-
             container.innerHTML = '';
             let total = 0;
-            cart.forEach((item, idx) => {
-                const subtotal = item.product.price * item.quantity;
-                total += subtotal;
+            cart.forEach((item, index) => {
+                total += item.price * item.qty;
                 container.innerHTML += `
-                    <div style="display:flex; justify-content:space-between; align-items:center; background:rgba(20,20,20,0.8); padding:15px; border-radius:8px; margin-bottom:10px; border:1px solid #333;">
+                    <div style="display:flex; justify-content:space-between; align-items:center; background:#141414; padding:15px; margin-bottom:10px; border-radius:6px; border:1px solid #333;">
                         <div>
-                            <h4 style="color:var(--text-light);">${item.product.name}</h4>
-                            <p style="color:var(--text-muted); font-size:0.85rem;">₹${item.product.price.toFixed(2)} x ${item.quantity} = ₹${subtotal.toFixed(2)}</p>
+                            <h4 style="color:var(--text-light);">${item.name}</h4>
+                            <p style="color:var(--text-muted); font-size:0.85rem;">₹${item.price.toFixed(2)} x ${item.qty}</p>
                         </div>
-                        <div style="display:flex; gap:10px; align-items:center;">
-                            <button class="action-btn" style="padding:4px 10px;" onclick="changeCartQty(${idx}, 1)">+</button>
-                            <span>${item.quantity}</span>
-                            <button class="action-btn" style="padding:4px 10px;" onclick="changeCartQty(${idx}, -1)">-</button>
-                            <button class="action-btn" style="border-color:#ff5555; color:#ff5555; padding:4px 10px;" onclick="removeFromCart(${idx})">Remove</button>
-                        </div>
+                        <button class="action-btn" style="border-color:#ff5555; color:#ff5555; padding:5px 10px;" onclick="removeFromCart(${index})">Remove</button>
                     </div>
                 `;
             });
-
-            if(footer) {
-                footer.style.display = 'block';
-                document.getElementById('cart-total-display').innerText = `Total: ₹${total.toFixed(2)}`;
-            }
-        }
-
-        function changeCartQty(index, delta) {
-            cart[index].quantity += delta;
-            if(cart[index].quantity <= 0) {
-                cart.splice(index, 1);
-            }
-            saveStoreData();
-            updateCartCount();
-            renderCart();
+            document.getElementById('cart-total-display').innerText = `Total: ₹${total.toFixed(2)}`;
+            footer.style.display = 'block';
         }
 
         function removeFromCart(index) {
             cart.splice(index, 1);
             saveStoreData();
             updateCartCount();
-            renderCart();
+            renderCartItems();
         }
 
         function proceedToCheckout() {
-            if(cart.length === 0) return;
             switchStoreTab('checkout');
         }
 
@@ -2496,109 +2593,78 @@ VISION. POWER. LEGACY.</p>
             const email = document.getElementById('cust-email').value;
             const phone = document.getElementById('cust-phone').value;
             const address = document.getElementById('cust-address').value;
-            const paymentProvider = document.getElementById('payment-provider').value;
 
-            const orderId = '7LEO-' + Math.floor(1000 + Math.random() * 9000);
-            let orderTotal = cart.reduce((sum, item) => sum + (item.product.price * item.quantity), 0);
-            let orderProfit = cart.reduce((sum, item) => sum + ((item.product.price - item.product.cost - item.product.fees) * item.quantity), 0);
+            cart.forEach(item => {
+                const profit = item.price - item.cost - item.fees;
+                const newOrder = {
+                    id: '7LEO-' + Math.floor(1000 + Math.random() * 9000),
+                    customerName: name,
+                    customerEmail: email,
+                    productName: item.name,
+                    sellingPrice: item.price,
+                    cost: item.cost,
+                    fees: item.fees,
+                    profit: profit,
+                    status: 'Order Received — Fulfillment Pending',
+                    trackingNumber: 'TRK-' + Math.random().toString(36).substring(2, 10).toUpperCase(),
+                    carrier: 'Global Supplier Fulfillment Network'
+                };
+                orders.push(newOrder);
+            });
 
-            const newOrder = {
-                orderId,
-                customer: { name, email, phone, address },
-                items: cart,
-                total: orderTotal,
-                profit: orderProfit,
-                paymentMethod: paymentProvider,
-                status: 'Processing',
-                date: new Date().toLocaleDateString()
-            };
-
-            orders.push(newOrder);
-            cart = [];
             saveStoreData();
+            alert('Test prototype order placed successfully! Order saved to local storage for fulfillment tracking.');
+            cart = [];
             updateCartCount();
-
-            alert(`Order placed successfully! Your Order ID is ${orderId}.`);
-            switchStoreTab('tracking');
-            document.getElementById('tracking-search-input').value = orderId;
-            trackOrderQuery();
+            switchStoreTab('catalog');
+            renderAdminDashboard();
         }
 
         function trackOrderQuery() {
             const query = document.getElementById('tracking-search-input').value.trim();
-            const resultBox = document.getElementById('tracking-result-box');
-            if(!query) return;
-
-            const order = orders.find(o => o.orderId.toLowerCase() === query.toLowerCase());
-            resultBox.style.display = 'block';
-
-            if(!order) {
-                resultBox.innerHTML = `<p style="color:#ff5555;">Order ID "${query}" not found. Please verify your Order ID.</p>`;
+            const resBox = document.getElementById('tracking-result-box');
+            const found = orders.find(o => o.id === query || o.trackingNumber === query);
+            resBox.style.display = 'block';
+            if(!found) {
+                resBox.innerHTML = '<p style="color:#ff5555;">Order not found or tracking information is not available yet.</p>';
                 return;
             }
-
-            resultBox.innerHTML = `
-                <h4 style="color:var(--gold); margin-bottom:10px;">Order Details: ${order.orderId}</h4>
-                <p style="color:var(--text-light); margin-bottom:5px;"><strong>Status:</strong> <span style="color:var(--electric-blue);">${order.status}</span></p>
-                <p style="color:var(--text-muted); margin-bottom:5px;"><strong>Customer:</strong> ${order.customer.name} (${order.customer.email})</p>
-                <p style="color:var(--text-muted); margin-bottom:5px;"><strong>Delivery Address:</strong> ${order.customer.address}</p>
-                <p style="color:var(--text-muted); margin-bottom:15px;"><strong>Total Amount:</strong> ₹${order.total.toFixed(2)}</p>
-                <h5 style="color:var(--gold-light); margin-bottom:8px;">Items Ordered:</h5>
-                <ul style="padding-left:20px; color:var(--text-muted);">
-                    ${order.items.map(i => `<li>${i.product.name} (x${i.quantity}) - ₹${(i.product.price * i.quantity).toFixed(2)}</li>`).join('')}
-                </ul>
+            resBox.innerHTML = `
+                <h4 style="color:var(--gold); margin-bottom:10px;">Order Status: ${found.id}</h4>
+                <p style="color:var(--text-light); margin-bottom:5px;"><strong>Product:</strong> ${found.productName}</p>
+                <p style="color:var(--text-light); margin-bottom:5px;"><strong>Status:</strong> ${found.status}</p>
+                <p style="color:var(--text-light); margin-bottom:5px;"><strong>Fulfillment Partner:</strong> ${found.carrier}</p>
+                <p style="color:var(--text-light); margin-bottom:5px;"><strong>Tracking Number:</strong> ${found.trackingNumber}</p>
             `;
         }
 
         function renderAdminDashboard() {
-            const ordersTbody = document.getElementById('admin-orders-tbody');
-            if(!ordersTbody) return;
-
-            let totalSales = orders.reduce((sum, o) => sum + o.total, 0);
-            let totalProfit = orders.reduce((sum, o) => sum + o.profit, 0);
-            let pendingCount = orders.filter(o => o.status === 'Processing').length;
-
             document.getElementById('metric-orders').innerText = orders.length;
-            document.getElementById('metric-sales').innerText = `₹${totalSales.toFixed(2)}`;
-            document.getElementById('metric-profit').innerText = `₹${totalProfit.toFixed(2)}`;
-            document.getElementById('metric-pending').innerText = pendingCount;
+            const totalSales = orders.reduce((sum, o) => sum + o.sellingPrice, 0);
+            const totalProfit = orders.reduce((sum, o) => sum + o.profit, 0);
+            document.getElementById('metric-sales').innerText = '₹' + totalSales.toFixed(2);
+            document.getElementById('metric-profit').innerText = '₹' + totalProfit.toFixed(2);
+            document.getElementById('metric-pending').innerText = orders.filter(o => o.status.includes('Pending')).length;
 
-            ordersTbody.innerHTML = '';
+            const tbody = document.getElementById('admin-orders-tbody');
+            tbody.innerHTML = '';
             if(orders.length === 0) {
-                ordersTbody.innerHTML = '<tr><td colspan="7" style="text-align:center; color:var(--text-muted);">No orders recorded yet.</td></tr>';
+                tbody.innerHTML = '<tr><td colspan="7" style="text-align:center; color:var(--text-muted); padding:30px;">No orders recorded yet.</td></tr>';
                 return;
             }
-
             orders.forEach(o => {
-                const prodSummary = o.items.map(i => `${i.product.name} (x${i.quantity})`).join(', ');
-                ordersTbody.innerHTML += `
+                tbody.innerHTML += `
                     <tr>
-                        <td>${o.orderId}</td>
-                        <td>${o.customer.name}</td>
-                        <td>${prodSummary}</td>
-                        <td>₹${o.total.toFixed(2)}</td>
+                        <td>${o.id}</td>
+                        <td>${o.customerName}</td>
+                        <td>${o.productName}</td>
+                        <td>₹${o.sellingPrice.toFixed(2)}</td>
                         <td style="color:var(--gold);">₹${o.profit.toFixed(2)}</td>
-                        <td><span style="color:var(--electric-blue);">${o.status}</span></td>
-                        <td>
-                            <select onchange="updateOrderStatus('${o.orderId}', this.value)" style="background:#1a1a1a; color:#fff; border:1px solid #444; padding:5px; border-radius:4px;">
-                                <option value="Processing" ${o.status==='Processing'?'selected':''}>Processing</option>
-                                <option value="Shipped" ${o.status==='Shipped'?'selected':''}>Shipped</option>
-                                <option value="Delivered" ${o.status==='Delivered'?'selected':''}>Delivered</option>
-                            </select>
-                        </td>
+                        <td>${o.status}</td>
+                        <td><button class="action-btn" style="padding:5px 10px;" onclick="alert('Fulfillment status logged.')">Sync Supplier</button></td>
                     </tr>
                 `;
             });
-        }
-
-        function updateOrderStatus(orderId, newStatus) {
-            const order = orders.find(o => o.orderId === orderId);
-            if(order) {
-                order.status = newStatus;
-                saveStoreData();
-                renderAdminDashboard();
-                alert(`Order ${orderId} status updated to ${newStatus}.`);
-            }
         }
     </script>
 </body>
@@ -2606,464 +2672,383 @@ VISION. POWER. LEGACY.</p>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>7Leo Agent AI - Official Workspace</title>
-    <link rel="icon" type="image/png" href="file_00000000605081fbac8310ec16b6b767.png">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg-primary: #0a0a0a;
-            --bg-secondary: #141414;
-            --bg-card: #1f1f1f;
-            --gold-primary: #FFD700;
-            --gold-accent: #FFA500;
-            --text-main: #ffffff;
-            --text-muted: #a0a0a0;
-            --border-color: rgba(255, 215, 0, 0.2);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inter', sans-serif;
-        }
-
-        body {
-            background-color: var(--bg-primary);
-            color: var(--text-main);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
-
-        /* Loading Screen */
-        #loading-screen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--bg-primary);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-            transition: opacity 0.5s ease;
-        }
-
-        .loader-logo {
-            width: 90px;
-            height: 90px;
-            object-fit: contain;
-            margin-bottom: 20px;
-            animation: pulse 1.5s infinite;
-            filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.4));
-        }
-
-        .loader-bar {
-            width: 200px;
-            height: 4px;
-            background: var(--bg-card);
-            border-radius: 2px;
-            overflow: hidden;
-        }
-
-        .loader-progress {
-            width: 0%;
-            height: 100%;
-            background: linear-gradient(90deg, var(--gold-primary), var(--gold-accent));
-            animation: load 1.2s forwards ease-in-out;
-        }
-
-        @keyframes load {
-            to { width: 100%; }
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(1.05); opacity: 0.8; }
-        }
-
-        /* Login Overlay */
-        #login-screen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(10, 10, 10, 0.95);
-            backdrop-filter: blur(10px);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-        }
-
-        .login-card {
-            background: var(--bg-secondary);
-            border: 1px solid var(--border-color);
-            padding: 40px;
-            border-radius: 20px;
-            width: 100%;
-            max-width: 420px;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
-        }
-
-        .login-card img {
-            width: 70px;
-            height: 70px;
-            margin-bottom: 20px;
-        }
-
-        .login-card h2 {
-            color: var(--gold-primary);
-            font-size: 24px;
-            margin-bottom: 8px;
-        }
-
-        .login-card p {
-            color: var(--text-muted);
-            font-size: 14px;
-            margin-bottom: 24px;
-        }
-
-        .login-input {
-            width: 100%;
-            padding: 14px;
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 10px;
-            color: var(--text-main);
-            font-size: 15px;
-            margin-bottom: 16px;
-            outline: none;
-            transition: border-color 0.3s;
-        }
-
-        .login-input:focus {
-            border-color: var(--gold-primary);
-        }
-
-        .login-btn {
-            width: 100%;
-            padding: 14px;
-            background: linear-gradient(135deg, var(--gold-primary), var(--gold-accent));
-            color: #000;
-            font-weight: 700;
-            border: none;
-            border-radius: 10px;
-            font-size: 16px;
-            cursor: pointer;
-            transition: opacity 0.2s;
-        }
-
-        .login-btn:hover {
-            opacity: 0.9;
-        }
-
-        /* Main App Dashboard */
-        #app-container {
-            display: none;
-            flex-direction: column;
-            flex: 1;
-        }
-
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 40px;
-            background: var(--bg-secondary);
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .header-brand {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .header-brand img {
-            width: 45px;
-            height: 45px;
-            object-fit: contain;
-        }
-
-        .header-brand h1 {
-            font-size: 20px;
-            color: var(--gold-primary);
-            font-weight: 700;
-            letter-spacing: 0.5px;
-        }
-
-        .back-to-site-btn {
-            background: transparent;
-            border: 1px solid var(--border-color);
-            color: var(--text-muted);
-            padding: 8px 16px;
-            border-radius: 8px;
-            font-size: 13px;
-            text-decoration: none;
-            transition: all 0.2s;
-        }
-
-        .back-to-site-btn:hover {
-            border-color: var(--gold-primary);
-            color: var(--gold-primary);
-        }
-
-        .workspace-main {
-            display: grid;
-            grid-template-columns: 280px 1fr;
-            flex: 1;
-        }
-
-        sidebar {
-            background: var(--bg-secondary);
-            border-right: 1px solid var(--border-color);
-            padding: 30px 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .nav-item {
-            padding: 12px 16px;
-            border-radius: 10px;
-            color: var(--text-muted);
-            cursor: pointer;
-            font-weight: 500;
-            transition: all 0.2s;
-        }
-
-        .nav-item:hover, .nav-item.active {
-            background: rgba(255, 215, 0, 0.1);
-            color: var(--gold-primary);
-            border-left: 3px solid var(--gold-primary);
-        }
-
-        .workspace-content {
-            padding: 40px;
-            display: flex;
-            flex-direction: column;
-            gap: 30px;
-        }
-
-        .card-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-        }
-
-        .stat-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            padding: 24px;
-            border-radius: 14px;
-        }
-
-        .stat-card h3 {
-            color: var(--text-muted);
-            font-size: 14px;
-            font-weight: 500;
-            margin-bottom: 8px;
-        }
-
-        .stat-card .value {
-            color: var(--gold-primary);
-            font-size: 28px;
-            font-weight: 700;
-        }
-
-        .agent-console {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 14px;
-            padding: 24px;
-            display: flex;
-            flex-direction: column;
-            height: 400px;
-        }
-
-        .console-header {
-            font-weight: 600;
-            margin-bottom: 15px;
-            color: var(--gold-primary);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .console-output {
-            flex: 1;
-            background: var(--bg-primary);
-            border-radius: 8px;
-            padding: 15px;
-            overflow-y: auto;
-            font-family: monospace;
-            font-size: 13px;
-            color: #00ff66;
-            margin-bottom: 15px;
-        }
-
-        .console-input-area {
-            display: flex;
-            gap: 10px;
-        }
-
-        .console-input {
-            flex: 1;
-            padding: 12px;
-            background: var(--bg-primary);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            color: var(--text-main);
-            outline: none;
-        }
-
-        .console-submit {
-            padding: 0 24px;
-            background: var(--gold-primary);
-            color: #000;
-            font-weight: 700;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-        }
-
-        @media (max-width: 768px) {
-            .workspace-main {
-                grid-template-columns: 1fr;
-            }
-            sidebar {
-                display: none;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>404 - Page Not Found</title>
+<meta name="robots" content="noindex, nofollow">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --gold: #FFD700; --gold-deep: #B8860B; --gold-glow: #FFF0A0;
+    --black: #000000; --dark: #0A0A0A;
+  }
+  html, body { height: 100%; background: var(--black); color: var(--gold); font-family: 'Inter', sans-serif; overflow: hidden; }
+  .crest-bg { position: fixed; inset: 0; background-image: url('/assets/images/file_00000000776081fa8dbc514074356775.png'); background-size: cover; background-position: center; z-index: 0; }
+  .crest-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.88); z-index: 1; }
+  .login-wrap { position: relative; z-index: 2; height: 100vh; display: flex; align-items: center; justify-content: center; flex-direction: column; }
+  .logo-area { display: flex; flex-direction: column; align-items: center; margin-bottom: 2.5rem; animation: fadeDown 0.8s ease both; }
+  .logo-area img { width: 140px; filter: drop-shadow(0 0 14px #FFD700) drop-shadow(0 0 28px #B8860B); margin-bottom: 1rem; }
+  .brand-name { font-family: 'Orbitron', sans-serif; font-size: 1.4rem; font-weight: 700; color: var(--gold); letter-spacing: 0.15em; text-shadow: 0 0 20px rgba(255,215,0,0.5); }
+  .brand-sub { font-size: 0.65rem; letter-spacing: 0.35em; color: var(--gold-deep); margin-top: 0.4rem; text-transform: uppercase; }
+  .login-card { background: rgba(10,10,10,0.95); border: 1px solid rgba(255,215,0,0.2); border-radius: 16px; padding: 2.5rem 2.8rem; width: 100%; max-width: 380px; animation: fadeUp 0.8s ease 0.2s both; box-shadow: 0 0 60px rgba(255,215,0,0.06); }
+  .login-card h2 { font-family: 'Orbitron', sans-serif; font-size: 0.85rem; font-weight: 400; color: var(--gold-deep); letter-spacing: 0.2em; text-align: center; margin-bottom: 2rem; text-transform: uppercase; }
+  .field-wrap { position: relative; margin-bottom: 1.2rem; }
+  .field-wrap input { width: 100%; background: rgba(255,215,0,0.04); border: 1px solid rgba(255,215,0,0.15); border-radius: 8px; color: var(--gold-glow); font-family: 'Inter', sans-serif; font-size: 0.95rem; padding: 0.85rem 1rem 0.85rem 2.8rem; outline: none; transition: border-color 0.2s, box-shadow 0.2s; }
+  .field-wrap input::placeholder { color: rgba(255,215,0,0.25); }
+  .field-wrap input:focus { border-color: rgba(255,215,0,0.5); box-shadow: 0 0 0 3px rgba(255,215,0,0.07); }
+  .field-icon { position: absolute; left: 0.9rem; top: 50%; transform: translateY(-50%); color: var(--gold-deep); pointer-events: none; }
+  .toggle-pass { position: absolute; right: 0.9rem; top: 50%; transform: translateY(-50%); background: none; border: none; color: var(--gold-deep); cursor: pointer; }
+  .login-btn { width: 100%; padding: 0.9rem; background: linear-gradient(135deg, #B8860B, #FFD700, #B8860B); background-size: 200%; border: none; border-radius: 8px; color: #000; font-family: 'Orbitron', sans-serif; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.2em; cursor: pointer; margin-top: 0.5rem; transition: box-shadow 0.3s, transform 0.15s; text-transform: uppercase; }
+  .login-btn:hover { box-shadow: 0 0 24px rgba(255,215,0,0.4); transform: translateY(-1px); }
+  .error-msg { display: none; background: rgba(220,38,38,0.12); border: 1px solid rgba(220,38,38,0.3); border-radius: 6px; color: #f87171; font-size: 0.78rem; padding: 0.6rem 0.9rem; margin-top: 1rem; text-align: center; }
+  .error-msg.show { display: block; animation: shake 0.4s ease; }
+  .attempts-info { text-align: center; font-size: 0.68rem; color: rgba(255,215,0,0.2); margin-top: 1.5rem; }
+  @keyframes fadeDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes shake { 0%,100%{transform:translateX(0)} 20%{transform:translateX(-8px)} 40%{transform:translateX(8px)} 60%{transform:translateX(-5px)} 80%{transform:translateX(5px)} }
+</style>
 </head>
 <body>
-
-    <!-- LOADING SCREEN -->
-    <div id="loading-screen">
-        <img src="file_00000000605081fbac8310ec16b6b767.png" alt="7Leo Agent AI Logo" class="loader-logo">
-        <div class="loader-bar">
-            <div class="loader-progress"></div>
-        </div>
+<div class="crest-bg"></div>
+<div class="crest-overlay"></div>
+<div class="login-wrap">
+  <div class="logo-area">
+    <img src="/assets/images/file_00000000605081fbac8310ec16b6b767.png" alt="7Leo AI Agent" onerror="this.style.display='none'">
+    <div class="brand-name">7Leo AI Agent</div>
+    <div class="brand-sub">Your AI &bull; Your Ideas &bull; Your Empire</div>
+  </div>
+  <div class="login-card">
+    <h2>Super Admin Access</h2>
+    <div class="field-wrap">
+      <span class="field-icon">🔒</span>
+      <input type="password" id="passInput" placeholder="Enter admin password" autocomplete="off" onkeydown="if(event.key==='Enter') handleLogin()">
+      <button class="toggle-pass" onclick="togglePass()">👁</button>
     </div>
-
-    <!-- LOGIN SCREEN -->
-    <div id="login-screen">
-        <div class="login-card">
-            <img src="file_00000000605081fbac8310ec16b6b767.png" alt="7Leo Agent AI Logo">
-            <h2>7Leo Agent AI</h2>
-            <p>Enter your workspace credentials</p>
-            <input type="text" class="login-input" placeholder="Agent ID / Username" value="Admin_7Leo">
-            <input type="password" class="login-input" placeholder="Access Key" value="••••••••••••">
-            <button class="login-btn" onclick="authenticateAgent()">Initialize Workspace</button>
-        </div>
+    <button class="login-btn" onclick="handleLogin()">Access LEO</button>
+    <div class="error-msg" id="errorMsg"></div>
+    <div class="attempts-info" id="attemptsInfo"></div>
+  </div>
+</div>
+<script>
+  const ADMIN_PASSWORD = '7Leo@SuperAdmin2024';
+  const MAX_ATTEMPTS = 3;
+  const LOCKOUT_MINS = 60;
+  if (sessionStorage.getItem('7leo_admin_session') === 'authenticated') window.location.href = '/7leo-admin.html';
+  function isLockedOut() {
+    const l = localStorage.getItem('7leo_admin_lockout');
+    if (!l) return false;
+    if ((Date.now() - parseInt(l)) / 60000 < LOCKOUT_MINS) return true;
+    localStorage.removeItem('7leo_admin_lockout');
+    localStorage.removeItem('7leo_admin_attempts');
+    return false;
+  }
+  function togglePass() { const i = document.getElementById('passInput'); i.type = i.type === 'password' ? 'text' : 'password'; }
+  function showError(msg) { const e = document.getElementById('errorMsg'); e.textContent = msg; e.classList.remove('show'); void e.offsetWidth; e.classList.add('show'); }
+  function handleLogin() {
+    if (isLockedOut()) { const l = parseInt(localStorage.getItem('7leo_admin_lockout')); showError('Locked. Try in ' + Math.ceil(LOCKOUT_MINS - (Date.now()-l)/60000) + ' min.'); return; }
+    const val = document.getElementById('passInput').value;
+    const attempts = parseInt(localStorage.getItem('7leo_admin_attempts') || '0');
+    if (val === ADMIN_PASSWORD) {
+      localStorage.removeItem('7leo_admin_attempts');
+      sessionStorage.setItem('7leo_admin_session', 'authenticated');
+      window.location.href = '/7leo-admin.html';
+    } else {
+      const n = attempts + 1;
+      localStorage.setItem('7leo_admin_attempts', n);
+      if (n >= MAX_ATTEMPTS) { localStorage.setItem('7leo_admin_lockout', Date.now()); showError('Access denied. Locked 60 min.'); }
+      else { showError('Incorrect password.'); document.getElementById('attemptsInfo').textContent = (MAX_ATTEMPTS-n) + ' attempts left'; }
+      document.getElementById('passInput').value = '';
+    }
+  }
+</script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>404 - Page Not Found</title>
+<meta name="robots" content="noindex, nofollow">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  :root{--gold:#FFD700;--gold-deep:#B8860B;--gold-glow:#FFF0A0;--gold-dim:rgba(255,215,0,0.12);--gold-line:rgba(255,215,0,0.18);--black:#000;--dark:#0A0A0A;--sidebar-w:260px}
+  html,body{height:100%;background:var(--black);color:#e5e5e5;font-family:'Inter',sans-serif;overflow:hidden}
+  body::before{content:'';position:fixed;inset:0;background-image:url('/assets/images/file_00000000776081fa8dbc514074356775.png');background-size:cover;background-position:center;opacity:0.06;z-index:0;pointer-events:none}
+  .shell{position:relative;z-index:1;display:flex;height:100vh;overflow:hidden}
+  .sidebar{width:var(--sidebar-w);min-width:var(--sidebar-w);background:rgba(8,8,8,0.97);border-right:1px solid var(--gold-line);display:flex;flex-direction:column;overflow-y:auto;transition:width 0.3s,min-width 0.3s}
+  .sidebar.collapsed{width:60px;min-width:60px}
+  .sidebar-logo{padding:1.4rem 1rem 1.2rem;display:flex;align-items:center;gap:0.8rem;border-bottom:1px solid var(--gold-line)}
+  .sidebar-logo img{width:38px;height:38px;object-fit:contain;filter:drop-shadow(0 0 8px #FFD700);flex-shrink:0}
+  .logo-text{display:flex;flex-direction:column;overflow:hidden;transition:opacity 0.2s,width 0.3s}
+  .sidebar.collapsed .logo-text{opacity:0;width:0}
+  .logo-text strong{font-family:'Orbitron',sans-serif;font-size:0.8rem;font-weight:700;color:var(--gold);letter-spacing:0.1em;white-space:nowrap}
+  .logo-text span{font-size:0.58rem;color:var(--gold-deep);letter-spacing:0.15em;white-space:nowrap;margin-top:2px}
+  nav{flex:1;padding:0.8rem 0}
+  .nav-section{font-size:0.6rem;letter-spacing:0.2em;color:rgba(255,215,0,0.3);padding:1rem 1rem 0.4rem;text-transform:uppercase;white-space:nowrap;overflow:hidden;transition:opacity 0.2s}
+  .sidebar.collapsed .nav-section{opacity:0}
+  .nav-item{display:flex;align-items:center;gap:0.75rem;padding:0.65rem 1rem;cursor:pointer;border-left:2px solid transparent;transition:background 0.15s,border-color 0.15s;border-radius:0 6px 6px 0;margin:1px 6px 1px 0;white-space:nowrap;overflow:hidden}
+  .nav-item:hover{background:var(--gold-dim);border-left-color:var(--gold-deep)}
+  .nav-item.active{background:rgba(255,215,0,0.1);border-left-color:var(--gold)}
+  .nav-icon{font-size:1.05rem;flex-shrink:0;width:20px;text-align:center}
+  .nav-label{font-size:0.82rem;color:#ccc;transition:opacity 0.2s,width 0.3s}
+  .nav-item.active .nav-label{color:var(--gold);font-weight:500}
+  .sidebar.collapsed .nav-label{opacity:0;width:0}
+  .sidebar-footer{padding:1rem;border-top:1px solid var(--gold-line)}
+  .logout-btn{display:flex;align-items:center;gap:0.6rem;background:rgba(220,38,38,0.1);border:1px solid rgba(220,38,38,0.25);border-radius:8px;color:#f87171;font-size:0.78rem;padding:0.55rem 0.8rem;cursor:pointer;width:100%;transition:background 0.2s;white-space:nowrap;overflow:hidden}
+  .logout-btn:hover{background:rgba(220,38,38,0.2)}
+  .main{flex:1;display:flex;flex-direction:column;overflow:hidden}
+  .topbar{height:56px;background:rgba(8,8,8,0.97);border-bottom:1px solid var(--gold-line);display:flex;align-items:center;padding:0 1.2rem;gap:1rem;flex-shrink:0}
+  .collapse-btn{background:none;border:1px solid var(--gold-line);border-radius:6px;color:var(--gold-deep);cursor:pointer;padding:0.3rem 0.5rem;font-size:1rem;transition:color 0.2s,border-color 0.2s;line-height:1}
+  .collapse-btn:hover{color:var(--gold);border-color:var(--gold)}
+  .topbar-title{font-family:'Orbitron',sans-serif;font-size:0.8rem;font-weight:600;color:var(--gold);letter-spacing:0.12em;flex:1}
+  .topbar-status{display:flex;align-items:center;gap:0.4rem;font-size:0.72rem;color:var(--gold-deep)}
+  .status-dot{width:7px;height:7px;border-radius:50%;background:#22c55e;box-shadow:0 0 6px #22c55e;animation:pulse-dot 2s infinite}
+  @keyframes pulse-dot{0%,100%{opacity:1}50%{opacity:0.4}}
+  .content{flex:1;display:flex;overflow:hidden}
+  .panel{display:none;flex-direction:column;flex:1;overflow:hidden}
+  .panel.active{display:flex}
+  .chat-wrap{flex:1;display:flex;flex-direction:column;overflow:hidden}
+  .chat-messages{flex:1;overflow-y:auto;padding:1.5rem 1.2rem;display:flex;flex-direction:column;gap:1rem;scrollbar-width:thin;scrollbar-color:var(--gold-deep) transparent}
+  .msg{max-width:75%;animation:fadeIn 0.3s ease}
+  .msg.leo{align-self:flex-start}
+  .msg.user{align-self:flex-end}
+  .msg-bubble{padding:0.8rem 1.1rem;border-radius:12px;font-size:0.88rem;line-height:1.6}
+  .msg.leo .msg-bubble{background:rgba(255,215,0,0.07);border:1px solid var(--gold-line);color:#e5e5e5;border-bottom-left-radius:3px}
+  .msg.user .msg-bubble{background:rgba(255,215,0,0.14);border:1px solid rgba(255,215,0,0.25);color:var(--gold-glow);border-bottom-right-radius:3px}
+  .msg-label{font-size:0.64rem;letter-spacing:0.1em;color:var(--gold-deep);margin-bottom:0.3rem;text-transform:uppercase}
+  .msg.user .msg-label{text-align:right}
+  .chat-input-area{padding:1rem 1.2rem;border-top:1px solid var(--gold-line);background:rgba(8,8,8,0.97);display:flex;gap:0.7rem;align-items:flex-end}
+  .chat-input-area textarea{flex:1;background:rgba(255,215,0,0.05);border:1px solid var(--gold-line);border-radius:10px;color:#e5e5e5;font-family:'Inter',sans-serif;font-size:0.88rem;padding:0.75rem 1rem;resize:none;min-height:44px;max-height:120px;outline:none;transition:border-color 0.2s;line-height:1.5}
+  .chat-input-area textarea::placeholder{color:rgba(255,215,0,0.2)}
+  .chat-input-area textarea:focus{border-color:rgba(255,215,0,0.4)}
+  .send-btn{background:linear-gradient(135deg,#B8860B,#FFD700);border:none;border-radius:10px;width:44px;height:44px;cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:box-shadow 0.2s,transform 0.15s}
+  .send-btn:hover{box-shadow:0 0 16px rgba(255,215,0,0.4);transform:scale(1.05)}
+  .tools-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:1rem;padding:1.5rem;overflow-y:auto;align-content:start}
+  .tool-card{background:rgba(255,215,0,0.04);border:1px solid var(--gold-line);border-radius:12px;padding:1.4rem 1.2rem;cursor:pointer;transition:background 0.2s,border-color 0.2s,transform 0.15s;display:flex;flex-direction:column;gap:0.6rem}
+  .tool-card:hover{background:rgba(255,215,0,0.09);border-color:rgba(255,215,0,0.35);transform:translateY(-2px)}
+  .tool-icon{font-size:1.6rem}
+  .tool-name{font-family:'Orbitron',sans-serif;font-size:0.72rem;font-weight:600;color:var(--gold);letter-spacing:0.08em}
+  .tool-desc{font-size:0.78rem;color:rgba(200,200,200,0.7);line-height:1.5}
+  .github-panel,.seo-panel,.settings-panel{padding:1.5rem;overflow-y:auto;display:flex;flex-direction:column;gap:1.2rem}
+  .gh-card{background:rgba(255,215,0,0.04);border:1px solid var(--gold-line);border-radius:12px;padding:1.2rem 1.4rem}
+  .gh-card h3{font-family:'Orbitron',sans-serif;font-size:0.75rem;color:var(--gold);letter-spacing:0.1em;margin-bottom:0.8rem}
+  .gh-input{width:100%;background:rgba(255,215,0,0.05);border:1px solid var(--gold-line);border-radius:8px;color:#e5e5e5;font-family:monospace;font-size:0.82rem;padding:0.65rem 0.9rem;outline:none;margin-bottom:0.7rem;transition:border-color 0.2s}
+  .gh-input:focus{border-color:rgba(255,215,0,0.4)}
+  .gh-input::placeholder{color:rgba(255,215,0,0.2)}
+  .gh-btn{background:rgba(255,215,0,0.1);border:1px solid rgba(255,215,0,0.3);border-radius:8px;color:var(--gold);font-size:0.8rem;padding:0.55rem 1.1rem;cursor:pointer;transition:background 0.2s,box-shadow 0.2s;font-family:'Inter',sans-serif}
+  .gh-btn:hover{background:rgba(255,215,0,0.18);box-shadow:0 0 12px rgba(255,215,0,0.2)}
+  .commit-list{display:flex;flex-direction:column;gap:0.5rem;margin-top:0.5rem}
+  .commit-item{display:flex;gap:0.7rem;align-items:flex-start;padding:0.5rem 0;border-bottom:1px solid var(--gold-line);font-size:0.78rem}
+  .commit-dot{width:8px;height:8px;border-radius:50%;background:var(--gold-deep);margin-top:5px;flex-shrink:0}
+  .commit-msg{color:#ccc}
+  .commit-time{color:rgba(255,215,0,0.3);font-size:0.7rem;margin-top:2px}
+  .seo-row{display:flex;flex-direction:column;gap:0.4rem}
+  .seo-row label{font-size:0.72rem;color:var(--gold-deep);letter-spacing:0.1em;text-transform:uppercase}
+  .seo-row input,.seo-row textarea{background:rgba(255,215,0,0.05);border:1px solid var(--gold-line);border-radius:8px;color:#e5e5e5;font-family:'Inter',sans-serif;font-size:0.85rem;padding:0.65rem 0.9rem;outline:none;transition:border-color 0.2s;resize:vertical}
+  .seo-row input:focus,.seo-row textarea:focus{border-color:rgba(255,215,0,0.4)}
+  .setting-row{display:flex;align-items:center;justify-content:space-between;padding:1rem 1.2rem;background:rgba(255,215,0,0.04);border:1px solid var(--gold-line);border-radius:10px}
+  .setting-info strong{font-size:0.85rem;color:#e5e5e5;display:block}
+  .setting-info span{font-size:0.72rem;color:rgba(200,200,200,0.5);margin-top:2px;display:block}
+  .toggle{width:42px;height:24px;background:rgba(255,215,0,0.15);border-radius:12px;position:relative;cursor:pointer;border:1px solid var(--gold-line);transition:background 0.2s;flex-shrink:0}
+  .toggle.on{background:rgba(255,215,0,0.4);border-color:var(--gold)}
+  .toggle::after{content:'';position:absolute;width:18px;height:18px;background:#666;border-radius:50%;top:2px;left:2px;transition:transform 0.2s,background 0.2s}
+  .toggle.on::after{transform:translateX(18px);background:var(--gold)}
+  .panel-header{padding:1rem 1.5rem;border-bottom:1px solid var(--gold-line);display:flex;align-items:center;gap:0.8rem;background:rgba(8,8,8,0.6);flex-shrink:0}
+  .panel-header h2{font-family:'Orbitron',sans-serif;font-size:0.8rem;font-weight:600;color:var(--gold);letter-spacing:0.12em}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+  ::-webkit-scrollbar{width:4px}
+  ::-webkit-scrollbar-thumb{background:var(--gold-deep);border-radius:2px}
+  .typing-dots{display:flex;gap:4px;padding:0.4rem 0}
+  .typing-dots span{width:6px;height:6px;background:var(--gold-deep);border-radius:50%;animation:bounce 1.2s infinite}
+  .typing-dots span:nth-child(2){animation-delay:0.2s}
+  .typing-dots span:nth-child(3){animation-delay:0.4s}
+  @keyframes bounce{0%,80%,100%{transform:translateY(0)}40%{transform:translateY(-6px)}}
+  @media(max-width:680px){.sidebar{position:fixed;left:0;top:0;bottom:0;z-index:100;transform:translateX(-100%);transition:transform 0.3s}.sidebar.mobile-open{transform:translateX(0)}.tools-grid{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+<div class="shell">
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-logo">
+      <img src="/assets/images/file_00000000605081fbac8310ec16b6b767.png" alt="LEO" onerror="this.style.display='none'">
+      <div class="logo-text"><strong>7Leo</strong><span>AI Agent</span></div>
     </div>
+    <nav>
+      <div class="nav-section">Workspace</div>
+      <div class="nav-item active" onclick="switchPanel('chat',this)"><span class="nav-icon">💬</span><span class="nav-label">LEO Chat</span></div>
+      <div class="nav-item" onclick="switchPanel('tools',this)"><span class="nav-icon">⚙️</span><span class="nav-label">Tools</span></div>
+      <div class="nav-item" onclick="switchPanel('github',this)"><span class="nav-icon">🐙</span><span class="nav-label">GitHub</span></div>
+      <div class="nav-section">Music</div>
+      <div class="nav-item" onclick="switchPanel('seo',this)"><span class="nav-icon">🔍</span><span class="nav-label">SEO Tools</span></div>
+      <div class="nav-item" onclick="switchPanel('music',this)"><span class="nav-icon">🎵</span><span class="nav-label">BGM Showcase</span></div>
+      <div class="nav-section">System</div>
+      <div class="nav-item" onclick="switchPanel('settings',this)"><span class="nav-icon">🔒</span><span class="nav-label">Settings</span></div>
+    </nav>
+    <div class="sidebar-footer">
+      <button class="logout-btn" onclick="logout()"><span>🚪</span><span>Sign Out</span></button>
+    </div>
+  </aside>
+  <div class="main">
+    <div class="topbar">
+      <button class="collapse-btn" onclick="toggleSidebar()">☰</button>
+      <div class="topbar-title" id="topbarTitle">LEO Chat</div>
+      <div class="topbar-status"><div class="status-dot"></div><span>LEO Online</span></div>
+    </div>
+    <div class="content">
 
-    <!-- MAIN APP CONTAINER -->
-    <div id="app-container">
-        <header>
-            <div class="header-brand">
-                <img src="file_00000000605081fbac8310ec16b6b767.png" alt="Logo">
-                <h1>7Leo Agent AI Hub</h1>
+      <!-- CHAT -->
+      <div class="panel active" id="panel-chat">
+        <div class="chat-wrap">
+          <div class="chat-messages" id="chatMessages">
+            <div class="msg leo">
+              <div class="msg-label">LEO</div>
+              <div class="msg-bubble">Jai ho Abubakker bhai! 🦁<br><br>Main hoon LEO — tumhara personal Super Admin AI. Website banao, GitHub push karo, deploy karo — sab ek jagah.<br><br><em style="color:var(--gold-deep);font-size:0.8rem;">YOUR AI. YOUR IDEAS. YOUR EMPIRE.</em></div>
             </div>
-            <a href="index.html" class="back-to-site-btn">← Return to Main Website</a>
-        </header>
-
-        <div class="workspace-main">
-            <sidebar>
-                <div class="nav-item active">Dashboard</div>
-                <div class="nav-item">Agent Workspace</div>
-                <div class="nav-item">Identity Vault</div>
-                <div class="nav-item">API Integrations</div>
-                <div class="nav-item">System Logs</div>
-            </sidebar>
-
-            <div class="workspace-content">
-                <div class="card-grid">
-                    <div class="stat-card">
-                        <h3>Active Agent Status</h3>
-                        <div class="value">ONLINE</div>
-                    </div>
-                    <div class="stat-card">
-                        <h3>Processed Tasks</h3>
-                        <div class="value">1,482</div>
-                    </div>
-                    <div class="stat-card">
-                        <h3>System Security</h3>
-                        <div class="value">SECURED</div>
-                    </div>
-                </div>
-
-                <div class="agent-console">
-                    <div class="console-header">
-                        <span>⚡</span> 7Leo Autonomous Agent Console
-                    </div>
-                    <div class="console-output" id="console-logs">
-                        [System]: Initializing 7Leo Agent AI core parameters...<br>
-                        [System]: Branding assets locked (file_00000000605081fbac8310ec16b6b767.png verified).<br>
-                        [System]: Environment protected and ready for deployment.<br>
-                        [Agent]: Ready for operational commands. Type a prompt below.
-                    </div>
-                    <div class="console-input-area">
-                        <input type="text" class="console-input" id="user-command" placeholder="Enter command for 7Leo Agent..." onkeypress="handleKeyPress(event)">
-                        <button class="console-submit" onclick="executeCommand()">Execute</button>
-                    </div>
-                </div>
-            </div>
+          </div>
+          <div class="chat-input-area">
+            <textarea id="chatInput" placeholder="LEO ko command do... (Enter = send)" rows="1" onkeydown="handleKey(event)" oninput="autoResize(this)"></textarea>
+            <button class="send-btn" onclick="sendMessage()">▶</button>
+          </div>
         </div>
+      </div>
+
+      <!-- TOOLS -->
+      <div class="panel" id="panel-tools">
+        <div class="panel-header"><span>⚙️</span><h2>Quick Tools</h2></div>
+        <div class="tools-grid">
+          <div class="tool-card" onclick="openTool('website builder')"><div class="tool-icon">🌐</div><div class="tool-name">Website Builder</div><div class="tool-desc">Text se poora page banao</div></div>
+          <div class="tool-card" onclick="openTool('design assistant gold black theme')"><div class="tool-icon">🎨</div><div class="tool-name">Design Assistant</div><div class="tool-desc">Gold + black cinematic theme</div></div>
+          <div class="tool-card" onclick="openTool('live preview mobile desktop')"><div class="tool-icon">👁️</div><div class="tool-name">Live Preview</div><div class="tool-desc">Changes live dekho</div></div>
+          <div class="tool-card" onclick="openTool('deploy to vercel')"><div class="tool-icon">🚀</div><div class="tool-name">One-Click Deploy</div><div class="tool-desc">Vercel / Netlify deploy</div></div>
+          <div class="tool-card" onclick="openTool('generate press kit PDF for 7Leo BGM')"><div class="tool-icon">📄</div><div class="tool-name">Press Kit PDF</div><div class="tool-desc">Auto-branded press kit</div></div>
+          <div class="tool-card" onclick="openTool('music showcase page for 7Leo BGM')"><div class="tool-icon">🎵</div><div class="tool-name">BGM Showcase</div><div class="tool-desc">Track listing + audio player</div></div>
+          <div class="tool-card" onclick="openTool('YouTube SEO for 7Leo BGM')"><div class="tool-icon">🔍</div><div class="tool-name">YouTube SEO</div><div class="tool-desc">Titles, tags, hashtags</div></div>
+          <div class="tool-card" onclick="openTool('attachment upload help')"><div class="tool-icon">📎</div><div class="tool-name">Attachments</div><div class="tool-desc">Audio, image, PDF upload</div></div>
+        </div>
+      </div>
+
+      <!-- GITHUB -->
+      <div class="panel" id="panel-github">
+        <div class="panel-header"><span>🐙</span><h2>GitHub Connect</h2></div>
+        <div class="github-panel">
+          <div class="gh-card"><h3>Repository</h3><input class="gh-input" placeholder="github.com/username/7leo-website" id="repoUrl"><button class="gh-btn" onclick="connectRepo()">Connect Repo</button></div>
+          <div class="gh-card"><h3>Quick Commit & Push</h3><input class="gh-input" placeholder="Commit message..." id="commitMsg"><button class="gh-btn" onclick="quickCommit()">📤 Push to GitHub</button></div>
+          <div class="gh-card"><h3>Recent Commits</h3>
+            <div class="commit-list">
+              <div class="commit-item"><div class="commit-dot"></div><div><div class="commit-msg">feat: add 7Leo AI Agent admin dashboard</div><div class="commit-time">Just now • main</div></div></div>
+              <div class="commit-item"><div class="commit-dot"></div><div><div class="commit-msg">style: update gold glow on logo</div><div class="commit-time">2 hours ago • main</div></div></div>
+              <div class="commit-item"><div class="commit-dot"></div><div><div class="commit-msg">feat: add crest background overlay</div><div class="commit-time">Yesterday • main</div></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SEO -->
+      <div class="panel" id="panel-seo">
+        <div class="panel-header"><span>🔍</span><h2>SEO Tools</h2></div>
+        <div class="seo-panel">
+          <div class="gh-card"><h3>YouTube Video SEO</h3>
+            <div class="seo-row"><label>Track Name</label><input id="trackName" placeholder="e.g. The Cartel - Rule The Streets"></div><br>
+            <div class="seo-row"><label>Mood / Genre</label><input id="trackMood" placeholder="e.g. Dark Trap BGM"></div><br>
+            <button class="gh-btn" onclick="genYTSEO()">🎬 Generate YouTube SEO</button>
+            <div id="seoOutput" style="margin-top:0.8rem;font-size:0.78rem;color:#aaa;display:none;line-height:1.8"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MUSIC -->
+      <div class="panel" id="panel-music">
+        <div class="panel-header"><span>🎵</span><h2>BGM Showcase</h2></div>
+        <div class="github-panel">
+          <div class="gh-card"><h3>Track List</h3>
+            <div class="commit-list">
+              <div class="commit-item"><div class="commit-dot"></div><div><div class="commit-msg">The Cartel — Rule The Streets</div><div class="commit-time">Dark Trap • Groovepad by Easybrain</div></div></div>
+              <div class="commit-item"><div class="commit-dot"></div><div><div class="commit-msg">Add your tracks here...</div><div class="commit-time">Lofi / DJ / Romantic / Cinematic</div></div></div>
+            </div><br>
+            <button class="gh-btn" onclick="openTool('build music showcase page for 7Leo BGM')">🎵 Build Showcase Page</button>
+          </div>
+          <div class="gh-card"><h3>Attribution</h3><p style="font-size:0.78rem;color:#aaa">Music created with Groovepad by Easybrain</p></div>
+        </div>
+      </div>
+
+      <!-- SETTINGS -->
+      <div class="panel" id="panel-settings">
+        <div class="panel-header"><span>🔒</span><h2>Admin Settings</h2></div>
+        <div class="settings-panel">
+          <div class="setting-row"><div class="setting-info"><strong>Auto-logout (30 min)</strong><span>Inactivity ke baad session end</span></div><div class="toggle on" onclick="this.classList.toggle('on')"></div></div>
+          <div class="setting-row"><div class="setting-info"><strong>Console logs hidden</strong><span>Production mein debug off</span></div><div class="toggle on" onclick="this.classList.toggle('on')"></div></div>
+          <div class="setting-row"><div class="setting-info"><strong>robots.txt protection</strong><span>/7leo-admin Google se hidden</span></div><div class="toggle on" onclick="this.classList.toggle('on')"></div></div>
+          <div class="setting-row"><div class="setting-info"><strong>Change Password</strong><span>admin-auth.html mein ADMIN_PASSWORD badlo</span></div><button class="gh-btn" onclick="alert('admin-auth.html open karo aur ADMIN_PASSWORD variable change karo')">Edit</button></div>
+          <div class="setting-row"><div class="setting-info"><strong>Session</strong><span>Current admin session active</span></div><button class="logout-btn" style="width:auto;padding:0.4rem 0.9rem" onclick="logout()">Logout</button></div>
+        </div>
+      </div>
+
     </div>
-
-    <script>
-        // Handle loading screen transition
-        window.addEventListener('load', () => {
-            setTimeout(() => {
-                const loader = document.getElementById('loading-screen');
-                loader.style.opacity = '0';
-                setTimeout(() => loader.style.display = 'none', 500);
-            }, 1200);
-        });
-
-        // Handle login authentication
-        function authenticateAgent() {
-            const loginScreen = document.getElementById('login-screen');
-            const appContainer = document.getElementById('app-container');
-            
-            loginScreen.style.opacity = '0';
-            setTimeout(() => {
-                loginScreen.style.display = 'none';
-                appContainer.style.display = 'flex';
-            }, 400);
-        }
-
-        // Interactive console simulation
-        function executeCommand() {
-            const input = document.getElementById('user-command');
-            const logs = document.getElementById('console-logs');
-            if (!input.value.trim()) return;
-
-            logs.innerHTML += `<br><span style="color: #FFD700;">> ${input.value}</span>`;
-            
-            setTimeout(() => {
-                logs.innerHTML += `<br>[Agent AI]: Executing command "${input.value}" successfully within isolated environment.`;
-                logs.scrollTop = logs.scrollHeight;
-            }, 400);
-
-            input.value = '';
-        }
-
-        function handleKeyPress(e) {
-            if (e.key === 'Enter') {
-                executeCommand();
-            }
-        }
-    </script>
+  </div>
+</div>
+<script>
+  if(sessionStorage.getItem('7leo_admin_session')!=='authenticated') window.location.href='/admin-auth.html';
+  let timer;
+  function resetTimer(){clearTimeout(timer);timer=setTimeout(logout,30*60*1000)}
+  ['mousemove','keydown','click','touchstart'].forEach(e=>document.addEventListener(e,resetTimer));
+  resetTimer();
+  function logout(){sessionStorage.removeItem('7leo_admin_session');window.location.href='/admin-auth.html'}
+  let collapsed=false;
+  function toggleSidebar(){
+    const sb=document.getElementById('sidebar');
+    if(window.innerWidth<=680){sb.classList.toggle('mobile-open')}
+    else{collapsed=!collapsed;sb.classList.toggle('collapsed',collapsed)}
+  }
+  const titles={chat:'LEO Chat',tools:'Quick Tools',github:'GitHub Connect',seo:'SEO Tools',music:'BGM Showcase',settings:'Admin Settings'};
+  function switchPanel(id,el){
+    document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+    document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
+    document.getElementById('panel-'+id).classList.add('active');
+    el.classList.add('active');
+    document.getElementById('topbarTitle').textContent=titles[id]||'';
+    if(window.innerWidth<=680)document.getElementById('sidebar').classList.remove('mobile-open');
+  }
+  const REPLIES={website:'Konsa page banana hai bhai? Hero, music showcase, ya poora homepage? Bolo!',github:'GitHub tab mein jao, repo URL daalo — main push kar dunga!',deploy:'Deploy confirm karo — Vercel ya Netlify?',seo:'SEO tab mein jao — track name daalo, main YouTube SEO generate karta hoon.',preview:'Preview dikhaunga — mobile/tablet/desktop teeno mein.',default:'Samajh gaya bhai! LEO kaam par lag gaya hai... 🦁'};
+  function getLeoReply(t){t=t.toLowerCase();for(const[k,v]of Object.entries(REPLIES)){if(k!=='default'&&t.includes(k))return v}return REPLIES.default}
+  function addMsg(text,who){
+    const box=document.getElementById('chatMessages');
+    const w=document.createElement('div');w.className='msg '+who;
+    w.innerHTML=`<div class="msg-label">${who==='leo'?'LEO':'Abubakker'}</div><div class="msg-bubble">${text}</div>`;
+    box.appendChild(w);box.scrollTop=box.scrollHeight;
+  }
+  function showTyping(){
+    const box=document.getElementById('chatMessages');
+    const w=document.createElement('div');w.className='msg leo';w.id='typing';
+    w.innerHTML='<div class="msg-label">LEO</div><div class="msg-bubble"><div class="typing-dots"><span></span><span></span><span></span></div></div>';
+    box.appendChild(w);box.scrollTop=box.scrollHeight;return w;
+  }
+  function sendMessage(){
+    const inp=document.getElementById('chatInput');
+    const text=inp.value.trim();if(!text)return;
+    addMsg(text,'user');inp.value='';inp.style.height='auto';
+    const t=showTyping();
+    setTimeout(()=>{t.remove();addMsg(getLeoReply(text),'leo')},900+Math.random()*500);
+  }
+  function handleKey(e){if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();sendMessage()}}
+  function autoResize(el){el.style.height='auto';el.style.height=Math.min(el.scrollHeight,120)+'px'}
+  function openTool(cmd){
+    switchPanel('chat',document.querySelector('.nav-item'));
+    document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
+    document.querySelector('.nav-item').classList.add('active');
+    document.getElementById('chatInput').value=cmd;sendMessage();
+  }
+  function connectRepo(){const u=document.getElementById('repoUrl').value.trim();if(!u){alert('Repo URL daalo!');return}alert('Connecting: '+u+'\n\nReal integration ke liye GitHub OAuth backend chahiye.')}
+  function quickCommit(){const m=document.getElementById('commitMsg').value.trim();if(!m){alert('Commit message daalo!');return}alert('Push: "'+m+'"\n\nReal push ke liye GitHub API token chahiye.')}
+  function genYTSEO(){
+    const t=document.getElementById('trackName').value.trim();
+    if(!t){alert('Track name daalo!');return}
+    const m=document.getElementById('trackMood').value.trim()||'BGM';
+    const out=document.getElementById('seoOutput');out.style.display='block';
+    out.innerHTML=`<strong style="color:var(--gold)">YouTube SEO Generated ✅</strong><br><br><b>Title:</b> ${t} | ${m} | No Copyright | 7Leo BGM<br><br><b>Tags:</b> 7Leo BGM, ${m.toLowerCase()}, no copyright bgm, free bgm, cinematic music, groovepad music<br><br><b>Hashtags:</b> #7LeoBGM #NoCopyrightMusic #${m.replace(/\s/g,'')} #BackgroundMusic<br><br><em style="color:rgba(255,215,0,0.4);font-size:0.7rem">Music created with Groovepad by Easybrain</em>`;
+  }
+</script>
 </body>
 </html>
