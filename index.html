@@ -2603,3 +2603,467 @@ VISION. POWER. LEGACY.</p>
     </script>
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7Leo Agent AI - Official Workspace</title>
+    <link rel="icon" type="image/png" href="file_00000000605081fbac8310ec16b6b767.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #141414;
+            --bg-card: #1f1f1f;
+            --gold-primary: #FFD700;
+            --gold-accent: #FFA500;
+            --text-main: #ffffff;
+            --text-muted: #a0a0a0;
+            --border-color: rgba(255, 215, 0, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Loading Screen */
+        #loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--bg-primary);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+
+        .loader-logo {
+            width: 90px;
+            height: 90px;
+            object-fit: contain;
+            margin-bottom: 20px;
+            animation: pulse 1.5s infinite;
+            filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.4));
+        }
+
+        .loader-bar {
+            width: 200px;
+            height: 4px;
+            background: var(--bg-card);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .loader-progress {
+            width: 0%;
+            height: 100%;
+            background: linear-gradient(90deg, var(--gold-primary), var(--gold-accent));
+            animation: load 1.2s forwards ease-in-out;
+        }
+
+        @keyframes load {
+            to { width: 100%; }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.05); opacity: 0.8; }
+        }
+
+        /* Login Overlay */
+        #login-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .login-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            padding: 40px;
+            border-radius: 20px;
+            width: 100%;
+            max-width: 420px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+        }
+
+        .login-card img {
+            width: 70px;
+            height: 70px;
+            margin-bottom: 20px;
+        }
+
+        .login-card h2 {
+            color: var(--gold-primary);
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+
+        .login-card p {
+            color: var(--text-muted);
+            font-size: 14px;
+            margin-bottom: 24px;
+        }
+
+        .login-input {
+            width: 100%;
+            padding: 14px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            color: var(--text-main);
+            font-size: 15px;
+            margin-bottom: 16px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .login-input:focus {
+            border-color: var(--gold-primary);
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, var(--gold-primary), var(--gold-accent));
+            color: #000;
+            font-weight: 700;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+
+        .login-btn:hover {
+            opacity: 0.9;
+        }
+
+        /* Main App Dashboard */
+        #app-container {
+            display: none;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            background: var(--bg-secondary);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .header-brand {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .header-brand img {
+            width: 45px;
+            height: 45px;
+            object-fit: contain;
+        }
+
+        .header-brand h1 {
+            font-size: 20px;
+            color: var(--gold-primary);
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .back-to-site-btn {
+            background: transparent;
+            border: 1px solid var(--border-color);
+            color: var(--text-muted);
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 13px;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .back-to-site-btn:hover {
+            border-color: var(--gold-primary);
+            color: var(--gold-primary);
+        }
+
+        .workspace-main {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            flex: 1;
+        }
+
+        sidebar {
+            background: var(--bg-secondary);
+            border-right: 1px solid var(--border-color);
+            padding: 30px 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .nav-item {
+            padding: 12px 16px;
+            border-radius: 10px;
+            color: var(--text-muted);
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .nav-item:hover, .nav-item.active {
+            background: rgba(255, 215, 0, 0.1);
+            color: var(--gold-primary);
+            border-left: 3px solid var(--gold-primary);
+        }
+
+        .workspace-content {
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .stat-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            padding: 24px;
+            border-radius: 14px;
+        }
+
+        .stat-card h3 {
+            color: var(--text-muted);
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
+        .stat-card .value {
+            color: var(--gold-primary);
+            font-size: 28px;
+            font-weight: 700;
+        }
+
+        .agent-console {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            height: 400px;
+        }
+
+        .console-header {
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--gold-primary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .console-output {
+            flex: 1;
+            background: var(--bg-primary);
+            border-radius: 8px;
+            padding: 15px;
+            overflow-y: auto;
+            font-family: monospace;
+            font-size: 13px;
+            color: #00ff66;
+            margin-bottom: 15px;
+        }
+
+        .console-input-area {
+            display: flex;
+            gap: 10px;
+        }
+
+        .console-input {
+            flex: 1;
+            padding: 12px;
+            background: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            color: var(--text-main);
+            outline: none;
+        }
+
+        .console-submit {
+            padding: 0 24px;
+            background: var(--gold-primary);
+            color: #000;
+            font-weight: 700;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .workspace-main {
+                grid-template-columns: 1fr;
+            }
+            sidebar {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- LOADING SCREEN -->
+    <div id="loading-screen">
+        <img src="file_00000000605081fbac8310ec16b6b767.png" alt="7Leo Agent AI Logo" class="loader-logo">
+        <div class="loader-bar">
+            <div class="loader-progress"></div>
+        </div>
+    </div>
+
+    <!-- LOGIN SCREEN -->
+    <div id="login-screen">
+        <div class="login-card">
+            <img src="file_00000000605081fbac8310ec16b6b767.png" alt="7Leo Agent AI Logo">
+            <h2>7Leo Agent AI</h2>
+            <p>Enter your workspace credentials</p>
+            <input type="text" class="login-input" placeholder="Agent ID / Username" value="Admin_7Leo">
+            <input type="password" class="login-input" placeholder="Access Key" value="••••••••••••">
+            <button class="login-btn" onclick="authenticateAgent()">Initialize Workspace</button>
+        </div>
+    </div>
+
+    <!-- MAIN APP CONTAINER -->
+    <div id="app-container">
+        <header>
+            <div class="header-brand">
+                <img src="file_00000000605081fbac8310ec16b6b767.png" alt="Logo">
+                <h1>7Leo Agent AI Hub</h1>
+            </div>
+            <a href="index.html" class="back-to-site-btn">← Return to Main Website</a>
+        </header>
+
+        <div class="workspace-main">
+            <sidebar>
+                <div class="nav-item active">Dashboard</div>
+                <div class="nav-item">Agent Workspace</div>
+                <div class="nav-item">Identity Vault</div>
+                <div class="nav-item">API Integrations</div>
+                <div class="nav-item">System Logs</div>
+            </sidebar>
+
+            <div class="workspace-content">
+                <div class="card-grid">
+                    <div class="stat-card">
+                        <h3>Active Agent Status</h3>
+                        <div class="value">ONLINE</div>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Processed Tasks</h3>
+                        <div class="value">1,482</div>
+                    </div>
+                    <div class="stat-card">
+                        <h3>System Security</h3>
+                        <div class="value">SECURED</div>
+                    </div>
+                </div>
+
+                <div class="agent-console">
+                    <div class="console-header">
+                        <span>⚡</span> 7Leo Autonomous Agent Console
+                    </div>
+                    <div class="console-output" id="console-logs">
+                        [System]: Initializing 7Leo Agent AI core parameters...<br>
+                        [System]: Branding assets locked (file_00000000605081fbac8310ec16b6b767.png verified).<br>
+                        [System]: Environment protected and ready for deployment.<br>
+                        [Agent]: Ready for operational commands. Type a prompt below.
+                    </div>
+                    <div class="console-input-area">
+                        <input type="text" class="console-input" id="user-command" placeholder="Enter command for 7Leo Agent..." onkeypress="handleKeyPress(event)">
+                        <button class="console-submit" onclick="executeCommand()">Execute</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Handle loading screen transition
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                const loader = document.getElementById('loading-screen');
+                loader.style.opacity = '0';
+                setTimeout(() => loader.style.display = 'none', 500);
+            }, 1200);
+        });
+
+        // Handle login authentication
+        function authenticateAgent() {
+            const loginScreen = document.getElementById('login-screen');
+            const appContainer = document.getElementById('app-container');
+            
+            loginScreen.style.opacity = '0';
+            setTimeout(() => {
+                loginScreen.style.display = 'none';
+                appContainer.style.display = 'flex';
+            }, 400);
+        }
+
+        // Interactive console simulation
+        function executeCommand() {
+            const input = document.getElementById('user-command');
+            const logs = document.getElementById('console-logs');
+            if (!input.value.trim()) return;
+
+            logs.innerHTML += `<br><span style="color: #FFD700;">> ${input.value}</span>`;
+            
+            setTimeout(() => {
+                logs.innerHTML += `<br>[Agent AI]: Executing command "${input.value}" successfully within isolated environment.`;
+                logs.scrollTop = logs.scrollHeight;
+            }, 400);
+
+            input.value = '';
+        }
+
+        function handleKeyPress(e) {
+            if (e.key === 'Enter') {
+                executeCommand();
+            }
+        }
+    </script>
+</body>
+</html>
