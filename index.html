@@ -3,2051 +3,606 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>7Leo Group</title>
+    <title>7Leo Group | Global Enterprise & E-Commerce Hub</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
-        
         :root {
-            --bg-dark: #0a0a0a;
+            --bg-deep: #0a0a0a;
+            --bg-card: #141414;
             --gold: #d4af37;
             --gold-light: #f3e5ab;
+            --gold-dark: #aa8c2c;
             --text-light: #f5f5f5;
-            --text-muted: #b0b0b0;
+            --text-muted: #aaaaaa;
             --electric-blue: #00f0ff;
+            --border-color: #262626;
         }
-
         * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-
         body {
-            font-family: 'Montserrat', sans-serif;
-            background-color: var(--bg-dark);
+            background-color: var(--bg-deep);
             color: var(--text-light);
-            overflow-x: hidden;
             min-height: 100vh;
-        }
-
-        .artistic-font {
-            font-family: 'Lucida Handwriting', 'Brush Script MT', cursive;
-        }
-
-        /* Splash Screen */
-        #splash-screen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background: #000;
-            z-index: 9999;
             display: flex;
             flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            transition: opacity 0.8s ease, visibility 0.8s ease;
         }
-
-        #splash-screen.fade-out {
-            opacity: 0;
-            visibility: hidden;
-        }
-
-        .splash-image-container {
-            width: 100%;
-            height: 100%;
-            position: absolute;
-            top: 0;
-            left: 0;
-            overflow: hidden;
-        }
-
-        .splash-image-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 0.5;
-        }
-
-        .splash-content {
-            position: relative;
-            z-index: 2;
-            text-align: center;
-            padding: 20px;
-        }
-
-        .splash-title {
-            font-size: clamp(2rem, 5vw, 4rem);
-            color: var(--gold-light);
-            text-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
-            font-weight: 300;
-            letter-spacing: 2px;
-        }
-
-        /* Background Tattoo Wrapper */
-        .site-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background-image: url('file_00000000776081fa8dbc514074356775.png');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            z-index: -1;
-        }
-
-        .site-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background: radial-gradient(circle, rgba(10,10,10,0.85) 0%, rgba(5,5,5,0.95) 100%);
-            z-index: -1;
-        }
-
-        /* Navigation */
         header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-            background: rgba(10, 10, 10, 0.9);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
-        }
-
-        .nav-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 30px;
-        }
-
-        .nav-logo img {
-            height: 40px;
-            width: auto;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 25px;
-            list-style: none;
-            align-items: center;
-        }
-
-        .nav-links a {
-            color: var(--text-light);
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 500;
-            transition: color 0.3s ease;
-            cursor: pointer;
-        }
-
-        .nav-links a:hover {
-            color: var(--gold);
-        }
-
-        .menu-toggle {
-            display: none;
-            cursor: pointer;
-            flex-direction: column;
-            gap: 5px;
-        }
-
-        .menu-toggle span {
-            width: 25px;
-            height: 2px;
-            background: var(--text-light);
-            transition: 0.3s;
-        }
-
-        /* Main Content Area */
-        main {
-            padding-top: 100px;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding-bottom: 80px;
-        }
-
-        .hero-section {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 40px 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 20px;
-        }
-
-        .main-logo-img {
-            max-width: 150px;
-            height: auto;
-            margin-bottom: 10px;
-            filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.3));
-        }
-
-        .vision-power-legacy {
-            font-size: clamp(1.8rem, 4vw, 3rem);
-            color: var(--gold);
-            margin-bottom: 5px;
-            font-weight: normal;
-        }
-
-        .welcome-msg {
-            font-size: clamp(1.2rem, 2.5vw, 1.8rem);
-            color: var(--text-light);
-            font-weight: normal;
-            margin-bottom: 10px;
-        }
-
-        .core-text {
-            font-size: 1.1rem;
-            color: var(--text-muted);
-            max-width: 600px;
-            margin-bottom: 40px;
-            font-weight: 400;
-        }
-
-        /* Commerce + Music + Star Layout */
-        .commerce-music-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 30px;
-            width: 100%;
-            max-width: 1100px;
-            margin-top: 20px;
-        }
-
-        .card-box {
-            background: rgba(20, 20, 20, 0.6);
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            border-radius: 12px;
-            padding: 40px 30px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 20px;
-            backdrop-filter: blur(5px);
-            transition: transform 0.3s ease, border-color 0.3s ease;
-        }
-
-        .card-box:hover {
-            transform: translateY(-5px);
-            border-color: var(--gold);
-        }
-
-        .card-logo {
-            max-height: 70px;
-            width: auto;
-            object-fit: contain;
-        }
-
-        .card-title {
-            font-size: 1.5rem;
-            color: var(--gold-light);
-            font-weight: normal;
-            text-align: center;
-        }
-
-        .action-btn {
-            background: transparent;
-            color: var(--text-light);
-            border: 1px solid var(--gold);
-            padding: 12px 28px;
-            font-size: 0.95rem;
-            font-weight: 600;
-            border-radius: 30px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        .action-btn:hover {
-            background: var(--gold);
-            color: var(--bg-dark);
-            box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
-        }
-
-        /* Modals for Navigation Items */
-        .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background: rgba(0, 0, 0, 0.9);
-            z-index: 2000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.3s ease, visibility 0.3s ease;
-        }
-
-        .modal-overlay.active {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .modal-content {
-            background: #141414;
-            border: 1px solid var(--gold);
-            border-radius: 12px;
-            width: 90%;
-            max-width: 500px;
-            padding: 40px;
-            position: relative;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
-            max-height: 90vh;
-            overflow-y: auto;
-        }
-
-        .close-modal {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: none;
-            border: none;
-            color: var(--text-light);
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-
-        .modal-title {
-            font-size: 1.8rem;
-            color: var(--gold);
-            margin-bottom: 25px;
-            font-weight: 600;
-            text-align: center;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-size: 0.9rem;
-            color: var(--text-muted);
-        }
-
-        .form-group input, .form-group select, .form-group textarea {
-            width: 100%;
-            padding: 12px 15px;
-            background: #1a1a1a;
-            border: 1px solid #333;
-            border-radius: 6px;
-            color: var(--text-light);
-            font-size: 1rem;
-            font-family: 'Montserrat', sans-serif;
-        }
-
-        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
-            outline: none;
-            border-color: var(--gold);
-        }
-
-        .auth-buttons {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            margin-top: 20px;
-        }
-
-        .oauth-btn {
-            background: #222;
-            color: var(--text-light);
-            border: 1px solid #444;
-            padding: 12px;
-            border-radius: 6px;
-            font-weight: 500;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            transition: background 0.3s;
-        }
-
-        .oauth-btn:hover {
-            background: #2a2a2a;
-            border-color: var(--gold);
-        }
-
-        .submit-btn {
-            background: var(--gold);
-            color: var(--bg-dark);
-            border: none;
-            padding: 12px;
-            border-radius: 6px;
-            font-weight: 600;
-            cursor: pointer;
-            width: 100%;
-            transition: opacity 0.3s;
-        }
-
-        .submit-btn:hover {
-            opacity: 0.9;
-        }
-
-        /* Full Screen Store Experience Layout */
-        .store-portal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background: radial-gradient(circle, rgba(10,10,10,0.85) 0%, rgba(5,5,5,0.95) 100%), url('file_00000000776081fa8dbc514074356775.png');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            z-index: 3000;
-            display: none;
-            flex-direction: column;
-            overflow-y: auto;
-        }
-
-        .store-portal-overlay.active {
-            display: flex;
-        }
-
-        .store-header {
-            background: rgba(15, 15, 15, 0.95);
-            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
-            padding: 15px 30px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            background: rgba(10, 10, 10, 0.95);
+            border-bottom: 1px solid var(--border-color);
             position: sticky;
             top: 0;
-            z-index: 10;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
         }
-
-        .store-nav-brand {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .store-nav-brand h2 {
-            color: var(--gold);
-            font-size: 1.2rem;
-        }
-
-        .store-nav-actions {
-            display: flex;
-            gap: 15px;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-
-        .store-nav-btn {
-            background: transparent;
-            border: 1px solid var(--gold);
-            color: var(--text-light);
-            padding: 8px 16px;
-            border-radius: 20px;
-            cursor: pointer;
-            font-size: 0.85rem;
-            transition: all 0.3s;
-        }
-
-        .store-nav-btn:hover {
-            background: var(--gold);
-            color: var(--bg-dark);
-        }
-
-        .store-body {
-            max-width: 1400px;
+        .nav-container {
+            max-width: 1200px;
             margin: 0 auto;
-            width: 100%;
-            padding: 30px;
-            flex: 1;
-        }
-
-        .store-controls-bar {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 30px;
-            gap: 15px;
-            flex-wrap: wrap;
+            padding: 15px 20px;
         }
-
-        .search-filter-group {
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+        }
+        .logo-area img {
+            height: 40px;
+            width: 40px;
+            object-fit: contain;
+            border-radius: 50%;
+            border: 1px solid var(--gold);
+        }
+        .logo-text {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--gold-light);
+            letter-spacing: 1px;
+        }
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+        .nav-link {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+        .nav-link:hover, .nav-link.active {
+            color: var(--gold);
+        }
+        .cart-btn {
+            background: var(--gold);
+            color: #000;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        main {
+            flex: 1;
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 30px 20px;
+        }
+        .store-tab-content {
+            display: none;
+        }
+        .store-tab-content.active {
+            display: block;
+        }
+        .catalog-controls {
             display: flex;
             gap: 15px;
-            flex: 1;
+            margin-bottom: 25px;
             flex-wrap: wrap;
         }
-
-        .store-search-input, .store-filter-select {
-            padding: 10px 15px;
-            background: #1a1a1a;
-            border: 1px solid #333;
-            border-radius: 6px;
+        .catalog-controls input, .catalog-controls select {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
             color: var(--text-light);
-            font-size: 0.9rem;
+            padding: 10px 15px;
+            border-radius: 6px;
+            outline: none;
+            font-size: 0.95rem;
         }
-
-        .store-search-input {
+        .catalog-controls input {
             flex: 1;
-            min-width: 200px;
+            min-width: 220px;
         }
-
         .product-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 20px;
         }
-
         .product-card {
-            background: rgba(20, 20, 20, 0.85);
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            border-radius: 10px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
             overflow: hidden;
             display: flex;
             flex-direction: column;
             transition: transform 0.3s, border-color 0.3s;
-            backdrop-filter: blur(5px);
         }
-
         .product-card:hover {
             transform: translateY(-4px);
-            border-color: var(--gold);
+            border-color: var(--gold-dark);
         }
-
         .product-card-img-wrap {
             width: 100%;
-            height: 220px;
-            background: #222;
-            position: relative;
+            height: 180px;
+            background: #1a1a1a;
             overflow: hidden;
         }
-
         .product-card-img-wrap img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
-
         .product-card-info {
-            padding: 20px;
+            padding: 15px;
             display: flex;
             flex-direction: column;
-            gap: 10px;
             flex: 1;
         }
-
         .product-card-title {
-            font-size: 1.1rem;
-            color: var(--text-light);
+            font-size: 1.05rem;
             font-weight: 600;
+            color: var(--text-light);
+            margin-bottom: 8px;
         }
-
         .product-card-price {
-            font-size: 1.2rem;
-            color: var(--gold);
+            font-size: 1.1rem;
             font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 8px;
         }
-
         .product-card-desc {
             font-size: 0.85rem;
             color: var(--text-muted);
+            margin-bottom: 15px;
+            flex: 1;
             display: -webkit-box;
             -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;
             overflow: hidden;
         }
-
         .product-card-actions {
             display: flex;
-            gap: 10px;
-            margin-top: auto;
-            padding-top: 15px;
+            gap: 8px;
         }
-
-        .admin-dashboard-panel, .cart-panel, .checkout-panel, .tracking-panel, .product-form-panel {
+        .submit-btn {
+            background: var(--gold);
+            color: #000;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            transition: background 0.3s;
+        }
+        .submit-btn:hover {
+            background: var(--gold-light);
+        }
+        .action-btn {
+            background: transparent;
+            border: 1px solid var(--border-color);
+            color: var(--text-light);
+            padding: 10px 15px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+        }
+        .action-btn:hover {
+            border-color: var(--gold);
+        }
+        .modal-backdrop {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.8);
             display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
         }
-
-        .admin-dashboard-panel.active, .cart-panel.active, .checkout-panel.active, .tracking-panel.active, .product-form-panel.active, .catalog-panel.active {
-            display: block;
+        .modal-content {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            width: 90%;
+            max-width: 500px;
+            padding: 25px;
+            position: relative;
         }
-
-        .metrics-grid {
+        .modal-close {
+            position: absolute;
+            top: 15px; right: 15px;
+            background: none; border: none;
+            color: var(--text-muted);
+            font-size: 1.2rem; cursor: pointer;
+        }
+        .dashboard-metrics {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 20px;
-            margin-bottom: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 25px;
         }
-
         .metric-card {
-            background: rgba(20, 20, 20, 0.85);
-            border: 1px solid #333;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
             border-radius: 8px;
             padding: 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            backdrop-filter: blur(5px);
         }
-
-        .metric-title {
-            font-size: 0.85rem;
+        .metric-card h4 {
+            font-size: 0.9rem;
             color: var(--text-muted);
-            text-transform: uppercase;
+            margin-bottom: 8px;
         }
-
-        .metric-value {
+        .metric-card .value {
             font-size: 1.6rem;
-            color: var(--gold-light);
             font-weight: 700;
+            color: var(--gold);
         }
-
-        .table-container {
-            width: 100%;
-            overflow-x: auto;
-            background: rgba(20, 20, 20, 0.85);
-            border: 1px solid #333;
-            border-radius: 8px;
-            margin-top: 20px;
-            backdrop-filter: blur(5px);
-        }
-
         table {
             width: 100%;
             border-collapse: collapse;
-            text-align: left;
-            font-size: 0.9rem;
+            background: var(--bg-card);
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
         }
-
         th, td {
-            padding: 15px;
-            border-bottom: 1px solid #222;
-        }
-
-        th {
-            background: #1a1a1a;
-            color: var(--gold);
-            font-weight: 600;
-        }
-
-        td {
-            color: var(--text-light);
-        }
-
-        .image-upload-preview-container {
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-            margin-top: 10px;
-        }
-
-        .image-preview-thumb {
-            width: 80px;
-            height: 80px;
-            border-radius: 6px;
-            border: 1px solid var(--gold);
-            overflow: hidden;
-            position: relative;
-            background: #222;
-        }
-
-        .image-preview-thumb img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .image-preview-thumb button {
-            position: absolute;
-            top: 2px;
-            right: 2px;
-            background: rgba(0,0,0,0.7);
-            color: #ff5555;
-            border: none;
-            border-radius: 50%;
-            width: 20px;
-            height: 20px;
-            font-size: 10px;
-            cursor: pointer;
-        }
-
-        /* 7LEO BGM PORTAL EXPERIENCE */
-        .bgm-portal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background:
-                linear-gradient(rgba(0, 0, 0, 0.97), rgba(0, 0, 0, 0.99)),
-                url("file_00000000776081fa8dbc514074356775.png") center / cover fixed;
-            z-index: 3500;
-            display: none;
-            flex-direction: column;
-            overflow-y: auto;
-        }
-
-        .bgm-portal-overlay.active {
-            display: flex;
-        }
-
-        .bgm-banner-container {
-            width: 100%;
-            background: #000;
-            overflow: hidden;
-        }
-
-        .bgm-banner-img {
-            width: 100%;
-            height: auto;
-            max-height: 450px;
-            object-fit: cover;
-            display: block;
-        }
-
-        .bgm-body-container {
-            max-width: 1100px;
-            margin: 0 auto;
-            width: 100%;
-            padding: 40px 30px;
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            gap: 40px;
-        }
-
-        .bgm-intro-box {
-            background: rgba(20, 20, 20, 0.7);
-            border: 1px solid rgba(212, 175, 55, 0.25);
-            border-radius: 12px;
-            padding: 30px;
-            text-align: center;
-            backdrop-filter: blur(10px);
-        }
-
-        .bgm-intro-box h2 {
-            font-size: clamp(1.5rem, 3vw, 2.2rem);
-            color: var(--gold-light);
-            margin-bottom: 12px;
-            font-weight: 600;
-        }
-
-        .bgm-intro-box p {
-            font-size: 1.05rem;
-            color: var(--text-muted);
-            line-height: 1.6;
-        }
-
-        .bgm-series-section h3 {
-            color: var(--gold);
-            font-size: 1.4rem;
-            margin-bottom: 20px;
-            font-weight: 600;
-        }
-
-        .bgm-primary-cta {
-            margin-top: 22px;
-        }
-
-        .bgm-series-filters {
-            display: flex;
-            gap: 12px;
-            flex-wrap: wrap;
-        }
-
-        .bgm-filter-btn {
-            background: rgba(20, 20, 20, 0.8);
-            border: 1px solid #333;
-            color: var(--text-light);
-            padding: 10px 20px;
-            border-radius: 25px;
-            cursor: pointer;
-            font-size: 0.9rem;
-            font-weight: 500;
-            transition: all 0.3s;
-        }
-
-        .bgm-filter-btn:hover, .bgm-filter-btn.active {
-            background: var(--gold);
-            color: var(--bg-dark);
-            border-color: var(--gold);
-        }
-
-        .bgm-playlist-container {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .bgm-series-block {
-            background: rgba(12, 12, 12, 0.88);
-            border: 1px solid rgba(212, 175, 55, 0.18);
-            border-radius: 12px;
-            padding: 22px;
-            backdrop-filter: blur(5px);
-        }
-
-        .bgm-series-block h4 {
-            color: var(--gold-light);
-            font-size: 1.15rem;
-            margin-bottom: 8px;
-        }
-
-        .bgm-social-section {
-            background: rgba(20, 20, 20, 0.85);
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            border-radius: 12px;
-            padding: 35px;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 20px;
-            backdrop-filter: blur(5px);
-        }
-
-        .bgm-licensing-section {
-            background: rgba(20, 20, 20, 0.85);
-            border: 1px solid #333;
-            border-radius: 12px;
-            padding: 35px;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            backdrop-filter: blur(5px);
-        }
-
-        .bgm-licensing-section h3 {
-            color: var(--gold);
-            font-size: 1.4rem;
-        }
-
-        .bgm-licensing-section p,
-        .bgm-licensing-section li {
-            color: var(--text-muted);
-            line-height: 1.7;
-        }
-
-        .bgm-licensing-section ul {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 8px 20px;
-            padding-left: 20px;
-        }
-
-        .bgm-footer-copyright {
-            text-align: center;
-            color: var(--text-muted);
-            font-size: 0.85rem;
-            line-height: 1.7;
-            padding: 25px 0;
-            border-top: 1px solid #222;
-        }
-
-        .bgm-footer-copyright strong {
-            color: var(--gold-light);
-            display: block;
-            margin-bottom: 12px;
-        }
-
-        .bgm-footer-copyright p {
-            margin: 8px auto;
-            max-width: 900px;
-        }
-
-        .bgm-footer-copyright a {
-            color: var(--gold);
-        }
-
-        /* --- 7LEO STAR PORTAL EXPERIENCE --- */
-        .star-portal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background:
-                linear-gradient(rgba(0, 0, 0, 0.94), rgba(0, 0, 0, 0.98)),
-                url("file_00000000776081fa8dbc514074356775.png") center / cover fixed;
-            z-index: 3700;
-            display: none;
-            flex-direction: column;
-            overflow-y: auto;
-        }
-
-        .star-portal-overlay.active {
-            display: flex;
-        }
-
-        .star-header {
-            background: rgba(12, 12, 12, 0.95);
-            border-bottom: 1px solid rgba(0, 240, 255, 0.3);
-            padding: 15px 30px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 10;
-        }
-
-        .star-nav-brand {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .star-nav-brand img {
-            height: 35px;
-            width: auto;
-            filter: drop-shadow(0 0 8px rgba(0, 240, 255, 0.4));
-        }
-
-        .star-nav-brand h2 {
-            color: var(--electric-blue);
-            font-size: 1.3rem;
-            letter-spacing: 1px;
-            text-shadow: 0 0 10px rgba(0, 240, 255, 0.3);
-        }
-
-        .star-nav-actions {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-
-        .star-nav-btn {
-            background: transparent;
-            border: 1px solid var(--electric-blue);
-            color: var(--text-light);
-            padding: 7px 14px;
-            border-radius: 20px;
-            cursor: pointer;
-            font-size: 0.85rem;
-            transition: all 0.3s;
-        }
-
-        .star-nav-btn:hover, .star-nav-btn.active {
-            background: var(--electric-blue);
-            color: var(--bg-dark);
-            box-shadow: 0 0 15px rgba(0, 240, 255, 0.4);
-        }
-
-        .star-body {
-            max-width: 1300px;
-            margin: 0 auto;
-            width: 100%;
-            padding: 40px 30px;
-            flex: 1;
-        }
-
-        .star-tab-content {
-            display: none;
-        }
-
-        .star-tab-content.active {
-            display: block;
-        }
-
-        .star-hero-card {
-            background: rgba(18, 18, 18, 0.82);
-            border: 1px solid rgba(0, 240, 255, 0.3);
-            border-radius: 14px;
-            padding: 40px;
-            text-align: center;
-            margin-bottom: 30px;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
-        }
-
-        .star-hero-card h1 {
-            font-size: clamp(2rem, 4vw, 3rem);
-            color: var(--gold-light);
-            margin-bottom: 15px;
-            font-weight: 600;
-        }
-
-        .star-hero-card p {
-            color: var(--text-muted);
-            font-size: 1.1rem;
-            max-width: 700px;
-            margin: 0 auto 25px auto;
-            line-height: 1.6;
-        }
-
-        .star-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            margin-bottom: 30px;
-        }
-
-        .star-card {
-            background: rgba(18, 18, 18, 0.85);
-            border: 1px solid rgba(212, 175, 55, 0.25);
-            border-radius: 10px;
-            padding: 30px;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            backdrop-filter: blur(5px);
-            transition: transform 0.3s, border-color 0.3s;
-        }
-
-        .star-card:hover {
-            transform: translateY(-4px);
-            border-color: var(--electric-blue);
-            box-shadow: 0 0 20px rgba(0, 240, 255, 0.2);
-        }
-
-        .star-card h3 {
-            color: var(--gold-light);
-            font-size: 1.25rem;
-        }
-
-        .star-card p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            line-height: 1.5;
-        }
-
-        .star-badge {
-            display: inline-block;
-            background: rgba(0, 240, 255, 0.15);
-            color: var(--electric-blue);
-            border: 1px solid var(--electric-blue);
-            padding: 4px 12px;
-            border-radius: 12px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            width: fit-content;
-        }
-
-        /* Star Chat Assistant UI */
-        .star-chat-container {
-            background: rgba(18, 18, 18, 0.9);
-            border: 1px solid rgba(0, 240, 255, 0.3);
-            border-radius: 12px;
-            max-width: 800px;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            height: 550px;
-            overflow: hidden;
-            backdrop-filter: blur(10px);
-        }
-
-        .star-chat-header {
-            padding: 20px;
-            background: rgba(10, 10, 10, 0.95);
-            border-bottom: 1px solid #333;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .star-chat-messages {
-            flex: 1;
-            padding: 20px;
-            overflow-y: auto;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .chat-bubble {
-            max-width: 80%;
-            padding: 12px 18px;
-            border-radius: 10px;
-            font-size: 0.95rem;
-            line-height: 1.5;
-        }
-
-        .chat-bubble.user {
-            background: rgba(0, 240, 255, 0.2);
-            color: var(--text-light);
-            align-self: flex-end;
-            border: 1px solid var(--electric-blue);
-        }
-
-        .chat-bubble.assistant {
-            background: rgba(212, 175, 55, 0.15);
-            color: var(--text-light);
-            align-self: flex-start;
-            border: 1px solid var(--gold);
-        }
-
-        .star-chat-input-area {
-            padding: 15px 20px;
-            background: rgba(10, 10, 10, 0.95);
-            border-top: 1px solid #333;
-            display: flex;
-            gap: 10px;
-        }
-
-        .star-chat-input-area input {
-            flex: 1;
             padding: 12px 15px;
-            background: #1a1a1a;
-            border: 1px solid #333;
-            border-radius: 6px;
-            color: var(--text-light);
-            font-size: 0.95rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+            font-size: 0.9rem;
         }
-
-        .star-chat-input-area input:focus {
-            outline: none;
-            border-color: var(--electric-blue);
+        th {
+            background: #1c1c1c;
+            color: var(--gold-light);
         }
-
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-                flex-direction: column;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background: rgba(10, 10, 10, 0.95);
-                padding: 20px 0;
-                border-bottom: 1px solid rgba(212, 175, 55, 0.2);
-            }
-
-            .nav-links.active {
-                display: flex;
-            }
-
-            .menu-toggle {
-                display: flex;
-            }
-
-            .commerce-music-container {
-                grid-template-columns: 1fr;
-                padding: 0 20px;
-            }
-
-            .store-controls-bar {
-                flex-direction: column;
-                align-items: stretch;
-            }
-
-            .bgm-body-container {
-                padding: 30px 18px;
-            }
-
-            .bgm-series-filters {
-                flex-direction: column;
-            }
-
-            .bgm-filter-btn {
-                width: 100%;
-            }
-
-            .star-body {
-                padding: 20px 15px;
-            }
-
-            .star-nav-actions {
-                display: none;
-            }
+        .image-preview-container {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+            flex-wrap: wrap;
+        }
+        .image-preview-thumb {
+            width: 60px; height: 60px;
+            border-radius: 4px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+        .image-preview-thumb img {
+            width: 100%; height: 100%; object-fit: cover;
         }
     </style>
 </head>
 <body>
-
-    <!-- Splash Screen -->
-    <div id="splash-screen">
-        <div class="splash-image-container">
-            <img src="file_0000000028fc81f8b878489375475bad.png" alt="Splash Background">
-        </div>
-        <div class="splash-content">
-            <h1 class="splash-title">Vision*Power*Legacy</h1>
-        </div>
-    </div>
-
-    <!-- Background Tattoo & Overlay -->
-    <div class="site-bg"></div>
-    <div class="site-overlay"></div>
-
-    <!-- Navigation -->
     <header>
         <div class="nav-container">
-            <div class="nav-logo">
-                <img src="logo.png" alt="7Leo Group Logo">
+            <div class="logo-area" onclick="switchStoreTab('catalog')">
+                <img src="logo.png" alt="7Leo Group Logo" onerror="this.src='https://via.placeholder.com/40'">
+                <span class="logo-text">7LEO GROUP</span>
             </div>
-            <div class="menu-toggle" id="mobile-menu">
-                <span></span>
-                <span></span>
-                <span></span>
+            <div class="nav-links">
+                <button class="nav-link active" onclick="switchStoreTab('catalog')">Catalog</button>
+                <button class="nav-link" onclick="switchStoreTab('tracking')">Track Order</button>
+                <button class="nav-link" onclick="switchStoreTab('dashboard')">Owner Dashboard</button>
+                <button class="cart-btn" onclick="switchStoreTab('cart')">
+                    Cart (<span id="cart-count">0</span>)
+                </button>
             </div>
-            <ul class="nav-links" id="nav-links">
-                <li><a href="#" onclick="showSection('home')">Home</a></li>
-                <li><a href="#" onclick="openStorePortal()">7Leo Store</a></li>
-                <li><a href="#" onclick="openBgmPortal()">7Leo BGM</a></li>
-                <li><a href="#" onclick="openStarPortal()">7Leo Star</a></li>
-                <li><a href="#" onclick="openModal('about-modal')">About</a></li>
-                <li><a href="#" onclick="openModal('founder-modal')">Meet The Founder</a></li>
-                <li><a href="#" onclick="openModal('admin-modal')">Super Admin</a></li>
-                <li><a href="#" onclick="openModal('contact-modal')">Contact</a></li>
-                <li><a href="#" onclick="openModal('signup-modal')">Signup</a></li>
-            </ul>
         </div>
     </header>
 
-    <!-- Main Homepage Content -->
-    <main id="main-content">
-        <section class="hero-section">
-            <img src="logo.png" alt="Main Logo" class="main-logo-img">
-            <h2 class="vision-power-legacy artistic-font">VISIONPOWERLEGACY</h2>
-            <h3 class="welcome-msg artistic-font">Hello welcome to 7Leo Website</h3>
-            <p class="core-text">Welcome to 7Leo Group Commerce, Music, and Star Identity</p>
+    <main>
+        <!-- Catalog Tab -->
+        <div id="tab-catalog" class="store-tab-content active">
+            <div class="catalog-controls">
+                <input type="text" id="store-search" placeholder="Search 7Leo products..." oninput="filterStoreProducts()">
+                <select id="store-category-filter" onchange="filterStoreProducts()">
+                    <option value="">All Categories</option>
+                    <option value="Electronics">Electronics</option>
+                    <option value="Apparel">Apparel</option>
+                    <option value="Digital & Software">Digital & Software</option>
+                </select>
+                <select id="store-sort" onchange="filterStoreProducts()">
+                    <option value="newest">Sort by: Newest</option>
+                    <option value="price-low">Price: Low to High</option>
+                    <option value="price-high">Price: High to Low</option>
+                </select>
+                <button class="submit-btn" style="width: auto; padding: 10px 20px;" onclick="openAddProductForm()">+ Add Product</button>
+            </div>
+            <div class="product-grid" id="store-product-grid">
+                <!-- Products dynamically rendered here -->
+            </div>
+        </div>
 
-            <div class="commerce-music-container">
-                <!-- Store Box -->
-                <div class="card-box">
-                    <img src="file_00000000f2948207a9d90f38705cd83d.png" alt="7Leo Store Logo" class="card-logo">
-                    <h4 class="card-title artistic-font">Build to buy</h4>
-                    <button class="action-btn" onclick="openStorePortal()">Explore 7Leo Store</button>
+        <!-- Cart Tab -->
+        <div id="tab-cart" class="store-tab-content">
+            <h2 style="color: var(--gold); margin-bottom: 20px;">Shopping Cart</h2>
+            <div id="cart-items-container"></div>
+            <div id="cart-summary-footer" style="margin-top: 20px; display: none;">
+                <div style="font-size: 1.2rem; font-weight: 700; color: var(--gold); margin-bottom: 15px;" id="cart-total-display">Total: ₹0</div>
+                <button class="submit-btn" onclick="proceedToCheckout()" style="max-width: 300px;">Proceed to Checkout</button>
+            </div>
+        </div>
+
+        <!-- Checkout Tab -->
+        <div id="tab-checkout" class="store-tab-content">
+            <h2 style="color: var(--gold); margin-bottom: 20px;">Secure Checkout</h2>
+            <form id="checkout-form" onsubmit="handleCheckoutSubmit(event)" style="max-width: 600px; display: flex; flex-direction: column; gap: 15px;">
+                <div>
+                    <label style="display: block; margin-bottom: 6px; color: var(--text-muted);">Full Name</label>
+                    <input type="text" id="cust-name" required style="width: 100%; padding: 10px; background: var(--bg-card); border: 1px solid var(--border-color); color: var(--text-light); border-radius: 6px;">
                 </div>
-
-                <!-- BGM Box -->
-                <div class="card-box">
-                    <img src="bgm-logo.png" alt="7Leo BGM Logo" class="card-logo">
-                    <h4 class="card-title artistic-font">Mobile Composed Groovepad Music</h4>
-                    <button class="action-btn" onclick="openBgmPortal()">Explore 7Leo BGM</button>
+                <div>
+                    <label style="display: block; margin-bottom: 6px; color: var(--text-muted);">Email Address</label>
+                    <input type="email" id="cust-email" required style="width: 100%; padding: 10px; background: var(--bg-card); border: 1px solid var(--border-color); color: var(--text-light); border-radius: 6px;">
                 </div>
+                <div>
+                    <label style="display: block; margin-bottom: 6px; color: var(--text-muted);">Phone Number</label>
+                    <input type="tel" id="cust-phone" required style="width: 100%; padding: 10px; background: var(--bg-card); border: 1px solid var(--border-color); color: var(--text-light); border-radius: 6px;">
+                </div>
+                <div>
+                    <label style="display: block; margin-bottom: 6px; color: var(--text-muted);">Shipping Address</label>
+                    <textarea id="cust-address" required rows="3" style="width: 100%; padding: 10px; background: var(--bg-card); border: 1px solid var(--border-color); color: var(--text-light); border-radius: 6px;"></textarea>
+                </div>
+                <div>
+                    <label style="display: block; margin-bottom: 6px; color: var(--text-muted);">Payment Gateway</label>
+                    <select id="payment-provider" style="width: 100%; padding: 10px; background: var(--bg-card); border: 1px solid var(--border-color); color: var(--text-light); border-radius: 6px;">
+                        <option value="Razorpay">Razorpay / UPI / Credit Card</option>
+                        <option value="Stripe">Stripe Global Card</option>
+                        <option value="COD">Cash on Delivery</option>
+                    </select>
+                </div>
+                <button type="submit" class="submit-btn" style="margin-top: 10px;">Place Secure Order</button>
+            </form>
+        </div>
 
-                <!-- Star Box -->
-                <div class="card-box">
-                    <img src="file_00000000064c81f7bfa7694c6882429c.png" alt="7Leo Star Logo" class="card-logo">
-                    <h4 class="card-title artistic-font">Vision • Power • Identity</h4>
-                    <button class="action-btn" onclick="openStarPortal()">Explore 7Leo Star</button>
+        <!-- Tracking Tab -->
+        <div id="tab-tracking" class="store-tab-content">
+            <h2 style="color: var(--gold); margin-bottom: 20px;">Order Tracking</h2>
+            <div style="display: flex; gap: 10px; max-width: 500px; margin-bottom: 20px;">
+                <input type="text" id="tracking-search-input" placeholder="Enter Order ID (e.g. 7LEO-1001)" style="flex:1; padding: 10px; background: var(--bg-card); border: 1px solid var(--border-color); color: var(--text-light); border-radius: 6px;">
+                <button class="submit-btn" style="width: auto;" onclick="trackOrderQuery()">Track</button>
+            </div>
+            <div id="tracking-result-box" style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 20px; max-width: 500px; display: none;"></div>
+        </div>
+
+        <!-- Owner Dashboard Tab -->
+        <div id="tab-dashboard" class="store-tab-content">
+            <h2 style="color: var(--gold); margin-bottom: 20px;">7Leo Owner Dashboard</h2>
+            <div class="dashboard-metrics">
+                <div class="metric-card">
+                    <h4>Total Orders</h4>
+                    <div class="value" id="metric-orders">0</div>
+                </div>
+                <div class="metric-card">
+                    <h4>Total Sales</h4>
+                    <div class="value" id="metric-sales">₹0</div>
+                </div>
+                <div class="metric-card">
+                    <h4>Estimated Profit</h4>
+                    <div class="value" id="metric-profit">₹0</div>
+                </div>
+                <div class="metric-card">
+                    <h4>Pending Fulfillment</h4>
+                    <div class="value" id="metric-pending">0</div>
                 </div>
             </div>
-        </section>
+            <h3 style="color: var(--text-light); margin-bottom: 15px;">Recent Orders</h3>
+            <div style="overflow-x: auto;">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Order ID</th>
+                            <th>Customer</th>
+                            <th>Item</th>
+                            <th>Total</th>
+                            <th>Profit</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="admin-orders-tbody">
+                        <!-- Populated dynamically -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Product Form Tab -->
+        <div id="tab-product-form" class="store-tab-content">
+            <h2 style="color: var(--gold); margin-bottom: 20px;" id="product-form-heading">Add New Product</h2>
+            <form id="product-management-form" onsubmit="handleSaveProduct(event)" style="max-width: 600px; display: flex; flex-direction: column; gap: 15px;">
+                <input type="hidden" id="edit-product-id">
+                <div>
+                    <label style="display: block; margin-bottom: 6px; color: var(--text-muted);">Product Name</label>
+                    <input type="text" id="prod-name" required style="width: 100%; padding: 10px; background: var(--bg-card); border: 1px solid var(--border-color); color: var(--text-light); border-radius: 6px;">
+                </div>
+                <div>
+                    <label style="display: block; margin-bottom: 6px; color: var(--text-muted);">Description</label>
+                    <textarea id="prod-desc" required rows="3" style="width: 100%; padding: 10px; background: var(--bg-card); border: 1px solid var(--border-color); color: var(--text-light); border-radius: 6px;"></textarea>
+                </div>
+                <div style="display: flex; gap: 15px;">
+                    <div style="flex:1;">
+                        <label style="display: block; margin-bottom: 6px; color: var(--text-muted);">Category</label>
+                        <select id="prod-category" style="width: 100%; padding: 10px; background: var(--bg-card); border: 1px solid var(--border-color); color: var(--text-light); border-radius: 6px;">
+                            <option value="Electronics">Electronics</option>
+                            <option value="Apparel">Apparel</option>
+                            <option value="Digital & Software">Digital & Software</option>
+                        </select>
+                    </div>
+                    <div style="flex:1;">
+                        <label style="display: block; margin-bottom: 6px; color: var(--text-muted);">SKU</label>
+                        <input type="text" id="prod-sku" required style="width: 100%; padding: 10px; background: var(--bg-card); border: 1px solid var(--border-color); color: var(--text-light); border-radius: 6px;">
+                    </div>
+                </div>
+                <div style="display: flex; gap: 15px;">
+                    <div style="flex:1;">
+                        <label style="display: block; margin-bottom: 6px; color: var(--text-muted);">Cost Price (₹)</label>
+                        <input type="number" id="prod-cost" oninput="calculateRealtimeProfit()" required style="width: 100%; padding: 10px; background: var(--bg-card); border: 1px solid var(--border-color); color: var(--text-light); border-radius: 6px;">
+                    </div>
+                    <div style="flex:1;">
+                        <label style="display: block; margin-bottom: 6px; color: var(--text-muted);">Selling Price (₹)</label>
+                        <input type="number" id="prod-price" oninput="calculateRealtimeProfit()" required style="width: 100%; padding: 10px; background: var(--bg-card); border: 1px solid var(--border-color); color: var(--text-light); border-radius: 6px;">
+                    </div>
+                </div>
+                <div style="display: flex; gap: 15px;">
+                    <div style="flex:1;">
+                        <label style="display: block; margin-bottom: 6px; color: var(--text-muted);">Estimated Fees/Shipping (₹)</label>
+                        <input type="number" id="prod-fees" oninput="calculateRealtimeProfit()" value="0" style="width: 100%; padding: 10px; background: var(--bg-card); border: 1px solid var(--border-color); color: var(--text-light); border-radius: 6px;">
+                    </div>
+                    <div style="flex:1; display:flex; align-items:flex-end;">
+                        <div id="live-profit-calc-text" style="color: var(--gold); font-size: 0.9rem; font-weight: 600; padding-bottom: 10px;">Estimated Profit: ₹0</div>
+                    </div>
+                </div>
+                <div>
+                    <label style="display: block; margin-bottom: 6px; color: var(--text-muted);">Supplier Name / Link</label>
+                    <input type="text" id="prod-supplier" placeholder="e.g. AliExpress / CJ Dropshipping" style="width: 100%; padding: 10px; background: var(--bg-card); border: 1px solid var(--border-color); color: var(--text-light); border-radius: 6px; margin-bottom: 8px;">
+                    <input type="url" id="prod-supplier-url" placeholder="https://supplier-product-link.com" style="width: 100%; padding: 10px; background: var(--bg-card); border: 1px solid var(--border-color); color: var(--text-light); border-radius: 6px;">
+                </div>
+                <div>
+                    <label style="display: block; margin-bottom: 6px; color: var(--text-muted);">Product Images</label>
+                    <input type="file" id="prod-images-input" multiple accept="image/*" onchange="handleImageUpload(event)" style="color: var(--text-muted);">
+                    <div class="image-preview-container" id="image-preview-container"></div>
+                </div>
+                <div style="display: flex; gap: 10px; margin-top: 15px;">
+                    <button type="submit" class="submit-btn">Save & Publish Product</button>
+                    <button type="button" class="action-btn" onclick="switchStoreTab('catalog')">Cancel</button>
+                </div>
+            </form>
+        </div>
     </main>
 
-    <!-- 7LEO STAR PORTAL EXPERIENCE -->
-    <div class="star-portal-overlay" id="star-portal">
-        <div class="star-header">
-            <div class="star-nav-brand">
-                <img src="file_00000000064c81f7bfa7694c6882429c.png" alt="7Leo Star Logo">
-                <h2>7Leo Star Portal</h2>
-            </div>
-            <div class="star-nav-actions">
-                <button class="star-nav-btn active" onclick="switchStarTab('dashboard', this)">Dashboard</button>
-                <button class="star-nav-btn" onclick="switchStarTab('assistant', this)">AI Star</button>
-                <button class="star-nav-btn" onclick="switchStarTab('daily', this)">Daily Star</button>
-                <button class="star-nav-btn" onclick="switchStarTab('personality', this)">Personality & Power</button>
-                <button class="star-nav-btn" onclick="switchStarTab('generators', this)">AI Generators</button>
-                <button class="star-nav-btn" onclick="switchStarTab('quotes', this)">Quotes</button>
-                <button class="star-nav-btn" onclick="switchStarTab('favorites', this)">Favorites</button>
-                <button class="star-nav-btn" onclick="switchStarTab('profile', this)">Profile & Points</button>
-                <button class="star-nav-btn" onclick="switchStarTab('notifications', this)">Notifications</button>
-                <button class="star-nav-btn" onclick="switchStarTab('admin', this)">Star Admin</button>
-                <button class="star-nav-btn" style="border-color:#ff5555; color:#ff5555;" onclick="closeStarPortal()">Exit Star</button>
-            </div>
-        </div>
-
-        <div class="star-body">
-            <!-- Dashboard Tab -->
-            <div class="star-tab-content active" id="star-tab-dashboard">
-                <div class="star-hero-card">
-                    <span class="star-badge" id="star-membership-badge">Free Tier Active</span>
-                    <h1 class="artistic-font">Welcome to 7Leo Star</h1>
-                    <p>The pinnacle of the 7Leo journey. Featuring advanced agentic identity, AI assistants, encrypted vaults, daily motivational streams, and 7Leo points/streak gamification.</p>
-                    <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; margin-top: 20px;">
-                        <button class="submit-btn" style="max-width: 220px; background: var(--electric-blue); color: var(--bg-dark);" onclick="upgradeToStarPremium()">Upgrade to Star Premium</button>
-                        <button class="action-btn" onclick="switchStarTab('assistant', document.querySelectorAll('.star-nav-btn')[1])">Launch AI Star Assistant</button>
-                    </div>
-                </div>
-
-                <div class="star-grid">
-                    <div class="star-card">
-                        <span class="star-badge">Daily Motivation</span>
-                        <h3>Daily Star & Streaks</h3>
-                        <p>Receive your personalized daily motivational message and maintain your daily streak to earn 7Leo Points.</p>
-                        <button class="action-btn" style="margin-top: auto;" onclick="switchStarTab('daily', document.querySelectorAll('.star-nav-btn')[2])">View Daily Star</button>
-                    </div>
-                    <div class="star-card">
-                        <span class="star-badge">AI Creativity</span>
-                        <h3>AI Generators Suite</h3>
-                        <p>Generate custom quotes, captions, usernames, and personalized motivational strategies instantly.</p>
-                        <button class="action-btn" style="margin-top: auto;" onclick="switchStarTab('generators', document.querySelectorAll('.star-nav-btn')[4])">Open Generators</button>
-                    </div>
-                    <div class="star-card">
-                        <span class="star-badge">Gamification</span>
-                        <h3>Points & Level Progression</h3>
-                        <p id="dashboard-level-summary">Current Level: New Star • Points: 120 • Streak: 3 Days</p>
-                        <button class="action-btn" style="margin-top: auto;" onclick="switchStarTab('profile', document.querySelectorAll('.star-nav-btn')[7])">View Profile & Rank</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- AI Star Assistant Tab -->
-            <div class="star-tab-content" id="star-tab-assistant">
-                <div class="star-chat-container">
-                    <div class="star-chat-header">
-                        <div>
-                            <h3 style="color: var(--electric-blue); font-size: 1.1rem;">AI Star Collaborator</h3>
-                            <p style="color: var(--text-muted); font-size: 0.8rem;">Powered by 7Leo Agentic Architecture</p>
-                        </div>
-                        <button class="action-btn" style="padding: 5px 12px; font-size: 0.8rem;" onclick="clearStarChat()">Clear Chat</button>
-                    </div>
-                    <div class="star-chat-messages" id="star-chat-messages">
-                        <div class="chat-bubble assistant">Hello Abubakker! I am your AI Star Assistant. Ask me anything about strategy, motivation, development, or 7Leo Group vision.</div>
-                    </div>
-                    <div class="star-chat-input-area">
-                        <input type="text" id="star-chat-input" placeholder="Type your message to AI Star..." onkeypress="if(event.key==='Enter') sendStarAiMessage()">
-                        <button class="submit-btn" style="width: auto; padding: 0 20px; background: var(--electric-blue); color: var(--bg-dark);" onclick="sendStarAiMessage()">Send</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Daily Star Tab -->
-            <div class="star-tab-content" id="star-tab-daily">
-                <div class="star-hero-card" style="text-align: left;">
-                    <span class="star-badge">Today's Star Wisdom</span>
-                    <h2 id="daily-star-title" style="color: var(--gold-light); margin-top: 15px; margin-bottom: 10px;">"Vision without execution is merely a dream."</h2>
-                    <p id="daily-star-body" style="font-size: 1.05rem; line-height: 1.7; margin-bottom: 25px; color: var(--text-light);">Today's focus is on disciplined action. Take one definitive step toward your ultimate legacy today. No matter how small the beginning, consistent momentum outlasts temporary resistance.</p>
-                    <div style="display: flex; gap: 15px; flex-wrap: wrap;">
-                        <button class="submit-btn" style="max-width: 200px; background: var(--electric-blue); color: var(--bg-dark);" onclick="saveCurrentContent('Daily Star', document.getElementById('daily-star-title').innerText)">Save to Favorites</button>
-                        <button class="action-btn" onclick="refreshDailyStar()">Refresh Daily Star</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Personality Tab -->
-            <div class="star-tab-content" id="star-tab-personality">
-                <div class="star-hero-card" style="text-align: left;">
-                    <span class="star-badge">Leo Mindset & Power Mode</span>
-                    <h2 style="color: var(--gold-light); margin-top: 10px; margin-bottom: 15px;">The 7Leo Philosophy</h2>
-                    <p style="margin-bottom: 20px;">Built on unwavering confidence, relentless leadership, absolute ambition, unyielding strength, and uncompromising creative self-expression.</p>
-                </div>
-                <div class="star-grid">
-                    <div class="star-card">
-                        <h3>Vision</h3>
-                        <p>See beyond today's limitations. Anticipate tomorrow and architect the future with precision.</p>
-                    </div>
-                    <div class="star-card">
-                        <h3>Power Mode</h3>
-                        <p>Activate peak discipline, high-performance focus, and unstoppable momentum through daily challenges.</p>
-                    </div>
-                    <div class="star-card">
-                        <h3>Legacy</h3>
-                        <p>Build something that outlasts the beginning. Create systems, platforms, and works of enduring value.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- AI Generators Tab -->
-            <div class="star-tab-content" id="star-tab-generators">
-                <div class="star-hero-card" style="text-align: left;">
-                    <span class="star-badge">Advanced AI Generators</span>
-                    <h2 style="color: var(--gold-light); margin-top: 10px; margin-bottom: 15px;">Instant Content Creation Suite</h2>
-                    <p style="margin-bottom: 25px;">Select a tool below to generate powerful quotes, captions, usernames, and motivation tailored to your vision.</p>
-                    
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px;">
-                        <div style="background: rgba(20,20,20,0.8); padding: 20px; border-radius: 8px; border: 1px solid #333;">
-                            <h4 style="color: var(--gold); margin-bottom: 10px;">AI Quote Generator</h4>
-                            <select id="gen-quote-theme" style="width:100%; padding:10px; background:#1a1a1a; color:#fff; border:1px solid #444; border-radius:5px; margin-bottom:15px;">
-                                <option value="Success">Success</option>
-                                <option value="Money">Money & Power</option>
-                                <option value="Confidence">Confidence</option>
-                                <option value="Discipline">Discipline</option>
-                            </select>
-                            <button class="submit-btn" onclick="generateAiQuote()">Generate Quote</button>
-                            <div id="gen-quote-result" style="margin-top: 15px; color: var(--text-light); font-style: italic;"></div>
-                        </div>
-
-                        <div style="background: rgba(20,20,20,0.8); padding: 20px; border-radius: 8px; border: 1px solid #333;">
-                            <h4 style="color: var(--gold); margin-bottom: 10px;">AI Caption Generator</h4>
-                            <select id="gen-caption-theme" style="width:100%; padding:10px; background:#1a1a1a; color:#fff; border:1px solid #444; border-radius:5px; margin-bottom:15px;">
-                                <option value="Luxury">Luxury & Lifestyle</option>
-                                <option value="Success">Success & Grind</option>
-                                <option value="Attitude">Attitude & Legacy</option>
-                            </select>
-                            <button class="submit-btn" onclick="generateAiCaption()">Generate Caption</button>
-                            <div id="gen-caption-result" style="margin-top: 15px; color: var(--text-light);"></div>
-                        </div>
-
-                        <div style="background: rgba(20,20,20,0.8); padding: 20px; border-radius: 8px; border: 1px solid #333;">
-                            <h4 style="color: var(--gold); margin-bottom: 10px;">AI Username / Brand Generator</h4>
-                            <select id="gen-name-style" style="width:100%; padding:10px; background:#1a1a1a; color:#fff; border:1px solid #444; border-radius:5px; margin-bottom:15px;">
-                                <option value="Elite">Elite / Luxury</option>
-                                <option value="Tech">Tech & Developer</option>
-                                <option value="Dark">Dark / Mysterious</option>
-                            </select>
-                            <button class="submit-btn" onclick="generateAiUsername()">Generate Name</button>
-                            <div id="gen-name-result" style="margin-top: 15px; color: var(--text-light); font-weight: 600;"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Quotes Tab -->
-            <div class="star-tab-content" id="star-tab-quotes">
-                <div class="star-hero-card" style="text-align: left;">
-                    <span class="star-badge">7Leo Curated Vault</span>
-                    <h2 style="color: var(--gold-light); margin-top: 10px; margin-bottom: 15px;">Motivational Wisdom</h2>
-                </div>
-                <div class="star-grid">
-                    <div class="star-card">
-                        <h3>Quote #1</h3>
-                        <p>"From zero to legacy. Every giant empire started with a single phone, a connection, and unwavering belief."</p>
-                        <button class="action-btn" style="margin-top: auto;" onclick="saveCurrentContent('Quote', 'From zero to legacy.')">Save Quote</button>
-                    </div>
-                    <div class="star-card">
-                        <h3>Quote #2</h3>
-                        <p>"Walk alone until your vision becomes so undeniable that the world has no choice but to follow."</p>
-                        <button class="action-btn" style="margin-top: auto;" onclick="saveCurrentContent('Quote', 'Walk alone until your vision becomes undeniable.')">Save Quote</button>
-                    </div>
-                    <div class="star-card">
-                        <h3>Quote #3</h3>
-                        <p>"Vision. Power. Legacy. Three words, one lifelong mission."</p>
-                        <button class="action-btn" style="margin-top: auto;" onclick="saveCurrentContent('Quote', 'Vision. Power. Legacy.')">Save Quote</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Favorites Tab -->
-            <div class="star-tab-content" id="star-tab-favorites">
-                <div class="star-hero-card" style="text-align: left;">
-                    <span class="star-badge">Saved Vault</span>
-                    <h2 style="color: var(--gold-light); margin-top: 10px; margin-bottom: 15px;">My Favorites & Saved Content</h2>
-                    <p style="margin-bottom: 20px;">All your bookmarked quotes, AI generations, and daily star wisdom in one secure place.</p>
-                </div>
-                <div id="favorites-container" class="star-grid"></div>
-            </div>
-
-            <!-- Profile Tab -->
-            <div class="star-tab-content" id="star-tab-profile">
-                <div class="modal-content" style="max-width: 600px; margin: 0 auto; background: rgba(18,18,18,0.9);">
-                    <h3 class="modal-title" style="color: var(--electric-blue);">User Profile, Points & Streaks</h3>
-                    <div style="background: rgba(0, 240, 255, 0.1); padding: 15px; border-radius: 8px; border: 1px solid var(--electric-blue); margin-bottom: 20px; text-align: center;">
-                        <p style="color: var(--electric-blue); font-weight: 600; font-size: 1.1rem;" id="profile-rank-display">Rank: New Star (120 Points)</p>
-                        <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 5px;">Current Streak: 3 Days Active</p>
-                    </div>
-                    <form id="star-profile-form" onsubmit="saveStarProfile(event)">
-                        <div class="form-group">
-                            <label>Legal / Display Name</label>
-                            <input type="text" id="star-profile-name" value="Abubakker Bellary" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Email Address</label>
-                            <input type="email" id="star-profile-email" value="7leogroup@gmail.com" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Membership Status</label>
-                            <input type="text" id="star-profile-tier" value="Free Tier (Upgrade Available)" readonly style="color: var(--gold);">
-                        </div>
-                        <div class="form-group">
-                            <label>User Preferences / Notes</label>
-                            <textarea id="star-profile-prefs" rows="3">Founder & Visionary — 7Leo Group</textarea>
-                        </div>
-                        <button type="submit" class="submit-btn" style="background: var(--electric-blue); color: var(--bg-dark);">Save Profile Changes</button>
-                    </form>
-                </div>
-            </div>
-
-            <!-- Notifications Tab -->
-            <div class="star-tab-content" id="star-tab-notifications">
-                <div class="star-hero-card" style="text-align: left;">
-                    <span class="star-badge">System Notifications</span>
-                    <h2 style="color: var(--gold-light); margin-top: 10px; margin-bottom: 15px;">Updates & Announcements</h2>
-                </div>
-                <div class="star-grid">
-                    <div class="star-card">
-                        <span class="star-badge">New Feature</span>
-                        <h3>7Leo Star Master Build Live</h3>
-                        <p>Advanced agentic AI tools, daily star streaks, and points system are now fully integrated into your ecosystem.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Admin Tab -->
-            <div class="star-tab-content" id="star-tab-admin">
-                <div class="star-hero-card" style="text-align: left;">
-                    <span class="star-badge" style="border-color: #ff5555; color: #ff5555;">Restricted Owner Area</span>
-                    <h2 style="color: var(--gold-light); margin-top: 10px; margin-bottom: 15px;">Star Management & Metrics</h2>
-                    <div class="metrics-grid" style="margin-top: 20px;">
-                        <div class="metric-card">
-                            <span class="metric-title">Active Star Users</span>
-                            <span class="metric-value">1,248</span>
-                        </div>
-                        <div class="metric-card">
-                            <span class="metric-title">Premium Members</span>
-                            <span class="metric-value" id="admin-premium-count">312</span>
-                        </div>
-                        <div class="metric-card">
-                            <span class="metric-title">System Status</span>
-                            <span class="metric-value" style="color: var(--electric-blue);">Optimal</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- 7LEO BGM PORTAL EXPERIENCE -->
-    <div class="bgm-portal-overlay" id="bgm-portal">
-        <div class="bgm-banner-container">
-            <img src="bgm-banner.png" alt="7Leo BGM Banner" class="bgm-banner-img">
-        </div>
-        <div class="bgm-body-container">
-            <div class="bgm-intro-box">
-                <h2>Welcome to 7Leo BGM!</h2>
-                <p><strong>Mobile-Composed Groovepad Music</strong></p>
-                <p>Drive • Chill • Gangster • DJ • Cinematic</p>
-                <a href="https://www.youtube.com/@7LeoBGM" target="_blank" rel="noopener noreferrer" class="action-btn bgm-primary-cta">Enter the World of Music</a>
-            </div>
-            <div class="bgm-series-section">
-                <h3>Explore by Series</h3>
-                <div class="bgm-series-filters" id="bgm-series-filters">
-                    <button class="bgm-filter-btn active" onclick="filterBgmSeries('All', this)">All</button>
-                    <button class="bgm-filter-btn" onclick="filterBgmSeries('7Leo Songs Series', this)">7Leo Songs Series</button>
-                    <button class="bgm-filter-btn" onclick="filterBgmSeries('7Leo Cinematic Series', this)">7Leo Cinematic Series</button>
-                    <button class="bgm-filter-btn" onclick="filterBgmSeries('7Leo Chill Series', this)">7Leo Chill Series</button>
-                    <button class="bgm-filter-btn" onclick="filterBgmSeries('7Leo Gangster Series', this)">7Leo Gangster Series</button>
-                    <button class="bgm-filter-btn" onclick="filterBgmSeries('7Leo Drive Series', this)">7Leo Drive Series</button>
-                    <button class="bgm-filter-btn" onclick="filterBgmSeries('7Leo DJ Series', this)">7Leo DJ Series</button>
-                </div>
-            </div>
-            <div class="bgm-playlist-container" id="bgm-playlist-items"></div>
-        </div>
-        <button class="action-btn" style="position: fixed; top: 20px; right: 20px; z-index: 4000; background: rgba(10,10,10,0.85);" onclick="closeBgmPortal()">Exit BGM Portal</button>
-    </div>
-
-    <!-- 7LEO STORE COMPLETE SYSTEM PORTAL -->
-    <div class="store-portal-overlay" id="store-portal">
-        <div class="store-header">
-            <div class="store-nav-brand">
-                <h2>Welcome to 7Leo Store</h2>
-            </div>
-            <div class="store-nav-actions">
-                <button class="store-nav-btn" onclick="switchStoreTab('catalog')">Catalog</button>
-                <button class="store-nav-btn" onclick="switchStoreTab('cart')">Cart (<span id="cart-count">0</span>)</button>
-                <button class="store-nav-btn" onclick="switchStoreTab('tracking')">Track Order</button>
-                <button class="store-nav-btn" onclick="switchStoreTab('dashboard')">Owner Dashboard</button>
-                <button class="store-nav-btn" onclick="switchStoreTab('policies')">Policies</button>
-                <button class="store-nav-btn" style="border-color:#ff5555; color:#ff5555;" onclick="closeStorePortal()">Exit Store</button>
-            </div>
-        </div>
-
-        <div class="store-body">
-            <!-- CATALOG PANEL -->
-            <div class="store-tab-content catalog-panel active" id="tab-catalog">
-                <div class="store-controls-bar">
-                    <div class="search-filter-group">
-                        <input type="text" id="store-search" class="store-search-input" placeholder="Search products..." oninput="filterStoreProducts()">
-                        <select id="store-category-filter" class="store-filter-select" onchange="filterStoreProducts()">
-                            <option value="">All Categories</option>
-                            <option value="Apparel">Apparel</option>
-                            <option value="Accessories">Accessories</option>
-                            <option value="Electronics">Electronics</option>
-                        </select>
-                        <select id="store-sort" class="store-filter-select" onchange="filterStoreProducts()">
-                            <option value="newest">Newest First</option>
-                            <option value="price-low">Price: Low to High</option>
-                            <option value="price-high">Price: High to Low</option>
-                        </select>
-                    </div>
-                    <button class="submit-btn" style="width: auto; padding: 10px 20px;" onclick="openAddProductForm()">+ Add Product (Owner)</button>
-                </div>
-                <div class="product-grid" id="store-product-grid"></div>
-            </div>
-
-            <!-- PRODUCT FORM PANEL -->
-            <div class="store-tab-content product-form-panel" id="tab-product-form">
-                <h3 class="modal-title" id="product-form-heading">Add / Edit Product</h3>
-                <form id="product-management-form" onsubmit="handleSaveProduct(event)">
-                    <input type="hidden" id="edit-product-id">
-                    <div class="form-group">
-                        <label>Product Name</label>
-                        <input type="text" id="prod-name" required placeholder="Enter product name">
-                    </div>
-                    <div class="form-group">
-                        <label>Description</label>
-                        <textarea id="prod-desc" rows="3" required placeholder="Product description"></textarea>
-                    </div>
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
-                        <div class="form-group">
-                            <label>Category</label>
-                            <select id="prod-category" required>
-                                <option value="Apparel">Apparel</option>
-                                <option value="Accessories">Accessories</option>
-                                <option value="Electronics">Electronics</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label>SKU</label>
-                            <input type="text" id="prod-sku" required placeholder="SKU-12345">
-                        </div>
-                    </div>
-                    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px;">
-                        <div class="form-group">
-                            <label>Supplier Cost (₹)</label>
-                            <input type="number" id="prod-cost" step="0.01" required placeholder="500" oninput="calculateRealtimeProfit()">
-                        </div>
-                        <div class="form-group">
-                            <label>Selling Price (₹)</label>
-                            <input type="number" id="prod-price" step="0.01" required placeholder="799" oninput="calculateRealtimeProfit()">
-                        </div>
-                        <div class="form-group">
-                            <label>Estimated Fees (₹)</label>
-                            <input type="number" id="prod-fees" step="0.01" value="50" required placeholder="50" oninput="calculateRealtimeProfit()">
-                        </div>
-                    </div>
-                    <div style="background: rgba(26, 26, 26, 0.85); padding: 15px; border-radius: 6px; margin-bottom: 20px; border: 1px solid var(--gold);">
-                        <p style="color: var(--gold); font-weight: 600;">Automatic Profit Calculation Preview:</p>
-                        <p id="live-profit-calc-text" style="color: var(--text-light); margin-top: 5px;">Estimated Profit: ₹0.00 (Margin: 0%)</p>
-                    </div>
-                    <button type="submit" class="submit-btn">Save & Publish Product</button>
-                </form>
-            </div>
-
-            <!-- CART PANEL -->
-            <div class="store-tab-content cart-panel" id="tab-cart">
-                <h3 class="modal-title">Shopping Cart</h3>
-                <div id="cart-items-container">
-                    <p style="color: var(--text-muted); text-align: center; padding: 40px;">Your cart is empty.</p>
-                </div>
-                <div id="cart-summary-footer" style="display: none; margin-top: 20px; text-align: right;">
-                    <h3 style="color: var(--gold); margin-bottom: 15px;" id="cart-total-display">Total: ₹0.00</h3>
-                    <button class="submit-btn" style="max-width: 250px;" onclick="proceedToCheckout()">Proceed to Checkout</button>
-                </div>
-            </div>
-
-            <!-- CHECKOUT PANEL -->
-            <div class="store-tab-content checkout-panel" id="tab-checkout">
-                <h3 class="modal-title">Checkout</h3>
-                <form id="checkout-form" onsubmit="handleCheckoutSubmit(event)" style="max-width: 600px; margin: 0 auto;">
-                    <div class="form-group">
-                        <label>Full Name</label>
-                        <input type="text" id="cust-name" required placeholder="Enter full name">
-                    </div>
-                    <div class="form-group">
-                        <label>Email Address</label>
-                        <input type="email" id="cust-email" required placeholder="Enter email address">
-                    </div>
-                    <div class="form-group">
-                        <label>Delivery Address</label>
-                        <textarea id="cust-address" rows="3" required placeholder="Street address, City, State, Pincode"></textarea>
-                    </div>
-                    <button type="submit" class="submit-btn" style="margin-top: 20px;">Place Test Prototype Order</button>
-                </form>
-            </div>
-
-            <!-- ORDER TRACKING PANEL -->
-            <div class="store-tab-content tracking-panel" id="tab-tracking">
-                <h3 class="modal-title">Order Tracking & Fulfillment</h3>
-                <div style="max-width: 600px; margin: 0 auto; display: flex; gap: 10px; margin-bottom: 30px;">
-                    <input type="text" id="tracking-search-input" class="store-search-input" placeholder="Enter Order ID (e.g., 7LEO-1001)">
-                    <button class="submit-btn" style="width: auto;" onclick="trackOrderQuery()">Track</button>
-                </div>
-                <div id="tracking-result-box" style="background: rgba(20, 20, 20, 0.85); padding: 25px; border-radius: 8px; border: 1px solid #333; max-width: 600px; margin: 0 auto; display: none;"></div>
-            </div>
-
-            <!-- OWNER DASHBOARD PANEL -->
-            <div class="store-tab-content admin-dashboard-panel" id="tab-dashboard">
-                <h3 class="modal-title">7Leo Store Owner / Profit Dashboard</h3>
-                <div class="metrics-grid">
-                    <div class="metric-card">
-                        <span class="metric-title">Total Orders</span>
-                        <span class="metric-value" id="metric-orders">0</span>
-                    </div>
-                    <div class="metric-card">
-                        <span class="metric-title">Total Sales</span>
-                        <span class="metric-value" id="metric-sales">₹0.00</span>
-                    </div>
-                    <div class="metric-card">
-                        <span class="metric-title">Estimated Profit</span>
-                        <span class="metric-value" id="metric-profit">₹0.00</span>
-                    </div>
-                    <div class="metric-card">
-                        <span class="metric-title">Pending Fulfillment</span>
-                        <span class="metric-value" id="metric-pending">0</span>
-                    </div>
-                </div>
-                <div class="table-container">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Order ID</th>
-                                <th>Customer</th>
-                                <th>Product</th>
-                                <th>Selling Price</th>
-                                <th>Est. Profit</th>
-                                <th>Status</th>
-                            </tr>
-                        </thead>
-                        <tbody id="admin-orders-tbody"></tbody>
-                    </table>
-                </div>
-            </div>
-
-            <!-- POLICIES PANEL -->
-            <div class="store-tab-content" id="tab-policies">
-                <h3 class="modal-title">Store Policies & Information</h3>
-                <div style="max-width: 800px; margin: 0 auto; color: var(--text-muted); line-height: 1.8;">
-                    <h4 style="color: var(--gold);">Terms & Conditions</h4>
-                    <p>Welcome to 7Leo Store. Orders are processed securely through our verified global suppliers.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modals -->
-    <div class="modal-overlay" id="signup-modal">
+    <!-- Product Detail Modal -->
+    <div class="modal-backdrop" id="product-detail-modal">
         <div class="modal-content">
-            <button class="close-modal" onclick="closeModal('signup-modal')">&times;</button>
-            <h3 class="modal-title">Sign Up / Sign In</h3>
-            <div class="auth-buttons">
-                <button class="oauth-btn" onclick="alert('Google Authentication Prototype')">Sign in with Google</button>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal-overlay" id="about-modal">
-        <div class="modal-content" style="max-width: 700px;">
-            <button class="close-modal" onclick="closeModal('about-modal')">&times;</button>
-            <h3 class="modal-title">About 7Leo Group</h3>
-            <p style="color: var(--text-muted); line-height: 1.6;">7Leo Group is an independent digital vision built from Karnataka, bringing together creativity, commerce, music, and technology under one identity. Vision. Power. Legacy.</p>
-        </div>
-    </div>
-
-    <div class="modal-overlay" id="founder-modal">
-        <div class="modal-content" style="max-width: 700px;">
-            <button class="close-modal" onclick="closeModal('founder-modal')">&times;</button>
-            <h3 class="modal-title">Meet The Founder</h3>
-            <p style="color: var(--text-muted); line-height: 1.6;">Built from zero with determination, mobile connectivity, and vision. — Abubakker Bellary</p>
-        </div>
-    </div>
-
-    <div class="modal-overlay" id="contact-modal">
-        <div class="modal-content">
-            <button class="close-modal" onclick="closeModal('contact-modal')">&times;</button>
-            <h3 class="modal-title">Contact 7Leo Group</h3>
-            <p style="color: var(--text-muted);">Email: 7leogroup@gmail.com</p>
-        </div>
-    </div>
-
-    <div class="modal-overlay" id="admin-modal">
-        <div class="modal-content">
-            <button class="close-modal" onclick="closeModal('admin-modal')">&times;</button>
-            <h3 class="modal-title">Super Admin Portal</h3>
-            <p style="color: var(--text-muted); text-align: center;">Restricted website owner control panel.</p>
+            <button class="modal-close" onclick="closeModal('product-detail-modal')">&times;</button>
+            <div id="product-detail-body"></div>
         </div>
     </div>
 
     <script>
-        // Splash screen timer
-        window.addEventListener('DOMContentLoaded', () => {
-            setTimeout(() => {
-                document.getElementById('splash-screen').classList.add('fade-out');
-            }, 3000);
-            renderStoreCatalog();
-            updateCartCount();
-            renderBgmPlaylist('All');
-            loadStarProfileData();
-            renderFavorites();
-        });
-
-        // Mobile Menu Toggle
-        const mobileMenu = document.getElementById('mobile-menu');
-        const navLinks = document.getElementById('nav-links');
-
-        mobileMenu.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
-
-        // Modal Controls
-        function openModal(modalId) {
-            document.getElementById(modalId).classList.add('active');
-            navLinks.classList.remove('active');
-        }
-
-        function closeModal(modalId) {
-            document.getElementById(modalId).classList.remove('active');
-        }
-
-        function showSection(section) {
-            navLinks.classList.remove('active');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        // --- 7LEO STAR PORTAL SYSTEM LOGIC ---
-        function openStarPortal() {
-            document.getElementById('star-portal').classList.add('active');
-            navLinks.classList.remove('active');
-            loadStarProfileData();
-            renderFavorites();
-        }
-
-        function closeStarPortal() {
-            document.getElementById('star-portal').classList.remove('active');
-        }
-
-        function switchStarTab(tabName, btnElement) {
-            document.querySelectorAll('.star-tab-content').forEach(el => el.classList.remove('active'));
-            if(btnElement) {
-                document.querySelectorAll('.star-nav-btn').forEach(btn => btn.classList.remove('active'));
-                btnElement.classList.add('active');
-            }
-            if(tabName === 'dashboard') document.getElementById('star-tab-dashboard').classList.add('active');
-            if(tabName === 'assistant') document.getElementById('star-tab-assistant').classList.add('active');
-            if(tabName === 'daily') document.getElementById('star-tab-daily').classList.add('active');
-            if(tabName === 'personality') document.getElementById('star-tab-personality').classList.add('active');
-            if(tabName === 'generators') document.getElementById('star-tab-generators').classList.add('active');
-            if(tabName === 'quotes') document.getElementById('star-tab-quotes').classList.add('active');
-            if(tabName === 'favorites') { document.getElementById('star-tab-favorites').classList.add('active'); renderFavorites(); }
-            if(tabName === 'profile') document.getElementById('star-tab-profile').classList.add('active');
-            if(tabName === 'notifications') document.getElementById('star-tab-notifications').classList.add('active');
-            if(tabName === 'admin') document.getElementById('star-tab-admin').classList.add('active');
-        }
-
-        function sendStarAiMessage() {
-            const input = document.getElementById('star-chat-input');
-            const msg = input.value.trim();
-            if(!msg) return;
-
-            const chatContainer = document.getElementById('star-chat-messages');
-            chatContainer.innerHTML += `<div class="chat-bubble user">${msg}</div>`;
-            input.value = '';
-            chatContainer.scrollTop = chatContainer.scrollHeight;
-
-            setTimeout(() => {
-                let reply = "I understand your vision. As your AI Star Collaborator, I am here to help you build your legacy with unwavering confidence and precision.";
-                const lower = msg.toLowerCase();
-                if(lower.includes('motivation') || lower.includes('success')) {
-                    reply = "Success belongs to those who start from zero and refuse to stop. Keep pushing through every barrier!";
-                } else if(lower.includes('7leo') || lower.includes('group')) {
-                    reply = "7Leo Group represents Vision, Power, and Legacy. Your digital ecosystem is expanding globally.";
-                }
-                chatContainer.innerHTML += `<div class="chat-bubble assistant">${reply}</div>`;
-                chatContainer.scrollTop = chatContainer.scrollHeight;
-            }, 600);
-        }
-
-        function clearStarChat() {
-            document.getElementById('star-chat-messages').innerHTML = `<div class="chat-bubble assistant">Chat cleared. How can I assist your vision today?</div>`;
-        }
-
-        const dailyWisdomList = [
-            { title: `"Vision without execution is merely a dream."`, body: `Today's focus is on disciplined action. Take one definitive step toward your ultimate legacy today.` },
-            { title: `"Sometimes you have to walk alone before others understand your direction."`, body: `Embrace the journey from zero. True pioneers pave the path before the crowd arrives.` }
-        ];
-
-        function refreshDailyStar() {
-            const rand = dailyWisdomList[Math.floor(Math.random() * dailyWisdomList.length)];
-            document.getElementById('daily-star-title').innerText = rand.title;
-            document.getElementById('daily-star-body').innerText = rand.body;
-            alert('Daily Star refreshed with new wisdom!');
-        }
-
-        function generateAiQuote() {
-            const quotes = {
-                Success: `"True success is built from zero, requiring no permission and accepting no limits."`,
-                Money: `"Financial mastery and power flow where discipline and relentless execution meet."`
-            };
-            document.getElementById('gen-quote-result').innerText = quotes[document.getElementById('gen-quote-theme').value] || quotes['Success'];
-        }
-
-        function generateAiCaption() {
-            const captions = {
-                Luxury: `Elevating the standard. Vision. Power. Legacy. ✨⚜️ #7LeoGroup`,
-                Success: `Started from zero. Building toward infinity. 🚀 #Grindset #7LeoStar`
-            };
-            document.getElementById('gen-caption-result').innerText = captions[document.getElementById('gen-caption-theme').value] || captions['Luxury'];
-        }
-
-        function generateAiUsername() {
-            const names = { Elite: `@7LeoElite_Official`, Tech: `@StarDeveloper_7Leo` };
-            document.getElementById('gen-name-result').innerText = names[document.getElementById('gen-name-style').value] || `@7LeoStar_Official`;
-        }
-
-        function saveCurrentContent(type, contentText) {
-            let favs = JSON.parse(localStorage.getItem('7leo_star_favorites')) || [];
-            favs.push({ type, text: contentText, date: new Date().toLocaleDateString() });
-            localStorage.setItem('7leo_star_favorites', JSON.stringify(favs));
-            alert('Successfully saved to your 7Leo Star Favorites vault!');
-        }
-
-        function renderFavorites() {
-            const container = document.getElementById('favorites-container');
-            if(!container) return;
-            const favs = JSON.parse(localStorage.getItem('7leo_star_favorites')) || [];
-            container.innerHTML = '';
-            if(favs.length === 0) {
-                container.innerHTML = '<p style="color:var(--text-muted); grid-column: 1/-1; text-align:center; padding:30px;">No saved favorites yet.</p>';
-                return;
-            }
-            favs.forEach((f, idx) => {
-                container.innerHTML += `
-                    <div class="star-card">
-                        <span class="star-badge">${f.type}</span>
-                        <p style="color:var(--text-light); font-size:1rem; margin-top:5px;">${f.text}</p>
-                        <button class="action-btn" style="border-color:#ff5555; color:#ff5555; margin-top:auto; padding:6px 12px;" onclick="removeFavorite(${idx})">Remove</button>
-                    </div>
-                `;
-            });
-        }
-
-        function removeFavorite(index) {
-            let favs = JSON.parse(localStorage.getItem('7leo_star_favorites')) || [];
-            favs.splice(index, 1);
-            localStorage.setItem('7leo_star_favorites', JSON.stringify(favs));
-            renderFavorites();
-        }
-
-        function upgradeToStarPremium() {
-            let profile = JSON.parse(localStorage.getItem('7leo_star_profile')) || { name: 'Abubakker Bellary', email: '7leogroup@gmail.com', tier: 'Free', prefs: '' };
-            profile.tier = 'Premium';
-            localStorage.setItem('7leo_star_profile', JSON.stringify(profile));
-            document.getElementById('star-membership-badge').innerText = 'Premium Star Active';
-            document.getElementById('star-profile-tier').value = 'Premium Star Member';
-            document.getElementById('admin-premium-count').innerText = '313';
-            alert('Your 7Leo Star membership has been successfully upgraded to Premium.');
-        }
-
-        function saveStarProfile(event) {
-            event.preventDefault();
-            const profile = {
-                name: document.getElementById('star-profile-name').value,
-                email: document.getElementById('star-profile-email').value,
-                tier: JSON.parse(localStorage.getItem('7leo_star_profile'))?.tier || 'Free',
-                prefs: document.getElementById('star-profile-prefs').value
-            };
-            localStorage.setItem('7leo_star_profile', JSON.stringify(profile));
-            alert('7Leo Star profile updated successfully.');
-        }
-
-        function loadStarProfileData() {
-            const profile = JSON.parse(localStorage.getItem('7leo_star_profile'));
-            if(profile) {
-                if(document.getElementById('star-profile-name')) document.getElementById('star-profile-name').value = profile.name;
-                if(document.getElementById('star-profile-email')) document.getElementById('star-profile-email').value = profile.email;
-                if(document.getElementById('star-profile-tier')) document.getElementById('star-profile-tier').value = profile.tier === 'Premium' ? 'Premium Star Member' : 'Free Tier (Upgrade Available)';
-                if(document.getElementById('star-profile-prefs')) document.getElementById('star-profile-prefs').value = profile.prefs;
-                if(profile.tier === 'Premium' && document.getElementById('star-membership-badge')) {
-                    document.getElementById('star-membership-badge').innerText = 'Premium Star Active';
-                }
-            }
-        }
-
-        // --- 7LEO BGM SYSTEM LOGIC ---
-        const bgmSeries = ['7Leo Songs Series', '7Leo Cinematic Series', '7Leo Chill Series', '7Leo Gangster Series', '7Leo Drive Series', '7Leo DJ Series'];
-        const bgmPlaylistUrls = {
-            '7Leo Songs Series': 'https://youtube.com/playlist?list=PLN1Bi1oDr2FE',
-            '7Leo Cinematic Series': 'https://youtube.com/playlist?list=PLCkCTxka7G8k',
-            '7Leo Chill Series': 'https://youtube.com/playlist?list=PLXRsoxraLgzE',
-            '7Leo Gangster Series': 'https://youtube.com/playlist?list=PLTQ2Nap4kPeU',
-            '7Leo Drive Series': 'https://youtube.com/playlist?list=PLJdOd5hcuYn0',
-            '7Leo DJ Series': 'https://youtube.com/playlist?list=PLPEZdyb_C5wo'
-        };
-
-        function openBgmPortal() {
-            document.getElementById('bgm-portal').classList.add('active');
-            navLinks.classList.remove('active');
-            renderBgmPlaylist('All');
-        }
-
-        function closeBgmPortal() {
-            document.getElementById('bgm-portal').classList.remove('active');
-        }
-
-        function filterBgmSeries(seriesName, btnElement) {
-            document.querySelectorAll('.bgm-filter-btn').forEach(btn => btn.classList.remove('active'));
-            if(btnElement) btnElement.classList.add('active');
-            renderBgmPlaylist(seriesName);
-        }
-
-        function renderBgmPlaylist(selectedSeries) {
-            const container = document.getElementById('bgm-playlist-items');
-            const visibleSeries = selectedSeries === 'All' ? bgmSeries : [selectedSeries];
-            container.innerHTML = '';
-            visibleSeries.forEach(series => {
-                container.innerHTML += `
-                    <div class="bgm-series-block">
-                        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px;">
-                            <div>
-                                <h4>${series}</h4>
-                                <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 4px;">Official 7Leo BGM curated YouTube playlist.</p>
-                            </div>
-                            <a href="${bgmPlaylistUrls[series] || 'https://www.youtube.com/@7LeoBGM'}" target="_blank" rel="noopener noreferrer" class="action-btn">Open YouTube Playlist</a>
-                        </div>
-                    </div>
-                `;
-            });
-        }
-
-        // --- 7LEO STORE SYSTEM LOGIC ---
+        // Data States
         let storeProducts = JSON.parse(localStorage.getItem('7leo_products')) || [
-            { id: 'prod_1', name: '7Leo Signature Luxury Tee', description: 'Premium organic cotton apparel featuring the iconic 7Leo vision power legacy emblem.', category: 'Apparel', sku: '7LEO-APP-01', cost: 450, price: 1299, fees: 50, images: ['logo.png'] },
-            { id: 'prod_2', name: '7Leo Gold Series Watch', description: 'Exquisite timepiece crafted with gold finish and precision movement.', category: 'Accessories', sku: '7LEO-ACC-02', cost: 1500, price: 4999, fees: 150, images: ['logo.png'] }
+            {
+                id: 'prod_1',
+                name: 'Quantum Smart Ring',
+                description: 'Advanced health tracking, contactless payments, and sleek ceramic titanium build.',
+                category: 'Electronics',
+                sku: '7L-QR-001',
+                cost: 2500,
+                price: 7999,
+                fees: 200,
+                supplier: 'Global Tech Wholesale',
+                supplierUrl: '',
+                images: ['https://images.unsplash.com/photo-1622434641406-a158123450f9?w=500&auto=format&fit=crop&q=60']
+            },
+            {
+                id: 'prod_2',
+                name: '7Leo Executive Hoodie',
+                description: 'Premium heavy cotton blend with custom gold embroidery and minimalist styling.',
+                category: 'Apparel',
+                sku: '7L-APP-002',
+                cost: 800,
+                price: 2499,
+                fees: 150,
+                supplier: 'Apex Apparel Co.',
+                supplierUrl: '',
+                images: ['https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=500&auto=format&fit=crop&q=60']
+            }
         ];
 
         let cart = JSON.parse(localStorage.getItem('7leo_cart')) || [];
         let orders = JSON.parse(localStorage.getItem('7leo_orders')) || [];
+        let currentUploadedImages = ['logo.png'];
 
-        function openStorePortal() {
-            document.getElementById('store-portal').classList.add('active');
-            navLinks.classList.remove('active');
+        // Initialization
+        window.onload = function() {
             renderStoreCatalog();
-            renderAdminDashboard();
+            updateCartCount();
+        };
+
+        function saveStoreData() {
+            localStorage.setItem('7leo_products', JSON.stringify(storeProducts));
+            localStorage.setItem('7leo_cart', JSON.stringify(cart));
+            localStorage.setItem('7leo_orders', JSON.stringify(orders));
         }
 
-        function closeStorePortal() {
-            document.getElementById('store-portal').classList.remove('active');
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = 'flex';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
         }
 
         function switchStoreTab(tabName) {
             document.querySelectorAll('.store-tab-content').forEach(el => el.classList.remove('active'));
-            if(tabName === 'catalog') document.getElementById('tab-catalog').classList.add('active');
+            document.querySelectorAll('.nav-link').forEach(el => el.classList.remove('active'));
+
+            if(tabName === 'catalog') { document.getElementById('tab-catalog').classList.add('active'); }
             if(tabName === 'cart') { document.getElementById('tab-cart').classList.add('active'); renderCart(); }
-            if(tabName === 'tracking') document.getElementById('tab-tracking').classList.add('active');
+            if(tabName === 'checkout') { document.getElementById('tab-checkout').classList.add('active'); }
+            if(tabName === 'tracking') { document.getElementById('tab-tracking').classList.add('active'); }
             if(tabName === 'dashboard') { document.getElementById('tab-dashboard').classList.add('active'); renderAdminDashboard(); }
-            if(tabName === 'policies') document.getElementById('tab-policies').classList.add('active');
+            if(tabName === 'product-form') { document.getElementById('tab-product-form').classList.add('active'); }
         }
 
         function renderStoreCatalog() {
             const grid = document.getElementById('store-product-grid');
             if(!grid) return;
+            const search = document.getElementById('store-search')?.value.toLowerCase() || '';
+            const category = document.getElementById('store-category-filter')?.value || '';
+            const sort = document.getElementById('store-sort')?.value || 'newest';
+
+            let filtered = storeProducts.filter(p => {
+                const matchesSearch = p.name.toLowerCase().includes(search) || p.description.toLowerCase().includes(search);
+                const matchesCat = category === '' || p.category === category;
+                return matchesSearch && matchesCat;
+            });
+
+            if(sort === 'price-low') filtered.sort((a,b) => a.price - b.price);
+            if(sort === 'price-high') filtered.sort((a,b) => b.price - a.price);
+
             grid.innerHTML = '';
-            storeProducts.forEach(p => {
+            if(filtered.length === 0) {
+                grid.innerHTML = '<p style="color:var(--text-muted); grid-column: 1/-1; text-align:center; padding:40px;">No products found.</p>';
+                return;
+            }
+
+            filtered.forEach(p => {
+                const img = p.images && p.images.length > 0 ? p.images[0] : 'logo.png';
                 grid.innerHTML += `
                     <div class="product-card">
-                        <div class="product-card-img-wrap">
-                            <img src="${p.images[0] || 'logo.png'}" alt="${p.name}">
+                        <div class="product-card-img-wrap" onclick="viewProductDetails('${p.id}')" style="cursor:pointer;">
+                            <img src="${img}" alt="${p.name}">
                         </div>
                         <div class="product-card-info">
-                            <h4 class="product-card-title">${p.name}</h4>
-                            <p class="product-card-price">₹${p.price}</p>
+                            <h4 class="product-card-title" onclick="viewProductDetails('${p.id}')" style="cursor:pointer;">${p.name}</h4>
+                            <div class="product-card-price">₹${p.price.toLocaleString('en-IN')}</div>
                             <p class="product-card-desc">${p.description}</p>
                             <div class="product-card-actions">
-                                <button class="action-btn" style="flex:1; padding:8px;" onclick="addToCart('${p.id}')">Add to Cart</button>
+                                <button class="submit-btn" style="padding: 8px 12px; font-size:0.85rem;" onclick="addToCart('${p.id}')">Add to Cart</button>
+                                <button class="action-btn" style="padding: 8px 12px; font-size:0.85rem;" onclick="viewProductDetails('${p.id}')">View</button>
                             </div>
                         </div>
                     </div>
@@ -2055,148 +610,159 @@
             });
         }
 
+        function filterStoreProducts() {
+            renderStoreCatalog();
+        }
+
+        function viewProductDetails(productId) {
+            const p = storeProducts.find(item => item.id === productId);
+            if(!p) return;
+            const body = document.getElementById('product-detail-body');
+            const img = p.images && p.images.length > 0 ? p.images[0] : 'logo.png';
+            body.innerHTML = `
+                <div style="display: flex; flex-direction: column; gap: 20px;">
+                    <div style="width: 100%; height: 250px; background: #222; border-radius: 8px; overflow: hidden;">
+                        <img src="${img}" alt="${p.name}" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <h3 style="color: var(--gold-light); font-size: 1.4rem;">${p.name}</h3>
+                    <div style="color: var(--gold); font-size: 1.2rem; font-weight: 700;">₹${p.price.toLocaleString('en-IN')}</div>
+                    <p style="color: var(--text-muted); line-height: 1.5;">${p.description}</p>
+                    <div style="font-size: 0.85rem; color: var(--text-muted);">SKU: ${p.sku} | Category: ${p.category}</div>
+                    <button class="submit-btn" onclick="addToCart('${p.id}'); closeModal('product-detail-modal');">Add to Cart</button>
+                </div>
+            `;
+            openModal('product-detail-modal');
+        }
+
         function addToCart(productId) {
-            const prod = storeProducts.find(p => p.id === productId);
-            if(!prod) return;
-            const existing = cart.find(item => item.id === productId);
-            if(existing) {
-                existing.qty += 1;
-            } else {
-                cart.push({ ...prod, qty: 1 });
-            }
-            localStorage.setItem('7leo_cart', JSON.stringify(cart));
+            const p = storeProducts.find(item => item.id === productId);
+            if(!p) return;
+            cart.push(p);
+            saveStoreData();
             updateCartCount();
-            alert(`${prod.name} added to cart!`);
+            alert(`"${p.name}" has been added to your cart.`);
         }
 
         function updateCartCount() {
-            const count = cart.reduce((sum, item) => sum + item.qty, 0);
             const badge = document.getElementById('cart-count');
-            if(badge) badge.innerText = count;
+            if(badge) badge.innerText = cart.length;
         }
 
         function renderCart() {
             const container = document.getElementById('cart-items-container');
             const footer = document.getElementById('cart-summary-footer');
             if(!container) return;
-            container.innerHTML = '';
+
             if(cart.length === 0) {
                 container.innerHTML = '<p style="color: var(--text-muted); text-align: center; padding: 40px;">Your cart is empty.</p>';
                 if(footer) footer.style.display = 'none';
                 return;
             }
+
+            container.innerHTML = '';
             let total = 0;
             cart.forEach((item, idx) => {
-                let sub = item.price * item.qty;
-                total += sub;
+                total += item.price;
                 container.innerHTML += `
-                    <div style="display: flex; justify-content: space-between; align-items: center; padding: 15px; border-bottom: 1px solid #333;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; background: rgba(20,20,20,0.85); padding: 15px; border-radius: 8px; margin-bottom: 10px; border: 1px solid #333;">
                         <div>
-                            <h4 style="color:var(--text-light);">${item.name}</h4>
-                            <p style="color:var(--text-muted); font-size:0.9rem;">₹${item.price} × ${item.qty} = ₹${sub}</p>
+                            <h4 style="color: var(--text-light); font-size: 1rem;">${item.name}</h4>
+                            <p style="color: var(--gold); font-size: 0.95rem; font-weight: 600;">₹${item.price.toLocaleString('en-IN')}</p>
                         </div>
-                        <button class="action-btn" style="border-color:#ff5555; color:#ff5555; padding:6px 12px;" onclick="removeFromCart(${idx})">Remove</button>
+                        <button class="action-btn" style="border-color: #ff5555; color: #ff5555; padding: 6px 12px; font-size: 0.8rem;" onclick="removeFromCart(${idx})">Remove</button>
                     </div>
                 `;
             });
+
             if(footer) {
                 footer.style.display = 'block';
-                document.getElementById('cart-total-display').innerText = `Total: ₹${total.toFixed(2)}`;
+                document.getElementById('cart-total-display').innerText = `Total: ₹${total.toLocaleString('en-IN')}`;
             }
         }
 
-        function removeFromCart(idx) {
-            cart.splice(idx, 1);
-            localStorage.setItem('7leo_cart', JSON.stringify(cart));
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            saveStoreData();
             updateCartCount();
             renderCart();
         }
 
         function proceedToCheckout() {
-            document.querySelectorAll('.store-tab-content').forEach(el => el.classList.remove('active'));
-            document.getElementById('tab-checkout').classList.add('active');
+            if(cart.length === 0) {
+                alert('Your cart is empty.');
+                return;
+            }
+            switchStoreTab('checkout');
         }
 
-        function handleCheckoutSubmit(event) {
-            event.preventDefault();
+        function handleCheckoutSubmit(e) {
+            e.preventDefault();
+            const name = document.getElementById('cust-name').value;
+            const email = document.getElementById('cust-email').value;
+            const phone = document.getElementById('cust-phone').value;
+            const address = document.getElementById('cust-address').value;
+            const payment = document.getElementById('payment-provider').value;
+
             const orderId = '7LEO-' + Math.floor(1000 + Math.random() * 9000);
-            const total = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
-            const profit = cart.reduce((sum, item) => sum + ((item.price - item.cost - item.fees) * item.qty), 0);
+            let orderTotal = cart.reduce((sum, item) => sum + item.price, 0);
+            let orderCost = cart.reduce((sum, item) => sum + (item.cost || 0), 0);
+            let estProfit = orderTotal - orderCost;
 
             const newOrder = {
-                id: orderId,
-                customer: document.getElementById('cust-name').value,
-                email: document.getElementById('cust-email').value,
-                address: document.getElementById('cust-address').value,
+                orderId,
+                name,
+                email,
+                phone,
+                address,
+                payment,
                 items: [...cart],
-                total: total,
-                profit: profit,
-                status: 'Processing'
+                total: orderTotal,
+                profit: estProfit,
+                status: 'Processing',
+                date: new Date().toLocaleDateString()
             };
 
             orders.push(newOrder);
             cart = [];
-            localStorage.setItem('7leo_orders', JSON.stringify(orders));
-            localStorage.setItem('7leo_cart', JSON.stringify(cart));
+            saveStoreData();
             updateCartCount();
 
-            alert(`Order ${orderId} placed successfully!`);
+            alert(`Order placed successfully! Your Order ID is ${orderId}.`);
             switchStoreTab('tracking');
+            document.getElementById('tracking-search-input').value = orderId;
+            trackOrderQuery();
         }
 
         function trackOrderQuery() {
             const query = document.getElementById('tracking-search-input').value.trim();
             const box = document.getElementById('tracking-result-box');
             if(!query) return;
-            const found = orders.find(o => o.id.toLowerCase() === query.toLowerCase());
+
+            const found = orders.find(o => o.orderId.toLowerCase() === query.toLowerCase());
             box.style.display = 'block';
             if(!found) {
-                box.innerHTML = `<p style="color:#ff5555;">Order ID not found. Please check your Order ID.</p>`;
+                box.innerHTML = `<p style="color: #ff5555;">No order found with ID "${query}". Please check your Order ID.</p>`;
                 return;
             }
+
+            let itemsList = found.items.map(i => i.name).join(', ');
             box.innerHTML = `
-                <h4 style="color:var(--gold); margin-bottom:10px;">Order Status: ${found.status}</h4>
-                <p><strong>Order ID:</strong> ${found.id}</p>
-                <p><strong>Customer:</strong> ${found.customer}</p>
-                <p><strong>Total:</strong> ₹${found.total}</p>
-                <p><strong>Delivery Address:</strong> ${found.address}</p>
+                <h4 style="color: var(--gold); margin-bottom: 12px;">Order Status: ${found.orderId}</h4>
+                <p style="color: var(--text-light); margin-bottom: 8px;"><strong>Customer:</strong> ${found.name}</p>
+                <p style="color: var(--text-light); margin-bottom: 8px;"><strong>Items:</strong> ${itemsList}</p>
+                <p style="color: var(--text-light); margin-bottom: 8px;"><strong>Total Amount:</strong> ₹${found.total.toLocaleString('en-IN')}</p>
+                <p style="color: var(--text-light); margin-bottom: 8px;"><strong>Status:</strong> <span style="color: var(--electric-blue);">${found.status}</span></p>
+                <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 12px;">Fulfillment and shipping updates are processed through our global partner network.</p>
             `;
         }
 
-        function renderAdminDashboard() {
-            document.getElementById('metric-orders').innerText = orders.length;
-            const totalSales = orders.reduce((sum, o) => sum + o.total, 0);
-            const totalProfit = orders.reduce((sum, o) => sum + o.profit, 0);
-            const pendingCount = orders.filter(o => o.status === 'Processing').length;
-
-            document.getElementById('metric-sales').innerText = `₹${totalSales.toFixed(2)}`;
-            document.getElementById('metric-profit').innerText = `₹${totalProfit.toFixed(2)}`;
-            document.getElementById('metric-pending').innerText = pendingCount;
-
-            const tbody = document.getElementById('admin-orders-tbody');
-            if(!tbody) return;
-            tbody.innerHTML = '';
-            if(orders.length === 0) {
-                tbody.innerHTML = `<tr><td colspan="6" style="text-align:center; color:var(--text-muted);">No orders recorded yet.</td></tr>`;
-                return;
-            }
-            orders.forEach(o => {
-                tbody.innerHTML += `
-                    <tr>
-                        <td>${o.id}</td>
-                        <td>${o.customer}</td>
-                        <td>${o.items.map(i => i.name).join(', ')}</td>
-                        <td>₹${o.total}</td>
-                        <td style="color:var(--gold);">₹${o.profit.toFixed(2)}</td>
-                        <td><span style="color:var(--electric-blue);">${o.status}</span></td>
-                    </tr>
-                `;
-            });
-        }
-
         function openAddProductForm() {
-            document.querySelectorAll('.store-tab-content').forEach(el => el.classList.remove('active'));
-            document.getElementById('tab-product-form').classList.add('active');
+            document.getElementById('product-management-form').reset();
+            document.getElementById('edit-product-id').value = '';
+            document.getElementById('product-form-heading').innerText = 'Add New Product';
+            currentUploadedImages = ['logo.png'];
+            document.getElementById('image-preview-container').innerHTML = `<div class="image-preview-thumb"><img src="logo.png"></div>`;
+            switchStoreTab('product-form');
         }
 
         function calculateRealtimeProfit() {
@@ -2208,24 +774,111 @@
             document.getElementById('live-profit-calc-text').innerText = `Estimated Profit: ₹${profit.toFixed(2)} (Margin: ${margin}%)`;
         }
 
-        function handleSaveProduct(event) {
-            event.preventDefault();
-            const newProd = {
-                id: 'prod_' + Date.now(),
-                name: document.getElementById('prod-name').value,
-                description: document.getElementById('prod-desc').value,
-                category: document.getElementById('prod-category').value,
-                sku: document.getElementById('prod-sku').value,
-                cost: parseFloat(document.getElementById('prod-cost').value),
-                price: parseFloat(document.getElementById('prod-price').value),
-                fees: parseFloat(document.getElementById('prod-fees').value),
-                images: ['logo.png']
+        function handleImageUpload(e) {
+            const files = e.target.files;
+            currentUploadedImages = [];
+            const previewContainer = document.getElementById('image-preview-container');
+            previewContainer.innerHTML = '';
+
+            for(let i=0; i<files.length; i++) {
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    currentUploadedImages.push(event.target.result);
+                    previewContainer.innerHTML += `
+                        <div class="image-preview-thumb">
+                            <img src="${event.target.result}">
+                        </div>
+                    `;
+                }
+                reader.readAsDataURL(files[i]);
+            }
+        }
+
+        function handleSaveProduct(e) {
+            e.preventDefault();
+            const id = document.getElementById('edit-product-id').value || 'prod_' + Date.now();
+            const name = document.getElementById('prod-name').value;
+            const description = document.getElementById('prod-desc').value;
+            const category = document.getElementById('prod-category').value;
+            const sku = document.getElementById('prod-sku').value;
+            const cost = parseFloat(document.getElementById('prod-cost').value) || 0;
+            const price = parseFloat(document.getElementById('prod-price').value) || 0;
+            const fees = parseFloat(document.getElementById('prod-fees').value) || 0;
+            const supplier = document.getElementById('prod-supplier').value;
+            const supplierUrl = document.getElementById('prod-supplier-url').value;
+
+            const productData = {
+                id,
+                name,
+                description,
+                category,
+                sku,
+                cost,
+                price,
+                fees,
+                supplier,
+                supplierUrl,
+                images: currentUploadedImages.length > 0 ? currentUploadedImages : ['logo.png']
             };
-            storeProducts.push(newProd);
-            localStorage.setItem('7leo_products', JSON.stringify(storeProducts));
-            alert('Product published successfully!');
-            switchStoreTab('catalog');
+
+            const existingIndex = storeProducts.findIndex(p => p.id === id);
+            if(existingIndex >= 0) {
+                storeProducts[existingIndex] = productData;
+            } else {
+                storeProducts.unshift(productData);
+            }
+
+            saveStoreData();
             renderStoreCatalog();
+            switchStoreTab('catalog');
+            alert('Product saved and published successfully!');
+        }
+
+        function renderAdminDashboard() {
+            document.getElementById('metric-orders').innerText = orders.length;
+            let totalSales = orders.reduce((sum, o) => sum + o.total, 0);
+            let totalProfit = orders.reduce((sum, o) => sum + o.profit, 0);
+            let pendingCount = orders.filter(o => o.status === 'Processing').length;
+
+            document.getElementById('metric-sales').innerText = `₹${totalSales.toLocaleString('en-IN')}`;
+            document.getElementById('metric-profit').innerText = `₹${totalProfit.toLocaleString('en-IN')}`;
+            document.getElementById('metric-pending').innerText = pendingCount;
+
+            const tbody = document.getElementById('admin-orders-tbody');
+            if(!tbody) return;
+
+            tbody.innerHTML = '';
+            if(orders.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="7" style="text-align:center; color: var(--text-muted);">No orders recorded yet.</td></tr>`;
+                return;
+            }
+
+            orders.forEach(o => {
+                let firstItemName = o.items.length > 0 ? o.items[0].name : 'N/A';
+                tbody.innerHTML += `
+                    <tr>
+                        <td>${o.orderId}</td>
+                        <td>${o.name}</td>
+                        <td>${firstItemName}</td>
+                        <td>₹${o.total.toLocaleString('en-IN')}</td>
+                        <td style="color: var(--gold);">₹${o.profit.toLocaleString('en-IN')}</td>
+                        <td><span style="color: var(--electric-blue);">${o.status}</span></td>
+                        <td>
+                            <button class="action-btn" style="padding: 4px 10px; font-size: 0.8rem;" onclick="updateOrderStatus('${o.orderId}', 'Shipped')">Mark Shipped</button>
+                        </td>
+                    </tr>
+                `;
+            });
+        }
+
+        function updateOrderStatus(orderId, newStatus) {
+            const order = orders.find(o => o.orderId === orderId);
+            if(order) {
+                order.status = newStatus;
+                saveStoreData();
+                renderAdminDashboard();
+                alert(`Order ${orderId} status updated to ${newStatus}.`);
+            }
         }
     </script>
 </body>
