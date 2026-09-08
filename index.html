@@ -13,6 +13,7 @@
             --gold-light: #f3e5ab;
             --text-light: #f5f5f5;
             --text-muted: #b0b0b0;
+            --electric-blue: #00f0ff;
         }
 
         * {
@@ -182,7 +183,7 @@
         }
 
         .hero-section {
-            max-width: 1000px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 40px 20px;
             display: flex;
@@ -220,13 +221,13 @@
             font-weight: 400;
         }
 
-        /* Store + BGM Layout */
+        /* Commerce + Music + Star Layout */
         .commerce-music-container {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 30px;
             width: 100%;
-            max-width: 900px;
+            max-width: 1100px;
             margin-top: 20px;
         }
 
@@ -258,6 +259,7 @@
             font-size: 1.5rem;
             color: var(--gold-light);
             font-weight: normal;
+            text-align: center;
         }
 
         .action-btn {
@@ -796,23 +798,6 @@
             gap: 15px;
         }
 
-        .bgm-track-card {
-            background: rgba(20, 20, 20, 0.85);
-            border: 1px solid #333;
-            border-radius: 10px;
-            padding: 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 20px;
-            backdrop-filter: blur(5px);
-            transition: border-color 0.3s;
-        }
-
-        .bgm-track-card:hover {
-            border-color: var(--gold);
-        }
-
         .bgm-series-block {
             background: rgba(12, 12, 12, 0.88);
             border: 1px solid rgba(212, 175, 55, 0.18);
@@ -893,6 +878,167 @@
             color: var(--gold);
         }
 
+        /* --- 7LEO STAR PORTAL EXPERIENCE --- */
+        .star-portal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background:
+                linear-gradient(rgba(0, 0, 0, 0.94), rgba(0, 0, 0, 0.98)),
+                url("file_00000000776081fa8dbc514074356775.png") center / cover fixed;
+            z-index: 3700;
+            display: none;
+            flex-direction: column;
+            overflow-y: auto;
+        }
+
+        .star-portal-overlay.active {
+            display: flex;
+        }
+
+        .star-header {
+            background: rgba(12, 12, 12, 0.95);
+            border-bottom: 1px solid rgba(0, 240, 255, 0.3);
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .star-nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .star-nav-brand h2 {
+            color: var(--electric-blue);
+            font-size: 1.3rem;
+            letter-spacing: 1px;
+            text-shadow: 0 0 10px rgba(0, 240, 255, 0.3);
+        }
+
+        .star-nav-actions {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .star-nav-btn {
+            background: transparent;
+            border: 1px solid var(--electric-blue);
+            color: var(--text-light);
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.85srem;
+            transition: all 0.3s;
+        }
+
+        .star-nav-btn:hover {
+            background: var(--electric-blue);
+            color: var(--bg-dark);
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.4);
+        }
+
+        .star-body {
+            max-width: 1300px;
+            margin: 0 auto;
+            width: 100%;
+            padding: 40px 30px;
+            flex: 1;
+        }
+
+        .star-tab-content {
+            display: none;
+        }
+
+        .star-tab-content.active {
+            display: block;
+        }
+
+        .star-hero-card {
+            background: rgba(18, 18, 18, 0.82);
+            border: 1px solid rgba(0, 240, 255, 0.3);
+            border-radius: 14px;
+            padding: 40px;
+            text-align: center;
+            margin-bottom: 30px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+        }
+
+        .star-hero-card h1 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            color: var(--gold-light);
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .star-hero-card p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto 25px auto;
+            line-height: 1.6;
+        }
+
+        .star-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        .star-card {
+            background: rgba(18, 18, 18, 0.85);
+            border: 1px solid rgba(212, 175, 55, 0.25);
+            border-radius: 10px;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            backdrop-filter: blur(5px);
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .star-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--electric-blue);
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.2);
+        }
+
+        .star-card h3 {
+            color: var(--gold-light);
+            font-size: 1.25rem;
+        }
+
+        .star-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .star-badge {
+            display: inline-block;
+            background: rgba(0, 240, 255, 0.15);
+            color: var(--electric-blue);
+            border: 1px solid var(--electric-blue);
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            width: fit-content;
+        }
+
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
@@ -935,6 +1081,10 @@
             .bgm-filter-btn {
                 width: 100%;
             }
+
+            .star-body {
+                padding: 20px 15px;
+            }
         }
     </style>
 </head>
@@ -969,6 +1119,7 @@
                 <li><a href="#" onclick="showSection('home')">Home</a></li>
                 <li><a href="#" onclick="openStorePortal()">7Leo Store</a></li>
                 <li><a href="#" onclick="openBgmPortal()">7Leo BGM</a></li>
+                <li><a href="#" onclick="openStarPortal()">7Leo Star</a></li>
                 <li><a href="#" onclick="openModal('about-modal')">About</a></li>
                 <li><a href="#" onclick="openModal('founder-modal')">Meet The founder</a></li>
                 <li><a href="#" onclick="openModal('admin-modal')">Super Admin</a></li>
@@ -984,7 +1135,7 @@
             <img src="logo.png" alt="Main Logo" class="main-logo-img">
             <h2 class="vision-power-legacy artistic-font">VISIONPOWERLEGACY</h2>
             <h3 class="welcome-msg artistic-font">Hello welcome to 7Leo Website</h3>
-            <p class="core-text">Welcome to 7Leo Group Commerce and Music</p>
+            <p class="core-text">Welcome to 7Leo Group Commerce, Music, and Star Identity</p>
 
             <div class="commerce-music-container">
                 <!-- Store Box -->
@@ -1000,9 +1151,136 @@
                     <h4 class="card-title artistic-font">Mobile Composed Groovepad Music</h4>
                     <button class="action-btn" onclick="openBgmPortal()">Explore 7Leo BGM</button>
                 </div>
+
+                <!-- Star Box (NEW ADDITION) -->
+                <div class="card-box">
+                    <img src="logo.png" alt="7Leo Star Logo" class="card-logo">
+                    <h4 class="card-title artistic-font">Vision • Power • Identity</h4>
+                    <button class="action-btn" onclick="openStarPortal()">Explore 7Leo Star</button>
+                </div>
             </div>
         </section>
     </main>
+
+    <!-- 7LEO STAR PORTAL EXPERIENCE -->
+    <div class="star-portal-overlay" id="star-portal">
+        <div class="star-header">
+            <div class="star-nav-brand">
+                <h2>7Leo Star Portal</h2>
+            </div>
+            <div class="star-nav-actions">
+                <button class="star-nav-btn" onclick="switchStarTab('dashboard')">Dashboard</button>
+                <button class="star-nav-btn" onclick="switchStarTab('hub')">Star Hub</button>
+                <button class="star-nav-btn" onclick="switchStarTab('profile')">User Profile</button>
+                <button class="star-nav-btn" onclick="switchStarTab('admin')">Star Admin</button>
+                <button class="star-nav-btn" style="border-color:#ff5555; color:#ff5555;" onclick="closeStarPortal()">Exit Star</button>
+            </div>
+        </div>
+
+        <div class="star-body">
+            
+            <!-- STAR DASHBOARD TAB -->
+            <div class="star-tab-content active" id="star-tab-dashboard">
+                <div class="star-hero-card">
+                    <span class="star-badge" id="star-membership-badge">Free Tier Active</span>
+                    <h1 class="artistic-font">Welcome to 7Leo Star</h1>
+                    <p>The pinnacle of the 7Leo journey. Featuring advanced agentic identity, encrypted vaults, exclusive membership perks, and future-ready digital tools.</p>
+                    <button class="submit-btn" style="max-width: 250px; margin: 0 auto; background: var(--electric-blue); color: var(--bg-dark);" onclick="upgradeToStarPremium()">Upgrade to Star Premium</button>
+                </div>
+
+                <div class="star-grid">
+                    <div class="star-card">
+                        <span class="star-badge">Core Identity</span>
+                        <h3>Agentic Wallet & Profile</h3>
+                        <p>Secure, decentralized identity configuration designed for seamless integration across the 7Leo ecosystem.</p>
+                        <button class="action-btn" style="margin-top: auto;" onclick="switchStarTab('profile')">Manage Identity</button>
+                    </div>
+                    <div class="star-card">
+                        <span class="star-badge">Exclusive Vault</span>
+                        <h3>Encrypted Content & Insights</h3>
+                        <p>Access specialized technical roadmaps, private community modules, and early-access drops.</p>
+                        <button class="action-btn" style="margin-top: auto;" onclick="switchStarTab('hub')">Enter Vault</button>
+                    </div>
+                    <div class="star-card">
+                        <span class="star-badge">Ecosystem Analytics</span>
+                        <h3>Real-time Usage Tracking</h3>
+                        <p>Monitor your engagement metrics, API utilization, and membership status across all 7Leo platforms.</p>
+                        <button class="action-btn" style="margin-top: auto;" onclick="switchStarTab('dashboard')">View Stats</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- STAR HUB TAB -->
+            <div class="star-tab-content" id="star-tab-hub">
+                <div class="star-hero-card" style="text-align: left;">
+                    <span class="star-badge">7Leo Star Hub</span>
+                    <h2 style="color: var(--gold-light); margin-top: 10px; margin-bottom: 15px;">Advanced Developer & Creator Tools</h2>
+                    <p style="margin: 0 0 20px 0;">Explore community resources, AI-powered conversational tools, and automated hub management suites.</p>
+                </div>
+                <div class="star-grid">
+                    <div class="star-card">
+                        <h3>Conversational Agent Suite</h3>
+                        <p>Deploy interactive AI collaborators and manage custom workflows with high fidelity.</p>
+                        <button class="action-btn" onclick="alert('Agent suite initialized successfully.')">Launch Agent</button>
+                    </div>
+                    <div class="star-card">
+                        <h3>Private Community Hub</h3>
+                        <p>Connect with fellow visionaries, share custom playlists, and access high-tier creator resources.</p>
+                        <button class="action-btn" onclick="alert('Community portal connected.')">Access Hub</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- STAR USER PROFILE TAB -->
+            <div class="star-tab-content" id="star-tab-profile">
+                <div class="modal-content" style="max-width: 600px; margin: 0 auto; background: rgba(18,18,18,0.9);">
+                    <h3 class="modal-title" style="color: var(--electric-blue);">User Profile & Membership</h3>
+                    <form id="star-profile-form" onsubmit="saveStarProfile(event)">
+                        <div class="form-group">
+                            <label>Legal / Display Name</label>
+                            <input type="text" id="star-profile-name" value="Abubakker Bellary" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Email Address</label>
+                            <input type="email" id="star-profile-email" value="7leogroup@gmail.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Membership Status</label>
+                            <input type="text" id="star-profile-tier" value="Free Tier (Upgrade Available)" readonly style="color: var(--gold);">
+                        </div>
+                        <div class="form-group">
+                            <label>User Preferences / Notes</label>
+                            <textarea id="star-profile-prefs" rows="3">Founder & Visionary — 7Leo Group</textarea>
+                        </div>
+                        <button type="submit" class="submit-btn" style="background: var(--electric-blue); color: var(--bg-dark);">Save Profile Changes</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- STAR ADMIN TAB -->
+            <div class="star-tab-content" id="star-tab-admin">
+                <div class="star-hero-card" style="text-align: left;">
+                    <span class="star-badge" style="border-color: #ff5555; color: #ff5555;">Restricted Admin Area</span>
+                    <h2 style="color: var(--gold-light); margin-top: 10px; margin-bottom: 15px;">Star Management & Metrics</h2>
+                    <div class="metrics-grid" style="margin-top: 20px;">
+                        <div class="metric-card">
+                            <span class="metric-title">Active Star Users</span>
+                            <span class="metric-value">1,248</span>
+                        </div>
+                        <div class="metric-card">
+                            <span class="metric-title">Premium Members</span>
+                            <span class="metric-value" id="admin-premium-count">312</span>
+                        </div>
+                        <div class="metric-card">
+                            <span class="metric-title">System Status</span>
+                            <span class="metric-value" style="color: var(--electric-blue);">Optimal</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
 
     <!-- 7LEO BGM PORTAL EXPERIENCE -->
     <div class="bgm-portal-overlay" id="bgm-portal">
@@ -1369,7 +1647,7 @@
 
 What started with a mobile phone, Wi-Fi, determination, and a dream is becoming a platform designed to grow across different creative and business directions.
 
-7Leo Group is home to experiences such as 7Leo Store and 7Leo BGM, with more ideas and projects planned for the future.
+7Leo Group is home to experiences such as 7Leo Store, 7Leo BGM, and 7Leo Star, with more ideas and projects planned for the future.
 
 But 7Leo Group is bigger than any single project.
 
@@ -1413,6 +1691,19 @@ Built around mobile music creation and Groovepad-inspired composition, 7Leo BGM 
 Every soundscape represents another side of the 7Leo Group vision — creative freedom, experimentation, and artistic expression.
 
 7Leo BGM — Feel the Sound. Create the Legacy.</p>
+                </div>
+
+                <!-- About 7Leo Star Block (NEW ADDITION) -->
+                <div style="background: rgba(20, 20, 20, 0.6); border: 1px solid rgba(0, 240, 255, 0.3); border-radius: 10px; padding: 20px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 15px;">
+                    <img src="logo.png" alt="7Leo Star Logo" style="height: 50px; width: auto; object-fit: contain;">
+                    <h4 style="color: var(--electric-blue); font-size: 1.2rem;">ABOUT 7LEO STAR</h4>
+                    <p style="color: var(--text-muted); line-height: 1.6; white-space: pre-line; font-size: 0.95rem;">7Leo Star is the premier identity, agentic hub, and advanced membership experience of 7Leo Group.
+
+Designed for elite creators, developers, and visionaries, 7Leo Star brings together cutting-edge digital tools, secure identity management, exclusive vault access, and tiered membership architectures.
+
+Representing the pinnacle of the 7Leo journey — from zero to limitless potential.
+
+7Leo Star — Vision. Power. Identity.</p>
                 </div>
 
             </div>
@@ -1548,6 +1839,7 @@ VISION. POWER. LEGACY.</p>
             renderStoreCatalog();
             updateCartCount();
             renderBgmPlaylist('All');
+            loadStarProfileData();
         });
 
         // Mobile Menu Toggle
@@ -1576,6 +1868,60 @@ VISION. POWER. LEGACY.</p>
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             }
         }
+
+        // --- 7LEO STAR PORTAL SYSTEM LOGIC ---
+        function openStarPortal() {
+            document.getElementById('star-portal').classList.add('active');
+            navLinks.classList.remove('active');
+            loadStarProfileData();
+        }
+
+        function closeStarPortal() {
+            document.getElementById('star-portal').classList.remove('active');
+        }
+
+        function switchStarTab(tabName) {
+            document.querySelectorAll('.star-tab-content').forEach(el => el.classList.remove('active'));
+            if(tabName === 'dashboard') document.getElementById('star-tab-dashboard').classList.add('active');
+            if(tabName === 'hub') document.getElementById('star-tab-hub').classList.add('active');
+            if(tabName === 'profile') document.getElementById('star-tab-profile').classList.add('active');
+            if(tabName === 'admin') document.getElementById('star-tab-admin').classList.add('active');
+        }
+
+        function upgradeToStarPremium() {
+            let profile = JSON.parse(localStorage.getItem('7leo_star_profile')) || { name: 'Abubakker Bellary', email: '7leogroup@gmail.com', tier: 'Free', prefs: '' };
+            profile.tier = 'Premium';
+            localStorage.setItem('7leo_star_profile', JSON.stringify(profile));
+            document.getElementById('star-membership-badge').innerText = 'Premium Star Active';
+            document.getElementById('star-profile-tier').value = 'Premium Star Member';
+            alert('Congratulations! Your 7Leo Star membership has been successfully upgraded to Premium.');
+        }
+
+        function saveStarProfile(event) {
+            event.preventDefault();
+            const name = document.getElementById('star-profile-name').value;
+            const email = document.getElementById('star-profile-email').value;
+            const prefs = document.getElementById('star-profile-prefs').value;
+            const currentTier = JSON.parse(localStorage.getItem('7leo_star_profile'))?.tier || 'Free';
+
+            const profile = { name, email, tier: currentTier, prefs };
+            localStorage.setItem('7leo_star_profile', JSON.stringify(profile));
+            alert('7Leo Star profile updated successfully.');
+        }
+
+        function loadStarProfileData() {
+            const profile = JSON.parse(localStorage.getItem('7leo_star_profile'));
+            if(profile) {
+                if(document.getElementById('star-profile-name')) document.getElementById('star-profile-name').value = profile.name;
+                if(document.getElementById('star-profile-email')) document.getElementById('star-profile-email').value = profile.email;
+                if(document.getElementById('star-profile-tier')) document.getElementById('star-profile-tier').value = profile.tier === 'Premium' ? 'Premium Star Member' : 'Free Tier (Upgrade Available)';
+                if(document.getElementById('star-profile-prefs')) document.getElementById('star-profile-prefs').value = profile.prefs;
+                if(profile.tier === 'Premium' && document.getElementById('star-membership-badge')) {
+                    document.getElementById('star-membership-badge').innerText = 'Premium Star Active';
+                }
+            }
+        }
+
 
         // --- 7LEO BGM SYSTEM LOGIC (REAL YOUTUBE PLAYLISTS) ---
         const bgmSeries = [
