@@ -2669,3 +2669,227 @@ VISION. POWER. LEGACY.</p>
     </script>
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7Leo Films - One imagine One Film</title>
+    <style>
+        :root {
+            --bg-deep: #0a0a0a;
+            --bg-card: #141414;
+            --gold: #d4af37;
+            --gold-light: #f3e5ab;
+            --text-light: #f5f5f5;
+            --text-muted: #a0a0a0;
+            --border-color: #262626;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-light);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            background: rgba(10, 10, 10, 0.95);
+            border-bottom: 1px solid var(--border-color);
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .header-logo img {
+            height: 45px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .header-logo span {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--gold);
+            letter-spacing: 1px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        nav ul li a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+            cursor: pointer;
+        }
+
+        nav ul li a:hover, nav ul li a.active {
+            color: var(--gold-light);
+        }
+
+        .main-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 60px 20px;
+            flex: 1;
+            width: 100%;
+        }
+
+        .section {
+            display: none;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 40px 0;
+        }
+
+        .hero img {
+            max-width: 280px;
+            width: 100%;
+            height: auto;
+            margin-bottom: 25px;
+            filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.3));
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            color: var(--gold);
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+
+        .hero p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+            margin-top: 30px;
+        }
+
+        .about-img img {
+            width: 100%;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            background: var(--bg-card);
+            padding: 20px;
+        }
+
+        .about-content h2 {
+            font-size: 2rem;
+            color: var(--gold);
+            margin-bottom: 20px;
+        }
+
+        .about-content p {
+            color: var(--text-muted);
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            background: var(--bg-deep);
+        }
+
+        @media(max-width: 768px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    <script>
+        function showSection(sectionId, event) {
+            document.querySelectorAll('.section').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('nav a').forEach(el => el.classList.remove('active'));
+            document.getElementById(sectionId).classList.add('active');
+            event.target.classList.add('active');
+        }
+    </script>
+</head>
+<body>
+
+    <header>
+        <div class="header-logo">
+            <img src="1788951880054.png" alt="7Leo Films Logo">
+            <span>7LEO FILMS</span>
+        </div>
+        <nav>
+            <ul>
+                <li><a class="active" onclick="showSection('home-section', event)">Home</a></li>
+                <li><a onclick="showSection('about-section', event)">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="main-container">
+        <!-- Homepage Section -->
+        <section id="home-section" class="section active">
+            <div class="hero">
+                <img src="1788951880054.png" alt="7Leo Films Main Logo">
+                <h1>One imagine One Film</h1>
+                <p>Welcome to 7Leo Films. Crafting cinematic masterpieces with vision, power, and legacy.</p>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about-section" class="section">
+            <div class="about-grid">
+                <div class="about-img">
+                    <img src="1788951880054.png" alt="7Leo Films About Logo">
+                </div>
+                <div class="about-content">
+                    <h2>About 7Leo Films</h2>
+                    <p>7Leo Films stands at the intersection of imagination and ultimate visual storytelling. Guided by our core philosophy, "One imagine One Film," we bring distinct, powerful narratives to life.</p>
+                    <p>Our productions combine elite creative vision with state-of-the-art cinematic execution, creating a timeless legacy in the world of motion pictures.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        &copy; 2026 7Leo Films. All Rights Reserved. • VISION • POWER • LEGACY
+    </footer>
+
+</body>
+</html>
