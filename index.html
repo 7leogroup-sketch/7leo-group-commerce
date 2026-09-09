@@ -3,615 +3,2239 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>7Leo Group & Films Portal</title>
+    <title>7Leo Group — Vision • Power • Legacy • Film</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+        
         :root {
-            --bg-deep: #0a0a0a;
-            --bg-card: #141414;
+            --bg-dark: #0a0a0a;
             --gold: #d4af37;
             --gold-light: #f3e5ab;
             --text-light: #f5f5f5;
-            --text-muted: #a0a0a0;
-            --border-color: #262626;
+            --text-muted: #b0b0b0;
+            --electric-blue: #00f0ff;
+            --cinematic-red: #ff3366;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         body {
-            background-color: var(--bg-deep);
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg-dark);
             color: var(--text-light);
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        .artistic-font {
+            font-family: 'Lucida Handwriting', 'Brush Script MT', cursive;
+        }
+
+        /* Splash Screen */
+        #splash-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: #000;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.8s ease, visibility 0.8s ease;
+        }
+
+        #splash-screen.fade-out {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .splash-image-container {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            overflow: hidden;
+        }
+
+        .splash-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.5;
+        }
+
+        .splash-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .splash-title {
+            font-size: clamp(2rem, 5vw, 4rem);
+            color: var(--gold-light);
+            text-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+            font-weight: 300;
+            letter-spacing: 2px;
+        }
+
+        /* Background Tattoo Wrapper */
+        .site-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-image: url('file_00000000776081fa8dbc514074356775.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            z-index: -1;
+        }
+
+        .site-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: radial-gradient(circle, rgba(10,10,10,0.85) 0%, rgba(5,5,5,0.95) 100%);
+            z-index: -1;
+        }
+
+        /* Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(10, 10, 10, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 30px;
+        }
+
+        .nav-logo img {
+            height: 40px;
+            width: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            cursor: pointer;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 2px;
+            background: var(--text-light);
+            transition: 0.3s;
+        }
+
+        /* Main Content Area */
+        main {
+            padding-top: 100px;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
-            background-image: radial-gradient(circle at center, #111 0%, #0a0a0a 100%);
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding-bottom: 80px;
         }
 
-        header {
-            background: rgba(10, 10, 10, 0.95);
-            border-bottom: 1px solid var(--border-color);
+        .hero-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .main-logo-img {
+            max-width: 150px;
+            height: auto;
+            margin-bottom: 10px;
+            filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.3));
+        }
+
+        .vision-power-legacy {
+            font-size: clamp(1.8rem, 4vw, 3rem);
+            color: var(--gold);
+            margin-bottom: 5px;
+            font-weight: normal;
+        }
+
+        .welcome-msg {
+            font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+            color: var(--text-light);
+            font-weight: normal;
+            margin-bottom: 10px;
+        }
+
+        .core-text {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin-bottom: 40px;
+            font-weight: 400;
+        }
+
+        /* 4-Column Layout: Commerce + Music + Star + Film */
+        .commerce-music-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 25px;
+            width: 100%;
+            max-width: 1250px;
+            margin-top: 20px;
+        }
+
+        .card-box {
+            background: rgba(20, 20, 20, 0.6);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 12px;
+            padding: 35px 25px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            backdrop-filter: blur(5px);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .card-box:hover {
+            transform: translateY(-5px);
+            border-color: var(--gold);
+        }
+
+        .card-logo {
+            max-height: 70px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .card-title {
+            font-size: 1.3rem;
+            color: var(--gold-light);
+            font-weight: normal;
+            text-align: center;
+        }
+
+        .action-btn {
+            background: transparent;
+            color: var(--text-light);
+            border: 1px solid var(--gold);
+            padding: 12px 28px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .action-btn:hover {
+            background: var(--gold);
+            color: var(--bg-dark);
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+        }
+
+        /* Modals for Navigation Items */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background: #141414;
+            border: 1px solid var(--gold);
+            border-radius: 12px;
+            width: 90%;
+            max-width: 500px;
+            padding: 40px;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: var(--text-light);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .modal-title {
+            font-size: 1.8rem;
+            color: var(--gold);
+            margin-bottom: 25px;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            background: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 6px;
+            color: var(--text-light);
+            font-size: 1rem;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: var(--gold);
+        }
+
+        .auth-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .oauth-btn {
+            background: #222;
+            color: var(--text-light);
+            border: 1px solid #444;
+            padding: 12px;
+            border-radius: 6px;
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: background 0.3s;
+        }
+
+        .oauth-btn:hover {
+            background: #2a2a2a;
+            border-color: var(--gold);
+        }
+
+        .submit-btn {
+            background: var(--gold);
+            color: var(--bg-dark);
+            border: none;
+            padding: 12px;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            transition: opacity 0.3s;
+        }
+
+        .submit-btn:hover {
+            opacity: 0.9;
+        }
+
+        /* Full Screen Store Experience Layout */
+        .store-portal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: radial-gradient(circle, rgba(10,10,10,0.85) 0%, rgba(5,5,5,0.95) 100%), url('file_00000000776081fa8dbc514074356775.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            z-index: 3000;
+            display: none;
+            flex-direction: column;
+            overflow-y: auto;
+        }
+
+        .store-portal-overlay.active {
+            display: flex;
+        }
+
+        .store-header {
+            background: rgba(15, 15, 15, 0.95);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             position: sticky;
             top: 0;
-            z-index: 100;
+            z-index: 10;
+        }
+
+        .store-nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .store-nav-brand h2 {
+            color: var(--gold);
+            font-size: 1.2rem;
+        }
+
+        .store-nav-actions {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .store-nav-btn {
+            background: transparent;
+            border: 1px solid var(--gold);
+            color: var(--text-light);
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: all 0.3s;
+        }
+
+        .store-nav-btn:hover {
+            background: var(--gold);
+            color: var(--bg-dark);
+        }
+
+        .store-body {
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+            padding: 30px;
+            flex: 1;
+        }
+
+        .store-controls-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .search-filter-group {
+            display: flex;
+            gap: 15px;
+            flex: 1;
+            flex-wrap: wrap;
+        }
+
+        .store-search-input, .store-filter-select {
+            padding: 10px 15px;
+            background: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 6px;
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .store-search-input {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .product-card {
+            background: rgba(20, 20, 20, 0.85);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 10px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s, border-color 0.3s;
+            backdrop-filter: blur(5px);
+        }
+
+        .product-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--gold);
+        }
+
+        .product-card-img-wrap {
+            width: 100%;
+            height: 220px;
+            background: #222;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-card-img-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .product-card-info {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            flex: 1;
+        }
+
+        .product-card-title {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            font-weight: 600;
+        }
+
+        .product-card-price {
+            font-size: 1.2rem;
+            color: var(--gold);
+            font-weight: 700;
+        }
+
+        .product-card-desc {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .product-card-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: auto;
+            padding-top: 15px;
+        }
+
+        .admin-dashboard-panel, .cart-panel, .checkout-panel, .tracking-panel, .product-form-panel {
+            display: none;
+        }
+
+        .admin-dashboard-panel.active, .cart-panel.active, .checkout-panel.active, .tracking-panel.active, .product-form-panel.active, .catalog-panel.active {
+            display: block;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .metric-card {
+            background: rgba(20, 20, 20, 0.85);
+            border: 1px solid #333;
+            border-radius: 8px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            backdrop-filter: blur(5px);
+        }
+
+        .metric-title {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+        }
+
+        .metric-value {
+            font-size: 1.6rem;
+            color: var(--gold-light);
+            font-weight: 700;
+        }
+
+        .table-container {
+            width: 100%;
+            overflow-x: auto;
+            background: rgba(20, 20, 20, 0.85);
+            border: 1px solid #333;
+            border-radius: 8px;
+            margin-top: 20px;
+            backdrop-filter: blur(5px);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 0.9rem;
+        }
+
+        th, td {
+            padding: 15px;
+            border-bottom: 1px solid #222;
+        }
+
+        th {
+            background: #1a1a1a;
+            color: var(--gold);
+            font-weight: 600;
+        }
+
+        td {
+            color: var(--text-light);
+        }
+
+        .image-upload-preview-container {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
+        .image-preview-thumb {
+            width: 80px;
+            height: 80px;
+            border-radius: 6px;
+            border: 1px solid var(--gold);
+            overflow: hidden;
+            position: relative;
+            background: #222;
+        }
+
+        .image-preview-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .image-preview-thumb button {
+            position: absolute;
+            top: 2px;
+            right: 2px;
+            background: rgba(0,0,0,0.7);
+            color: #ff5555;
+            border: none;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            font-size: 10px;
+            cursor: pointer;
+        }
+
+        /* --- 7LEO BGM PORTAL EXPERIENCE --- */
+        .bgm-portal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background:
+                linear-gradient(rgba(0, 0, 0, 0.97), rgba(0, 0, 0, 0.99)),
+                url("file_00000000776081fa8dbc514074356775.png") center / cover fixed;
+            z-index: 3500;
+            display: none;
+            flex-direction: column;
+            overflow-y: auto;
+        }
+
+        .bgm-portal-overlay.active {
+            display: flex;
+        }
+
+        .bgm-banner-container {
+            width: 100%;
+            background: #000;
+            overflow: hidden;
+        }
+
+        .bgm-banner-img {
+            width: 100%;
+            height: auto;
+            max-height: 450px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .bgm-body-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            width: 100%;
+            padding: 40px 30px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .bgm-intro-box {
+            background: rgba(20, 20, 20, 0.7);
+            border: 1px solid rgba(212, 175, 55, 0.25);
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .bgm-intro-box h2 {
+            font-size: clamp(1.5rem, 3vw, 2.2rem);
+            color: var(--gold-light);
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .bgm-intro-box p {
+            font-size: 1.05rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        .bgm-series-section h3 {
+            color: var(--gold);
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .bgm-primary-cta {
+            margin-top: 22px;
+        }
+
+        .bgm-series-filters {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .bgm-filter-btn {
+            background: rgba(20, 20, 20, 0.8);
+            border: 1px solid #333;
+            color: var(--text-light);
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .bgm-filter-btn:hover, .bgm-filter-btn.active {
+            background: var(--gold);
+            color: var(--bg-dark);
+            border-color: var(--gold);
+        }
+
+        .bgm-playlist-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .bgm-series-block {
+            background: rgba(12, 12, 12, 0.88);
+            border: 1px solid rgba(212, 175, 55, 0.18);
+            border-radius: 12px;
+            padding: 22px;
+            backdrop-filter: blur(5px);
+        }
+
+        .bgm-series-block h4 {
+            color: var(--gold-light);
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+        }
+
+        .bgm-social-section {
+            background: rgba(20, 20, 20, 0.85);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 12px;
+            padding: 35px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            backdrop-filter: blur(5px);
+        }
+
+        .bgm-licensing-section {
+            background: rgba(20, 20, 20, 0.85);
+            border: 1px solid #333;
+            border-radius: 12px;
+            padding: 35px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            backdrop-filter: blur(5px);
+        }
+
+        .bgm-licensing-section h3 {
+            color: var(--gold);
+            font-size: 1.4rem;
+        }
+
+        .bgm-licensing-section p,
+        .bgm-licensing-section li {
+            color: var(--text-muted);
+            line-height: 1.7;
+        }
+
+        .bgm-licensing-section ul {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 8px 20px;
+            padding-left: 20px;
+        }
+
+        .bgm-footer-copyright {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            line-height: 1.7;
+            padding: 25px 0;
+            border-top: 1px solid #222;
+        }
+
+        .bgm-footer-copyright strong {
+            color: var(--gold-light);
+            display: block;
+            margin-bottom: 12px;
+        }
+
+        .bgm-footer-copyright p {
+            margin: 8px auto;
+            max-width: 900px;
+        }
+
+        .bgm-footer-copyright a {
+            color: var(--gold);
+        }
+
+        /* --- 7LEO STAR PORTAL EXPERIENCE --- */
+        .star-portal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background:
+                linear-gradient(rgba(0, 0, 0, 0.94), rgba(0, 0, 0, 0.98)),
+                url("file_00000000776081fa8dbc514074356775.png") center / cover fixed;
+            z-index: 3700;
+            display: none;
+            flex-direction: column;
+            overflow-y: auto;
+        }
+
+        .star-portal-overlay.active {
+            display: flex;
+        }
+
+        .star-header {
+            background: rgba(12, 12, 12, 0.95);
+            border-bottom: 1px solid rgba(0, 240, 255, 0.3);
             padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .star-nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .star-nav-brand img {
+            height: 35px;
+            width: auto;
+            filter: drop-shadow(0 0 8px rgba(0, 240, 255, 0.4));
+        }
+
+        .star-nav-brand h2 {
+            color: var(--electric-blue);
+            font-size: 1.3rem;
+            letter-spacing: 1px;
+            text-shadow: 0 0 10px rgba(0, 240, 255, 0.3);
+        }
+
+        .star-nav-actions {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .star-nav-btn {
+            background: transparent;
+            border: 1px solid var(--electric-blue);
+            color: var(--text-light);
+            padding: 7px 14px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: all 0.3s;
+        }
+
+        .star-nav-btn:hover, .star-nav-btn.active {
+            background: var(--electric-blue);
+            color: var(--bg-dark);
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.4);
+        }
+
+        .star-body {
+            max-width: 1300px;
+            margin: 0 auto;
+            width: 100%;
+            padding: 40px 30px;
+            flex: 1;
+        }
+
+        .star-tab-content {
+            display: none;
+        }
+
+        .star-tab-content.active {
+            display: block;
+        }
+
+        .star-hero-card {
+            background: rgba(18, 18, 18, 0.82);
+            border: 1px solid rgba(0, 240, 255, 0.3);
+            border-radius: 14px;
+            padding: 40px;
+            text-align: center;
+            margin-bottom: 30px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+        }
+
+        .star-hero-card h1 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            color: var(--gold-light);
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .star-hero-card p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto 25px auto;
+            line-height: 1.6;
+        }
+
+        .star-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        .star-card {
+            background: rgba(18, 18, 18, 0.85);
+            border: 1px solid rgba(212, 175, 55, 0.25);
+            border-radius: 10px;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            backdrop-filter: blur(5px);
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .star-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--electric-blue);
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.2);
+        }
+
+        .star-card h3 {
+            color: var(--gold-light);
+            font-size: 1.25rem;
+        }
+
+        .star-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .star-badge {
+            display: inline-block;
+            background: rgba(0, 240, 255, 0.15);
+            color: var(--electric-blue);
+            border: 1px solid var(--electric-blue);
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            width: fit-content;
+        }
+
+        /* Star Chat Assistant UI */
+        .star-chat-container {
+            background: rgba(18, 18, 18, 0.9);
+            border: 1px solid rgba(0, 240, 255, 0.3);
+            border-radius: 12px;
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            height: 550px;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+
+        .star-chat-header {
+            padding: 20px;
+            background: rgba(10, 10, 10, 0.95);
+            border-bottom: 1px solid #333;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
-        .logo-area {
+        .star-chat-messages {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .chat-bubble {
+            max-width: 80%;
+            padding: 12px 18px;
+            border-radius: 10px;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .chat-bubble.user {
+            background: rgba(0, 240, 255, 0.2);
+            color: var(--text-light);
+            align-self: flex-end;
+            border: 1px solid var(--electric-blue);
+        }
+
+        .chat-bubble.assistant {
+            background: rgba(212, 175, 55, 0.15);
+            color: var(--text-light);
+            align-self: flex-start;
+            border: 1px solid var(--gold);
+        }
+
+        .star-chat-input-area {
+            padding: 15px 20px;
+            background: rgba(10, 10, 10, 0.95);
+            border-top: 1px solid #333;
+            display: flex;
+            gap: 10px;
+        }
+
+        .star-chat-input-area input {
+            flex: 1;
+            padding: 12px 15px;
+            background: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 6px;
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        .star-chat-input-area input:focus {
+            outline: none;
+            border-color: var(--electric-blue);
+        }
+
+        /* --- 7LEO FILM PORTAL EXPERIENCE (NEW) --- */
+        .film-portal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background:
+                linear-gradient(rgba(0, 0, 0, 0.95), rgba(0, 0, 0, 0.99)),
+                url("file_00000000776081fa8dbc514074356775.png") center / cover fixed;
+            z-index: 3900;
+            display: none;
+            flex-direction: column;
+            overflow-y: auto;
+        }
+
+        .film-portal-overlay.active {
+            display: flex;
+        }
+
+        .film-header {
+            background: rgba(12, 12, 12, 0.95);
+            border-bottom: 1px solid rgba(255, 51, 102, 0.4);
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .film-nav-brand {
             display: flex;
             align-items: center;
-            gap: 10px;
-            font-size: 1.2rem;
-            font-weight: 800;
-            color: var(--gold);
-            letter-spacing: 2px;
-            cursor: pointer;
+            gap: 15px;
         }
 
-        .logo-area img {
-            height: 35px;
-            width: auto;
+        .film-nav-brand h2 {
+            color: var(--cinematic-red);
+            font-size: 1.3rem;
+            letter-spacing: 1px;
+            text-shadow: 0 0 10px rgba(255, 51, 102, 0.4);
         }
 
-        nav ul {
+        .film-nav-actions {
             display: flex;
-            list-style: none;
-            gap: 18px;
+            gap: 10px;
             align-items: center;
             flex-wrap: wrap;
         }
 
-        nav ul li a {
-            color: var(--text-muted);
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.85rem;
-            transition: color 0.3s ease;
-            cursor: pointer;
-        }
-
-        nav ul li a:hover, nav ul li a.active {
-            color: var(--gold-light);
-        }
-
-        .main-container {
-            max-width: 1280px;
-            margin: 40px auto;
-            padding: 0 20px;
-            flex: 1;
-            width: 100%;
-        }
-
-        .section-tab {
-            display: none;
-        }
-
-        .section-tab.active {
-            display: block;
-        }
-
-        /* Home Hero Section */
-        .hero-section {
-            text-align: center;
-            padding: 20px 0 40px 0;
-        }
-
-        .hero-logo-img {
-            width: 120px;
-            height: auto;
-            margin-bottom: 20px;
-            filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.4));
-        }
-
-        .hero-title {
-            font-size: 2.5rem;
-            color: var(--gold);
-            letter-spacing: 4px;
-            margin-bottom: 10px;
-            font-weight: 700;
-            text-transform: uppercase;
-        }
-
-        .hero-subtitle {
-            color: var(--text-muted);
-            font-size: 1.05rem;
-            margin-bottom: 40px;
-            letter-spacing: 1px;
-        }
-
-        /* Homepage Cards Grid */
-        .home-cards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
-        }
-
-        .home-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 14px;
-            padding: 25px 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .home-card:hover {
-            transform: translateY(-6px);
-            border-color: var(--gold);
-            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.15);
-        }
-
-        .home-card img {
-            width: 50px;
-            height: 50px;
-            object-fit: contain;
-            margin-bottom: 15px;
-        }
-
-        .home-card h3 {
-            font-size: 1.05rem;
-            color: var(--text-light);
-            margin-bottom: 8px;
-            font-weight: 600;
-        }
-
-        .home-card p {
-            color: var(--text-muted);
-            font-size: 0.8rem;
-            margin-bottom: 20px;
-            line-height: 1.4;
-        }
-
-        .card-btn {
+        .film-nav-btn {
             background: transparent;
-            border: 1px solid var(--gold);
-            color: var(--gold);
-            padding: 9px 16px;
-            border-radius: 6px;
-            font-weight: 600;
-            font-size: 0.8rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            width: 100%;
-            margin-top: auto;
-        }
-
-        .card-btn:hover {
-            background: var(--gold);
-            color: var(--bg-deep);
-        }
-
-        /* Existing About Section Integration */
-        .about-wrapper {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
-            padding: 40px;
-        }
-
-        .about-main-header {
-            display: flex;
-            align-items: center;
-            gap: 30px;
-            margin-bottom: 30px;
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 25px;
-        }
-
-        .about-logo-img {
-            width: 110px;
-            height: auto;
-            border-radius: 10px;
-            border: 1px solid var(--border-color);
-            padding: 10px;
-            background: #0f0f0f;
-        }
-
-        .about-title-area h2 {
-            font-size: 2.2rem;
-            color: var(--gold);
-            margin-bottom: 8px;
-        }
-
-        .about-tagline {
-            color: var(--gold-light);
-            font-size: 1.1rem;
-            font-style: italic;
-            font-weight: 600;
-        }
-
-        .about-body-content p {
-            color: var(--text-muted);
-            line-height: 1.8;
-            margin-bottom: 15px;
-            font-size: 0.95rem;
-        }
-
-        .about-section-heading {
-            color: var(--gold);
-            font-size: 1.3rem;
-            margin: 25px 0 12px 0;
-            font-weight: 700;
-        }
-
-        .features-bullet-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 12px;
-            margin: 20px 0;
-        }
-
-        .feature-item {
-            background: #0f0f0f;
-            border: 1px solid var(--border-color);
-            padding: 12px 16px;
-            border-radius: 8px;
-            font-size: 0.9rem;
+            border: 1px solid var(--cinematic-red);
             color: var(--text-light);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        /* 7Leo Films Experience Styles (No About Section Inside) */
-        .films-app-header {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        .films-app-header h2 {
-            font-size: 2rem;
-            color: var(--gold);
-            margin-bottom: 8px;
-        }
-
-        .films-subnav {
-            display: flex;
-            gap: 10px;
-            overflow-x: auto;
-            padding-bottom: 15px;
-            margin-bottom: 30px;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .films-subnav button {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            color: var(--text-muted);
-            padding: 8px 16px;
-            border-radius: 6px;
-            font-size: 0.85rem;
-            font-weight: 600;
+            padding: 7px 14px;
+            border-radius: 20px;
             cursor: pointer;
-            white-space: nowrap;
-            transition: all 0.3s ease;
+            font-size: 0.85rem;
+            transition: all 0.3s;
         }
 
-        .films-subnav button:hover, .films-subnav button.active {
-            border-color: var(--gold);
-            color: var(--gold-light);
-            background: #1a1a1a;
+        .film-nav-btn:hover, .film-nav-btn.active {
+            background: var(--cinematic-red);
+            color: var(--bg-dark);
+            box-shadow: 0 0 15px rgba(255, 51, 102, 0.4);
         }
 
-        .films-module-content {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 30px;
-            min-height: 350px;
+        .film-body {
+            max-width: 1300px;
+            margin: 0 auto;
+            width: 100%;
+            padding: 40px 30px;
+            flex: 1;
         }
 
-        .films-module-pane {
+        .film-tab-content {
             display: none;
         }
 
-        .films-module-pane.active {
+        .film-tab-content.active {
             display: block;
         }
 
-        footer {
+        .film-hero-card {
+            background: rgba(18, 18, 18, 0.85);
+            border: 1px solid rgba(255, 51, 102, 0.3);
+            border-radius: 14px;
+            padding: 40px;
             text-align: center;
-            padding: 30px 20px;
-            border-top: 1px solid var(--border-color);
+            margin-bottom: 30px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+        }
+
+        .film-hero-card h1 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            color: var(--gold-light);
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .film-hero-card p {
             color: var(--text-muted);
-            font-size: 0.85rem;
-            background: var(--bg-deep);
-            margin-top: auto;
+            font-size: 1.1rem;
+            max-width: 750px;
+            margin: 0 auto 25px auto;
             line-height: 1.6;
         }
 
-        footer .legal-notice {
-            max-width: 900px;
-            margin: 10px auto 0 auto;
-            font-size: 0.75rem;
-            color: #777;
+        .film-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        .film-card {
+            background: rgba(18, 18, 18, 0.85);
+            border: 1px solid rgba(212, 175, 55, 0.25);
+            border-radius: 10px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            backdrop-filter: blur(5px);
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .film-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--cinematic-red);
+            box-shadow: 0 0 20px rgba(255, 51, 102, 0.25);
+        }
+
+        .film-card-img {
+            width: 100%;
+            height: 180px;
+            background: #222;
+            object-fit: cover;
+        }
+
+        .film-card-body {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            flex: 1;
+        }
+
+        .film-card h3 {
+            color: var(--gold-light);
+            font-size: 1.2rem;
+        }
+
+        .film-card p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: rgba(10, 10, 10, 0.95);
+                padding: 20px 0;
+                border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            .commerce-music-container {
+                grid-template-columns: 1fr;
+                padding: 0 20px;
+            }
+
+            .store-controls-bar {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .bgm-body-container {
+                padding: 30px 18px;
+            }
+
+            .bgm-series-filters {
+                flex-direction: column;
+            }
+
+            .bgm-filter-btn {
+                width: 100%;
+            }
+
+            .star-body, .film-body {
+                padding: 20px 15px;
+            }
+
+            .star-nav-actions, .film-nav-actions {
+                display: none;
+            }
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="logo-area" onclick="switchTab('home')">
-            <img src="1788951880054.png" alt="7Leo Logo">
-            <span>7LEO GROUP</span>
+    <!-- Splash Screen -->
+    <div id="splash-screen">
+        <div class="splash-image-container">
+            <img src="file_0000000028fc81f8b878489375475bad.png" alt="Splash Background">
         </div>
-        <nav>
-            <ul>
-                <li><a id="nav-home" class="active" onclick="switchTab('home')">Home</a></li>
-                <li><a id="nav-store" onclick="switchTab('store')">7Leo Store</a></li>
-                <li><a id="nav-bgm" onclick="switchTab('bgm')">7Leo BGM</a></li>
-                <li><a id="nav-star" onclick="switchTab('star')">7Leo Star</a></li>
-                <li><a id="nav-films" onclick="switchTab('films')">7Leo Films</a></li>
-                <li><a id="nav-about" onclick="switchTab('about')">About</a></li>
-                <li><a id="nav-founder" onclick="switchTab('founder')">Meet The founder</a></li>
-                <li><a id="nav-admin" onclick="switchTab('admin')">Super Admin</a></li>
-                <li><a id="nav-contact" onclick="switchTab('contact')">Contact</a></li>
-                <li><a id="nav-signup" onclick="switchTab('signup')">Signup</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <div class="main-container">
-        <!-- HOME TAB -->
-        <section id="tab-home" class="section-tab active">
-            <div class="hero-section">
-                <img src="1788951880054.png" alt="7Leo Crest" class="hero-logo-img">
-                <h1 class="hero-title">Vision • Power • Legacy</h1>
-                <p class="hero-subtitle">Welcome to 7Leo Group Commerce, Music, Films, and Star Identity</p>
-            </div>
-
-            <div class="home-cards-grid">
-                <!-- Card 1: Store -->
-                <div class="home-card">
-                    <img src="1788951880054.png" alt="Store">
-                    <h3>Build to buy</h3>
-                    <p>Explore high-end curated apparel, merchandise, and gear.</p>
-                    <button class="card-btn" onclick="switchTab('store')">Explore 7Leo Store</button>
-                </div>
-
-                <!-- Card 2: BGM -->
-                <div class="home-card">
-                    <img src="1788951880054.png" alt="BGM">
-                    <h3>Mobile Composed Groovepad Music</h3>
-                    <p>Cinematic soundtracks, beats, and custom audio experiences.</p>
-                    <button class="card-btn" onclick="switchTab('bgm')">Explore 7Leo BGM</button>
-                </div>
-
-                <!-- Card 3: Star -->
-                <div class="home-card">
-                    <img src="1788951880054.png" alt="Star">
-                    <h3>Vision • Power • Identity</h3>
-                    <p>Personal brand empowerment, AI insights, and custom hub tools.</p>
-                    <button class="card-btn" onclick="switchTab('star')">Explore 7Leo Star</button>
-                </div>
-
-                <!-- Card 4: Films (Positioned right next to Explore 7Leo Star) -->
-                <div class="home-card">
-                    <img src="1788951880054.png" alt="Films">
-                    <h3>One Imagine. One Film.</h3>
-                    <p>AI-powered creative filmmaking studio to turn imagination into cinematic stories.</p>
-                    <button class="card-btn" onclick="switchTab('films')">Explore 7Leo Films</button>
-                </div>
-            </div>
-        </section>
-
-        <!-- STORE TAB -->
-        <section id="tab-store" class="section-tab">
-            <h2 style="color: var(--gold); margin-bottom: 20px;">7Leo Store Catalog</h2>
-            <p style="color: var(--text-muted);">Active e-commerce catalog modules loaded successfully.</p>
-        </section>
-
-        <!-- BGM TAB -->
-        <section id="tab-bgm" class="section-tab">
-            <h2 style="color: var(--gold); margin-bottom: 20px;">7Leo BGM Portal</h2>
-            <p style="color: var(--text-muted);">Groovepad audio series and soundtracks ready for streaming.</p>
-        </section>
-
-        <!-- STAR TAB -->
-        <section id="tab-star" class="section-tab">
-            <h2 style="color: var(--gold); margin-bottom: 20px;">7Leo Star Identity Hub</h2>
-            <p style="color: var(--text-muted);">Personal brand intelligence and AI assistant modules active.</p>
-        </section>
-
-        <!-- 7LEO FILMS EXPERIENCE TAB (No About Section Inside) -->
-        <section id="tab-films" class="section-tab">
-            <div class="films-app-header">
-                <h2>7Leo Films Studio Experience</h2>
-                <p style="color: var(--text-muted);">AI-Powered Creative Filmmaking Suite</p>
-            </div>
-
-            <div class="films-subnav">
-                <button class="active" onclick="switchFilmModule('home', event)">Home</button>
-                <button onclick="switchFilmModule('create', event)">Create</button>
-                <button onclick="switchFilmModule('projects', event)">Projects</button>
-                <button onclick="switchFilmModule('studio', event)">Studio</button>
-                <button onclick="switchFilmModule('myfilms', event)">My Films</button>
-                <button onclick="switchFilmModule('ideastudio', event)">Idea Studio</button>
-                <button onclick="switchFilmModule('storystudio', event)">Story Studio</button>
-                <button onclick="switchFilmModule('characterstudio', event)">Character Studio</button>
-                <button onclick="switchFilmModule('screenplaystudio', event)">Screenplay Studio</button>
-                <button onclick="switchFilmModule('scenestudio', event)">Scene & Shot Studio</button>
-                <button onclick="switchFilmModule('storyboard', event)">Storyboard</button>
-                <button onclick="switchFilmModule('stylelock', event)">Style Lock</button>
-                <button onclick="switchFilmModule('vfxstudio', event)">VFX Studio</button>
-                <button onclick="switchFilmModule('videodirector', event)">Video Director</button>
-                <button onclick="switchFilmModule('voicestudio', event)">Voice Studio</button>
-                <button onclick="switchFilmModule('songstudio', event)">Song Studio</button>
-                <button onclick="switchFilmModule('bgmstudio', event)">7Leo BGM</button>
-                <button onclick="switchFilmModule('soundfx', event)">Sound FX</button>
-                <button onclick="switchFilmModule('continuityai', event)">Continuity AI</button>
-                <button onclick="switchFilmModule('aidirector', event)">AI Director</button>
-                <button onclick="switchFilmModule('timeline', event)">Film Timeline</button>
-                <button onclick="switchFilmModule('trailer', event)">Trailer Generator</button>
-                <button onclick="switchFilmModule('poster', event)">Poster Generator</button>
-                <button onclick="switchFilmModule('socialmedia', event)">Social Media Kit</button>
-                <button onclick="switchFilmModule('multilanguage', event)">Multi-language</button>
-                <button onclick="switchFilmModule('franchisememory', event)">Franchise Memory</button>
-            </div>
-
-            <div class="films-module-content">
-                <div id="module-home" class="films-module-pane active">
-                    <h3 style="color: var(--gold); margin-bottom: 15px;">Welcome to 7Leo Films Studio</h3>
-                    <p style="color: var(--text-muted);">Select any tool above to begin building your cinematic vision from a single idea.</p>
-                </div>
-                <div id="module-create" class="films-module-pane"><h3 style="color: var(--gold); margin-bottom: 15px;">Create New Project</h3><p style="color: var(--text-muted);">Initialize a new cinematic pipeline from your initial prompt.</p></div>
-                <div id="module-projects" class="films-module-pane"><h3 style="color: var(--gold); margin-bottom: 15px;">Projects Workspace</h3><p style="color: var(--text-muted);">Manage your active movie pipelines and assets.</p></div>
-                <div id="module-studio" class="films-module-pane"><h3 style="color: var(--gold); margin-bottom: 15px;">Main Production Studio</h3><p style="color: var(--text-muted);">Central hub for real-time AI film rendering and assembly.</p></div>
-                <div id="module-myfilms" class="films-module-pane"><h3 style="color: var(--gold); margin-bottom: 15px;">My Films</h3><p style="color: var(--text-muted);">Completed cinematic exports and premiere cuts.</p></div>
-                <div id="module-ideastudio" class="films-module-pane"><h3 style="color: var(--gold); margin-bottom: 15px;">Idea Studio</h3><p style="color: var(--text-muted);">Transform raw thoughts and rough sentences into structured concepts.</p></div>
-                <div id="module-storystudio" class="films-module-pane"><h3 style="color: var(--gold); margin-bottom: 15px;">Story Studio</h3><p style="color: var(--text-muted);">Expand premises into comprehensive narrative arcs.</p></div>
-                <div id="module-characterstudio" class="films-module-pane"><h3 style="color: var(--gold); margin-bottom: 15px;">Character Studio</h3><p style="color: var(--text-muted);">Design character profiles, backgrounds, and visual traits.</p></div>
-                <div id="module-screenplaystudio" class="films-module-pane"><h3 style="color: var(--gold); margin-bottom: 15px;">Screenplay Studio</h3><p style="color: var(--text-muted);">AI-assisted scriptwriting formatted to industry standards.</p></div>
-                <div id="module-scenestudio" class="films-module-pane"><h3 style="color: var(--gold); margin-bottom: 15px;">Scene & Shot Studio</h3><p style="color: var(--text-muted);">Plan camera angles, framing, and shot composition.</p></div>
-                <div id="module-storyboard" class="films-module-pane"><h3 style="color: var(--gold); margin-bottom: 15px;">Storyboard Generator</h3><p style="color: var(--text-muted);">Generate sequential visual frames for every scene.</p></div>
-                <div id="module-stylelock" class="films-module-pane"><h3 style="color: var(--gold); margin-bottom: 15px;">Style Lock</h3><p style="color: var(--text-muted);">Maintain consistent visual aesthetic, lighting, and tone.</p></div>
-                <div id="module-vfxstudio" class="films-module-pane"><h3 style="color: var(--gold); margin-bottom: 15px;">VFX Studio</h3><p style="color: var(--text-muted);">Integrate visual effects, particle systems, and CGI layers.</p></div>
-                <div id="module-videodirector" class="films-module-pane"><h3 style="color: var(--gold); margin-bottom: 15px;">Video Director AI</h3><p style="color: var(--text-muted);">Automated scene direction and camera motion control.</p></div>
-                <div id="module-voicestudio" class="films-module-pane"><h3 style="color: var(--gold); margin-bottom: 15px;">Voice Studio</h3><p style="color: var(--text-muted);">Character voice acting generation and dialogue synthesis.</p></div>
-                <div id="module-songstudio" class="films-module-pane"><h3 style="color: var(--gold); margin-bottom: 15px;">Song Studio</h3><p style="color: var(--text-muted);">Compose original songs and musical themes for your film.</p></div>
-                <div id="module-bgmstudio" class="films-module-pane"><h3 style="color: var(--gold); margin-bottom: 15px;">7Leo BGM</h3><p style="color: var(--text-muted);">Cinematic background score and Groovepad audio integration.</p></div>
-                <div id="module-soundfx" class="films-module-pane"><h3 style="color: var(--gold); margin-bottom: 15px;">Sound FX</h3><p style="color: var(--text-muted);">Foley, ambient noise, and cinematic sound effect production.</p></div>
-                <div id="module-continuityai" class="films-module-pane"><h3 style="color: var(--gold); margin-bottom: 15px;">Continuity AI</h3><p style="color: var(--text-muted);">Ensure seamless visual and narrative continuity across shots.</p></div>
-                <div id="module-aidirector" class="films-module-pane"><h3 style="color: var(--gold); margin-bottom: 15px;">AI Director</h3><p style="color: var(--text-muted);">Autonomous directorial oversight and shot optimization.</p></div>
-                <div id="module-timeline" class="films-module-pane"><h3 style="color: var(--gold); margin-bottom: 15px;">Film Timeline</h3><p style="color: var(--text-muted);">Multi-track video and audio editing timeline.</p></div>
-                <div id="module-trailer" class="films-module-pane"><h3 style="color: var(--gold); margin-bottom: 15px;">Trailer Generator</h3><p style="color: var(--text-muted);">Instantly assemble high-impact promotional trailers.</p></div>
-                <div id="module-poster" class="films-module-pane"><h3 style="color: var(--gold); margin-bottom: 15px;">Poster & Thumbnail Generator</h3><p style="color: var(--text-muted);">Create cinematic movie posters and cover art.</p></div>
-                <div id="module-socialmedia" class="films-module-pane"><h3 style="color: var(--gold); margin-bottom: 15px;">Social Media Kit</h3><p style="color: var(--text-muted);">Export clips and promos optimized for all platforms.</p></div>
-                <div id="module-multilanguage" class="films-module-pane"><h3 style="color: var(--gold); margin-bottom: 15px;">Multi-language Dubbing</h3><p style="color: var(--text-muted);">Translate and dub films into global languages seamlessly.</p></div>
-                <div id="module-franchisememory" class="films-module-pane"><h3 style="color: var(--gold); margin-bottom: 15px;">Franchise Memory</h3><p style="color: var(--text-muted);">Maintain universe lore, canon, and asset continuity for sequels.</p></div>
-            </div>
-        </section>
-
-        <!-- EXISTING ABOUT TAB (Updated with 7Leo Films Information) -->
-        <section id="tab-about" class="section-tab">
-            <div class="about-wrapper">
-                <div class="about-main-header">
-                    <img src="1788951880054.png" alt="7Leo Films Logo" class="about-logo-img">
-                    <div class="about-title-area">
-                        <h2>7Leo Films</h2>
-                        <div class="about-tagline">One Imagine. One Film.</div>
-                    </div>
-                </div>
-
-                <div class="about-body-content">
-                    <p>7Leo Films is an AI-powered creative filmmaking studio built to turn imagination into cinematic stories.</p>
-                    <p>From a simple idea, a rough thought, or just one sentence, 7Leo Films helps creators develop a complete movie experience — from story and characters to screenplay, scenes, shots, visual direction, VFX, voices, music, BGM, sound design, editing and promotional content.</p>
-                    <p>Whether you are a first-time storyteller or an experienced filmmaker, 7Leo Films is designed to make the filmmaking process more accessible, creative and intelligent.</p>
-
-                    <div class="about-section-heading">Our Vision</div>
-                    <p>We believe every great film begins with an imagination.</p>
-                    <p>You don't need to know everything about filmmaking before you start.</p>
-                    <p>You bring the idea.</p>
-                    <p>7Leo Films helps build the movie.</p>
-
-                    <div class="about-section-heading">What We Create</div>
-                    <div class="features-bullet-grid">
-                        <div class="feature-item">🎬 Stories</div>
-                        <div class="feature-item">👤 Characters</div>
-                        <div class="feature-item">✍️ Screenplays</div>
-                        <div class="feature-item">🎥 Cinematic Shots</div>
-                        <div class="feature-item">🖼️ Storyboards</div>
-                        <div class="feature-item">🪄 VFX & Visual Effects</div>
-                        <div class="feature-item">🎙️ Character Voices</div>
-                        <div class="feature-item">🎵 Songs</div>
-                        <div class="feature-item">🎶 7Leo BGM</div>
-                        <div class="feature-item">🔊 Sound Effects</div>
-                        <div class="feature-item">🎞️ Film Timelines</div>
-                        <div class="feature-item">📺 Trailers</div>
-                        <div class="feature-item">🖼️ Posters & Thumbnails</div>
-                        <div class="feature-item">📱 Social Media Content</div>
-                    </div>
-
-                    <div class="about-section-heading">Our Philosophy</div>
-                    <p>One Imagine. One Film.</p>
-                    <p>An idea can start with one sentence.</p>
-                    <p>A story can become a world.</p>
-                    <p>And a world can become a film.</p>
-                    <p>7Leo Films exists to help creators take that first imagination and turn it into something cinematic.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- FOUNDER TAB -->
-        <section id="tab-founder" class="section-tab">
-            <h2 style="color: var(--gold); margin-bottom: 20px;">Meet The Founder</h2>
-            <p style="color: var(--text-muted);">Leadership and vision driving the 7Leo ecosystem forward.</p>
-        </section>
-
-        <!-- ADMIN TAB -->
-        <section id="tab-admin" class="section-tab">
-            <h2 style="color: var(--gold); margin-bottom: 20px;">Super Admin Dashboard</h2>
-            <p style="color: var(--text-muted);">Metrics, order fulfillment, and platform settings control center.</p>
-        </section>
-
-        <!-- CONTACT TAB -->
-        <section id="tab-contact" class="section-tab">
-            <h2 style="color: var(--gold); margin-bottom: 20px;">Contact 7Leo Group</h2>
-            <p style="color: var(--text-muted);">Get in touch with our team for business inquiries and collaborations.</p>
-        </section>
-
-        <!-- SIGNUP TAB -->
-        <section id="tab-signup" class="section-tab">
-            <h2 style="color: var(--gold); margin-bottom: 20px;">Join 7Leo Ecosystem</h2>
-            <p style="color: var(--text-muted);">Create your account to unlock full portal access and features.</p>
-        </section>
+        <div class="splash-content">
+            <h1 class="splash-title">Vision*Power"Legacy</h1>
+        </div>
     </div>
 
-    <footer>
-        &copy; 2026 7Leo Films. All Rights Reserved. • VISION • POWER • LEGACY
-        <div class="legal-notice">
-            7Leo Films, “One Imagine. One Film.” and associated original branding, creative concepts, designs and content are protected and reserved by 7Leo.
+    <!-- Background Tattoo & Overlay -->
+    <div class="site-bg"></div>
+    <div class="site-overlay"></div>
+
+    <!-- Navigation -->
+    <header>
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="logo.png" alt="7Leo Group Logo">
+            </div>
+            <div class="menu-toggle" id="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#" onclick="showSection('home')">Home</a></li>
+                <li><a href="#" onclick="openStorePortal()">7Leo Store</a></li>
+                <li><a href="#" onclick="openBgmPortal()">7Leo BGM</a></li>
+                <li><a href="#" onclick="openStarPortal()">7Leo Star</a></li>
+                <li><a href="#" onclick="openFilmPortal()">7Leo Film</a></li>
+                <li><a href="#" onclick="openModal('about-modal')">About</a></li>
+                <li><a href="#" onclick="openModal('founder-modal')">Meet The founder</a></li>
+                <li><a href="#" onclick="openModal('admin-modal')">Super Admin</a></li>
+                <li><a href="#" onclick="openModal('contact-modal')">Contact</a></li>
+                <li><a href="#" onclick="openModal('signup-modal')">Signup</a></li>
+            </ul>
         </div>
-    </footer>
+    </header>
+
+    <!-- Main Homepage Content -->
+    <main id="main-content">
+        <section class="hero-section">
+            <img src="logo.png" alt="Main Logo" class="main-logo-img">
+            <h2 class="vision-power-legacy artistic-font">VISIONPOWERLEGACY</h2>
+            <h3 class="welcome-msg artistic-font">Hello welcome to 7Leo Website</h3>
+            <p class="core-text">Welcome to 7Leo Group Commerce, Music, Star Identity, and Cinematic Film</p>
+
+            <div class="commerce-music-container">
+                <!-- Store Box -->
+                <div class="card-box">
+                    <img src="file_00000000f2948207a9d90f38705cd83d.png" alt="7Leo Store Logo" class="card-logo">
+                    <h4 class="card-title artistic-font">Build to buy</h4>
+                    <button class="action-btn" onclick="openStorePortal()">Explore 7Leo Store</button>
+                </div>
+
+                <!-- BGM Box -->
+                <div class="card-box">
+                    <img src="bgm-logo.png" alt="7Leo BGM Logo" class="card-logo">
+                    <h4 class="card-title artistic-font">Mobile Composed Groovepad Music</h4>
+                    <button class="action-btn" onclick="openBgmPortal()">Explore 7Leo BGM</button>
+                </div>
+
+                <!-- Star Box -->
+                <div class="card-box">
+                    <img src="file_00000000064c81f7bfa7694c6882429c.png" alt="7Leo Star Logo" class="card-logo">
+                    <h4 class="card-title artistic-font">Vision • Power • Identity</h4>
+                    <button class="action-btn" onclick="openStarPortal()">Explore 7Leo Star</button>
+                </div>
+
+                <!-- Film Box (NEW ADDITION) -->
+                <div class="card-box">
+                    <img src="logo.png" alt="7Leo Film Logo" class="card-logo">
+                    <h4 class="card-title artistic-font">Cinematic Storytelling & Vision</h4>
+                    <button class="action-btn" onclick="openFilmPortal()">Explore 7Leo Film</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 7LEO FILM PORTAL EXPERIENCE (MASTER BUILD) -->
+    <div class="film-portal-overlay" id="film-portal">
+        <div class="film-header">
+            <div class="film-nav-brand">
+                <h2>7Leo Film Portal</h2>
+            </div>
+            <div class="film-nav-actions">
+                <button class="film-nav-btn active" onclick="switchFilmTab('showcase', this)">Showcase</button>
+                <button class="film-nav-btn" onclick="switchFilmTab('trailers', this)">Trailers & Shorts</button>
+                <button class="film-nav-btn" onclick="switchFilmTab('behind', this)">Behind The Scenes</button>
+                <button class="film-nav-btn" onclick="switchFilmTab('submissions', this)">Project Submissions</button>
+                <button class="film-nav-btn" style="border-color:#ff5555; color:#ff5555;" onclick="closeFilmPortal()">Exit Film</button>
+            </div>
+        </div>
+
+        <div class="film-body">
+            
+            <!-- 1. FILM SHOWCASE TAB -->
+            <div class="film-tab-content active" id="film-tab-showcase">
+                <div class="film-hero-card">
+                    <span class="star-badge" style="border-color: var(--cinematic-red); color: var(--cinematic-red);">Cinematic Universe</span>
+                    <h1 class="artistic-font">7Leo Film Productions</h1>
+                    <p>Experience the visual narrative of 7Leo Group. Original cinematic shorts, motivational visual stories, and the grand journey from zero to legacy captured on screen.</p>
+                </div>
+
+                <div class="film-grid">
+                    <div class="film-card">
+                        <img src="file_0000000028fc81f8b878489375475bad.png" alt="Film 1" class="film-card-img">
+                        <div class="film-card-body">
+                            <span class="star-badge">Short Film</span>
+                            <h3>From Zero To Infinity</h3>
+                            <p>The cinematic documentary chronicling the raw determination, mobile-first creation, and unstoppable vision behind 7Leo Group.</p>
+                            <button class="action-btn" style="margin-top: auto;" onclick="alert('Playing 7Leo Cinematic Feature: From Zero To Infinity')">Watch Film</button>
+                        </div>
+                    </div>
+                    <div class="film-card">
+                        <img src="file_00000000776081fa8dbc514074356775.png" alt="Film 2" class="film-card-img">
+                        <div class="film-card-body">
+                            <span class="star-badge">Visual Teaser</span>
+                            <h3>Vision • Power • Legacy</h3>
+                            <p>An immersive visual teaser highlighting the architectural milestones and digital ecosystem of 7Leo Group.</p>
+                            <button class="action-btn" style="margin-top: auto;" onclick="alert('Playing Teaser: Vision • Power • Legacy')">Watch Teaser</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. TRAILERS & SHORTS TAB -->
+            <div class="film-tab-content" id="film-tab-trailers">
+                <div class="film-hero-card" style="text-align: left;">
+                    <span class="star-badge" style="border-color: var(--cinematic-red); color: var(--cinematic-red);">Trailers & Reels</span>
+                    <h2 style="color: var(--gold-light); margin-top: 10px; margin-bottom: 15px;">Upcoming & Released Teasers</h2>
+                    <p style="margin-bottom: 20px;">Fast-paced cinematic cuts, musical soundscape trailers, and promotional reels.</p>
+                </div>
+                <div class="film-grid">
+                    <div class="film-card">
+                        <div class="film-card-body">
+                            <h3>BGM Cinematic Trailer #1</h3>
+                            <p>Dynamic Groovepad rhythm sync with cinematic visuals.</p>
+                            <button class="action-btn" style="margin-top: auto;" onclick="alert('Streaming BGM Trailer #1')">Play Trailer</button>
+                        </div>
+                    </div>
+                    <div class="film-card">
+                        <div class="film-card-body">
+                            <h3>7Leo Star Elite Reel</h3>
+                            <p>A glimpse into the agentic future and digital identity hubs.</p>
+                            <button class="action-btn" style="margin-top: auto;" onclick="alert('Streaming Star Elite Reel')">Play Reel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. BEHIND THE SCENES TAB -->
+            <div class="film-tab-content" id="film-tab-behind">
+                <div class="film-hero-card" style="text-align: left;">
+                    <span class="star-badge" style="border-color: var(--cinematic-red); color: var(--cinematic-red);">Behind The Scenes</span>
+                    <h2 style="color: var(--gold-light); margin-top: 10px; margin-bottom: 15px;">The Making of 7Leo Group</h2>
+                    <p>Created with passion, mobile devices, and relentless drive from Karnataka. Explore how every frame and project came to life.</p>
+                </div>
+            </div>
+
+            <!-- 4. PROJECT SUBMISSIONS TAB -->
+            <div class="film-tab-content" id="film-tab-submissions">
+                <div class="modal-content" style="max-width: 600px; margin: 0 auto; background: rgba(18,18,18,0.9);">
+                    <h3 class="modal-title" style="color: var(--cinematic-red);">Film & Collaboration Inquiries</h3>
+                    <form onsubmit="event.preventDefault(); alert('Film collaboration inquiry submitted successfully.');">
+                        <div class="form-group">
+                            <label>Your Name / Director</label>
+                            <input type="text" required placeholder="Enter full name">
+                        </div>
+                        <div class="form-group">
+                            <label>Email Address</label>
+                            <input type="email" required placeholder="Enter email address">
+                        </div>
+                        <div class="form-group">
+                            <label>Project / Film Proposal</label>
+                            <textarea rows="4" required placeholder="Describe your cinematic or creative project proposal..."></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn" style="background: var(--cinematic-red); color: var(--bg-dark);">Submit Proposal</button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- 7LEO STAR PORTAL EXPERIENCE -->
+    <div class="star-portal-overlay" id="star-portal">
+        <div class="star-header">
+            <div class="star-nav-brand">
+                <img src="file_00000000064c81f7bfa7694c6882429c.png" alt="7Leo Star Logo">
+                <h2>7Leo Star Portal</h2>
+            </div>
+            <div class="star-nav-actions">
+                <button class="star-nav-btn active" onclick="switchStarTab('dashboard', this)">Dashboard</button>
+                <button class="star-nav-btn" onclick="switchStarTab('assistant', this)">AI Star</button>
+                <button class="star-nav-btn" onclick="switchStarTab('daily', this)">Daily Star</button>
+                <button class="star-nav-btn" onclick="switchStarTab('personality', this)">Personality & Power</button>
+                <button class="star-nav-btn" onclick="switchStarTab('generators', this)">AI Generators</button>
+                <button class="star-nav-btn" onclick="switchStarTab('quotes', this)">Quotes</button>
+                <button class="star-nav-btn" onclick="switchStarTab('favorites', this)">Favorites</button>
+                <button class="star-nav-btn" onclick="switchStarTab('profile', this)">Profile & Points</button>
+                <button class="star-nav-btn" onclick="switchStarTab('notifications', this)">Notifications</button>
+                <button class="star-nav-btn" onclick="switchStarTab('admin', this)">Star Admin</button>
+                <button class="star-nav-btn" style="border-color:#ff5555; color:#ff5555;" onclick="closeStarPortal()">Exit Star</button>
+            </div>
+        </div>
+
+        <div class="star-body">
+            
+            <!-- STAR DASHBOARD TAB -->
+            <div class="star-tab-content active" id="star-tab-dashboard">
+                <div class="star-hero-card">
+                    <span class="star-badge" id="star-membership-badge">Free Tier Active</span>
+                    <h1 class="artistic-font">Welcome to 7Leo Star</h1>
+                    <p>The pinnacle of the 7Leo journey. Featuring advanced agentic identity, AI assistants, encrypted vaults, daily motivational streams, and 7Leo points/streak gamification.</p>
+                    <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; margin-top: 20px;">
+                        <button class="submit-btn" style="max-width: 220px; background: var(--electric-blue); color: var(--bg-dark);" onclick="upgradeToStarPremium()">Upgrade to Star Premium</button>
+                        <button class="action-btn" onclick="switchStarTab('assistant', document.querySelectorAll('.star-nav-btn')[1])">Launch AI Star Assistant</button>
+                    </div>
+                </div>
+
+                <div class="star-grid">
+                    <div class="star-card">
+                        <span class="star-badge">Daily Motivation</span>
+                        <h3>Daily Star & Streaks</h3>
+                        <p>Receive your personalized daily motivational message and maintain your daily streak to earn 7Leo Points.</p>
+                        <button class="action-btn" style="margin-top: auto;" onclick="switchStarTab('daily', document.querySelectorAll('.star-nav-btn')[2])">View Daily Star</button>
+                    </div>
+                    <div class="star-card">
+                        <span class="star-badge">AI Creativity</span>
+                        <h3>AI Generators Suite</h3>
+                        <p>Generate custom quotes, captions, usernames, and personalized motivational strategies instantly.</p>
+                        <button class="action-btn" style="margin-top: auto;" onclick="switchStarTab('generators', document.querySelectorAll('.star-nav-btn')[4])">Open Generators</button>
+                    </div>
+                    <div class="star-card">
+                        <span class="star-badge">Gamification</span>
+                        <h3>Points & Level Progression</h3>
+                        <p id="dashboard-level-summary">Current Level: New Star • Points: 120 • Streak: 3 Days</p>
+                        <button class="action-btn" style="margin-top: auto;" onclick="switchStarTab('profile', document.querySelectorAll('.star-nav-btn')[7])">View Profile & Rank</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- AI STAR ASSISTANT TAB -->
+            <div class="star-tab-content" id="star-tab-assistant">
+                <div class="star-chat-container">
+                    <div class="star-chat-header">
+                        <div>
+                            <h3 style="color: var(--electric-blue); font-size: 1.1rem;">AI Star Collaborator</h3>
+                            <p style="color: var(--text-muted); font-size: 0.8rem;">Powered by 7Leo Agentic Architecture</p>
+                        </div>
+                        <button class="action-btn" style="padding: 5px 12px; font-size: 0.8rem;" onclick="clearStarChat()">Clear Chat</button>
+                    </div>
+                    <div class="star-chat-messages" id="star-chat-messages">
+                        <div class="chat-bubble assistant">Hello Abubakker! I am your AI Star Assistant. Ask me anything about strategy, motivation, development, or 7Leo Group vision.</div>
+                    </div>
+                    <div class="star-chat-input-area">
+                        <input type="text" id="star-chat-input" placeholder="Type your message to AI Star..." onkeypress="if(event.key==='Enter') sendStarAiMessage()">
+                        <button class="submit-btn" style="width: auto; padding: 0 20px; background: var(--electric-blue); color: var(--bg-dark);" onclick="sendStarAiMessage()">Send</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- DAILY STAR TAB -->
+            <div class="star-tab-content" id="star-tab-daily">
+                <div class="star-hero-card" style="text-align: left;">
+                    <span class="star-badge">Today's Star Wisdom</span>
+                    <h2 id="daily-star-title" style="color: var(--gold-light); margin-top: 15px; margin-bottom: 10px;">"Vision without execution is merely a dream."</h2>
+                    <p id="daily-star-body" style="font-size: 1.05rem; line-height: 1.7; margin-bottom: 25px; color: var(--text-light);">Today's focus is on disciplined action. Take one definitive step toward your ultimate legacy today. No matter how small the beginning, consistent momentum outlasts temporary resistance.</p>
+                    <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+                        <button class="submit-btn" style="max-width: 200px; background: var(--electric-blue); color: var(--bg-dark);" onclick="saveCurrentContent('Daily Star', document.getElementById('daily-star-title').innerText)">Save to Favorites</button>
+                        <button class="action-btn" onclick="refreshDailyStar()">Refresh Daily Star</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- LEO PERSONALITY & POWER MODE TAB -->
+            <div class="star-tab-content" id="star-tab-personality">
+                <div class="star-hero-card" style="text-align: left;">
+                    <span class="star-badge">Leo Mindset & Power Mode</span>
+                    <h2 style="color: var(--gold-light); margin-top: 10px; margin-bottom: 15px;">The 7Leo Philosophy</h2>
+                    <p style="margin-bottom: 20px;">Built on unwavering confidence, relentless leadership, absolute ambition, unyielding strength, and uncompromising creative self-expression.</p>
+                </div>
+                <div class="star-grid">
+                    <div class="star-card">
+                        <h3>Vision</h3>
+                        <p>See beyond today's limitations. Anticipate tomorrow and architect the future with precision.</p>
+                    </div>
+                    <div class="star-card">
+                        <h3>Power Mode</h3>
+                        <p>Activate peak discipline, high-performance focus, and unstoppable momentum through daily challenges.</p>
+                    </div>
+                    <div class="star-card">
+                        <h3>Legacy</h3>
+                        <p>Build something that outlasts the beginning. Create systems, platforms, and works of enduring value.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- AI GENERATORS TAB -->
+            <div class="star-tab-content" id="star-tab-generators">
+                <div class="star-hero-card" style="text-align: left;">
+                    <span class="star-badge">Advanced AI Generators</span>
+                    <h2 style="color: var(--gold-light); margin-top: 10px; margin-bottom: 15px;">Instant Content Creation Suite</h2>
+                    <p style="margin-bottom: 25px;">Select a tool below to generate powerful quotes, captions, usernames, and motivation tailored to your vision.</p>
+                    
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px;">
+                        <div style="background: rgba(20,20,20,0.8); padding: 20px; border-radius: 8px; border: 1px solid #333;">
+                            <h4 style="color: var(--gold); margin-bottom: 10px;">AI Quote Generator</h4>
+                            <select id="gen-quote-theme" style="width:100%; padding:10px; background:#1a1a1a; color:#fff; border:1px solid #444; border-radius:5px; margin-bottom:15px;">
+                                <option value="Success">Success</option>
+                                <option value="Money">Money & Power</option>
+                                <option value="Confidence">Confidence</option>
+                                <option value="Discipline">Discipline</option>
+                            </select>
+                            <button class="submit-btn" onclick="generateAiQuote()">Generate Quote</button>
+                            <div id="gen-quote-result" style="margin-top: 15px; color: var(--text-light); font-style: italic;"></div>
+                        </div>
+
+                        <div style="background: rgba(20,20,20,0.8); padding: 20px; border-radius: 8px; border: 1px solid #333;">
+                            <h4 style="color: var(--gold); margin-bottom: 10px;">AI Caption Generator</h4>
+                            <select id="gen-caption-theme" style="width:100%; padding:10px; background:#1a1a1a; color:#fff; border:1px solid #444; border-radius:5px; margin-bottom:15px;">
+                                <option value="Luxury">Luxury & Lifestyle</option>
+                                <option value="Success">Success & Grind</option>
+                                <option value="Attitude">Attitude & Legacy</option>
+                            </select>
+                            <button class="submit-btn" onclick="generateAiCaption()">Generate Caption</button>
+                            <div id="gen-caption-result" style="margin-top: 15px; color: var(--text-light);"></div>
+                        </div>
+
+                        <div style="background: rgba(20,20,20,0.8); padding: 20px; border-radius: 8px; border: 1px solid #333;">
+                            <h4 style="color: var(--gold); margin-bottom: 10px;">AI Username / Brand Generator</h4>
+                            <select id="gen-name-style" style="width:100%; padding:10px; background:#1a1a1a; color:#fff; border:1px solid #444; border-radius:5px; margin-bottom:15px;">
+                                <option value="Elite">Elite / Luxury</option>
+                                <option value="Tech">Tech & Developer</option>
+                                <option value="Dark">Dark / Mysterious</option>
+                            </select>
+                            <button class="submit-btn" onclick="generateAiUsername()">Generate Name</button>
+                            <div id="gen-name-result" style="margin-top: 15px; color: var(--text-light); font-weight: 600;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 7LEO QUOTES TAB -->
+            <div class="star-tab-content" id="star-tab-quotes">
+                <div class="star-hero-card" style="text-align: left;">
+                    <span class="star-badge">7Leo Curated Vault</span>
+                    <h2 style="color: var(--gold-light); margin-top: 10px; margin-bottom: 15px;">Motivational Wisdom</h2>
+                </div>
+                <div class="star-grid" id="quotes-grid">
+                    <div class="star-card">
+                        <h3>Quote #1</h3>
+                        <p>"From zero to legacy. Every giant empire started with a single phone, a connection, and unwavering belief."</p>
+                        <button class="action-btn" style="margin-top: auto;" onclick="saveCurrentContent('Quote', 'From zero to legacy.')">Save Quote</button>
+                    </div>
+                    <div class="star-card">
+                        <h3>Quote #2</h3>
+                        <p>"Walk alone until your vision becomes so undeniable that the world has no choice but to follow."</p>
+                        <button class="action-btn" style="margin-top: auto;" onclick="saveCurrentContent('Quote', 'Walk alone until your vision becomes undeniable.')">Save Quote</button>
+                    </div>
+                    <div class="star-card">
+                        <h3>Quote #3</h3>
+                        <p>"Vision. Power. Legacy. Three words, one lifelong mission."</p>
+                        <button class="action-btn" style="margin-top: auto;" onclick="saveCurrentContent('Quote', 'Vision. Power. Legacy.')">Save Quote</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAVORITES TAB -->
+            <div class="star-tab-content" id="star-tab-favorites">
+                <div class="star-hero-card" style="text-align: left;">
+                    <span class="star-badge">Saved Vault</span>
+                    <h2 style="color: var(--gold-light); margin-top: 10px; margin-bottom: 15px;">My Favorites & Saved Content</h2>
+                    <p style="margin-bottom: 20px;">All your bookmarked quotes, AI generations, and daily star wisdom in one secure place.</p>
+                </div>
+                <div id="favorites-container" class="star-grid"></div>
+            </div>
+
+            <!-- USER PROFILE & POINTS TAB -->
+            <div class="star-tab-content" id="star-tab-profile">
+                <div class="modal-content" style="max-width: 600px; margin: 0 auto; background: rgba(18,18,18,0.9);">
+                    <h3 class="modal-title" style="color: var(--electric-blue);">User Profile, Points & Streaks</h3>
+                    <div style="background: rgba(0, 240, 255, 0.1); padding: 15px; border-radius: 8px; border: 1px solid var(--electric-blue); margin-bottom: 20px; text-align: center;">
+                        <p style="color: var(--electric-blue); font-weight: 600; font-size: 1.1rem;" id="profile-rank-display">Rank: New Star (120 Points)</p>
+                        <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 5px;">Current Streak: 3 Days Active</p>
+                    </div>
+                    <form id="star-profile-form" onsubmit="saveStarProfile(event)">
+                        <div class="form-group">
+                            <label>Legal / Display Name</label>
+                            <input type="text" id="star-profile-name" value="Abubakker Bellary" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Email Address</label>
+                            <input type="email" id="star-profile-email" value="7leogroup@gmail.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Membership Status</label>
+                            <input type="text" id="star-profile-tier" value="Free Tier (Upgrade Available)" readonly style="color: var(--gold);">
+                        </div>
+                        <div class="form-group">
+                            <label>User Preferences / Notes</label>
+                            <textarea id="star-profile-prefs" rows="3">Founder & Visionary — 7Leo Group</textarea>
+                        </div>
+                        <button type="submit" class="submit-btn" style="background: var(--electric-blue); color: var(--bg-dark);">Save Profile Changes</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- NOTIFICATIONS TAB -->
+            <div class="star-tab-content" id="star-tab-notifications">
+                <div class="star-hero-card" style="text-align: left;">
+                    <span class="star-badge">System Notifications</span>
+                    <h2 style="color: var(--gold-light); margin-top: 10px; margin-bottom: 15px;">Updates & Announcements</h2>
+                </div>
+                <div class="star-grid">
+                    <div class="star-card">
+                        <span class="star-badge">New Feature</span>
+                        <h3>7Leo Film & Star Ecosystem Live</h3>
+                        <p>Advanced cinematic film portals, agentic AI tools, and daily star streaks are now fully integrated.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ADMIN DASHBOARD TAB -->
+            <div class="star-tab-content" id="star-tab-admin">
+                <div class="star-hero-card" style="text-align: left;">
+                    <span class="star-badge" style="border-color: #ff5555; color: #ff5555;">Restricted Owner Area</span>
+                    <h2 style="color: var(--gold-light); margin-top: 10px; margin-bottom: 15px;">Star Management & Metrics</h2>
+                    <div class="metrics-grid" style="margin-top: 20px;">
+                        <div class="metric-card">
+                            <span class="metric-title">Active Star Users</span>
+                            <span class="metric-value">1,248</span>
+                        </div>
+                        <div class="metric-card">
+                            <span class="metric-title">Premium Members</span>
+                            <span class="metric-value" id="admin-premium-count">312</span>
+                        </div>
+                        <div class="metric-card">
+                            <span class="metric-title">System Status</span>
+                            <span class="metric-value" style="color: var(--electric-blue);">Optimal</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- 7LEO BGM PORTAL EXPERIENCE -->
+    <div class="bgm-portal-overlay" id="bgm-portal">
+        <div class="bgm-banner-container">
+            <img src="bgm-banner.png" alt="7Leo BGM Banner" class="bgm-banner-img">
+        </div>
+
+        <div class="bgm-body-container">
+            <div class="bgm-intro-box">
+                <h2>Welcome to 7Leo BGM!</h2>
+                <p><strong>Mobile-Composed Groovepad Music</strong></p>
+                <p>Drive • Chill • Gangster • DJ • Cinematic</p>
+                <p style="margin-top: 15px;">Where every track sets the perfect vibe.</p>
+                <a href="https://www.youtube.com/@7LeoBGM" target="_blank" rel="noopener noreferrer" class="action-btn bgm-primary-cta">Enter the World of Music</a>
+            </div>
+
+            <div class="bgm-series-section">
+                <h3>Explore by Series</h3>
+                <div class="bgm-series-filters" id="bgm-series-filters">
+                    <button class="bgm-filter-btn active" onclick="filterBgmSeries('All', this)">All</button>
+                    <button class="bgm-filter-btn" onclick="filterBgmSeries('7Leo Songs Series', this)">7Leo Songs Series</button>
+                    <button class="bgm-filter-btn" onclick="filterBgmSeries('7Leo Cinematic Series', this)">7Leo Cinematic Series</button>
+                    <button class="bgm-filter-btn" onclick="filterBgmSeries('7Leo Chill Series', this)">7Leo Chill Series</button>
+                    <button class="bgm-filter-btn" onclick="filterBgmSeries('7Leo Gangster Series', this)">7Leo Gangster Series</button>
+                    <button class="bgm-filter-btn" onclick="filterBgmSeries('7Leo Drive Series', this)">7Leo Drive Series</button>
+                    <button class="bgm-filter-btn" onclick="filterBgmSeries('7Leo DJ Series', this)">7Leo DJ Series</button>
+                </div>
+            </div>
+
+            <div class="bgm-playlist-container" id="bgm-playlist-items"></div>
+
+            <div class="bgm-social-section">
+                <h3>Follow & Stream</h3>
+                <a href="https://www.youtube.com/@7LeoBGM" target="_blank" rel="noopener noreferrer" class="action-btn">YouTube Music / YouTube — 7Leo BGM</a>
+                <div style="margin-top: 15px;">
+                    <a href="https://www.instagram.com/7leo_bgm?igsh=OWxmeHRubTN5ZmJn" target="_blank" rel="noopener noreferrer" class="action-btn">Instagram — 7Leo BGM</a>
+                </div>
+            </div>
+
+            <div class="bgm-footer-copyright">
+                <strong>© 2026 7Leo BGM. All Rights Reserved.</strong>
+                <p>Contact for licensing: <a href="mailto:7leogroup@gmail.com">7leogroup@gmail.com</a></p>
+            </div>
+        </div>
+
+        <button class="action-btn" style="position: fixed; top: 20px; right: 20px; z-index: 4000; background: rgba(10,10,10,0.85);" onclick="closeBgmPortal()">Exit BGM Portal</button>
+    </div>
+
+    <!-- 7LEO STORE COMPLETE SYSTEM PORTAL -->
+    <div class="store-portal-overlay" id="store-portal">
+        <div class="store-header">
+            <div class="store-nav-brand">
+                <h2>Welcome to 7Leo Store</h2>
+            </div>
+            <div class="store-nav-actions">
+                <button class="store-nav-btn" onclick="switchStoreTab('catalog')">Catalog</button>
+                <button class="store-nav-btn" onclick="switchStoreTab('cart')">Cart (<span id="cart-count">0</span>)</button>
+                <button class="store-nav-btn" onclick="switchStoreTab('tracking')">Track Order</button>
+                <button class="store-nav-btn" onclick="switchStoreTab('dashboard')">Owner Dashboard</button>
+                <button class="store-nav-btn" onclick="switchStoreTab('policies')">Policies</button>
+                <button class="store-nav-btn" style="border-color:#ff5555; color:#ff5555;" onclick="closeStorePortal()">Exit Store</button>
+            </div>
+        </div>
+
+        <div class="store-body">
+            <!-- CATALOG PANEL -->
+            <div class="store-tab-content catalog-panel active" id="tab-catalog">
+                <div class="store-controls-bar">
+                    <div class="search-filter-group">
+                        <input type="text" id="store-search" class="store-search-input" placeholder="Search products..." oninput="filterStoreProducts()">
+                        <select id="store-category-filter" class="store-filter-select" onchange="filterStoreProducts()">
+                            <option value="">All Categories</option>
+                            <option value="Apparel">Apparel</option>
+                            <option value="Accessories">Accessories</option>
+                            <option value="Electronics">Electronics</option>
+                        </select>
+                        <select id="store-sort" class="store-filter-select" onchange="filterStoreProducts()">
+                            <option value="newest">Newest First</option>
+                            <option value="price-low">Price: Low to High</option>
+                            <option value="price-high">Price: High to Low</option>
+                        </select>
+                    </div>
+                    <button class="submit-btn" style="width: auto; padding: 10px 20px;" onclick="openAddProductForm()">+ Add Product (Owner)</button>
+                </div>
+                <div class="product-grid" id="store-product-grid"></div>
+            </div>
+
+            <!-- PRODUCT FORM PANEL -->
+            <div class="store-tab-content product-form-panel" id="tab-product-form">
+                <h3 class="modal-title" id="product-form-heading">Add / Edit Product</h3>
+                <form id="product-management-form" onsubmit="handleSaveProduct(event)">
+                    <input type="hidden" id="edit-product-id">
+                    <div class="form-group">
+                        <label>Product Name</label>
+                        <input type="text" id="prod-name" required placeholder="Enter product name">
+                    </div>
+                    <div class="form-group">
+                        <label>Description</label>
+                        <textarea id="prod-desc" rows="3" required placeholder="Product description"></textarea>
+                    </div>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                        <div class="form-group">
+                            <label>Category</label>
+                            <select id="prod-category" required>
+                                <option value="Apparel">Apparel</option>
+                                <option value="Accessories">Accessories</option>
+                                <option value="Electronics">Electronics</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>SKU</label>
+                            <input type="text" id="prod-sku" required placeholder="SKU-12345">
+                        </div>
+                    </div>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px;">
+                        <div class="form-group">
+                            <label>Supplier Cost (₹)</label>
+                            <input type="number" id="prod-cost" step="0.01" required placeholder="500" oninput="calculateRealtimeProfit()">
+                        </div>
+                        <div class="form-group">
+                            <label>Selling Price (₹)</label>
+                            <input type="number" id="prod-price" step="0.01" required placeholder="799" oninput="calculateRealtimeProfit()">
+                        </div>
+                        <div class="form-group">
+                            <label>Estimated Fees (₹)</label>
+                            <input type="number" id="prod-fees" step="0.01" value="50" required placeholder="50" oninput="calculateRealtimeProfit()">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Upload Product Images</label>
+                        <input type="file" id="prod-image-input" accept="image/*" multiple onchange="handleImageUpload(event)">
+                        <div class="image-upload-preview-container" id="image-preview-container"></div>
+                    </div>
+                    <div style="display: flex; gap: 15px; margin-top: 25px;">
+                        <button type="submit" class="submit-btn">Save & Publish Product</button>
+                        <button type="button" class="action-btn" onclick="switchStoreTab('catalog')">Cancel</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- CART PANEL -->
+            <div class="store-tab-content cart-panel" id="tab-cart">
+                <h3 class="modal-title">Shopping Cart</h3>
+                <div id="cart-items-container">
+                    <p style="color: var(--text-muted); text-align: center; padding: 40px;">Your cart is empty.</p>
+                </div>
+                <div id="cart-summary-footer" style="display: none; margin-top: 20px; text-align: right;">
+                    <h3 style="color: var(--gold); margin-bottom: 15px;" id="cart-total-display">Total: ₹0.00</h3>
+                    <button class="submit-btn" style="max-width: 250px;" onclick="proceedToCheckout()">Proceed to Checkout</button>
+                </div>
+            </div>
+
+            <!-- CHECKOUT PANEL -->
+            <div class="store-tab-content checkout-panel" id="tab-checkout">
+                <h3 class="modal-title">Checkout</h3>
+                <form id="checkout-form" onsubmit="handleCheckoutSubmit(event)" style="max-width: 600px; margin: 0 auto;">
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" id="cust-name" required placeholder="Enter full name">
+                    </div>
+                    <div class="form-group">
+                        <label>Email Address</label>
+                        <input type="email" id="cust-email" required placeholder="Enter email address">
+                    </div>
+                    <div class="form-group">
+                        <label>Phone Number</label>
+                        <input type="tel" id="cust-phone" required placeholder="Mobile number">
+                    </div>
+                    <div class="form-group">
+                        <label>Delivery Address</label>
+                        <textarea id="cust-address" rows="3" required placeholder="Street address, City, State, Pincode"></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn" style="margin-top: 20px;">Place Test Prototype Order</button>
+                </form>
+            </div>
+
+            <!-- ORDER TRACKING PANEL -->
+            <div class="store-tab-content tracking-panel" id="tab-tracking">
+                <h3 class="modal-title">Order Tracking & Fulfillment</h3>
+                <div style="max-width: 600px; margin: 0 auto; display: flex; gap: 10px; margin-bottom: 30px;">
+                    <input type="text" id="tracking-search-input" class="store-search-input" placeholder="Enter Order ID (e.g., 7LEO-1001)">
+                    <button class="submit-btn" style="width: auto;" onclick="trackOrderQuery()">Track</button>
+                </div>
+                <div id="tracking-result-box" style="background: rgba(20, 20, 20, 0.85); padding: 25px; border-radius: 8px; border: 1px solid #333; max-width: 600px; margin: 0 auto; display: none;"></div>
+            </div>
+
+            <!-- OWNER DASHBOARD PANEL -->
+            <div class="store-tab-content admin-dashboard-panel" id="tab-dashboard">
+                <h3 class="modal-title">7Leo Store Owner / Profit Dashboard</h3>
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <span class="metric-title">Total Orders</span>
+                        <span class="metric-value" id="metric-orders">0</span>
+                    </div>
+                    <div class="metric-card">
+                        <span class="metric-title">Total Sales</span>
+                        <span class="metric-value" id="metric-sales">₹0.00</span>
+                    </div>
+                    <div class="metric-card">
+                        <span class="metric-title">Estimated Profit</span>
+                        <span class="metric-value" id="metric-profit">₹0.00</span>
+                    </div>
+                    <div class="metric-card">
+                        <span class="metric-title">Pending Fulfillment</span>
+                        <span class="metric-value" id="metric-pending">0</span>
+                    </div>
+                </div>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Order ID</th>
+                                <th>Customer</th>
+                                <th>Product</th>
+                                <th>Selling Price</th>
+                                <th>Est. Profit</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="admin-orders-tbody"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- POLICIES PANEL -->
+            <div class="store-tab-content" id="tab-policies">
+                <h3 class="modal-title">Store Policies</h3>
+                <p style="color: var(--text-muted); text-align: center;">Standard terms, privacy, and shipping policies apply for 7Leo Store.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modals -->
+    <div class="modal-overlay" id="signup-modal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeModal('signup-modal')">&times;</button>
+            <h3 class="modal-title">Sign Up / Sign In</h3>
+            <form onsubmit="event.preventDefault(); alert('Account simulated successfully.'); closeModal('signup-modal');">
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" required placeholder="Enter your email">
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" required placeholder="Enter your password">
+                </div>
+                <button type="submit" class="submit-btn">Create Account / Sign In</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- About Modal (Includes 7Leo Star & Film Blocks) -->
+    <div class="modal-overlay" id="about-modal">
+        <div class="modal-content" style="max-width: 700px;">
+            <button class="close-modal" onclick="closeModal('about-modal')">&times;</button>
+            <h3 class="modal-title">About 7Leo Group</h3>
+            <div style="display: flex; flex-direction: column; gap: 30px; text-align: left; max-height: 70vh; overflow-y: auto; padding-right: 10px;">
+                <div style="background: rgba(20, 20, 20, 0.6); border: 1px solid rgba(212, 175, 55, 0.2); border-radius: 10px; padding: 20px;">
+                    <h4 style="color: var(--gold); font-size: 1.2rem; margin-bottom: 10px;">7LEO GROUP OVERVIEW</h4>
+                    <p style="color: var(--text-muted); line-height: 1.6; font-size: 0.95px;">7Leo Group is an independent digital vision built from Karnataka, bringing together commerce, music, star identity, and cinematic film under one united ecosystem.</p>
+                </div>
+                <div style="background: rgba(20, 20, 20, 0.6); border: 1px solid rgba(255, 51, 102, 0.3); border-radius: 10px; padding: 20px;">
+                    <h4 style="color: var(--cinematic-red); font-size: 1.2rem; margin-bottom: 10px;">7LEO FILM</h4>
+                    <p style="color: var(--text-muted); line-height: 1.6; font-size: 0.95px;">7Leo Film captures the visual storytelling, cinematic short films, trailers, and documentaries behind the journey from zero to legacy.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Founder Modal -->
+    <div class="modal-overlay" id="founder-modal">
+        <div class="modal-content" style="max-width: 700px;">
+            <button class="close-modal" onclick="closeModal('founder-modal')">&times;</button>
+            <h3 class="modal-title">Meet The Founder</h3>
+            <div style="max-height: 70vh; overflow-y: auto; padding-right: 10px; color: var(--text-muted); line-height: 1.6; text-align: left;">
+                <h4 style="color: var(--gold-light); font-size: 1.3rem; margin-bottom: 10px;">ABUBAKKER BELLARY</h4>
+                <p>Founder — 7Leo Group (Hospet, Vijayanagara Zilla, Karnataka). Built from zero with a mobile phone, Wi-Fi, and unwavering determination.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Modal -->
+    <div class="modal-overlay" id="contact-modal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeModal('contact-modal')">&times;</button>
+            <h3 class="modal-title">Contact 7Leo Group</h3>
+            <form onsubmit="event.preventDefault(); alert('Message sent successfully.'); closeModal('contact-modal');">
+                <div class="form-group">
+                    <label>Your Name</label>
+                    <input type="text" required placeholder="Enter your name">
+                </div>
+                <div class="form-group">
+                    <label>Your Email</label>
+                    <input type="email" required placeholder="Enter your email">
+                </div>
+                <div class="form-group">
+                    <label>Message</label>
+                    <input type="text" required placeholder="Type your message">
+                </div>
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Super Admin Modal -->
+    <div class="modal-overlay" id="admin-modal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeModal('admin-modal')">&times;</button>
+            <h3 class="modal-title">Super Admin Portal</h3>
+            <div class="form-group">
+                <label>Admin Passcode</label>
+                <input type="password" placeholder="Enter admin credentials">
+            </div>
+            <button class="submit-btn" onclick="alert('Access restricted to verified website owner.')">Authenticate Owner</button>
+        </div>
+    </div>
 
     <script>
-        function switchTab(tabId) {
-            document.querySelectorAll('.section-tab').forEach(tab => {
-                tab.classList.remove('active');
-            });
-            document.querySelectorAll('nav ul li a').forEach(nav => {
-                nav.classList.remove('active');
-            });
+        window.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                document.getElementById('splash-screen').classList.add('fade-out');
+            }, 3000);
+            renderStoreCatalog();
+            updateCartCount();
+            renderBgmPlaylist('All');
+            loadStarProfileData();
+            renderFavorites();
+        });
 
-            const targetTab = document.getElementById('tab-' + tabId);
-            if (targetTab) {
-                targetTab.classList.add('active');
-            }
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navLinks = document.getElementById('nav-links');
+        mobileMenu.addEventListener('click', () => { navLinks.classList.toggle('active'); });
 
-            const targetNav = document.getElementById('nav-' + tabId);
-            if (targetNav) {
-                targetNav.classList.add('active');
-            }
+        function openModal(id) { document.getElementById(id).classList.add('active'); navLinks.classList.remove('active'); }
+        function closeModal(id) { document.getElementById(id).classList.remove('active'); }
+        function showSection() { navLinks.classList.remove('active'); window.scrollTo({ top: 0, behavior: 'smooth' }); }
 
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+        // Star Portal Logic
+        function openStarPortal() { document.getElementById('star-portal').classList.add('active'); navLinks.classList.remove('active'); }
+        function closeStarPortal() { document.getElementById('star-portal').classList.remove('active'); }
+        function switchStarTab(tab, btn) {
+            document.querySelectorAll('.star-tab-content').forEach(el => el.classList.remove('active'));
+            if(btn) { document.querySelectorAll('.star-nav-btn').forEach(b => b.classList.remove('active')); btn.classList.add('active'); }
+            document.getElementById('star-tab-' + tab).classList.add('active');
         }
 
-        function switchFilmModule(moduleId, event) {
-            document.querySelectorAll('.films-module-pane').forEach(pane => {
-                pane.classList.remove('active');
-            });
-            document.querySelectorAll('.films-subnav button').forEach(btn => {
-                btn.classList.remove('active');
-            });
+        // Film Portal Logic (NEW)
+        function openFilmPortal() { document.getElementById('film-portal').classList.add('active'); navLinks.classList.remove('active'); }
+        function closeFilmPortal() { document.getElementById('film-portal').classList.remove('active'); }
+        function switchFilmTab(tab, btn) {
+            document.querySelectorAll('.film-tab-content').forEach(el => el.classList.remove('active'));
+            if(btn) { document.querySelectorAll('.film-nav-btn').forEach(b => b.classList.remove('active')); btn.classList.add('active'); }
+            document.getElementById('film-tab-' + tab).classList.add('active');
+        }
 
-            const targetPane = document.getElementById('module-' + moduleId);
-            if (targetPane) {
-                targetPane.classList.add('active');
-            }
-            if (event && event.target) {
-                event.target.classList.add('active');
+        // BGM Portal Logic
+        function openBgmPortal() { document.getElementById('bgm-portal').classList.add('active'); navLinks.classList.remove('active'); }
+        function closeBgmPortal() { document.getElementById('bgm-portal').classList.remove('active'); }
+
+        // Store Portal Logic
+        function openStorePortal() { document.getElementById('store-portal').classList.add('active'); navLinks.classList.remove('active'); }
+        function closeStorePortal() { document.getElementById('store-portal').classList.remove('active'); }
+        function switchStoreTab(tab) {
+            document.querySelectorAll('.store-portal-overlay .store-tab-content').forEach(el => el.classList.remove('active'));
+            document.getElementById('tab-' + tab).classList.add('active');
+        }
+
+        // Placeholder functions for store & AI features
+        let cart = [];
+        let products = [
+            { id: 1, name: '7Leo Signature Hoodie', price: 1499, category: 'Apparel', desc: 'Premium luxury fleece hoodie with embroidered 7Leo insignia.', img: 'file_00000000f2948207a9d90f38705cd83d.png' },
+            { id: 2, name: '7Leo Star Identity Token', price: 999, category: 'Accessories', desc: 'Encrypted metallic identity token and key ring.', img: 'file_00000000064c81f7bfa7694c6882429c.png' }
+        ];
+
+        function renderStoreCatalog() {
+            const grid = document.getElementById('store-product-grid');
+            if(!grid) return;
+            grid.innerHTML = '';
+            products.forEach(p => {
+                grid.innerHTML += `
+                    <div class="product-card">
+                        <div class="product-card-img-wrap"><img src="${p.img}" alt="${p.name}"></div>
+                        <div class="product-card-info">
+                            <h4 class="product-card-title">${p.name}</h4>
+                            <div class="product-card-price">₹${p.price}</div>
+                            <p class="product-card-desc">${p.desc}</p>
+                            <button class="action-btn" style="margin-top:auto;" onclick="addToCart(${p.id})">Add to Cart</button>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        function addToCart(id) {
+            const prod = products.find(p => p.id === id);
+            if(prod) {
+                cart.push(prod);
+                updateCartCount();
+                alert(prod.name + ' added to cart!');
             }
         }
+
+        function updateCartCount() {
+            const badge = document.getElementById('cart-count');
+            if(badge) badge.innerText = cart.length;
+        }
+
+        function filterStoreProducts() { renderStoreCatalog(); }
+        function openAddProductForm() { switchStoreTab('product-form'); }
+        function calculateRealtimeProfit() {}
+        function handleSaveProduct(e) { e.preventDefault(); alert('Product saved successfully.'); switchStoreTab('catalog'); }
+        function proceedToCheckout() { switchStoreTab('checkout'); }
+        function handleCheckoutSubmit(e) { e.preventDefault(); alert('Order placed successfully.'); cart = []; updateCartCount(); switchStoreTab('catalog'); }
+        function trackOrderQuery() { document.getElementById('tracking-result-box').style.display = 'block'; document.getElementById('tracking-result-box').innerHTML = '<p>Order Status: Processing / Supplier Dispatch Active.</p>'; }
+        
+        function renderBgmPlaylist(series) {
+            const container = document.getElementById('bgm-playlist-items');
+            if(!container) return;
+            container.innerHTML = `<div class="bgm-series-block"><h4>7Leo Soundscapes & Groovepad Mix (${series})</h4><p>Stream tracks directly on YouTube BGM Channel.</p></div>`;
+        }
+        function filterBgmSeries(series, btn) {
+            document.querySelectorAll('.bgm-filter-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            renderBgmPlaylist(series);
+        }
+
+        function sendStarAiMessage() {
+            const input = document.getElementById('star-chat-input');
+            if(!input.value.trim()) return;
+            const container = document.getElementById('star-chat-messages');
+            container.innerHTML += `<div class="chat-bubble user">${input.value}</div>`;
+            input.value = '';
+            setTimeout(() => {
+                container.innerHTML += `<div class="chat-bubble assistant">AI Star Collaborator: Vision and execution drive legacy forward.</div>`;
+                container.scrollTop = container.scrollHeight;
+            }, 500);
+        }
+        function clearStarChat() { document.getElementById('star-chat-messages').innerHTML = `<div class="chat-bubble assistant">Chat cleared.</div>`; }
+        function refreshDailyStar() { alert('Daily Star refreshed.'); }
+        function generateAiQuote() { document.getElementById('gen-quote-result').innerText = `"From zero to infinite legacy."`; }
+        function generateAiCaption() { document.getElementById('gen-caption-result').innerText = `Vision • Power • Legacy ✨ #7Leo`; }
+        function generateAiUsername() { document.getElementById('gen-name-result').innerText = `@7LeoFilm_Official`; }
+        function saveCurrentContent(t, c) { alert('Saved ' + t + ' to vault.'); }
+        function renderFavorites() {}
+        function upgradeToStarPremium() { alert('Upgraded to Star Premium!'); }
+        function saveStarProfile(e) { e.preventDefault(); alert('Profile saved.'); }
+        function loadStarProfileData() {}
     </script>
 </body>
 </html>
