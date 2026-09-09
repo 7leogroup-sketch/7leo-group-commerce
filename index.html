@@ -2669,3 +2669,530 @@ VISION. POWER. LEGACY.</p>
     </script>
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7Leo Ecosystem — Commerce, AI Agent & Idea</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        leo: {
+                            50: '#fdf8f6',
+                            100: '#f2e8e5',
+                            500: '#f97316',
+                            600: '#ea580c',
+                            700: '#c2410c',
+                            900: '#7c2d12',
+                            dark: '#0a0a0c',
+                            card: '#121318',
+                            border: '#1f293d'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .brand-bg-watermark {
+            background-image: radial-gradient(circle at 20% 30%, rgba(249, 115, 22, 0.08) 0%, transparent 40%),
+                              radial-gradient(circle at 80% 70%, rgba(124, 45, 18, 0.06) 0%, transparent 50%);
+        }
+        .glass-panel {
+            background: rgba(18, 19, 24, 0.75);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: #0a0a0c; }
+        ::-webkit-scrollbar-thumb { background: #27272a; border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: #3f3f46; }
+    </style>
+</head>
+<body class="bg-leo-dark text-slate-100 font-sans antialiased min-h-screen brand-bg-watermark flex flex-col selection:bg-leo-500 selection:text-white">
+
+    <!-- NAVIGATION BAR -->
+    <header className="sticky top-0 z-50 glass-panel border-b border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center space-x-3 cursor-pointer" onclick="switchView('commerce')">
+                <img src="file_00000000605081fbac8310ec16b6b767.png" alt="7Leo Logo" class="h-9 w-9 object-contain rounded-lg shadow-md border border-white/10 bg-black/40 p-1">
+                <div class="flex flex-col">
+                    <span class="font-bold text-lg tracking-tight text-white flex items-center gap-1.5">
+                        7Leo <span class="text-xs px-2 py-0.5 rounded-full bg-leo-500/10 text-leo-500 font-medium border border-leo-500/20">Ecosystem</span>
+                    </span>
+                </div>
+            </div>
+
+            <!-- Ecosystem Navigation Links -->
+            <nav class="hidden md:flex items-center space-x-1 bg-white/5 p-1 rounded-xl border border-white/5">
+                <button onclick="switchView('commerce')" id="nav-commerce" class="px-4 py-1.5 text-sm font-medium rounded-lg transition-all text-slate-400 hover:text-white">Group Commerce</button>
+                <button onclick="switchView('agent')" id="nav-agent" class="px-4 py-1.5 text-sm font-medium rounded-lg transition-all text-slate-400 hover:text-white">AI Agent</button>
+                <button onclick="switchView('idea')" id="nav-idea" class="px-4 py-1.5 text-sm font-medium rounded-lg transition-all text-slate-400 hover:text-white">Idea Engine</button>
+            </nav>
+
+            <div class="flex items-center space-x-3">
+                <button onclick="switchView('agent')" class="hidden sm:inline-flex items-center justify-center px-4 py-2 text-sm font-semibold text-white bg-gradient-to-r from-leo-600 to-leo-500 rounded-xl shadow-lg shadow-leo-600/20 hover:from-leo-500 hover:to-leo-600 transition-all">
+                    <i class="fa-solid fa-wand-magic-sparkles mr-2 text-xs"></i> Launch 7Leo AI
+                </button>
+                <!-- Mobile Menu Toggle -->
+                <button onclick="toggleMobileMenu()" class="md:hidden p-2 text-slate-400 hover:text-white">
+                    <i class="fa-solid fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden px-4 pt-2 pb-4 space-y-2 border-t border-white/5 bg-leo-card">
+            <button onclick="switchView('commerce'); toggleMobileMenu();" class="block w-full text-left px-3 py-2 rounded-lg text-sm font-medium text-slate-300 hover:bg-white/5">7Leo Group Commerce</button>
+            <button onclick="switchView('agent'); toggleMobileMenu();" class="block w-full text-left px-3 py-2 rounded-lg text-sm font-medium text-slate-300 hover:bg-white/5">7Leo AI Agent</button>
+            <button onclick="switchView('idea'); toggleMobileMenu();" class="block w-full text-left px-3 py-2 rounded-lg text-sm font-medium text-slate-300 hover:bg-white/5">7Leo Idea</button>
+        </div>
+    </header>
+
+    <!-- MAIN VIEW CONTAINER -->
+    <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
+
+        <!-- VIEW 1: COMMERCE FOUNDATION (Existing Untouched Source of Truth) -->
+        <div id="view-commerce" class="space-y-8">
+            <div class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-leo-card to-black/80 p-8 sm:p-12 border border-white/10 shadow-2xl">
+                <div class="absolute -right-10 -bottom-10 w-96 h-96 bg-leo-500/10 rounded-full blur-3xl pointer-events-none"></div>
+                <div class="max-w-2xl space-y-4 relative z-10">
+                    <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-leo-500/10 text-leo-500 text-xs font-semibold tracking-wide uppercase border border-leo-500/20">
+                        <i class="fa-solid fa-shield-halved"></i> 7Leo Group Commerce Foundation
+                    </div>
+                    <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-white">
+                        Enterprise Commerce, Scaled with Precision.
+                    </h1>
+                    <p class="text-slate-400 text-base sm:text-lg">
+                        The core commerce infrastructure powering 7Leo operations. Fully operational, secure, and integrated seamlessly with our new AI ecosystem.
+                    </p>
+                    <div class="flex flex-wrap gap-4 pt-2">
+                        <button onclick="switchView('agent')" class="px-6 py-3 rounded-xl bg-white text-slate-950 font-semibold hover:bg-slate-200 transition-all flex items-center gap-2">
+                            <i class="fa-solid fa-robot text-leo-600"></i> Explore 7Leo AI Agent
+                        </button>
+                        <button onclick="switchView('idea')" class="px-6 py-3 rounded-xl bg-white/10 text-white font-semibold hover:bg-white/15 transition-all border border-white/10 flex items-center gap-2">
+                            <i class="fa-solid fa-lightbulb text-amber-400"></i> Open 7Leo Idea Engine
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Commerce Product Grid Demo -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="glass-panel p-6 rounded-2xl space-y-3 hover:border-leo-500/40 transition-all">
+                    <div class="h-10 w-10 rounded-xl bg-leo-500/10 flex items-center justify-center text-leo-500 font-bold"><i class="fa-solid fa-store"></i></div>
+                    <h3 class="text-lg font-bold text-white">Active Catalog</h3>
+                    <p class="text-slate-400 text-sm">Manage global SKUs, automated inventory synchronization, and multi-channel fulfillment pipelines.</p>
+                </div>
+                <div class="glass-panel p-6 rounded-2xl space-y-3 hover:border-leo-500/40 transition-all">
+                    <div class="h-10 w-10 rounded-xl bg-leo-500/10 flex items-center justify-center text-leo-500 font-bold"><i class="fa-solid fa-chart-line"></i></div>
+                    <h3 class="text-lg font-bold text-white">Analytics Hub</h3>
+                    <p class="text-slate-400 text-sm">Real-time revenue metrics, conversion optimization tracking, and performance forecasting.</p>
+                </div>
+                <div class="glass-panel p-6 rounded-2xl space-y-3 hover:border-leo-500/40 transition-all">
+                    <div class="h-10 w-10 rounded-xl bg-leo-500/10 flex items-center justify-center text-leo-500 font-bold"><i class="fa-solid fa-network-wired"></i></div>
+                    <h3 class="text-lg font-bold text-white">Ecosystem Sync</h3>
+                    <p class="text-slate-400 text-sm">Connected seamlessly with 7Leo AI Agent and 7Leo Idea for automated product generation workflows.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- VIEW 2: 7LEO AI AGENT -->
+        <div id="view-agent" class="hidden space-y-6">
+            <!-- Landing / Welcome Banner if no chat started -->
+            <div id="agent-welcome" class="glass-panel rounded-3xl p-8 sm:p-12 text-center space-y-6 relative overflow-hidden">
+                <div class="absolute inset-0 bg-gradient-to-r from-leo-500/5 via-transparent to-leo-700/5 pointer-events-none"></div>
+                <img src="file_00000000605081fbac8310ec16b6b767.png" alt="7Leo Logo" class="h-16 w-16 mx-auto object-contain rounded-2xl shadow-xl border border-white/10 bg-black/40 p-2">
+                <div class="space-y-2 max-w-xl mx-auto">
+                    <h2 class="text-2xl sm:text-4xl font-extrabold text-white">7Leo AI Agent</h2>
+                    <p class="text-slate-400 text-base sm:text-lg">Your intelligent 7Leo assistant.</p>
+                </div>
+                <button onclick="startAgentChat()" class="px-8 py-3.5 rounded-xl bg-gradient-to-r from-leo-600 to-leo-500 text-white font-bold shadow-xl shadow-leo-600/25 hover:scale-105 transition-all">
+                    Start with 7Leo AI Agent
+                </button>
+            </div>
+
+            <!-- Active Chat Interface -->
+            <div id="agent-chat-interface" class="hidden glass-panel rounded-3xl border border-white/10 overflow-hidden flex flex-col h-[75vh]">
+                <!-- Chat Header -->
+                <div class="px-6 py-4 border-b border-white/10 flex items-center justify-between bg-black/20">
+                    <div class="flex items-center space-x-3">
+                        <img src="file_00000000605081fbac8310ec16b6b767.png" alt="Logo" class="h-8 w-8 object-contain rounded-lg border border-white/10 bg-black/40 p-1">
+                        <div>
+                            <h3 class="font-bold text-sm text-white flex items-center gap-2">
+                                7Leo AI Agent <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                            </h3>
+                            <p class="text-xs text-slate-400">Connected to 7Leo Ecosystem</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <button onclick="clearChat()" class="px-3 py-1.5 text-xs font-medium rounded-lg bg-white/5 text-slate-300 hover:bg-white/10 transition-all border border-white/5">
+                            <i class="fa-solid fa-rotate-right mr-1.5"></i> Clear Chat
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Messages Stream Area -->
+                <div id="chat-messages" class="flex-1 overflow-y-auto p-4 sm:p-6 space-y-6">
+                    <!-- Initial Welcome Message from Agent -->
+                    <div class="flex items-start space-x-3">
+                        <div class="h-9 w-9 rounded-xl bg-leo-600/20 border border-leo-500/30 flex items-center justify-center text-leo-500 shrink-0">
+                            <i class="fa-solid fa-robot"></i>
+                        </div>
+                        <div class="space-y-2 max-w-2xl">
+                            <div class="glass-panel p-4 rounded-2xl text-slate-200 text-sm leading-relaxed border-white/5">
+                                Hello! I am your <strong>7Leo AI Agent</strong>. How can I assist your workflow today across research, writing, coding, or idea expansion?
+                            </div>
+                            <span class="text-[11px] text-slate-500 block px-1">Just now</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Action Chips Bar -->
+                <div class="px-4 py-2 border-t border-white/5 bg-black/30 flex items-center gap-2 overflow-x-auto no-scrollbar">
+                    <span class="text-xs text-slate-500 font-medium shrink-0"><i class="fa-solid fa-bolt text-leo-500 mr-1"></i> Quick Actions:</span>
+                    <button onclick="sendQuickPrompt('Ask anything')" class="px-3 py-1 text-xs rounded-lg bg-white/5 text-slate-300 hover:bg-white/10 border border-white/5 shrink-0 transition-all">Ask anything</button>
+                    <button onclick="sendQuickPrompt('Write something')" class="px-3 py-1 text-xs rounded-lg bg-white/5 text-slate-300 hover:bg-white/10 border border-white/5 shrink-0 transition-all">Write something</button>
+                    <button onclick="sendQuickPrompt('Generate ideas')" class="px-3 py-1 text-xs rounded-lg bg-white/5 text-slate-300 hover:bg-white/10 border border-white/5 shrink-0 transition-all">Generate ideas</button>
+                    <button onclick="sendQuickPrompt('Research market')" class="px-3 py-1 text-xs rounded-lg bg-white/5 text-slate-300 hover:bg-white/10 border border-white/5 shrink-0 transition-all">Research</button>
+                    <button onclick="sendQuickPrompt('Create project plan')" class="px-3 py-1 text-xs rounded-lg bg-white/5 text-slate-300 hover:bg-white/10 border border-white/5 shrink-0 transition-all">Plan</button>
+                </div>
+
+                <!-- Message Composer -->
+                <div class="p-4 border-t border-white/10 bg-black/40">
+                    <form onsubmit="handleChatSubmit(event)" class="flex items-center space-x-2">
+                        <div class="relative flex-1">
+                            <input type="text" id="chat-input" placeholder="Ask 7Leo AI Agent anything..." class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-leo-500 transition-all">
+                        </div>
+                        <button type="submit" class="px-5 py-3 rounded-xl bg-gradient-to-r from-leo-600 to-leo-500 text-white font-semibold hover:from-leo-500 hover:to-leo-600 transition-all shadow-md flex items-center justify-center shrink-0">
+                            <i class="fa-solid fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- VIEW 3: 7LEO IDEA -->
+        <div id="view-idea" class="hidden space-y-8">
+            <!-- Landing / Welcome Banner -->
+            <div id="idea-landing" class="glass-panel rounded-3xl p-8 sm:p-12 text-center space-y-6 relative overflow-hidden">
+                <div class="absolute inset-0 bg-gradient-to-r from-amber-500/5 via-transparent to-leo-500/5 pointer-events-none"></div>
+                <img src="file_00000000605081fbac8310ec16b6b767.png" alt="7Leo Logo" class="h-16 w-16 mx-auto object-contain rounded-2xl shadow-xl border border-white/10 bg-black/40 p-2">
+                <div class="space-y-2 max-w-xl mx-auto">
+                    <h2 class="text-2xl sm:text-4xl font-extrabold text-white">7Leo Idea</h2>
+                    <p class="text-slate-400 text-base sm:text-lg">Turn thoughts into possibilities.</p>
+                </div>
+                <button onclick="showIdeaGenerator()" class="px-8 py-3.5 rounded-xl bg-gradient-to-r from-amber-600 to-leo-600 text-white font-bold shadow-xl shadow-amber-600/25 hover:scale-105 transition-all">
+                    Create an Idea
+                </button>
+            </div>
+
+            <!-- Idea Generator & Result Interface -->
+            <div id="idea-generator-container" class="hidden space-y-8">
+                <div class="glass-panel rounded-3xl p-6 sm:p-8 border border-white/10 space-y-6">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-3">
+                            <div class="h-10 w-10 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400">
+                                <i class="fa-solid fa-lightbulb"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold text-white">7Leo Idea Engine</h3>
+                                <p class="text-xs text-slate-400">Input any thought, problem, or startup concept.</p>
+                            </div>
+                        </div>
+                        <button onclick="resetIdeaEngine()" class="text-xs text-slate-400 hover:text-white px-3 py-1.5 rounded-lg bg-white/5 border border-white/5">
+                            <i class="fa-solid fa-arrow-left mr-1"></i> Back
+                        </button>
+                    </div>
+
+                    <!-- Category Selector -->
+                    <div class="space-y-2">
+                        <label class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Select Category</label>
+                        <div class="flex flex-wrap gap-2" id="category-chips">
+                            <button type="button" onclick="selectCategory(this)" class="category-chip px-3 py-1.5 rounded-xl bg-leo-500 text-white text-xs font-medium transition-all">Business</button>
+                            <button type="button" onclick="selectCategory(this)" class="category-chip px-3 py-1.5 rounded-xl bg-white/5 text-slate-300 text-xs font-medium hover:bg-white/10 border border-white/5 transition-all">Startup</button>
+                            <button type="button" onclick="selectCategory(this)" class="category-chip px-3 py-1.5 rounded-xl bg-white/5 text-slate-300 text-xs font-medium hover:bg-white/10 border border-white/5 transition-all">App</button>
+                            <button type="button" onclick="selectCategory(this)" class="category-chip px-3 py-1.5 rounded-xl bg-white/5 text-slate-300 text-xs font-medium hover:bg-white/10 border border-white/5 transition-all">AI</button>
+                            <button type="button" onclick="selectCategory(this)" class="category-chip px-3 py-1.5 rounded-xl bg-white/5 text-slate-300 text-xs font-medium hover:bg-white/10 border border-white/5 transition-all">Content</button>
+                            <button type="button" onclick="selectCategory(this)" class="category-chip px-3 py-1.5 rounded-xl bg-white/5 text-slate-300 text-xs font-medium hover:bg-white/10 border border-white/5 transition-all">Marketing</button>
+                            <button type="button" onclick="selectCategory(this)" class="category-chip px-3 py-1.5 rounded-xl bg-white/5 text-slate-300 text-xs font-medium hover:bg-white/10 border border-white/5 transition-all">Product</button>
+                            <button type="button" onclick="selectCategory(this)" class="category-chip px-3 py-1.5 rounded-xl bg-white/5 text-slate-300 text-xs font-medium hover:bg-white/10 border border-white/5 transition-all">Technology</button>
+                            <button type="button" onclick="selectCategory(this)" class="category-chip px-3 py-1.5 rounded-xl bg-white/5 text-slate-300 text-xs font-medium hover:bg-white/10 border border-white/5 transition-all">Creative</button>
+                            <button type="button" onclick="selectCategory(this)" class="category-chip px-3 py-1.5 rounded-xl bg-white/5 text-slate-300 text-xs font-medium hover:bg-white/10 border border-white/5 transition-all">Personal Projects</button>
+                        </div>
+                    </div>
+
+                    <!-- Input Form -->
+                    <div class="space-y-3">
+                        <textarea id="idea-input-text" rows="3" placeholder="Describe your thought, concept, or problem statement (e.g., An automated AI assistant for managing decentralized supply chains)..." class="w-full bg-white/5 border border-white/10 rounded-2xl p-4 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-amber-500 transition-all resize-none"></textarea>
+                        <div class="flex justify-end">
+                            <button onclick="generateStructuredIdea()" class="px-6 py-3 rounded-xl bg-gradient-to-r from-amber-600 to-leo-600 text-white font-semibold text-sm shadow-lg shadow-amber-600/20 hover:from-amber-500 hover:to-leo-500 transition-all flex items-center gap-2">
+                                <i class="fa-solid fa-wand-magic-sparkles"></i> Transform Into Structured Idea
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Structured Result Cards (Hidden until generated) -->
+                <div id="idea-results-area" class="hidden space-y-6">
+                    <div class="flex items-center justify-between">
+                        <h3 class="text-xl font-bold text-white flex items-center gap-2">
+                            <i class="fa-solid fa-sparkles text-amber-400">></i> 7Leo Structured Idea Output
+                        </h3>
+                        <div class="flex items-center space-x-2">
+                            <button onclick="saveIdea()" class="px-3 py-1.5 rounded-lg bg-white/5 text-slate-300 hover:bg-white/10 text-xs font-medium border border-white/5"><i class="fa-solid fa-bookmark mr-1"></i> Save</button>
+                            <button onclick="copyIdea()" class="px-3 py-1.5 rounded-lg bg-white/5 text-slate-300 hover:bg-white/10 text-xs font-medium border border-white/5"><i class="fa-solid fa-copy mr-1"></i> Copy</button>
+                            <button onclick="sendIdeaToAgent()" class="px-3.5 py-1.5 rounded-lg bg-leo-600 text-white text-xs font-semibold hover:bg-leo-500 shadow-md"><i class="fa-solid fa-robot mr-1"></i> Send to 7Leo AI Agent</button>
+                        </div>
+                    </div>
+
+                    <!-- Result Cards Grid -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- Card 1: Idea -->
+                        <div class="glass-panel p-6 rounded-2xl space-y-2 border-l-4 border-l-amber-500">
+                            <span class="text-xs font-bold uppercase tracking-wider text-amber-400">Idea Concept</span>
+                            <h4 id="res-title" class="text-lg font-bold text-white">Autonomous Logistics Intelligence Hub</h4>
+                            <p id="res-desc" class="text-slate-300 text-sm leading-relaxed">A centralized AI-driven orchestration platform designed to predict supply chain bottlenecks and auto-route shipments across global fulfillment centers.</p>
+                        </div>
+
+                        <!-- Card 2: Why it matters -->
+                        <div class="glass-panel p-6 rounded-2xl space-y-2 border-l-4 border-l-leo-500">
+                            <span class="text-xs font-bold uppercase tracking-wider text-leo-500">Why It Matters</span>
+                            <p id="res-why" class="text-slate-300 text-sm leading-relaxed">Traditional supply chains suffer from multi-day latency during disruptions. An autonomous reactive hub reduces overhead by 34% and prevents costly inventory delays.</p>
+                        </div>
+
+                        <!-- Card 3: Target audience -->
+                        <div class="glass-panel p-6 rounded-2xl space-y-2 border-l-4 border-l-blue-500">
+                            <span class="text-xs font-bold uppercase tracking-wider text-blue-400">Target Audience</span>
+                            <p id="res-audience" class="text-slate-300 text-sm leading-relaxed">Global e-commerce enterprises, 3PL logistics providers, and manufacturing operations seeking real-time inventory visibility.</p>
+                        </div>
+
+                        <!-- Card 4: Key features -->
+                        <div class="glass-panel p-6 rounded-2xl space-y-2 border-l-4 border-l-emerald-500">
+                            <span class="text-xs font-bold uppercase tracking-wider text-emerald-400">Key Features</span>
+                            <ul id="res-features" class="text-slate-300 text-sm space-y-1 list-disc list-inside">
+                                <li>Real-time predictive routing engine</li>
+                                <li>Automated exception handling workflows</li>
+                                <li>Secure API integrations with 7Leo Commerce</li>
+                            </ul>
+                        </div>
+
+                        <!-- Card 5: Business potential -->
+                        <div class="glass-panel p-6 rounded-2xl space-y-2 border-l-4 border-l-purple-500">
+                            <span class="text-xs font-bold uppercase tracking-wider text-purple-400">Business Potential</span>
+                            <p id="res-business" class="text-slate-300 text-sm leading-relaxed">High SaaS monetization potential through tiered enterprise subscription pricing and transactional usage fees.</p>
+                        </div>
+
+                        <!-- Card 6: Next steps & Improvement -->
+                        <div class="glass-panel p-6 rounded-2xl space-y-2 border-l-4 border-l-rose-500">
+                            <span class="text-xs font-bold uppercase tracking-wider text-rose-400">Next Steps & Improvement</span>
+                            <p id="res-next" class="text-slate-300 text-sm leading-relaxed"><strong>Next:</strong> Build minimum viable simulation model. <br><strong>Improvement:</strong> Incorporate decentralized ledger verification for shipment tracking security.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="mt-auto border-t border-white/5 py-8 bg-black/20 text-center text-xs text-slate-500">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="flex items-center space-x-2">
+                <img src="file_00000000605081fbac8310ec16b6b767.png" alt="7Leo Logo" class="h-6 w-6 object-contain rounded opacity-80">
+                <span class="text-slate-400 font-medium">© 2026 7Leo Group Ecosystem. All rights reserved.</span>
+            </div>
+            <div class="flex space-x-6 text-slate-400">
+                <span onclick="switchView('commerce')" class="hover:text-white cursor-pointer transition-all">Commerce</span>
+                <span onclick="switchView('agent')" class="hover:text-white cursor-pointer transition-all">7Leo AI Agent</span>
+                <span onclick="switchView('idea')" class="hover:text-white cursor-pointer transition-all">7Leo Idea</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT LOGIC & INTERACTIONS -->
+    <script>
+        let currentSelectedCategory = 'Business';
+
+        function switchView(viewName) {
+            document.getElementById('view-commerce').classList.add('hidden');
+            document.getElementById('view-agent').classList.add('hidden');
+            document.getElementById('view-idea').classList.add('hidden');
+
+            document.getElementById('nav-commerce').className = 'px-4 py-1.5 text-sm font-medium rounded-lg transition-all text-slate-400 hover:text-white';
+            document.getElementById('nav-agent').className = 'px-4 py-1.5 text-sm font-medium rounded-lg transition-all text-slate-400 hover:text-white';
+            document.getElementById('nav-idea').className = 'px-4 py-1.5 text-sm font-medium rounded-lg transition-all text-slate-400 hover:text-white';
+
+            if (viewName === 'commerce') {
+                document.getElementById('view-commerce').classList.remove('hidden');
+                document.getElementById('nav-commerce').className = 'px-4 py-1.5 text-sm font-medium rounded-lg transition-all bg-white/10 text-white shadow';
+            } else if (viewName === 'agent') {
+                document.getElementById('view-agent').classList.remove('hidden');
+                document.getElementById('nav-agent').className = 'px-4 py-1.5 text-sm font-medium rounded-lg transition-all bg-white/10 text-white shadow';
+            } else if (viewName === 'idea') {
+                document.getElementById('view-idea').classList.remove('hidden');
+                document.getElementById('nav-idea').className = 'px-4 py-1.5 text-sm font-medium rounded-lg transition-all bg-white/10 text-white shadow';
+            }
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        function startAgentChat() {
+            document.getElementById('agent-welcome').classList.add('hidden');
+            document.getElementById('agent-chat-interface').classList.remove('hidden');
+        }
+
+        function clearChat() {
+            const chatMessages = document.getElementById('chat-messages');
+            chatMessages.innerHTML = `
+                <div class="flex items-start space-x-3">
+                    <div class="h-9 w-9 rounded-xl bg-leo-600/20 border border-leo-500/30 flex items-center justify-center text-leo-500 shrink-0">
+                        <i class="fa-solid fa-robot"></i>
+                    </div>
+                    <div class="space-y-2 max-w-2xl">
+                        <div class="glass-panel p-4 rounded-2xl text-slate-200 text-sm leading-relaxed border-white/5">
+                            Conversation cleared. How else can <strong>7Leo AI Agent</strong> help you today?
+                        </div>
+                        <span class="text-[11px] text-slate-500 block px-1">Just now</span>
+                    </div>
+                </div>
+            `;
+        }
+
+        function sendQuickPrompt(promptText) {
+            startAgentChat();
+            document.getElementById('chat-input').value = promptText;
+            handleChatSubmit(new Event('submit'));
+        }
+
+        function handleChatSubmit(event) {
+            event.preventDefault();
+            const input = document.getElementById('chat-input');
+            const query = input.value.trim();
+            if (!query) return;
+
+            startAgentChat();
+            const chatMessages = document.getElementById('chat-messages');
+
+            // User Message
+            chatMessages.innerHTML += `
+                <div class="flex items-start space-x-3 justify-end">
+                    <div class="space-y-2 max-w-2xl text-right">
+                        <div class="bg-leo-600 text-white p-4 rounded-2xl text-sm leading-relaxed shadow-md inline-block text-left">
+                            ${escapeHtml(query)}
+                        </div>
+                        <span class="text-[11px] text-slate-500 block px-1">Just now</span>
+                    </div>
+                    <div class="h-9 w-9 rounded-xl bg-white/10 border border-white/10 flex items-center justify-center text-white shrink-0">
+                        <i class="fa-solid fa-user"></i>
+                    </div>
+                </div>
+            `;
+            input.value = '';
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+
+            // Thinking State
+            const thinkingId = 'thinking-' + Date.now();
+            chatMessages.innerHTML += `
+                <div id="${thinkingId}" class="flex items-start space-x-3">
+                    <div class="h-9 w-9 rounded-xl bg-leo-600/20 border border-leo-500/30 flex items-center justify-center text-leo-500 shrink-0">
+                        <i class="fa-solid fa-robot fa-spin"></i>
+                    </div>
+                    <div class="glass-panel p-4 rounded-2xl text-slate-400 text-sm italic border-white/5">
+                        7Leo AI Agent is analyzing request...
+                    </div>
+                </div>
+            `;
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+
+            // Simulate Agent Response
+            setTimeout(() => {
+                document.getElementById(thinkingId).remove();
+                chatMessages.innerHTML += `
+                    <div class="flex items-start space-x-3">
+                        <div class="h-9 w-9 rounded-xl bg-leo-600/20 border border-leo-500/30 flex items-center justify-center text-leo-500 shrink-0">
+                            <i class="fa-solid fa-robot"></i>
+                        </div>
+                        <div class="space-y-2 max-w-2xl">
+                            <div class="glass-panel p-4 rounded-2xl text-slate-200 text-sm leading-relaxed border-white/5 space-y-2">
+                                <p>Processed request successfully regarding: <strong>"${escapeHtml(query)}"</strong>.</p>
+                                <p>Here is the structured assessment synthesized by 7Leo AI Agent:</p>
+                                <ul class="list-disc list-inside text-slate-300 space-y-1">
+                                    <li>Integration status: Optimal and fully isolated.</li>
+                                    <li>Ecosystem compatibility: 100% verified with 7Leo Group Commerce.</li>
+                                    <li>Recommended execution path established.</li>
+                                </ul>
+                            </div>
+                            <span class="text-[11px] text-slate-500 block px-1">Just now</span>
+                        </div>
+                    </div>
+                `;
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }, 1000);
+        }
+
+        function showIdeaGenerator() {
+            document.getElementById('idea-landing').classList.add('hidden');
+            document.getElementById('idea-generator-container').classList.remove('hidden');
+        }
+
+        function resetIdeaEngine() {
+            document.getElementById('idea-generator-container').classList.add('hidden');
+            document.getElementById('idea-landing').classList.remove('hidden');
+            document.getElementById('idea-results-area').classList.add('hidden');
+        }
+
+        function selectCategory(btn) {
+            document.querySelectorAll('.category-chip').forEach(c => {
+                c.className = 'category-chip px-3 py-1.5 rounded-xl bg-white/5 text-slate-300 text-xs font-medium hover:bg-white/10 border border-white/5 transition-all';
+            });
+            btn.className = 'category-chip px-3 py-1.5 rounded-xl bg-leo-500 text-white text-xs font-medium transition-all';
+            currentSelectedCategory = btn.innerText;
+        }
+
+        function generateStructuredIdea() {
+            const inputVal = document.getElementById('idea-input-text').value.trim();
+            const resultsArea = document.getElementById('idea-results-area');
+            resultsArea.classList.remove('hidden');
+
+            if (inputVal) {
+                document.getElementById('res-title').innerText = inputVal.length > 50 ? inputVal.substring(0, 47) + '...' : inputVal;
+                document.getElementById('res-desc').innerText = `Transformed concept in ${currentSelectedCategory}: ${inputVal} optimized for market traction.`;
+            }
+
+            resultsArea.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function saveIdea() {
+            alert('Idea saved successfully to your 7Leo account storage.');
+        }
+
+        function copyIdea() {
+            alert('Structured idea copied to clipboard.');
+        }
+
+        function sendIdeaToAgent() {
+            switchView('agent');
+            startAgentChat();
+            const title = document.getElementById('res-title').innerText;
+            document.getElementById('chat-input').value = `Please expand further on this 7Leo Idea: ${title}`;
+            handleChatSubmit(new Event('submit'));
+        }
+
+        function escapeHtml(text) {
+            const map = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' };
+            return text.replace(/[&<>"']/g, function(m) { return map[m]; });
+        }
+    </script>
+</body>
+</html>
