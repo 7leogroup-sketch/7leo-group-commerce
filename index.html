@@ -2669,3 +2669,861 @@ VISION. POWER. LEGACY.</p>
     </script>
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7Leo Group Commerce & Ecosystem | Vision • Power • Legacy</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        gold: {
+                            400: '#FACC15',
+                            500: '#EAB308',
+                            600: '#CA8A04',
+                        },
+                        darkBg: '#09090b',
+                        cardBg: '#121215',
+                        borderCol: '#27272a'
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #09090b;
+            color: #f4f4f5;
+            overflow-x: hidden;
+        }
+        .bg-tattoo {
+            background-image: radial-gradient(circle at 50% 50%, rgba(234, 179, 8, 0.04) 0%, transparent 70%), url('file_00000000605081fbac8310ec16b6b767.png');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 600px auto;
+        }
+        .glass-panel {
+            background: rgba(18, 18, 21, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .glow-gold {
+            box-shadow: 0 0 25px -5px rgba(234, 179, 8, 0.25);
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: #09090b; }
+        ::-webkit-scrollbar-thumb { background: #27272a; border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: #eab308; }
+    </style>
+</head>
+<body class="bg-tattoo min-h-screen flex flex-col selection:bg-gold-500 selection:text-black">
+
+    <!-- SPLASH / LOADING SCREEN -->
+    <div id="splash-screen" class="fixed inset-0 z-50 bg-darkBg flex flex-col items-center justify-center transition-opacity duration-700">
+        <div class="relative mb-6">
+            <div class="absolute inset-0 rounded-full glow-gold animate-pulse"></div>
+            <img src="file_00000000605081fbac8310ec16b6b767.png" alt="7Leo Logo" class="w-28 h-28 object-contain relative z-10 animate-bounce">
+        </div>
+        <h1 class="text-3xl font-extrabold tracking-wider text-white mb-2">7LEO <span class="text-gold-500">ECOSYSTEM</span></h1>
+        <p class="text-zinc-400 text-sm tracking-widest uppercase mb-8">Vision • Power • Legacy</p>
+        <div class="w-48 h-1.5 bg-zinc-800 rounded-full overflow-hidden">
+            <div id="splash-progress" class="h-full bg-gold-500 w-0 transition-all duration-500"></div>
+        </div>
+    </div>
+
+    <!-- MAIN NAVIGATION -->
+    <header class="sticky top-0 z-40 glass-panel border-b border-borderCol">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Brand Logo & Name -->
+            <div class="flex items-center space-x-3 cursor-pointer" onclick="switchStoreTab('catalog')">
+                <img src="file_00000000605081fbac8310ec16b6b767.png" alt="7Leo" class="w-10 h-10 object-contain">
+                <div>
+                    <span class="text-xl font-black tracking-tight text-white">7LEO</span>
+                    <span class="block text-[10px] tracking-widest text-gold-500 font-bold uppercase">Group Commerce & AI</span>
+                </div>
+            </div>
+
+            <!-- Ecosystem Navigation Tabs -->
+            <nav class="hidden md:flex items-center space-x-1 lg:space-x-2">
+                <button onclick="switchStoreTab('catalog')" id="nav-catalog" class="nav-btn px-3 py-2 rounded-lg text-sm font-medium text-zinc-300 hover:text-white hover:bg-zinc-800/60 transition flex items-center gap-2">
+                    <i class="fa-solid fa-store text-gold-500"></i> Commerce
+                </button>
+                <button onclick="switchStoreTab('bgm')" id="nav-bgm" class="nav-btn px-3 py-2 rounded-lg text-sm font-medium text-zinc-300 hover:text-white hover:bg-zinc-800/60 transition flex items-center gap-2">
+                    <i class="fa-solid fa-music text-gold-500"></i> 7Leo BGM
+                </button>
+                <button onclick="switchStoreTab('star')" id="nav-star" class="nav-btn px-3 py-2 rounded-lg text-sm font-medium text-zinc-300 hover:text-white hover:bg-zinc-800/60 transition flex items-center gap-2">
+                    <i class="fa-solid fa-star text-gold-500"></i> 7Leo Star
+                </button>
+                <button onclick="switchStoreTab('ai-agent')" id="nav-ai-agent" class="nav-btn px-3 py-2 rounded-lg text-sm font-medium text-zinc-300 hover:text-white hover:bg-zinc-800/60 transition flex items-center gap-2">
+                    <i class="fa-solid fa-robot text-gold-500"></i> 7Leo AI Agent
+                </button>
+                <button onclick="switchStoreTab('idea')" id="nav-idea" class="nav-btn px-3 py-2 rounded-lg text-sm font-medium text-zinc-300 hover:text-white hover:bg-zinc-800/60 transition flex items-center gap-2">
+                    <i class="fa-solid fa-lightbulb text-gold-500"></i> 7Leo Idea
+                </button>
+            </nav>
+
+            <!-- Actions & Cart & Profile -->
+            <div class="flex items-center space-x-3">
+                <button onclick="switchStoreTab('cart')" class="relative p-2.5 rounded-xl bg-zinc-900 border border-zinc-800 text-zinc-300 hover:text-white hover:border-gold-500 transition">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span id="cart-badge" class="absolute -top-1 -right-1 bg-gold-500 text-black text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center">0</span>
+                </button>
+                <button onclick="switchStoreTab('dashboard')" class="hidden sm:flex items-center gap-2 px-3 py-2 rounded-xl bg-zinc-900 border border-zinc-800 text-sm font-medium text-zinc-300 hover:text-white hover:border-gold-500 transition">
+                    <i class="fa-solid fa-chart-line text-gold-500"></i> Owner Portal
+                </button>
+                <button onclick="openModal('about-modal')" class="p-2.5 rounded-xl bg-zinc-900 border border-zinc-800 text-zinc-300 hover:text-white hover:border-gold-500 transition">
+                    <i class="fa-solid fa-circle-info"></i>
+                </button>
+                <button onclick="openModal('auth-modal')" class="px-4 py-2 bg-gold-500 hover:bg-gold-400 text-black font-bold text-sm rounded-xl transition shadow-lg shadow-gold-500/10">
+                    Sign In
+                </button>
+                <!-- Mobile Menu Toggle -->
+                <button onclick="toggleMobileMenu()" class="md:hidden p-2 text-zinc-300 hover:text-white">
+                    <i class="fa-solid fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Dropdown Navigation -->
+        <div id="mobile-menu" class="hidden md:hidden glass-panel border-t border-borderCol px-4 py-4 space-y-2">
+            <button onclick="switchStoreTab('catalog'); toggleMobileMenu();" class="w-full text-left px-3 py-2 rounded-lg text-zinc-300 hover:bg-zinc-800 flex items-center gap-3"><i class="fa-solid fa-store text-gold-500"></i> Commerce</button>
+            <button onclick="switchStoreTab('bgm'); toggleMobileMenu();" class="w-full text-left px-3 py-2 rounded-lg text-zinc-300 hover:bg-zinc-800 flex items-center gap-3"><i class="fa-solid fa-music text-gold-500"></i> 7Leo BGM</button>
+            <button onclick="switchStoreTab('star'); toggleMobileMenu();" class="w-full text-left px-3 py-2 rounded-lg text-zinc-300 hover:bg-zinc-800 flex items-center gap-3"><i class="fa-solid fa-star text-gold-500"></i> 7Leo Star</button>
+            <button onclick="switchStoreTab('ai-agent'); toggleMobileMenu();" class="w-full text-left px-3 py-2 rounded-lg text-zinc-300 hover:bg-zinc-800 flex items-center gap-3"><i class="fa-solid fa-robot text-gold-500"></i> 7Leo AI Agent</button>
+            <button onclick="switchStoreTab('idea'); toggleMobileMenu();" class="w-full text-left px-3 py-2 rounded-lg text-zinc-300 hover:bg-zinc-800 flex items-center gap-3"><i class="fa-solid fa-lightbulb text-gold-500"></i> 7Leo Idea</button>
+            <button onclick="switchStoreTab('dashboard'); toggleMobileMenu();" class="w-full text-left px-3 py-2 rounded-lg text-zinc-300 hover:bg-zinc-800 flex items-center gap-3"><i class="fa-solid fa-chart-line text-gold-500"></i> Owner Portal</button>
+        </div>
+    </header>
+
+    <!-- MAIN VIEW CONTAINER -->
+    <main class="flex-grow max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-8">
+
+        <!-- TAB 1: COMMERCE CATALOG -->
+        <div id="tab-catalog" class="store-tab-content active space-y-8">
+            <!-- Hero Banner -->
+            <div class="relative rounded-3xl overflow-hidden glass-panel p-8 sm:p-12 border border-zinc-800 flex flex-col md:flex-row items-center justify-between gap-8">
+                <div class="max-w-xl space-y-4">
+                    <span class="px-3 py-1 bg-gold-500/10 text-gold-500 border border-gold-500/20 text-xs font-bold rounded-full uppercase tracking-wider">Official 7Leo Store</span>
+                    <h2 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">Built for Visionaries & Elite Creators.</h2>
+                    <p class="text-zinc-400 text-sm sm:text-base">Explore cutting-edge digital assets, premium merchandise, custom clothing, and exclusive licensing curated under the 7Leo standard.</p>
+                    <div class="flex flex-wrap gap-4 pt-2">
+                        <button onclick="document.getElementById('products-section').scrollIntoView({behavior: 'smooth'})" class="px-6 py-3 bg-gold-500 text-black font-bold rounded-xl hover:bg-gold-400 transition shadow-lg shadow-gold-500/20">Explore Products</button>
+                        <button onclick="switchStoreTab('ai-agent')" class="px-6 py-3 bg-zinc-900 border border-zinc-700 text-white font-bold rounded-xl hover:bg-zinc-800 transition">Try 7Leo AI Agent</button>
+                    </div>
+                </div>
+                <div class="relative w-full md:w-80 h-64 sm:h-80 flex items-center justify-center">
+                    <div class="absolute inset-0 bg-gold-500/10 rounded-full blur-3xl"></div>
+                    <img src="file_00000000605081fbac8310ec16b6b767.png" alt="7Leo Emblem" class="w-56 h-56 object-contain relative z-10 drop-shadow-2xl">
+                </div>
+            </div>
+
+            <!-- Filters & Search -->
+            <div id="products-section" class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-4">
+                <div class="flex items-center gap-2 overflow-x-auto w-full sm:w-auto pb-2 sm:pb-0">
+                    <button onclick="filterProducts('all')" class="cat-filter-btn px-4 py-2 rounded-xl text-sm font-bold bg-gold-500 text-black transition">All Items</button>
+                    <button onclick="filterProducts('apparel')" class="cat-filter-btn px-4 py-2 rounded-xl text-sm font-semibold bg-zinc-900 text-zinc-400 hover:text-white border border-zinc-800 transition">Apparel</button>
+                    <button onclick="filterProducts('digital')" class="cat-filter-btn px-4 py-2 rounded-xl text-sm font-semibold bg-zinc-900 text-zinc-400 hover:text-white border border-zinc-800 transition">Digital Assets</button>
+                    <button onclick="filterProducts('hardware')" class="cat-filter-btn px-4 py-2 rounded-xl text-sm font-semibold bg-zinc-900 text-zinc-400 hover:text-white border border-zinc-800 transition">Hardware</button>
+                </div>
+                <div class="w-full sm:w-72 relative">
+                    <i class="fa-solid fa-search absolute left-3.5 top-3.5 text-zinc-500"></i>
+                    <input type="text" id="product-search" oninput="searchProducts()" placeholder="Search 7Leo collection..." class="w-full bg-zinc-900 border border-zinc-800 rounded-xl pl-10 pr-4 py-2.5 text-sm text-white focus:outline-none focus:border-gold-500 transition">
+                </div>
+            </div>
+
+            <!-- Product Grid -->
+            <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Dynamically populated products -->
+            </div>
+        </div>
+
+        <!-- TAB 2: 7LEO BGM PORTAL -->
+        <div id="tab-bgm" class="store-tab-content space-y-8 hidden">
+            <div class="glass-panel p-8 rounded-3xl border border-zinc-800 text-center space-y-4">
+                <span class="px-3 py-1 bg-gold-500/10 text-gold-500 border border-gold-500/20 text-xs font-bold rounded-full uppercase">Audio Ecosystem</span>
+                <h2 class="text-3xl font-extrabold text-white">7Leo BGM & Soundtracks</h2>
+                <p class="text-zinc-400 max-w-2xl mx-auto text-sm">Cinematic background scores, motivational anthems, and high-energy electronic soundscapes crafted for developers, creators, and leaders.</p>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="bgm-tracks-grid">
+                <!-- Populated via JS -->
+            </div>
+        </div>
+
+        <!-- TAB 3: 7LEO STAR PORTAL -->
+        <div id="tab-star" class="store-tab-content space-y-8 hidden">
+            <div class="glass-panel p-8 rounded-3xl border border-zinc-800 flex flex-col md:flex-row items-center justify-between gap-6">
+                <div class="space-y-3">
+                    <span class="px-3 py-1 bg-gold-500/10 text-gold-500 border border-gold-500/20 text-xs font-bold rounded-full uppercase">Identity & Hub</span>
+                    <h2 class="text-3xl font-extrabold text-white">7Leo Star Member Center</h2>
+                    <p class="text-zinc-400 text-sm">Your secure membership tier, streaks, vaults, and exclusive private channels.</p>
+                </div>
+                <div class="p-6 bg-zinc-900 border border-zinc-800 rounded-2xl flex items-center gap-4">
+                    <div class="w-12 h-12 bg-gold-500/20 text-gold-500 rounded-xl flex items-center justify-center text-xl font-bold"><i class="fa-solid fa-crown"></i></div>
+                    <div>
+                        <div class="text-xs text-zinc-400">Current Status</div>
+                        <div class="text-lg font-bold text-white">7Leo Elite Star</div>
+                    </div>
+                </div>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <!-- Vault & Favorites -->
+                <div class="glass-panel p-6 rounded-2xl border border-zinc-800 space-y-4">
+                    <h3 class="text-lg font-bold text-white flex items-center gap-2"><i class="fa-solid fa-vault text-gold-500"></i> Star Vault</h3>
+                    <div id="star-vault-items" class="space-y-3 max-h-72 overflow-y-auto pr-2">
+                        <!-- Vault Items -->
+                    </div>
+                </div>
+                <!-- Daily Wisdom & Streaks -->
+                <div class="glass-panel p-6 rounded-2xl border border-zinc-800 space-y-4">
+                    <h3 class="text-lg font-bold text-white flex items-center gap-2"><i class="fa-solid fa-fire text-gold-500"></i> Daily Streak & Motivation</h3>
+                    <div class="p-4 bg-zinc-900 border border-zinc-800 rounded-xl space-y-2">
+                        <div class="text-xs text-gold-500 font-bold uppercase tracking-wider">Today's 7Leo Wisdom</div>
+                        <p id="daily-wisdom" class="text-sm text-zinc-300 italic">"Vision without execution is merely a dream. Power without discipline is chaos. Build your legacy."</p>
+                    </div>
+                    <button onclick="refreshWisdom()" class="w-full py-2.5 bg-zinc-800 hover:bg-zinc-700 text-white font-semibold rounded-xl text-sm transition">Generate New Wisdom</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB 4: 7LEO AI AGENT (NEW) -->
+        <div id="tab-ai-agent" class="store-tab-content space-y-6 hidden">
+            <!-- Landing / Welcome Banner -->
+            <div class="glass-panel p-8 rounded-3xl border border-zinc-800 flex flex-col md:flex-row items-center justify-between gap-6">
+                <div class="space-y-3 max-w-xl">
+                    <span class="px-3 py-1 bg-gold-500/10 text-gold-500 border border-gold-500/20 text-xs font-bold rounded-full uppercase">7Leo AI Ecosystem</span>
+                    <h2 class="text-3xl font-extrabold text-white">7Leo AI Agent</h2>
+                    <p class="text-zinc-400 text-sm">Your intelligent 7Leo assistant. Ready for research, strategy, coding, and multi-step execution.</p>
+                    <div class="flex gap-3 pt-2">
+                        <button onclick="startAiChatSession()" class="px-6 py-2.5 bg-gold-500 hover:bg-gold-400 text-black font-bold rounded-xl text-sm transition shadow-lg shadow-gold-500/20">Start with 7Leo AI Agent</button>
+                        <button onclick="switchStoreTab('idea')" class="px-6 py-2.5 bg-zinc-900 border border-zinc-700 hover:bg-zinc-800 text-white font-semibold rounded-xl text-sm transition">Create an Idea</button>
+                    </div>
+                </div>
+                <div class="w-32 h-32 relative flex items-center justify-center">
+                    <div class="absolute inset-0 bg-gold-500/10 rounded-full blur-xl"></div>
+                    <i class="fa-solid fa-robot text-6xl text-gold-500 relative z-10"></i>
+                </div>
+            </div>
+
+            <!-- Quick Action Chips -->
+            <div class="flex items-center gap-2 overflow-x-auto pb-2">
+                <button onclick="sendQuickPrompt('Ask anything about 7Leo ecosystem')" class="px-4 py-2 rounded-xl bg-zinc-900 border border-zinc-800 hover:border-gold-500 text-xs text-zinc-300 hover:text-white whitespace-nowrap transition flex items-center gap-2"><i class="fa-solid fa-bolt text-gold-500"></i> Ask anything</button>
+                <button onclick="sendQuickPrompt('Write a clean JavaScript function for user auth')" class="px-4 py-2 rounded-xl bg-zinc-900 border border-zinc-800 hover:border-gold-500 text-xs text-zinc-300 hover:text-white whitespace-nowrap transition flex items-center gap-2"><i class="fa-solid fa-code text-gold-500"></i> Write something</button>
+                <button onclick="sendQuickPrompt('Generate 3 disruptive business ideas')" class="px-4 py-2 rounded-xl bg-zinc-900 border border-zinc-800 hover:border-gold-500 text-xs text-zinc-300 hover:text-white whitespace-nowrap transition flex items-center gap-2"><i class="fa-solid fa-lightbulb text-gold-500"></i> Generate ideas</button>
+                <button onclick="sendQuickPrompt('Research latest trends in agentic workflows')" class="px-4 py-2 rounded-xl bg-zinc-900 border border-zinc-800 hover:border-gold-500 text-xs text-zinc-300 hover:text-white whitespace-nowrap transition flex items-center gap-2"><i class="fa-solid fa-magnifying-glass text-gold-500"></i> Research</button>
+                <button onclick="sendQuickPrompt('Create a 7-day product launch plan')" class="px-4 py-2 rounded-xl bg-zinc-900 border border-zinc-800 hover:border-gold-500 text-xs text-zinc-300 hover:text-white whitespace-nowrap transition flex items-center gap-2"><i class="fa-solid fa-calendar-days text-gold-500"></i> Plan</button>
+            </div>
+
+            <!-- Chat Interface Box -->
+            <div class="glass-panel rounded-3xl border border-zinc-800 flex flex-col h-[550px] overflow-hidden">
+                <!-- Chat Header -->
+                <div class="px-6 py-4 border-b border-zinc-800 flex items-center justify-between bg-zinc-900/50">
+                    <div class="flex items-center gap-3">
+                        <div class="w-3 h-3 rounded-full bg-emerald-500 animate-pulse"></div>
+                        <div>
+                            <div class="text-sm font-bold text-white">7Leo AI Agent v3.4</div>
+                            <div class="text-[10px] text-zinc-400">Autonomous Reasoning Mode Active</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <button onclick="clearChat()" class="px-3 py-1.5 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-xs text-zinc-300 transition flex items-center gap-1.5"><i class="fa-solid fa-rotate-right"></i> Clear</button>
+                        <button onclick="newConversation()" class="px-3 py-1.5 rounded-lg bg-gold-500/10 hover:bg-gold-500/20 text-xs text-gold-500 border border-gold-500/20 transition flex items-center gap-1.5"><i class="fa-solid fa-plus"></i> New Chat</button>
+                    </div>
+                </div>
+
+                <!-- Chat Messages Area -->
+                <div id="chat-messages" class="flex-grow p-6 overflow-y-auto space-y-4">
+                    <div class="flex items-start gap-3">
+                        <div class="w-8 h-8 rounded-xl bg-gold-500/20 text-gold-500 border border-gold-500/30 flex items-center justify-center shrink-0"><i class="fa-solid fa-robot"></i></div>
+                        <div class="glass-panel p-4 rounded-2xl max-w-2xl text-sm text-zinc-200 border border-zinc-800">
+                            <p class="font-bold text-gold-500 mb-1">7Leo AI Agent</p>
+                            Greetings. I am your dedicated intelligence assistant within the 7Leo ecosystem. How can I accelerate your project, strategy, or development today?
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Thinking State Indicator -->
+                <div id="ai-thinking" class="hidden px-6 py-2 text-xs text-gold-500 flex items-center gap-2 bg-zinc-900/30">
+                    <i class="fa-solid fa-circle-notch fa-spin"></i> 7Leo AI Agent is analyzing and synthesizing response...
+                </div>
+
+                <!-- Message Composer -->
+                <div class="p-4 border-t border-zinc-800 bg-zinc-900/80">
+                    <form onsubmit="handleChatSubmit(event)" class="flex items-center gap-3">
+                        <input type="text" id="chat-input" placeholder="Ask 7Leo AI Agent anything..." class="flex-grow bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-gold-500 transition">
+                        <button type="submit" class="px-6 py-3 bg-gold-500 hover:bg-gold-400 text-black font-bold rounded-xl text-sm transition flex items-center gap-2 shadow-lg shadow-gold-500/10">
+                            <span>Send</span>
+                            <i class="fa-solid fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB 5: 7LEO IDEA (NEW) -->
+        <div id="tab-idea" class="store-tab-content space-y-6 hidden">
+            <!-- Landing / Welcome Banner -->
+            <div class="glass-panel p-8 rounded-3xl border border-zinc-800 flex flex-col md:flex-row items-center justify-between gap-6">
+                <div class="space-y-3 max-w-xl">
+                    <span class="px-3 py-1 bg-gold-500/10 text-gold-500 border border-gold-500/20 text-xs font-bold rounded-full uppercase">Innovation Engine</span>
+                    <h2 class="text-3xl font-extrabold text-white">7Leo Idea</h2>
+                    <p class="text-zinc-400 text-sm">Turn thoughts into possibilities. Input your raw concept, problem, or vision, and transform it into a structured, executable master plan.</p>
+                </div>
+                <div class="w-32 h-32 relative flex items-center justify-center">
+                    <div class="absolute inset-0 bg-gold-500/10 rounded-full blur-xl"></div>
+                    <i class="fa-solid fa-lightbulb text-6xl text-gold-500 relative z-10"></i>
+                </div>
+            </div>
+
+            <!-- Idea Generator Box -->
+            <div class="glass-panel p-6 sm:p-8 rounded-3xl border border-zinc-800 space-y-6">
+                <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                    <div>
+                        <h3 class="text-lg font-bold text-white">Concept Transformation Engine</h3>
+                        <p class="text-xs text-zinc-400">Select a category and enter your raw thought below.</p>
+                    </div>
+                    <!-- Categories Selector -->
+                    <div class="flex items-center gap-2 overflow-x-auto w-full sm:w-auto pb-2 sm:pb-0" id="idea-categories">
+                        <button onclick="selectIdeaCategory('Startup')" class="idea-cat-btn px-3 py-1.5 rounded-lg text-xs font-bold bg-gold-500 text-black transition">Startup</button>
+                        <button onclick="selectIdeaCategory('App')" class="idea-cat-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-zinc-900 text-zinc-400 hover:text-white border border-zinc-800 transition">App</button>
+                        <button onclick="selectIdeaCategory('AI')" class="idea-cat-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-zinc-900 text-zinc-400 hover:text-white border border-zinc-800 transition">AI</button>
+                        <button onclick="selectIdeaCategory('Business')" class="idea-cat-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-zinc-900 text-zinc-400 hover:text-white border border-zinc-800 transition">Business</button>
+                        <button onclick="selectIdeaCategory('Content')" class="idea-cat-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-zinc-900 text-zinc-400 hover:text-white border border-zinc-800 transition">Content</button>
+                    </div>
+                </div>
+
+                <!-- Input Textarea -->
+                <div class="space-y-3">
+                    <textarea id="idea-input" rows="3" placeholder="e.g., An autonomous AI agent that audits smart contracts and automatically patches security vulnerabilities..." class="w-full bg-zinc-950 border border-zinc-800 rounded-2xl p-4 text-sm text-white focus:outline-none focus:border-gold-500 transition resize-none"></textarea>
+                    <button onclick="generateIdeaResult()" class="w-full py-3.5 bg-gold-500 hover:bg-gold-400 text-black font-bold rounded-xl text-sm transition shadow-lg shadow-gold-500/10 flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+                        <span>Transform Thought Into 7Leo Idea</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Idea Result Container -->
+            <div id="idea-result-container" class="hidden space-y-6">
+                <div class="flex items-center justify-between">
+                    <h3 class="text-xl font-extrabold text-white flex items-center gap-2"><i class="fa-solid fa-sparkles text-gold-500"></i> Generated 7Leo Master Blueprint</h3>
+                    <div class="flex items-center gap-2">
+                        <button onclick="copyIdeaResult()" class="px-3 py-1.5 rounded-lg bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 text-xs text-zinc-300 transition flex items-center gap-1.5"><i class="fa-solid fa-copy"></i> Copy</button>
+                        <button onclick="saveIdeaToVault()" class="px-3 py-1.5 rounded-lg bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 text-xs text-zinc-300 transition flex items-center gap-1.5"><i class="fa-solid fa-bookmark"></i> Save</button>
+                        <button onclick="sendIdeaToAiAgent()" class="px-3 py-1.5 rounded-lg bg-gold-500/10 hover:bg-gold-500/20 text-xs text-gold-500 border border-gold-500/20 transition flex items-center gap-1.5"><i class="fa-solid fa-robot"></i> Send to AI Agent</button>
+                    </div>
+                </div>
+
+                <!-- Result Cards Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="glass-panel p-6 rounded-2xl border border-zinc-800 space-y-2">
+                        <div class="text-xs text-gold-500 font-bold uppercase tracking-wider flex items-center gap-1.5"><i class="fa-solid fa-lightbulb"></i> The Concept</div>
+                        <h4 id="res-idea" class="text-base font-bold text-white">Autonomous AI Security Suite</h4>
+                        <p id="res-idea-desc" class="text-xs text-zinc-400">A decentralized engine providing real-time security auditing and automated patching for Web3 and enterprise applications.</p>
+                    </div>
+                    <div class="glass-panel p-6 rounded-2xl border border-zinc-800 space-y-2">
+                        <div class="text-xs text-gold-500 font-bold uppercase tracking-wider flex items-center gap-1.5"><i class="fa-solid fa-bullseye"></i> Why It Matters</div>
+                        <p id="res-why" class="text-xs text-zinc-400">Millions in capital are lost annually due to undetected smart contract vulnerabilities before manual audits finish.</p>
+                    </div>
+                    <div class="glass-panel p-6 rounded-2xl border border-zinc-800 space-y-2">
+                        <div class="text-xs text-gold-500 font-bold uppercase tracking-wider flex items-center gap-1.5"><i class="fa-solid fa-users"></i> Target Audience</div>
+                        <p id="res-audience" class="text-xs text-zinc-400">Web3 protocols, DeFi projects, enterprise blockchain developers, and smart contract engineers.</p>
+                    </div>
+                    <div class="glass-panel p-6 rounded-2xl border border-zinc-800 space-y-2">
+                        <div class="text-xs text-gold-500 font-bold uppercase tracking-wider flex items-center gap-1.5"><i class="fa-solid fa-puzzle-piece"></i> Key Features</div>
+                        <p id="res-features" class="text-xs text-zinc-400">Real-time IDE integration, automated vulnerability scanning, one-click patch generation, and risk scoring dashboard.</p>
+                    </div>
+                    <div class="glass-panel p-6 rounded-2xl border border-zinc-800 space-y-2">
+                        <div class="text-xs text-gold-500 font-bold uppercase tracking-wider flex items-center gap-1.5"><i class="fa-solid fa-chart-pie"></i> Business Potential</div>
+                        <p id="res-business" class="text-xs text-zinc-400">SaaS subscription model with tiered API usage fees and enterprise audit certification badges.</p>
+                    </div>
+                    <div class="glass-panel p-6 rounded-2xl border border-zinc-800 space-y-2">
+                        <div class="text-xs text-gold-500 font-bold uppercase tracking-wider flex items-center gap-1.5"><i class="fa-solid fa-forward"></i> Next Steps & Improvement</div>
+                        <p id="res-next" class="text-xs text-zinc-400">Build MVP prototype using 7Leo AI Agent, test on sample smart contracts, and secure beta pilot customers.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB: CART -->
+        <div id="tab-cart" class="store-tab-content space-y-6 hidden">
+            <div class="glass-panel p-8 rounded-3xl border border-zinc-800">
+                <h2 class="text-2xl font-extrabold text-white mb-6 flex items-center gap-3"><i class="fa-solid fa-cart-shopping text-gold-500"></i> Your 7Leo Cart</h2>
+                <div id="cart-items-container" class="space-y-4 mb-6">
+                    <!-- Cart items populated via JS -->
+                </div>
+                <div id="cart-summary" class="border-t border-zinc-800 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+                    <div class="text-lg font-bold text-white">Total: <span id="cart-total-price" class="text-gold-500">$0.00</span></div>
+                    <button onclick="checkoutCart()" class="px-8 py-3.5 bg-gold-500 hover:bg-gold-400 text-black font-bold rounded-xl transition shadow-lg shadow-gold-500/20">Proceed to Secure Checkout</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB: TRACKING -->
+        <div id="tab-tracking" class="store-tab-content space-y-6 hidden">
+            <div class="glass-panel p-8 rounded-3xl border border-zinc-800 max-w-xl mx-auto text-center space-y-6">
+                <div class="w-16 h-16 bg-gold-500/20 text-gold-500 rounded-2xl flex items-center justify-center text-2xl mx-auto"><i class="fa-solid fa-truck-fast"></i></div>
+                <h2 class="text-2xl font-extrabold text-white">7Leo Order Tracking</h2>
+                <p class="text-zinc-400 text-sm">Enter your tracking ID (e.g. 7LEO-1001) to verify fulfillment status.</p>
+                <div class="flex gap-2">
+                    <input type="text" id="track-id-input" placeholder="7LEO-1001" class="flex-grow bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-gold-500">
+                    <button onclick="trackOrder()" class="px-6 py-3 bg-gold-500 text-black font-bold rounded-xl text-sm">Track</button>
+                </div>
+                <div id="tracking-result" class="hidden text-left p-4 bg-zinc-900 border border-zinc-800 rounded-xl space-y-2">
+                    <div class="text-xs text-gold-500 font-bold uppercase">Status: Dispatched & Verified</div>
+                    <div class="text-sm text-white font-semibold">Item: 7Leo Elite Hardware Bundle</div>
+                    <div class="text-xs text-zinc-400">Estimated Delivery: 2 Business Days</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB: OWNER DASHBOARD -->
+        <div id="tab-dashboard" class="store-tab-content space-y-6 hidden">
+            <div class="glass-panel p-8 rounded-3xl border border-zinc-800 space-y-6">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <span class="px-3 py-1 bg-gold-500/10 text-gold-500 border border-gold-500/20 text-xs font-bold rounded-full uppercase">Restricted Area</span>
+                        <h2 class="text-2xl font-extrabold text-white mt-2">7Leo Owner Profit & Analytics</h2>
+                    </div>
+                    <div class="text-xs text-zinc-400">Owner: Abubakker Bellary</div>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                    <div class="p-6 bg-zinc-900 border border-zinc-800 rounded-2xl space-y-1">
+                        <div class="text-xs text-zinc-400">Total Revenue</div>
+                        <div class="text-2xl font-extrabold text-gold-500">$28,450.00</div>
+                    </div>
+                    <div class="p-6 bg-zinc-900 border border-zinc-800 rounded-2xl space-y-1">
+                        <div class="text-xs text-zinc-400">Active AI Agents</div>
+                        <div class="text-2xl font-extrabold text-white">1,420</div>
+                    </div>
+                    <div class="p-6 bg-zinc-900 border border-zinc-800 rounded-2xl space-y-1">
+                        <div class="text-xs text-zinc-400">Ideas Generated</div>
+                        <div class="text-2xl font-extrabold text-white">8,930</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB: POLICIES -->
+        <div id="tab-policies" class="store-tab-content space-y-6 hidden">
+            <div class="glass-panel p-8 rounded-3xl border border-zinc-800 space-y-4 max-w-2xl mx-auto">
+                <h2 class="text-2xl font-extrabold text-white">7Leo Store Policies</h2>
+                <p class="text-zinc-400 text-sm">All transactions within the 7Leo ecosystem are governed by strict security protocols, encrypted verification, and immediate digital asset delivery.</p>
+                <div class="space-y-2 text-xs text-zinc-400">
+                    <p>• Digital downloads are available instantly upon successful checkout.</p>
+                    <p>• Hardware products include a 2-year 7Leo replacement warranty.</p>
+                    <p>• AI Agent interactions and Idea generations are fully confidential under 7Leo privacy standards.</p>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="mt-auto border-t border-borderCol glass-panel py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4">
+            <div class="flex items-center space-x-3">
+                <img src="file_00000000605081fbac8310ec16b6b767.png" alt="7Leo" class="w-8 h-8 object-contain">
+                <span class="text-sm font-bold text-white">© 2026 7Leo Group. Vision • Power • Legacy.</span>
+            </div>
+            <div class="flex items-center space-x-6 text-sm text-zinc-400">
+                <button onclick="switchStoreTab('policies')" class="hover:text-white transition">Policies</button>
+                <button onclick="openModal('contact-modal')" class="hover:text-white transition">Contact</button>
+                <button onclick="openModal('about-modal')" class="hover:text-white transition">About 7Leo</button>
+            </div>
+        </div>
+    </footer>
+
+    <!-- MODALS -->
+    <!-- About Modal -->
+    <div id="about-modal" class="fixed inset-0 z-50 bg-black/80 hidden flex items-center justify-center p-4">
+        <div class="glass-panel p-8 rounded-3xl max-w-lg w-full border border-zinc-800 space-y-4 relative">
+            <button onclick="closeModal('about-modal')" class="absolute top-4 right-4 text-zinc-400 hover:text-white"><i class="fa-solid fa-xmark text-lg"></i></button>
+            <div class="w-12 h-12 bg-gold-500/20 text-gold-500 rounded-xl flex items-center justify-center text-xl font-bold"><i class="fa-solid fa-circle-info"></i></div>
+            <h3 class="text-xl font-bold text-white">About 7Leo Ecosystem</h3>
+            <p class="text-zinc-400 text-sm">Founded by Abubakker Bellary, 7Leo Group stands at the pinnacle of digital commerce, audio entertainment, elite identity memberships, autonomous AI agents, and innovation engineering.</p>
+            <div class="pt-2">
+                <button onclick="closeModal('about-modal')" class="w-full py-2.5 bg-gold-500 text-black font-bold rounded-xl text-sm">Got It</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Auth Modal -->
+    <div id="auth-modal" class="fixed inset-0 z-50 bg-black/80 hidden flex items-center justify-center p-4">
+        <div class="glass-panel p-8 rounded-3xl max-w-md w-full border border-zinc-800 space-y-6 relative">
+            <button onclick="closeModal('auth-modal')" class="absolute top-4 right-4 text-zinc-400 hover:text-white"><i class="fa-solid fa-xmark text-lg"></i></button>
+            <div class="text-center space-y-2">
+                <img src="file_00000000605081fbac8310ec16b6b767.png" alt="7Leo" class="w-14 h-14 object-contain mx-auto">
+                <h3 class="text-xl font-bold text-white">Sign In to 7Leo Star</h3>
+                <p class="text-zinc-400 text-xs">Access your AI Agent history, saved ideas, and elite dashboard.</p>
+            </div>
+            <div class="space-y-4">
+                <input type="email" placeholder="name@7leogroup.com" class="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-gold-500">
+                <input type="password" placeholder="••••••••" class="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-gold-500">
+                <button onclick="closeModal('auth-modal'); alert('Signed in successfully to 7Leo Ecosystem!');" class="w-full py-3 bg-gold-500 hover:bg-gold-400 text-black font-bold rounded-xl text-sm transition shadow-lg shadow-gold-500/20">Authenticate</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Modal -->
+    <div id="contact-modal" class="fixed inset-0 z-50 bg-black/80 hidden flex items-center justify-center p-4">
+        <div class="glass-panel p-8 rounded-3xl max-w-lg w-full border border-zinc-800 space-y-4 relative">
+            <button onclick="closeModal('contact-modal')" class="absolute top-4 right-4 text-zinc-400 hover:text-white"><i class="fa-solid fa-xmark text-lg"></i></button>
+            <h3 class="text-xl font-bold text-white">Contact 7Leo Support</h3>
+            <p class="text-zinc-400 text-sm">Reach out directly to the 7Leo engineering & operations team.</p>
+            <div class="space-y-3">
+                <input type="text" placeholder="Your Name" class="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-gold-500">
+                <textarea rows="3" placeholder="How can 7Leo assist you?" class="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-gold-500 resize-none"></textarea>
+                <button onclick="closeModal('contact-modal'); alert('Message dispatched to 7Leo operations.');" class="w-full py-3 bg-gold-500 text-black font-bold rounded-xl text-sm">Send Message</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // Splash Screen Progression
+        window.addEventListener('DOMContentLoaded', () => {
+            const prog = document.getElementById('splash-progress');
+            setTimeout(() => prog.style.width = '60%', 150);
+            setTimeout(() => prog.style.width = '100%', 350);
+            setTimeout(() => {
+                const splash = document.getElementById('splash-screen');
+                splash.style.opacity = '0';
+                setTimeout(() => splash.remove(), 700);
+            }, 750);
+
+            renderProducts('all');
+            renderBgmTracks();
+            renderVaultItems();
+        });
+
+        // Toggle Mobile Menu
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Tab Switching Logic
+        function switchStoreTab(tabName) {
+            document.querySelectorAll('.store-tab-content').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.store-tab-content').forEach(el => el.classList.remove('active'));
+            
+            const target = document.getElementById(`tab-${tabName}`);
+            if(target) {
+                target.classList.remove('hidden');
+                target.classList.add('active');
+            }
+
+            // Update active state on navigation buttons if desired
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Modal Helpers
+        function openModal(id) { document.getElementById(id).classList.remove('hidden'); }
+        function closeModal(id) { document.getElementById(id).classList.add('hidden'); }
+
+        // Products Data
+        const products = [
+            { id: 1, name: "7Leo Elite Hardware Hub", category: "hardware", price: 299.99, rating: 5.0, image: "file_00000000605081fbac8310ec16b6b767.png" },
+            { id: 2, name: "7Leo Neural Hoodie", category: "apparel", price: 89.99, rating: 4.9, image: "file_00000000605081fbac8310ec16b6b767.png" },
+            { id: 3, name: "7Leo AI Agent SDK", category: "digital", price: 149.00, rating: 5.0, image: "file_00000000605081fbac8310ec16b6b767.png" },
+            { id: 4, name: "7Leo Cinematic BGM Pack", category: "digital", price: 49.99, rating: 4.8, image: "file_00000000605081fbac8310ec16b6b767.png" },
+            { id: 5, name: "7Leo Signature Cap", category: "apparel", price: 35.00, rating: 4.7, image: "file_00000000605081fbac8310ec16b6b767.png" },
+            { id: 6, name: "7Leo Quantum Node X", category: "hardware", price: 499.99, rating: 5.0, image: "file_00000000605081fbac8310ec16b6b767.png" }
+        ];
+
+        let cart = [];
+
+        function renderProducts(category) {
+            const grid = document.getElementById('product-grid');
+            const filtered = category === 'all' ? products : products.filter(p => p.category === category);
+            
+            grid.innerHTML = filtered.map(p => `
+                <div class="glass-panel p-6 rounded-3xl border border-zinc-800 space-y-4 hover:border-gold-500/50 transition group">
+                    <div class="h-48 rounded-2xl bg-zinc-900 border border-zinc-800 flex items-center justify-center relative overflow-hidden">
+                        <div class="absolute inset-0 bg-gold-500/5 group-hover:bg-gold-500/15 transition"></div>
+                        <img src="${p.image}" alt="${p.name}" class="w-28 h-28 object-contain relative z-10 group-hover:scale-110 transition duration-300">
+                    </div>
+                    <div class="space-y-1">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs uppercase tracking-widest text-gold-500 font-bold">${p.category}</span>
+                            <span class="text-xs text-yellow-400 font-semibold"><i class="fa-solid fa-star"></i> ${p.rating}</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-white">${p.name}</h3>
+                        <div class="text-xl font-extrabold text-white">$${p.price.toFixed(2)}</div>
+                    </div>
+                    <button onclick="addToCart(${p.id})" class="w-full py-3 bg-zinc-900 border border-zinc-700 hover:border-gold-500 hover:bg-gold-500 hover:text-black text-white font-bold rounded-xl text-sm transition">Add to Cart</button>
+                </div>
+            `).join('');
+        }
+
+        function filterProducts(cat) {
+            document.querySelectorAll('.cat-filter-btn').forEach(btn => {
+                btn.classList.remove('bg-gold-500', 'text-black');
+                btn.classList.add('bg-zinc-900', 'text-zinc-400');
+            });
+            event.target.classList.remove('bg-zinc-900', 'text-zinc-400');
+            event.target.classList.add('bg-gold-500', 'text-black');
+            renderProducts(cat);
+        }
+
+        function searchProducts() {
+            const query = document.getElementById('product-search').value.toLowerCase();
+            const grid = document.getElementById('product-grid');
+            const filtered = products.filter(p => p.name.toLowerCase().includes(query) || p.category.toLowerCase().includes(query));
+            
+            grid.innerHTML = filtered.map(p => `
+                <div class="glass-panel p-6 rounded-3xl border border-zinc-800 space-y-4 hover:border-gold-500/50 transition group">
+                    <div class="h-48 rounded-2xl bg-zinc-900 border border-zinc-800 flex items-center justify-center relative overflow-hidden">
+                        <img src="${p.image}" alt="${p.name}" class="w-28 h-28 object-contain relative z-10">
+                    </div>
+                    <div class="space-y-1">
+                        <span class="text-xs uppercase tracking-widest text-gold-500 font-bold">${p.category}</span>
+                        <h3 class="text-lg font-bold text-white">${p.name}</h3>
+                        <div class="text-xl font-extrabold text-white">$${p.price.toFixed(2)}</div>
+                    </div>
+                    <button onclick="addToCart(${p.id})" class="w-full py-3 bg-zinc-900 border border-zinc-700 hover:bg-gold-500 hover:text-black text-white font-bold rounded-xl text-sm transition">Add to Cart</button>
+                </div>
+            `).join('');
+        }
+
+        function addToCart(id) {
+            const item = products.find(p => p.id === id);
+            cart.push(item);
+            document.getElementById('cart-badge').innerText = cart.length;
+            alert(`Added "${item.name}" to your 7Leo Cart.`);
+            renderCart();
+        }
+
+        function renderCart() {
+            const container = document.getElementById('cart-items-container');
+            const totalPrice = cart.reduce((sum, item) => sum + item.price, 0);
+            document.getElementById('cart-total-price').innerText = `$${totalPrice.toFixed(2)}`;
+
+            if(cart.length === 0) {
+                container.innerHTML = `<p class="text-zinc-400 text-sm">Your cart is currently empty.</p>`;
+                return;
+            }
+
+            container.innerHTML = cart.map((item, index) => `
+                <div class="p-4 bg-zinc-900 border border-zinc-800 rounded-2xl flex items-center justify-between">
+                    <div class="flex items-center gap-4">
+                        <img src="${item.image}" alt="${item.name}" class="w-12 h-12 object-contain">
+                        <div>
+                            <div class="text-sm font-bold text-white">${item.name}</div>
+                            <div class="text-xs text-gold-500">$${item.price.toFixed(2)}</div>
+                        </div>
+                    </div>
+                    <button onclick="removeFromCart(${index})" class="text-zinc-500 hover:text-red-400"><i class="fa-solid fa-trash"></i></button>
+                </div>
+            `).join('');
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            document.getElementById('cart-badge').innerText = cart.length;
+            renderCart();
+        }
+
+        function checkoutCart() {
+            if(cart.length === 0) { alert('Cart is empty.'); return; }
+            alert('Redirecting to Secure 7Leo Checkout Gateway...');
+            cart = [];
+            document.getElementById('cart-badge').innerText = '0';
+            renderCart();
+            switchStoreTab('tracking');
+        }
+
+        function trackOrder() {
+            const id = document.getElementById('track-id-input').value;
+            if(!id) { alert('Please enter tracking ID.'); return; }
+            document.getElementById('tracking-result').classList.remove('hidden');
+        }
+
+        // BGM Tracks
+        const bgmTracks = [
+            { title: "Visionary Anthem", series: "Cinematic", duration: "3:45", plays: "42.1K" },
+            { title: "Power & Legacy", series: "Gangster / Drive", duration: "2:50", plays: "68.4K" },
+            { title: "Midnight Neural Chill", series: "Chill / AI", duration: "4:15", plays: "91.2K" },
+            { title: "Silicon Horizon", series: "DJ / Electro", duration: "3:30", plays: "34.9K" },
+            { title: "The 7Leo Code", series: "Cinematic", duration: "5:02", plays: "52.0K" }
+        ];
+
+        function renderBgmTracks() {
+            const grid = document.getElementById('bgm-tracks-grid');
+            grid.innerHTML = bgmTracks.map(t => `
+                <div class="glass-panel p-6 rounded-2xl border border-zinc-800 space-y-4 flex flex-col justify-between">
+                    <div class="space-y-1">
+                        <span class="text-xs text-gold-500 font-bold uppercase">${t.series}</span>
+                        <h3 class="text-lg font-bold text-white">${t.title}</h3>
+                        <div class="text-xs text-zinc-400">Duration: ${t.duration} • ${t.plays} streams</div>
+                    </div>
+                    <button onclick="alert('Playing ${t.title} on 7Leo BGM Portal')" class="w-full py-2.5 bg-zinc-900 border border-zinc-700 hover:bg-gold-500 hover:text-black text-white font-semibold rounded-xl text-xs transition flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-play"></i> Play Track
+                    </button>
+                </div>
+            `).join('');
+        }
+
+        // Star Vault
+        const vaultItems = [
+            { title: "7Leo Elite Master Blueprint", type: "Document" },
+            { title: "Autonomous Agent Strategy #4", type: "AI Prompt" },
+            { title: "Cloudflare Domain Config 7leogroup.com", type: "Dev Asset" }
+        ];
+
+        function renderVaultItems() {
+            const v = document.getElementById('star-vault-items');
+            v.innerHTML = vaultItems.map(item => `
+                <div class="p-3.5 bg-zinc-900 border border-zinc-800 rounded-xl flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                        <i class="fa-solid fa-file-shield text-gold-500"></i>
+                        <div>
+                            <div class="text-sm font-semibold text-white">${item.title}</div>
+                            <div class="text-[10px] text-zinc-400">${item.type}</div>
+                        </div>
+                    </div>
+                    <button onclick="alert('Accessing Vault item securely.')" class="text-xs text-gold-500 hover:underline">Access</button>
+                </div>
+            `).join('');
+        }
+
+        function refreshWisdom() {
+            const list = [
+                "Discipline is the bridge between 7Leo vision and absolute legacy.",
+                "Simplicity is the ultimate sophistication in system architecture.",
+                "Build products that solve fundamental problems with uncompromising precision."
+            ];
+            document.getElementById('daily-wisdom').innerText = `"${list[Math.floor(Math.random() * list.length)]}"`;
+        }
+
+        // 7LEO AI AGENT LOGIC
+        function startAiChatSession() {
+            switchStoreTab('ai-agent');
+            document.getElementById('chat-input').focus();
+        }
+
+        function sendQuickPrompt(promptText) {
+            document.getElementById('chat-input').value = promptText;
+        }
+
+        function clearChat() {
+            document.getElementById('chat-messages').innerHTML = `
+                <div class="flex items-start gap-3">
+                    <div class="w-8 h-8 rounded-xl bg-gold-500/20 text-gold-500 border border-gold-500/30 flex items-center justify-center shrink-0"><i class="fa-solid fa-robot"></i></div>
+                    <div class="glass-panel p-4 rounded-2xl max-w-2xl text-sm text-zinc-200 border border-zinc-800">
+                        <p class="font-bold text-gold-500 mb-1">7Leo AI Agent</p>
+                        Chat cleared. Ready for your next query.
+                    </div>
+                </div>
+            `;
+        }
+
+        function newConversation() {
+            clearChat();
+            alert('Started new 7Leo AI Agent conversation thread.');
+        }
+
+        function handleChatSubmit(e) {
+            e.preventDefault();
+            const input = document.getElementById('chat-input');
+            const text = input.value.trim();
+            if(!text) return;
+
+            const chatContainer = document.getElementById('chat-messages');
+            
+            // Append user message
+            chatContainer.innerHTML += `
+                <div class="flex items-start justify-end gap-3">
+                    <div class="bg-gold-500 text-black p-4 rounded-2xl max-w-2xl text-sm font-medium">
+                        ${text}
+                    </div>
+                    <div class="w-8 h-8 rounded-xl bg-zinc-800 text-white border border-zinc-700 flex items-center justify-center shrink-0"><i class="fa-solid fa-user"></i></div>
+                </div>
+            `;
+            input.value = '';
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+
+            // Show thinking state
+            const thinking = document.getElementById('ai-thinking');
+            thinking.classList.remove('hidden');
+
+            // Simulate intelligent agent response
+            setTimeout(() => {
+                thinking.classList.add('hidden');
+                let aiReply = `I have analyzed your request regarding "${text}". Within the 7Leo ecosystem, this requires rigorous execution, clean modular architecture, and alignment with our vision of speed and premium quality.`;
+                
+                if(text.toLowerCase().includes('code') || text.toLowerCase().includes('javascript')) {
+                    aiReply = `Here is the clean, isolated code snippet structured for the 7Leo ecosystem:\n\n\`\`\`javascript\n// 7Leo Autonomous Execution Hook\nfunction execute7LeoTask(payload) {\n    console.log('Processing 7Leo mission:', payload);\n    return { status: 'SUCCESS', ecosystem: '7Leo' };\n}\n\`\`\``;
+                } else if(text.toLowerCase().includes('idea')) {
+                    aiReply = `I recommend opening the **7Leo Idea** portal to transform this thought into a comprehensive blueprint with audience analysis and business potential!`;
+                }
+
+                chatContainer.innerHTML += `
+                    <div class="flex items-start gap-3">
+                        <div class="w-8 h-8 rounded-xl bg-gold-500/20 text-gold-500 border border-gold-500/30 flex items-center justify-center shrink-0"><i class="fa-solid fa-robot"></i></div>
+                        <div class="glass-panel p-4 rounded-2xl max-w-2xl text-sm text-zinc-200 border border-zinc-800 space-y-2">
+                            <p class="font-bold text-gold-500">7Leo AI Agent</p>
+                            <p>${aiReply}</p>
+                        </div>
+                    </div>
+                `;
+                chatContainer.scrollTop = chatContainer.scrollHeight;
+            }, 1000);
+        }
+
+        // 7LEO IDEA LOGIC
+        let currentIdeaCategory = 'Startup';
+
+        function selectIdeaCategory(cat) {
+            currentIdeaCategory = cat;
+            document.querySelectorAll('.idea-cat-btn').forEach(btn => {
+                btn.classList.remove('bg-gold-500', 'text-black');
+                btn.classList.add('bg-zinc-900', 'text-zinc-400');
+            });
+            event.target.classList.remove('bg-zinc-900', 'text-zinc-400');
+            event.target.classList.add('bg-gold-500', 'text-black');
+        }
+
+        function generateIdeaResult() {
+            const inputVal = document.getElementById('idea-input').value.trim();
+            if(!inputVal) {
+                alert('Please enter a thought, problem, or concept first.');
+                return;
+            }
+
+            // Populate result cards dynamically based on input
+            document.getElementById('res-idea').innerText = `${currentIdeaCategory}: ${inputVal.slice(0, 45)}...`;
+            document.getElementById('res-idea-desc').innerText = `Transformed raw concept "${inputVal}" into a high-impact 7Leo ${currentIdeaCategory.toLowerCase()} architecture.`;
+            document.getElementById('res-why').innerText = `Addresses critical inefficiencies in modern workflows by leveraging autonomous AI and decentralized infrastructure.`;
+            document.getElementById('res-audience').innerText = `Elite creators, developers, enterprises, and early adopters within the global tech market.`;
+            document.getElementById('res-features').innerText = `Modular dashboard, real-time analytics, automated synchronization, and encrypted security pipelines.`;
+            document.getElementById('res-business').innerText = `Subscription-based SaaS model with tiered enterprise licensing and API monetization.`;
+            document.getElementById('res-next').innerText = `Deploy MVP inside 7Leo ecosystem, run AI Agent testing protocols, and launch private beta.`;
+
+            document.getElementById('idea-result-container').classList.remove('hidden');
+            document.getElementById('idea-result-container').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function copyIdeaResult() {
+            alert('Copied 7Leo Master Blueprint to clipboard!');
+        }
+
+        function saveIdeaToVault() {
+            alert('Saved 7Leo Idea securely to Star Vault!');
+        }
+
+        function sendIdeaToAiAgent() {
+            const ideaTitle = document.getElementById('res-idea').innerText;
+            switchStoreTab('ai-agent');
+            document.getElementById('chat-input').value = `Please review and create a full execution roadmap for this 7Leo Idea: ${ideaTitle}`;
+        }
+    </script>
+</body>
+</html>
