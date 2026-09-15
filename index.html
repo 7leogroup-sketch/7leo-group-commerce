@@ -2667,7 +2667,7 @@ VISION. POWER. LEGACY.</p>
             });
         }
     </script>
-    <!-- ================= 7LEO FILMS PORTAL & FULLY FUNCTIONAL STUDIO ================= -->
+    <!-- ================= 7LEO FILMS PORTAL & STUDIO (UPDATED ASSETS) ================= -->
 
 <style>
   #films-portal {
@@ -2691,9 +2691,9 @@ VISION. POWER. LEGACY.</p>
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%) rotate(-10deg);
-    width: 70vw;
-    max-width: 800px;
-    opacity: 0.07;
+    width: 75vw;
+    max-width: 850px;
+    opacity: 0.08;
     pointer-events: none;
     z-index: 0;
   }
@@ -2708,9 +2708,19 @@ VISION. POWER. LEGACY.</p>
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+    border-bottom: 1px solid rgba(212, 175, 55, 0.25);
     padding-bottom: 20px;
     margin-bottom: 30px;
+  }
+  .films-logo-area {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+  .films-logo-area img {
+    height: 65px;
+    border-radius: 8px;
+    border: 1px solid rgba(212, 175, 55, 0.3);
   }
   .films-logo-area h1 {
     font-size: 1.8rem;
@@ -2720,8 +2730,8 @@ VISION. POWER. LEGACY.</p>
   }
   .films-logo-area p {
     color: var(--text-muted, #9ca3af);
-    font-size: 0.9rem;
-    margin: 5px 0 0 0;
+    font-size: 0.85rem;
+    margin: 3px 0 0 0;
   }
   .films-hero {
     text-align: center;
@@ -2849,13 +2859,16 @@ VISION. POWER. LEGACY.</p>
 
 <!-- 7Leo Films Portal View -->
 <div id="films-portal">
-  <img src="logo.png" class="films-tattoo-watermark" alt="7Leo Tattoo">
+  <img src="file_00000000776081fa8dbc514074356775.png" class="films-tattoo-watermark" alt="7Leo Tattoo Background">
   
   <div class="films-container">
     <div class="films-header">
       <div class="films-logo-area">
-        <h1>7Leo Films Studio</h1>
-        <p>One Imagine. One Film. | You bring the idea, 7Leo builds the movie.</p>
+        <img src="1788951880054.png" alt="7Leo Films Logo">
+        <div>
+          <h1>7Leo Films Studio</h1>
+          <p>One Imagine. One Film. | You bring the idea, 7Leo builds the movie.</p>
+        </div>
       </div>
       <button class="films-btn-secondary" onclick="closeFilmsPortal()">✕ Exit Studio</button>
     </div>
@@ -2897,7 +2910,7 @@ VISION. POWER. LEGACY.</p>
       <div class="pipeline-card">
         <h3>1. Idea & Story Studio <span>⚡</span></h3>
         <p>Loglines, tone, premise structuring, and complete plot generation.</p>
-        <button class="films-btn-secondary" style="width: 100%; padding: 8px;" onclick="runStudioModule('Idea')">Open Module</button>
+        <button class="films-btn-secondary" style="width: 100%; padding: 8px;" onclick="runStudioModule('Idea & Story')">Open Module</button>
       </div>
       <div class="pipeline-card">
         <h3>2. Character Studio <span>👤</span></h3>
@@ -2912,17 +2925,17 @@ VISION. POWER. LEGACY.</p>
       <div class="pipeline-card">
         <h3>4. Shot & Storyboard Studio <span>🎬</span></h3>
         <p>Breakdown into shots, camera angles, movement, and visual framing.</p>
-        <button class="films-btn-secondary" style="width: 100%; padding: 8px;" onclick="runStudioModule('Shots')">Open Module</button>
+        <button class="films-btn-secondary" style="width: 100%; padding: 8px;" onclick="runStudioModule('Shots & Storyboard')">Open Module</button>
       </div>
       <div class="pipeline-card">
         <h3>5. VFX & Audio Studio <span>🪄</span></h3>
         <p>AI VFX prompts, 7Leo BGM mood matching, and Sound FX timeline.</p>
-        <button class="films-btn-secondary" style="width: 100%; padding: 8px;" onclick="runStudioModule('VFX')">Open Module</button>
+        <button class="films-btn-secondary" style="width: 100%; padding: 8px;" onclick="runStudioModule('VFX & Audio')">Open Module</button>
       </div>
       <div class="pipeline-card">
         <h3>6. Trailer & Poster Kit <span>🎞️</span></h3>
         <p>Automated trailer conceptualization, poster generation, and social kit.</p>
-        <button class="films-btn-secondary" style="width: 100%; padding: 8px;" onclick="runStudioModule('Trailer')">Open Module</button>
+        <button class="films-btn-secondary" style="width: 100%; padding: 8px;" onclick="runStudioModule('Trailer & Poster')">Open Module</button>
       </div>
     </div>
   </div>
@@ -2968,7 +2981,6 @@ VISION. POWER. LEGACY.</p>
       return;
     }
 
-    // Save project
     const projects = JSON.parse(localStorage.getItem('7leo_films_projects') || '[]');
     const newProj = {
       id: 'FILM_' + Date.now(),
@@ -2979,7 +2991,6 @@ VISION. POWER. LEGACY.</p>
     projects.push(newProj);
     localStorage.setItem('7leo_films_projects', JSON.stringify(projects));
 
-    // Display active result
     const outBox = document.getElementById('studio-output-box');
     const outContent = document.getElementById('output-content');
     if (outBox && outContent) {
@@ -3012,12 +3023,10 @@ VISION. POWER. LEGACY.</p>
     }
   }
 
-  // Safe DOM Injection: Homepage Card & About Section integration
+  // Safe DOM Injection: Homepage Card & IN-SECTION About Integration
   window.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => {
-      // 1. Add 7Leo Films card to homepage card grid alongside Store, BGM, Star
-      const cardContainers = document.querySelectorAll('.cards-container, .features-grid, .grid, main section div');
-      // Look for any grid that contains existing card elements
+      // 1. Add 7Leo Films card to homepage grid
       let targetGrid = null;
       document.querySelectorAll('div').forEach(el => {
         if (el.innerHTML.includes('Explore 7Leo Store') || el.innerHTML.includes('Explore 7Leo BGM')) {
@@ -3044,23 +3053,35 @@ VISION. POWER. LEGACY.</p>
         targetGrid.appendChild(filmsCard);
       }
 
-      // 2. Add 7Leo Films description into the existing About Section/Modal
-      const aboutSections = document.querySelectorAll('#about, .about-section, div');
-      aboutSections.forEach(el => {
-        if (el.innerHTML && el.innerHTML.includes('7Leo') && !el.innerHTML.includes('7Leo Films Studio') && el.id && el.id.includes('about')) {
-          const filmsAbout = document.createElement('div');
-          filmsAbout.style.marginTop = '20px';
-          filmsAbout.style.padding = '15px';
-          filmsAbout.style.borderLeft = '3px solid var(--gold)';
-          filmsAbout.style.background = 'rgba(212,175,55,0.05)';
-          filmsAbout.innerHTML = `
-            <h4 style="color: var(--gold); margin: 0 0 5px 0;">7Leo Films</h4>
-            <p style="margin: 0; font-size: 0.9rem; color: var(--text-muted);">An AI-driven cinematic filmmaking suite under 7Leo Group. Designed to turn simple ideas into complete professional movies from concept to final screening.</p>
-          `;
-          el.appendChild(filmsAbout);
+      // 2. Inject 7Leo Films Strictly INSIDE the existing About Section/Modal Container
+      const aboutContainers = document.querySelectorAll('#about, .about-section, div');
+      aboutContainers.forEach(el => {
+        // Find the specific container holding the about text content
+        if (el.id === 'about' || (el.className && typeof el.className === 'string' && el.className.includes('about')) || (el.innerHTML.includes('Founder') && el.innerHTML.includes('7Leo'))) {
+          // Check if we already injected inside this container
+          if (!el.querySelector('#films-about-inner')) {
+            const innerAbout = document.createElement('div');
+            innerAbout.id = 'films-about-inner';
+            innerAbout.style.marginTop = '25px';
+            innerAbout.style.padding = '20px';
+            innerAbout.style.borderLeft = '3px solid var(--gold)';
+            innerAbout.style.background = 'rgba(212,175,55,0.06)';
+            innerAbout.style.borderRadius = '0 8px 8px 0';
+            innerAbout.style.textAlign = 'left';
+            innerAbout.innerHTML = `
+              <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 10px;">
+                <img src="1788951880054.png" alt="7Leo Films" style="height: 40px; border-radius: 6px; border: 1px solid var(--gold);">
+                <h4 style="color: var(--gold); margin: 0; font-size: 1.2rem;">7Leo Films Studio</h4>
+              </div>
+              <p style="margin: 0; font-size: 0.95rem; color: var(--text-muted); line-height: 1.5;">
+                An advanced AI-driven cinematic filmmaking suite under 7Leo Group. True to our core philosophy—<em>"One Imagine. One Film. You bring the idea, 7Leo Films builds the movie"</em>—this platform seamlessly guides creators from raw conceptual sparks all the way to complete professional production scripts, VFX boards, and final media timelines.
+              </p>
+            `;
+            el.appendChild(innerAbout);
+          }
         }
       });
-    }, 600);
+    }, 700);
   });
 </script>
 <!-- ================= END 7LEO FILMS INTEGRATION ================= -->
