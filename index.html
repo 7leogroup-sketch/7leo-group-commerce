@@ -3144,14 +3144,15 @@ VISION. POWER. LEGACY.</p>
 <!-- ================= END 7LEO FILMS INTEGRATION ================= -->
 <script>
     // ==========================================
-    // 7LEO VENTURES FINAL BULLETPROOF SCRIPT
+    // 7LEO VENTURES MASTER PRECISION SCRIPT
     // ==========================================
 
-    // 1. FORCE BACKGROUND TATTOO TEXTURE & CLEAN TITLE VIA CSS STYLESHEET
+    // 1. FORCE BACKGROUND TATTOO TEXTURE & CLEAN TITLE VIA CSS
     document.title = "7Leo Ventures | One Vision • Infinite Growth";
     
-    const tattooStyle = document.createElement('style');
-    tattooStyle.innerHTML = `
+    const fixedStyle = document.createElement('style');
+    fixedStyle.id = 'ventures-fixed-styles';
+    fixedStyle.innerHTML = `
         html, body {
             background-image: url('file_00000000776081fa8dbc514074356775.png') !important;
             background-size: cover !important;
@@ -3159,82 +3160,91 @@ VISION. POWER. LEGACY.</p>
             background-attachment: fixed !important;
             background-color: #050505 !important;
         }
-        /* Make container backgrounds translucent so the tattoo texture shines through */
-        .ventures-translucent-bg {
-            background: rgba(10, 10, 10, 0.85) !important;
+        .ventures-card-custom {
+            background: rgba(15, 15, 15, 0.85) !important;
+            border: 1px solid rgba(234, 179, 8, 0.4) !important;
+            border-radius: 16px !important;
+            padding: 20px !important;
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: center !important;
+            justify-content: space-between !important;
             backdrop-filter: blur(10px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.6);
         }
     `;
-    document.head.appendChild(tattooStyle);
+    document.head.appendChild(fixedStyle);
 
-    // 2. CLEAN UP TOP NAVIGATION LINK
-    const navUl = document.querySelector('nav ul, .nav-links, header');
-    if (navUl && !document.getElementById('nav-ventures-link')) {
+    // 2. PROPERLY PLACE NAVBAR LINK INSIDE THE NAVIGATION MENU
+    const navElement = document.querySelector('nav, header, .nav-links');
+    if (navElement && !document.getElementById('nav-ventures-link')) {
+        const navLinksContainer = navElement.querySelector('ul, div') || navElement;
         const venturesNavLink = document.createElement('a');
         venturesNavLink.id = 'nav-ventures-link';
         venturesNavLink.href = '#ventures';
         venturesNavLink.textContent = '7Leo Ventures';
-        venturesNavLink.style.cssText = "color: #eab308; font-weight: bold; text-decoration: none; cursor: pointer; padding: 5px 10px; display: inline-block;";
+        venturesNavLink.style.cssText = "color: #eab308; font-weight: bold; text-decoration: none; cursor: pointer; padding: 5px 12px; display: inline-block; transition: 0.3s;";
         venturesNavLink.onclick = (e) => {
             e.preventDefault();
             openVenturesDashboard();
         };
-        navUl.appendChild(venturesNavLink);
+        navLinksContainer.appendChild(venturesNavLink);
     }
 
-    // 3. PRECISELY PLACE "Explore 7Leo Ventures" CARD INSIDE THE GRID (RIGHT AFTER FILMS CARD)
-    const allDivs = Array.from(document.querySelectorAll('div'));
-    const filmsCardElement = allDivs.find(el => el.textContent.includes('Explore 7Leo Films') && el.children.length < 6);
+    // 3. INJECT 5th CARD WITH LOGO DIRECTLY INTO THE GRID (5th SLOT)
+    const allDivs = Array.from(document.querySelectorAll('div, section'));
+    const filmsCard = allDivs.find(el => el.textContent.includes('Explore 7Leo Films') && el.children.length < 8);
 
-    if (filmsCardElement && !document.getElementById('ventures-grid-card')) {
-        const venturesCard = document.createElement('div');
-        venturesCard.id = 'ventures-grid-card';
-        venturesCard.className = filmsCardElement.className;
-        venturesCard.style.cssText = filmsCardElement.style.cssText;
+    if (filmsCard && filmsCard.parentElement && !document.getElementById('ventures-grid-card')) {
+        const gridContainer = filmsCard.parentElement;
+        const venturesGridCard = document.createElement('div');
+        venturesGridCard.id = 'ventures-grid-card';
+        venturesGridCard.className = filmsCard.className || '';
+        venturesGridCard.classList.add('ventures-card-custom');
         
-        venturesCard.innerHTML = `
+        venturesGridCard.innerHTML = `
             <div style="text-align: center; margin-bottom: 10px;">
-                <img src="file_0000000066d88208b43c8761fcefb922.png" alt="7Leo Ventures Logo" style="height: 50px; object-fit: contain; margin: 0 auto; filter: drop-shadow(0 0 10px rgba(234,179,8,0.5));">
+                <img src="file_0000000066d88208b43c8761fcefb922.png" alt="7Leo Ventures Logo" style="height: 48px; object-fit: contain; margin: 0 auto; filter: drop-shadow(0 0 10px rgba(234,179,8,0.6));">
             </div>
-            <h3 style="color: #eab308; text-align: center; margin: 0 0 6px 0; font-size: 0.95rem; font-weight: 800;">Explore 7Leo Ventures</h3>
-            <p style="text-align: center; color: #9ca3af; font-size: 0.75rem; margin-bottom: 12px;">One Vision • Infinite Growth</p>
-            <button onclick="openVenturesDashboard()" style="background: linear-gradient(to right, #eab308, #d97706); border: none; padding: 8px 16px; border-radius: 6px; color: black; font-weight: bold; cursor: pointer; width: 100%; font-size: 0.8rem; box-shadow: 0 4px 10px rgba(234,179,8,0.3);">
-                Launch Dashboard ⚡
+            <div style="font-size: 0.75rem; color: #9ca3af; text-align: center; margin-bottom: 8px;">One Vision • Infinite Growth</div>
+            <button onclick="openVenturesDashboard()" style="background: linear-gradient(to right, #eab308, #d97706); border: none; padding: 8px 14px; border-radius: 6px; color: black; font-weight: 900; cursor: pointer; width: 100%; font-size: 0.75rem; text-transform: uppercase; box-shadow: 0 4px 12px rgba(234,179,8,0.3);">
+                Explore 7Leo Ventures
             </button>
         `;
-        filmsCardElement.parentNode.insertBefore(venturesCard, filmsCardElement.nextSibling);
+        // Append directly to grid container so it occupies the 5th grid cell perfectly
+        gridContainer.appendChild(venturesGridCard);
     }
 
-    // 4. CLEANLY INJECT 7LEO VENTURES INSIDE EXISTING ABOUT SECTION
-    const aboutHeaders = document.querySelectorAll('h3, h4, span, div');
-    let targetAboutBox = null;
-    aboutHeaders.forEach(el => {
-        if ((el.textContent.trim() === 'About' || el.textContent.trim() === 'ABOUT') && !targetAboutBox) {
-            targetAboutBox = el.parentElement;
+    // 4. INJECT 7LEO VENTURES DRAFT & LOGO INTO EXISTING ABOUT SECTION
+    const allHeadings = document.querySelectorAll('h3, h4, span, div');
+    let aboutBoxTarget = null;
+    allHeadings.forEach(el => {
+        if ((el.textContent.trim() === 'About' || el.textContent.trim() === 'ABOUT') && !aboutBoxTarget) {
+            aboutBoxTarget = el.parentElement;
         }
     });
 
-    if (targetAboutBox && !document.getElementById('ventures-about-draft-box')) {
+    if (aboutBoxTarget && !document.getElementById('ventures-about-draft-box')) {
         const venturesAboutBox = document.createElement('div');
         venturesAboutBox.id = 'ventures-about-draft-box';
-        venturesAboutBox.className = 'ventures-translucent-bg';
-        venturesAboutBox.style.cssText = "margin-top: 25px; padding: 25px; border: 1px solid rgba(234,179,8,0.4); border-radius: 14px;";
+        venturesAboutBox.className = 'ventures-card-custom';
+        venturesAboutBox.style.cssText = "margin-top: 30px; padding: 30px !important; width: 100%; max-width: 800px; margin-left: auto; margin-right: auto;";
         
         venturesAboutBox.innerHTML = `
-            <div style="text-align: center; margin-bottom: 15px;">
-                <img src="file_0000000066d88208b43c8761fcefb922.png" alt="7Leo Ventures Logo" style="height: 70px; object-fit: contain; margin: 0 auto; filter: drop-shadow(0 0 12px rgba(234,179,8,0.4));">
+            <div style="text-align: center; margin-bottom: 18px;">
+                <img src="file_0000000066d88208b43c8761fcefb922.png" alt="7Leo Ventures Logo" style="height: 75px; object-fit: contain; margin: 0 auto; filter: drop-shadow(0 0 15px rgba(234,179,8,0.5));">
             </div>
-            <h4 style="text-align: center; color: #eab308; margin-bottom: 8px; text-transform: uppercase; font-size: 1.1rem; font-weight: 900; letter-spacing: 1px;">
+            <h4 style="text-align: center; color: #eab308; margin-bottom: 12px; text-transform: uppercase; font-size: 1.2rem; font-weight: 900; letter-spacing: 1.5px;">
                 7Leo Ventures — The Parent Enterprise
             </h4>
-            <p style="text-align: center; color: #d1d5db; font-size: 0.85rem; line-height: 1.6; margin-bottom: 10px;">
+            <p style="text-align: center; color: #d1d5db; font-size: 0.9rem; line-height: 1.7; margin-bottom: 15px;">
                 Built from absolute rock bottom and engineered for legacy. <strong>7Leo Ventures</strong> unifies all solo creator modules, commerce, cinematic AI, and the brutal 10-pillar Underdog & Revenge Engine under one sovereign architecture.
             </p>
-            <p style="text-align: center; color: #eab308; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.5px;">
+            <p style="text-align: center; color: #eab308; font-size: 0.9rem; font-weight: 700; letter-spacing: 1px;">
                 One Vision • Infinite Growth.
             </p>
         `;
-        targetAboutBox.appendChild(venturesAboutBox);
+        aboutBoxTarget.appendChild(venturesAboutBox);
     }
 
     // 5. FULLY ACTIVE 10-PILLAR UNDERDOG ENGINE DASHBOARD MODAL
