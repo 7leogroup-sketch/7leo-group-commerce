@@ -2667,7 +2667,7 @@ VISION. POWER. LEGACY.</p>
             });
         }
     </script>
-    <!-- ================= 7LEO FILMS PORTAL & STUDIO (V3 - FIXED LAYOUT) ================= -->
+    <!-- ================= 7LEO FILMS PORTAL & STUDIO (FINAL FIXED V4) ================= -->
 
 <style>
   #films-portal {
@@ -2676,13 +2676,12 @@ VISION. POWER. LEGACY.</p>
     left: 0;
     width: 100%;
     height: 100%;
-    /* Tattoo Background Fix */
     background-color: #050507;
     background-image: url('file_00000000776081fa8dbc514074356775.png');
     background-position: center center;
     background-repeat: no-repeat;
     background-size: 60%;
-    background-blend-mode: color-dodge; /* Blends nicely with black */
+    background-blend-mode: color-dodge;
     z-index: 99999;
     display: none;
     overflow-y: auto;
@@ -2690,7 +2689,6 @@ VISION. POWER. LEGACY.</p>
     color: #f3f4f6;
   }
   
-  /* Pseudo-element for extra darkness over the tattoo so text is readable */
   #films-portal::before {
     content: "";
     position: fixed;
@@ -2895,95 +2893,62 @@ VISION. POWER. LEGACY.</p>
     if (portal) portal.classList.remove('active');
   }
 
-  // Smarter DOM Injection for separate cards & proper About section
   window.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => {
       
-      // 1. FIX THE HOMEPAGE CARDS (Separate BGM & Films)
-      const allButtons = document.querySelectorAll('button, a, div');
-      let bgmElement = null;
-      
-      allButtons.forEach(el => {
-        if (el.textContent.trim() === 'Explore 7Leo BGM') {
-          bgmElement = el;
+      // 1. ADD 7LEO FILMS TO TOP NAVIGATION BAR
+      const navLinks = document.querySelectorAll('a, span, button');
+      let targetNavParent = null;
+
+      navLinks.forEach(el => {
+        if (el.textContent.trim() === '7Leo Star' || el.textContent.trim() === '7Leo BGM') {
+          if (!targetNavParent) targetNavParent = el.parentElement;
         }
       });
 
-      if (bgmElement) {
-        // Find the parent card containing the BGM button
-        const bgmCard = bgmElement.closest('div[style*="border"], .card'); 
-        
-        if (bgmCard && bgmCard.parentElement && !document.getElementById('films-card-item')) {
-          // Clean up any mistakenly nested cards from previous runs
-          const nestedErr = bgmCard.querySelector('#films-card-item');
-          if (nestedErr) nestedErr.remove();
+      if (targetNavParent && !document.getElementById('nav-films-link')) {
+        const filmsNav = document.createElement('a'); // Using <a> to match site nav style
+        filmsNav.id = 'nav-films-link';
+        filmsNav.href = '#';
+        filmsNav.textContent = '7Leo Films';
+        filmsNav.style.cssText = 'color: inherit; text-decoration: none; cursor: pointer; transition: color 0.2s;';
+        filmsNav.onclick = (e) => {
+          e.preventDefault();
+          openFilmsPortal();
+        };
+        // Insert right after 7Leo Star or BGM
+        targetNavParent.appendChild(filmsNav);
+      }
 
-          // Create the New Separate Card
+      // 2. ADD SEPARATE 7LEO FILMS CARD TO HOMEPAGE GRID (Next to Star/BGM/Store)
+      const starButton = Array.from(document.querySelectorAll('button, a')).find(el => el.textContent.trim() === 'Explore 7Leo Star');
+      
+      if (starButton) {
+        const starCard = starButton.closest('div[style*="border"], .card, div');
+        
+        if (starCard && starCard.parentElement && !document.getElementById('films-homepage-card')) {
           const filmsCard = document.createElement('div');
-          filmsCard.id = 'films-card-item';
-          filmsCard.className = bgmCard.className; // Match exact classes
-          filmsCard.style.cssText = bgmCard.style.cssText; // Match exact styles (borders, padding, background)
+          filmsCard.id = 'films-homepage-card';
+          filmsCard.className = starCard.className;
+          filmsCard.style.cssText = starCard.style.cssText;
           
           filmsCard.innerHTML = `
             <div style="text-align: center; margin-bottom: 15px;">
-                <img src="1788951880054.png" alt="7Leo Films" style="height: 60px; border-radius: 8px;">
+                <img src="1788951880054.png" alt="7Leo Films Logo" style="height: 55px; border-radius: 8px; border: 1px solid rgba(212,175,55,0.3);">
             </div>
-            <h3 style="color: #d4af37; text-align: center; margin-top: 0;">One Imagine. One Film.</h3>
+            <h3 style="color: #d4af37; text-align: center; margin-top: 0; font-size: 1.1rem;">One Imagine. One Film.</h3>
             <p style="color: #9ca3af; text-align: center; font-size: 0.9rem; margin-bottom: 20px;">You bring the idea. 7Leo Films builds the movie.</p>
             <div style="text-align: center;">
-                <button onclick="openFilmsPortal()" style="background: transparent; border: 1px solid #d4af37; color: #d4af37; padding: 10px 20px; border-radius: 20px; cursor: pointer; transition: 0.3s;" onmouseover="this.style.background='#d4af37'; this.style.color='#000';" onmouseout="this.style.background='transparent'; this.style.color='#d4af37';">Explore 7Leo Films</button>
+                <button onclick="openFilmsPortal()" style="background: transparent; border: 1px solid #d4af37; color: #d4af37; padding: 10px 20px; border-radius: 20px; cursor: pointer; font-weight: 600; transition: 0.3s;" onmouseover="this.style.background='#d4af37'; this.style.color='#000';" onmouseout="this.style.background='transparent'; this.style.color='#d4af37';">Explore 7Leo Films</button>
             </div>
           `;
           
-          // Add it right NEXT to the BGM card, not inside it
-          bgmCard.parentNode.insertBefore(filmsCard, bgmCard.nextSibling);
+          // Append as a separate card alongside the others
+          starCard.parentNode.insertBefore(filmsCard, starCard.nextSibling);
         }
       }
 
-      // 2. FIX THE ABOUT SECTION DRAFT (Append properly formatted box)
-      const allHeaders = document.querySelectorAll('h3, h4, span, div');
-      let starHeader = null;
-      
-      allHeaders.forEach(el => {
-        if (el.textContent.includes('ABOUT 7LEO STAR') || el.textContent.includes('ABOUT 7LEO BGM')) {
-          starHeader = el;
-        }
-      });
-
-      if (starHeader) {
-        // Find the box containing the Star/BGM text
-        const aboutBox = starHeader.closest('div[style*="border"], div[style*="background"]');
-        
-        if (aboutBox && aboutBox.parentElement && !document.getElementById('films-about-draft')) {
-          
-          const newAboutBox = document.createElement('div');
-          newAboutBox.id = 'films-about-draft';
-          newAboutBox.className = aboutBox.className;
-          newAboutBox.style.cssText = aboutBox.style.cssText; // Copies the exact box outline/padding
-          newAboutBox.style.marginTop = '20px'; // Space from the previous box
-          
-          newAboutBox.innerHTML = `
-            <div style="text-align: center; margin-bottom: 10px;">
-                <img src="1788951880054.png" alt="7Leo Films Logo" style="height: 45px; border-radius: 6px;">
-            </div>
-            <h4 style="text-align: center; color: #d4af37; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px;">About 7Leo Films</h4>
-            <p style="text-align: center; color: #9ca3af; font-size: 0.85rem; line-height: 1.6; margin-bottom: 15px;">
-                7Leo Films is the cinematic vision of 7Leo Group, created to turn imagination into reality through advanced storytelling and technology.
-            </p>
-            <p style="text-align: center; color: #9ca3af; font-size: 0.85rem; line-height: 1.6; margin-bottom: 15px;">
-                True to our core philosophy — "One Imagine. One Film." — this platform empowers creators to bring their raw ideas, while 7Leo Films builds the complete movie concept, script, and visual roadmap.
-            </p>
-            <p style="text-align: center; color: #9ca3af; font-size: 0.85rem; line-height: 1.6;">
-                7Leo Films — One Imagine. One Film.
-            </p>
-          `;
-          
-          // Append to the bottom of the modal's scrollable container
-          aboutBox.parentElement.appendChild(newAboutBox);
-        }
-      }
-
-    }, 800); // Slight delay ensures your existing HTML loads first
+    }, 800);
   });
 </script>
 <!-- ================= END 7LEO FILMS INTEGRATION ================= -->
