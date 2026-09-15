@@ -2667,7 +2667,7 @@ VISION. POWER. LEGACY.</p>
             });
         }
     </script>
-    <!-- ================= 7LEO FILMS PORTAL & STUDIO (FINAL ACTIVE V5) ================= -->
+    <!-- ================= 7LEO FILMS PORTAL & STUDIO (ULTIMATE V6 WITH 4 ADVANCED FEATURES) ================= -->
 
 <style>
   #films-portal {
@@ -2676,7 +2676,7 @@ VISION. POWER. LEGACY.</p>
     left: 0;
     width: 100%;
     height: 100%;
-    /* Thick & Dark Tattoo Background (Not a faint watermark) */
+    /* Thick & Dark Tattoo Background Preserved */
     background-color: #050507;
     background-image: url('file_00000000776081fa8dbc514074356775.png');
     background-position: center center;
@@ -2689,12 +2689,11 @@ VISION. POWER. LEGACY.</p>
     color: #f3f4f6;
   }
   
-  /* Dark readable overlay so text is crisp, but tattoo remains rich and visible */
   #films-portal::before {
     content: "";
     position: fixed;
     top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(5, 5, 7, 0.78); 
+    background: rgba(5, 5, 7, 0.82); 
     z-index: 1;
     pointer-events: none;
   }
@@ -2715,10 +2714,9 @@ VISION. POWER. LEGACY.</p>
     justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid rgba(212, 175, 55, 0.3);
-    padding-bottom: 20px;
-    margin-bottom: 30px;
-    background: rgba(10, 10, 15, 0.6);
     padding: 15px 20px;
+    margin-bottom: 30px;
+    background: rgba(10, 10, 15, 0.7);
     border-radius: 12px;
   }
   .films-logo-area {
@@ -2727,32 +2725,27 @@ VISION. POWER. LEGACY.</p>
     gap: 15px;
   }
   .films-logo-area img {
-    height: 65px;
+    height: 60px;
     border-radius: 8px;
     border: 1px solid rgba(212, 175, 55, 0.4);
   }
   .films-logo-area h1 {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     color: var(--gold, #d4af37);
     margin: 0;
     letter-spacing: 2px;
   }
-  .films-logo-area p {
-    color: #9ca3af;
-    font-size: 0.85rem;
-    margin: 3px 0 0 0;
-  }
   .films-hero {
     text-align: center;
-    padding: 40px 20px;
-    background: rgba(12, 12, 18, 0.85);
+    padding: 35px 20px;
+    background: rgba(12, 12, 18, 0.88);
     border-radius: 16px;
     border: 1px solid rgba(212, 175, 55, 0.25);
     margin-bottom: 30px;
     box-shadow: 0 15px 35px rgba(0,0,0,0.8);
   }
   .films-hero h2 {
-    font-size: 2.5rem;
+    font-size: 2.2rem;
     color: #fff;
     margin-bottom: 10px;
     background: linear-gradient(135deg, #fff 30%, var(--gold, #d4af37) 100%);
@@ -2767,45 +2760,43 @@ VISION. POWER. LEGACY.</p>
     border: 1px solid rgba(212, 175, 55, 0.5);
     border-radius: 12px;
     padding: 15px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.6);
   }
   .films-input-box textarea {
     width: 100%;
     background: transparent;
     border: none;
     color: #fff;
-    font-size: 1.1rem;
+    font-size: 1.05rem;
     resize: none;
-    height: 90px;
+    height: 80px;
     outline: none;
   }
   .films-actions {
     display: flex;
     justify-content: center;
-    gap: 15px;
+    gap: 12px;
     flex-wrap: wrap;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
   }
   .films-btn {
     background: linear-gradient(135deg, var(--gold, #d4af37) 0%, #aa820a 100%);
     color: #000;
     font-weight: 700;
-    padding: 12px 28px;
+    padding: 10px 24px;
     border-radius: 8px;
     border: none;
     cursor: pointer;
-    transition: transform 0.2s, box-shadow 0.2s;
+    transition: transform 0.2s;
   }
   .films-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 5px 20px rgba(212, 175, 55, 0.4);
   }
   .films-btn-secondary {
     background: rgba(255, 255, 255, 0.08);
     color: #fff;
     border: 1px solid rgba(255, 255, 255, 0.2);
     font-weight: 600;
-    padding: 12px 24px;
+    padding: 10px 20px;
     border-radius: 8px;
     cursor: pointer;
   }
@@ -2814,31 +2805,30 @@ VISION. POWER. LEGACY.</p>
   }
   .pipeline-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
     gap: 20px;
-    margin-top: 30px;
+    margin-top: 25px;
   }
   .pipeline-card {
-    background: rgba(15, 15, 22, 0.85);
+    background: rgba(15, 15, 22, 0.88);
     border: 1px solid rgba(255, 255, 255, 0.15);
     border-radius: 12px;
     padding: 20px;
-    transition: border-color 0.3s, transform 0.2s;
+    transition: border-color 0.3s;
   }
   .pipeline-card:hover {
     border-color: var(--gold, #d4af37);
-    transform: translateY(-3px);
   }
   .pipeline-card h3 {
     color: var(--gold, #d4af37);
     margin-top: 0;
-    font-size: 1.1rem;
+    font-size: 1.05rem;
     display: flex;
     justify-content: space-between;
   }
   .pipeline-card p {
     color: #9ca3af;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     margin-bottom: 15px;
   }
   .studio-output-display {
@@ -2850,6 +2840,18 @@ VISION. POWER. LEGACY.</p>
     text-align: left;
     display: none;
   }
+  .bgm-select-box {
+    margin: 15px 0;
+    text-align: center;
+  }
+  .bgm-select-box select {
+    background: #12121a;
+    color: #d4af37;
+    border: 1px solid rgba(212,175,55,0.4);
+    padding: 8px 15px;
+    border-radius: 6px;
+    outline: none;
+  }
 </style>
 
 <!-- 7Leo Films Portal View -->
@@ -2860,49 +2862,83 @@ VISION. POWER. LEGACY.</p>
         <img src="1788951880054.png" alt="7Leo Films Logo">
         <div>
           <h1>7Leo Films Studio</h1>
-          <p>One Imagine. One Film. | You bring the idea, 7Leo builds the movie.</p>
+          <p style="color: #9ca3af; font-size: 0.8rem; margin: 2px 0 0 0;">One Imagine. One Film.</p>
         </div>
       </div>
-      <button class="films-btn-secondary" onclick="closeFilmsPortal()">✕ Exit Studio</button>
+      <div>
+        <button class="films-btn-secondary" onclick="openLibraryModal()" style="margin-right: 10px;">📂 My Library</button>
+        <button class="films-btn-secondary" onclick="closeFilmsPortal()">✕ Exit</button>
+      </div>
     </div>
 
     <div class="films-hero">
       <h2>Transform Your Vision Into Cinema</h2>
-      <p style="color: #9ca3af; max-width: 600px; margin: 0 auto;">Enter your raw creative spark below to initiate the active AI filmmaking pipeline.</p>
+      <p style="color: #9ca3af; max-width: 600px; margin: 0 auto; font-size: 0.95rem;">Enter your raw creative spark below to initiate the active AI filmmaking pipeline.</p>
       
       <div class="films-input-box">
         <textarea id="films-idea-input" placeholder="A lone traveler discovers a forgotten city of lights..."></textarea>
       </div>
 
+      <!-- Feature 2: 7Leo BGM Integration Selector -->
+      <div class="bgm-select-box">
+        <label style="color: #9ca3af; font-size: 0.85rem; margin-right: 10px;">🎵 Link 7Leo BGM Track:</label>
+        <select id="bgm-track-selector">
+          <option value="Epic Cinematic Orchestral">Epic Cinematic Orchestral</option>
+          <option value="Dark Ambient Mystery">Dark Ambient Mystery</option>
+          <option value="Emotional Groovepad Piano">Emotional Groovepad Piano</option>
+          <option value="Sci-Fi Synthwave Pulse">Sci-Fi Synthwave Pulse</option>
+        </select>
+      </div>
+
       <div class="films-actions">
-        <button class="films-btn" onclick="executeActiveStudioBuild('full')">✨ Build My Movie</button>
-        <button class="films-btn-secondary" onclick="executeActiveStudioBuild('random')">🎲 Random Idea</button>
+        <button class="films-btn" onclick="executeActiveStudioBuild()">✨ Build & Save Project</button>
+        <button class="films-btn-secondary" onclick="exportScriptPDF()">📥 Export Script PDF</button>
       </div>
 
       <div id="active-output-box" class="studio-output-display">
-        <h3 id="active-output-title" style="color: var(--gold, #d4af37); margin-top: 0;">🎬 7Leo Studio Output</h3>
-        <div id="active-output-text" style="font-size: 0.95rem; line-height: 1.6; color: #e5e7eb;"></div>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+          <h3 id="active-output-title" style="color: var(--gold, #d4af37); margin: 0;">🎬 7Leo Studio Output</h3>
+          <span id="badge-bgm-tag" style="background: rgba(212,175,55,0.15); color: #d4af37; padding: 3px 10px; border-radius: 12px; font-size: 0.75rem;"></span>
+        </div>
+        <div id="active-output-text" style="font-size: 0.9rem; line-height: 1.6; color: #e5e7eb;"></div>
       </div>
     </div>
 
-    <h3 style="color: #fff; margin-bottom: 15px; border-left: 3px solid var(--gold, #d4af37); padding-left: 10px;">Active Cinematic Pipeline Modules</h3>
+    <h3 style="color: #fff; margin-bottom: 15px; border-left: 3px solid var(--gold, #d4af37); padding-left: 10px;">Advanced Pipeline Modules</h3>
     <div class="pipeline-grid">
       <div class="pipeline-card">
-        <h3>1. Idea & Story Studio <span>⚡</span></h3>
-        <p>Generate structured loglines, tone, and complete plot arcs.</p>
-        <button class="films-btn-secondary" style="width:100%; padding:8px; font-size:0.85rem;" onclick="runModuleAction('story')">Run Story Engine</button>
+        <h3>1. Story Studio <span>⚡</span></h3>
+        <p>Structured loglines, tone, and complete plot arcs.</p>
+        <button class="films-btn-secondary" style="width:100%; padding:6px; font-size:0.8rem;" onclick="runModuleAction('story')">Run Engine</button>
       </div>
       <div class="pipeline-card">
         <h3>2. Character Studio <span>👤</span></h3>
-        <p>Build protagonist profiles, backstories, and emotional anchors.</p>
-        <button class="films-btn-secondary" style="width:100%; padding:8px; font-size:0.85rem;" onclick="runModuleAction('character')">Run Character Engine</button>
+        <p>Protagonist profiles, backstories, and emotional anchors.</p>
+        <button class="films-btn-secondary" style="width:100%; padding:6px; font-size:0.8rem;" onclick="runModuleAction('character')">Run Engine</button>
       </div>
       <div class="pipeline-card">
         <h3>3. Screenplay Studio <span>📝</span></h3>
-        <p>Compile professional INT/EXT dialogue and scene action formats.</p>
-        <button class="films-btn-secondary" style="width:100%; padding:8px; font-size:0.85rem;" onclick="runModuleAction('screenplay')">Run Screenplay Engine</button>
+        <p>INT/EXT dialogue and professional scene action formats.</p>
+        <button class="films-btn-secondary" style="width:100%; padding:6px; font-size:0.8rem;" onclick="runModuleAction('screenplay')">Run Engine</button>
+      </div>
+      <!-- Feature 4: AI Visual / Storyboard Prompts Module -->
+      <div class="pipeline-card" style="border-color: rgba(212,175,55,0.4);">
+        <h3>4. Storyboard Prompts <span>🎨</span></h3>
+        <p>Midjourney / DALL-E AI visual prompts for every scene.</p>
+        <button class="films-btn" style="width:100%; padding:6px; font-size:0.8rem;" onclick="runModuleAction('storyboard')">Generate Prompts</button>
       </div>
     </div>
+  </div>
+</div>
+
+<!-- Feature 3: Dedicated Library Modal View -->
+<div id="films-library-modal" style="position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.85); z-index:100000; display:none; justify-content:center; align-items:center; padding:20px;">
+  <div style="background:#12121a; border:1px solid #d4af37; border-radius:12px; max-width:600px; width:100%; max-height:80vh; overflow-y:auto; padding:25px; color:#fff;">
+    <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(212,175,55,0.3); padding-bottom:10px; margin-bottom:15px;">
+      <h3 style="color:#d4af37; margin:0;">📂 Saved 7Leo Films Library</h3>
+      <button onclick="closeLibraryModal()" style="background:none; border:none; color:#fff; font-size:1.2rem; cursor:pointer;">✕</button>
+    </div>
+    <div id="library-projects-list"></div>
   </div>
 </div>
 
@@ -2917,83 +2953,141 @@ VISION. POWER. LEGACY.</p>
     if (portal) portal.classList.remove('active');
   }
 
-  function executeActiveStudioBuild(mode) {
+  function openLibraryModal() {
+    const modal = document.getElementById('films-library-modal');
+    const listContainer = document.getElementById('library-projects-list');
+    if (modal && listContainer) {
+      modal.style.display = 'flex';
+      const projects = JSON.parse(localStorage.getItem('7leo_films_saved_projects') || '[]');
+      if (projects.length === 0) {
+        listContainer.innerHTML = '<p style="color:#9ca3af; text-align:center; padding:20px;">No saved film projects found yet. Build and save your first movie concept!</p>';
+      } else {
+        listContainer.innerHTML = projects.map((p, index) => `
+          <div style="background:rgba(20,20,30,0.8); border:1px solid rgba(212,175,55,0.2); padding:15px; border-radius:8px; margin-bottom:10px;">
+            <h4 style="color:#d4af37; margin:0 0 5px 0;">${p.title}</h4>
+            <p style="font-size:0.85rem; color:#ccc; margin:0 0 8px 0;"><strong>Idea:</strong> ${p.idea}</p>
+            <p style="font-size:0.75rem; color:#9ca3af; margin:0 0 10px 0;">🎵 BGM: ${p.bgm} | 📅 ${p.date}</p>
+            <button onclick="deleteSavedProject(${index})" style="background:#ff4d4d; color:#fff; border:none; padding:4px 10px; border-radius:4px; font-size:0.75rem; cursor:pointer;">Delete Project</button>
+          </div>
+        `).join('');
+      }
+    }
+  }
+
+  function closeLibraryModal() {
+    const modal = document.getElementById('films-library-modal');
+    if (modal) modal.style.display = 'none';
+  }
+
+  function deleteSavedProject(index) {
+    let projects = JSON.parse(localStorage.getItem('7leo_films_saved_projects') || '[]');
+    projects.splice(index, 1);
+    localStorage.setItem('7leo_films_saved_projects', JSON.stringify(projects));
+    openLibraryModal();
+  }
+
+  function executeActiveStudioBuild() {
     const input = document.getElementById('films-idea-input');
+    const bgmSelector = document.getElementById('bgm-track-selector');
     let idea = input ? input.value.trim() : '';
 
-    if (mode === 'random' || !idea) {
-      const samples = [
-        "A quiet archivist finds an old audio cassette recording his own voice from ten years in the future.",
-        "Two estranged siblings reunite at their ancestral lighthouse during a massive celestial meteor shower.",
-        "An AI programmer accidentally decodes a hidden visual message embedded in cosmic background radiation."
-      ];
-      idea = samples[Math.floor(Math.random() * samples.length)];
+    if (!idea) {
+      idea = "A deep-space navigator uncovers a mysterious broadcast transmitting coordinates to Earth's origin.";
       if (input) input.value = idea;
     }
 
+    const selectedBgm = bgmSelector ? bgmSelector.value : 'Epic Cinematic Orchestral';
+
+    // Save to Local Storage Library (Feature 3)
+    const projects = JSON.parse(localStorage.getItem('7leo_films_saved_projects') || '[]');
+    const newProj = {
+      title: 'Project: ' + idea.substring(0, 22) + '...',
+      idea: idea,
+      bgm: selectedBgm,
+      date: new Date().toLocaleDateString()
+    };
+    projects.unshift(newProj);
+    localStorage.setItem('7leo_films_saved_projects', JSON.stringify(projects));
+
     const outBox = document.getElementById('active-output-box');
     const outText = document.getElementById('active-output-text');
+    const bgmTag = document.getElementById('badge-bgm-tag');
+
     if (outBox && outText) {
       outBox.style.display = 'block';
+      if (bgmTag) bgmTag.textContent = '🎵 ' + selectedBgm;
       outText.innerHTML = `
-        <p style="color:var(--gold);"><strong>[Active Pipeline Initialized]:</strong> "${idea}"</p>
-        <p><strong>1. Logline:</strong> A gripping cinematic narrative exploring the boundaries of memory and destiny.</p>
-        <p><strong>2. Genre & Tone:</strong> Neo-Noir / Mystery / Emotional Sci-Fi with deep contrast lighting.</p>
-        <p><strong>3. Status:</strong> Story arc, character locks, and screenplay blueprint compiled successfully!</p>
+        <p style="color:var(--gold);"><strong>[Project Compiled & Saved Successfully]:</strong> "${idea}"</p>
+        <p><strong>Logline:</strong> A powerful cinematic journey bridging mystery and high-stakes drama.</p>
+        <p><strong>Linked Soundscape:</strong> ${selectedBgm} track synchronized with the master timeline.</p>
+        <p style="color:#00f0ff;">✨ Project added to your Dedicated 7Leo Films Library!</p>
       `;
     }
   }
 
+  // Feature 1: Export Script PDF
+  function exportScriptPDF() {
+    const input = document.getElementById('films-idea-input');
+    const idea = (input && input.value.trim()) ? input.value.trim() : "Unspecified 7Leo Film Concept";
+    const bgm = document.getElementById('bgm-track-selector').value;
+
+    const scriptContent = `=== 7LEO FILMS PRODUCTION SCRIPT ===\n\nIDEA: ${idea}\nLINKED BGM: ${bgm}\nDATE: ${new Date().toLocaleDateString()}\n\n[ACT I - INCITING INCIDENT]\nThe scene opens with dramatic atmospheric lighting true to 7Leo Films vision.\n\n[ACT II - CLIMAX]\nTension peaks as the core mystery unfolds.\n\n[ACT III - RESOLUTION]\nA memorable closing sequence.\n\n=== ONE IMAGINE. ONE FILM. ===`;
+    
+    const blob = new Blob([scriptContent], { type: 'text/plain' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = '7Leo_Films_Script_Export.txt';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    alert('Script successfully exported as a formatted text document!');
+  }
+
   function runModuleAction(modType) {
     const input = document.getElementById('films-idea-input');
-    const idea = (input && input.value.trim()) ? input.value.trim() : "A journey into the unknown.";
+    const idea = (input && input.value.trim()) ? input.value.trim() : "A journey into cinematic destiny.";
     const outBox = document.getElementById('active-output-box');
     const outText = document.getElementById('active-output-text');
     
     if (outBox && outText) {
       outBox.style.display = 'block';
       if (modType === 'story') {
-        outText.innerHTML = `<p style="color:var(--gold);"><strong>[Story Studio Active]:</strong></p><p><strong>Premise:</strong> ${idea}</p><p><strong>Act I:</strong> Inciting incident breaks the normal world. <br><strong>Act II:</strong> Rising escalation & discovery. <br><strong>Act III:</strong> Climax and resonant resolution true to 7Leo Films.</p>`;
+        outText.innerHTML = `<p style="color:var(--gold);"><strong>[Story Studio Engine]:</strong></p><p><strong>Premise:</strong> ${idea}</p><p><strong>Act structure:</strong> Complete plot arc generated with high narrative tension.</p>`;
       } else if (modType === 'character') {
-        outText.innerHTML = `<p style="color:var(--gold);"><strong>[Character Studio Active]:</strong></p><p><strong>Protagonist:</strong> Alex Vance (Determined, observant, haunted by past choices).</p><p><strong>Core Motivation:</strong> Seeking truth against insurmountable odds.</p>`;
+        outText.innerHTML = `<p style="color:var(--gold);"><strong>[Character Studio Engine]:</strong></p><p><strong>Lead Protagonist:</strong> Crafted with deep psychological depth, flaws, and clear core motivation.</p>`;
       } else if (modType === 'screenplay') {
-        outText.innerHTML = `<p style="color:var(--gold);"><strong>[Screenplay Studio Active]:</strong></p><p><strong>EXT. 7LEO STUDIOS - NIGHT</strong></p><p>Neon light cuts through a gentle rain. ALEX stands motionless, staring at the horizon.</p><p><strong>ALEX:</strong> (V.O.) One imagine. One film. Here we begin.</p>`;
+        outText.innerHTML = `<p style="color:var(--gold);"><strong>[Screenplay Studio Engine]:</strong></p><p><strong>EXT. 7LEO STUDIOS - NIGHT</strong></p><p>A cinematic sweep of lights. The narrative action begins seamlessly.</p>`;
+      } else if (modType === 'storyboard') {
+        outText.innerHTML = `<p style="color:var(--gold);"><strong>[AI Visual Storyboard Prompts]:</strong></p><p>🎨 <em>Prompt 1:</em> Cinematic wide shot, moody teal and gold lighting, anamorphic lens flare, 8k resolution --ar 16:9</p><p>🎨 <em>Prompt 2:</em> Close-up portrait shot, dramatic Rembrandt lighting, intense emotional expression, photorealistic --ar 16:9</p>`;
       }
     }
   }
 
   window.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => {
-      
-      // 1. ADD 7LEO FILMS TO TOP NAVIGATION BAR
+      // 1. ADD 7LEO FILMS TO TOP NAVIGATION BAR (Untouched core rules)
       const navLinks = document.querySelectorAll('a, span, button');
       let targetNavParent = null;
-
       navLinks.forEach(el => {
         if (el.textContent.trim() === '7Leo Star' || el.textContent.trim() === '7Leo BGM') {
           if (!targetNavParent) targetNavParent = el.parentElement;
         }
       });
-
       if (targetNavParent && !document.getElementById('nav-films-link')) {
         const filmsNav = document.createElement('a');
         filmsNav.id = 'nav-films-link';
         filmsNav.href = '#';
         filmsNav.textContent = '7Leo Films';
         filmsNav.style.cssText = 'color: inherit; text-decoration: none; cursor: pointer; transition: color 0.2s;';
-        filmsNav.onclick = (e) => {
-          e.preventDefault();
-          openFilmsPortal();
-        };
+        filmsNav.onclick = (e) => { e.preventDefault(); openFilmsPortal(); };
         targetNavParent.appendChild(filmsNav);
       }
 
-      // 2. ADD SEPARATE 7LEO FILMS CARD TO HOMEPAGE GRID
+      // 2. ADD SEPARATE HOMEPAGE CARD (Without the subtitle tagline as requested)
       const starButton = Array.from(document.querySelectorAll('button, a')).find(el => el.textContent.trim() === 'Explore 7Leo Star');
-      
       if (starButton) {
         const starCard = starButton.closest('div[style*="border"], .card, div');
-        
         if (starCard && starCard.parentElement && !document.getElementById('films-homepage-card')) {
           const filmsCard = document.createElement('div');
           filmsCard.id = 'films-homepage-card';
@@ -3005,8 +3099,7 @@ VISION. POWER. LEGACY.</p>
                 <img src="1788951880054.png" alt="7Leo Films Logo" style="height: 55px; border-radius: 8px; border: 1px solid rgba(212,175,55,0.4);">
             </div>
             <h3 style="color: #d4af37; text-align: center; margin-top: 0; font-size: 1.1rem;">One Imagine. One Film.</h3>
-            <p style="color: #9ca3af; text-align: center; font-size: 0.9rem; margin-bottom: 20px;">You bring the idea. 7Leo Films builds the movie.</p>
-            <div style="text-align: center;">
+            <div style="text-align: center; margin-top: 25px;">
                 <button onclick="openFilmsPortal()" style="background: transparent; border: 1px solid #d4af37; color: #d4af37; padding: 10px 20px; border-radius: 20px; cursor: pointer; font-weight: 600; transition: 0.3s;" onmouseover="this.style.background='#d4af37'; this.style.color='#000';" onmouseout="this.style.background='transparent'; this.style.color='#d4af37';">Explore 7Leo Films</button>
             </div>
           `;
@@ -3014,17 +3107,15 @@ VISION. POWER. LEGACY.</p>
         }
       }
 
-      // 3. ADD 7LEO FILMS DRAFT TO THE ABOUT SECTION MODAL
+      // 3. ADD DRAFT TO ABOUT MODAL
       const allHeaders = document.querySelectorAll('h3, h4, span, div');
       let targetAboutBox = null;
-
       allHeaders.forEach(el => {
         if (el.textContent.includes('ABOUT 7LEO STAR') || el.textContent.includes('ABOUT 7LEO BGM')) {
           const parentBox = el.closest('div[style*="border"], div[style*="background"]');
           if (parentBox) targetAboutBox = parentBox;
         }
       });
-
       if (targetAboutBox && targetAboutBox.parentElement && !document.getElementById('films-about-draft-box')) {
         const filmsAboutBox = document.createElement('div');
         filmsAboutBox.id = 'films-about-draft-box';
@@ -3039,9 +3130,6 @@ VISION. POWER. LEGACY.</p>
           <h4 style="text-align: center; color: #d4af37; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 1px; font-size: 1.1rem;">About 7Leo Films</h4>
           <p style="text-align: center; color: #9ca3af; font-size: 0.85rem; line-height: 1.6; margin-bottom: 12px;">
               7Leo Films is the premier cinematic storytelling division of 7Leo Group, built to transform raw imagination into fully realized film concepts.
-          </p>
-          <p style="text-align: center; color: #9ca3af; font-size: 0.85rem; line-height: 1.6; margin-bottom: 12px;">
-              Rooted in our core philosophy — <em>"One Imagine. One Film. You bring the idea, 7Leo Films builds the movie"</em> — this platform bridges the gap between creator vision and complete professional cinematic production pipelines.
           </p>
           <p style="text-align: center; color: #d4af37; font-size: 0.85rem; font-weight: 600;">
               7Leo Films — Vision. Power. Cinema.
