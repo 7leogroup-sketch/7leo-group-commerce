@@ -3144,15 +3144,28 @@ VISION. POWER. LEGACY.</p>
 <!-- ================= END 7LEO FILMS INTEGRATION ================= -->
 <script>
     // ==========================================
-    // 7LEO VENTURES CORRECTED & CLEAN INJECTION SCRIPT
+    // 7LEO VENTURES FINAL BULLETPROOF SCRIPT
     // ==========================================
 
-    // 1. CLEAN TITLE & BACKGROUND TATTOO TEXTURE
+    // 1. FORCE BACKGROUND TATTOO TEXTURE & CLEAN TITLE VIA CSS STYLESHEET
     document.title = "7Leo Ventures | One Vision • Infinite Growth";
-    document.body.style.backgroundImage = "url('file_00000000776081fa8dbc514074356775.png')";
-    document.body.style.backgroundSize = "cover";
-    document.body.style.backgroundPosition = "center";
-    document.body.style.backgroundAttachment = "fixed";
+    
+    const tattooStyle = document.createElement('style');
+    tattooStyle.innerHTML = `
+        html, body {
+            background-image: url('file_00000000776081fa8dbc514074356775.png') !important;
+            background-size: cover !important;
+            background-position: center !important;
+            background-attachment: fixed !important;
+            background-color: #050505 !important;
+        }
+        /* Make container backgrounds translucent so the tattoo texture shines through */
+        .ventures-translucent-bg {
+            background: rgba(10, 10, 10, 0.85) !important;
+            backdrop-filter: blur(10px);
+        }
+    `;
+    document.head.appendChild(tattooStyle);
 
     // 2. CLEAN UP TOP NAVIGATION LINK
     const navUl = document.querySelector('nav ul, .nav-links, header');
@@ -3169,30 +3182,27 @@ VISION. POWER. LEGACY.</p>
         navUl.appendChild(venturesNavLink);
     }
 
-    // 3. CLEANLY PLACE 5th CARD IN THE GRID (Matching exact style of existing cards)
-    const existingCards = Array.from(document.querySelectorAll('div, section')).filter(el => {
-        return el.textContent.includes('Explore 7Leo Films') || el.textContent.includes('Explore 7Leo Star');
-    });
-    const refCard = existingCards[0];
+    // 3. PRECISELY PLACE "Explore 7Leo Ventures" CARD INSIDE THE GRID (RIGHT AFTER FILMS CARD)
+    const allDivs = Array.from(document.querySelectorAll('div'));
+    const filmsCardElement = allDivs.find(el => el.textContent.includes('Explore 7Leo Films') && el.children.length < 6);
 
-    if (refCard && refCard.parentElement && !document.getElementById('ventures-homepage-card')) {
+    if (filmsCardElement && !document.getElementById('ventures-grid-card')) {
         const venturesCard = document.createElement('div');
-        venturesCard.id = 'ventures-homepage-card';
-        venturesCard.className = refCard.className || '';
-        venturesCard.style.cssText = refCard.style.cssText || '';
+        venturesCard.id = 'ventures-grid-card';
+        venturesCard.className = filmsCardElement.className;
+        venturesCard.style.cssText = filmsCardElement.style.cssText;
         
         venturesCard.innerHTML = `
-            <div style="text-align: center; margin-bottom: 12px;">
+            <div style="text-align: center; margin-bottom: 10px;">
                 <img src="file_0000000066d88208b43c8761fcefb922.png" alt="7Leo Ventures Logo" style="height: 50px; object-fit: contain; margin: 0 auto; filter: drop-shadow(0 0 10px rgba(234,179,8,0.5));">
             </div>
-            <h3 style="color: #eab308; text-align: center; margin: 0 0 8px 0; font-size: 1rem; font-weight: 800;">7LEO VENTURES</h3>
+            <h3 style="color: #eab308; text-align: center; margin: 0 0 6px 0; font-size: 0.95rem; font-weight: 800;">Explore 7Leo Ventures</h3>
             <p style="text-align: center; color: #9ca3af; font-size: 0.75rem; margin-bottom: 12px;">One Vision • Infinite Growth</p>
-            <button onclick="openVenturesDashboard()" style="background: linear-gradient(to right, #eab308, #d97706); border: none; padding: 8px 14px; border-radius: 6px; color: black; font-weight: bold; cursor: pointer; width: 100%; font-size: 0.8rem;">
-                Explore 7Leo Ventures
+            <button onclick="openVenturesDashboard()" style="background: linear-gradient(to right, #eab308, #d97706); border: none; padding: 8px 16px; border-radius: 6px; color: black; font-weight: bold; cursor: pointer; width: 100%; font-size: 0.8rem; box-shadow: 0 4px 10px rgba(234,179,8,0.3);">
+                Launch Dashboard ⚡
             </button>
         `;
-        // Insert right into the grid next to other cards
-        refCard.parentNode.insertBefore(venturesCard, refCard.nextSibling);
+        filmsCardElement.parentNode.insertBefore(venturesCard, filmsCardElement.nextSibling);
     }
 
     // 4. CLEANLY INJECT 7LEO VENTURES INSIDE EXISTING ABOUT SECTION
@@ -3207,19 +3217,20 @@ VISION. POWER. LEGACY.</p>
     if (targetAboutBox && !document.getElementById('ventures-about-draft-box')) {
         const venturesAboutBox = document.createElement('div');
         venturesAboutBox.id = 'ventures-about-draft-box';
-        venturesAboutBox.style.cssText = "margin-top: 25px; padding: 20px; background: rgba(15,15,15,0.9); border: 1px solid rgba(234,179,8,0.3); border-radius: 12px;";
+        venturesAboutBox.className = 'ventures-translucent-bg';
+        venturesAboutBox.style.cssText = "margin-top: 25px; padding: 25px; border: 1px solid rgba(234,179,8,0.4); border-radius: 14px;";
         
         venturesAboutBox.innerHTML = `
-            <div style="text-align: center; margin-bottom: 12px;">
-                <img src="file_0000000066d88208b43c8761fcefb922.png" alt="7Leo Ventures Logo" style="height: 60px; object-fit: contain; margin: 0 auto;">
+            <div style="text-align: center; margin-bottom: 15px;">
+                <img src="file_0000000066d88208b43c8761fcefb922.png" alt="7Leo Ventures Logo" style="height: 70px; object-fit: contain; margin: 0 auto; filter: drop-shadow(0 0 12px rgba(234,179,8,0.4));">
             </div>
-            <h4 style="text-align: center; color: #eab308; margin-bottom: 8px; text-transform: uppercase; font-size: 1rem; font-weight: 800;">
+            <h4 style="text-align: center; color: #eab308; margin-bottom: 8px; text-transform: uppercase; font-size: 1.1rem; font-weight: 900; letter-spacing: 1px;">
                 7Leo Ventures — The Parent Enterprise
             </h4>
-            <p style="text-align: center; color: #d1d5db; font-size: 0.85rem; line-height: 1.5; margin-bottom: 10px;">
+            <p style="text-align: center; color: #d1d5db; font-size: 0.85rem; line-height: 1.6; margin-bottom: 10px;">
                 Built from absolute rock bottom and engineered for legacy. <strong>7Leo Ventures</strong> unifies all solo creator modules, commerce, cinematic AI, and the brutal 10-pillar Underdog & Revenge Engine under one sovereign architecture.
             </p>
-            <p style="text-align: center; color: #eab308; font-size: 0.8rem; font-weight: 600;">
+            <p style="text-align: center; color: #eab308; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.5px;">
                 One Vision • Infinite Growth.
             </p>
         `;
@@ -3264,7 +3275,7 @@ VISION. POWER. LEGACY.</p>
                     <div onclick="activatePillar(7, '👑 Kamyaabi', 'Obsession with victory.', 'Victory Visualization: Visualize your fully completed ecosystem.')" style="background: #121212; border: 1px solid rgba(234,179,8,0.2); padding: 12px; border-radius: 10px; cursor: pointer;"><span style="color: #eab308; font-size: 0.65rem; font-weight: bold;">PILLAR 07</span><h4 style="color: white; margin: 3px 0; font-size: 0.9rem;">👑 Kamyaabi</h4></div>
                     <div onclick="activatePillar(8, '💡 Problem-to-Solution', 'Convert obstacles to products.', 'Productization Engine: Turn today problem into a store asset.')" style="background: #121212; border: 1px solid rgba(234,179,8,0.2); padding: 12px; border-radius: 10px; cursor: pointer;"><span style="color: #eab308; font-size: 0.65rem; font-weight: bold;">PILLAR 08</span><h4 style="color: white; margin: 3px 0; font-size: 0.9rem;">💡 Problem-to-Solution</h4></div>
                     <div onclick="activatePillar(9, '🎯 Insult-to-Success', 'Use disrespect as fuel.', 'Fuel Conversion: Let mockery burn until your empire outshines them.')" style="background: #121212; border: 1px solid rgba(234,179,8,0.2); padding: 12px; border-radius: 10px; cursor: pointer;"><span style="color: #eab308; font-size: 0.65rem; font-weight: bold;">PILLAR 09</span><h4 style="color: white; margin: 3px 0; font-size: 0.9rem;">🎯 Insult-to-Success</h4></div>
-                    <div onclick="activatePillar(10, '🏛️ Empire Building', 'Scale to a digital saltanat.', 'Sovereignty Checklist: Store, BGM, Star, Films & Ventures fully integrated.')" style="background: #121212; border: 1px solid rgba(234,179,8,0.2); padding: 12px; border-radius: 10px; cursor: pointer;"><span style="color: #eab308; font-size: 0.65rem; font-weight: bold;">PILLAR 10</span><h4 style="color: white; margin: 3px 0; font-size: 0.9rem;">🏛️ Empire Building</h4></div>
+                    <div onclick="activatePillar(10, '🏛️ Empire Building', 'Scale to a digital saltanat.', 'Sovereignty Checklist: Store, BGM, Star, Films & Ventures fully integrated.')" style="background: #121212; border: 1px solid rgba(234,179,8,0.2); padding: 12px; border-radius: 10px; cursor: pointer;"><span style="color: #eab308; font-size: 0.65rem; font-weight: bold;">PILLAR 10</span><h4 style="color: white; margin: 3px 0; font-size: 1rem;">🏛️ Empire Building</h4></div>
                 </div>
 
             </div>
