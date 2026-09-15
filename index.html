@@ -3142,6 +3142,545 @@ VISION. POWER. LEGACY.</p>
   });
 </script>
 <!-- ================= END 7LEO FILMS INTEGRATION ================= -->
+<!-- ================= 7LEO STUDIOS & VENTURES (FINAL ULTIMATE V7) ================= -->
+
+<style>
+  /* Shared Portal Styling with Thick & Dark Tattoo Background */
+  .leo-portal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #050507;
+    background-image: url('file_00000000776081fa8dbc514074356775.png');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 99999;
+    display: none;
+    overflow-y: auto;
+    font-family: inherit;
+    color: #f3f4f6;
+  }
+  
+  .leo-portal::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(5, 5, 7, 0.84); 
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .leo-portal.active {
+    display: block;
+  }
+  
+  .leo-container {
+    position: relative;
+    z-index: 2;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+  }
+  .leo-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+    padding: 15px 20px;
+    margin-bottom: 30px;
+    background: rgba(10, 10, 15, 0.75);
+    border-radius: 12px;
+  }
+  .leo-logo-area {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+  .leo-logo-area img {
+    height: 60px;
+    border-radius: 8px;
+    border: 1px solid rgba(212, 175, 55, 0.4);
+  }
+  .leo-logo-area h1 {
+    font-size: 1.6rem;
+    color: var(--gold, #d4af37);
+    margin: 0;
+    letter-spacing: 2px;
+  }
+  .leo-hero {
+    text-align: center;
+    padding: 35px 20px;
+    background: rgba(12, 12, 18, 0.9);
+    border-radius: 16px;
+    border: 1px solid rgba(212, 175, 55, 0.25);
+    margin-bottom: 30px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.8);
+  }
+  .leo-hero h2 {
+    font-size: 2.2rem;
+    color: #fff;
+    margin-bottom: 10px;
+    background: linear-gradient(135deg, #fff 30%, var(--gold, #d4af37) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .leo-input-box {
+    width: 100%;
+    max-width: 700px;
+    margin: 20px auto;
+    background: rgba(15, 15, 22, 0.95);
+    border: 1px solid rgba(212, 175, 55, 0.5);
+    border-radius: 12px;
+    padding: 15px;
+  }
+  .leo-input-box textarea {
+    width: 100%;
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-size: 1.05rem;
+    resize: none;
+    height: 80px;
+    outline: none;
+  }
+  .leo-actions {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 15px;
+  }
+  .leo-btn {
+    background: linear-gradient(135deg, var(--gold, #d4af37) 0%, #aa820a 100%);
+    color: #000;
+    font-weight: 700;
+    padding: 10px 24px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s;
+  }
+  .leo-btn:hover {
+    transform: translateY(-2px);
+  }
+  .leo-btn-secondary {
+    background: rgba(255, 255, 255, 0.08);
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    font-weight: 600;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  .leo-btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.15);
+  }
+  .leo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 20px;
+    margin-top: 25px;
+  }
+  .leo-card {
+    background: rgba(15, 15, 22, 0.88);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+    padding: 20px;
+    transition: border-color 0.3s;
+  }
+  .leo-card:hover {
+    border-color: var(--gold, #d4af37);
+  }
+  .leo-card h3 {
+    color: var(--gold, #d4af37);
+    margin-top: 0;
+    font-size: 1.05rem;
+    display: flex;
+    justify-content: space-between;
+  }
+  .leo-card p {
+    color: #9ca3af;
+    font-size: 0.85rem;
+    margin-bottom: 15px;
+  }
+  .leo-output {
+    margin-top: 25px;
+    background: rgba(10, 10, 15, 0.95);
+    border: 1px solid var(--gold, #d4af37);
+    border-radius: 10px;
+    padding: 20px;
+    text-align: left;
+    display: none;
+  }
+</style>
+
+<!-- ================= 7LEO FILMS PORTAL ================= -->
+<div id="films-portal" class="leo-portal">
+  <div class="leo-container">
+    <div class="leo-header">
+      <div class="leo-logo-area">
+        <img src="1788951880054.png" alt="7Leo Logo">
+        <div>
+          <h1>7Leo Films Studio</h1>
+          <p style="color: #9ca3af; font-size: 0.8rem; margin: 2px 0 0 0;">One Imagine. One Film.</p>
+        </div>
+      </div>
+      <div>
+        <button class="leo-btn-secondary" onclick="openLibraryModal('films')" style="margin-right: 10px;">📂 My Library</button>
+        <button class="leo-btn-secondary" onclick="closePortal('films-portal')">✕ Exit</button>
+      </div>
+    </div>
+
+    <div class="leo-hero">
+      <h2>Transform Your Vision Into Cinema</h2>
+      <p style="color: #9ca3af; max-width: 600px; margin: 0 auto; font-size: 0.95rem;">Enter your raw creative spark below to initiate the active AI filmmaking pipeline.</p>
+      
+      <div class="leo-input-box">
+        <textarea id="films-idea-input" placeholder="A lone traveler discovers a forgotten city of lights..."></textarea>
+      </div>
+
+      <div style="margin: 15px 0; text-align: center;">
+        <label style="color: #9ca3af; font-size: 0.85rem; margin-right: 10px;">🎵 Link 7Leo BGM Track:</label>
+        <select id="bgm-track-selector" style="background: #12121a; color: #d4af37; border: 1px solid rgba(212,175,55,0.4); padding: 8px 15px; border-radius: 6px; outline: none;">
+          <option value="Epic Cinematic Orchestral">Epic Cinematic Orchestral</option>
+          <option value="Dark Ambient Mystery">Dark Ambient Mystery</option>
+          <option value="Emotional Groovepad Piano">Emotional Groovepad Piano</option>
+          <option value="Sci-Fi Synthwave Pulse">Sci-Fi Synthwave Pulse</option>
+        </select>
+      </div>
+
+      <div class="leo-actions">
+        <button class="leo-btn" onclick="executeFilmsBuild()">✨ Build & Save Project</button>
+        <button class="leo-btn-secondary" onclick="exportScriptPDF()">📥 Export Script PDF</button>
+      </div>
+
+      <div id="films-output-box" class="leo-output">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+          <h3 style="color: var(--gold, #d4af37); margin: 0;">🎬 7Leo Studio Output</h3>
+          <span id="badge-bgm-tag" style="background: rgba(212,175,55,0.15); color: #d4af37; padding: 3px 10px; border-radius: 12px; font-size: 0.75rem;"></span>
+        </div>
+        <div id="films-output-text" style="font-size: 0.9rem; line-height: 1.6; color: #e5e7eb;"></div>
+      </div>
+    </div>
+
+    <h3 style="color: #fff; margin-bottom: 15px; border-left: 3px solid var(--gold, #d4af37); padding-left: 10px;">Advanced Pipeline Modules</h3>
+    <div class="leo-grid">
+      <div class="leo-card">
+        <h3>1. Story Studio <span>⚡</span></h3>
+        <p>Structured loglines, tone, and complete plot arcs.</p>
+        <button class="leo-btn-secondary" style="width:100%; padding:6px; font-size:0.8rem;" onclick="runFilmModule('story')">Run Engine</button>
+      </div>
+      <div class="leo-card">
+        <h3>2. Character Studio <span>👤</span></h3>
+        <p>Protagonist profiles, backstories, and emotional anchors.</p>
+        <button class="leo-btn-secondary" style="width:100%; padding:6px; font-size:0.8rem;" onclick="runFilmModule('character')">Run Engine</button>
+      </div>
+      <div class="leo-card">
+        <h3>3. Screenplay Studio <span>📝</span></h3>
+        <p>INT/EXT dialogue and professional scene action formats.</p>
+        <button class="leo-btn-secondary" style="width:100%; padding:6px; font-size:0.8rem;" onclick="runFilmModule('screenplay')">Run Engine</button>
+      </div>
+      <div class="leo-card" style="border-color: rgba(212,175,55,0.4);">
+        <h3>4. Storyboard Prompts <span>🎨</span></h3>
+        <p>Midjourney / DALL-E AI visual prompts for every scene.</p>
+        <button class="leo-btn" style="width:100%; padding:6px; font-size:0.8rem;" onclick="runFilmModule('storyboard')">Generate Prompts</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ================= 7LEO VENTURES PORTAL (NEW) ================= -->
+<div id="ventures-portal" class="leo-portal">
+  <div class="leo-container">
+    <div class="leo-header">
+      <div class="leo-logo-area">
+        <img src="1788951880054.png" alt="7Leo Logo">
+        <div>
+          <h1>7Leo Ventures</h1>
+          <p style="color: #9ca3af; font-size: 0.8rem; margin: 2px 0 0 0;">One Vision. Infinite Growth.</p>
+        </div>
+      </div>
+      <div>
+        <button class="leo-btn-secondary" onclick="openLibraryModal('ventures')" style="margin-right: 10px;">📂 Venture Decks</button>
+        <button class="leo-btn-secondary" onclick="closePortal('ventures-portal')">✕ Exit</button>
+      </div>
+    </div>
+
+    <div class="leo-hero">
+      <h2>Turn Vision Into Venture.</h2>
+      <p style="color: #9ca3af; max-width: 600px; margin: 0 auto; font-size: 0.95rem;">Enter your project or film concept below to generate a professional Investor Pitch & Funding Deck.</p>
+      
+      <div class="leo-input-box">
+        <textarea id="ventures-idea-input" placeholder="A groundbreaking multi-platform cinematic universe looking for early-stage backers..."></textarea>
+      </div>
+
+      <div class="leo-actions">
+        <button class="leo-btn" onclick="executeVenturesBuild()">🚀 Generate Pitch Deck</button>
+        <button class="leo-btn-secondary" onclick="exportVenturePDF()">📥 Export Deck PDF</button>
+      </div>
+
+      <div id="ventures-output-box" class="leo-output">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+          <h3 style="color: var(--gold, #d4af37); margin: 0;">📊 7Leo Investor Pitch Output</h3>
+          <span style="background: rgba(212,175,55,0.15); color: #d4af37; padding: 3px 10px; border-radius: 12px; font-size: 0.75rem;">One Vision. Infinite Growth.</span>
+        </div>
+        <div id="ventures-output-text" style="font-size: 0.9rem; line-height: 1.6; color: #e5e7eb;"></div>
+      </div>
+    </div>
+
+    <h3 style="color: #fff; margin-bottom: 15px; border-left: 3px solid var(--gold, #d4af37); padding-left: 10px;">Venture Funding Modules</h3>
+    <div class="leo-grid">
+      <div class="leo-card">
+        <h3>1. Executive Summary <span>💼</span></h3>
+        <p>High-impact project logline and founder vision brief.</p>
+        <button class="leo-btn-secondary" style="width:100%; padding:6px; font-size:0.8rem;" onclick="runVentureModule('summary')">Run Summary</button>
+      </div>
+      <div class="leo-card">
+        <h3>2. Market & Audience <span>🎯</span></h3>
+        <p>Demographic target sizing and global streaming demand.</p>
+        <button class="leo-btn-secondary" style="width:100%; padding:6px; font-size:0.8rem;" onclick="runVentureModule('market')">Run Market Analysis</button>
+      </div>
+      <div class="leo-card">
+        <h3>3. Budget & Allocation <span>💰</span></h3>
+        <p>Estimated capital requirements and production breakdown.</p>
+        <button class="leo-btn-secondary" style="width:100%; padding:6px; font-size:0.8rem;" onclick="runVentureModule('budget')">Run Budget Plan</button>
+      </div>
+      <div class="leo-card" style="border-color: rgba(212,175,55,0.4);">
+        <h3>4. ROI & Monetization <span>📈</span></h3>
+        <p>Revenue models, distribution channels, and returns forecast.</p>
+        <button class="leo-btn" style="width:100%; padding:6px; font-size:0.8rem;" onclick="runVentureModule('roi')">Run ROI Strategy</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ================= LIBRARY MODAL ================= -->
+<div id="leo-library-modal" style="position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.85); z-index:100000; display:none; justify-content:center; align-items:center; padding:20px;">
+  <div style="background:#12121a; border:1px solid #d4af37; border-radius:12px; max-width:600px; width:100%; max-height:80vh; overflow-y:auto; padding:25px; color:#fff;">
+    <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(212,175,55,0.3); padding-bottom:10px; margin-bottom:15px;">
+      <h3 id="library-modal-title" style="color:#d4af37; margin:0;">📂 Saved Library</h3>
+      <button onclick="closeLibraryModal()" style="background:none; border:none; color:#fff; font-size:1.2rem; cursor:pointer;">✕</button>
+    </div>
+    <div id="library-items-list"></div>
+  </div>
+</div>
+
+<script>
+  function openPortal(id) {
+    const p = document.getElementById(id);
+    if (p) p.classList.add('active');
+  }
+
+  function closePortal(id) {
+    const p = document.getElementById(id);
+    if (p) p.classList.remove('active');
+  }
+
+  // Films Logic
+  function executeFilmsBuild() {
+    const input = document.getElementById('films-idea-input');
+    const bgm = document.getElementById('bgm-track-selector').value;
+    let idea = input ? input.value.trim() : '';
+    if (!idea) {
+      idea = "A deep-space navigator uncovers a mysterious broadcast transmitting coordinates to Earth's origin.";
+      if (input) input.value = idea;
+    }
+    const projects = JSON.parse(localStorage.getItem('7leo_films_saved') || '[]');
+    projects.unshift({ title: 'Film: ' + idea.substring(0, 20) + '...', idea, bgm, date: new Date().toLocaleDateString() });
+    localStorage.setItem('7leo_films_saved', JSON.stringify(projects));
+
+    const box = document.getElementById('films-output-box');
+    const text = document.getElementById('films-output-text');
+    const bgmTag = document.getElementById('badge-bgm-tag');
+    if (box && text) {
+      box.style.display = 'block';
+      if (bgmTag) bgmTag.textContent = '🎵 ' + bgm;
+      text.innerHTML = `<p style="color:var(--gold);"><strong>[Project Compiled]:</strong> "${idea}"</p><p>Logline & screenplay blueprint compiled successfully. Saved to Library!</p>`;
+    }
+  }
+
+  function exportScriptPDF() {
+    const idea = document.getElementById('films-idea-input').value || "7Leo Film Concept";
+    const content = `=== 7LEO FILMS SCRIPT ===\n\nIDEA: ${idea}\nDATE: ${new Date().toLocaleDateString()}\n\n[ACT I - INCITING INCIDENT]\n[ACT II - CLIMAX]\n[ACT III - RESOLUTION]\n\n=== ONE IMAGINE. ONE FILM. ===`;
+    downloadFile(content, '7Leo_Films_Script.txt');
+  }
+
+  function runFilmModule(type) {
+    const idea = document.getElementById('films-idea-input').value || "Cinematic masterpiece.";
+    const box = document.getElementById('films-output-box');
+    const text = document.getElementById('films-output-text');
+    if (box && text) {
+      box.style.display = 'block';
+      text.innerHTML = `<p style="color:var(--gold);"><strong>[${type.toUpperCase()} ENGINE ACTIVE]:</strong></p><p>Processed for idea: "${idea}" with professional 7Leo cinematic standards.</p>`;
+    }
+  }
+
+  // Ventures Logic
+  function executeVenturesBuild() {
+    const input = document.getElementById('ventures-idea-input');
+    let idea = input ? input.value.trim() : '';
+    if (!idea) {
+      idea = "A global cinematic platform backed by proprietary AI storytelling tools.";
+      if (input) input.value = idea;
+    }
+    const ventures = JSON.parse(localStorage.getItem('7leo_ventures_saved') || '[]');
+    ventures.unshift({ title: 'Venture: ' + idea.substring(0, 20) + '...', idea, date: new Date().toLocaleDateString() });
+    localStorage.setItem('7leo_ventures_saved', JSON.stringify(ventures));
+
+    const box = document.getElementById('ventures-output-box');
+    const text = document.getElementById('ventures-output-text');
+    if (box && text) {
+      box.style.display = 'block';
+      text.innerHTML = `
+        <p style="color:var(--gold);"><strong>[Investor Pitch Deck Generated]:</strong> "${idea}"</p>
+        <p><strong>Tagline:</strong> One Vision. Infinite Growth.</p>
+        <p><strong>Funding Target:</strong> Seed/Growth round structured for angel backing & strategic sponsors.</p>
+        <p style="color:#00f0ff;">✨ Pitch Deck saved to your 7Leo Ventures library!</p>
+      `;
+    }
+  }
+
+  function exportVenturePDF() {
+    const idea = document.getElementById('ventures-idea-input').value || "7Leo Venture Concept";
+    const content = `=== 7LEO VENTURES PITCH DECK ===\nTAGLINE: One Vision. Infinite Growth.\n\nCONCEPT: ${idea}\nDATE: ${new Date().toLocaleDateString()}\n\n1. EXECUTIVE SUMMARY\n2. MARKET OPPORTUNITY\n3. CAPITAL ALLOCATION & BUDGET\n4. ROI & REVENUE MODEL\n\n=== 7LEO VENTURES ===`;
+    downloadFile(content, '7Leo_Ventures_Pitch_Deck.txt');
+  }
+
+  function runVentureModule(type) {
+    const idea = document.getElementById('ventures-idea-input').value || "Venture plan.";
+    const box = document.getElementById('ventures-output-box');
+    const text = document.getElementById('ventures-output-text');
+    if (box && text) {
+      box.style.display = 'block';
+      text.innerHTML = `<p style="color:var(--gold);"><strong>[VENTURES ${type.toUpperCase()} MODULE]:</strong></p><p>Generated financial & market strategy projections for: "${idea}".</p>`;
+    }
+  }
+
+  function downloadFile(content, filename) {
+    const blob = new Blob([content], { type: 'text/plain' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    alert('Document successfully exported!');
+  }
+
+  // Library Management
+  let activeLibraryType = 'films';
+  function openLibraryModal(type) {
+    activeLibraryType = type;
+    const modal = document.getElementById('leo-library-modal');
+    const title = document.getElementById('library-modal-title');
+    const list = document.getElementById('library-items-list');
+    if (modal && list) {
+      modal.style.display = 'flex';
+      const storageKey = type === 'films' ? '7leo_films_saved' : '7leo_ventures_saved';
+      title.textContent = type === 'films' ? '📂 Saved 7Leo Films Library' : '📂 Saved 7Leo Venture Decks';
+      const items = JSON.parse(localStorage.getItem(storageKey) || '[]');
+      if (items.length === 0) {
+        list.innerHTML = '<p style="color:#9ca3af; text-align:center; padding:20px;">No saved items found yet.</p>';
+      } else {
+        list.innerHTML = items.map((item, idx) => `
+          <div style="background:rgba(20,20,30,0.8); border:1px solid rgba(212,175,55,0.2); padding:15px; border-radius:8px; margin-bottom:10px;">
+            <h4 style="color:#d4af37; margin:0 0 5px 0;">${item.title}</h4>
+            <p style="font-size:0.85rem; color:#ccc; margin:0 0 8px 0;">${item.idea}</p>
+            <p style="font-size:0.75rem; color:#9ca3af; margin:0 0 10px 0;">📅 ${item.date}</p>
+            <button onclick="deleteLibraryItem(${idx})" style="background:#ff4d4d; color:#fff; border:none; padding:4px 10px; border-radius:4px; font-size:0.75rem; cursor:pointer;">Delete</button>
+          </div>
+        `).join('');
+      }
+    }
+  }
+
+  function closeLibraryModal() {
+    const modal = document.getElementById('leo-library-modal');
+    if (modal) modal.style.display = 'none';
+  }
+
+  function deleteLibraryItem(idx) {
+    const storageKey = activeLibraryType === 'films' ? '7leo_films_saved' : '7leo_ventures_saved';
+    let items = JSON.parse(localStorage.getItem(storageKey) || '[]');
+    items.splice(idx, 1);
+    localStorage.setItem(storageKey, JSON.stringify(items));
+    openLibraryModal(activeLibraryType);
+  }
+
+  // Automatic Injection for Navigation & Homepage
+  window.addEventListener('DOMContentLoaded', () => {
+    setTimeout(() => {
+      // 1. TOP NAV LINKS INJECTION
+      const navLinks = document.querySelectorAll('a, span, button');
+      let targetNavParent = null;
+      navLinks.forEach(el => {
+        if (el.textContent.trim() === '7Leo Star' || el.textContent.trim() === '7Leo BGM') {
+          if (!targetNavParent) targetNavParent = el.parentElement;
+        }
+      });
+      if (targetNavParent) {
+        if (!document.getElementById('nav-films-link')) {
+          const fNav = document.createElement('a');
+          fNav.id = 'nav-films-link';
+          fNav.href = '#';
+          fNav.textContent = '7Leo Films';
+          fNav.style.cssText = 'color: inherit; text-decoration: none; cursor: pointer;';
+          fNav.onclick = (e) => { e.preventDefault(); openPortal('films-portal'); };
+          targetNavParent.appendChild(fNav);
+        }
+        if (!document.getElementById('nav-ventures-link')) {
+          const vNav = document.createElement('a');
+          vNav.id = 'nav-ventures-link';
+          vNav.href = '#';
+          vNav.textContent = '7Leo Ventures';
+          vNav.style.cssText = 'color: inherit; text-decoration: none; cursor: pointer;';
+          vNav.onclick = (e) => { e.preventDefault(); openPortal('ventures-portal'); };
+          targetNavParent.appendChild(vNav);
+        }
+      }
+
+      // 2. HOMEPAGE CARDS INJECTION
+      const starButton = Array.from(document.querySelectorAll('button, a')).find(el => el.textContent.trim() === 'Explore 7Leo Star');
+      if (starButton) {
+        const starCard = starButton.closest('div[style*="border"], .card, div');
+        if (starCard && starCard.parentElement) {
+          // 7Leo Films Card
+          if (!document.getElementById('films-homepage-card')) {
+            const fCard = document.createElement('div');
+            fCard.id = 'films-homepage-card';
+            fCard.className = starCard.className;
+            fCard.style.cssText = starCard.style.cssText;
+            fCard.innerHTML = `
+              <div style="text-align: center; margin-bottom: 15px;"><img src="1788951880054.png" alt="Logo" style="height: 55px; border-radius: 8px; border: 1px solid rgba(212,175,55,0.4);"></div>
+              <h3 style="color: #d4af37; text-align: center; margin-top: 0; font-size: 1.1rem;">One Imagine. One Film.</h3>
+              <div style="text-align: center; margin-top: 25px;"><button onclick="openPortal('films-portal')" style="background: transparent; border: 1px solid #d4af37; color: #d4af37; padding: 10px 20px; border-radius: 20px; cursor: pointer; font-weight: 600;">Explore 7Leo Films</button></div>
+            `;
+            starCard.parentNode.insertBefore(fCard, starCard.nextSibling);
+          }
+
+          // 7Leo Ventures Card
+          if (!document.getElementById('ventures-homepage-card')) {
+            const vCard = document.createElement('div');
+            vCard.id = 'ventures-homepage-card';
+            vCard.className = starCard.className;
+            vCard.style.cssText = starCard.style.cssText;
+            vCard.innerHTML = `
+              <div style="text-align: center; margin-bottom: 15px;"><img src="1788951880054.png" alt="Logo" style="height: 55px; border-radius: 8px; border: 1px solid rgba(212,175,55,0.4);"></div>
+              <h3 style="color: #d4af37; text-align: center; margin-top: 0; font-size: 1.1rem;">One Vision. Infinite Growth.</h3>
+              <div style="text-align: center; margin-top: 25px;"><button onclick="openPortal('ventures-portal')" style="background: transparent; border: 1px solid #d4af37; color: #d4af37; padding: 10px 20px; border-radius: 20px; cursor: pointer; font-weight: 600;">Explore 7Leo Ventures</button></div>
+            `;
+            starCard.parentNode.insertBefore(vCard, starCard.nextSibling);
+          }
+        }
+      }
+    }, 800);
+  });
+</script>
+<!-- ================= END 7LEO STUDIOS & VENTURES ================= -->
 
 </body>
 </html>
