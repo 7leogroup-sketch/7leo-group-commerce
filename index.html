@@ -3142,6 +3142,164 @@ VISION. POWER. LEGACY.</p>
   });
 </script>
 <!-- ================= END 7LEO FILMS INTEGRATION ================= -->
+<script>
+    // 1. APPLY BACKGROUND TATTOO TEXTURE
+    document.body.style.backgroundImage = "url('file_00000000776081fa8dbc514074356775.png')";
+    document.body.style.backgroundSize = "cover";
+    document.body.style.backgroundPosition = "center";
+    document.body.style.backgroundAttachment = "fixed";
+
+    // 2. ADD ACTIVE "EXPLORE 7LEO VENTURES" HOMEPAGE CARD
+    const existingButtons = Array.from(document.querySelectorAll('button, a'));
+    const targetRefButton = existingButtons.find(el => 
+        el.textContent.trim().includes('7Leo Films') || 
+        el.textContent.trim().includes('7Leo Star')
+    );
+
+    if (targetRefButton && !document.getElementById('ventures-homepage-card')) {
+        const venturesCard = document.createElement('div');
+        venturesCard.id = 'ventures-homepage-card';
+        venturesCard.className = 'p-6 rounded-2xl border border-yellow-500/40 bg-neutral-900/90 text-center my-6 backdrop-blur-md shadow-2xl';
+        
+        venturesCard.innerHTML = `
+            <div style="text-align: center; margin-bottom: 15px;">
+                <img src="file_0000000066d88208b43c8761fcefb922.png" alt="7Leo Ventures Logo" style="height: 65px; object-fit: contain; margin: 0 auto; filter: drop-shadow(0 0 12px rgba(234,179,8,0.6));">
+            </div>
+            <h3 style="color: #eab308; text-align: center; margin-top: 0; font-size: 1.3rem; font-weight: 900; letter-spacing: 1px;">7LEO VENTURES</h3>
+            <p style="text-align: center; color: #d1d5db; font-size: 0.85rem; margin-bottom: 20px;">One Vision • Infinite Growth. The Ultimate Underdog Engine & Parent Enterprise.</p>
+            <button onclick="openVenturesDashboard()" style="background: linear-gradient(to right, #eab308, #d97706); border: none; padding: 12px 24px; border-radius: 10px; color: black; font-weight: 900; cursor: pointer; width: 100%; box-shadow: 0 4px 15px rgba(234,179,8,0.4); text-transform: uppercase; letter-spacing: 0.5px;">
+                Open 7Leo Ventures Dashboard 🔥
+            </button>
+        `;
+        targetRefButton.parentNode.insertBefore(venturesCard, targetRefButton.nextSibling);
+    }
+
+    // 3. INJECT 7LEO VENTURES DRAFT & LOGO INTO EXISTING ABOUT SECTION
+    const allPageHeaders = document.querySelectorAll('h3, h4, span, div');
+    let targetAboutContainer = null;
+
+    allPageHeaders.forEach(el => {
+        if (el.textContent.includes('ABOUT') || el.textContent.includes('About') || el.textContent.includes('7Leo')) {
+            if (el.parentElement) targetAboutContainer = el.parentElement;
+        }
+    });
+
+    if (targetAboutContainer && !document.getElementById('ventures-about-draft-box')) {
+        const venturesAboutBox = document.createElement('div');
+        venturesAboutBox.id = 'ventures-about-draft-box';
+        venturesAboutBox.style.cssText = "margin-top: 30px; padding: 30px; background: rgba(10, 10, 10, 0.95); border: 1px solid rgba(234, 179, 8, 0.4); border-radius: 20px; backdrop-filter: blur(12px); box-shadow: 0 10px 30px rgba(0,0,0,0.8);";
+        
+        venturesAboutBox.innerHTML = `
+            <div style="text-align: center; margin-bottom: 20px;">
+                <img src="file_0000000066d88208b43c8761fcefb922.png" alt="7Leo Ventures Logo" style="height: 80px; object-fit: contain; margin: 0 auto; filter: drop-shadow(0 0 15px rgba(234,179,8,0.4));">
+            </div>
+            <h4 style="text-align: center; color: #eab308; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 1.5px; font-size: 1.2rem; font-weight: 900;">
+                7Leo Ventures — The Parent Enterprise
+            </h4>
+            <p style="text-align: center; color: #e5e7eb; font-size: 0.95rem; line-height: 1.7; margin-bottom: 15px;">
+                Built from absolute rock bottom and engineered for legacy. <strong>7Leo Ventures</strong> unifies all solo creator modules, commerce, cinematic AI, and the brutal 10-pillar Underdog & Revenge Engine under one unbreakable sovereign architecture.
+            </p>
+            <p style="text-align: center; color: #eab308; font-size: 0.9rem; font-weight: 700; letter-spacing: 1px;">
+                One Vision • Infinite Growth.
+            </p>
+        `;
+        targetAboutContainer.appendChild(venturesAboutBox);
+    }
+
+    // 4. FULL 10-PILLAR UNDERDOG ENGINE DASHBOARD MODAL/UI GENERATOR
+    window.openVenturesDashboard = function() {
+        if (document.getElementById('ventures-dashboard-modal')) return;
+
+        const modal = document.createElement('div');
+        modal.id = 'ventures-dashboard-modal';
+        modal.style.cssText = "position: fixed; inset: 0; z-index: 99999; background: rgba(0,0,0,0.95); backdrop-filter: blur(15px); overflow-y: auto; padding: 20px; font-family: inherit;";
+
+        modal.innerHTML = `
+            <div style="max-width: 900px; margin: 40px auto; background: #0a0a0a; border: 1px solid rgba(234,179,8,0.4); border-radius: 24px; padding: 30px; box-shadow: 0 0 50px rgba(234,179,8,0.2);">
+                
+                <!-- Modal Header -->
+                <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(234,179,8,0.2); padding-bottom: 20px; margin-bottom: 25px;">
+                    <div style="display: flex; align-items: center; gap: 15px;">
+                        <img src="file_0000000066d88208b43c8761fcefb922.png" style="height: 45px; object-fit: contain;">
+                        <div>
+                            <h2 style="color: #eab308; margin: 0; font-size: 1.5rem; font-weight: 900; letter-spacing: 1px;">7LEO VENTURES</h2>
+                            <p style="color: #9ca3af; margin: 0; font-size: 0.8rem;">The 10-Pillar Underdog & Revenge Engine</p>
+                        </div>
+                    </div>
+                    <button onclick="document.getElementById('ventures-dashboard-modal').remove()" style="background: #171717; border: 1px solid rgba(234,179,8,0.3); color: #eab308; padding: 8px 16px; border-radius: 8px; font-weight: bold; cursor: pointer;">✕ Close</button>
+                </div>
+
+                <!-- 10 Pillars Grid -->
+                <h3 style="color: white; font-size: 1.1rem; margin-bottom: 15px; border-left: 4px solid #eab308; padding-left: 10px;">The 10 Power Pillars of Survival & Legacy</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 15px;">
+                    
+                    <div style="background: #121212; border: 1px solid rgba(234,179,8,0.2); padding: 18px; border-radius: 14px;">
+                        <span style="color: #eab308; font-size: 0.75px; font-weight: bold;">PILLAR 01</span>
+                        <h4 style="color: white; margin: 5px 0 8px 0; font-size: 1rem;">⚡ Panic Breaker</h4>
+                        <p style="color: #9ca3af; font-size: 0.8rem; margin: 0;">Instantly halt panic and shift to cold, calculating survival logic.</p>
+                    </div>
+
+                    <div style="background: #121212; border: 1px solid rgba(234,179,8,0.2); padding: 18px; border-radius: 14px;">
+                        <span style="color: #eab308; font-size: 0.75px; font-weight: bold;">PILLAR 02</span>
+                        <h4 style="color: white; margin: 5px 0 8px 0; font-size: 1rem;">🔥 Rage / Release</h4>
+                        <p style="color: #9ca3af; font-size: 0.8rem; margin: 0;">Channel raw frustration and betrayal into explosive execution speed.</p>
+                    </div>
+
+                    <div style="background: #121212; border: 1px solid rgba(234,179,8,0.2); padding: 18px; border-radius: 14px;">
+                        <span style="color: #eab308; font-size: 0.75px; font-weight: bold;">PILLAR 03</span>
+                        <h4 style="color: white; margin: 5px 0 8px 0; font-size: 1rem;">🛡️ Pain-to-Power</h4>
+                        <p style="color: #9ca3af; font-size: 0.8rem; margin: 0;">Convert deep personal heartbreak and trauma into unbreakable fuel.</p>
+                    </div>
+
+                    <div style="background: #121212; border: 1px solid rgba(234,179,8,0.2); padding: 18px; border-radius: 14px;">
+                        <span style="color: #eab308; font-size: 0.75px; font-weight: bold;">PILLAR 04</span>
+                        <h4 style="color: white; margin: 5px 0 8px 0; font-size: 1rem;">🌑 Silent Glow-up</h4>
+                        <p style="color: #9ca3af; font-size: 0.8rem; margin: 0;">Build in absolute silence while they doubt your capabilities.</p>
+                    </div>
+
+                    <div style="background: #121212; border: 1px solid rgba(234,179,8,0.2); padding: 18px; border-radius: 14px;">
+                        <span style="color: #eab308; font-size: 0.75px; font-weight: bold;">PILLAR 05</span>
+                        <h4 style="color: white; margin: 5px 0 8px 0; font-size: 1rem;">📊 Loss / Data</h4>
+                        <p style="color: #9ca3af; font-size: 0.8rem; margin: 0;">Treat every failure and loss not as an emotion, but pure operational data.</p>
+                    </div>
+
+                    <div style="background: #121212; border: 1px solid rgba(234,179,8,0.2); padding: 18px; border-radius: 14px;">
+                        <span style="color: #eab308; font-size: 0.75px; font-weight: bold;">PILLAR 06</span>
+                        <h4 style="color: white; margin: 5px 0 8px 0; font-size: 1rem;">🎲 Risk-Taking</h4>
+                        <p style="color: #9ca3af; font-size: 0.8rem; margin: 0;">Embrace high-stakes bets when you have nothing left to lose.</p>
+                    </div>
+
+                    <div style="background: #121212; border: 1px solid rgba(234,179,8,0.2); padding: 18px; border-radius: 14px;">
+                        <span style="color: #eab308; font-size: 0.75px; font-weight: bold;">PILLAR 07</span>
+                        <h4 style="color: white; margin: 5px 0 8px 0; font-size: 1rem;">👑 Kamyaabi</h4>
+                        <p style="color: #9ca3af; font-size: 0.8rem; margin: 0;">The ultimate, unyielding obsession with absolute victory.</p>
+                    </div>
+
+                    <div style="background: #121212; border: 1px solid rgba(234,179,8,0.2); padding: 18px; border-radius: 14px;">
+                        <span style="color: #eab308; font-size: 0.75px; font-weight: bold;">PILLAR 08</span>
+                        <h4 style="color: white; margin: 5px 0 8px 0; font-size: 1rem;">💡 Problem-to-Solution</h4>
+                        <p style="color: #9ca3af; font-size: 0.8rem; margin: 0;">Convert every brutal real-life obstacle into a scalable digital product.</p>
+                    </div>
+
+                    <div style="background: #121212; border: 1px solid rgba(234,179,8,0.2); padding: 18px; border-radius: 14px;">
+                        <span style="color: #eab308; font-size: 0.75px; font-weight: bold;">PILLAR 09</span>
+                        <h4 style="color: white; margin: 5px 0 8px 0; font-size: 1rem;">🎯 Insult-to-Success</h4>
+                        <p style="color: #9ca3af; font-size: 0.8rem; margin: 0;">Use disrespect and mockery as rocket fuel for your revenge grind.</p>
+                    </div>
+
+                    <div style="background: #121212; border: 1px solid rgba(234,179,8,0.2); padding: 18px; border-radius: 14px;">
+                        <span style="color: #eab308; font-size: 0.75px; font-weight: bold;">PILLAR 10</span>
+                        <h4 style="color: white; margin: 5px 0 8px 0; font-size: 1rem;">🏛️ Empire Building</h4>
+                        <p style="color: #9ca3af; font-size: 0.8rem; margin: 0;">Scale from zero to a fully sovereign, automated digital saltanat.</p>
+                    </div>
+
+                </div>
+
+            </div>
+        `;
+        document.body.appendChild(modal);
+    }
+</script>
 
 </body>
 </html>
