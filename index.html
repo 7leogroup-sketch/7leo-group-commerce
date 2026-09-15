@@ -2667,5 +2667,349 @@ VISION. POWER. LEGACY.</p>
             });
         }
     </script>
+    <!-- ================= 7LEO FILMS PORTAL & ISOLATED ARCHITECTURE ================= -->
+
+<style>
+  /* Isolated 7Leo Films Styles - Zero global impact */
+  #films-portal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #050507;
+    z-index: 9999;
+    display: none;
+    overflow-y: auto;
+    font-family: inherit;
+    color: #f3f4f6;
+  }
+  #films-portal.active {
+    display: block;
+  }
+  .films-tattoo-bg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-10deg);
+    width: 80vw;
+    max-width: 900px;
+    opacity: 0.04;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .films-container {
+    position: relative;
+    z-index: 1;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+  }
+  .films-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+    padding-bottom: 20px;
+    margin-bottom: 40px;
+  }
+  .films-logo-area h1 {
+    font-size: 1.8rem;
+    color: var(--gold, #d4af37);
+    margin: 0;
+    letter-spacing: 2px;
+  }
+  .films-logo-area p {
+    color: var(--text-muted, #9ca3af);
+    font-size: 0.9rem;
+    margin: 5px 0 0 0;
+  }
+  .films-hero {
+    text-align: center;
+    padding: 60px 20px;
+    background: radial-gradient(circle at center, rgba(212, 175, 55, 0.05) 0%, transparent 70%);
+    border-radius: 16px;
+    border: 1px solid rgba(212, 175, 55, 0.1);
+    margin-bottom: 40px;
+  }
+  .films-hero h2 {
+    font-size: 3rem;
+    color: #fff;
+    margin-bottom: 15px;
+    background: linear-gradient(135deg, #fff 30%, var(--gold, #d4af37) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .films-hero p {
+    color: var(--text-muted, #9ca3af);
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto 30px auto;
+  }
+  .films-input-box {
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto 20px auto;
+    background: rgba(15, 15, 20, 0.8);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    border-radius: 12px;
+    padding: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  }
+  .films-input-box textarea {
+    width: 100%;
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-size: 1.1rem;
+    resize: none;
+    height: 100px;
+    outline: none;
+  }
+  .films-actions {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+  }
+  .films-btn {
+    background: linear-gradient(135deg, var(--gold, #d4af37) 0%, #aa820a 100%);
+    color: #000;
+    font-weight: 700;
+    padding: 12px 28px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .films-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(212, 175, 55, 0.4);
+  }
+  .films-btn-secondary {
+    background: rgba(255, 255, 255, 0.05);
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    font-weight: 600;
+    padding: 12px 24px;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  .films-btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.1);
+  }
+  .stuck-options {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 15px;
+  }
+  .stuck-chip {
+    background: rgba(0, 240, 255, 0.1);
+    border: 1px solid rgba(0, 240, 255, 0.3);
+    color: #00f0ff;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    cursor: pointer;
+  }
+  .pipeline-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+    margin-top: 40px;
+  }
+  .pipeline-card {
+    background: rgba(20, 20, 25, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 20px;
+    transition: border-color 0.3s;
+  }
+  .pipeline-card:hover {
+    border-color: var(--gold, #d4af37);
+  }
+  .pipeline-card h3 {
+    color: var(--gold, #d4af37);
+    margin-top: 0;
+    font-size: 1.1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .pipeline-card p {
+    color: var(--text-muted, #9ca3af);
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+  }
+</style>
+
+<!-- 7Leo Films Modal / Isolated Application View -->
+<div id="films-portal">
+  <!-- Use existing tattoo asset as background watermark -->
+  <img src="logo.png" class="films-tattoo-bg" alt="7Leo Tattoo Watermark">
+  
+  <div class="films-container">
+    <div class="films-header">
+      <div class="films-logo-area">
+        <h1>7Leo Films Studio</h1>
+        <p>One Imagine. One Film.</p>
+      </div>
+      <button class="films-btn-secondary" onclick="closeFilmsPortal()">✕ Exit Studio</button>
+    </div>
+
+    <div class="films-hero">
+      <h2>Transform Your Vision Into Cinema</h2>
+      <p>You bring the idea. 7Leo Films builds the movie from concept to final screening.</p>
+      
+      <div class="films-input-box">
+        <textarea id="films-idea-input" placeholder="A lonely unemployed man goes to the ocean and discovers a mysterious mermaid who changes his life..."></textarea>
+      </div>
+
+      <div class="films-actions">
+        <button class="films-btn" onclick="buildMyMovie()">✨ Build My Movie</button>
+        <button class="films-btn-secondary" onclick="toggleStuckOptions()">🧠 I'm Stuck</button>
+        <button class="films-btn-secondary" onclick="openMyFilmsLibrary()">📂 My Films</button>
+      </div>
+
+      <div id="stuck-container" style="display: none;">
+        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 10px;">Select a genre catalyst to auto-generate a concept:</p>
+        <div class="stuck-options">
+          <span class="stuck-chip" onclick="applyStuckConcept('Romantic')">❤️ Romantic</span>
+          <span class="stuck-chip" onclick="applyStuckConcept('Emotional')">💔 Emotional</span>
+          <span class="stuck-chip" onclick="applyStuckConcept('Thriller')">🔪 Thriller</span>
+          <span class="stuck-chip" onclick="applyStuckConcept('Horror')<span>👻 Horror</span></span>
+          <span class="stuck-chip" onclick="applyStuckConcept('Sci-Fi')">🚀 Sci-Fi</span>
+          <span class="stuck-chip" onclick="applyStuckConcept('Epic')">👑 Epic</span>
+        </div>
+      </div>
+    </div>
+
+    <h3 style="color: #fff; margin-bottom: 20px; border-left: 3px solid var(--gold); padding-left: 10px;">Creative Pipeline Stages</h3>
+    <div class="pipeline-grid">
+      <div class="pipeline-card">
+        <h3>1. Idea Studio <span>⚡</span></h3>
+        <p>Loglines, tone, themes, title suggestions, and premise structuring.</p>
+        <button class="films-btn-secondary" style="width: 100%; padding: 8px;" onclick="alert('Idea Studio active. Ready to expand concept.')">Open Studio</button>
+      </div>
+      <div class="pipeline-card">
+        <h3>2. Story Studio <span>📖</span></h3>
+        <p>Beginning, middle, climax, character arcs, and plot twists.</p>
+        <button class="films-btn-secondary" style="width: 100%; padding: 8px;" onclick="alert('Story Studio initialized.')">Open Studio</button>
+      </div>
+      <div class="pipeline-card">
+        <h3>3. Character Studio <span>👤</span></h3>
+        <p>Profiles, backstories, motivations, and strict Character Lock.</p>
+        <button class="films-btn-secondary" style="width: 100%; padding: 8px;" onclick="alert('Character Studio active.')">Open Studio</button>
+      </div>
+      <div class="pipeline-card">
+        <h3>4. Screenplay Studio <span>📝</span></h3>
+        <p>Professional INT/EXT formatting, dialogue, and cinematic action directions.</p>
+        <button class="films-btn-secondary" style="width: 100%; padding: 8px;" onclick="alert('Screenplay Studio active.')">Open Studio</button>
+      </div>
+      <div class="pipeline-card">
+        <h3>5. Scene & Shot Studio <span>🎬</span></h3>
+        <p>Breakdown into shots, camera angles, movement, and visual framing.</p>
+        <button class="films-btn-secondary" style="width: 100%; padding: 8px;" onclick="alert('Shot Studio active.')">Open Studio</button>
+      </div>
+      <div class="pipeline-card">
+        <h3>6. VFX & BGM Studio <span>🪄</span></h3>
+        <p>AI VFX generation prompts, 7Leo BGM mood matching, and Sound FX timeline.</p>
+        <button class="films-btn-secondary" style="width: 100%; padding: 8px;" onclick="alert('VFX & Audio Suite active.')">Open Studio</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // 7Leo Films Portal Logic (Isolated)
+  function openFilmsPortal() {
+    const portal = document.getElementById('films-portal');
+    if (portal) portal.classList.add('active');
+  }
+
+  function closeFilmsPortal() {
+    const portal = document.getElementById('films-portal');
+    if (portal) portal.classList.remove('active');
+  }
+
+  function toggleStuckOptions() {
+    const box = document.getElementById('stuck-container');
+    if (box) box.style.display = box.style.display === 'none' ? 'block' : 'none';
+  }
+
+  function applyStuckConcept(genre) {
+    const ideas = {
+      'Romantic': 'Two rival architects get trapped in an old elevator during a thunderstorm and discover a shared childhood memory.',
+      'Emotional': 'An aging watchmaker attempts to repair a pocket watch that belonged to a son he lost years ago.',
+      'Thriller': 'A night-shift cryptographer decodes a distress signal originating from deep beneath the Mariana Trench.',
+      'Horror': 'An archivist restoring vintage audio reels hears a faint voice whispering his own name from 1984.',
+      'Sci-Fi': 'The first automated interstellar probe returns with a single encrypted file containing a video of Earth from the future.',
+      'Epic': 'A lone cartographer maps the edge of a world where geography begins to rewrite itself every sunrise.'
+    };
+    const input = document.getElementById('films-idea-input');
+    if (input && ideas[genre]) {
+      input.value = ideas[genre];
+      toggleStuckOptions();
+    }
+  }
+
+  function buildMyMovie() {
+    const input = document.getElementById('films-idea-input');
+    const idea = input ? input.value.trim() : '';
+    if (!idea) {
+      alert('Please enter your movie idea or choose from "I\'m Stuck" first.');
+      return;
+    }
+    
+    // Save project state to isolated local storage
+    const projects = JSON.parse(localStorage.getItem('7leo_films_projects') || '[]');
+    const newProject = {
+      id: 'FILM_' + Date.now(),
+      idea: idea,
+      status: 'Concept Initialized',
+      updatedAt: new Date().toLocaleDateString()
+    };
+    projects.push(newProject);
+    localStorage.setItem('7leo_films_projects', JSON.stringify(projects));
+    
+    alert('🎬 Movie concept successfully initialized in Idea Studio! Pipeline generated.');
+  }
+
+  function openMyFilmsLibrary() {
+    const projects = JSON.parse(localStorage.getItem('7leo_films_projects') || '[]');
+    if (projects.length === 0) {
+      alert('No saved film projects yet. Enter an idea and click Build My Movie to start.');
+    } else {
+      alert(`You have ${projects.length} saved film project(s) in your library.`);
+    }
+  }
+
+  // Automatically inject the single "Explore 7Leo Films" button into the existing interface safely
+  window.addEventListener('DOMContentLoaded', () => {
+    // Find a suitable navigation or hero area on the existing site to append the single required button
+    setTimeout(() => {
+      // Look for navbar or navigation links container if present
+      const navLinks = document.getElementById('nav-links') || document.querySelector('header') || document.body;
+      if (navLinks && !document.getElementById('explore-films-btn')) {
+        const filmsBtn = document.createElement('button');
+        filmsBtn.id = 'explore-films-btn';
+        filmsBtn.className = 'films-btn-secondary';
+        filmsBtn.style.margin = '10px';
+        filmsBtn.style.borderColor = 'var(--gold, #d4af37)';
+        filmsBtn.style.color = 'var(--gold, #d4af37)';
+        filmsBtn.innerHTML = '🎬 Explore 7Leo Films';
+        filmsBtn.onclick = openFilmsPortal;
+        
+        // Append safely without disrupting existing layout or elements
+        navLinks.appendChild(filmsBtn);
+      }
+    }, 500);
+  });
+</script>
+<!-- ================= END 7LEO FILMS INTEGRATION ================= -->
+
 </body>
 </html>
