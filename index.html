@@ -3207,10 +3207,11 @@ VISION. POWER. LEGACY.</p>
                     </div>
                     <div class="hidden md:flex items-center space-x-6 text-sm font-medium">
                         <a href="#home" class="hover:text-amber-400 transition">Home</a>
+                        <a href="#about-ventures" class="hover:text-amber-400 transition">About Ventures</a>
                         <a href="#explore" class="hover:text-amber-400 transition">Exploration</a>
-                        <button onclick="switchView('ventures')" class="bg-gradient-to-r from-amber-500 to-amber-600 text-black font-semibold px-5 py-2.5 rounded-xl hover:from-amber-400 hover:to-amber-500 transition shadow-lg shadow-amber-500/20 flex items-center space-x-2">
+                        <button onclick="switchView('ventures')" class="bg-gradient-to-r from-amber-500 to-amber-600 text-black font-semibold px-5 py-2.5 rounded-xl hover:from-amber-400 hover:to-amber-500 transition shadow-lg shadow-amber-500/20 flex items-center space-x-2 cursor-pointer">
                             <i class="fa-solid fa-rocket"></i>
-                            <span>7Leo Ventures</span>
+                            <span>Launch Ventures OS</span>
                         </button>
                     </div>
                 </div>
@@ -3229,28 +3230,76 @@ VISION. POWER. LEGACY.</p>
                     <div class="flex flex-wrap justify-center gap-4">
                         <button onclick="switchView('ventures')" class="bg-amber-500 hover:bg-amber-400 text-black font-bold px-8 py-4 rounded-xl transition shadow-lg shadow-amber-500/30 flex items-center space-x-2 text-base cursor-pointer">
                             <i class="fa-solid fa-rocket"></i>
-                            <span>Explore 7Leo Ventures</span>
+                            <span>Launch 7Leo Ventures OS</span>
                         </button>
                     </div>
                 </div>
             </section>
 
+            <!-- ABOUT 7LEO VENTURES SECTION (NEWLY ADDED TO HOMEPAGE) -->
+            <section id="about-ventures" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-leo-border">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <span class="inline-block bg-amber-500/10 text-amber-400 border border-amber-500/20 px-4 py-1.5 rounded-full text-xs font-semibold tracking-wider uppercase mb-4">About 7Leo Ventures</span>
+                        <h2 class="font-heading text-3xl sm:text-4xl font-bold text-white mb-6">
+                            The Ultimate <span class="text-amber-500">Business Operating System</span>
+                        </h2>
+                        <p class="text-gray-300 text-base leading-relaxed mb-6">
+                            7Leo Ventures is not just traditional accounting software—it is a complete business intelligence platform designed to manage, understand, optimize, recover, and grow your enterprise from one connected ecosystem.
+                        </p>
+                        <ul class="space-y-3 text-sm text-gray-300 mb-8">
+                            <li class="flex items-center space-x-3">
+                                <i class="fa-solid fa-check text-amber-500"></i>
+                                <span>Connected Lifecycle: Stock, Purchase, Sales, Payment, Bank & Tax</span>
+                            </li>
+                            <li class="flex items-center space-x-3">
+                                <i class="fa-solid fa-check text-amber-500"></i>
+                                <span>AI-Powered Business Health & Smart Insights</span>
+                            </li>
+                            <li class="flex items-center space-x-3">
+                                <i class="fa-solid fa-check text-amber-500"></i>
+                                <span>Multi-branch warehouse management and automated analytics</span>
+                            </li>
+                        </ul>
+                        <button onclick="switchView('ventures')" class="bg-amber-500 hover:bg-amber-400 text-black font-bold px-6 py-3 rounded-xl text-sm transition shadow-md shadow-amber-500/20 flex items-center space-x-2 cursor-pointer">
+                            <span>Explore Ventures Live OS</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </div>
+                    <div class="glass-card p-6 rounded-2xl border-amber-500/30 bg-gradient-to-br from-leo-card via-leo-card to-amber-950/20">
+                        <div class="space-y-4">
+                            <div class="flex items-center justify-between p-4 bg-leo-dark/60 rounded-xl border border-leo-border">
+                                <span class="text-xs text-gray-400">Monthly Revenue Track</span>
+                                <span class="text-xs font-bold text-emerald-400">+14.8% Growth</span>
+                            </div>
+                            <div class="flex items-center justify-between p-4 bg-leo-dark/60 rounded-xl border border-leo-border">
+                                <span class="text-xs text-gray-400">Active Inventory Warehouses</span>
+                                <span class="text-xs font-bold text-amber-400">4 Locations</span>
+                            </div>
+                            <div class="flex items-center justify-between p-4 bg-leo-dark/60 rounded-xl border border-leo-border">
+                                <span class="text-xs text-gray-400">AI Diagnostic Alerts</span>
+                                <span class="text-xs font-bold text-purple-400">3 Active Insights</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             <!-- EXPLORATION SECTION -->
-            <section id="explore" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+            <section id="explore" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-leo-border">
                 <div class="text-center mb-16">
                     <h2 class="font-heading text-3xl sm:text-4xl font-bold text-white mb-4">Explore 7Leo Ecosystem</h2>
                     <p class="text-gray-400">Discover our diverse pillars of innovation and excellence.</p>
                 </div>
 
                 <div class="grid grid-cols-1 gap-6 max-w-3xl mx-auto">
-                    <!-- Explore 7Leo Ventures Card -->
                     <div class="glass-card p-8 rounded-2xl transition-all duration-300 flex flex-col justify-between border-amber-500/40 bg-gradient-to-br from-leo-card via-leo-card to-amber-950/20 shadow-lg shadow-amber-500/5">
                         <div>
                             <div class="h-12 w-12 rounded-xl bg-amber-500 text-black flex items-center justify-center font-bold mb-6 text-xl shadow-md shadow-amber-500/30">
                                 <i class="fa-solid fa-rocket"></i>
                             </div>
                             <h3 class="font-heading text-2xl font-bold text-white mb-2 flex items-center space-x-3">
-                                <span>Explore 7Leo Ventures</span>
+                                <span>7Leo Ventures OS</span>
                                 <span class="bg-amber-500/20 text-amber-400 text-xs px-2.5 py-0.5 rounded-full uppercase tracking-wider font-semibold">Business OS</span>
                             </h3>
                             <p class="text-gray-300 text-sm mb-6 max-w-2xl">A multi-industry Business Operating System connecting inventory, sales, finance, analytics, and AI growth intelligence into one unified platform.</p>
@@ -3293,11 +3342,11 @@ VISION. POWER. LEGACY.</p>
 
                     <!-- Quick Actions -->
                     <div class="flex items-center space-x-3">
-                        <button onclick="triggerExport('PDF')" class="hidden sm:flex items-center space-x-2 bg-leo-card hover:bg-leo-border text-gray-200 border border-leo-border px-3.5 py-2 rounded-xl text-xs font-semibold transition">
+                        <button onclick="triggerExport('PDF')" class="hidden sm:flex items-center space-x-2 bg-leo-card hover:bg-leo-border text-gray-200 border border-leo-border px-3.5 py-2 rounded-xl text-xs font-semibold transition cursor-pointer">
                             <i class="fa-solid fa-file-pdf text-red-400"></i>
                             <span>Export PDF</span>
                         </button>
-                        <button onclick="triggerExport('Excel')" class="hidden sm:flex items-center space-x-2 bg-leo-card hover:bg-leo-border text-gray-200 border border-leo-border px-3.5 py-2 rounded-xl text-xs font-semibold transition">
+                        <button onclick="triggerExport('Excel')" class="hidden sm:flex items-center space-x-2 bg-leo-card hover:bg-leo-border text-gray-200 border border-leo-border px-3.5 py-2 rounded-xl text-xs font-semibold transition cursor-pointer">
                             <i class="fa-solid fa-file-excel text-emerald-400"></i>
                             <span>Export Excel</span>
                         </button>
@@ -3461,17 +3510,6 @@ VISION. POWER. LEGACY.</p>
                                 <p class="text-xs text-gray-400">Multi-location warehouse tracking, batch management, and automatic stock calculation</p>
                             </div>
                             <button onclick="alert('Opening Add Stock Modal...')" class="bg-amber-500 text-black hover:bg-amber-400 font-bold px-4 py-2 rounded-xl text-xs transition cursor-pointer">+ Add Stock Entry</button>
-                        </div>
-                        <div class="bg-leo-dark/60 p-4 rounded-xl border border-amber-500/30 mb-6">
-                            <h4 class="text-xs font-bold text-amber-400 uppercase tracking-wider mb-2"><i class="fa-solid fa-calculator mr-2"></i>Live Inventory Automation Rule</h4>
-                            <p class="text-xs text-gray-300 mb-2">Example: If 100 units are entered into inventory and 10 are sold, the system automatically computes available stock.</p>
-                            <div class="flex items-center space-x-4 text-xs font-mono font-bold bg-leo-card p-3 rounded-lg border border-leo-border">
-                                <span class="text-gray-400">Initial: 100</span>
-                                <i class="fa-solid fa-arrow-right text-amber-500"></i>
-                                <span class="text-amber-400">Sale: -10</span>
-                                <i class="fa-solid fa-arrow-right text-amber-500"></i>
-                                <span class="text-emerald-400 font-bold">Available: 90 Units</span>
-                            </div>
                         </div>
                     </div>
                 </div>
