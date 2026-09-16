@@ -3141,10 +3141,10 @@ VISION. POWER. LEGACY.</p>
     }, 800);
   });
 
-    // --- 7LEO VENTURES SECTION & BUTTON INTEGRATION ---
+    
+    // --- 7LEO VENTURES SECTION & BUTTON INTEGRATION (FIXED) ---
     setTimeout(() => {
-        // 1. Add "Explore 7Leo Ventures" Card & Button with Tattoo Styling Match
-        const targetBtn = Array.from(document.querySelectorAll('button, a')).find(el => el.textContent.trim() === 'Explore 7Leo Film');
+        const targetBtn = Array.from(document.querySelectorAll('button, a')).find(el => el.textContent.trim().includes('Explore 7Leo Film'));
         if (targetBtn) {
             let parentBox = targetBtn.closest('div[style*="border"], div[style*="background"]');
             if (parentBox) {
@@ -3162,29 +3162,6 @@ VISION. POWER. LEGACY.</p>
                 `;
                 parentBox.parentNode.insertBefore(venturesCard, parentBox.nextSibling);
             }
-        }
-
-        // 2. Inject 7Leo Ventures Draft with Logo into About Section
-        const aboutHeaders = document.querySelectorAll('h3, h4, span, div');
-        let targetAboutBox = null;
-        aboutHeaders.forEach(el => {
-            if (el.textContent.includes('ABOUT') || el.textContent.includes('ABOUT 7LEO')) {
-                targetAboutBox = el.closest('div[style*="border"], div[style*="background"]');
-            }
-        });
-        if (targetAboutBox) {
-            let venturesAboutBox = document.createElement('div');
-            venturesAboutBox.style.marginTop = '20px';
-            venturesAboutBox.innerHTML = `
-                <div style="text-align: center; margin-bottom: 12px;">
-                    <img src="788951880354.png" alt="7Leo Logo" style="height: 50px; border-radius: 8px; border: 1px solid rgba(201,168,76,0.3);">
-                </div>
-                <h4 style="text-align: center; color: #C9A84C; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 1px;">7Leo Ventures Draft</h4>
-                <p style="text-align: center; color: #F0F0F0; font-size: 0.85rem; line-height: 1.4;">
-                    7Leo Ventures is built for small business recovery, dead stock optimization, and digital growth from Hospet, Karnataka. Founder: Abubakker Bellary.
-                </p>
-            `;
-            targetAboutBox.appendChild(venturesAboutBox);
         }
     }, 1000);
 
