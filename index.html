@@ -3141,29 +3141,52 @@ VISION. POWER. LEGACY.</p>
     }, 800);
   });
 
-    
-    // --- 7LEO VENTURES SECTION & BUTTON INTEGRATION (FIXED) ---
+        // --- 7LEO VENTURES 5TH CARD & ABOUT SECTION INTEGRATION ---
     setTimeout(() => {
-        const targetBtn = Array.from(document.querySelectorAll('button, a')).find(el => el.textContent.trim().includes('Explore 7Leo Film'));
-        if (targetBtn) {
-            let parentBox = targetBtn.closest('div[style*="border"], div[style*="background"]');
-            if (parentBox) {
+        const filmBtn = Array.from(document.querySelectorAll('button, a')).find(el => el.textContent.trim().includes('Explore 7Leo Films'));
+        if (filmBtn) {
+            let filmCard = filmBtn.closest('div[style*="border"], div');
+            if (filmCard && !document.getElementById('ventures-homepage-card')) {
                 let venturesCard = document.createElement('div');
-                venturesCard.className = parentBox.className;
-                venturesCard.style.cssText = parentBox.style.cssText;
+                venturesCard.id = 'ventures-homepage-card';
+                venturesCard.className = filmCard.className;
+                venturesCard.style.cssText = filmCard.style.cssText;
                 venturesCard.style.marginTop = '14px';
                 venturesCard.innerHTML = `
                     <div style="text-align: center;">
                         <img src="788951880354.png" alt="7Leo Logo" style="height: 55px; border-radius: 8px; border: 1px solid rgba(201,168,76,0.3); margin-bottom: 8px;">
                         <h3 style="color: #C9A84C; text-align: center; margin-top: 0; font-size: 1.1rem;">Explore 7Leo Ventures 🚀</h3>
-                        <p style="text-align: center; color: #888888; font-size: 0.85rem; margin-bottom: 14px;">Business Recovery, Calculators & Growth Hub by Abubakker Bellary</p>
-                        <button onclick="alert('Opening 7Leo Ventures Dashboard...');" style="background: #C9A84C; color: #0A0A0A; border: none; padding: 10px 16px; border-radius: 8px; font-weight: 700; width: 100%; cursor: pointer;">Explore 7Leo Ventures</button>
+                        <p style="text-align: center; color: #888888; font-size: 0.85rem; margin-bottom: 14px;">Business Recovery, Calculators & Growth Hub</p>
+                        <button onclick="alert('Opening 7Leo Ventures Dashboard...');" style="background: transparent; border: 1px solid #C9A84C; color: #C9A84C; padding: 8px 14px; border-radius: 6px; font-weight: 700; width: 100%; cursor: pointer;">Explore 7Leo Ventures</button>
                     </div>
                 `;
-                parentBox.parentNode.insertBefore(venturesCard, parentBox.nextSibling);
+                filmCard.parentNode.insertBefore(venturesCard, filmCard.nextSibling);
             }
         }
-    }, 1000);
+
+        // About Section Draft with Logo Injection
+        const aboutHeaders = document.querySelectorAll('h3, h4, span, div');
+        aboutHeaders.forEach(el => {
+            if ((el.textContent.includes('ABOUT') || el.textContent.includes('ABOUT 7LEO')) && !document.getElementById('ventures-about-box')) {
+                let targetAboutBox = el.closest('div[style*="border"], div[style*="background"]');
+                if (targetAboutBox) {
+                    let venturesAboutBox = document.createElement('div');
+                    venturesAboutBox.id = 'ventures-about-box';
+                    venturesAboutBox.style.marginTop = '20px';
+                    venturesAboutBox.innerHTML = `
+                        <div style="text-align: center; margin-bottom: 12px;">
+                            <img src="788951880354.png" alt="7Leo Logo" style="height: 50px; border-radius: 8px; border: 1px solid rgba(201,168,76,0.3);">
+                        </div>
+                        <h4 style="text-align: center; color: #C9A84C; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 1px;">7Leo Ventures Draft</h4>
+                        <p style="text-align: center; color: #F0F0F0; font-size: 0.85rem; line-height: 1.4;">
+                            7Leo Ventures is built for small business recovery, dead stock optimization, and digital growth from Hospet, Karnataka. Founder: Abubakker Bellary.
+                        </p>
+                    `;
+                    targetAboutBox.appendChild(venturesAboutBox);
+                }
+            }
+        });
+    }, 2000);
 
 </script>
 <!-- ================= END 7LEO FILMS INTEGRATION ================= -->
