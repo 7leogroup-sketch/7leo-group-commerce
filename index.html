@@ -3142,6 +3142,134 @@ VISION. POWER. LEGACY.</p>
   });
 </script>
 <!-- ================= END 7LEO FILMS INTEGRATION ================= -->
+<!-- === 7LEO VENTURES ALL-IN-ONE INJECTION === -->
+<style>
+#ventures-portal {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background-color: #050507;
+    background-image: url('file_00000000776081fa8dbc514074356775.png');
+    background-size: cover; background-position: center; background-repeat: no-repeat;
+    z-index: 99560; display: none; overflow-y: auto; color: #fff;
+}
+#ventures-portal.active { display: block; }
+#ventures-portal::before {
+    content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(5, 7, 12, 0.92); z-index: -1; pointer-events: none;
+}
+.ventures-container { max-width: 1300px; margin: 0 auto; padding: 40px 20px; position: relative; z-index: 2; }
+.ventures-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(212,175,55,0.3); padding-bottom: 20px; margin-bottom: 40px; }
+.ventures-logo-area { display: flex; align-items: center; gap: 15px; }
+.ventures-logo-area img { width: 55px; height: 55px; border-radius: 12px; border: 1px solid var(--gold, #d4af37); object-fit: cover; }
+.ventures-logo-area h1 { font-size: 1.8rem; color: var(--gold, #d4af37); font-weight: 800; letter-spacing: 2px; }
+.ventures-logo-area p { color: var(--text-muted, #a0a0ab); font-size: 0.85rem; }
+.ventures-hero-box { background: rgba(20, 20, 28, 0.85); border: 1px solid rgba(212,175,55,0.4); border-radius: 16px; padding: 40px; text-align: center; margin-bottom: 40px; backdrop-filter: blur(10px); }
+.ventures-hero-box h2 { font-size: 2.5rem; color: var(--gold, #d4af37); margin-bottom: 15px; }
+.ventures-hero-box p { color: #d0d0d8; font-size: 1.1rem; max-width: 800px; margin: 0 auto; line-height: 1.6; }
+.ventures-modules-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; margin-bottom: 40px; }
+.ventures-module-card { background: rgba(15, 15, 22, 0.88); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 25px; transition: 0.3s; }
+.ventures-module-card:hover { border-color: var(--gold, #d4af37); transform: translateY(-4px); box-shadow: 0 10px 30px rgba(212,175,55,0.15); }
+.ventures-module-card h3 { color: var(--gold, #d4af37); font-size: 1.25rem; margin-bottom: 12px; display: flex; align-items: center; gap: 10px; }
+.ventures-module-card p { color: var(--text-muted, #a0a0ab); font-size: 0.9rem; line-height: 1.5; margin-bottom: 15px; }
+.ventures-module-card ul { list-style-type: none; padding-left: 0; margin-bottom: 20px; }
+.ventures-module-card ul li { color: #e0e0e8; font-size: 0.85rem; padding: 4px 0; border-bottom: 1px dashed rgba(255,255,255,0.05); display: flex; align-items: center; gap: 6px; }
+.ventures-module-card ul li::before { content: "▪"; color: var(--gold, #d4af37); }
+.ai-assistant-box { background: linear-gradient(135deg, rgba(212,175,55,0.15), rgba(15,15,22,0.9)); border: 1px solid var(--gold, #d4af37); border-radius: 14px; padding: 30px; margin-bottom: 40px; }
+.ai-assistant-box h3 { color: var(--gold, #d4af37); font-size: 1.5rem; margin-bottom: 15px; }
+.ai-query-chips { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px; }
+.ai-chip { background: rgba(212,175,55,0.1); border: 1px solid rgba(212,175,55,0.2); color: #f3e5ab; padding: 8px 16px; border-radius: 20px; font-size: 0.85rem; cursor: pointer; transition: 0.3s; }
+.ai-chip:hover { background: var(--gold, #d4af37); color: #000; }
+.ai-response-output { background: rgba(0,0,0,0.5); border-left: 3px solid var(--gold, #d4af37); padding: 15px; margin-top: 20px; border-radius: 0 8px 8px 0; font-size: 0.95rem; color: #f0f0f5; min-height: 50px; }
+.ventures-footer { text-align: center; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 30px; margin-top: 50px; color: var(--text-muted, #a0a0ab); font-size: 0.85rem; line-height: 1.6; }
+</style>
+
+<!-- Ventures Portal View HTML -->
+<div id="ventures-portal">
+    <div class="ventures-container">
+        <div class="ventures-header">
+            <div class="ventures-logo-area">
+                <img src="file_0000000066d88208b43c8761fcefb922.png" alt="7Leo Ventures Logo">
+                <div>
+                    <h1>7LEO VENTURES</h1>
+                    <p>Business Operating System • Multi-Industry Platform</p>
+                </div>
+            </div>
+            <button class="btn-primary" onclick="closeVenturesPortal()" style="background: transparent; border: 1px solid #d4af37; color: #d4af37;">✕ Exit Ventures OS</button>
+        </div>
+
+        <div class="ventures-hero-box">
+            <h2>One Vision. Infinite Growth.</h2>
+            <p>7Leo Ventures is a multi-industry Business Operating System designed to connect your complete business lifecycle. Manage, understand, optimize, recover, and grow from one unified intelligence platform.</p>
+            <div style="margin-top: 20px; display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                <button class="btn-primary" onclick="alert('Exporting Full Ventures Dataset / Report (PDF)...')">📄 Export PDF Reports</button>
+                <button class="btn-primary" onclick="alert('Exporting Full Ventures Dataset (Excel/CSV)...')" style="background: transparent; border: 1px solid #d4af37; color: #d4af37;">📊 Export Excel Data</button>
+            </div>
+        </div>
+
+        <div class="ai-assistant-box">
+            <h3>🤖 7Leo AI Business Assistant</h3>
+            <p style="color: #a0a0ab; font-size: 0.95rem;">Ask intelligent questions based on your connected business data and receive instant insights.</p>
+            <div class="ai-query-chips">
+                <div class="ai-chip" onclick="runVenturesAiQuery('profit')">“Why did my profit decrease this month?”</div>
+                <div class="ai-chip" onclick="runVenturesAiQuery('top-products')">“Which products are generating the most profit?”</div>
+                <div class="ai-chip" onclick="runVenturesAiQuery('slow-stock')">“Which products are not moving?”</div>
+                <div class="ai-chip" onclick="runVenturesAiQuery('expenses')">“Where are my expenses increasing?”</div>
+                <div class="ai-chip" onclick="runVenturesAiQuery('receivables')">“How much money is currently receivable?”</div>
+                <div class="ai-chip" onclick="runVenturesAiQuery('marketing')">“How is my marketing performing?”</div>
+            </div>
+            <div id="ventures-ai-output" class="ai-response-output">Select a query above or click a business health metric to run real-time AI diagnostic analysis...</div>
+        </div>
+
+        <div class="ventures-modules-grid">
+            <div class="ventures-module-card"><h3>📦 Stock & Inventory</h3><p>Real-time automated inventory tracking with multi-location, batch, expiry, and serial support.</p><ul><li>Automatic stock balance updates</li><li>Multi-location & warehouse routing</li><li>Batch & Expiry management</li><li>Low-stock & damaged stock alerts</li></ul></div>
+            <div class="ventures-module-card"><h3>🛒 Purchase Management</h3><p>Streamline supplier interactions from purchase orders to invoices and automated payables.</p><ul><li>Supplier database & outstanding</li><li>Purchase orders & invoices</li><li>Purchase returns & tracking</li><li>Supplier analytics & history</li></ul></div>
+            <div class="ventures-module-card"><h3>💰 Sales Management</h3><p>Fast POS billing, quotation management, customer credit, and product-wise performance.</p><ul><li>POS & flexible invoicing</li><li>Quotations & Sales orders</li><li>Customer credit management</li><li>Sales returns & discounts</li></ul></div>
+            <div class="ventures-module-card"><h3>💳 Payment Management</h3><p>Completely separated from sales with multi-mode settlement tracking.</p><ul><li>Cash, UPI, Card, Bank & Credit</li><li>Partial & pending payments</li><li>Customer receivables / supplier payables</li><li>Refunds & payment history</li></ul></div>
+            <div class="ventures-module-card"><h3>🏦 Bank & Cash Management</h3><p>Multi-account tracking, petty cash, and internal fund transfers (distinct from expenses).</p><ul><li>Multiple bank accounts & counters</li><li>Cash deposits & withdrawals</li><li>Internal cash/bank transfers</li><li>Real-time balance reconciliation</li></ul></div>
+            <div class="ventures-module-card"><h3>⚖️ Tax Management</h3><p>Highly configurable tax architecture supporting inclusive/exclusive pricing and period reporting.</p><ul><li>Input / Output tax tracking</li><li>Tax collected vs. paid</li><li>Configurable multi-market rules</li><li>Automated tax-period reports</li></ul></div>
+            <div class="ventures-module-card"><h3>📈 Revenue & Profit</h3><p>Granular profitability analytics calculated from Revenue, COGS, Expenses, and Gross/Net margins.</p><ul><li>Gross & Net Profit calculations</li><li>Product & category profitability</li><li>Customer-wise profitability</li><li>Branch-wise financial performance</li></ul></div>
+            <div class="ventures-module-card"><h3>💸 Expense Management</h3><p>Categorized operational, marketing, employee, rent, utility, and maintenance tracking.</p><ul><li>Operating & overhead expenses</li><li>Custom expense categories</li><li>Expense history & analytics</li><li>Cost-control insights</li></ul></div>
+            <div class="ventures-module-card"><h3>🎯 Marketing & Ads Intelligence</h3><p>Connect ad spend directly with campaign revenue and customer acquisition cost (CAC).</p><ul><li>Campaign budget & ad spend tracking</li><li>Lead generation & conversions</li><li>Marketing ROI analytics</li><li>Channel performance evaluation</li></ul></div>
+            <div class="ventures-module-card"><h3>👥 Customer Intelligence</h3><p>Analyze customer lifetime value, purchase frequency, segmentation, and payment health.</p><ul><li>Complete customer profiles</li><li>Repeat customer tracking</li><li>Segmentation & behavior analysis</li><li>Outstanding credit monitoring</li></ul></div>
+            <div class="ventures-module-card"><h3>🏭 Supplier Intelligence</h3><p>Evaluate supplier reliability, delivery frequency, payment terms, and historical pricing.</p><ul><li>Supplier performance scorecards</li><li>Purchase frequency analytics</li><li>Outstanding payable tracking</li><li>Supplier reliability metrics</li></ul></div>
+            <div class="ventures-module-card"><h3>📊 Business Analytics</h3><p>Comprehensive dashboard with daily/weekly/monthly trends and cash-flow visualizations.</p><ul><li>Revenue & profit trend lines</li><li>Inventory movement analytics</li><li>Cash-flow overview graphs</li><li>Multi-dimensional data filtering</li></ul></div>
+            <div class="ventures-module-card" style="border-color: #d4af37;"><h3>🩺 Business Health</h3><p>Proactive diagnostic engine identifying bottlenecks before they impact your bottom line.</p><ul><li>Sales increasing but profit decreasing alerts</li><li>Slow-moving inventory detection</li><li>Overdue receivables warnings</li><li>Expense creep notifications</li></ul></div>
+            <div class="ventures-module-card"><h3>🚀 Recovery & Growth</h3><p>Actionable recommendations designed to recover margins and unlock revenue opportunities.</p><ul><li>Expense-control opportunities</li><li>Slow-stock liquidation actions</li><li>Customer-retention plays</li><li>Growth opportunity blueprints</li></ul></div>
+            <div class="ventures-module-card"><h3>🏢 Multi-Industry & Multi-Business</h3><p>Built for grocery, restaurants, pharma, retail, wholesale, manufacturing, and services.</p><ul><li>Flexible category & item architecture</li><li>Multi-business account switching</li><li>Multi-branch synchronization</li><li>Combined group-level analytics</li></ul></div>
+            <div class="ventures-module-card"><h3>🔒 Security & Advanced Reporting</h3><p>Role-based permissions for staff/managers, immutable activity logs, and deep reporting filters.</p><ul><li>Admin, Manager, Staff roles</li><li>Audit trails & activity logs</li><li>Data encryption & backup systems</li><li>Export to PDF & Excel</li></ul></div>
+        </div>
+
+        <div class="ventures-footer">
+            <p>© 2026 7Leo Ventures. All Rights Reserved.</p>
+            <p>All content, branding, designs, concepts, software interfaces and original materials associated with 7Leo Ventures are protected. Unauthorized copying, reproduction, redistribution or commercial use is prohibited unless authorized by the owner.</p>
+        </div>
+    </div>
+</div>
+
+<script>
+function openVenturesPortal() {
+    document.getElementById('ventures-portal').classList.add('active');
+}
+function closeVenturesPortal() {
+    document.getElementById('ventures-portal').classList.remove('active');
+}
+function runVenturesAiQuery(type) {
+    const output = document.getElementById('ventures-ai-output');
+    if(type === 'profit') {
+        output.innerHTML = "<strong>AI Analysis:</strong> Your gross sales increased by 14% this month, but net profit decreased by 6%. Root cause detected in <strong>Expense Management</strong>: Operating overhead and marketing spend grew faster than gross margins. Recommended action: Review ad spend efficiency in Campaigns module.";
+    } else if(type === 'top-products') {
+        output.innerHTML = "<strong>AI Analysis:</strong> Top performing product category is <em>7Leo Signature Apparel</em>, contributing 42% of total gross profit, followed by <em>Accessories</em> with 28%.";
+    } else if(type === 'slow-stock') {
+        output.innerHTML = "<strong>AI Analysis:</strong> Inventory audit detected 4 SKUs with zero movement in over 60 days. Tied-up working capital: ₹45,000. Recommended action: Initiate promotional bundling via Recovery & Growth module.";
+    } else if(type === 'expenses') {
+        output.innerHTML = "<strong>AI Analysis:</strong> Expenses increased primarily in Transport and Logistics (+18%) and Advertising (+22%).";
+    } else if(type === 'receivables') {
+        output.innerHTML = "<strong>AI Analysis:</strong> Total outstanding customer receivables stand at ₹1.82 Lakhs. 14 accounts have invoices overdue past 30 days.";
+    } else if(type === 'marketing') {
+        output.innerHTML = "<strong>AI Analysis:</strong> Current Blended Customer Acquisition Cost (CAC) is ₹420 with a lifetime value (LTV) ratio of 4.2x. Campaigns are performing at a healthy positive ROI.";
+    }
+}
+</script>
+<!-- === END OF 7LEO VENTURES INJECTION === -->
 
 </body>
 </html>
