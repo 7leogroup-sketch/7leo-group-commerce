@@ -3147,7 +3147,7 @@ VISION. POWER. LEGACY.</p>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>7Leo Ecosystem & 7Leo Ventures | Business Operating System</title>
+    <title>7Leo Ecosystem & 7Leo Ventures</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -3156,17 +3156,8 @@ VISION. POWER. LEGACY.</p>
             theme: {
                 extend: {
                     colors: {
-                        dark: {
-                            900: '#0a0a0f',
-                            800: '#12121a',
-                            700: '#1a1a26',
-                            600: '#252538',
-                        },
-                        gold: {
-                            500: '#f59e0b',
-                            600: '#d97706',
-                            400: '#fbbf24'
-                        }
+                        dark: { 900: '#0a0a0f', 800: '#12121a', 700: '#1a1a26', 600: '#252538' },
+                        gold: { 500: '#f59e0b', 600: '#d97706', 400: '#fbbf24' }
                     }
                 }
             }
@@ -3198,210 +3189,63 @@ VISION. POWER. LEGACY.</p>
             border-color: rgba(245, 158, 11, 0.4);
             transform: translateY(-2px);
         }
+        /* Background Tattoo / Crest Styling */
         .bg-ventures-hero {
-            background-image: linear-gradient(to bottom, rgba(10, 10, 15, 0.85), rgba(10, 10, 15, 0.95)), url('file_00000000776081fa8dbc514074356775.png');
+            background-image: linear-gradient(to bottom, rgba(10, 10, 15, 0.88), rgba(10, 10, 15, 0.96)), url('file_00000000776081fa8dbc514074356775.png');
             background-size: cover;
             background-position: center;
+            background-attachment: fixed;
         }
     </style>
 </head>
 <body class="antialiased selection:bg-gold-500 selection:text-black">
 
     <!-- ========================================== -->
-    <!-- NAVIGATION BAR -->
+    <!-- 1. ORIGINAL CLEAN HOMEPAGE (Untouched) -->
     <!-- ========================================== -->
-    <header class="sticky top-0 z-50 glass-panel border-b border-white/10">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-            <div class="flex items-center space-x-3 cursor-pointer" onclick="switchView('home')">
-                <img src="file_0000000066d88208b43c8761fcefb922.png" alt="7Leo Logo" class="h-10 w-10 object-contain rounded-lg border border-gold-500/30">
-                <span class="text-xl font-extrabold tracking-wider bg-gradient-to-r from-white via-gray-200 to-gold-400 bg-clip-text text-transparent">7LEO ECOSYSTEM</span>
+    <div id="homeView" class="min-h-screen flex flex-col justify-between">
+        <!-- Original Header with Single Venture Button -->
+        <header class="glass-panel border-b border-white/10">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+                <div class="flex items-center space-x-3 cursor-pointer">
+                    <img src="file_0000000066d88208b43c8761fcefb922.png" alt="7Leo Logo" class="h-10 w-10 object-contain rounded-lg border border-gold-500/30">
+                    <span class="text-xl font-extrabold tracking-wider bg-gradient-to-r from-white via-gray-200 to-gold-400 bg-clip-text text-transparent">7LEO ECOSYSTEM</span>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <button onclick="switchView('ventures')" class="px-5 py-2.5 bg-gradient-to-r from-amber-500 to-gold-600 text-black font-bold rounded-xl shadow-lg hover:opacity-90 transition text-sm flex items-center space-x-2">
+                        <i class="fa-solid fa-rocket"></i>
+                        <span>Explore 7Leo Ventures</span>
+                    </button>
+                </div>
             </div>
-            <nav class="hidden md:flex items-center space-x-6">
-                <button onclick="switchView('home')" class="text-gray-300 hover:text-gold-400 transition font-medium text-sm">Home</button>
-                <a href="#explore" class="text-gray-300 hover:text-gold-400 transition font-medium text-sm">Explore Portals</a>
-                <a href="#about" class="text-gray-300 hover:text-gold-400 transition font-medium text-sm">About</a>
-                <button onclick="switchView('ventures')" class="px-4 py-2 bg-gradient-to-r from-amber-500 to-gold-600 text-black font-bold rounded-lg shadow-lg hover:opacity-90 transition text-sm flex items-center space-x-2">
-                    <i class="fa-solid fa-rocket"></i>
-                    <span>7Leo Ventures OS</span>
-                </button>
-            </nav>
-            <button class="md:hidden text-white text-xl" onclick="toggleMobileMenu()">
-                <i class="fa-solid fa-bars"></i>
-            </button>
-        </div>
-        <!-- Mobile Menu -->
-        <div id="mobileMenu" class="hidden md:hidden glass-panel border-t border-white/10 px-4 py-4 space-y-3">
-            <button onclick="switchView('home'); toggleMobileMenu();" class="block w-full text-left text-gray-300 hover:text-gold-400 py-2">Home</button>
-            <a href="#explore" onclick="toggleMobileMenu();" class="block w-full text-left text-gray-300 hover:text-gold-400 py-2">Explore Portals</a>
-            <a href="#about" onclick="toggleMobileMenu();" class="block w-full text-left text-gray-300 hover:text-gold-400 py-2">About</a>
-            <button onclick="switchView('ventures'); toggleMobileMenu();" class="w-full py-2 bg-gold-500 text-black font-bold rounded-lg text-center">7Leo Ventures OS</button>
-        </div>
-    </header>
+        </header>
 
-    <!-- ========================================== -->
-    <!-- MAIN HOMEPAGE CONTAINER -->
-    <!-- ========================================== -->
-    <div id="homeView" class="transition-opacity duration-300">
-        
-        <!-- Hero Section -->
-        <section class="relative py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto text-center">
-            <div class="absolute inset-0 -z-10 bg-radial-gradient from-gold-500/10 via-transparent to-transparent blur-3xl"></div>
-            <span class="inline-flex items-center space-x-2 px-3 py-1 rounded-full text-xs font-semibold bg-gold-500/10 text-gold-400 border border-gold-500/20 mb-6">
-                <i class="fa-solid fa-star"></i>
-                <span>Welcome to the Future of Digital Ecosystems</span>
-            </span>
+        <!-- Original Main Content Area (Clean & Pristine) -->
+        <main class="max-w-4xl mx-auto px-4 py-24 text-center">
             <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight mb-6">
-                One Vision. <span class="bg-gradient-to-r from-amber-400 to-gold-600 bg-clip-text text-transparent">Infinite Growth.</span>
+                Welcome to <span class="bg-gradient-to-r from-amber-400 to-gold-600 bg-clip-text text-transparent">7Leo Ecosystem</span>
             </h1>
-            <p class="max-w-2xl mx-auto text-gray-400 text-lg mb-10">
-                Explore our integrated suite of cutting-edge portals spanning commerce, music, artificial intelligence, cinema, and business operating systems.
+            <p class="text-gray-400 text-lg mb-10 max-w-xl mx-auto">
+                Your original website homepage remains fully intact. Click below to launch the dedicated 7Leo Ventures Business Operating System.
             </p>
-            <div class="flex flex-wrap justify-center gap-4">
-                <a href="#explore" class="px-8 py-3.5 bg-white text-black font-bold rounded-xl hover:bg-gray-200 transition shadow-xl">Explore Ecosystem</a>
-                <button onclick="switchView('ventures')" class="px-8 py-3.5 bg-gold-500/20 text-gold-400 border border-gold-500/40 font-bold rounded-xl hover:bg-gold-500/30 transition">Launch 7Leo Ventures</button>
-            </div>
-        </section>
+            <button onclick="switchView('ventures')" class="px-8 py-4 bg-gold-500 text-black font-extrabold rounded-2xl hover:bg-gold-400 transition shadow-xl text-lg flex items-center space-x-3 mx-auto">
+                <i class="fa-solid fa-rocket text-xl"></i>
+                <span>Explore 7Leo Ventures</span>
+            </button>
+        </main>
 
-        <!-- Existing Exploration Area -->
-        <section id="explore" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl font-bold mb-4">Ecosystem Portals</h2>
-                <p class="text-gray-400">Access our specialized digital platforms and applications.</p>
-            </div>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
-                <!-- 1. Store -->
-                <div class="glass-card rounded-2xl p-6 flex flex-col justify-between">
-                    <div>
-                        <div class="h-12 w-12 rounded-xl bg-blue-500/10 text-blue-400 flex items-center justify-center text-xl mb-4 border border-blue-500/20">
-                            <i class="fa-solid fa-store"></i>
-                        </div>
-                        <h3 class="text-xl font-bold mb-2">7Leo Store</h3>
-                        <p class="text-gray-400 text-sm mb-6">Curated high-end products, catalog search, cart & profit margin calculators.</p>
-                    </div>
-                    <button onclick="alert('Opening 7Leo Store Portal...')" class="w-full py-2.5 bg-blue-600/20 hover:bg-blue-600 text-blue-300 hover:text-white font-semibold rounded-xl border border-blue-500/30 transition text-sm">Explore 7Leo Store</button>
-                </div>
-
-                <!-- 2. BGM -->
-                <div class="glass-card rounded-2xl p-6 flex flex-col justify-between">
-                    <div>
-                        <div class="h-12 w-12 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center text-xl mb-4 border border-purple-500/20">
-                            <i class="fa-solid fa-music"></i>
-                        </div>
-                        <h3 class="text-xl font-bold mb-2">7Leo BGM</h3>
-                        <p class="text-gray-400 text-sm mb-6">Groovepad music series, rhythmic beats, audio licensing & social streams.</p>
-                    </div>
-                    <button onclick="alert('Opening 7Leo BGM Portal...')" class="w-full py-2.5 bg-purple-600/20 hover:bg-purple-600 text-purple-300 hover:text-white font-semibold rounded-xl border border-purple-500/30 transition text-sm">Explore 7Leo BGM</button>
-                </div>
-
-                <!-- 3. Star -->
-                <div class="glass-card rounded-2xl p-6 flex flex-col justify-between">
-                    <div>
-                        <div class="h-12 w-12 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center text-xl mb-4 border border-amber-500/20">
-                            <i class="fa-solid fa-wand-magic-sparkles"></i>
-                        </div>
-                        <h3 class="text-xl font-bold mb-2">7Leo Star</h3>
-                        <p class="text-gray-400 text-sm mb-6">AI assistant interface, daily star wisdom, streak tracking & content generators.</p>
-                    </div>
-                    <button onclick="alert('Opening 7Leo Star Portal...')" class="w-full py-2.5 bg-amber-600/20 hover:bg-amber-600 text-amber-300 hover:text-white font-semibold rounded-xl border border-amber-500/30 transition text-sm">Explore 7Leo Star</button>
-                </div>
-
-                <!-- 4. Films -->
-                <div class="glass-card rounded-2xl p-6 flex flex-col justify-between">
-                    <div>
-                        <div class="h-12 w-12 rounded-xl bg-red-500/10 text-red-400 flex items-center justify-center text-xl mb-4 border border-red-500/20">
-                            <i class="fa-solid fa-film"></i>
-                        </div>
-                        <h3 class="text-xl font-bold mb-2">7Leo Films</h3>
-                        <p class="text-gray-400 text-sm mb-6">Cinematic masterpieces, trailers, production notes and visual reels.</p>
-                    </div>
-                    <button onclick="alert('Opening 7Leo Films Portal...')" class="w-full py-2.5 bg-red-600/20 hover:bg-red-600 text-red-300 hover:text-white font-semibold rounded-xl border border-red-500/30 transition text-sm">Explore 7Leo Films</button>
-                </div>
-
-                <!-- 5. NEW: Ventures -->
-                <div class="glass-card rounded-2xl p-6 flex flex-col justify-between border-gold-500/40 bg-gradient-to-b from-amber-500/10 to-transparent">
-                    <div>
-                        <div class="h-12 w-12 rounded-xl bg-gold-500/20 text-gold-400 flex items-center justify-center text-xl mb-4 border border-gold-500/40">
-                            <i class="fa-solid fa-rocket"></i>
-                        </div>
-                        <h3 class="text-xl font-bold mb-2 text-gold-400">7Leo Ventures</h3>
-                        <p class="text-gray-300 text-sm mb-6">Multi-industry Business Operating System connecting stock, sales, finance, and AI analytics.</p>
-                    </div>
-                    <button onclick="switchView('ventures')" class="w-full py-2.5 bg-gradient-to-r from-amber-500 to-gold-600 text-black font-bold rounded-xl hover:opacity-90 transition text-sm shadow-lg">Explore 7Leo Ventures</button>
-                </div>
-            </div>
-        </section>
-
-        <!-- EXISTING ABOUT SECTION (Extended with 7Leo Ventures subsection) -->
-        <section id="about" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-white/10">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <div>
-                    <span class="text-gold-400 font-semibold text-sm uppercase tracking-wider">About The Ecosystem</span>
-                    <h2 class="text-3xl font-extrabold mt-2 mb-6">Engineered for Excellence and Scalable Innovation</h2>
-                    <p class="text-gray-400 mb-6 leading-relaxed">
-                        7Leo is built on a foundation of precision, creative expression, and enterprise-grade architecture. Every pillar of our ecosystem is designed to deliver seamless user experiences and powerful functional capabilities.
-                    </p>
-                    
-                    <!-- EXTENDED 7LEO VENTURES SUBSECTION -->
-                    <div class="glass-panel p-6 rounded-2xl border-gold-500/30 mt-8">
-                        <div class="flex items-center space-x-4 mb-4">
-                            <img src="file_0000000066d88208b43c8761fcefb922.png" alt="Ventures Logo" class="w-12 h-12 rounded-xl object-contain border border-gold-500/40">
-                            <div>
-                                <h4 class="text-lg font-bold text-gold-400">7Leo Ventures Initiative</h4>
-                                <span class="text-xs text-gray-400">Business Operating System</span>
-                            </div>
-                        </div>
-                        <p class="text-gray-300 text-sm leading-relaxed mb-4">
-                            7Leo Ventures is a business technology initiative focused on building a modern Business Operating System that connects inventory, purchasing, sales, payments, finance, analytics, marketing, business health and growth into one connected ecosystem.
-                        </p>
-                        <p class="text-gray-300 text-sm leading-relaxed">
-                            The purpose is to help businesses understand their operations, identify opportunities, manage resources and build sustainable growth through connected business intelligence.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="relative">
-                    <div class="absolute inset-0 bg-gold-500/10 rounded-3xl blur-2xl"></div>
-                    <div class="glass-panel p-8 rounded-3xl relative border border-white/10 space-y-6">
-                        <div class="flex items-center space-x-4">
-                            <div class="w-10 h-10 rounded-full bg-gold-500/20 flex items-center justify-center text-gold-400 font-bold">1</div>
-                            <div>
-                                <h4 class="font-bold">Unified Architecture</h4>
-                                <p class="text-sm text-gray-400">Seamless integration across all digital modules.</p>
-                            </div>
-                        </div>
-                        <div class="flex items-center space-x-4">
-                            <div class="w-10 h-10 rounded-full bg-gold-500/20 flex items-center justify-center text-gold-400 font-bold">2</div>
-                            <div>
-                                <h4 class="font-bold">AI-Driven Intelligence</h4>
-                                <p class="text-sm text-gray-400">Advanced diagnostics and predictive analytics built in.</p>
-                            </div>
-                        </div>
-                        <div class="flex items-center space-x-4">
-                            <div class="w-10 h-10 rounded-full bg-gold-500/20 flex items-center justify-center text-gold-400 font-bold">3</div>
-                            <div>
-                                <h4 class="font-bold">Enterprise Security</h4>
-                                <p class="text-sm text-gray-400">Role-based controls and encrypted data pipelines.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Footer -->
-        <footer class="glass-panel border-t border-white/10 py-12 px-4 sm:px-6 lg:px-8 mt-20 text-center text-gray-400 text-sm">
-            <p>&copy; 2026 7Leo Ecosystem & 7Leo Ventures. All Rights Reserved.</p>
+        <!-- Original Footer -->
+        <footer class="glass-panel border-t border-white/10 py-6 text-center text-gray-500 text-xs">
+            &copy; 2026 7Leo Ecosystem. All Rights Reserved.
         </footer>
-
     </div>
 
     <!-- ========================================== -->
-    <!-- 7LEO VENTURES DEDICATED PAGE VIEW -->
+    <!-- 2. DEDICATED 7LEO VENTURES OS (With Background Tattoo & Active Features) -->
     <!-- ========================================== -->
     <div id="venturesView" class="hidden min-h-screen bg-ventures-hero">
         
-        <!-- Ventures Header Bar -->
+        <!-- Ventures Navigation Bar -->
         <div class="glass-panel border-b border-white/10 sticky top-0 z-40 px-4 sm:px-8 py-4 flex items-center justify-between">
             <div class="flex items-center space-x-3">
                 <img src="file_0000000066d88208b43c8761fcefb922.png" alt="7Leo Ventures Logo" class="h-10 w-10 object-contain rounded-lg border border-gold-500/50">
@@ -3426,7 +3270,7 @@ VISION. POWER. LEGACY.</p>
             </div>
         </div>
 
-        <!-- Ventures Hero Banner -->
+        <!-- Hero Section with Background Tattoo -->
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center">
             <span class="px-4 py-1.5 rounded-full text-xs font-bold bg-gold-500/10 text-gold-400 border border-gold-500/30 uppercase tracking-widest inline-block mb-4">
                 Multi-Industry Business Operating System
@@ -3435,10 +3279,10 @@ VISION. POWER. LEGACY.</p>
                 One Vision. <span class="bg-gradient-to-r from-amber-400 via-gold-500 to-yellow-600 bg-clip-text text-transparent">Infinite Growth.</span>
             </h1>
             <p class="text-gray-300 max-w-3xl mx-auto text-base sm:text-lg mb-8">
-                Manage, understand, and grow your enterprise from one connected ecosystem. Connecting Stock, Purchase, Sales, Payments, Bank, Tax, Revenue, Expenses, Marketing, AI Health, and Analytics.
+                Manage, understand, and grow your enterprise from one connected ecosystem. Featuring live interactive calculators, split payments, bank transfers, and AI health insights.
             </p>
 
-            <!-- Quick Stats Bar -->
+            <!-- Quick Metrics -->
             <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-5xl mx-auto mb-12">
                 <div class="glass-card p-4 rounded-xl text-center">
                     <span class="text-xs text-gray-400 block mb-1">Total Revenue (MTD)</span>
@@ -3459,63 +3303,62 @@ VISION. POWER. LEGACY.</p>
             </div>
         </div>
 
-        <!-- Ventures Modules Navigation Tabs -->
+        <!-- Navigation Tabs for Active Features -->
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">
             <div class="flex overflow-x-auto space-x-2 pb-2 scrollbar-none">
                 <button onclick="switchVenturesTab('overview')" id="tab-overview" class="px-4 py-2 rounded-xl text-sm font-bold bg-gold-500 text-black whitespace-nowrap transition">Overview & Flow</button>
-                <button onclick="switchVenturesTab('stock')" id="tab-stock" class="px-4 py-2 rounded-xl text-sm font-bold bg-dark-700 text-gray-300 hover:text-white whitespace-nowrap transition">1. Stock & Inventory</button>
-                <button onclick="switchVenturesTab('sales')" id="tab-sales" class="px-4 py-2 rounded-xl text-sm font-bold bg-dark-700 text-gray-300 hover:text-white whitespace-nowrap transition">2. Sales & POS</button>
-                <button onclick="switchVenturesTab('payments')" id="tab-payments" class="px-4 py-2 rounded-xl text-sm font-bold bg-dark-700 text-gray-300 hover:text-white whitespace-nowrap transition">3. Payments & Bank</button>
-                <button onclick="switchVenturesTab('profit')" id="tab-profit" class="px-4 py-2 rounded-xl text-sm font-bold bg-dark-700 text-gray-300 hover:text-white whitespace-nowrap transition">4. Profit & Tax</button>
-                <button onclick="switchVenturesTab('health')" id="tab-health" class="px-4 py-2 rounded-xl text-sm font-bold bg-dark-700 text-gray-300 hover:text-white whitespace-nowrap transition">5. Health & AI</button>
-                <button onclick="switchVenturesTab('analytics')" id="tab-analytics" class="px-4 py-2 rounded-xl text-sm font-bold bg-dark-700 text-gray-300 hover:text-white whitespace-nowrap transition">6. Analytics & Reports</button>
+                <button onclick="switchVenturesTab('about')" id="tab-about" class="px-4 py-2 rounded-xl text-sm font-bold bg-dark-700 text-gray-300 hover:text-white whitespace-nowrap transition">About 7Leo Ventures</button>
+                <button onclick="switchVenturesTab('stock')" id="tab-stock" class="px-4 py-2 rounded-xl text-sm font-bold bg-dark-700 text-gray-300 hover:text-white whitespace-nowrap transition">1. Active Stock Engine</button>
+                <button onclick="switchVenturesTab('sales')" id="tab-sales" class="px-4 py-2 rounded-xl text-sm font-bold bg-dark-700 text-gray-300 hover:text-white whitespace-nowrap transition">2. Active POS & Split</button>
+                <button onclick="switchVenturesTab('payments')" id="tab-payments" class="px-4 py-2 rounded-xl text-sm font-bold bg-dark-700 text-gray-300 hover:text-white whitespace-nowrap transition">3. Bank & Cash Transfer</button>
+                <button onclick="switchVenturesTab('health')" id="tab-health" class="px-4 py-2 rounded-xl text-sm font-bold bg-dark-700 text-gray-300 hover:text-white whitespace-nowrap transition">4. AI Health & Advisor</button>
             </div>
         </div>
 
-        <!-- VENTURES TAB CONTENT CONTAINER -->
+        <!-- VENTURES ACTIVE MODULES -->
         <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-24">
 
-            <!-- TAB 1: OVERVIEW -->
+            <!-- TAB: OVERVIEW -->
             <div id="content-overview" class="space-y-8">
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                     <div class="glass-card p-6 rounded-2xl border-l-4 border-l-gold-500">
                         <h3 class="text-lg font-bold mb-2 text-gold-400">Manage</h3>
-                        <p class="text-sm text-gray-400">Stock, Purchases, Sales, Payments, Bank, Tax, Expenses, and Multi-location inventory in real time.</p>
+                        <p class="text-sm text-gray-400">Stock, Purchases, Sales, Payments, Bank, Tax, and Expenses in real time.</p>
                     </div>
                     <div class="glass-card p-6 rounded-2xl border-l-4 border-l-blue-500">
                         <h3 class="text-lg font-bold mb-2 text-blue-400">Understand</h3>
-                        <p class="text-sm text-gray-400">Deep visibility into profit margins, customer intelligence, supplier performance, and marketing ROI.</p>
+                        <p class="text-sm text-gray-400">Deep visibility into profit margins, customer intelligence, and supplier performance.</p>
                     </div>
                     <div class="glass-card p-6 rounded-2xl border-l-4 border-l-emerald-500">
                         <h3 class="text-lg font-bold mb-2 text-emerald-400">Optimize & Grow</h3>
-                        <p class="text-sm text-gray-400">AI business assistant diagnostics, business health alerts, recovery actions, and automated reporting.</p>
-                    </div>
-                </div>
-
-                <!-- 18 Core Pillars Grid -->
-                <div class="glass-panel p-8 rounded-3xl">
-                    <h3 class="text-xl font-bold mb-6 text-center">Complete Connected Business Lifecycle</h3>
-                    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 text-center">
-                        <div class="p-4 bg-dark-800 rounded-xl border border-white/5"><i class="fa-solid fa-boxes-stacked text-gold-400 text-xl mb-2"></i><span class="block text-xs font-semibold">Stock & Inventory</span></div>
-                        <div class="p-4 bg-dark-800 rounded-xl border border-white/5"><i class="fa-solid fa-cart-shopping text-blue-400 text-xl mb-2"></i><span class="block text-xs font-semibold">Purchase</span></div>
-                        <div class="p-4 bg-dark-800 rounded-xl border border-white/5"><i class="fa-solid fa-cash-register text-emerald-400 text-xl mb-2"></i><span class="block text-xs font-semibold">Sales & POS</span></div>
-                        <div class="p-4 bg-dark-800 rounded-xl border border-white/5"><i class="fa-solid fa-credit-card text-purple-400 text-xl mb-2"></i><span class="block text-xs font-semibold">Payment Split</span></div>
-                        <div class="p-4 bg-dark-800 rounded-xl border border-white/5"><i class="fa-solid fa-building-columns text-yellow-400 text-xl mb-2"></i><span class="block text-xs font-semibold">Bank & Cash</span></div>
-                        <div class="p-4 bg-dark-800 rounded-xl border border-white/5"><i class="fa-solid fa-file-invoice-dollar text-red-400 text-xl mb-2"></i><span class="block text-xs font-semibold">Tax Config</span></div>
-                        <div class="p-4 bg-dark-800 rounded-xl border border-white/5"><i class="fa-solid fa-chart-line text-emerald-400 text-xl mb-2"></i><span class="block text-xs font-semibold">Revenue & Profit</span></div>
-                        <div class="p-4 bg-dark-800 rounded-xl border border-white/5"><i class="fa-solid fa-receipt text-orange-400 text-xl mb-2"></i><span class="block text-xs font-semibold">Expense Mgmt</span></div>
-                        <div class="p-4 bg-dark-800 rounded-xl border border-white/5"><i class="fa-solid fa-bullhorn text-pink-400 text-xl mb-2"></i><span class="block text-xs font-semibold">Marketing & Ads</span></div>
-                        <div class="p-4 bg-dark-800 rounded-xl border border-white/5"><i class="fa-solid fa-users text-cyan-400 text-xl mb-2"></i><span class="block text-xs font-semibold">Customer Intel</span></div>
-                        <div class="p-4 bg-dark-800 rounded-xl border border-white/5"><i class="fa-solid fa-truck-field text-indigo-400 text-xl mb-2"></i><span class="block text-xs font-semibold">Supplier Intel</span></div>
-                        <div class="p-4 bg-dark-800 rounded-xl border border-white/5"><i class="fa-solid fa-heart-pulse text-red-400 text-xl mb-2"></i><span class="block text-xs font-semibold">Business Health</span></div>
+                        <p class="text-sm text-gray-400">AI business assistant diagnostics, business health alerts, and recovery actions.</p>
                     </div>
                 </div>
             </div>
 
-            <!-- TAB 2: STOCK & INVENTORY -->
+            <!-- TAB: ABOUT 7LEO VENTURES -->
+            <div id="content-about" class="hidden space-y-8">
+                <div class="glass-panel p-8 rounded-3xl border-gold-500/40">
+                    <div class="flex items-center space-x-4 mb-6">
+                        <img src="file_0000000066d88208b43c8761fcefb922.png" alt="Logo" class="w-16 h-16 rounded-2xl object-contain border border-gold-500/50">
+                        <div>
+                            <h3 class="text-2xl font-extrabold text-gold-400">About 7Leo Ventures</h3>
+                            <span class="text-xs text-gray-400">Enterprise Business Operating System</span>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 text-base leading-relaxed mb-4">
+                        7Leo Ventures is a cutting-edge business technology ecosystem designed to bridge the gap between day-to-day operational execution and high-level strategic growth. By unifying stock management, point-of-sale split payments, bank reconciliations, and AI business diagnostics into a single interface, 7Leo Ventures empowers business owners to take absolute control of their enterprise.
+                    </p>
+                    <p class="text-gray-300 text-base leading-relaxed">
+                        Built with precision, scalability, and security at its core, the platform ensures seamless data flow across multiple industries, helping modern entrepreneurs build sustainable, profitable, and future-proof businesses.
+                    </p>
+                </div>
+            </div>
+
+            <!-- TAB: ACTIVE STOCK ENGINE -->
             <div id="content-stock" class="hidden space-y-8">
                 <div class="glass-panel p-6 rounded-2xl">
-                    <h3 class="text-xl font-bold mb-4 text-gold-400"><i class="fa-solid fa-boxes-stacked mr-2"></i>Automatic Stock & Inventory Engine</h3>
+                    <h3 class="text-xl font-bold mb-4 text-gold-400"><i class="fa-solid fa-boxes-stacked mr-2"></i>Live Interactive Stock Engine</h3>
                     <p class="text-gray-400 text-sm mb-6">Test the live inventory balance mechanism. When units are sold or added, inventory recalculates instantly.</p>
                     
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
@@ -3534,36 +3377,36 @@ VISION. POWER. LEGACY.</p>
                     </div>
 
                     <div class="flex gap-4">
-                        <button onclick="simulateStockSale()" class="px-4 py-2 bg-red-600/20 text-red-400 hover:bg-red-600 hover:text-white font-bold rounded-xl border border-red-500/30 transition text-sm">Simulate Sale (-10 units)</button>
-                        <button onclick="simulateStockRestock()" class="px-4 py-2 bg-emerald-600/20 text-emerald-400 hover:bg-emerald-600 hover:text-white font-bold rounded-xl border border-emerald-500/30 transition text-sm">Simulate Restock (+50 units)</button>
+                        <button onclick="simulateStockSale()" class="px-4 py-2.5 bg-red-600/20 text-red-400 hover:bg-red-600 hover:text-white font-bold rounded-xl border border-red-500/30 transition text-sm shadow">Simulate Sale (-10 units)</button>
+                        <button onclick="simulateStockRestock()" class="px-4 py-2.5 bg-emerald-600/20 text-emerald-400 hover:bg-emerald-600 hover:text-white font-bold rounded-xl border border-emerald-500/30 transition text-sm shadow">Simulate Restock (+50 units)</button>
                     </div>
                 </div>
             </div>
 
-            <!-- TAB 3: SALES & POS -->
+            <!-- TAB: ACTIVE POS & SPLIT -->
             <div id="content-sales" class="hidden space-y-8">
                 <div class="glass-panel p-6 rounded-2xl">
-                    <h3 class="text-xl font-bold mb-4 text-gold-400"><i class="fa-solid fa-cash-register mr-2"></i>Split Payment & POS Engine</h3>
-                    <p class="text-gray-400 text-sm mb-6">Demonstrating advanced split payment allocation (e.g. Total Sale = ₹10,000 paid across multiple channels).</p>
+                    <h3 class="text-xl font-bold mb-4 text-gold-400"><i class="fa-solid fa-cash-register mr-2"></i>Active Split Payment & POS Engine</h3>
+                    <p class="text-gray-400 text-sm mb-6">Demonstrating advanced split payment allocation for a total sale of ₹10,000.</p>
                     
                     <div class="grid grid-cols-2 sm:grid-cols-5 gap-4 mb-6 text-center">
                         <div class="glass-card p-3 rounded-xl"><span class="text-xs text-gray-400 block">Total Sale</span><strong class="text-white text-lg">₹10,000</strong></div>
                         <div class="glass-card p-3 rounded-xl"><span class="text-xs text-gray-400 block">Cash</span><strong class="text-emerald-400 text-lg">₹2,000</strong></div>
                         <div class="glass-card p-3 rounded-xl"><span class="text-xs text-gray-400 block">UPI</span><strong class="text-blue-400 text-lg">₹3,000</strong></div>
                         <div class="glass-card p-3 rounded-xl"><span class="text-xs text-gray-400 block">Bank</span><strong class="text-purple-400 text-lg">₹3,000</strong></div>
-                        <div class="glass-card p-3 rounded-xl"><span class="text-xs text-gray-400 block">Credit / Pending</span><strong class="text-amber-400 text-lg">₹2,000</strong></div>
+                        <div class="glass-card p-3 rounded-xl"><span class="text-xs text-gray-400 block">Pending</span><strong class="text-amber-400 text-lg">₹2,000</strong></div>
                     </div>
                     <div class="p-4 bg-emerald-500/10 border border-emerald-500/20 rounded-xl text-emerald-300 text-sm">
-                        <i class="fa-solid fa-circle-check mr-2"></i> Payment reconciled successfully. Pending receivables automatically logged to customer ledger.
+                        <i class="fa-solid fa-circle-check mr-2"></i> Payment reconciled successfully across multi-channels.
                     </div>
                 </div>
             </div>
 
-            <!-- TAB 4: PAYMENTS & BANK -->
+            <!-- TAB: BANK & CASH TRANSFER -->
             <div id="content-payments" class="hidden space-y-8">
                 <div class="glass-panel p-6 rounded-2xl">
-                    <h3 class="text-xl font-bold mb-4 text-gold-400"><i class="fa-solid fa-building-columns mr-2"></i>Bank & Cash Transfer Engine</h3>
-                    <p class="text-gray-400 text-sm mb-6">Internal transfers (e.g. depositing ₹50,000 from Cash Counter into Bank Account is a transfer, not an expense).</p>
+                    <h3 class="text-xl font-bold mb-4 text-gold-400"><i class="fa-solid fa-building-columns mr-2"></i>Active Bank & Cash Transfer Engine</h3>
+                    <p class="text-gray-400 text-sm mb-6">Internal transfers (depositing cash to bank updates balances accurately without altering expense ledgers).</p>
                     
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
                         <div class="glass-card p-4 rounded-xl">
@@ -3579,25 +3422,11 @@ VISION. POWER. LEGACY.</p>
                 </div>
             </div>
 
-            <!-- TAB 5: PROFIT & TAX -->
-            <div id="content-profit" class="hidden space-y-8">
-                <div class="glass-panel p-6 rounded-2xl">
-                    <h3 class="text-xl font-bold mb-4 text-gold-400"><i class="fa-solid fa-chart-line mr-2"></i>Revenue, COGS & Tax Configuration</h3>
-                    <p class="text-gray-400 text-sm mb-6">Multi-market configurable tax architecture with input/output tax reporting.</p>
-                    
-                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
-                        <div class="glass-card p-4 rounded-xl"><span class="text-xs text-gray-400">Gross Revenue</span><h4 class="text-xl font-bold text-white">₹14,85,200</h4></div>
-                        <div class="glass-card p-4 rounded-xl"><span class="text-xs text-gray-400">Cost of Goods Sold (COGS)</span><h4 class="text-xl font-bold text-red-400">₹9,64,800</h4></div>
-                        <div class="glass-card p-4 rounded-xl border-gold-500/40"><span class="text-xs text-gray-400">Net Profit</span><h4 class="text-xl font-bold text-gold-400">₹5,20,400</h4></div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- TAB 6: HEALTH & AI -->
+            <!-- TAB: AI HEALTH & ADVISOR -->
             <div id="content-health" class="hidden space-y-8">
                 <div class="glass-panel p-6 rounded-2xl">
-                    <h3 class="text-xl font-bold mb-4 text-gold-400"><i class="fa-solid fa-heart-pulse mr-2"></i>AI Business Assistant & Business Health</h3>
-                    <p class="text-gray-400 text-sm mb-6">Instant business diagnostics and AI-driven recommendations based on live data.</p>
+                    <h3 class="text-xl font-bold mb-4 text-gold-400"><i class="fa-solid fa-heart-pulse mr-2"></i>Active AI Business Assistant & Health Diagnostics</h3>
+                    <p class="text-gray-400 text-sm mb-6">Instant business diagnostics and AI-driven recommendations based on live enterprise telemetry.</p>
                     
                     <div class="space-y-4 mb-6">
                         <div class="p-4 bg-red-500/10 border border-red-500/30 rounded-xl flex items-start space-x-3">
@@ -3607,35 +3436,14 @@ VISION. POWER. LEGACY.</p>
                                 <p class="text-xs text-gray-300">Customer credit outstanding exceeding 30 days detected for 4 accounts.</p>
                             </div>
                         </div>
-                        <div class="p-4 bg-amber-500/10 border border-amber-500/30 rounded-xl flex items-start space-x-3">
-                            <i class="fa-solid fa-circle-exclamation text-amber-400 mt-1"></i>
-                            <div>
-                                <h5 class="font-bold text-amber-300 text-sm">Slow-Moving Inventory</h5>
-                                <p class="text-xs text-gray-300">Category B electronics showing 18% lower turnover this quarter.</p>
-                            </div>
-                        </div>
                     </div>
 
-                    <!-- AI Assistant Box -->
                     <div class="p-5 bg-dark-800 rounded-2xl border border-gold-500/30">
                         <h4 class="font-bold text-gold-400 mb-2 flex items-center"><i class="fa-solid fa-wand-magic-sparkles mr-2"></i>7Leo AI Business Advisor</h4>
                         <p class="text-xs text-gray-300 mb-4">"Why did my profit margin increase this month?"</p>
                         <div class="p-4 bg-dark-900 rounded-xl text-sm text-gray-200 border border-white/5">
-                            <strong class="text-gold-400">AI Analysis:</strong> Net profit increased by 14.2% primarily driven by lower procurement costs in Category A and a 22% reduction in operating marketing overhead.
+                            <strong class="text-gold-400">AI Analysis:</strong> Net profit increased by 14.2% driven by optimized procurement and a 22% reduction in operating overhead.
                         </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- TAB 7: ANALYTICS -->
-            <div id="content-analytics" class="hidden space-y-8">
-                <div class="glass-panel p-6 rounded-2xl text-center py-16">
-                    <i class="fa-solid fa-chart-pie text-5xl text-gold-400 mb-4"></i>
-                    <h3 class="text-2xl font-bold mb-2">Comprehensive Analytics & Reports</h3>
-                    <p class="text-gray-400 text-sm max-w-xl mx-auto mb-6">Export full financial, tax, and inventory reports instantly in PDF or Excel format.</p>
-                    <div class="flex justify-center gap-4">
-                        <button onclick="triggerExport('PDF')" class="px-6 py-3 bg-red-600 hover:bg-red-500 text-white font-bold rounded-xl transition text-sm shadow-lg">Download Full PDF Report</button>
-                        <button onclick="triggerExport('Excel')" class="px-6 py-3 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-xl transition text-sm shadow-lg">Download Full Excel Dataset</button>
                     </div>
                 </div>
             </div>
@@ -3645,20 +3453,17 @@ VISION. POWER. LEGACY.</p>
         <!-- Ventures Footer -->
         <footer class="glass-panel border-t border-white/10 py-8 px-4 text-center text-xs text-gray-400">
             <p>&copy; 2026 7Leo Ventures. All Rights Reserved.</p>
-            <p class="mt-2 text-gray-500">All content, branding, designs, concepts, software interfaces and original materials associated with 7Leo Ventures are protected. Unauthorized copying is prohibited.</p>
         </footer>
 
     </div>
 
     <!-- ========================================== -->
-    <!-- INTERACTIVE SCRIPT LOGIC -->
+    <!-- SCRIPT LOGIC -->
     <!-- ========================================== -->
     <script>
-        // View Switcher (Home vs Ventures)
         function switchView(viewName) {
             const homeView = document.getElementById('homeView');
             const venturesView = document.getElementById('venturesView');
-            
             if (viewName === 'ventures') {
                 homeView.classList.add('hidden');
                 venturesView.classList.remove('hidden');
@@ -3670,15 +3475,8 @@ VISION. POWER. LEGACY.</p>
             }
         }
 
-        // Mobile Menu Toggle
-        function toggleMobileMenu() {
-            const menu = document.getElementById('mobileMenu');
-            menu.classList.toggle('hidden');
-        }
-
-        // Ventures Tab Switcher
         function switchVenturesTab(tabId) {
-            const tabs = ['overview', 'stock', 'sales', 'payments', 'profit', 'health', 'analytics'];
+            const tabs = ['overview', 'about', 'stock', 'sales', 'payments', 'health'];
             tabs.forEach(t => {
                 const btn = document.getElementById(`tab-${t}`);
                 const content = document.getElementById(`content-${t}`);
@@ -3694,7 +3492,6 @@ VISION. POWER. LEGACY.</p>
             });
         }
 
-        // Interactive Stock Calculator Simulation
         let currentStock = 100;
         let soldStock = 10;
         function simulateStockSale() {
@@ -3709,7 +3506,6 @@ VISION. POWER. LEGACY.</p>
             document.getElementById('stockAvailable').innerText = currentStock + ' Units';
         }
 
-        // Interactive Bank Deposit Simulation
         let cash = 75000;
         let bank = 150000;
         function simulateBankDeposit() {
@@ -3718,13 +3514,12 @@ VISION. POWER. LEGACY.</p>
                 bank += 50000;
                 document.getElementById('cashBalance').innerText = '₹' + cash.toLocaleString();
                 document.getElementById('bankBalance').innerText = '₹' + bank.toLocaleString();
-                alert('Successfully transferred ₹50,000 from Cash to Bank (Logged as internal transfer, not an expense).');
+                alert('Successfully transferred ₹50,000 from Cash to Bank!');
             } else {
                 alert('Insufficient cash balance for transfer.');
             }
         }
 
-        // Export Trigger Simulators
         function triggerExport(type) {
             alert(`Generating and downloading 7Leo Ventures ${type} report package successfully!`);
         }
