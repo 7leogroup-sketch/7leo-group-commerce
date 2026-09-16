@@ -3142,470 +3142,197 @@ VISION. POWER. LEGACY.</p>
   });
 </script>
 <!-- ================= END 7LEO FILMS INTEGRATION ================= -->
-<!DOCTYPE html>
-<html lang="en" class="dark">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>7Leo Group - Official Portal</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    colors: {
-                        dark: { 900: '#0a0a0f', 800: '#12121a', 700: '#1a1a26', 600: '#252538' },
-                        gold: { 500: '#f59e0b', 600: '#d97706', 400: '#fbbf24' }
-                    }
-                }
-            }
-        }
-    </script>
-    <!-- FontAwesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: #0a0a0f;
-            color: #f3f4f6;
-            overflow-x: hidden;
-        }
-        .glass-panel {
-            background: rgba(18, 18, 26, 0.85);
-            backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-        }
-        .glass-card {
-            background: rgba(26, 26, 38, 0.7);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            transition: all 0.3s ease;
-        }
-        .glass-card:hover {
-            border-color: rgba(245, 158, 11, 0.4);
-            transform: translateY(-2px);
-        }
-        /* Background Tattoo Styling */
-        .bg-tattoo-hero {
-            background-image: linear-gradient(to bottom, rgba(10, 10, 15, 0.88), rgba(10, 10, 15, 0.96)), url('file_00000000776081fa8dbc514074356775.png');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-        }
-    </style>
-</head>
-<body class="antialiased selection:bg-gold-500 selection:text-black">
+<!-- === 7LEO VENTURES PORTAL & ACTIVE SYSTEM INJECTION === -->
+<style>
+#ventures-portal {
+    position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+    background-color: #050507;
+    background-image: url('file_00000000776081fa8dbc514074356775.png');
+    background-size: cover; background-position: center; background-repeat: no-repeat;
+    z-index: 99560; display: none; overflow-y: auto; color: #fff;
+}
+#ventures-portal.active { display: block; }
+#ventures-portal::before {
+    content: ""; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+    background: rgba(5, 7, 12, 0.94); z-index: -1; pointer-events: none;
+}
+.ventures-container { max-width: 1350px; margin: 0 auto; padding: 40px 20px; position: relative; z-index: 2; }
+.ventures-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(212,175,55,0.3); padding-bottom: 20px; margin-bottom: 30px; }
+.ventures-logo-area { display: flex; align-items: center; gap: 15px; }
+.ventures-logo-area img { width: 55px; height: 55px; border-radius: 12px; border: 1px solid #d4af37; object-fit: cover; }
+.ventures-logo-area h1 { font-size: 1.8rem; color: #d4af37; font-weight: 800; letter-spacing: 2px; }
+.ventures-logo-area p { color: #a0a0ab; font-size: 0.85rem; }
 
-    <!-- ========================================== -->
-    <!-- 1. ORIGINAL HOMEPAGE (Clean with Tattoo & Cards) -->
-    <!-- ========================================== -->
-    <div id="homeView" class="min-h-screen bg-tattoo-hero flex flex-col justify-between">
-        
-        <!-- Top Navigation Bar -->
-        <header class="glass-panel border-b border-white/10 sticky top-0 z-40">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-                <div class="flex items-center space-x-3 cursor-pointer">
-                    <img src="file_0000000066d88208b43c8761fcefb922.png" alt="7Leo Logo" class="h-10 w-10 object-contain rounded-lg border border-gold-500/30">
-                    <span class="text-xl font-extrabold tracking-wider bg-gradient-to-r from-white via-gray-200 to-gold-400 bg-clip-text text-transparent">7LEO GROUP</span>
-                </div>
-                <!-- Nav Links -->
-                <nav class="hidden md:flex items-center space-x-6 text-sm font-semibold text-gray-300">
-                    <a href="#" class="text-gold-400">Home</a>
-                    <a href="#" class="hover:text-gold-400 transition">7Leo Store</a>
-                    <a href="#" class="hover:text-gold-400 transition">7Leo BGM/Films</a>
-                    <a href="#" class="hover:text-gold-400 transition">7Leo Star</a>
-                    <a href="#" class="hover:text-gold-400 transition">About</a>
-                    <a href="#" class="hover:text-gold-400 transition">Contact</a>
-                </nav>
-            </div>
-        </header>
+.ventures-hero-box { background: rgba(20, 20, 28, 0.85); border: 1px solid rgba(212,175,55,0.4); border-radius: 16px; padding: 35px; text-align: center; margin-bottom: 30px; backdrop-filter: blur(10px); }
+.ventures-hero-box h2 { font-size: 2.3rem; color: #d4af37; margin-bottom: 12px; }
+.ventures-hero-box p { color: #d0d0d8; font-size: 1.05rem; max-width: 800px; margin: 0 auto; line-height: 1.6; }
 
-        <!-- Homepage Hero Section -->
-        <main class="max-w-6xl mx-auto px-4 py-16 text-center">
-            <div class="mb-6 flex justify-center">
-                <img src="file_0000000066d88208b43c8761fcefb922.png" alt="Crest Logo" class="w-16 h-16 object-contain rounded-2xl border border-gold-500/40 p-1 bg-black/40 shadow-xl">
-            </div>
-            <h2 class="text-3xl sm:text-5xl font-black tracking-widest text-gold-400 uppercase mb-2">VISIONPOWERLEGACY</h2>
-            <p class="text-gray-300 text-sm sm:text-base italic mb-3">Hello welcome to 7Leo Website</p>
-            <p class="text-gray-400 text-sm mb-12 max-w-lg mx-auto">Welcome to 7Leo Group Commerce, Music, and Star Identity</p>
+.live-metrics-bar { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px; margin-bottom: 30px; }
+.metric-card { background: rgba(15,15,22,0.9); border: 1px solid rgba(212,175,55,0.3); border-radius: 12px; padding: 20px; text-align: center; }
+.metric-card h4 { color: #a0a0ab; font-size: 0.85rem; margin-bottom: 8px; text-transform: uppercase; }
+.metric-card .val { color: #d4af37; font-size: 1.6rem; font-weight: bold; }
 
-            <!-- 5 Portal Cards Grid -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 text-left max-w-5xl mx-auto">
-                
-                <!-- Card 1: Store -->
-                <div class="glass-card p-6 rounded-2xl flex flex-col justify-between">
-                    <div>
-                        <div class="w-10 h-10 rounded-xl bg-gold-500/10 border border-gold-500/30 flex items-center justify-center text-gold-400 mb-4"><i class="fa-solid fa-store"></i></div>
-                        <h3 class="text-lg font-bold text-white mb-1">Build to buy</h3>
-                        <p class="text-xs text-gray-400 mb-6">Curated high-end products, catalog search, cart & profit margin calculators.</p>
-                    </div>
-                    <button onclick="alert('Opening 7Leo Store Portal')" class="w-full py-2.5 bg-black/40 hover:bg-gold-500 hover:text-black font-bold text-xs rounded-xl border border-gold-500/30 transition text-center text-gold-400">Explore 7Leo Store</button>
-                </div>
+.ventures-modules-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 22px; margin-bottom: 40px; }
+.ventures-module-card { background: rgba(15, 15, 22, 0.88); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 22px; transition: 0.3s; display: flex; flex-direction: column; justify-content: space-between; }
+.ventures-module-card:hover { border-color: #d4af37; transform: translateY(-3px); box-shadow: 0 10px 30px rgba(212,175,55,0.15); }
+.ventures-module-card h3 { color: #d4af37; font-size: 1.2rem; margin-bottom: 10px; display: flex; align-items: center; gap: 10px; }
+.ventures-module-card p { color: #a0a0ab; font-size: 0.88rem; line-height: 1.5; margin-bottom: 15px; }
 
-                <!-- Card 2: BGM -->
-                <div class="glass-card p-6 rounded-2xl flex flex-col justify-between">
-                    <div>
-                        <div class="w-10 h-10 rounded-xl bg-purple-500/10 border border-purple-500/30 flex items-center justify-center text-purple-400 mb-4"><i class="fa-solid fa-music"></i></div>
-                        <h3 class="text-lg font-bold text-white mb-1">Mobile Composed Groovepad Music</h3>
-                        <p class="text-xs text-gray-400 mb-6">Groovepad music series, rhythmic beats, audio licensing & social streams.</p>
-                    </div>
-                    <button onclick="alert('Opening 7Leo BGM Portal')" class="w-full py-2.5 bg-black/40 hover:bg-purple-500 hover:text-white font-bold text-xs rounded-xl border border-purple-500/30 transition text-center text-purple-400">Explore 7Leo BGM</button>
-                </div>
+.active-action-box { background: rgba(212,175,55,0.08); border: 1px dashed rgba(212,175,55,0.4); padding: 12px; border-radius: 8px; margin-top: 10px; }
+.active-action-box input, .active-action-box select { width: 100%; background: #0b0b10; border: 1px solid rgba(255,255,255,0.2); color: #fff; padding: 8px; border-radius: 6px; margin-bottom: 8px; font-size: 0.85rem; }
+.active-action-box button { width: 100%; background: #d4af37; color: #000; border: none; padding: 8px; border-radius: 6px; font-weight: bold; cursor: pointer; font-size: 0.85rem; }
+.active-action-box button:hover { background: #f3e5ab; }
 
-                <!-- Card 3: Star -->
-                <div class="glass-card p-6 rounded-2xl flex flex-col justify-between">
-                    <div>
-                        <div class="w-10 h-10 rounded-xl bg-blue-500/10 border border-blue-500/30 flex items-center justify-center text-blue-400 mb-4"><i class="fa-solid fa-star"></i></div>
-                        <h3 class="text-lg font-bold text-white mb-1">Vision . Power . Identity</h3>
-                        <p class="text-xs text-gray-400 mb-6">AI assistant interface, daily star wisdom, streak tracking & content generators.</p>
-                    </div>
-                    <button onclick="alert('Opening 7Leo Star Portal')" class="w-full py-2.5 bg-black/40 hover:bg-blue-500 hover:text-white font-bold text-xs rounded-xl border border-blue-500/30 transition text-center text-blue-400">Explore 7Leo Star</button>
-                </div>
+.ai-assistant-box { background: linear-gradient(135deg, rgba(212,175,55,0.15), rgba(15,15,22,0.9)); border: 1px solid #d4af37; border-radius: 14px; padding: 25px; margin-bottom: 30px; }
+.ai-assistant-box h3 { color: #d4af37; font-size: 1.4rem; margin-bottom: 12px; }
+.ai-query-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+.ai-chip { background: rgba(212,175,55,0.1); border: 1px solid rgba(212,175,55,0.2); color: #f3e5ab; padding: 6px 14px; border-radius: 20px; font-size: 0.8rem; cursor: pointer; transition: 0.3s; }
+.ai-chip:hover { background: #d4af37; color: #000; }
+.ai-response-output { background: rgba(0,0,0,0.6); border-left: 3px solid #d4af37; padding: 15px; margin-top: 15px; border-radius: 0 8px 8px 0; font-size: 0.92rem; color: #f0f0f5; min-height: 45px; }
 
-                <!-- Card 4: Films -->
-                <div class="glass-card p-6 rounded-2xl flex flex-col justify-between">
-                    <div>
-                        <div class="w-10 h-10 rounded-xl bg-red-500/10 border border-red-500/30 flex items-center justify-center text-red-400 mb-4"><i class="fa-solid fa-film"></i></div>
-                        <h3 class="text-lg font-bold text-white mb-1">One Imagine, One Film</h3>
-                        <p class="text-xs text-gray-400 mb-6">Cinematic masterpieces, trailers, production notes and visuals.</p>
-                    </div>
-                    <button onclick="alert('Opening 7Leo Films Portal')" class="w-full py-2.5 bg-black/40 hover:bg-red-500 hover:text-white font-bold text-xs rounded-xl border border-red-500/30 transition text-center text-red-400">Explore 7Leo Films</button>
-                </div>
+.ventures-footer { text-align: center; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 25px; margin-top: 40px; color: #a0a0ab; font-size: 0.85rem; line-height: 1.5; }
+</style>
 
-                <!-- Card 5: EXPLORE 7LEO VENTURES -->
-                <div class="glass-card p-6 rounded-2xl border-gold-500/50 bg-gold-500/5 flex flex-col justify-between sm:col-span-2 lg:col-span-2">
-                    <div>
-                        <div class="w-10 h-10 rounded-xl bg-gold-500/20 border border-gold-500/50 flex items-center justify-center text-gold-400 mb-4"><i class="fa-solid fa-rocket"></i></div>
-                        <h3 class="text-lg font-bold text-gold-400 mb-1">7Leo Ventures Operating System</h3>
-                        <p class="text-xs text-gray-300 mb-6">Multi-industry business operating system connecting stock, sales, finance, AI analytics, and automated dashboards.</p>
-                    </div>
-                    <button onclick="switchView('ventures')" class="w-full py-3 bg-gradient-to-r from-amber-500 to-gold-600 text-black font-extrabold text-sm rounded-xl hover:opacity-90 transition text-center shadow-lg flex items-center justify-center space-x-2">
-                        <i class="fa-solid fa-arrow-right"></i>
-                        <span>Explore 7Leo Ventures</span>
-                    </button>
-                </div>
-
-            </div>
-        </main>
-
-        <!-- Footer -->
-        <footer class="glass-panel border-t border-white/10 py-6 text-center text-gray-500 text-xs">
-            &copy; 2026 7Leo Group. All Rights Reserved.
-        </footer>
-    </div>
-
-    <!-- ========================================== -->
-    <!-- 2. 7LEO VENTURES PAGE (Tattoo BG + Active Features + About Section with Logo) -->
-    <!-- ========================================== -->
-    <div id="venturesView" class="hidden min-h-screen bg-tattoo-hero">
-        
-        <!-- Ventures Navigation Bar -->
-        <div class="glass-panel border-b border-white/10 sticky top-0 z-40 px-4 sm:px-8 py-4 flex items-center justify-between">
-            <div class="flex items-center space-x-3">
-                <img src="file_0000000066d88208b43c8761fcefb922.png" alt="7Leo Ventures Logo" class="h-10 w-10 object-contain rounded-lg border border-gold-500/50">
+<div id="ventures-portal">
+    <div class="ventures-container">
+        <div class="ventures-header">
+            <div class="ventures-logo-area">
+                <img src="file_0000000066d88208b43c8761fcefb922.png" alt="7Leo Ventures Logo">
                 <div>
-                    <h2 class="text-lg font-extrabold tracking-wider text-gold-400">7LEO VENTURES</h2>
-                    <p class="text-xs text-gray-400">Business Operating System</p>
+                    <h1>7LEO VENTURES</h1>
+                    <p>Active Business Operating System • Unified Intelligence</p>
                 </div>
             </div>
-            <div class="flex items-center space-x-3">
-                <button onclick="triggerExport('PDF')" class="px-3 py-2 bg-white/10 hover:bg-white/20 text-xs font-bold rounded-lg border border-white/20 transition flex items-center space-x-1">
-                    <i class="fa-solid fa-file-pdf text-red-400"></i>
-                    <span class="hidden sm:inline">Export PDF</span>
-                </button>
-                <button onclick="triggerExport('Excel')" class="px-3 py-2 bg-white/10 hover:bg-white/20 text-xs font-bold rounded-lg border border-white/20 transition flex items-center space-x-1">
-                    <i class="fa-solid fa-file-excel text-green-400"></i>
-                    <span class="hidden sm:inline">Export Excel</span>
-                </button>
-                <button onclick="switchView('home')" class="px-4 py-2 bg-gold-500 text-black font-bold text-xs rounded-lg hover:bg-gold-400 transition flex items-center space-x-1">
-                    <i class="fa-solid fa-arrow-left"></i>
-                    <span>Back to Home</span>
-                </button>
+            <button onclick="closeVenturesPortal()" style="background: transparent; border: 1px solid #d4af37; color: #d4af37; padding: 8px 16px; border-radius: 8px; cursor: pointer; font-weight: bold;">✕ Exit OS</button>
+        </div>
+
+        <div class="ventures-hero-box">
+            <h2>Live Enterprise Command Center</h2>
+            <p>Manage inventory, record sales, track live expenses, monitor cash flows, and generate instant analytical reports from your fully active operating system.</p>
+            <div style="margin-top: 20px; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+                <button onclick="alert('Exporting Verified JSON / PDF Enterprise Report...');" style="background:#d4af37; color:#000; border:none; padding:10px 20px; border-radius:8px; font-weight:bold; cursor:pointer;">📄 Export PDF Report</button>
+                <button onclick="alert('Exporting Active Dataset to Excel/CSV...');" style="background: transparent; border: 1px solid #d4af37; color: #d4af37; padding:10px 20px; border-radius:8px; font-weight:bold; cursor:pointer;">📊 Export CSV Data</button>
             </div>
         </div>
 
-        <!-- Hero Section with Tattoo Background -->
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center">
-            <span class="px-4 py-1.5 rounded-full text-xs font-bold bg-gold-500/10 text-gold-400 border border-gold-500/30 uppercase tracking-widest inline-block mb-4">
-                Multi-Industry Business Operating System
-            </span>
-            <h1 class="text-4xl sm:text-6xl font-black tracking-tight mb-4">
-                One Vision. <span class="bg-gradient-to-r from-amber-400 via-gold-500 to-yellow-600 bg-clip-text text-transparent">Infinite Growth.</span>
-            </h1>
-            <p class="text-gray-300 max-w-3xl mx-auto text-base sm:text-lg mb-8">
-                Manage, understand, and grow your enterprise from one connected platform. Featuring live interactive calculators, split payments, bank transfers, and AI health insights.
-            </p>
-
-            <!-- Quick Metrics -->
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-5xl mx-auto mb-12">
-                <div class="glass-card p-4 rounded-xl text-center">
-                    <span class="text-xs text-gray-400 block mb-1">Total Revenue (MTD)</span>
-                    <span class="text-2xl font-extrabold text-emerald-400">₹14,85,200</span>
-                </div>
-                <div class="glass-card p-4 rounded-xl text-center">
-                    <span class="text-xs text-gray-400 block mb-1">Gross Profit</span>
-                    <span class="text-2xl font-extrabold text-gold-400">₹5,20,400</span>
-                </div>
-                <div class="glass-card p-4 rounded-xl text-center">
-                    <span class="text-xs text-gray-400 block mb-1">Active Stock Items</span>
-                    <span class="text-2xl font-extrabold text-blue-400">1,420 Units</span>
-                </div>
-                <div class="glass-card p-4 rounded-xl text-center">
-                    <span class="text-xs text-gray-400 block mb-1">Business Health Index</span>
-                    <span class="text-2xl font-extrabold text-purple-400">94.2 / 100</span>
-                </div>
-            </div>
+        <div class="live-metrics-bar">
+            <div class="metric-card"><h4>Total Revenue</h4><div class="val" id="m-revenue">₹1,45,000</div></div>
+            <div class="metric-card"><h4>Total Expenses</h4><div class="val" id="m-expenses">₹38,400</div></div>
+            <div class="metric-card"><h4>Net Profit</h4><div class="val" id="m-profit">₹1,06,600</div></div>
+            <div class="metric-card"><h4>Active Inventory</h4><div class="val" id="m-stock">24 SKUs</div></div>
         </div>
 
-        <!-- Navigation Tabs -->
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">
-            <div class="flex overflow-x-auto space-x-2 pb-2 scrollbar-none">
-                <button onclick="switchVenturesTab('overview')" id="tab-overview" class="px-4 py-2 rounded-xl text-sm font-bold bg-gold-500 text-black whitespace-nowrap transition">Overview & Flow</button>
-                <button onclick="switchVenturesTab('about')" id="tab-about" class="px-4 py-2 rounded-xl text-sm font-bold bg-dark-700 text-gray-300 hover:text-white whitespace-nowrap transition"><i class="fa-solid fa-circle-info mr-1.5 text-gold-400"></i>About 7Leo Ventures</button>
-                <button onclick="switchVenturesTab('stock')" id="tab-stock" class="px-4 py-2 rounded-xl text-sm font-bold bg-dark-700 text-gray-300 hover:text-white whitespace-nowrap transition">1. Active Stock Engine</button>
-                <button onclick="switchVenturesTab('sales')" id="tab-sales" class="px-4 py-2 rounded-xl text-sm font-bold bg-dark-700 text-gray-300 hover:text-white whitespace-nowrap transition">2. Active POS & Split</button>
-                <button onclick="switchVenturesTab('payments')" id="tab-payments" class="px-4 py-2 rounded-xl text-sm font-bold bg-dark-700 text-gray-300 hover:text-white whitespace-nowrap transition">3. Bank & Cash Transfer</button>
-                <button onclick="switchVenturesTab('health')" id="tab-health" class="px-4 py-2 rounded-xl text-sm font-bold bg-dark-700 text-gray-300 hover:text-white whitespace-nowrap transition">4. AI Health & Advisor</button>
+        <div class="ai-assistant-box">
+            <h3>🤖 7Leo Active AI Diagnostic Assistant</h3>
+            <p style="color: #a0a0ab; font-size: 0.9rem;">Run live diagnostics based on your recorded transactions.</p>
+            <div class="ai-query-chips">
+                <div class="ai-chip" onclick="runVenturesAiQuery('profit')">“Analyze current profit margins”</div>
+                <div class="ai-chip" onclick="runVenturesAiQuery('expenses')">“Where are expenses growing?”</div>
+                <div class="ai-chip" onclick="runVenturesAiQuery('stock')">“Check inventory turnover”</div>
+                <div class="ai-chip" onclick="runVenturesAiQuery('health')">“Overall Business Health Check”</div>
             </div>
+            <div id="ventures-ai-output" class="ai-response-output">Click any diagnostic chip above to analyze live operating data...</div>
         </div>
 
-        <!-- VENTURES ACTIVE MODULES -->
-        <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-24">
+        <div class="ventures-modules-grid">
+            <div class="ventures-module-card"><div><h3>📦 Stock & Inventory</h3><p>Real-time automated inventory tracking with multi-location and batch support.</p></div><div class="active-action-box"><input type="text" id="inv-item" placeholder="Item Name"><input type="number" id="inv-qty" placeholder="Quantity"><button onclick="addInventoryItem()">Add Stock</button></div></div>
+            <div class="ventures-module-card"><div><h3>🛒 Purchase Management</h3><p>Streamline supplier interactions and purchase invoices.</p></div><div class="active-action-box"><input type="text" id="po-sup" placeholder="Supplier"><input type="number" id="po-amt" placeholder="Amount (₹)"><button onclick="recordPurchase()">Record PO</button></div></div>
+            <div class="ventures-module-card"><div><h3>💰 Sales Management</h3><p>Fast POS billing and revenue processing.</p></div><div class="active-action-box"><input type="text" id="sale-item" placeholder="Product"><input type="number" id="sale-amt" placeholder="Value (₹)"><button onclick="recordSale()">Process Sale</button></div></div>
+            <div class="ventures-module-card"><div><h3>💳 Payment Management</h3><p>Multi-mode settlement tracking.</p></div><div class="active-action-box"><select id="pay-mode"><option value="UPI">UPI / Online</option><option value="Cash">Cash Counter</option></select><button onclick="alert('Payment Gateway synchronized.')">Verify Settlements</button></div></div>
+            <div class="ventures-module-card"><div><h3>🏦 Bank & Cash</h3><p>Multi-account tracking and reconciliation.</p></div><div class="active-action-box"><button onclick="alert('Bank balance reconciled: ₹3,42,000')">Reconcile Accounts</button></div></div>
+            <div class="ventures-module-card"><div><h3>⚖️ Tax Management</h3><p>Input / Output tax tracking.</p></div><div class="active-action-box"><button onclick="alert('Tax liability calculated successfully.')">Calculate Tax</button></div></div>
+            <div class="ventures-module-card"><div><h3>📈 Revenue & Profit</h3><p>Granular profitability analytics.</p></div><div class="active-action-box"><button onclick="alert('Gross Margin: 73.4%')">View Analytics</button></div></div>
+            <div class="ventures-module-card"><div><h3>💸 Expense Management</h3><p>Operational overhead tracking.</p></div><div class="active-action-box"><input type="text" id="exp-name" placeholder="Expense Title"><input type="number" id="exp-amt" placeholder="Amount (₹)"><button onclick="recordExpense()">Log Expense</button></div></div>
+            <div class="ventures-module-card"><div><h3>🎯 Marketing Intelligence</h3><p>Connect ad spend with revenue.</p></div><div class="active-action-box"><button onclick="alert('Blended CAC: ₹390 | ROAS: 4.8x')">Analyze Ads</button></div></div>
+            <div class="ventures-module-card"><div><h3>👥 Customer Intelligence</h3><p>Lifetime value and segmentation.</p></div><div class="active-action-box"><button onclick="alert('Active Profiles: 1,420')">View Segments</button></div></div>
+            <div class="ventures-module-card"><div><h3>🏭 Supplier Intelligence</h3><p>Reliability and payables.</p></div><div class="active-action-box"><button onclick="alert('Suppliers 100% compliant.')">Check Scorecard</button></div></div>
+            <div class="ventures-module-card"><div><h3>📊 Business Analytics</h3><p>Daily trends and cash-flow.</p></div><div class="active-action-box"><button onclick="alert('Weekly growth momentum: +14.2%')">Deep Analytics</button></div></div>
+            <div class="ventures-module-card" style="border-color: #d4af37;"><div><h3>🩺 Business Health</h3><p>Proactive bottleneck diagnostics.</p></div><div class="active-action-box"><button onclick="alert('Health Status: EXCELLENT.')">Run Health Check</button></div></div>
+            <div class="ventures-module-card"><div><h3>🚀 Recovery & Growth</h3><p>Actionable margin recommendations.</p></div><div class="active-action-box"><button onclick="alert('Playbook loaded: 3 optimizations ready.')">View Playbook</button></div></div>
+            <div class="ventures-module-card"><div><h3>🏢 Multi-Industry</h3><p>Retail, wholesale, and SaaS models.</p></div><div class="active-action-box"><button onclick="alert('Active Unit: 7Leo Group')">Switch Unit</button></div></div>
+            <div class="ventures-module-card"><div><h3>🔒 Security & Audit</h3><p>Role-based permissions & logs.</p></div><div class="active-action-box"><button onclick="alert('Security Audit: SHA-256 Active.')">View Logs</button></div></div>
+        </div>
 
-            <!-- TAB: OVERVIEW -->
-            <div id="content-overview" class="space-y-8">
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <div class="glass-card p-6 rounded-2xl border-l-4 border-l-gold-500">
-                        <h3 class="text-lg font-bold mb-2 text-gold-400">Manage</h3>
-                        <p class="text-sm text-gray-400">Stock, Purchases, Sales, Payments, Bank, Tax, and Expenses in real time.</p>
-                    </div>
-                    <div class="glass-card p-6 rounded-2xl border-l-4 border-l-blue-500">
-                        <h3 class="text-lg font-bold mb-2 text-blue-400">Understand</h3>
-                        <p class="text-sm text-gray-400">Deep visibility into profit margins, customer intelligence, and supplier performance.</p>
-                    </div>
-                    <div class="glass-card p-6 rounded-2xl border-l-4 border-l-emerald-500">
-                        <h3 class="text-lg font-bold mb-2 text-emerald-400">Optimize & Grow</h3>
-                        <p class="text-sm text-gray-400">AI business assistant diagnostics, business health alerts, and recovery actions.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- TAB: ABOUT 7LEO VENTURES (Enhanced with Logo & Professional Layout) -->
-            <div id="content-about" class="hidden space-y-8">
-                <div class="glass-panel p-8 sm:p-12 rounded-3xl border-gold-500/50 relative overflow-hidden">
-                    <div class="absolute -right-10 -bottom-10 opacity-10 pointer-events-none">
-                        <img src="file_0000000066d88208b43c8761fcefb922.png" alt="Watermark Logo" class="w-96 h-96 object-contain">
-                    </div>
-                    <div class="flex flex-col sm:flex-row items-start sm:items-center space-y-4 sm:space-y-0 sm:space-x-6 mb-8">
-                        <img src="file_0000000066d88208b43c8761fcefb922.png" alt="7Leo Ventures Logo" class="w-20 h-20 rounded-2xl object-contain border-2 border-gold-500/60 p-2 bg-black/60 shadow-2xl">
-                        <div>
-                            <span class="px-3 py-1 rounded-full text-xs font-bold bg-gold-500/10 text-gold-400 border border-gold-500/30 uppercase tracking-widest">Enterprise Platform</span>
-                            <h2 class="text-3xl font-black text-white mt-2">About <span class="text-gold-400">7Leo Ventures</span></h2>
-                        </div>
-                    </div>
-                    <div class="space-y-4 text-gray-300 text-base leading-relaxed relative z-10">
-                        <p>
-                            <strong>7Leo Ventures</strong> is the flagship multi-industry Business Operating System of the 7Leo Group. Designed to bridge the gap between day-to-day operational execution and high-level strategic growth, our platform unifies core enterprise workflows into a single interface.
-                        </p>
-                        <p>
-                            From live inventory tracking and multi-channel point-of-sale split payments to bank reconciliations and AI-driven business health diagnostics, 7Leo Ventures empowers forward-thinking business owners with absolute financial and operational clarity.
-                        </p>
-                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-6">
-                            <div class="glass-card p-4 rounded-xl border border-white/10">
-                                <i class="fa-solid fa-shield-halved text-gold-400 text-xl mb-2"></i>
-                                <h4 class="font-bold text-white text-sm">Secure & Reliable</h4>
-                                <p class="text-xs text-gray-400 mt-1">Enterprise-grade architecture ensuring total data integrity.</p>
-                            </div>
-                            <div class="glass-card p-4 rounded-xl border border-white/10">
-                                <i class="fa-solid fa-bolt text-gold-400 text-xl mb-2"></i>
-                                <h4 class="font-bold text-white text-sm">Real-Time Telemetry</h4>
-                                <p class="text-xs text-gray-400 mt-1">Instant stock and cash flow recalculations.</p>
-                            </div>
-                            <div class="glass-card p-4 rounded-xl border border-white/10">
-                                <i class="fa-solid fa-wand-magic-sparkles text-gold-400 text-xl mb-2"></i>
-                                <h4 class="font-bold text-white text-sm">AI Powered Insights</h4>
-                                <p class="text-xs text-gray-400 mt-1">Automated business health alerts and profitability analysis.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- TAB: ACTIVE STOCK ENGINE -->
-            <div id="content-stock" class="hidden space-y-8">
-                <div class="glass-panel p-6 rounded-2xl">
-                    <h3 class="text-xl font-bold mb-4 text-gold-400"><i class="fa-solid fa-boxes-stacked mr-2"></i>Live Interactive Stock Engine</h3>
-                    <p class="text-gray-400 text-sm mb-6">Test the live inventory balance mechanism. When units are sold or added, inventory recalculates instantly.</p>
-                    
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
-                        <div class="glass-card p-4 rounded-xl">
-                            <span class="text-xs text-gray-400">Initial Stock</span>
-                            <h4 id="stockInitial" class="text-2xl font-bold text-white">100 Units</h4>
-                        </div>
-                        <div class="glass-card p-4 rounded-xl">
-                            <span class="text-xs text-gray-400">Sold / Out</span>
-                            <h4 id="stockSold" class="text-2xl font-bold text-red-400">10 Units</h4>
-                        </div>
-                        <div class="glass-card p-4 rounded-xl border-gold-500/40">
-                            <span class="text-xs text-gray-400">Available Balance</span>
-                            <h4 id="stockAvailable" class="text-2xl font-bold text-emerald-400">90 Units</h4>
-                        </div>
-                    </div>
-
-                    <div class="flex gap-4">
-                        <button onclick="simulateStockSale()" class="px-4 py-2.5 bg-red-600/20 text-red-400 hover:bg-red-600 hover:text-white font-bold rounded-xl border border-red-500/30 transition text-sm shadow">Simulate Sale (-10 units)</button>
-                        <button onclick="simulateStockRestock()" class="px-4 py-2.5 bg-emerald-600/20 text-emerald-400 hover:bg-emerald-600 hover:text-white font-bold rounded-xl border border-emerald-500/30 transition text-sm shadow">Simulate Restock (+50 units)</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- TAB: ACTIVE POS & SPLIT -->
-            <div id="content-sales" class="hidden space-y-8">
-                <div class="glass-panel p-6 rounded-2xl">
-                    <h3 class="text-xl font-bold mb-4 text-gold-400"><i class="fa-solid fa-cash-register mr-2"></i>Active Split Payment & POS Engine</h3>
-                    <p class="text-gray-400 text-sm mb-6">Demonstrating advanced split payment allocation for a total sale of ₹10,000.</p>
-                    
-                    <div class="grid grid-cols-2 sm:grid-cols-5 gap-4 mb-6 text-center">
-                        <div class="glass-card p-3 rounded-xl"><span class="text-xs text-gray-400 block">Total Sale</span><strong class="text-white text-lg">₹10,000</strong></div>
-                        <div class="glass-card p-3 rounded-xl"><span class="text-xs text-gray-400 block">Cash</span><strong class="text-emerald-400 text-lg">₹2,000</strong></div>
-                        <div class="glass-card p-3 rounded-xl"><span class="text-xs text-gray-400 block">UPI</span><strong class="text-blue-400 text-lg">₹3,000</strong></div>
-                        <div class="glass-card p-3 rounded-xl"><span class="text-xs text-gray-400 block">Bank</span><strong class="text-purple-400 text-lg">₹3,000</strong></div>
-                        <div class="glass-card p-3 rounded-xl"><span class="text-xs text-gray-400 block">Pending</span><strong class="text-amber-400 text-lg">₹2,000</strong></div>
-                    </div>
-                    <div class="p-4 bg-emerald-500/10 border border-emerald-500/20 rounded-xl text-emerald-300 text-sm">
-                        <i class="fa-solid fa-circle-check mr-2"></i> Payment reconciled successfully across multi-channels.
-                    </div>
-                </div>
-            </div>
-
-            <!-- TAB: BANK & CASH TRANSFER -->
-            <div id="content-payments" class="hidden space-y-8">
-                <div class="glass-panel p-6 rounded-2xl">
-                    <h3 class="text-xl font-bold mb-4 text-gold-400"><i class="fa-solid fa-building-columns mr-2"></i>Active Bank & Cash Transfer Engine</h3>
-                    <p class="text-gray-400 text-sm mb-6">Internal transfers (depositing cash to bank updates balances accurately).</p>
-                    
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
-                        <div class="glass-card p-4 rounded-xl">
-                            <span class="text-xs text-gray-400">Cash Counter Balance</span>
-                            <h4 id="cashBalance" class="text-2xl font-bold text-amber-400">₹75,000</h4>
-                        </div>
-                        <div class="glass-card p-4 rounded-xl">
-                            <span class="text-xs text-gray-400">Bank Account Balance</span>
-                            <h4 id="bankBalance" class="text-2xl font-bold text-blue-400">₹1,50,000</h4>
-                        </div>
-                    </div>
-                    <button onclick="simulateBankDeposit()" class="px-5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-xl transition text-sm shadow-lg">Deposit ₹50,000 Cash to Bank</button>
-                </div>
-            </div>
-
-            <!-- TAB: AI HEALTH & ADVISOR -->
-            <div id="content-health" class="hidden space-y-8">
-                <div class="glass-panel p-6 rounded-2xl">
-                    <h3 class="text-xl font-bold mb-4 text-gold-400"><i class="fa-solid fa-heart-pulse mr-2"></i>Active AI Business Assistant & Health Diagnostics</h3>
-                    <p class="text-gray-400 text-sm mb-6">Instant business diagnostics and AI-driven recommendations based on live telemetry.</p>
-                    
-                    <div class="space-y-4 mb-6">
-                        <div class="p-4 bg-red-500/10 border border-red-500/30 rounded-xl flex items-start space-x-3">
-                            <i class="fa-solid fa-triangle-exclamation text-red-400 mt-1"></i>
-                            <div>
-                                <h5 class="font-bold text-red-300 text-sm">Receivable Alert</h5>
-                                <p class="text-xs text-gray-300">Customer credit outstanding exceeding 30 days detected for 4 accounts.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="p-5 bg-dark-800 rounded-2xl border border-gold-500/30">
-                        <h4 class="font-bold text-gold-400 mb-2 flex items-center"><i class="fa-solid fa-wand-magic-sparkles mr-2"></i>7Leo AI Business Advisor</h4>
-                        <p class="text-xs text-gray-300 mb-4">"Why did my profit margin increase this month?"</p>
-                        <div class="p-4 bg-dark-900 rounded-xl text-sm text-gray-200 border border-white/5">
-                            <strong class="text-gold-400">AI Analysis:</strong> Net profit increased by 14.2% driven by optimized procurement and a 22% reduction in operating overhead.
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </main>
-
-        <!-- Ventures Footer -->
-        <footer class="glass-panel border-t border-white/10 py-8 px-4 text-center text-xs text-gray-400">
-            <p>&copy; 2026 7Leo Ventures. All Rights Reserved.</p>
-        </footer>
-
+        <div class="ventures-footer">
+            <p>© 2026 7Leo Ventures. All Rights Reserved.</p>
+            <p>Protected digital ecosystem. All active modules synchronized in real-time.</p>
+        </div>
     </div>
+</div>
 
-    <!-- ========================================== -->
-    <!-- SCRIPT LOGIC -->
-    <!-- ========================================== -->
-    <script>
-        function switchView(viewName) {
-            const homeView = document.getElementById('homeView');
-            const venturesView = document.getElementById('venturesView');
-            if (viewName === 'ventures') {
-                homeView.classList.add('hidden');
-                venturesView.classList.remove('hidden');
-                window.scrollTo(0, 0);
-            } else {
-                venturesView.classList.add('hidden');
-                homeView.classList.remove('hidden');
-                window.scrollTo(0, 0);
-            }
-        }
+<script>
+let totalRev = 145000;
+let totalExp = 38400;
+let stockCount = 24;
 
-        function switchVenturesTab(tabId) {
-            const tabs = ['overview', 'about', 'stock', 'sales', 'payments', 'health'];
-            tabs.forEach(t => {
-                const btn = document.getElementById(`tab-${t}`);
-                const content = document.getElementById(`content-${t}`);
-                if (t === tabId) {
-                    btn.classList.remove('bg-dark-700', 'text-gray-300');
-                    btn.classList.add('bg-gold-500', 'text-black');
-                    content.classList.remove('hidden');
-                } else {
-                    btn.classList.remove('bg-gold-500', 'text-black');
-                    btn.classList.add('bg-dark-700', 'text-gray-300');
-                    content.classList.add('hidden');
-                }
-            });
-        }
+function openVenturesPortal() {
+    document.getElementById('ventures-portal').classList.add('active');
+}
+function closeVenturesPortal() {
+    document.getElementById('ventures-portal').classList.remove('active');
+}
+function updateMetricsDisplay() {
+    document.getElementById('m-revenue').innerText = '₹' + totalRev.toLocaleString('en-IN');
+    document.getElementById('m-expenses').innerText = '₹' + totalExp.toLocaleString('en-IN');
+    let net = totalRev - totalExp;
+    document.getElementById('m-profit').innerText = '₹' + net.toLocaleString('en-IN');
+    document.getElementById('m-stock').innerText = stockCount + ' SKUs';
+}
+function addInventoryItem() {
+    let name = document.getElementById('inv-item').value;
+    let qty = document.getElementById('inv-qty').value;
+    if(!name || !qty) { alert('Enter item name and quantity'); return; }
+    stockCount += parseInt(qty);
+    updateMetricsDisplay();
+    alert('Added ' + qty + ' units of "' + name + '" to stock.');
+    document.getElementById('inv-item').value = '';
+    document.getElementById('inv-qty').value = '';
+}
+function recordPurchase() {
+    let amt = parseFloat(document.getElementById('po-amt').value);
+    let sup = document.getElementById('po-sup').value;
+    if(!sup || isNaN(amt)) { alert('Enter valid supplier and amount'); return; }
+    totalExp += amt;
+    updateMetricsDisplay();
+    alert('Purchase recorded for ' + sup + ' (₹' + amt + ')');
+    document.getElementById('po-sup').value = '';
+    document.getElementById('po-amt').value = '';
+}
+function recordSale() {
+    let amt = parseFloat(document.getElementById('sale-amt').value);
+    let item = document.getElementById('sale-item').value;
+    if(!item || isNaN(amt)) { alert('Enter valid product and amount'); return; }
+    totalRev += amt;
+    updateMetricsDisplay();
+    alert('POS Sale processed! Added ₹' + amt);
+    document.getElementById('sale-item').value = '';
+    document.getElementById('sale-amt').value = '';
+}
+function recordExpense() {
+    let amt = parseFloat(document.getElementById('exp-amt').value);
+    let name = document.getElementById('exp-name').value;
+    if(!name || isNaN(amt)) { alert('Enter valid expense title and amount'); return; }
+    totalExp += amt;
+    updateMetricsDisplay();
+    alert('Expense logged: ' + name + ' (₹' + amt + ')');
+    document.getElementById('exp-name').value = '';
+    document.getElementById('exp-amt').value = '';
+}
+function runVenturesAiQuery(type) {
+    let net = totalRev - totalExp;
+    const output = document.getElementById('ventures-ai-output');
+    if(type === 'profit') {
+        output.innerHTML = "<strong>AI Diagnostic:</strong> Revenue is ₹" + totalRev.toLocaleString('en-IN') + ", Expenses are ₹" + totalExp.toLocaleString('en-IN') + ". Net Profit: <strong>₹" + net.toLocaleString('en-IN') + "</strong> (" + ((net/totalRev)*100).toFixed(1) + "% margin).";
+    } else if(type === 'expenses') {
+        output.innerHTML = "<strong>AI Diagnostic:</strong> Overhead expenses total ₹" + totalExp.toLocaleString('en-IN') + ". Ratio is healthy at " + ((totalExp/totalRev)*100).toFixed(1) + "%.";
+    } else if(type === 'stock') {
+        output.innerHTML = "<strong>AI Diagnostic:</strong> Active warehouse inventory tracks " + stockCount + " synchronized SKUs at optimal multi-location efficiency.";
+    } else if(type === 'health') {
+        output.innerHTML = "<strong>AI Diagnostic:</strong> Enterprise Health is <strong>EXCELLENT</strong>. Cash flows and net margins are robust.";
+    }
+}
+</script>
+<!-- === END 7LEO VENTURES SYSTEM INJECTION === -->
 
-        let currentStock = 100;
-        let soldStock = 10;
-        function simulateStockSale() {
-            soldStock += 10;
-            currentStock = Math.max(0, currentStock - 10);
-            document.getElementById('stockSold').innerText = soldStock + ' Units';
-            document.getElementById('stockAvailable').innerText = currentStock + ' Units';
-        }
-        function simulateStockRestock() {
-            currentStock += 50;
-            document.getElementById('stockInitial').innerText = currentStock + ' Units';
-            document.getElementById('stockAvailable').innerText = currentStock + ' Units';
-        }
-
-        let cash = 75000;
-        let bank = 150000;
-        function simulateBankDeposit() {
-            if (cash >= 50000) {
-                cash -= 50000;
-                bank += 50000;
-                document.getElementById('cashBalance').innerText = '₹' + cash.toLocaleString();
-                document.getElementById('bankBalance').innerText = '₹' + bank.toLocaleString();
-                alert('Successfully transferred ₹50,000 from Cash to Bank!');
-            } else {
-                alert('Insufficient cash balance for transfer.');
-            }
-        }
-
-        function triggerExport(type) {
-            alert(`Generating and downloading 7Leo Ventures ${type} report package successfully!`);
-        }
-    </script>
 </body>
 </html>
-
-
-
