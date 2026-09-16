@@ -3140,6 +3140,1097 @@ VISION. POWER. LEGACY.</p>
 
     }, 800);
   });
+
+
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7Leo Ventures — Business & Content Command Center</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #C9A84C;
+            --gold-light: #F0D078;
+            --black: #0A0A0A;
+            --dark: #141414;
+            --card: #1C1C1C;
+            --card2: #242424;
+            --border: #2E2E2E;
+            --text: #F0F0F0;
+            --muted: #888888;
+            --success: #4CAF82;
+            --danger: #E05252;
+            --warn: #E09A30;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: var(--black);
+            color: var(--text);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Mobile App Frame container with max-width 480px */
+        .app-container {
+            width: 100%;
+            max-width: 480px;
+            height: 100vh;
+            max-height: 100vh;
+            background-color: var(--black);
+            /* Tribal Lion Tattoo Background Watermark Pattern */
+            background-image: radial-gradient(circle at 50% 30%, rgba(201, 168, 76, 0.05) 0%, transparent 60%),
+                              url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23C9A84C' fill-opacity='0.03'%3E%3Cpath d='M50 0 L60 20 L80 20 L65 35 L70 55 L50 45 L30 55 L35 35 L20 20 L40 20 Z'/%3E%3C/g%3E%3C/svg%3E");
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            box-shadow: 0 0 50px rgba(0,0,0,0.9);
+            overflow: hidden;
+            border-left: 1px solid var(--border);
+            border-right: 1px solid var(--border);
+        }
+
+        /* Sticky Header */
+        header {
+            background: rgba(20, 20, 20, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            padding: 14px 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-icon {
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--black);
+            font-family: 'Space Grotesk', sans-serif;
+            box-shadow: 0 4px 12px rgba(201, 168, 76, 0.3);
+        }
+
+        .logo-text h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--gold);
+            letter-spacing: 0.5px;
+        }
+
+        .logo-text span {
+            font-size: 11px;
+            color: var(--muted);
+        }
+
+        .header-date {
+            font-size: 11px;
+            color: var(--muted);
+            text-align: right;
+            background: var(--card);
+            padding: 4px 8px;
+            border-radius: 6px;
+            border: 1px solid var(--border);
+        }
+
+        /* Horizontal Scrollable Nav Tabs */
+        .nav-tabs {
+            display: flex;
+            gap: 8px;
+            padding: 10px 16px;
+            background: rgba(10, 10, 10, 0.95);
+            overflow-x: auto;
+            border-bottom: 1px solid var(--border);
+            white-space: nowrap;
+            scrollbar-width: none; /* Firefox */
+        }
+
+        .nav-tabs::-webkit-scrollbar {
+            display: none; /* Chrome/Safari */
+        }
+
+        .tab-btn {
+            background: var(--card);
+            border: 1px solid var(--border);
+            color: var(--muted);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .tab-btn.active {
+            background: var(--gold);
+            color: var(--black);
+            border-color: var(--gold);
+            font-weight: 600;
+            box-shadow: 0 2px 8px rgba(201, 168, 76, 0.3);
+        }
+
+        /* Main Content Viewport */
+        .viewport {
+            flex: 1;
+            overflow-y: auto;
+            padding: 16px;
+            scroll-behavior: smooth;
+        }
+
+        .viewport::-webkit-scrollbar {
+            width: 4px;
+        }
+        .viewport::-webkit-scrollbar-thumb {
+            background: var(--border);
+            border-radius: 2px;
+        }
+
+        .tab-pane {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .tab-pane.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(4px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Common Component Styles */
+        h2.section-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 18px;
+            margin-bottom: 14px;
+            color: var(--gold);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 14px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+        }
+
+        .card-gold {
+            background: linear-gradient(145deg, #1C1C1C, #141414);
+            border: 1px solid rgba(201, 168, 76, 0.3);
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+
+        .stat-box {
+            background: var(--card2);
+            border: 1px solid var(--border);
+            padding: 12px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .stat-box h3 {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--gold);
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .stat-box p {
+            font-size: 11px;
+            color: var(--muted);
+            margin-top: 2px;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            background: var(--dark);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 10px 12px;
+            border-radius: 8px;
+            font-size: 13px;
+            margin-bottom: 10px;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            border-color: var(--gold);
+        }
+
+        label {
+            display: block;
+            font-size: 11px;
+            color: var(--muted);
+            margin-bottom: 4px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .btn {
+            background: var(--gold);
+            color: var(--black);
+            border: none;
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-align: center;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            background: var(--gold-light);
+            transform: translateY(-1px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+        }
+
+        .btn-outline:hover {
+            background: rgba(201, 168, 76, 0.1);
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 3px 8px;
+            font-size: 10px;
+            font-weight: 600;
+            border-radius: 4px;
+            text-transform: uppercase;
+        }
+        .badge-gold { background: rgba(201, 168, 76, 0.15); color: var(--gold); border: 1px solid rgba(201, 168, 76, 0.3); }
+        .badge-success { background: rgba(76, 175, 130, 0.15); color: var(--success); border: 1px solid rgba(76, 175, 130, 0.3); }
+        .badge-danger { background: rgba(224, 82, 82, 0.15); color: var(--danger); border: 1px solid rgba(224, 82, 82, 0.3); }
+
+        /* Toast Notification */
+        #toast {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: var(--card2);
+            border: 1px solid var(--gold);
+            color: var(--text);
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-size: 12px;
+            font-weight: 500;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+            transition: transform 0.3s ease;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        #toast.show {
+            transform: translateX(-50%) translateY(0);
+        }
+
+        /* Progress Bar */
+        .progress-bar-bg {
+            background: var(--dark);
+            border-radius: 10px;
+            height: 8px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            margin: 8px 0;
+        }
+        .progress-bar-fill {
+            background: linear-gradient(90deg, var(--gold), var(--gold-light));
+            height: 100%;
+            border-radius: 10px;
+            transition: width 0.4s ease;
+        }
+
+        /* Explore Card Button Style */
+        .explore-card {
+            background: linear-gradient(135deg, #1c1c1c, #2a2211);
+            border: 1px dashed var(--gold);
+            padding: 16px;
+            border-radius: 12px;
+            text-align: center;
+            cursor: pointer;
+            transition: 0.2s;
+            margin-bottom: 14px;
+        }
+        .explore-card:hover {
+            border-style: solid;
+            background: linear-gradient(135deg, #242424, #332814);
+        }
+
+        /* Utilities */
+        .flex-between { display: flex; justify-content: space-between; align-items: center; }
+        .mt-2 { margin-top: 8px; }
+        .mb-2 { margin-bottom: 8px; }
+        .text-muted { color: var(--muted); font-size: 12px; }
+        .text-gold { color: var(--gold); }
+    </style>
+</head>
+<body>
+
+    <div class="app-container">
+        <!-- Sticky Header -->
+        <header>
+            <div class="logo-area">
+                <div class="logo-icon">7L</div>
+                <div class="logo-text">
+                    <h1>7Leo Ventures</h1>
+                    <span>Abubakker Bellary</span>
+                </div>
+            </div>
+            <div class="header-date" id="currentDateDisplay">16 Sep 2026</div>
+        </header>
+
+        <!-- Horizontal Scrollable Nav Tabs -->
+        <nav class="nav-tabs" id="navTabs">
+            <button class="tab-btn active" onclick="switchTab('home')">1. Home</button>
+            <button class="tab-btn" onclick="switchTab('calculators')">2. Calculators</button>
+            <button class="tab-btn" onclick="switchTab('deadstock')">3. Dead Stock</button>
+            <button class="tab-btn" onclick="switchTab('marketing')">4. Marketing</button>
+            <button class="tab-btn" onclick="switchTab('offers')">5. Offers</button>
+            <button class="tab-btn" onclick="switchTab('discipline')">6. Discipline</button>
+            <button class="tab-btn" onclick="switchTab('content')">7. Content Hub</button>
+            <button class="tab-btn" onclick="switchTab('bizplan')">8. Business Plan</button>
+        </nav>
+
+        <!-- Viewport / Main Content -->
+        <div class="viewport">
+
+            <!-- TAB 1: HOME -->
+            <div id="home" class="tab-pane active">
+                <div class="card card-gold">
+                    <h2 style="font-size: 16px; color: var(--gold); margin-bottom: 6px;">Namaste, Abubakker! 🦁</h2>
+                    <p class="text-muted" style="font-size: 12px; line-height: 1.4;">Welcome to your command center from Hospet, Karnataka. Turn your ideas, music, and business into a success story today.</p>
+                </div>
+
+                <div class="grid-2">
+                    <div class="stat-box">
+                        <h3 id="homeTasksCount">0</h3>
+                        <p>Tasks Done Today</p>
+                    </div>
+                    <div class="stat-box">
+                        <h3 id="homeStockCount">0</h3>
+                        <p>Dead Stock Items</p>
+                    </div>
+                    <div class="stat-box">
+                        <h3 id="homeOffersCount">0</h3>
+                        <p>Active Offers</p>
+                    </div>
+                    <div class="stat-box">
+                        <h3 id="homeStreakCount">🔥 0</h3>
+                        <p>Day Streak</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div style="font-size: 11px; color: var(--gold); text-transform: uppercase; font-weight: 600; margin-bottom: 4px;">Daily Rotating Business Tip</div>
+                    <p id="dailyTipText" style="font-size: 13px; font-weight: 500;"></p>
+                </div>
+
+                <div class="card">
+                    <div class="flex-between mb-2">
+                        <span style="font-size: 12px; font-weight: 600;">7Leo Ventures Vision Progress</span>
+                        <span class="text-gold" style="font-size: 12px; font-weight: 600;">65%</span>
+                    </div>
+                    <div class="progress-bar-bg">
+                        <div class="progress-bar-fill" style="width: 65%;"></div>
+                    </div>
+                    <p class="text-muted" style="font-size: 11px; margin-top: 6px;">Target: Build India's most trusted business recovery & BGM platform.</p>
+                </div>
+
+                <div class="explore-card" onclick="switchTab('bizplan')">
+                    <span style="font-size: 14px; font-weight: 700; color: var(--gold);">⚡ Explore 7Leo Ventures Master Plan</span>
+                    <p class="text-muted" style="font-size: 11px; margin-top: 4px;">Click to view full business plan, founder profile, and monetization roadmap.</p>
+                </div>
+            </div>
+
+            <!-- TAB 2: CALCULATORS -->
+            <div id="calculators" class="tab-pane">
+                <h2 class="section-title">Business Calculators</h2>
+                
+                <!-- ROI Calculator -->
+                <div class="card">
+                    <h3 style="font-size: 14px; color: var(--gold); margin-bottom: 8px;">1. Return on Investment (ROI)</h3>
+                    <div class="grid-2">
+                        <div>
+                            <label>Net Profit (₹)</label>
+                            <input type="number" id="roiProfit" placeholder="e.g. 5000" oninput="calcROI()">
+                        </div>
+                        <div>
+                            <label>Investment (₹)</label>
+                            <input type="number" id="roiCost" placeholder="e.g. 20000" oninput="calcROI()">
+                        </div>
+                    </div>
+                    <div id="roiResult" class="stat-box" style="margin-top: 8px; background: var(--dark);">
+                        <h3>0%</h3>
+                        <p>ROI Result</p>
+                    </div>
+                </div>
+
+                <!-- ROAS Calculator -->
+                <div class="card">
+                    <h3 style="font-size: 14px; color: var(--gold); margin-bottom: 8px;">2. Return on Ad Spend (ROAS)</h3>
+                    <div class="grid-2">
+                        <div>
+                            <label>Ad Revenue (₹)</label>
+                            <input type="number" id="roasRev" placeholder="e.g. 15000" oninput="calcROAS()">
+                        </div>
+                        <div>
+                            <label>Ad Cost (₹)</label>
+                            <input type="number" id="roasCost" placeholder="e.g. 3000" oninput="calcROAS()">
+                        </div>
+                    </div>
+                    <div id="roasResult" class="stat-box" style="margin-top: 8px; background: var(--dark);">
+                        <h3>0.0x</h3>
+                        <p>ROAS Multiplier</p>
+                    </div>
+                </div>
+
+                <!-- Net Profit Margin -->
+                <div class="card">
+                    <h3 style="font-size: 14px; color: var(--gold); margin-bottom: 8px;">3. Net Profit Margin</h3>
+                    <div class="grid-2">
+                        <div>
+                            <label>Net Profit (₹)</label>
+                            <input type="number" id="npmProfit" placeholder="e.g. 4000" oninput="calcNPM()">
+                        </div>
+                        <div>
+                            <label>Net Revenue (₹)</label>
+                            <input type="number" id="npmRev" placeholder="e.g. 20000" oninput="calcNPM()">
+                        </div>
+                    </div>
+                    <div id="npmResult" class="stat-box" style="margin-top: 8px; background: var(--dark);">
+                        <h3>0%</h3>
+                        <p>Profit Margin</p>
+                    </div>
+                </div>
+
+                <!-- Break-Even Point -->
+                <div class="card">
+                    <h3 style="font-size: 14px; color: var(--gold); margin-bottom: 8px;">4. Break-Even Point (Units)</h3>
+                    <label>Fixed Costs (₹)</label>
+                    <input type="number" id="bepFixed" placeholder="e.g. 10000" oninput="calcBEP()">
+                    <div class="grid-2">
+                        <div>
+                            <label>Selling Price / Unit</label>
+                            <input type="number" id="bepPrice" placeholder="e.g. 500" oninput="calcBEP()">
+                        </div>
+                        <div>
+                            <label>Variable Cost / Unit</label>
+                            <input type="number" id="bepVar" placeholder="e.g. 200" oninput="calcBEP()">
+                        </div>
+                    </div>
+                    <div id="bepResult" class="stat-box" style="margin-top: 8px; background: var(--dark);">
+                        <h3>0 Units</h3>
+                        <p>Units to Break Even</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 3: DEAD STOCK MANAGER -->
+            <div id="deadstock" class="tab-pane">
+                <h2 class="section-title">Dead Stock Recovery</h2>
+                <div class="card">
+                    <h3 style="font-size: 13px; margin-bottom: 10px; color: var(--gold);">Add Blocked Inventory</h3>
+                    <input type="text" id="dsName" placeholder="Product Name">
+                    <div class="grid-2">
+                        <div>
+                            <label>Quantity</label>
+                            <input type="number" id="dsQty" placeholder="Qty">
+                        </div>
+                        <div>
+                            <label>Original Cost (₹)</label>
+                            <input type="number" id="dsCost" placeholder="Cost per unit">
+                        </div>
+                    </div>
+                    <label>Reason for Stagnation</label>
+                    <select id="dsReason">
+                        <option value="price">High Price</option>
+                        <option value="season">Seasonal Shift</option>
+                        <option value="awareness">Zero Awareness</option>
+                        <option value="quality">Quality Issue</option>
+                        <option value="market">Wrong Target Market</option>
+                    </select>
+                    <button class="btn" onclick="addDeadStock()">Add to Stock List</button>
+                </div>
+
+                <div id="deadStockList"></div>
+            </div>
+
+            <!-- TAB 4: MARKETING STRATEGY GENERATOR -->
+            <div id="marketing" class="tab-pane">
+                <h2 class="section-title">Marketing Strategy Generator</h2>
+                <div class="card">
+                    <label>Business Situation</label>
+                    <select id="mktSituation">
+                        <option value="new">New Product Launch</option>
+                        <option value="deadstock">Clearing Dead Stock</option>
+                        <option value="brand">Brand Awareness</option>
+                        <option value="local">Local Business (Hospet/Karnataka)</option>
+                    </select>
+                    
+                    <label>Marketing Budget</label>
+                    <select id="mktBudget">
+                        <option value="zero">Zero Budget (₹0)</option>
+                        <option value="low">Low Budget (₹500 - ₹2,000)</option>
+                        <option value="mid">Mid Budget (₹2,000 - ₹10,000)</option>
+                    </select>
+
+                    <button class="btn" onclick="generateMarketingStrategies()">Generate 5 Strategies</button>
+                </div>
+
+                <div id="mktOutput"></div>
+            </div>
+
+            <!-- TAB 5: OFFERS & PROMOTIONS -->
+            <div id="offers" class="tab-pane">
+                <h2 class="section-title">Offers & Promotions</h2>
+                <div class="card">
+                    <h3 style="font-size: 13px; margin-bottom: 10px; color: var(--gold);">Create Promo Campaign</h3>
+                    <input type="text" id="offName" placeholder="Offer Name (e.g. Monsoon Clearance)">
+                    <div class="grid-2">
+                        <div>
+                            <label>Discount %</label>
+                            <input type="number" id="offDisc" placeholder="e.g. 25">
+                        </div>
+                        <div>
+                            <label>Validity Days</label>
+                            <input type="number" id="offDays" placeholder="e.g. 3">
+                        </div>
+                    </div>
+                    <label>Offer Type</label>
+                    <select id="offType">
+                        <option value="Flat Discount">Flat Discount</option>
+                        <option value="BOGO">Buy 1 Get 1 (BOGO)</option>
+                        <option value="Bundle Deal">Bundle Deal</option>
+                        <option value="Loyalty Reward">Loyalty Reward</option>
+                    </select>
+                    <button class="btn" onclick="createOffer()">Publish Offer Card</button>
+                </div>
+
+                <div id="offersList"></div>
+            </div>
+
+            <!-- TAB 6: DAILY DISCIPLINE TRACKER -->
+            <div id="discipline" class="tab-pane">
+                <h2 class="section-title">Daily Discipline Tracker</h2>
+                <div class="card">
+                    <div style="display: flex; gap: 8px;">
+                        <input type="text" id="taskInput" placeholder="Add daily task (Press Enter)..." style="margin-bottom:0;" onkeypress="if(event.key==='Enter') addTask()">
+                        <button class="btn" style="width: auto; padding: 0 16px;" onclick="addTask()">Add</button>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="flex-between mb-2">
+                        <span style="font-size: 12px; font-weight: 600;">Today's Completion</span>
+                        <span id="taskProgressText" class="text-gold" style="font-size: 12px; font-weight: 600;">0%</span>
+                    </div>
+                    <div class="progress-bar-bg">
+                        <div id="taskProgressBar" class="progress-bar-fill" style="width: 0%;"></div>
+                    </div>
+                </div>
+
+                <div id="taskList"></div>
+
+                <div class="card card-gold">
+                    <h3 style="font-size: 13px; color: var(--gold); margin-bottom: 6px;">💡 Consistency Principle</h3>
+                    <p class="text-muted" style="font-size: 12px;">"Small disciplines repeated with consistency every day lead to great achievements." Complete all tasks to increment your Day Streak!</p>
+                </div>
+            </div>
+
+            <!-- TAB 7: CONTENT HUB -->
+            <div id="content" class="tab-pane">
+                <h2 class="section-title">Content Command Center</h2>
+                
+                <div class="card">
+                    <h3 style="font-size: 14px; color: var(--gold); margin-bottom: 8px;">Content Idea Generator</h3>
+                    <label>Topic / Niche</label>
+                    <input type="text" id="genTopic" placeholder="e.g. Dead stock recovery, BGM music">
+                    
+                    <div class="grid-2">
+                        <div>
+                            <label>Platform</label>
+                            <select id="genPlatform">
+                                <option value="YouTube">YouTube (@7LeoBGM)</option>
+                                <option value="Instagram">Instagram Reel</option>
+                                <option value="WhatsApp">WhatsApp Broadcast</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label>Language</label>
+                            <select id="genLang">
+                                <option value="Hinglish">Hinglish</option>
+                                <option value="Kannada">Kannada</option>
+                                <option value="English">English</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button class="btn" onclick="generateContentIdea()">Generate Ready Script</button>
+                </div>
+
+                <div id="generatedIdeaBox" class="card" style="display:none; border-color: var(--gold);">
+                    <h3 id="genTitle" style="font-size: 14px; color: var(--gold); margin-bottom: 6px;"></h3>
+                    <p id="genHook" style="font-size: 12px; font-style: italic; color: var(--muted); margin-bottom: 8px;"></p>
+                    <div id="genBody" style="font-size: 13px; line-height: 1.4; white-space: pre-line; margin-bottom: 10px;"></div>
+                    <button class="btn btn-outline" onclick="copyGeneratedScript()">Copy Script for Recording</button>
+                </div>
+
+                <!-- Ready Scripts -->
+                <div class="card">
+                    <h3 style="font-size: 13px; color: var(--gold); margin-bottom: 8px;">Ready Script 1: YouTube Intro (60s)</h3>
+                    <p class="text-muted" style="font-size: 12px; line-height: 1.4; margin-bottom: 10px;">"Namaste dosto, main hoon Abubakker Bellary, 7Leo Ventures se. Agar tumhara business struggle kar raha hai — dead stock pada hai, marketing nahi ho rahi, ya bas confused ho — toh yeh channel tumhare liye hai..."</p>
+                    <button class="btn btn-outline" onclick="copyText(this, 'Namaste dosto, main hoon Abubakker Bellary, 7Leo Ventures se. Agar tumhara business struggle kar raha hai — dead stock pada hai, marketing nahi ho rahi, ya bas confused ho — toh yeh channel tumhare liye hai. Main khud ek failed businessman hoon. Maine mistakes ki, seekha, aur ab dusron ki help karna chahta hoon. Subscribe karo, bell bajao, aur chalte hain!')">Copy Script</button>
+                </div>
+            </div>
+
+            <!-- TAB 8: BUSINESS PLAN -->
+            <div id="bizplan" class="tab-pane">
+                <h2 class="section-title">7Leo Ventures Business Plan</h2>
+                
+                <div class="card card-gold">
+                    <h3 style="font-size: 16px; color: var(--gold); margin-bottom: 4px;">7Leo Ventures</h3>
+                    <p style="font-size: 12px; color: var(--gold-light); margin-bottom: 8px;">Business Recovery & Growth Platform</p>
+                    <div style="font-size: 11px; color: var(--muted);">
+                        Founder: Abubakker Bellary | Hospet, Karnataka, India<br>
+                        Music Composer & Entrepreneur | 7Leo BGM (@7LeoBGM)
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3 style="font-size: 14px; color: var(--gold); margin-bottom: 6px;">1. Executive Summary</h3>
+                    <p style="font-size: 12px; line-height: 1.4; color: var(--muted);">
+                        Lakhs of small businesses in India and Karnataka struggle with dead stock, zero marketing knowledge, and lack of disciplined systems. 7Leo Ventures provides an all-in-one business recovery dashboard, multilingual strategies, and original BGM licensing for entrepreneurs.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <h3 style="font-size: 14px; color: var(--gold); margin-bottom: 6px;">2. Founder Profile</h3>
+                    <p style="font-size: 12px; line-height: 1.4; color: var(--muted);">
+                        <strong>Abubakker Bellary</strong> brings 20+ years of experience across sales, logistics, store operations, and music composition. Based in Hospet, Vijayanagara District, Karnataka, he combines real failure experience, app development, and original instrumental music creation (`@7LeoBGM`).
+                    </p>
+                </div>
+
+                <div class="card">
+                    <h3 style="font-size: 14px; color: var(--gold); margin-bottom: 6px;">3. Revenue Streams</h3>
+                    <ul style="font-size: 12px; color: var(--muted); padding-left: 16px; line-height: 1.5;">
+                        <li>Freemium App: Free basic tools, ₹199/month premium dashboard</li>
+                        <li>Business Consulting: ₹2,000 – ₹10,000 per client recovery session</li>
+                        <li>BGM Licensing: ₹199 – ₹999 per original music pack</li>
+                        <li>YouTube & Content Monetization via 7Leo BGM</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3 style="font-size: 14px; color: var(--gold); margin-bottom: 6px;">4. 6-Month Roadmap</h3>
+                    <div style="font-size: 12px; color: var(--muted); line-height: 1.6;">
+                        <strong>Month 1:</strong> Launch app dashboard & 50-member WhatsApp group.<br>
+                        <strong>Month 2:</strong> Instagram/YouTube content & first 5 local clients.<br>
+                        <strong>Month 3:</strong> First revenue target (₹5,000 - ₹10,000).<br>
+                        <strong>Month 4-6:</strong> Scale to 500+ active users and ₹50,000/month revenue.
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast">Action completed successfully</div>
+
+    <script>
+        // Set Current Date
+        const today = new Date();
+        const options = { day: 'numeric', month: 'short', year: 'numeric' };
+        document.getElementById('currentDateDisplay').innerText = today.toLocaleDateString('en-GB', options);
+
+        // Tab Switching Logic
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-pane').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+            
+            document.getElementById(tabId).classList.add('active');
+            
+            // Find corresponding button
+            const buttons = document.querySelectorAll('.tab-btn');
+            const map = { 'home':0, 'calculators':1, 'deadstock':2, 'marketing':3, 'offers':4, 'discipline':5, 'content':6, 'bizplan':7 };
+            if(map[tabId] !== undefined) {
+                buttons[map[tabId]].classList.add('active');
+            }
+            updateHomeStats();
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.innerText = message;
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 2500);
+        }
+
+        // Daily Rotating Business Tips
+        const businessTips = [
+            "Tip #1: Dead stock is dead cash. Discount it by 30% and reinvest into fast-moving items immediately.",
+            "Tip #2: Your existing happy customers are 5x cheaper to sell to than acquiring new ones.",
+            "Tip #3: Post consistently on WhatsApp status—local customers in Hospet buy through trust and familiarity.",
+            "Tip #4: Know your break-even point before spending a single rupee on paid advertisements.",
+            "Tip #5: Use original instrumental BGM in your reels to stand out and avoid copyright strikes.",
+            "Tip #6: Cash flow is oxygen for a business. Collect receivables faster than you pay payables.",
+            "Tip #7: Simplify your product line. Focus on the top 20% items that bring 80% profit.",
+            "Tip #8: Discipline beats motivation every single day. Stick to your daily task checklist.",
+            "Tip #9: Turn complaints into testimonials by resolving issues faster than expected.",
+            "Tip #10: Build in public. Share your failures and recovery journey to build deep customer trust."
+        ];
+        const dayOfYear = Math.floor((today - new Date(today.getFullYear(), 0, 0)) / (1000 * 60 * 60 * 24));
+        document.getElementById('dailyTipText').innerText = businessTips[dayOfYear % businessTips.length];
+
+        // Calculators Logic
+        function calcROI() {
+            const p = parseFloat(document.getElementById('roiProfit').value) || 0;
+            const c = parseFloat(document.getElementById('roiCost').value) || 0;
+            const res = c > 0 ? ((p / c) * 100).toFixed(1) : 0;
+            document.getElementById('roiResult').innerHTML = `<h3>${res}%</h3><p>ROI Result (${res > 0 ? 'Profitable' : 'Check values'})</p>`;
+        }
+
+        function calcROAS() {
+            const rev = parseFloat(document.getElementById('roasRev').value) || 0;
+            const cost = parseFloat(document.getElementById('roasCost').value) || 0;
+            const res = cost > 0 ? (rev / cost).toFixed(2) : 0;
+            document.getElementById('roasResult').innerHTML = `<h3>${res}x</h3><p>ROAS Multiplier</p>`;
+        }
+
+        function calcNPM() {
+            const p = parseFloat(document.getElementById('npmProfit').value) || 0;
+            const r = parseFloat(document.getElementById('npmRev').value) || 0;
+            const res = r > 0 ? ((p / r) * 100).toFixed(1) : 0;
+            document.getElementById('npmResult').innerHTML = `<h3>${res}%</h3><p>Net Profit Margin</p>`;
+        }
+
+        function calcBEP() {
+            const f = parseFloat(document.getElementById('bepFixed').value) || 0;
+            const sp = parseFloat(document.getElementById('bepPrice').value) || 0;
+            const vc = parseFloat(document.getElementById('bepVar').value) || 0;
+            const denom = sp - vc;
+            const res = denom > 0 ? Math.ceil(f / denom) : 0;
+            document.getElementById('bepResult').innerHTML = `<h3>${res} Units</h3><p>Units to Break Even</p>`;
+        }
+
+        // Dead Stock Manager with LocalStorage
+        let deadStocks = JSON.parse(localStorage.getItem('7leo_stocks')) || [];
+        
+        function addDeadStock() {
+            const name = document.getElementById('dsName').value.trim();
+            const qty = parseInt(document.getElementById('dsQty').value);
+            const cost = parseFloat(document.getElementById('dsCost').value);
+            const reason = document.getElementById('dsReason').value;
+
+            if(!name || isNaN(qty) || isNaN(cost)) {
+                showToast("Please fill all dead stock fields correctly.");
+                return;
+            }
+
+            deadStocks.push({ id: Date.now(), name, qty, cost, reason });
+            localStorage.setItem('7leo_stocks', JSON.stringify(deadStocks));
+            
+            document.getElementById('dsName').value = '';
+            document.getElementById('dsQty').value = '';
+            document.getElementById('dsCost').value = '';
+            
+            renderDeadStocks();
+            showToast("Dead stock item added!");
+        }
+
+        function deleteDeadStock(id) {
+            deadStocks = deadStocks.filter(item => item.id !== id);
+            localStorage.setItem('7leo_stocks', JSON.stringify(deadStocks));
+            renderDeadStocks();
+            showToast("Item removed.");
+        }
+
+        function renderDeadStocks() {
+            const container = document.getElementById('deadStockList');
+            if(deadStocks.length === 0) {
+                container.innerHTML = `<div class="card text-muted" style="text-align:center;">No dead stock items added yet.</div>`;
+                updateHomeStats();
+                return;
+            }
+
+            let html = '';
+            deadStocks.forEach(item => {
+                const totalBlocked = item.qty * item.cost;
+                let strategyTip = "Bundle with fast-moving items or offer flat 30% clearance discount.";
+                if(item.reason === 'season') strategyTip = "Run end-of-season flash sale on WhatsApp status.";
+                if(item.reason === 'awareness') strategyTip = "Create 3 Instagram reels showcasing product utility.";
+
+                html += `
+                    <div class="card">
+                        <div class="flex-between">
+                            <strong style="color:var(--text);">${item.name}</strong>
+                            <span class="badge badge-danger">Blocked: ₹${totalBlocked.toLocaleString()}</span>
+                        </div>
+                        <p class="text-muted mt-2" style="font-size: 11px;">Qty: ${item.qty} | Cost/Unit: ₹${item.cost} | Reason: ${item.reason}</p>
+                        <div style="background:var(--dark); padding:8px; border-radius:6px; margin-top:8px; font-size:11px; color:var(--gold);">
+                            💡 Strategy: ${strategyTip}
+                        </div>
+                        <button class="btn btn-outline" style="margin-top:10px; padding:6px; font-size:11px;" onclick="deleteDeadStock(${item.id})">Clear / Delete Item</button>
+                    </div>
+                `;
+            });
+            container.innerHTML = html;
+            updateHomeStats();
+        }
+
+        // Marketing Strategy Generator
+        function generateMarketingStrategies() {
+            const sit = document.getElementById('mktSituation').value;
+            const bud = document.getElementById('mktBudget').value;
+            const output = document.getElementById('mktOutput');
+
+            let strategies = [
+                "1. WhatsApp Status Blitz: Post product photos with clear discount tags daily at 8 PM.",
+                "2. Local Community Collab: Partner with 2 complementary non-competing local shops in Hospet.",
+                "3. Customer Referral Incentive: Give ₹100 cashback or discount to customers who bring a friend.",
+                "4. Instagram Reel Demonstration: Shoot a 30-second problem-solving reel using original 7Leo BGM.",
+                "5. Direct Outreach: Message past 50 customers directly with a personalized exclusive loyalty offer."
+            ];
+
+            if(bud === 'zero') {
+                strategies[2] = "3. Zero-Cost Social Proof: Ask your first 5 buyers to record a simple video review on their phone.";
+            } else if(bud === 'mid') {
+                strategies[1] = "2. Targeted Local Ads: Run ₹200/day Instagram location-targeted ads in your district.";
+            }
+
+            let html = `<div class="card card-gold"><h3 style="font-size: 14px; color: var(--gold); margin-bottom: 8px;">Generated Action Plan (${sit.toUpperCase()} | ${bud.toUpperCase()})</h3>`;
+            strategies.forEach(s => {
+                html += `<p style="font-size: 12px; margin-bottom: 6px; line-height: 1.4;">• ${s}</p>`;
+            });
+            html += `<div style="margin-top:10px; font-size:11px; color:var(--muted);">Pro Tip: Consistency in execution beats the perfection of the strategy.</div></div>`;
+            output.innerHTML = html;
+            showToast("Marketing strategies generated!");
+        }
+
+        // Offers & Promotions Manager
+        let offers = JSON.parse(localStorage.getItem('7leo_offers')) || [];
+
+        function createOffer() {
+            const name = document.getElementById('offName').value.trim();
+            const disc = document.getElementById('offDisc').value;
+            const days = document.getElementById('offDays').value;
+            const type = document.getElementById('offType').value;
+
+            if(!name || !disc || !days) {
+                showToast("Please fill all offer fields.");
+                return;
+            }
+
+            offers.push({ id: Date.now(), name, disc, days, type });
+            localStorage.setItem('7leo_offers', JSON.stringify(offers));
+
+            document.getElementById('offName').value = '';
+            document.getElementById('offDisc').value = '';
+            document.getElementById('offDays').value = '';
+
+            renderOffers();
+            showToast("Offer published successfully!");
+        }
+
+        function deleteOffer(id) {
+            offers = offers.filter(o => o.id !== id);
+            localStorage.setItem('7leo_offers', JSON.stringify(offers));
+            renderOffers();
+            showToast("Offer deleted.");
+        }
+
+        function renderOffers() {
+            const container = document.getElementById('offersList');
+            if(offers.length === 0) {
+                container.innerHTML = `<div class="card text-muted" style="text-align:center;">No active offers created yet.</div>`;
+                updateHomeStats();
+                return;
+            }
+
+            let html = '';
+            offers.forEach(o => {
+                const whatsappText = `🔥 SPECIAL OFFER: ${o.name}!\nGet ${o.disc}% OFF on ${o.type}.\nValid for next ${o.days} days only!\nMessage us now to claim yours.\n— 7Leo Ventures`;
+                html += `
+                    <div class="card card-gold">
+                        <div class="flex-between">
+                            <strong style="color:var(--gold);">${o.name}</strong>
+                            <span class="badge badge-gold">${o.disc}% OFF</span>
+                        </div>
+                        <p class="text-muted mt-2" style="font-size: 11px;">Type: ${o.type} | Valid: ${o.days} days</p>
+                        <div style="display:flex; gap:8px; margin-top:10px;">
+                            <button class="btn" style="padding:6px; font-size:11px;" onclick="copyText(this, \`${whatsappText}\`)">Copy WhatsApp Text</button>
+                            <button class="btn btn-outline" style="padding:6px; font-size:11px; width:80px;" onclick="deleteOffer(${o.id})">Delete</button>
+                        </div>
+                    </div>
+                `;
+            });
+            container.innerHTML = html;
+            updateHomeStats();
+        }
+
+        // Daily Discipline Tracker with LocalStorage & Streak
+        let tasks = JSON.parse(localStorage.getItem('7leo_tasks')) || [
+            { id: 1, text: "Post 1 WhatsApp business status", done: false },
+            { id: 2, text: "Check cash flow & dead stock", done: false },
+            { id: 3, text: "Compose 1 BGM tune / content piece", done: false }
+        ];
+        let streak = parseInt(localStorage.getItem('7leo_streak')) || 0;
+
+        function addTask() {
+            const input = document.getElementById('taskInput');
+            const val = input.value.trim();
+            if(!val) return;
+
+            tasks.push({ id: Date.now(), text: val, done: false });
+            input.value = '';
+            saveAndRenderTasks();
+            showToast("Task added.");
+        }
+
+        function toggleTask(id) {
+            tasks = tasks.map(t => t.id === id ? { ...t, done: !t.done } : t);
+            
+            // Check if all done
+            const allDone = tasks.length > 0 && tasks.every(t => t.done);
+            if(allDone) {
+                streak++;
+                localStorage.setItem('7leo_streak', streak);
+                showToast("🔥 All tasks completed! Streak increased!");
+            }
+            saveAndRenderTasks();
+        }
+
+        function deleteTask(id) {
+            tasks = tasks.filter(t => t.id !== id);
+            saveAndRenderTasks();
+        }
+
+        function saveAndRenderTasks() {
+            localStorage.setItem('7leo_tasks', JSON.stringify(tasks));
+            renderTasks();
+        }
+
+        function renderTasks() {
+            const container = document.getElementById('taskList');
+            if(tasks.length === 0) {
+                container.innerHTML = `<div class="card text-muted" style="text-align:center;">No tasks for today. Add one above!</div>`;
+                document.getElementById('taskProgressBar').style.width = '0%';
+                document.getElementById('taskProgressText').innerText = '0%';
+                updateHomeStats();
+                return;
+            }
+
+            let doneCount = tasks.filter(t => t.done).length;
+            let pct = Math.round((doneCount / tasks.length) * 100);
+            document.getElementById('taskProgressBar').style.width = pct + '%';
+            document.getElementById('taskProgressText').innerText = pct + '%';
+
+            let html = '';
+            tasks.forEach(t => {
+                html += `
+                    <div class="card" style="display:flex; align-items:center; justify-content:space-between; padding:12px; margin-bottom:8px;">
+                        <div style="display:flex; align-items:center; gap:10px; cursor:pointer; flex:1;" onclick="toggleTask(${t.id})">
+                            <div style="width:20px; height:20px; border-radius:50%; border:2px solid ${t.done ? 'var(--gold)' : 'var(--border)'}; background:${t.done ? 'var(--gold)' : 'transparent'}; display:flex; align-items:center; justify-content:center; color:var(--black); font-size:11px; font-weight:700;">${t.done ? '✓' : ''}</div>
+                            <span style="font-size:13px; text-decoration:${t.done ? 'line-through' : 'none'}; color:${t.done ? 'var(--muted)' : 'var(--text)'};">${t.text}</span>
+                        </div>
+                        <button onclick="deleteTask(${t.id})" style="background:none; border:none; color:var(--muted); cursor:pointer; font-size:14px;">×</button>
+                    </div>
+                `;
+            });
+            container.innerHTML = html;
+            updateHomeStats();
+        }
+
+        // Content Idea Generator
+        function generateContentIdea() {
+            const topic = document.getElementById('genTopic').value || 'Business Recovery';
+            const platform = document.getElementById('genPlatform').value;
+            const lang = document.getElementById('genLang').value;
+
+            const box = document.getElementById('generatedIdeaBox');
+            document.getElementById('genTitle').innerText = `[${platform}] ${topic} (${lang})`;
+            document.getElementById('genHook').innerText = `Hook: "Pareshan ho gaye ho kya is problem se? Suno solution!"`;
+            document.getElementById('genBody').innerText = `1. Introduction: State the real pain point of ${topic}.\n2. Core Solution: Share 1 actionable step you tested yourself.\n3. Music & Vibe: Play original 7Leo BGM in the background.\n4. Call to Action: Follow @7leoventures and comment 'READY' for free template.`;
+            box.style.display = 'block';
+            showToast("Content script generated!");
+        }
+
+        // Copy Text Helper
+        function copyText(btn, text) {
+            navigator.clipboard.writeText(text);
+            showToast("Copied to clipboard!");
+        }
+
+        function copyGeneratedScript() {
+            const title = document.getElementById('genTitle').innerText;
+            const hook = document.getElementById('genHook').innerText;
+            const body = document.getElementById('genBody').innerText;
+            navigator.clipboard.writeText(`${title}\n${hook}\n\n${body}`);
+            showToast("Full script copied!");
+        }
+
+        // Update Home Stats
+        function updateHomeStats() {
+            const doneTasks = tasks.filter(t => t.done).length;
+            document.getElementById('homeTasksCount').innerText = doneTasks;
+            document.getElementById('homeStockCount').innerText = deadStocks.length;
+            document.getElementById('homeOffersCount').innerText = offers.length;
+            document.getElementById('homeStreakCount').innerText = `🔥 ${localStorage.getItem('7leo_streak') || 0}`;
+        }
+
+        // Initial Render on Load
+        renderDeadStocks();
+        renderOffers();
+        renderTasks();
+    </script>
+</body>
+</html>
+
 </script>
 <!-- ================= END 7LEO FILMS INTEGRATION ================= -->
 
