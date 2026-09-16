@@ -877,6 +877,7 @@
         .bgm-footer-copyright a {
             color: var(--gold);
         }
+
         /* --- 7LEO STAR PORTAL EXPERIENCE --- */
         .star-portal-overlay {
             position: fixed;
@@ -1206,14 +1207,6 @@
                 <li><a href="#" onclick="openStorePortal()">7Leo Store</a></li>
                 <li><a href="#" onclick="openBgmPortal()">7Leo BGM</a></li>
                 <li><a href="#" onclick="openStarPortal()">7Leo Star</a></li>
-                                <!-- 5. Explore 7Leo Ventures Card -->
-                <div class="card-box" style="border-color: rgba(212, 175, 55, 0.4); background: rgba(20,20,20,0.85);">
-                    <img src="file_0000000066d88208b43c8761fcefb922.png" alt="7Leo Ventures Logo" class="card-logo" style="width: 50px; height: 50px; border-radius: 10px; border: 1px solid #d4af37; object-fit: cover;">
-                    <h4 class="card-title artistic-font">One Vision. Infinite Growth.</h4>
-                    <p style="color: var(--text-muted); font-size: 0.9rem; text-align: center; margin-bottom: 5px;">Business Operating System connecting inventory, sales, finance, analytics, and business health.</p>
-                    <button class="action-btn" onclick="openVenturesPortal()">Explore 7Leo Ventures</button>
-                </div>
-
                 <li><a href="#" onclick="openModal('about-modal')">About</a></li>
                 <li><a href="#" onclick="openModal('founder-modal')">Meet The founder</a></li>
                 <li><a href="#" onclick="openModal('admin-modal')">Super Admin</a></li>
@@ -1868,15 +1861,6 @@
         <div class="modal-content" style="max-width: 700px;">
             <button class="close-modal" onclick="closeModal('about-modal')">&times;</button>
             <h3 class="modal-title">About 7Leo Group</h3>
-                            <!-- About 7Leo Ventures Block with Logo -->
-                <div style="background: rgba(20, 20, 20, 0.6); border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 10px; padding: 20px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 15px; margin-top: 20px;">
-                    <img src="file_0000000066d88208b43c8761fcefb922.png" alt="7Leo Ventures Logo" style="height: 50px; width: auto; object-fit: cover; border-radius: 8px; border: 1px solid var(--gold);">
-                    <h4 style="color: var(--gold); font-size: 1.2rem;">ABOUT 7LEO VENTURES</h4>
-                    <p style="color: var(--text-muted); line-height: 1.6; white-space: pre-line; font-size: 0.95rem;">7Leo Ventures is a multi-industry Business Operating System designed to connect your complete business lifecycle. Manage, understand, optimize, recover, and grow from one unified intelligence platform.
-                    
-                    Connecting inventory, purchasing, sales, payments, finance, analytics, marketing, and business health into a single high-performance ecosystem.</p>
-                </div>
-
             <div style="display: flex; flex-direction: column; gap: 30px; text-align: left; max-height: 70vh; overflow-y: auto; padding-right: 10px;">
                 
                 <div style="background: rgba(20, 20, 20, 0.6); border: 1px solid rgba(212, 175, 55, 0.2); border-radius: 10px; padding: 20px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 15px;">
@@ -3158,197 +3142,6 @@ VISION. POWER. LEGACY.</p>
   });
 </script>
 <!-- ================= END 7LEO FILMS INTEGRATION ================= -->
-<!-- === 7LEO VENTURES PORTAL & ACTIVE SYSTEM INJECTION === -->
-<style>
-#ventures-portal {
-    position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-    background-color: #050507;
-    background-image: url('file_00000000776081fa8dbc514074356775.png');
-    background-size: cover; background-position: center; background-repeat: no-repeat;
-    z-index: 99560; display: none; overflow-y: auto; color: #fff;
-}
-#ventures-portal.active { display: block; }
-#ventures-portal::before {
-    content: ""; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-    background: rgba(5, 7, 12, 0.94); z-index: -1; pointer-events: none;
-}
-.ventures-container { max-width: 1350px; margin: 0 auto; padding: 40px 20px; position: relative; z-index: 2; }
-.ventures-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(212,175,55,0.3); padding-bottom: 20px; margin-bottom: 30px; }
-.ventures-logo-area { display: flex; align-items: center; gap: 15px; }
-.ventures-logo-area img { width: 55px; height: 55px; border-radius: 12px; border: 1px solid #d4af37; object-fit: cover; }
-.ventures-logo-area h1 { font-size: 1.8rem; color: #d4af37; font-weight: 800; letter-spacing: 2px; }
-.ventures-logo-area p { color: #a0a0ab; font-size: 0.85rem; }
-
-.ventures-hero-box { background: rgba(20, 20, 28, 0.85); border: 1px solid rgba(212,175,55,0.4); border-radius: 16px; padding: 35px; text-align: center; margin-bottom: 30px; backdrop-filter: blur(10px); }
-.ventures-hero-box h2 { font-size: 2.3rem; color: #d4af37; margin-bottom: 12px; }
-.ventures-hero-box p { color: #d0d0d8; font-size: 1.05rem; max-width: 800px; margin: 0 auto; line-height: 1.6; }
-
-.live-metrics-bar { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px; margin-bottom: 30px; }
-.metric-card { background: rgba(15,15,22,0.9); border: 1px solid rgba(212,175,55,0.3); border-radius: 12px; padding: 20px; text-align: center; }
-.metric-card h4 { color: #a0a0ab; font-size: 0.85rem; margin-bottom: 8px; text-transform: uppercase; }
-.metric-card .val { color: #d4af37; font-size: 1.6rem; font-weight: bold; }
-
-.ventures-modules-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 22px; margin-bottom: 40px; }
-.ventures-module-card { background: rgba(15, 15, 22, 0.88); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 22px; transition: 0.3s; display: flex; flex-direction: column; justify-content: space-between; }
-.ventures-module-card:hover { border-color: #d4af37; transform: translateY(-3px); box-shadow: 0 10px 30px rgba(212,175,55,0.15); }
-.ventures-module-card h3 { color: #d4af37; font-size: 1.2rem; margin-bottom: 10px; display: flex; align-items: center; gap: 10px; }
-.ventures-module-card p { color: #a0a0ab; font-size: 0.88rem; line-height: 1.5; margin-bottom: 15px; }
-
-.active-action-box { background: rgba(212,175,55,0.08); border: 1px dashed rgba(212,175,55,0.4); padding: 12px; border-radius: 8px; margin-top: 10px; }
-.active-action-box input, .active-action-box select { width: 100%; background: #0b0b10; border: 1px solid rgba(255,255,255,0.2); color: #fff; padding: 8px; border-radius: 6px; margin-bottom: 8px; font-size: 0.85rem; }
-.active-action-box button { width: 100%; background: #d4af37; color: #000; border: none; padding: 8px; border-radius: 6px; font-weight: bold; cursor: pointer; font-size: 0.85rem; }
-.active-action-box button:hover { background: #f3e5ab; }
-
-.ai-assistant-box { background: linear-gradient(135deg, rgba(212,175,55,0.15), rgba(15,15,22,0.9)); border: 1px solid #d4af37; border-radius: 14px; padding: 25px; margin-bottom: 30px; }
-.ai-assistant-box h3 { color: #d4af37; font-size: 1.4rem; margin-bottom: 12px; }
-.ai-query-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
-.ai-chip { background: rgba(212,175,55,0.1); border: 1px solid rgba(212,175,55,0.2); color: #f3e5ab; padding: 6px 14px; border-radius: 20px; font-size: 0.8rem; cursor: pointer; transition: 0.3s; }
-.ai-chip:hover { background: #d4af37; color: #000; }
-.ai-response-output { background: rgba(0,0,0,0.6); border-left: 3px solid #d4af37; padding: 15px; margin-top: 15px; border-radius: 0 8px 8px 0; font-size: 0.92rem; color: #f0f0f5; min-height: 45px; }
-
-.ventures-footer { text-align: center; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 25px; margin-top: 40px; color: #a0a0ab; font-size: 0.85rem; line-height: 1.5; }
-</style>
-
-<div id="ventures-portal">
-    <div class="ventures-container">
-        <div class="ventures-header">
-            <div class="ventures-logo-area">
-                <img src="file_0000000066d88208b43c8761fcefb922.png" alt="7Leo Ventures Logo">
-                <div>
-                    <h1>7LEO VENTURES</h1>
-                    <p>Active Business Operating System • Unified Intelligence</p>
-                </div>
-            </div>
-            <button onclick="closeVenturesPortal()" style="background: transparent; border: 1px solid #d4af37; color: #d4af37; padding: 8px 16px; border-radius: 8px; cursor: pointer; font-weight: bold;">✕ Exit OS</button>
-        </div>
-
-        <div class="ventures-hero-box">
-            <h2>Live Enterprise Command Center</h2>
-            <p>Manage inventory, record sales, track live expenses, monitor cash flows, and generate instant analytical reports from your fully active operating system.</p>
-            <div style="margin-top: 20px; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
-                <button onclick="alert('Exporting Verified JSON / PDF Enterprise Report...');" style="background:#d4af37; color:#000; border:none; padding:10px 20px; border-radius:8px; font-weight:bold; cursor:pointer;">📄 Export PDF Report</button>
-                <button onclick="alert('Exporting Active Dataset to Excel/CSV...');" style="background: transparent; border: 1px solid #d4af37; color: #d4af37; padding:10px 20px; border-radius:8px; font-weight:bold; cursor:pointer;">📊 Export CSV Data</button>
-            </div>
-        </div>
-
-        <div class="live-metrics-bar">
-            <div class="metric-card"><h4>Total Revenue</h4><div class="val" id="m-revenue">₹1,45,000</div></div>
-            <div class="metric-card"><h4>Total Expenses</h4><div class="val" id="m-expenses">₹38,400</div></div>
-            <div class="metric-card"><h4>Net Profit</h4><div class="val" id="m-profit">₹1,06,600</div></div>
-            <div class="metric-card"><h4>Active Inventory</h4><div class="val" id="m-stock">24 SKUs</div></div>
-        </div>
-
-        <div class="ai-assistant-box">
-            <h3>🤖 7Leo Active AI Diagnostic Assistant</h3>
-            <p style="color: #a0a0ab; font-size: 0.9rem;">Run live diagnostics based on your recorded transactions.</p>
-            <div class="ai-query-chips">
-                <div class="ai-chip" onclick="runVenturesAiQuery('profit')">“Analyze current profit margins”</div>
-                <div class="ai-chip" onclick="runVenturesAiQuery('expenses')">“Where are expenses growing?”</div>
-                <div class="ai-chip" onclick="runVenturesAiQuery('stock')">“Check inventory turnover”</div>
-                <div class="ai-chip" onclick="runVenturesAiQuery('health')">“Overall Business Health Check”</div>
-            </div>
-            <div id="ventures-ai-output" class="ai-response-output">Click any diagnostic chip above to analyze live operating data...</div>
-        </div>
-
-        <div class="ventures-modules-grid">
-            <div class="ventures-module-card"><div><h3>📦 Stock & Inventory</h3><p>Real-time automated inventory tracking with multi-location and batch support.</p></div><div class="active-action-box"><input type="text" id="inv-item" placeholder="Item Name"><input type="number" id="inv-qty" placeholder="Quantity"><button onclick="addInventoryItem()">Add Stock</button></div></div>
-            <div class="ventures-module-card"><div><h3>🛒 Purchase Management</h3><p>Streamline supplier interactions and purchase invoices.</p></div><div class="active-action-box"><input type="text" id="po-sup" placeholder="Supplier"><input type="number" id="po-amt" placeholder="Amount (₹)"><button onclick="recordPurchase()">Record PO</button></div></div>
-            <div class="ventures-module-card"><div><h3>💰 Sales Management</h3><p>Fast POS billing and revenue processing.</p></div><div class="active-action-box"><input type="text" id="sale-item" placeholder="Product"><input type="number" id="sale-amt" placeholder="Value (₹)"><button onclick="recordSale()">Process Sale</button></div></div>
-            <div class="ventures-module-card"><div><h3>💳 Payment Management</h3><p>Multi-mode settlement tracking.</p></div><div class="active-action-box"><select id="pay-mode"><option value="UPI">UPI / Online</option><option value="Cash">Cash Counter</option></select><button onclick="alert('Payment Gateway synchronized.')">Verify Settlements</button></div></div>
-            <div class="ventures-module-card"><div><h3>🏦 Bank & Cash</h3><p>Multi-account tracking and reconciliation.</p></div><div class="active-action-box"><button onclick="alert('Bank balance reconciled: ₹3,42,000')">Reconcile Accounts</button></div></div>
-            <div class="ventures-module-card"><div><h3>⚖️ Tax Management</h3><p>Input / Output tax tracking.</p></div><div class="active-action-box"><button onclick="alert('Tax liability calculated successfully.')">Calculate Tax</button></div></div>
-            <div class="ventures-module-card"><div><h3>📈 Revenue & Profit</h3><p>Granular profitability analytics.</p></div><div class="active-action-box"><button onclick="alert('Gross Margin: 73.4%')">View Analytics</button></div></div>
-            <div class="ventures-module-card"><div><h3>💸 Expense Management</h3><p>Operational overhead tracking.</p></div><div class="active-action-box"><input type="text" id="exp-name" placeholder="Expense Title"><input type="number" id="exp-amt" placeholder="Amount (₹)"><button onclick="recordExpense()">Log Expense</button></div></div>
-            <div class="ventures-module-card"><div><h3>🎯 Marketing Intelligence</h3><p>Connect ad spend with revenue.</p></div><div class="active-action-box"><button onclick="alert('Blended CAC: ₹390 | ROAS: 4.8x')">Analyze Ads</button></div></div>
-            <div class="ventures-module-card"><div><h3>👥 Customer Intelligence</h3><p>Lifetime value and segmentation.</p></div><div class="active-action-box"><button onclick="alert('Active Profiles: 1,420')">View Segments</button></div></div>
-            <div class="ventures-module-card"><div><h3>🏭 Supplier Intelligence</h3><p>Reliability and payables.</p></div><div class="active-action-box"><button onclick="alert('Suppliers 100% compliant.')">Check Scorecard</button></div></div>
-            <div class="ventures-module-card"><div><h3>📊 Business Analytics</h3><p>Daily trends and cash-flow.</p></div><div class="active-action-box"><button onclick="alert('Weekly growth momentum: +14.2%')">Deep Analytics</button></div></div>
-            <div class="ventures-module-card" style="border-color: #d4af37;"><div><h3>🩺 Business Health</h3><p>Proactive bottleneck diagnostics.</p></div><div class="active-action-box"><button onclick="alert('Health Status: EXCELLENT.')">Run Health Check</button></div></div>
-            <div class="ventures-module-card"><div><h3>🚀 Recovery & Growth</h3><p>Actionable margin recommendations.</p></div><div class="active-action-box"><button onclick="alert('Playbook loaded: 3 optimizations ready.')">View Playbook</button></div></div>
-            <div class="ventures-module-card"><div><h3>🏢 Multi-Industry</h3><p>Retail, wholesale, and SaaS models.</p></div><div class="active-action-box"><button onclick="alert('Active Unit: 7Leo Group')">Switch Unit</button></div></div>
-            <div class="ventures-module-card"><div><h3>🔒 Security & Audit</h3><p>Role-based permissions & logs.</p></div><div class="active-action-box"><button onclick="alert('Security Audit: SHA-256 Active.')">View Logs</button></div></div>
-        </div>
-
-        <div class="ventures-footer">
-            <p>© 2026 7Leo Ventures. All Rights Reserved.</p>
-            <p>Protected digital ecosystem. All active modules synchronized in real-time.</p>
-        </div>
-    </div>
-</div>
-
-<script>
-let totalRev = 145000;
-let totalExp = 38400;
-let stockCount = 24;
-
-function openVenturesPortal() {
-    document.getElementById('ventures-portal').classList.add('active');
-}
-function closeVenturesPortal() {
-    document.getElementById('ventures-portal').classList.remove('active');
-}
-function updateMetricsDisplay() {
-    document.getElementById('m-revenue').innerText = '₹' + totalRev.toLocaleString('en-IN');
-    document.getElementById('m-expenses').innerText = '₹' + totalExp.toLocaleString('en-IN');
-    let net = totalRev - totalExp;
-    document.getElementById('m-profit').innerText = '₹' + net.toLocaleString('en-IN');
-    document.getElementById('m-stock').innerText = stockCount + ' SKUs';
-}
-function addInventoryItem() {
-    let name = document.getElementById('inv-item').value;
-    let qty = document.getElementById('inv-qty').value;
-    if(!name || !qty) { alert('Enter item name and quantity'); return; }
-    stockCount += parseInt(qty);
-    updateMetricsDisplay();
-    alert('Added ' + qty + ' units of "' + name + '" to stock.');
-    document.getElementById('inv-item').value = '';
-    document.getElementById('inv-qty').value = '';
-}
-function recordPurchase() {
-    let amt = parseFloat(document.getElementById('po-amt').value);
-    let sup = document.getElementById('po-sup').value;
-    if(!sup || isNaN(amt)) { alert('Enter valid supplier and amount'); return; }
-    totalExp += amt;
-    updateMetricsDisplay();
-    alert('Purchase recorded for ' + sup + ' (₹' + amt + ')');
-    document.getElementById('po-sup').value = '';
-    document.getElementById('po-amt').value = '';
-}
-function recordSale() {
-    let amt = parseFloat(document.getElementById('sale-amt').value);
-    let item = document.getElementById('sale-item').value;
-    if(!item || isNaN(amt)) { alert('Enter valid product and amount'); return; }
-    totalRev += amt;
-    updateMetricsDisplay();
-    alert('POS Sale processed! Added ₹' + amt);
-    document.getElementById('sale-item').value = '';
-    document.getElementById('sale-amt').value = '';
-}
-function recordExpense() {
-    let amt = parseFloat(document.getElementById('exp-amt').value);
-    let name = document.getElementById('exp-name').value;
-    if(!name || isNaN(amt)) { alert('Enter valid expense title and amount'); return; }
-    totalExp += amt;
-    updateMetricsDisplay();
-    alert('Expense logged: ' + name + ' (₹' + amt + ')');
-    document.getElementById('exp-name').value = '';
-    document.getElementById('exp-amt').value = '';
-}
-function runVenturesAiQuery(type) {
-    let net = totalRev - totalExp;
-    const output = document.getElementById('ventures-ai-output');
-    if(type === 'profit') {
-        output.innerHTML = "<strong>AI Diagnostic:</strong> Revenue is ₹" + totalRev.toLocaleString('en-IN') + ", Expenses are ₹" + totalExp.toLocaleString('en-IN') + ". Net Profit: <strong>₹" + net.toLocaleString('en-IN') + "</strong> (" + ((net/totalRev)*100).toFixed(1) + "% margin).";
-    } else if(type === 'expenses') {
-        output.innerHTML = "<strong>AI Diagnostic:</strong> Overhead expenses total ₹" + totalExp.toLocaleString('en-IN') + ". Ratio is healthy at " + ((totalExp/totalRev)*100).toFixed(1) + "%.";
-    } else if(type === 'stock') {
-        output.innerHTML = "<strong>AI Diagnostic:</strong> Active warehouse inventory tracks " + stockCount + " synchronized SKUs at optimal multi-location efficiency.";
-    } else if(type === 'health') {
-        output.innerHTML = "<strong>AI Diagnostic:</strong> Enterprise Health is <strong>EXCELLENT</strong>. Cash flows and net margins are robust.";
-    }
-}
-</script>
-<!-- === END 7LEO VENTURES SYSTEM INJECTION === -->
 
 </body>
 </html>
